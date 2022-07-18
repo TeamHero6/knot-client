@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="px-4 md:px-8 lg:px-12">
+        <div className=" md:px-8 lg:px-12">
             <div class="navbar bg-base-100">
                 <div class="navbar-start">
                     <div class="dropdown">
@@ -55,7 +55,7 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <p className="text-white text-3xl">
+                    <p className="text-white text-xl md:text-3xl">
                         <span className="bg-red-500 p-1">K</span>
                         <span className="p-1 bg-green-500">N</span>
                         <span className="p-1 bg-blue-500">O</span>
