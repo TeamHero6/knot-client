@@ -14,7 +14,7 @@ const Intro = () => {
                 </div>
                 <div className="intro-text">
                     <h2>Partner with Knot</h2>
-                    <p>Knot partners with top notch <br /> VARs, MSPs, SIs, consultants and <br /> technology partners.</p>
+                    <p>Knot partners with top notch VARs, MSPs, SIs, consultants and technology partners.</p>
                 </div>
             </section>
         </div>

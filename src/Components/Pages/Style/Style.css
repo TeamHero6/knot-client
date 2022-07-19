@@ -10,6 +10,9 @@
     padding-top: 50px;
     padding-bottom: 30px;
 }
+.footer-section-top-sm-md{
+    display: none;
+}
 .logo-area img{
     width: 140px;
 }
@@ -104,4 +107,107 @@
 }
 .intro-text p{
     text-align: left;
+}
+
+
+
+
+
+
+
+
+
+/* Responsive Design */
+/*Max- 640px Mobile View */
+@media only screen and (max-width: 640px) {
+    .intro-video-text {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+    }
+    .intro-text h2 {
+        text-align: left;
+        color: #333333;
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+    .footer-section-top {
+        display: none;
+    }
+    .footer-section-top-sm-md{
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        color: #F1F2F2;
+        margin-top: 20px;
+    }
+    .footer-section-top-sm-md img{
+        width: 38px;
+        height: 35px;
+        margin-left: 20px;
+    }
+    .footer-section-top-sm-md p{
+        text-align: left;
+        font-size: 15px;
+    }
+    
+}
+/* 640px to Max- 768px Tavlet View */
+@media only screen and (min-width:640px) and (max-width:768px) {
+    .intro-video-text {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+    }
+    .intro-text h2 {
+        text-align: left;
+        color: #333333;
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+    .footer-section-top {
+        display: none;
+    }
+    .footer-section-top-sm-md{
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        color: #F1F2F2;
+        margin-top: 20px;
+    }
+    .footer-section-top-sm-md img{
+        width: 38px;
+        height: 35px;
+        margin-left: 20px;
+    }
+    .footer-section-top-sm-md p{
+        text-align: left;
+        font-size: 15px;
+    }
+}
+/* 769px to Max- 1024px Desktop View */
+@media only screen and (min-width:769px) and (max-width:1024px) {
+    .intro-video-text {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+    }
+    .intro-text h2 {
+        text-align: left;
+        color: #333333;
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+    .footer-section-top-sm-md {
+        display: none;
+    }
+    
 }

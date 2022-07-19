@@ -6,6 +6,9 @@ import { AiFillInstagram } from 'react-icons/ai';
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillYoutube } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Easy from '../../../Image/Icon/Easy.png'
+import Secure from '../../../Image/Icon/Secure.png'
+import Allinone from '../../../Image/Icon/Allinone.png'
 
 const Footer = () => {
     return (
@@ -48,6 +51,44 @@ const Footer = () => {
                         <input className='newsletter-send-btn' type="submit" value="Send" />
                     </form>
                 </section>
+            </div>
+            <div className="footer-section-top-sm-md">
+                <div className="Easy-to-use">
+                    <div class="collapse">
+                        <input type="checkbox" />
+                        <div class="collapse-title text-xl font-medium">
+                            <img src={Easy} alt="" />
+                        <p>Easy to use</p>
+                        </div>
+                        <div class="collapse-content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, in.</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="Secure-Database">
+                    <div class="collapse">
+                        <input type="checkbox" />
+                        <div class="collapse-title text-xl font-medium">
+                        <img src={Secure} alt="" />
+                        <p>Secure Database</p>
+                        </div>
+                        <div class="collapse-content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, in.</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="One-Step-Solution">
+                    <div class="collapse">
+                        <input type="checkbox" />
+                        <div class="collapse-title text-xl font-medium">
+                        <img src={Allinone} alt="" />
+                        <p>One Step Solution</p>
+                        </div>
+                        <div class="collapse-content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, in.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="footer-section-bottom">
                 <p>Copyright © {new Date().getFullYear()} Knot Corporation Pvt. Ltd. All Rights Reserved.</p>
