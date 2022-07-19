@@ -56,7 +56,7 @@ const Footer = () => {
                 <div className="Easy-to-use">
                     <div class="collapse">
                         <input type="checkbox" />
-                        <div class="collapse-title text-xl font-medium">
+                        <div class="collapse-title text-xl font-medium">    
                             <img src={Easy} alt="" />
                         <p>Easy to use</p>
                         </div>
