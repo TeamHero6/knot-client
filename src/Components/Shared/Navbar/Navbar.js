@@ -55,11 +55,19 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <p className="text-white text-xl md:text-3xl">
-                        <span className="bg-red-500 p-1">K</span>
-                        <span className="p-1 bg-green-500">N</span>
-                        <span className="p-1 bg-blue-500">O</span>
-                        <span className="p-1 bg-yellow-500">T</span>
+                    <p className="text-white text-xl md:text-3xl flex">
+                        <p className="bg-red-500 px-1 origin-bottom -rotate-12 rounded-sm">
+                            k
+                        </p>
+                        <p className="px-1 bg-green-500 origin-top-left rotate-12 rounded-sm">
+                            N
+                        </p>
+                        <p className="px-1 bg-blue-500 origin-top-right -rotate-6 rounded-sm">
+                            O
+                        </p>
+                        <p className="px-1 bg-yellow-500 skew-y-6 rounded-sm">
+                            T
+                        </p>
                     </p>
                 </div>
                 <div class="navbar-end">
