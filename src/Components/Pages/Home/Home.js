@@ -1,9 +1,15 @@
 import React from "react";
 
+
+import Navbar from "../../Shared/Navbar/Navbar";
+import Header from "./Header.js/Header";
+
+
 const Home = () => {
     return (
         <div>
-            <h1>All are oka</h1>
+            <Navbar />
+            <Header />
         </div>
     );
 };
