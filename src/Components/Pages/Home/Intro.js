@@ -4,7 +4,7 @@ import "../../Pages/Style/Style.css";
 
 const Intro = () => {
     return (
-        <div className="w-[80%] mx-auto">
+        <div className="w-[80%] mx-auto mt-20 md:mt-36">
             <section className="text-[#333333] text-[24px] font-semibold mb-6 mt-12 text-center">
                 <h1>Trusted by more than 75 million users globally</h1>
             </section>

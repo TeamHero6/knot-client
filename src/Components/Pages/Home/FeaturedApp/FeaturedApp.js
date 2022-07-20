@@ -7,7 +7,7 @@ const FeaturedApp = () => {
             <p className="my-3 tracking-widest text-gray-400 text-sm text-center">
                 FEATURED APPS
             </p>
-            <section className="grid w-[100%] mx-auto md:w-[80%] grid-cols-1 md:grid-cols-2 items-center bg-cyan-100 md:bg-gradient-to-r from-cyan-300 via-white to-white rounded-md">
+            <section className="grid w-[100%] mx-auto mb-20 md:mb-36 md:w-[80%] grid-cols-1 md:grid-cols-2 items-center bg-cyan-100 md:bg-gradient-to-r from-cyan-300 via-white to-white rounded-md">
                 <div className="text-center md:text-left w-[100%] md:w-[60%] px-4 mx-auto my-10 md:my-0">
                     <h3 className="font-semibold text-xl my-2">
                         Complete CRM Platform
