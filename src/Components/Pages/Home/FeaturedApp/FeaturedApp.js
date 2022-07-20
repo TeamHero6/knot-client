@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const FeaturedApp = () => {
     return (
         <div className="px-0 md:px-8 lg:px-12">
-            <p className="my-3 tracking-widest text-gray-400 text-sm">
+            <p className="my-3 tracking-widest text-gray-400 text-sm text-center">
                 FEATURED APPS
             </p>
             <section className="grid w-[100%] mx-auto md:w-[80%] grid-cols-1 md:grid-cols-2 items-center bg-cyan-100 md:bg-gradient-to-r from-cyan-300 via-white to-white rounded-md">

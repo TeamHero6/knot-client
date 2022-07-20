@@ -5,7 +5,7 @@ import IntroImg from '../../../Image/Image/Intro.png'
 const Intro = () => {
     return (
         <div className='intro-container'>
-            <section className='intro-area-header-text'>
+            <section className='intro-area-header-text text-center'>
                 <h1>Trusted by more than 75 million users globally</h1>
             </section>
             <section className='intro-video-text'>

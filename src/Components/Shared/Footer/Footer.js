@@ -49,7 +49,7 @@ const Footer = () => {
                     </form>
                 </section>
             </div>
-            <div className="footer-section-bottom">
+            <div className="footer-section-bottom text-center">
                 <p>Copyright © {new Date().getFullYear()} Knot Corporation Pvt. Ltd. All Rights Reserved.</p>
             </div>
 
