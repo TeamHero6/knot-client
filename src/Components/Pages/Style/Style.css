@@ -1,7 +1,7 @@
-.footer-container{
+.footer-container {
     background-color: #333333;
 }
-.footer-section-top{
+.footer-section-top {
     width: 90%;
     margin: auto;
     display: grid;
@@ -10,98 +10,98 @@
     padding-top: 50px;
     padding-bottom: 30px;
 }
-.logo-area img{
+.logo-area img {
     width: 140px;
 }
-.logo-area h3{
-    color: #F1F2F2;
+.logo-area h3 {
+    color: #f1f2f2;
     text-align: left;
 }
-.logo-area .icon{
-    color: #F1F2F2;
+.logo-area .icon {
+    color: #f1f2f2;
     font-size: 22px;
     display: flex;
     gap: 10px;
     cursor: pointer;
 }
-.additional-link-area h2{
-    color: #F1F2F2;
+.additional-link-area h2 {
+    color: #f1f2f2;
     text-align: left;
     font-size: 18px;
     font-weight: 600;
 }
-.link ul li{
+.link ul li {
     text-align: left;
     text-decoration: none;
-    color: #F1F2F2;
+    color: #f1f2f2;
 }
-.contact-area h2{
-    color: #F1F2F2;
+.contact-area h2 {
+    color: #f1f2f2;
     text-align: left;
     font-size: 18px;
     font-weight: 600;
 }
-.contact-area p{
-    color: #F1F2F2;
+.contact-area p {
+    color: #f1f2f2;
     text-align: left;
 }
-.newsletter-area h2{
-    color: #F1F2F2;
+.newsletter-area h2 {
+    color: #f1f2f2;
     text-align: left;
     font-size: 18px;
     font-weight: 600;
 }
-.newsletter-area form{
+.newsletter-area form {
     text-align: left;
-    color: #F1F2F2;
+    color: #f1f2f2;
 }
-.newsletter-area form label{
+.newsletter-area form label {
     font-size: 18px;
 }
-.newsletter-input{
+.newsletter-input {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     margin-top: 5px;
 }
-.newsletter-send-btn{
+.newsletter-send-btn {
     text-align: left;
-    color: #45BDF8;
-    border: 1px solid #45BDF8;
+    color: #45bdf8;
+    border: 1px solid #45bdf8;
     margin-top: 10px;
     padding: 8px 35px;
     border-radius: 5px;
     cursor: pointer;
 }
-.footer-section-bottom{
+.footer-section-bottom {
     font-size: 14px;
-    color: #F1F2F2;
+    color: #f1f2f2;
     padding-bottom: 50px;
 }
-.intro-container{
+/* .intro-container{
     width: 80%;
     margin: auto;
-}
-.intro-area-header-text h1{
+} */
+/* .intro-area-header-text h1{
     color: #333333;
     font-size: 24px;
     font-weight: 600;
     margin: 60px 0 40px 0;
-}
-.intro-video-text{
+} */
+/* .intro-video-text {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-}
-.intro-video img{
+} */
+.intro-video img {
     width: 500px;
 }
-.intro-text h2{
+.intro-text h2 {
     text-align: left;
     color: #333333;
     font-size: 22px;
     font-weight: 600;
 }
-.intro-text p{
+.intro-text p {
     text-align: left;
 }

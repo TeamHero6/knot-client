@@ -24,7 +24,7 @@ const FeaturedApp = () => {
                     </Link>
                 </div>
                 <div className="text-start">
-                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                         <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-12 border-gray-200 w-[100%] mx-auto">
                             <h3>Mail</h3>
                             <p className="mb-4">Secure Business email</p>
