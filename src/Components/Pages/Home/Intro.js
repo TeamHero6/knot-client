@@ -12,6 +12,7 @@ const Intro = () => {
                 <div className="sm:max-w-sm md:w-[500px] md:mr-12 lg:mr-20">
                     <img src={IntroImg} alt="" />
                 </div>
+
                 <div className="text-left text-[#333333] text-[22px]">
                     <h2 className="font-semibold py-4">Partner with Knot</h2>
                     <p>
