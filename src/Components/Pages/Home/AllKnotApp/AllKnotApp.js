@@ -15,7 +15,7 @@ const AllKnotApp = () => {
     return (
         <div className="md:mx-16 lg:mx-36 mb-12 mt-20 md:mt-36">
             <Divider>
-                <h2 className="text-center text-gray-500 text-xl my-12 tracking-[.25em]">
+                <h2 className="text-center text-gray-500 text-xl my-12 tracking-widest md:tracking-[.25em]">
                     ALL KNOT APPS
                 </h2>
             </Divider>
