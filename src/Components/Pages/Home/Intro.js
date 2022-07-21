@@ -6,7 +6,7 @@ const Intro = () => {
     return (
         <div className="w-[80%] mx-auto mt-20 md:mt-36">
             <section className="text-[#333333] text-[24px] font-semibold mb-6 mt-12 text-center">
-                <h1>Trusted by more than 75 million users globally</h1>
+                <h1>Trusted by more than 15 million users globally</h1>
             </section>
             <section className=" md:flex md:justify-center">
                 <div className="sm:max-w-sm md:w-[500px] md:mr-12 lg:mr-20">
