@@ -22,7 +22,7 @@ const AllKnotApp = () => {
             <div className="flex justify-center flex-wrap gap-20">
                 {/*------- Finance Tracking Tool --------*/}
                 <section>
-                    <h1 className="font-bold text-center mb-4">
+                    <h1 className="text-lg text-gray-400 text-center mb-6 tracking-wider">
                         Finance Tracking Tool
                     </h1>
                     <div className="flex justify-center">
@@ -72,7 +72,7 @@ const AllKnotApp = () => {
                 </section>
                 {/*------- Sales Management --------*/}
                 <section>
-                    <h1 className="font-bold text-center mb-4">
+                    <h1 className="text-lg text-gray-400 text-center mb-6 tracking-wider">
                         Sales Management
                     </h1>
                     <div className="flex justify-center">
@@ -122,7 +122,7 @@ const AllKnotApp = () => {
                 </section>
                 {/*------- Marketing Automation --------*/}
                 <section>
-                    <h1 className="font-bold text-center mb-4">
+                    <h1 className="text-lg text-gray-400 text-center mb-6 tracking-wider">
                         Marketing Automation
                     </h1>
                     <div className="flex justify-center">
