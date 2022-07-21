@@ -36,9 +36,7 @@ const FeaturedApp = () => {
                                 </section>
                                 <section className="text-left mt-3 ml-1">
                                     <h3>Sales</h3>
-                                    <p className="mb-4">
-                                        Secure Business email
-                                    </p>
+                                    <p className="mb-4">Tracking Tool</p>
                                     <Link
                                         to="/learnMore"
                                         className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-semibold px-2 lg:px-4 py-2 hover:text-white hover:bg-sky-400 transform  duration-[.7s] transition-all"
@@ -59,9 +57,7 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Finance</h3>
-                                    <p className="mb-4">
-                                        Secure Business email
-                                    </p>
+                                    <p className="mb-4">Tracking Tool</p>
                                     <Link
                                         to="/learnMore"
                                         className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-semibold px-2 lg:px-4 py-2 hover:text-white hover:bg-sky-400 transform  duration-[.7s] transition-all"
@@ -82,9 +78,7 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Marketing</h3>
-                                    <p className="mb-4">
-                                        Secure Business email
-                                    </p>
+                                    <p className="mb-4">Automation Tool</p>
                                     <Link
                                         to="/learnMore"
                                         className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-semibold px-2 lg:px-4 py-2 hover:text-white hover:bg-sky-400 transform  duration-[.7s] transition-all"
@@ -105,9 +99,7 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 mr-1">
                                     <h3>Live</h3>
-                                    <p className="mb-4">
-                                        Secure Business email
-                                    </p>
+                                    <p className="mb-4">Chatting Tool</p>
                                     <Link
                                         to="/learnMore"
                                         className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-semibold px-2 lg:px-4 py-2 hover:text-white hover:bg-sky-400 transform  duration-[.7s] transition-all"
