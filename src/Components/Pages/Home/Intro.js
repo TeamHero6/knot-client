@@ -10,9 +10,9 @@ const Intro = () => {
                     Manage Your Investments Easily And Effectively
                 </h1>
             </section>
-            <section className=" md:flex md:justify-center">
-                <div className="sm:max-w-sm md:w-[600px] md:mr-8 lg:mr-20">
-                    <img src={IntroImg} alt="w-full" />
+            <section className="md:flex md:justify-center">
+                <div className="sm:max-w-sm md:w-[500px] md:mr-8 lg:mr-20">
+                    <img src={IntroImg} alt="" className="w-full h-[250px]" />
                 </div>
 
                 <div className="text-left text-[#333333] px-1 w-[100%] md:max-w-md">
