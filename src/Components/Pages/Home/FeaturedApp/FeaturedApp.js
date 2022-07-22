@@ -9,7 +9,7 @@ const FeaturedApp = () => {
     return (
         <div className="lg:px-12">
             <p className="my-3 tracking-widest text-gray-400 text-sm text-center">
-                FEATURED APPS
+                Magnificent Features
             </p>
             <section className="grid w-[100%] mx-auto mb-20 md:mb-36 md:w-[90%] grid-cols-1 md:grid-cols-2 items-center bg-cyan-100 md:bg-gradient-to-r from-cyan-200 via-white to-white rounded-md">
                 <div className="text-center md:text-left w-[100%] md:w-[60%] px-0 lg:px-4 mx-auto my-10 md:my-0">

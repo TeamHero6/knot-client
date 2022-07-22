@@ -4,20 +4,25 @@ import "../../Pages/Style/Style.css";
 
 const Intro = () => {
     return (
-        <div className="w-[80%] mx-auto mt-20 md:mt-36">
+        <div className="w-[90%] mx-auto mt-20 md:mt-48">
             <section className="text-[#333333] text-[24px] font-semibold mb-6 mt-12 text-center">
-                <h1>Trusted by more than 15 million users globally</h1>
+                <h1 className="hidden md:block">
+                    Manage Your Investments Easily And Effectively
+                </h1>
             </section>
             <section className=" md:flex md:justify-center">
-                <div className="sm:max-w-sm md:w-[500px] md:mr-12 lg:mr-20">
-                    <img src={IntroImg} alt="" />
+                <div className="sm:max-w-sm md:w-[600px] md:mr-8 lg:mr-20">
+                    <img src={IntroImg} alt="w-full" />
                 </div>
 
-                <div className="text-left text-[#333333] text-[22px]">
-                    <h2 className="font-semibold py-4">Partner with Knot</h2>
-                    <p>
-                        Knot partners with top notch <br /> VARs, MSPs, SIs,
-                        consultants and <br /> technology partners.
+                <div className="text-left text-[#333333] px-1 w-[100%] md:max-w-md">
+                    <h2 className="font-semibold py-4 text-xl md:text-2xl">
+                        Knot with clients
+                    </h2>
+                    <p className="text-sm md:text-lg">
+                        We help organizations work smarter and grow faster.
+                        Reach out to us to build effective organizations, reduce
+                        costs, manage risk and regulation leverage talent.
                     </p>
                 </div>
             </section>

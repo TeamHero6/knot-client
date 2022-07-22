@@ -1,4 +1,3 @@
-import { Divider } from "antd";
 import React from "react";
 import liveChatSmallIcon from "../../../../Assets/icons/chat-small.png";
 import liveChatIcon from "../../../../Assets/icons/chat.png";
@@ -13,12 +12,11 @@ import taskManagementSmallIcon from "../../../../Assets/icons/task-small.png";
 
 const AllKnotApp = () => {
     return (
-        <div className="md:mx-16 lg:mx-36 mb-12 mt-20 md:mt-36">
-            <Divider>
-                <h2 className="text-center text-gray-500 text-xl my-12 tracking-widest md:tracking-[.25em]">
-                    ALL KNOT APPS
-                </h2>
-            </Divider>
+        <div className="md:mx-16 lg:mx-36 mb-12 mt-20 md:mt-48">
+            <h2 className="text-center text-gray-500 font-semibold text-2xl my-12 lg:my-20 tracking-widest md:tracking-wider">
+                ALL KNOT APPS
+                <div className="border-2 border-b-2 w-36 mx-auto mt-1"></div>
+            </h2>
             <div className="flex justify-center flex-wrap gap-20">
                 {/*------- Finance Tracking Tool --------*/}
                 <section>
@@ -190,7 +188,7 @@ const AllKnotApp = () => {
                 </section>
                 {/*------- Live Chatting --------*/}
                 <section>
-                    <h1 className="font-bold text-center mb-4">
+                    <h1 className="text-lg text-gray-400 text-center mb-6 tracking-wider">
                         Live Chatting
                     </h1>
                     <div className="flex justify-center">
@@ -240,7 +238,7 @@ const AllKnotApp = () => {
                 </section>
                 {/*------- Task Management --------*/}
                 <section>
-                    <h1 className="font-bold text-center mb-4">
+                    <h1 className="text-lg text-gray-400 text-center mb-6 tracking-wider">
                         Task Management
                     </h1>
                     <div className="flex justify-center">
