@@ -1,14 +1,56 @@
 import React from 'react';
+import './AllKnotApp.css';
 import financeIcon from '../../../../Assets/icons/finance.png';
 import financeSmallIcon from '../../../../Assets/icons/finance-small.png';
 import salesManagementIcon from '../../../../Assets/icons/sales.png';
 import salesManagementSmallIcon from '../../../../Assets/icons/sales-small.png';
 import marketingAutomationIcon from '../../../../Assets/icons/marketing.png';
-import marketingAutomationSmallIcon from '../../../../Assets/icons/marketing-small.png';
 import liveChatIcon from '../../../../Assets/icons/chat.png';
-import liveChatSmallIcon from '../../../../Assets/icons/chat-small.png';
 import taskManagementIcon from '../../../../Assets/icons/task-management.png';
-import taskManagementSmallIcon from '../../../../Assets/icons/task-small.png';
+
+// Finance Tracking icon -------------------------------     
+import financeDashboard from '../../../../Assets/icons/Finance-icon/Dashboard.png';
+import ProductDetails from '../../../../Assets/icons/Finance-icon/Product-Details.png';
+import financeSales from '../../../../Assets/icons/Finance-icon/sales.png';
+import Purchase from '../../../../Assets/icons/Finance-icon/Purchase.png';
+import Accountant from '../../../../Assets/icons/Finance-icon/accounted.png';
+import financeReport from '../../../../Assets/icons/Finance-icon/report.png';
+
+// Sales Management icon --------------------------------
+import bill from '../../../../Assets/icons/Sales-management-icon/bill.png'
+import ProductItem from '../../../../Assets/icons/Sales-management-icon/product_item.png'
+import salesPerson from '../../../../Assets/icons/Sales-management-icon/Sales-person.png'
+import Customer from '../../../../Assets/icons/Sales-management-icon/customer.png'
+import SalesOrders from '../../../../Assets/icons/Sales-management-icon/order.png'
+import PaymentReceive from '../../../../Assets/icons/Sales-management-icon/payment_receive.png'
+import Return from '../../../../Assets/icons/Sales-management-icon/return.png'
+import vendor from '../../../../Assets/icons/Sales-management-icon/vendor.png'
+import salesProductDetail from '../../../../Assets/icons/Sales-management-icon/Product_Details.png'
+import salesPurchase from '../../../../Assets/icons/Sales-management-icon/purchase.png'
+
+// Marketing Automation icon      -----------------------
+import EmailMarketing from '../../../../Assets/icons/Marketing-icon/Email-Marketing.png';
+import SMS_marketing from '../../../../Assets/icons/Marketing-icon/SMS-Marketing.png';
+import CustomerListing from '../../../../Assets/icons/Marketing-icon/Customer-listing.png';
+import CustomerSorting from '../../../../Assets/icons/Marketing-icon/Customer-sorting.png';
+import marketingBudget from '../../../../Assets/icons/Marketing-icon/Marketing-Budget.png';
+
+// Live Chat icon ----------------------------------
+import profile from '../../../../Assets/icons/Live-chat-icon/profile_user.png';
+import chat from '../../../../Assets/icons/Live-chat-icon/chat.png';
+import group from '../../../../Assets/icons/Live-chat-icon/grouph.png';
+import contact from '../../../../Assets/icons/Live-chat-icon/contacts.png';
+import setting from '../../../../Assets/icons/Live-chat-icon/settings.png';
+
+// Task Management icon ----------------------------
+import taskDashboard from '../../../../Assets/icons/Task-management-icon/Dashboard.png';
+import employeeSelfService from '../../../../Assets/icons/Task-management-icon/EmployeeSelfService.png';
+import attendance from '../../../../Assets/icons/Task-management-icon/attendance.png';
+import recruitment from '../../../../Assets/icons/Task-management-icon/recruitment.png';
+import performance from '../../../../Assets/icons/Task-management-icon/Performance.png';
+import operation from '../../../../Assets/icons/Task-management-icon/Operation.png';
+import payrolls from '../../../../Assets/icons/Task-management-icon/Payrolls.png';
+
 
 const AllKnotApp = () => {
     return (
@@ -24,41 +66,41 @@ const AllKnotApp = () => {
                             <p>Finance</p>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 mt-4'>
+                    <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={financeSmallIcon} alt="" />
-                                <p>Finance</p>
+                                <img src={financeDashboard} alt="" />
+                                <p>Dashboard</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={financeSmallIcon} alt="" />
-                                <p>Finance</p>
+                                <img src={ProductDetails} alt="" />
+                                <p>Product</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={financeSmallIcon} alt="" />
-                                <p>Finance</p>
+                                <img src={financeSales} alt="" />
+                                <p>Sales</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={financeSmallIcon} alt="" />
-                                <p>Finance</p>
+                                <img src={Purchase} alt="" />
+                                <p>Purchase</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={financeSmallIcon} alt="" />
-                                <p>Finance</p>
+                                <img src={Accountant} alt="" />
+                                <p>Accountant</p>
                             </div>
                         </div>
                         <div className='flex justify-center p-4'>
                             <div>
-                                <img src={financeSmallIcon} alt="" />
-                                <p>Finance</p>
+                                <img src={financeReport} alt="" />
+                                <p>Report</p>
                             </div>
                         </div>
                     </div>
@@ -72,40 +114,58 @@ const AllKnotApp = () => {
                             <p>Sales</p>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 mt-4'>
+                    <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={salesManagementSmallIcon} alt="" />
-                                <p>Sales</p>
+                                <img src={bill} alt="" />
+                                <p>Bill</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={salesManagementSmallIcon} alt="" />
-                                <p>Sales</p>
+                                <img src={ProductItem} alt="" />
+                                <p>Products</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={salesManagementSmallIcon} alt="" />
-                                <p>Sales</p>
+                                <img src={salesPerson} alt="" />
+                                <p>Person</p>
+                            </div>
+                        </div>
+                        <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
+                            <div>
+                                <img src={Customer} alt="" />
+                                <p>Customer</p>
+                            </div>
+                        </div>
+                        <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
+                            <div>
+                                <img src={SalesOrders} alt="" />
+                                <p>Order</p>
+                            </div>
+                        </div>
+                        <div className='flex justify-center border-b-[1px] border-gray-200 p-4'>
+                            <div>
+                                <img src={PaymentReceive} alt="" />
+                                <p>Payment</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={salesManagementSmallIcon} alt="" />
-                                <p>Sales</p>
+                                <img src={Return} alt="" />
+                                <p>Return</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={salesManagementSmallIcon} alt="" />
-                                <p>Sales</p>
+                                <img src={vendor} alt="" />
+                                <p>Vendor</p>
                             </div>
                         </div>
-                        <div className='flex justify-center p-4'>
+                        <div className='flex justify-center border-gray-200 p-4'>
                             <div>
-                                <img src={salesManagementSmallIcon} alt="" />
+                                <img src={salesProductDetail} alt="" />
                                 <p>Sales</p>
                             </div>
                         </div>
@@ -120,41 +180,41 @@ const AllKnotApp = () => {
                             <p>Marketing</p>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 mt-4'>
+                    <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={marketingAutomationSmallIcon} alt="" />
-                                <p>Marketing</p>
+                                <img src={EmailMarketing} alt="" />
+                                <p>Email</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={marketingAutomationSmallIcon} alt="" />
-                                <p>Marketing</p>
+                                <img src={SMS_marketing} alt="" />
+                                <p>SMS</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={marketingAutomationSmallIcon} alt="" />
-                                <p>Marketing</p>
+                                <img src={CustomerListing} alt="" />
+                                <p>Listing</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={marketingAutomationSmallIcon} alt="" />
-                                <p>Marketing</p>
+                                <img src={SMS_marketing} alt="" />
+                                <p>SMS</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={marketingAutomationSmallIcon} alt="" />
-                                <p>Marketing</p>
+                                <img src={marketingBudget} alt="" />
+                                <p>Budget</p>
                             </div>
                         </div>
                         <div className='flex justify-center p-4'>
                             <div>
-                                <img src={marketingAutomationSmallIcon} alt="" />
-                                <p>Marketing</p>
+                                <img src={CustomerSorting} alt="" />
+                                <p>Sorting</p>
                             </div>
                         </div>
                     </div>
@@ -168,41 +228,35 @@ const AllKnotApp = () => {
                             <p>Live Chat</p>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 mt-4'>
+                    <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={liveChatSmallIcon} alt="" />
-                                <p>Live</p>
+                                <img src={profile} alt="" />
+                                <p>Profile</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={liveChatSmallIcon} alt="" />
-                                <p>Live</p>
+                                <img src={chat} alt="" />
+                                <p>Chat</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={liveChatSmallIcon} alt="" />
-                                <p>Live</p>
+                                <img src={group} alt="" />
+                                <p>Group</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={liveChatSmallIcon} alt="" />
-                                <p>Live</p>
+                                <img src={contact} alt="" />
+                                <p>Contact</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={liveChatSmallIcon} alt="" />
-                                <p>Live</p>
-                            </div>
-                        </div>
-                        <div className='flex justify-center p-4'>
-                            <div>
-                                <img src={liveChatSmallIcon} alt="" />
-                                <p>Live</p>
+                                <img src={setting} alt="" />
+                                <p>Settings</p>
                             </div>
                         </div>
                     </div>
@@ -216,41 +270,47 @@ const AllKnotApp = () => {
                             <p>Task</p>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 mt-4'>
+                    <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={taskManagementSmallIcon} alt="" />
-                                <p>Task</p>
+                                <img src={taskDashboard} alt="" />
+                                <p>Dashboard</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={taskManagementSmallIcon} alt="" />
-                                <p>Task</p>
+                                <img src={employeeSelfService} alt="" />
+                                <p>Employee</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={taskManagementSmallIcon} alt="" />
-                                <p>Task</p>
+                                <img src={attendance} alt="" />
+                                <p>Attendance</p>
                             </div>
                         </div>
                         <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={taskManagementSmallIcon} alt="" />
-                                <p>Task</p>
+                                <img src={recruitment} alt="" />
+                                <p>Recruitment</p>
                             </div>
                         </div>
-                        <div className='flex justify-center border-r-[1px] border-gray-200 p-4'>
+                        <div className='flex justify-center border-r-[1px] border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={taskManagementSmallIcon} alt="" />
-                                <p>Task</p>
+                                <img src={performance} alt="" />
+                                <p>Performance</p>
                             </div>
                         </div>
-                        <div className='flex justify-center p-4'>
+                        <div className='flex justify-center border-b-[1px] p-4'>
                             <div>
-                                <img src={taskManagementSmallIcon} alt="" />
-                                <p>Task</p>
+                                <img src={operation} alt="" />
+                                <p>Operation</p>
+                            </div>
+                        </div>
+                        <div className='flex justify-center border-t-[1px] border-r-[1px] border-gray-200 p-4'>
+                            <div>
+                                <img src={payrolls} alt="" />
+                                <p>Payrolls</p>
                             </div>
                         </div>
                     </div>
