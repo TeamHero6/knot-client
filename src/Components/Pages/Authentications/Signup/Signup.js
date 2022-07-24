@@ -32,33 +32,32 @@ const Signup = () => {
         useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const onSubmit = async (data) => {
-        // const profilePhoto = data?.image[0];
-        // const formData = new FormData();
-        // formData.append("profile", profilePhoto);
-        // const imageStorageApiKey = "ac5c23113ca85fbbb666fb0c2b7dfa9b";
-        // const url = `https://api.imgbb.com/1/upload?key=${imageStorageApiKey}`;
-        // fetch(url, {
-        //     method: "POST",
-        //     body: formData,
-        // })
-        //     .then((res) => res.json())
-        //     .then((result) => {
-        //         console.log(result);
-        //     });
-        const email = data.email;
-        const name = data.name;
-        const password = data.password;
-        await createUserWithEmailAndPassword(email, password);
-
-        await updateProfile({ displayName: name });
-        alert("updated profile");
+        const profilePhoto = data?.image[0];
+        const formData = new FormData();
+        formData.append("profile", profilePhoto);
+        const imageStorageApiKey = "ac5c23113ca85fbbb666fb0c2b7dfa9b";
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageApiKey}`;
+        fetch(url, {
+            method: "POST",
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                console.log(result);
+            });
+        // const email = data.email;
+        // const name = data.name;
+        // const password = data.password;
+        // await createUserWithEmailAndPassword(email, password);
+        // await updateProfile({ displayName: name });
+        // alert("updated profile");
     };
     return (
-        <div>
+        <div className="min-h-screen">
             <Navbar />
-            <section className="flex justify-center items-center w-full flex-1 text-center md:px-20 bg-gray-100 h-[100vh]">
+            <section className="flex justify-center items-center w-full flex-1 text-center px-3 md:px-20 bg-gray-100 min-h-screen">
                 <div className="bg-white rounded-2xl shadow-2xl md:flex w-[100%] md:w-3/4 lg:w-2/3 max-w-4xl">
-                    <div className="w-full lg:w-3/5 p-5">
+                    <div className="w-full lg:w-3/5 p-5 my-auto">
                         <div className="text-left font-bold">
                             <span className="text-cyan-400">Knot</span>Company
                         </div>
