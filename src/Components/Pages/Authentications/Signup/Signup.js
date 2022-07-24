@@ -1,4 +1,5 @@
-import React from "react";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import React, { useState } from "react";
 import {
     useCreateUserWithEmailAndPassword,
     useSignInWithFacebook,
@@ -15,8 +16,12 @@ import {
 } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
-import auth from "../../../../firebase.init";
+
+import { v4 } from "uuid";
+import auth, { storage } from "../../../../firebase.init";
+
 import Navbar from "../../../Shared/Navbar/Navbar";
+
 
 const Signup = () => {
     const {
@@ -31,26 +36,26 @@ const Signup = () => {
     const [signInWithFacebook, Fuser, Floading, Ferror] =
         useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [profileImageUrl, setProfileImageUrl] = useState("");
     const onSubmit = async (data) => {
-        const profilePhoto = data?.image[0];
-        const formData = new FormData();
-        formData.append("profile", profilePhoto);
-        const imageStorageApiKey = "ac5c23113ca85fbbb666fb0c2b7dfa9b";
-        const url = `https://api.imgbb.com/1/upload?key=${imageStorageApiKey}`;
-        fetch(url, {
-            method: "POST",
-            body: formData,
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                console.log(result);
+        const profilePhoto = await data?.image[0];
+        const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
+        uploadBytes(imageref, profilePhoto).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                setProfileImageUrl(url);
             });
-        // const email = data.email;
-        // const name = data.name;
-        // const password = data.password;
-        // await createUserWithEmailAndPassword(email, password);
-        // await updateProfile({ displayName: name });
-        // alert("updated profile");
+        });
+        if (profileImageUrl) {
+            const email = data.email;
+            const name = data.name;
+            const password = data.password;
+            await createUserWithEmailAndPassword(email, password);
+            await updateProfile({
+                displayName: name,
+                photoURL: profileImageUrl,
+            });
+        }
+
     };
     return (
         <div className="min-h-screen">
