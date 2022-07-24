@@ -1,18 +1,26 @@
 import React from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { FaFacebookF, FaGoogle, FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../../../firebase.init";
 
 const Login = () => {
+    const [signInWithEmailAndPassword, , loading] =
+        useSignInWithEmailAndPassword(auth);
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm();
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        console.log("Clicked");
+    const onSubmit = async (data) => {
+        const email = data.email;
+        const password = data.password;
+        await signInWithEmailAndPassword(email, password);
+        navigate("/");
     };
     return (
         <section className="flex justify-center items-center w-full flex-1 text-center md:px-20 bg-gray-100 h-[100vh]">
@@ -131,11 +139,17 @@ const Login = () => {
                                     </h1>
                                 </section>
                                 <div></div>
-                                <input
-                                    type="submit"
-                                    value="LOGIN"
-                                    className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2 hover:bg-cyan-400 hover:text-white duration-500 transition-all"
-                                />
+                                {loading ? (
+                                    <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
+                                        Login...
+                                    </button>
+                                ) : (
+                                    <input
+                                        type="submit"
+                                        value="LOGIN"
+                                        className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2 hover:bg-cyan-400 hover:text-white duration-500 transition-all"
+                                    />
+                                )}
                             </form>
                         </div>
                         {/*Input Field*/}
