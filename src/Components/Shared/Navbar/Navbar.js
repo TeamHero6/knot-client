@@ -9,7 +9,7 @@ const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
     return (
         <div className=" md:px-8 lg:px-12">
-            <div class="navbar bg-base-100">
+            <div class="navbar bg-base-100 ">
                 <div class="navbar-start">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
