@@ -1,6 +1,11 @@
 import React from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+    useSignInWithEmailAndPassword,
+    useSignInWithFacebook,
+    useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { AiFillApple } from "react-icons/ai";
 import { FaFacebookF, FaGoogle, FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,6 +19,10 @@ const Login = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
+    const [signInWithGoogle, Guser, googleLoading, Gerror] =
+        useSignInWithGoogle(auth);
+    const [signInWithFacebook, Fuser, Floading, Ferror] =
+        useSignInWithFacebook(auth);
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
@@ -22,6 +31,9 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
         navigate("/");
     };
+    if (Guser || Fuser) {
+        navigate("/");
+    }
     return (
         <section className="flex justify-center items-center w-full flex-1 text-center md:px-20 bg-gray-100 h-[100vh]">
             <div className="bg-white rounded-2xl shadow-2xl md:flex w-[100%] md:w-3/4 lg:w-2/3 max-w-4xl">
@@ -35,26 +47,24 @@ const Login = () => {
                         </h2>
                         <div className="border-2 w-10 border-cyan-400 inline-block"></div>
                         <div className="flex justify-center items-center my-2">
-                            <a
-                                href="facebook.com"
-                                target={"_blank"}
+                            <p
+                                onClick={() => signInWithFacebook()}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
                                 <FaFacebookF className="text-sm" />
-                            </a>
-                            <a
-                                href="Twitter"
-                                target={"_blank"}
+                            </p>
+                            <p
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
+                                onClick={() => signInWithGoogle()}
                             >
                                 <FaGoogle className="text-sm" />
-                            </a>
+                            </p>
                             <a
                                 href="facebook.com"
                                 target={"_blank"}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
-                                <FaFacebookF className="text-sm" />
+                                <AiFillApple className="text-md" />
                             </a>
                         </div>{" "}
                         {/* Social Login section */}

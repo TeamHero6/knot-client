@@ -1,10 +1,12 @@
 import React from "react";
 import {
     useCreateUserWithEmailAndPassword,
+    useSignInWithFacebook,
+    useSignInWithGoogle,
     useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { AiOutlineCloudUpload } from "react-icons/ai";
+import { AiFillApple, AiOutlineCloudUpload } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGoogle,
@@ -23,6 +25,10 @@ const Signup = () => {
     } = useForm();
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, Guser, googleLoading, Gerror] =
+        useSignInWithGoogle(auth);
+    const [signInWithFacebook, Fuser, Floading, Ferror] =
+        useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const onSubmit = async (data) => {
         // const profilePhoto = data?.image[0];
@@ -59,26 +65,24 @@ const Signup = () => {
                         </h2>
                         <div className="border-2 w-10 border-cyan-400 inline-block"></div>
                         <div className="flex justify-center items-center my-2">
-                            <a
-                                href="facebook.com"
-                                target={"_blank"}
+                            <p
+                                onClick={() => signInWithFacebook()}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
                                 <FaFacebookF className="text-sm" />
-                            </a>
-                            <a
-                                href="Twitter"
-                                target={"_blank"}
+                            </p>
+                            <p
+                                onClick={() => signInWithGoogle()}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
                                 <FaGoogle className="text-sm" />
-                            </a>
+                            </p>
                             <a
                                 href="facebook.com"
                                 target={"_blank"}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
-                                <FaFacebookF className="text-sm" />
+                                <AiFillApple className="text-md" />
                             </a>
                         </div>{" "}
                         {/* Social Login section */}
