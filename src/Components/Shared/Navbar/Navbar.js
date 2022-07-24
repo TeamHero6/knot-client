@@ -1,8 +1,12 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
     return (
         <div className=" md:px-8 lg:px-12">
             <div class="navbar bg-base-100">
@@ -93,37 +97,41 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <section>
-                        <Link to="/login">
-                            <FaUserCircle className="text-2xl ml-4" />
-                        </Link>
-
-                        {/* <div class="dropdown dropdown-end px-4">
-                            <label
-                                tabindex="0"
-                                class="btn btn-ghost btn-circle avatar"
-                            >
-                                <div class="w-10 rounded-full">
-                                    <img src="https://placeimg.com/80/80/people" />
-                                </div>
-                            </label>
-                            <ul
-                                tabindex="0"
-                                class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                            >
-                                <li>
-                                    <a class="justify-between">
-                                        Profile
-                                        <span class="badge">New</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>Settings</a>
-                                </li>
-                                <li>
-                                    <a>Logout</a>
-                                </li>
-                            </ul>
-                        </div> */}
+                        {user ? (
+                            <div class="dropdown dropdown-end">
+                                <label
+                                    tabindex="0"
+                                    class="btn btn-ghost btn-circle avatar"
+                                >
+                                    <div class="w-10 rounded-full">
+                                        <img src="https://placeimg.com/80/80/people" />
+                                    </div>
+                                </label>
+                                <ul
+                                    tabindex="0"
+                                    class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                >
+                                    <li>
+                                        <a class="justify-between">
+                                            Profile
+                                            <span class="badge">New</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>Settings</a>
+                                    </li>
+                                    <li>
+                                        <p onClick={() => signOut(auth)}>
+                                            Logout
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        ) : (
+                            <Link to="login">
+                                <FaUserCircle className="text-2xl ml-2" />
+                            </Link>
+                        )}
                     </section>
                 </div>
             </div>
