@@ -1,6 +1,12 @@
 import React from "react";
+import {
+    useCreateUserWithEmailAndPassword,
+    useSignInWithFacebook,
+    useSignInWithGoogle,
+    useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { AiOutlineCloudUpload } from "react-icons/ai";
+import { AiFillApple, AiOutlineCloudUpload } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGoogle,
@@ -9,6 +15,7 @@ import {
 } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import auth from "../../../../firebase.init";
 
 const Signup = () => {
     const {
@@ -16,9 +23,34 @@ const Signup = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
+    const [createUserWithEmailAndPassword, user, loading, error] =
+        useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, Guser, googleLoading, Gerror] =
+        useSignInWithGoogle(auth);
+    const [signInWithFacebook, Fuser, Floading, Ferror] =
+        useSignInWithFacebook(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const onSubmit = async (data) => {
+        // const profilePhoto = data?.image[0];
+        // const formData = new FormData();
+        // formData.append("profile", profilePhoto);
+        // const imageStorageApiKey = "ac5c23113ca85fbbb666fb0c2b7dfa9b";
+        // const url = `https://api.imgbb.com/1/upload?key=${imageStorageApiKey}`;
+        // fetch(url, {
+        //     method: "POST",
+        //     body: formData,
+        // })
+        //     .then((res) => res.json())
+        //     .then((result) => {
+        //         console.log(result);
+        //     });
+        const email = data.email;
+        const name = data.name;
+        const password = data.password;
+        await createUserWithEmailAndPassword(email, password);
 
-    const onSubmit = (data) => {
-        console.log(data);
+        await updateProfile({ displayName: name });
+        alert("updated profile");
     };
     return (
         <section className="flex justify-center items-center w-full flex-1 text-center md:px-20 bg-gray-100 h-[100vh]">
@@ -33,26 +65,24 @@ const Signup = () => {
                         </h2>
                         <div className="border-2 w-10 border-cyan-400 inline-block"></div>
                         <div className="flex justify-center items-center my-2">
-                            <a
-                                href="facebook.com"
-                                target={"_blank"}
+                            <p
+                                onClick={() => signInWithFacebook()}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
                                 <FaFacebookF className="text-sm" />
-                            </a>
-                            <a
-                                href="Twitter"
-                                target={"_blank"}
+                            </p>
+                            <p
+                                onClick={() => signInWithGoogle()}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
                                 <FaGoogle className="text-sm" />
-                            </a>
+                            </p>
                             <a
                                 href="facebook.com"
                                 target={"_blank"}
                                 className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
                             >
-                                <FaFacebookF className="text-sm" />
+                                <AiFillApple className="text-md" />
                             </a>
                         </div>{" "}
                         {/* Social Login section */}
@@ -166,12 +196,12 @@ const Signup = () => {
                                         <AiOutlineCloudUpload className=" m-2 text-gray-400" />
                                         <label
                                             htmlFor="userPhoto"
-                                            className="flex-1 outline-none h-full text-sm text-gray-400 bg-gray-100"
+                                            className="outline-none h-full text-sm text-gray-400 bg-gray-100"
                                         >
-                                            Upload
+                                            Upload Image
                                         </label>
                                         <input
-                                            {...register("photo", {
+                                            {...register("image", {
                                                 required: {
                                                     value: true,
                                                     message:
@@ -192,11 +222,17 @@ const Signup = () => {
                                     </h1>
                                 </section>{" "}
                                 {/*attach file*/}
-                                <input
-                                    type="submit"
-                                    value="SIGN UP"
-                                    className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2 hover:bg-cyan-400 hover:text-white duration-500 transition-all"
-                                />
+                                {loading || updating ? (
+                                    <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
+                                        Loading...
+                                    </button>
+                                ) : (
+                                    <input
+                                        type="submit"
+                                        value="SIGN UP"
+                                        className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2 hover:bg-cyan-400 hover:text-white duration-500 transition-all"
+                                    />
+                                )}
                             </form>
                         </div>
                         {/*Input Field*/}
