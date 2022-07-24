@@ -166,6 +166,15 @@ const Login = () => {
                                         />
                                     )}
                                 </form>
+                                <p className="mt-3 md:hidden">
+                                    New to Knot ?{" "}
+                                    <Link
+                                        to="/signup"
+                                        className="text-cyan-400"
+                                    >
+                                        Sign Up
+                                    </Link>{" "}
+                                </p>
                             </div>
                             {/*Input Field*/}
                         </div>

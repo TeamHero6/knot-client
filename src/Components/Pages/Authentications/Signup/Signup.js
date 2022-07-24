@@ -241,6 +241,12 @@ const Signup = () => {
                                         />
                                     )}
                                 </form>
+                                <p className="mt-3 md:hidden">
+                                    Already have an Account?{" "}
+                                    <Link to="/login" className="text-cyan-400">
+                                        Login
+                                    </Link>{" "}
+                                </p>
                             </div>
                             {/*Input Field*/}
                         </div>
