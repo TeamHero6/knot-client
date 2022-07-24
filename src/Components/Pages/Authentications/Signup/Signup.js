@@ -1,4 +1,5 @@
-import React from "react";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import React, { useState } from "react";
 import {
     useCreateUserWithEmailAndPassword,
     useSignInWithFacebook,
@@ -15,7 +16,8 @@ import {
 } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
-import auth from "../../../../firebase.init";
+import { v4 } from "uuid";
+import auth, { storage } from "../../../../firebase.init";
 
 const Signup = () => {
     const {
@@ -30,27 +32,25 @@ const Signup = () => {
     const [signInWithFacebook, Fuser, Floading, Ferror] =
         useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [profileImageUrl, setProfileImageUrl] = useState("");
     const onSubmit = async (data) => {
-        // const profilePhoto = data?.image[0];
-        // const formData = new FormData();
-        // formData.append("profile", profilePhoto);
-        // const imageStorageApiKey = "ac5c23113ca85fbbb666fb0c2b7dfa9b";
-        // const url = `https://api.imgbb.com/1/upload?key=${imageStorageApiKey}`;
-        // fetch(url, {
-        //     method: "POST",
-        //     body: formData,
-        // })
-        //     .then((res) => res.json())
-        //     .then((result) => {
-        //         console.log(result);
-        //     });
-        const email = data.email;
-        const name = data.name;
-        const password = data.password;
-        await createUserWithEmailAndPassword(email, password);
-
-        await updateProfile({ displayName: name });
-        alert("updated profile");
+        const profilePhoto = await data?.image[0];
+        const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
+        uploadBytes(imageref, profilePhoto).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                setProfileImageUrl(url);
+            });
+        });
+        if (profileImageUrl) {
+            const email = data.email;
+            const name = data.name;
+            const password = data.password;
+            await createUserWithEmailAndPassword(email, password);
+            await updateProfile({
+                displayName: name,
+                photoURL: profileImageUrl,
+            });
+        }
     };
     return (
         <section className="flex justify-center items-center w-full flex-1 text-center md:px-20 bg-gray-100 h-[100vh]">
