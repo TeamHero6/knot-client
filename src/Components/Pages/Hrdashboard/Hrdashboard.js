@@ -47,7 +47,7 @@ const Hrdashboard = () => {
 
                     {/* Leave Requst Section */}
                     <div className='px-5'>
-                    <h1 className='text-2xl text-center font-bold my-5'>Leave Request</h1>
+                        <h1 className='text-2xl text-center font-bold my-5'>Leave Request</h1>
                         <div class="overflow-x-auto">
                             <table class="table table-compact w-full">
                                 <thead>
@@ -63,7 +63,7 @@ const Hrdashboard = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
                                     <tr>
                                         <th>1</th>
                                         <td>Cy Ganderton</td>
@@ -114,6 +114,78 @@ const Hrdashboard = () => {
                                         <td>Blue</td>
                                         <td>Blue</td>
                                     </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                    {/* Daily Task Overview Section */}
+                    <div className='px-5'>
+                        <h1 className='text-2xl text-center font-bold my-5'>Daily Task Overview</h1>
+                        <div class="overflow-x-auto">
+                            <table class="table table-compact w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Assign Date
+                                            & Time</th>
+                                        <th>Due Date
+                                            & Time</th>
+                                        <th>Department.
+                                            Name</th>
+                                        <th>Designation</th>
+                                        <th>Today Task</th>
+                                        <th>Assign By</th>
+                                        <th>Task Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <th>12.Jul.22 <br />
+                                        08.00PM</th>
+                                        <td>12.Jul.22 <br />
+                                        08.00PM</td>
+                                        <td>Sales</td>
+                                        <td>Jr. Executive</td>
+                                        <td>Ui Design</td>
+                                        <td>Jamal Leader Of Sales</td>
+                                        <td>Doing</td>
+                                    </tr>
+                                    <tr>
+                                        <th>12.Jul.22 <br />
+                                        08.00PM</th>
+                                        <td>12.Jul.22 <br />
+                                        08.00PM</td>
+                                        <td>Sales</td>
+                                        <td>Jr. Executive</td>
+                                        <td>Ui Design</td>
+                                        <td>Jamal Leader Of Sales</td>
+                                        <td>Doing</td>
+                                    </tr>
+                                    <tr>
+                                        <th>12.Jul.22 <br />
+                                        08.00PM</th>
+                                        <td>12.Jul.22 <br />
+                                        08.00PM</td>
+                                        <td>Sales</td>
+                                        <td>Jr. Executive</td>
+                                        <td>Ui Design</td>
+                                        <td>Jamal Leader Of Sales</td>
+                                        <td>Doing</td>
+                                    </tr>
+                                    <tr>
+                                        <th>12.Jul.22 <br />
+                                        08.00PM</th>
+                                        <td>12.Jul.22 <br />
+                                        08.00PM</td>
+                                        <td>Sales</td>
+                                        <td>Jr. Executive</td>
+                                        <td>Ui Design</td>
+                                        <td>Jamal Leader Of Sales</td>
+                                        <td>Doing</td>
+                                    </tr>
+                                    
                                 </tbody>
 
                             </table>
