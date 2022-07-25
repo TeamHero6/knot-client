@@ -17,7 +17,7 @@ const Hrdashboard = () => {
             <div class="drawer drawer-mobile">
                 <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
-
+                    {/* employee Database Section */}
                     <div className='pt-5'>
                         <h1 className='text-2xl text-center font-bold'>Employee Database</h1>
                         <div className='grid grid-cols-3 gap-5 mt-5 p-5'>
@@ -37,7 +37,7 @@ const Hrdashboard = () => {
                             </div>
                             <div className='gray pb-3'>
                                 <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
-                                <span className='font-medium'>CEO <br />1</span>
+                                    <span className='font-medium'>CEO <br />1</span>
                                 </div>
                                 <h3 className='text-center font-medium pt-3'>Employee By Designation</h3>
                             </div>
@@ -45,6 +45,80 @@ const Hrdashboard = () => {
                         </div>
                     </div>
 
+                    {/* Leave Requst Section */}
+                    <div className='px-5'>
+                    <h1 className='text-2xl text-center font-bold my-5'>Leave Request</h1>
+                        <div class="overflow-x-auto">
+                            <table class="table table-compact w-full">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Dept</th>
+                                        <th>Designation</th>
+                                        <th>Leave Date</th>
+                                        <th>Reason For Leave</th>
+                                        <th>Leave Request</th>
+                                        <th>Approval</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <th>1</th>
+                                        <td>Cy Ganderton</td>
+                                        <td>Quality Control Specialist</td>
+                                        <td>Littel, Schaden and Vandervort</td>
+                                        <td>Canada</td>
+                                        <td>12/16/2020</td>
+                                        <td>Blue</td>
+                                        <td>Blue</td>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <td>Cy Ganderton</td>
+                                        <td>Quality Control Specialist</td>
+                                        <td>Littel, Schaden and Vandervort</td>
+                                        <td>Canada</td>
+                                        <td>12/16/2020</td>
+                                        <td>Blue</td>
+                                        <td>Blue</td>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <td>Cy Ganderton</td>
+                                        <td>Quality Control Specialist</td>
+                                        <td>Littel, Schaden and Vandervort</td>
+                                        <td>Canada</td>
+                                        <td>12/16/2020</td>
+                                        <td>Blue</td>
+                                        <td>Blue</td>
+                                    </tr>
+                                    <tr>
+                                        <th>4</th>
+                                        <td>Cy Ganderton</td>
+                                        <td>Quality Control Specialist</td>
+                                        <td>Littel, Schaden and Vandervort</td>
+                                        <td>Canada</td>
+                                        <td>12/16/2020</td>
+                                        <td>Blue</td>
+                                        <td>Blue</td>
+                                    </tr>
+                                    <tr>
+                                        <th>5</th>
+                                        <td>Cy Ganderton</td>
+                                        <td>Quality Control Specialist</td>
+                                        <td>Littel, Schaden and Vandervort</td>
+                                        <td>Canada</td>
+                                        <td>12/16/2020</td>
+                                        <td>Blue</td>
+                                        <td>Blue</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
                     <Outlet></Outlet>
                 </div>
                 <div class="drawer-side">
