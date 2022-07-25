@@ -19,11 +19,10 @@ const Promotion = () => {
                 <div className="lg:w-1/4 md:w-1/3 ml-4 sm:ml-0">
                     <div>
                         <h3 className="text-xl font-medium lg:mt-6">
-                            Partner with KNOT
+                            Adjustable & Accessible
                         </h3>
                         <p className="text-sm">
-                            KNOT partner with top VARs, VR, tech related company
-                            and consultants worldwide.
+                            KNOT is adjustable for any business you have. Also, it is accessible from any of your favorite devices and any of your favorite places.
                         </p>
                     </div>
                     <div>
