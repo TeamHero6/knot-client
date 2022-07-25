@@ -70,32 +70,38 @@ const AllKnotApp = () => {
                     <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div title='Dashboard' className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={financeDashboard} alt="" />
+                                <img className='mx-auto' src={financeDashboard} alt="" />
+                                <p className='lg:hidden'>Dashboard</p>
                             </div>
                         </div>
                         <div title='Product' className="flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={ProductDetails} alt="" />
+                                <img className='mx-auto' src={ProductDetails} alt="" />
+                                <p className='lg:hidden'>Product</p>
                             </div>
                         </div>
                         <div title='Sales' className="flex justify-center border-b-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={financeSales} alt="" />
+                                <img className='mx-auto' src={financeSales} alt="" />
+                                <p className='lg:hidden'>Sales</p>
                             </div>
                         </div>
                         <div title='Purchase' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={Purchase} alt="" />
+                                <img className='mx-auto' src={Purchase} alt="" />
+                                <p className='lg:hidden'>Purchase</p>
                             </div>
                         </div>
                         <div title='Accountant' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={Accountant} alt="" />
+                                <img className='mx-auto' src={Accountant} alt="" />
+                                <p className='lg:hidden'>Accountant</p>
                             </div>
                         </div>
                         <div title='Report' className="flex justify-center p-4">
                             <div>
-                                <img src={financeReport} alt="" />
+                                <img className='mx-auto' src={financeReport} alt="" />
+                                <p className='lg:hidden'>Report</p>
                             </div>
                         </div>
                     </div>
@@ -113,47 +119,56 @@ const AllKnotApp = () => {
                     <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div title='Bill' className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={bill} alt="" />
+                                <img className='mx-auto' src={bill} alt="" />
+                                <p className='lg:hidden'>Bill</p>
                             </div>
                         </div>
                         <div title='Products' className="flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={ProductItem} alt="" />
+                                <img className='mx-auto' src={ProductItem} alt="" />
+                                <p className='lg:hidden'>Products</p>
                             </div>
                         </div>
                         <div title='Person' className="flex justify-center border-b-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={salesPerson} alt="" />
+                                <img className='mx-auto' src={salesPerson} alt="" />
+                                <p className='lg:hidden'>Sales Person</p>
                             </div>
                         </div>
                         <div title='Customer' className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={Customer} alt="" />
+                                <img className='mx-auto' src={Customer} alt="" />
+                                <p className='lg:hidden'>Customer</p>
                             </div>
                         </div>
                         <div title='Order' className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={SalesOrders} alt="" />
+                                <img className='mx-auto' src={SalesOrders} alt="" />
+                                <p className='lg:hidden'>Order</p>
                             </div>
                         </div>
                         <div title='Payment' className='flex justify-center border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={PaymentReceive} alt="" />
+                                <img className='mx-auto' src={PaymentReceive} alt="" />
+                                <p className='lg:hidden'>Payment</p>
                             </div>
                         </div>
                         <div title='Return' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={Return} alt="" />
+                                <img className='mx-auto' src={Return} alt="" />
+                                <p className='lg:hidden'>Return</p>
                             </div>
                         </div>
                         <div title='Vendor' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={vendor} alt="" />
+                                <img className='mx-auto' src={vendor} alt="" />
+                                <p className='lg:hidden'>Vendor</p>
                             </div>
                         </div>
                         <div title='Sales' className='flex justify-center border-gray-200 p-4'>
                             <div>
-                                <img src={salesProductDetail} alt="" />
+                                <img className='mx-auto' src={salesProductDetail} alt="" />
+                                <p className='lg:hidden'>Sales</p>
                             </div>
                         </div>
                     </div>
@@ -171,27 +186,32 @@ const AllKnotApp = () => {
                     <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div title='Email Marketing' className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={EmailMarketing} alt="" />
+                                <img className='mx-auto' src={EmailMarketing} alt="" />
+                                <p className='lg:hidden'>Email</p>
                             </div>
                         </div>
                         <div title='SMS Marketing' className="flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={SMS_marketing} alt="" />
+                                <img className='mx-auto' src={SMS_marketing} alt="" />
+                                <p className='lg:hidden'>SMS</p>
                             </div>
                         </div>
                         <div title='Customer Listing' className="flex justify-center border-b-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={CustomerListing} alt="" />
+                                <img className='mx-auto' src={CustomerListing} alt="" />
+                                <p className='lg:hidden'>Listing</p>
                             </div>
                         </div>
                         <div title='Customer Sorting' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={CustomerSorting} alt="" />
+                                <img className='mx-auto' src={CustomerSorting} alt="" />
+                                <p className='lg:hidden'>Sorting</p>
                             </div>
                         </div>
                         <div title='Budget' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={marketingBudget} alt="" />
+                                <img className='mx-auto' src={marketingBudget} alt="" />
+                                <p className='lg:hidden'>Budget</p>
                             </div>
                         </div>
 
@@ -210,27 +230,32 @@ const AllKnotApp = () => {
                     <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div title='Profile' className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={profile} alt="" />
+                                <img className='mx-auto' src={profile} alt="" />
+                                <p className='lg:hidden'>Profile</p>
                             </div>
                         </div>
                         <div title='Chat' className="flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={chat} alt="" />
+                                <img className='mx-auto' src={chat} alt="" />
+                                <p className='lg:hidden'>Chat</p>
                             </div>
                         </div>
                         <div title='Group' className="flex justify-center border-b-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={group} alt="" />
+                                <img className='mx-auto' src={group} alt="" />
+                                <p className='lg:hidden'>Group</p>
                             </div>
                         </div>
                         <div title='Contact' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={contact} alt="" />
+                                <img className='mx-auto' src={contact} alt="" />
+                                <p className='lg:hidden'>Contact</p>
                             </div>
                         </div>
                         <div title='Settings' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={setting} alt="" />
+                                <img className='mx-auto' src={setting} alt="" />
+                                <p className='lg:hidden'>Settings</p>
                             </div>
                         </div>
                     </div>
@@ -242,43 +267,50 @@ const AllKnotApp = () => {
                     </h1>
                     <div title='Task Management' className="flex justify-center">
                         <div>
-                            <img src={taskManagementIcon} alt="" />
+                            <img className='mx-auto' src={taskManagementIcon} alt="" />
                         </div>
                     </div>
                     <div className='grid grid-cols-3 mt-4 exceptionalImageSize'>
                         <div title='Dashboard' className='flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={taskDashboard} alt="" />
+                                <img className='mx-auto' src={taskDashboard} alt="" />
+                                <p className='lg:hidden'>Dashboard</p>
                             </div>
                         </div>
                         <div title='Employee Self Service' className="flex justify-center border-b-[1px] border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={employeeSelfService} alt="" />
+                                <img className='mx-auto' src={employeeSelfService} alt="" />
+                                <p className='lg:hidden'>Employee</p>
                             </div>
                         </div>
                         <div title='Attendance' className="flex justify-center border-b-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={attendance} alt="" />
+                                <img className='mx-auto' src={attendance} alt="" />
+                                <p className='lg:hidden'>Attendance</p>
                             </div>
                         </div>
                         <div title='Recruitment' className="flex justify-center border-r-[1px] border-gray-200 p-4">
                             <div>
-                                <img src={recruitment} alt="" />
+                                <img className='mx-auto' src={recruitment} alt="" />
+                                <p className='lg:hidden'>Recruitment</p>
                             </div>
                         </div>
                         <div title='Performance' className='flex justify-center border-r-[1px] border-b-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={performance} alt="" />
+                                <img className='mx-auto' src={performance} alt="" />
+                                <p className='lg:hidden'>Performance</p>
                             </div>
                         </div>
                         <div title='Operation' className='flex justify-center border-b-[1px] p-4'>
                             <div>
-                                <img src={operation} alt="" />
+                                <img className='mx-auto' src={operation} alt="" />
+                                <p className='lg:hidden'>Operation</p>
                             </div>
                         </div>
-                        <div title='Payrolls' className='flex justify-center border-t-[1px] border-r-[1px] border-gray-200 p-4'>
+                        <div title='Payrolls' className='flex justify-center items-center border-t-[1px] border-r-[1px] border-gray-200 p-4'>
                             <div>
-                                <img src={payrolls} alt="" />
+                                <img className='mx-auto' src={payrolls} alt="" />
+                                <p className='lg:hidden'>Payrolls</p>
                             </div>
                         </div>
                     </div>
