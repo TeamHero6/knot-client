@@ -1,9 +1,9 @@
 import React from "react";
-import handleBusiness from "../../../Assets/images/undraw_engineering_team_re_fvat.svg";
+import handleLaunchMaker from "../../../Assets/images/undraw_maker_launch_re_rq81.svg";
 
-const WhatWeDo = () => {
+const CompanyGoals = () => {
     return (
-        <section className="md:flex md:justify-center md:align-center w-full h-auto md:px-8 lg:px-12 mt-12">
+        <section className="flex flex-col md:flex-row-reverse md:justify-center md:align-center w-full min-h-screen md:px-8 lg:px-12 mt-12">
             <div className="text-left w-[100%] flex flex-col justify-center  md:w-1/2 px-4">
                 <h2 className="text-4xl font-bold tracking-wide mb-4">
                     We Handle All Your Problem Business
@@ -22,11 +22,11 @@ const WhatWeDo = () => {
                     expedita, iste iusto voluptas reprehenderit inventore
                 </p>
             </div>
-            <div className="w-[100%] md:w-1/2 mt-6 md:mt-0">
-                <img src={handleBusiness} className="w-full" alt="" />
+            <div className="w-[100%] md:w-1/2 mt-6 md:mt-0 flex justify-center items-center">
+                <img src={handleLaunchMaker} className="w-full" alt="" />
             </div>
         </section>
     );
 };
 
-export default WhatWeDo;
+export default CompanyGoals;
