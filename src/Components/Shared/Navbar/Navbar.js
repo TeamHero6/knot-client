@@ -61,11 +61,13 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <img
-                        src={logo}
-                        className="w-20 p-1 md:w-36 md:p-2"
-                        alt="logo"
-                    />
+                    <a href="/">
+                        <img
+                            src={logo}
+                            className="w-20 p-1 md:w-36 md:p-2"
+                            alt="logo"
+                        />
+                    </a>
                 </div>
                 <div class="navbar-end">
                     <div className="hidden lg:flex">
