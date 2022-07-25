@@ -3,6 +3,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 
 const Navbar = () => {
@@ -60,20 +61,11 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <p className="text-white text-xl md:text-3xl flex">
-                        <p className="bg-red-500 px-1 origin-bottom -rotate-12 rounded-sm">
-                            k
-                        </p>
-                        <p className="px-1 bg-green-500 origin-top-left rotate-12 rounded-sm">
-                            N
-                        </p>
-                        <p className="px-1 bg-blue-500 origin-top-right -rotate-6 rounded-sm">
-                            O
-                        </p>
-                        <p className="px-1 bg-yellow-500 skew-y-6 rounded-sm">
-                            T
-                        </p>
-                    </p>
+                    <img
+                        src={logo}
+                        className="w-20 p-1 md:w-36 md:p-2"
+                        alt="logo"
+                    />
                 </div>
                 <div class="navbar-end">
                     <div className="hidden lg:flex">
