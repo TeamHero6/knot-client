@@ -1,9 +1,7 @@
 import React from 'react';
 import './AllKnotApp.css';
 import financeIcon from '../../../../Assets/icons/finance.png';
-import financeSmallIcon from '../../../../Assets/icons/finance-small.png';
 import salesManagementIcon from '../../../../Assets/icons/sales.png';
-import salesManagementSmallIcon from '../../../../Assets/icons/sales-small.png';
 import marketingAutomationIcon from '../../../../Assets/icons/marketing.png';
 import liveChatIcon from '../../../../Assets/icons/chat.png';
 import taskManagementIcon from '../../../../Assets/icons/task-management.png';
@@ -25,8 +23,7 @@ import SalesOrders from '../../../../Assets/icons/Sales-management-icon/order.pn
 import PaymentReceive from '../../../../Assets/icons/Sales-management-icon/payment_receive.png'
 import Return from '../../../../Assets/icons/Sales-management-icon/return.png'
 import vendor from '../../../../Assets/icons/Sales-management-icon/vendor.png'
-import salesProductDetail from '../../../../Assets/icons/Sales-management-icon/Product_Details.png'
-import salesPurchase from '../../../../Assets/icons/Sales-management-icon/purchase.png'
+import salesProductDetail from '../../../../Assets/icons/Sales-management-icon/Product_Details.png';
 
 // Marketing Automation icon      -----------------------
 import EmailMarketing from '../../../../Assets/icons/Marketing-icon/Email-Marketing.png';
