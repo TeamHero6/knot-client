@@ -1,56 +1,13 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+import FAQNavbar from "./FAQNavbar/FAQNavbar";
 
 const Faq = () => {
     return (
         <div>
             <div>
-                <section className="flex justify-between px-8 h-[80px] items-center lg:px-12 bg-cyan-400">
-                    <div className=" hidden md:flex">
-                        <p className="mx-4 text-sm py-2 text-gray-100 font-semibold">
-                            Help Center
-                        </p>
-                        <p className="mx-4 text-sm py-2 text-gray-200">
-                            Help topics
-                        </p>
-                        <p className="mx-4 text-sm py-2 text-gray-200">
-                            Guides
-                        </p>
-                        <p className="border-2 border-gray-200 text-gray-200 bg-transparent mx-4 py-2 rounded-full px-4 hover:bg-white hover:text-cyan-400 hover:border-gray-100 duration-300 cursor-pointer">
-                            Contact us
-                        </p>
-                    </div>
-                    <div>
-                        <div class="dropdown dropdown-end">
-                            <label
-                                tabindex="0"
-                                class="btn btn-ghost btn-circle avatar"
-                            >
-                                <div class="w-10 rounded-full">
-                                    <img src="https://placeimg.com/80/80/people" />
-                                </div>
-                            </label>
-                            <ul
-                                tabindex="0"
-                                class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                            >
-                                <li>
-                                    <a class="justify-between">
-                                        Profile
-                                        <span class="badge">New</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>Settings</a>
-                                </li>
-                                <li>
-                                    <p>Logout</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+                <FAQNavbar />
                 <section className=" md:flex md:justify-between py-28 px-8 lg:px-12 bg-cyan-400">
                     <div>
                         <h1 className="text-4xl font-semibold">
