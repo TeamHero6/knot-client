@@ -4,7 +4,7 @@ import howToWork from "../../../../Assets/images/how-to-work.png";
 const Promotion = () => {
     return (
         <div className="my-24 mb-40">
-            <h1 className="hidden md:block text-center text-xl md:text-2xl tracking-wider">
+            <h1 className="text-center text-xl md:text-2xl tracking-wider">
                 Adjustable Software That Gets Your Business Organized.
             </h1>
             <hr className=" w-1/2 md:w-1/3 mx-auto mt-1" />
