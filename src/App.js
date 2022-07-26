@@ -1,6 +1,7 @@
 import "antd/dist/antd.less";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Blog from "./Components/AdditionalLinkPages/Blog/Blog";
 import About from "./Components/Pages/About/About";
 import Login from "./Components/Pages/Authentications/Login/Login";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/blog" element={<Blog />} />
             </Routes>
         </div>
     );
