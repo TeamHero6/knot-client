@@ -83,10 +83,7 @@ const Navbar = () => {
                         <Link to="/events" className="px-4">
                             Events
                         </Link>
-                        <Link
-                            to="/accessYourApps"
-                            className="px-4 text-green-500"
-                        >
+                        <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
                     </div>

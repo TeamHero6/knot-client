@@ -18,9 +18,6 @@ function App() {
         <div>
             <Routes>
                 <Route path="/" element={<Home />}></Route>
-<<<<<<< HEAD
-                <Route path="/leave" element={<Leave></Leave>}></Route>
-=======
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/about" element={<About />} />
@@ -43,7 +40,7 @@ function App() {
                         element={<RulesAndPolitics />}
                     />
                 </Route>
->>>>>>> origin/develop
+                <Route path="/leave" element={<Leave />} />
             </Routes>
         </div>
     );

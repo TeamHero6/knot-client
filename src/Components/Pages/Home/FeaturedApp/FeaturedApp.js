@@ -103,6 +103,7 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <p className="mb-4">Live Chatting</p>
+
                                     <Link
                                         to="/learnMore"
                                         className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2 hover:text-white hover:bg-sky-400 transform  duration-[.7s] transition-all text-sm lg:text-md"
