@@ -6,7 +6,7 @@ const LeaveRequest = () => {
             <div className='my-10'>
                         <p className='text-xl text-color md:ml-5'>Leave Report</p>
                         <p className='text-xl text-center'>Leave Request</p>
-                        <table className='text-center bg-[#EEEEEE] w-full'>
+                        <table className='text-center responsive bg-[#EEEEEE] w-full'>
                             <tr>
                                 <th>Name</th>
                                 <th>Department Name</th>

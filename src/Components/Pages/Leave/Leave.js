@@ -9,11 +9,11 @@ const Leave = () => {
         <div>
             <div className='flex justify-between'>
                 <div className='bg-[#EEEEEE] text-[#0182BE]'>
-                    <h1 className='text-3xl  px-12 py-4'>HR Management</h1>
+                    <h1 className='md:text-3xl px-3 md:px-12 py-4'>HR Management</h1>
                 </div>
                 <div className='flex py-4'>
-                    <p className='text-xl flex justify-center'><AiFillClockCircle className='m-1 text-[#0182BE]'></AiFillClockCircle>8:20PM</p>
-                    <p className='mx-20 text-xl'>user name</p>
+                    <p className='md:text-xl flex justify-center'><AiFillClockCircle className='m-1 text-[#0182BE]'></AiFillClockCircle>8:20PM</p>
+                    <p className='md:mx-20 mx-4 md:text-xl'>user name</p>
                 </div>
             </div>
             <hr />
@@ -21,12 +21,12 @@ const Leave = () => {
                 <div class="drawer drawer-mobile">
                     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
                     <div class="drawer-content">
-                        <label onClick={() => setShow(!show)} for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 md:ml-5 drawer-button">Request</label>
+                        <label onClick={() => setShow(!show)} for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button">Request</label>
                         <div className='flex flex-col'>
                             {
-                                show ? <div className='md:ml-5'>
+                                show ? <div className='ml-3 md:ml-5'>
                                     <p className='text-xl text-[#0182BE]'>Leave Request</p>
-                                    <div className='flex text-xl'>
+                                    <div className='md:flex text-xl'>
                                         <table>
                                             <tr>
                                                 <td>Employee Names : </td>
@@ -52,7 +52,7 @@ const Leave = () => {
                                                 <td>Auto fill up</td>
                                             </tr>
                                         </table>
-                                        <div className='ml-32'>
+                                        <div className='md:ml-32'>
                                             <table>
                                                 <tr>
                                                     <td>Department Name : </td>
@@ -77,9 +77,9 @@ const Leave = () => {
                                             </table>
                                         </div>
                                     </div>
-                                    <div className='flex text-xl my-4'>
-                                        <p>Approval : <input className='border-2 rounded-md border-[#0182BE] bg-[#EEEEEE] mr-16' type="text" /></p>
-                                        <p>ID : <input className='border-2 rounded-md border-[#0182BE] bg-[#EEEEEE] ' type="text" /></p>
+                                    <div className='md:flex text-xl my-4'>
+                                        <p>Approval : <input className='border-2 rounded-md border-[#0182BE] bg-[#EEEEEE] md:mr-16' type="text" /></p>
+                                        <p>ID : <input className='border-2 rounded-md border-[#0182BE] bg-[#EEEEEE] mt-2 md:mt-0' type="text" /></p>
                                     </div>
                                     <button className='text-xl block mx-auto bg-[#EEEEEE] border-2 border-[#0182BE] rounded-md px-5'>Save</button>
                                 </div> : ''
@@ -88,13 +88,13 @@ const Leave = () => {
                         </div>
 
                     </div>
-                    <div class="drawer-side bg-[#EEEEEE]">
+                    {/* <div class="drawer-side bg-[#EEEEEE]">
                         <label for="my-drawer-2" class="drawer-overlay"></label>
                         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                             <li><a>Employee Self Service</a></li>
                             <li><a>Leave Request</a></li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
