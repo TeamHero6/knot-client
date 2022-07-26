@@ -33,9 +33,15 @@ const Footer = () => {
                     <div className="link">
                         <ul>
                             <li>
-                                <Link to="/">About us</Link> <br />
-                                <Link to="/">Blog</Link> <br />
-                                <Link to="/">FAQ</Link> <br />
+                                <Link to="/about">About us</Link> <br />
+                            </li>
+                            <li>
+                                <Link to="/blog">Blog</Link> <br />
+                            </li>
+                            <li>
+                                <Link to="/FAQ">FAQ</Link> <br />
+                            </li>
+                            <li>
                                 <Link to="/">Payment Method</Link>
                             </li>
                         </ul>
