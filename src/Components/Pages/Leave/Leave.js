@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import HRNavbar from '../../Shared/HRNavbar/HRNavbar';
 import LeaveRequest from '../Leave/LeaveRequest/LeaveRequest';
-import { AiFillClockCircle } from "react-icons/ai";
 
 const Leave = () => {
     const [show, setShow] = useState(false);
 
     return (
         <div>
-            <div className='flex justify-between'>
+            <HRNavbar></HRNavbar>
+            {/* <div className='flex justify-between'>
                 <div className='bg-[#EEEEEE] text-[#0182BE]'>
                     <h1 className='md:text-3xl px-3 md:px-12 py-4'>HR Management</h1>
                 </div>
@@ -15,7 +16,7 @@ const Leave = () => {
                     <p className='md:text-xl flex justify-center'><AiFillClockCircle className='m-1 text-[#0182BE]'></AiFillClockCircle>8:20PM</p>
                     <p className='md:mx-20 mx-4 md:text-xl'>user name</p>
                 </div>
-            </div>
+            </div> */}
             <hr />
             <div>
                 <div class="drawer drawer-mobile">
