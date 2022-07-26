@@ -11,17 +11,17 @@ import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import Home from "./Components/Pages/Home/Home";
-import Leave from "./Components/Pages/Leave/Leave";
+
+import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+
 
 function App() {
     return (
         <div>
             <Routes>
                 <Route path="/" element={<Home />}></Route>
-<<<<<<< HEAD
-                <Route path="/leave" element={<Leave></Leave>}></Route>
-=======
                 <Route path="/login" element={<Login />} />
+                <Route path="/hrdashboard" element={<Hrdashboard />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
@@ -43,7 +43,7 @@ function App() {
                         element={<RulesAndPolitics />}
                     />
                 </Route>
->>>>>>> origin/develop
+
             </Routes>
         </div>
     );
