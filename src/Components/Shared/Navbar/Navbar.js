@@ -8,6 +8,9 @@ import auth from "../../../firebase.init";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    if (user) {
+        console.log(user.displayName);
+    }
     return (
         <div className=" md:px-8 lg:px-12">
             <div class="navbar bg-base-100 ">
@@ -53,7 +56,7 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <Link
-                                    to="/accessYourApps"
+                                    to="/accessApps"
                                     className="px-4 text-green-500"
                                 >
                                     Access your apps
@@ -77,8 +80,8 @@ const Navbar = () => {
                         <Link to="/support" className="px-4">
                             Support
                         </Link>
-                        <Link to="/contactSales" className="px-4">
-                            Contact Sales
+                        <Link to="/admin" className="px-4">
+                            Admin
                         </Link>
                         <Link to="/events" className="px-4">
                             Events

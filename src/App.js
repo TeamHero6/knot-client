@@ -6,6 +6,8 @@ import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManag
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
+import AddTask from "./Components/Features/AdminManagemen/AddTask/AddTask";
+import AdminManagement from "./Components/Features/AdminManagemen/AdminManagement";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
@@ -26,6 +28,9 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
+                <Route path="/admin" element={<AdminManagement />}>
+                    <Route index element={<AddTask />}></Route>
+                </Route>
                 <Route
                     path="/FAQ"
                     element={
