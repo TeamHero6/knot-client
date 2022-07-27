@@ -1,5 +1,6 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import financeIcon from "../../../Assets/icons/financereport.png";
 import marketingIcon from "../../../Assets/icons/marketing-automation.png";
 import salesTSLogo from "../../../Assets/icons/sales2.png";
@@ -16,6 +17,7 @@ const AccessYourApps = () => {
         { id: 2, name: "Marketing", link: "/marketingTS", icon: marketingIcon },
         { id: 2, name: "Finance", link: "/financeTS", icon: financeIcon },
     ];
+    const navigate = useNavigate();
     return (
         <div
             style={{
@@ -26,7 +28,12 @@ const AccessYourApps = () => {
             className="min-h-screen"
         >
             <div className="flex relative justify-end md:justify-center items-center h-10 border-[0.5px] border-gray-400">
-                <img src={logo} className="w-12 absolute left-4" alt="" />
+                <img
+                    src={logo}
+                    className="w-12 absolute left-4"
+                    alt=""
+                    onClick={() => navigate("/")}
+                />
                 <FaSearch className="mr-4 text-gray-400 hover:text-cyan-400 duration-300 " />
                 <input
                     type="text"
