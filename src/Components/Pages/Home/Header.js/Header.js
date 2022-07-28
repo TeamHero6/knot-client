@@ -4,7 +4,7 @@ import FeaturedApp from "../FeaturedApp/FeaturedApp";
 const Header = () => {
     return (
         <div>
-            <div className="w-[100%] md:w-[80%] lg:w-[70%] mx-auto mb-32 px-2 md:px-0">
+            <div className="w-[100%] md:w-[80%] lg:w-[70%] mx-auto mb-32 px-2 md:px-0 text-center">
                 <h1 className="text-2xl md:text-5xl mt-20 font-semibold">
                     Your Life's Work, Powered By Our Life's Work
                 </h1>
