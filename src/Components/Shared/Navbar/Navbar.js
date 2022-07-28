@@ -1,10 +1,16 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logo from "../../../Assets/logo/KnotLogo.png";
+import auth from "../../../firebase.init";
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
     return (
         <div className=" md:px-8 lg:px-12">
-            <div class="navbar bg-base-100">
+            <div class="navbar bg-base-100 ">
                 <div class="navbar-start">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -55,20 +61,13 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <p className="text-white text-xl md:text-3xl flex">
-                        <p className="bg-red-500 px-1 origin-bottom -rotate-12 rounded-sm">
-                            k
-                        </p>
-                        <p className="px-1 bg-green-500 origin-top-left rotate-12 rounded-sm">
-                            N
-                        </p>
-                        <p className="px-1 bg-blue-500 origin-top-right -rotate-6 rounded-sm">
-                            O
-                        </p>
-                        <p className="px-1 bg-yellow-500 skew-y-6 rounded-sm">
-                            T
-                        </p>
-                    </p>
+                    <a href="/">
+                        <img
+                            src={logo}
+                            className="w-20 p-1 md:w-36 md:p-2"
+                            alt="logo"
+                        />
+                    </a>
                 </div>
                 <div class="navbar-end">
                     <div className="hidden lg:flex">
@@ -84,40 +83,47 @@ const Navbar = () => {
                         <Link to="/events" className="px-4">
                             Events
                         </Link>
-                        <Link
-                            to="/accessYourApps"
-                            className="px-4 text-green-500"
-                        >
+                        <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
                     </div>
-                    <div class="dropdown dropdown-end px-4">
-                        <label
-                            tabindex="0"
-                            class="btn btn-ghost btn-circle avatar"
-                        >
-                            <div class="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" />
+                    <section>
+                        {user ? (
+                            <div class="dropdown dropdown-end">
+                                <label
+                                    tabindex="0"
+                                    class="btn btn-ghost btn-circle avatar"
+                                >
+                                    <div class="w-10 rounded-full">
+                                        <img src="https://placeimg.com/80/80/people" />
+                                    </div>
+                                </label>
+                                <ul
+                                    tabindex="0"
+                                    class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                >
+                                    <li>
+                                        <a class="justify-between">
+                                            Profile
+                                            <span class="badge">New</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>Settings</a>
+                                    </li>
+                                    <li>
+                                        <p onClick={() => signOut(auth)}>
+                                            Logout
+                                        </p>
+                                    </li>
+                                </ul>
                             </div>
-                        </label>
-                        <ul
-                            tabindex="0"
-                            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                        >
-                            <li>
-                                <a class="justify-between">
-                                    Profile
-                                    <span class="badge">New</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>Settings</a>
-                            </li>
-                            <li>
-                                <a>Logout</a>
-                            </li>
-                        </ul>
-                    </div>
+                        ) : (
+                            <Link to="login">
+                                <FaUserCircle className="text-2xl ml-2" />
+                            </Link>
+                        )}
+                    </section>
                 </div>
             </div>
         </div>
