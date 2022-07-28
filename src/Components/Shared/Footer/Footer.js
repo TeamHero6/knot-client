@@ -6,9 +6,7 @@ import { AiFillInstagram } from 'react-icons/ai';
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillYoutube } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import Easy from '../../../Image/Icon/Easy.png'
-import Secure from '../../../Image/Icon/Secure.png'
-import Allinone from '../../../Image/Icon/Allinone.png'
+
 
 const Footer = () => {
     return (
@@ -16,12 +14,12 @@ const Footer = () => {
             <div className='footer-section-top'>
                 <section className='logo-area'>
                     <img src={Logo} alt="" />
-                    <h3>Build and sell extensions for <br /> Zoho products.</h3>
+                    <h3>Build and sell extensions for <br /> Knot products.</h3>
                     <div className="icon">
-                        <AiFillFacebook />
-                        <AiFillInstagram />
-                        <AiFillLinkedin />
-                        <AiFillYoutube />
+                        <a href="https://www.facebook.com/"><AiFillFacebook /></a>
+                        <a href="https://www.instagram.com/"><AiFillInstagram /></a>
+                        <a href="https://www.linkedin.com/"><AiFillLinkedin /></a>
+                        <a href="https://www.youtube.com/"><AiFillYoutube /></a>
                     </div>
                 </section>
                 <section className='additional-link-area'>
@@ -56,12 +54,18 @@ const Footer = () => {
                 <div className="Easy-to-use">
                     <div class="collapse">
                         <input type="checkbox" />
-                        <div class="collapse-title text-xl font-medium">    
-                            <img src={Easy} alt="" />
-                        <p>Easy to use</p>
+                        <div class="collapse-title text-xl font-medium text-left">
+                            <h2>Additional Link</h2 >
                         </div>
-                        <div class="collapse-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, in.</p>
+                        <div class="collapse-content link">
+                            <ul>
+                                <li>
+                                    <Link to='/'>About us</Link> <br />
+                                    <Link to='/'>Blog</Link> <br />
+                                    <Link to='/'>FAQ</Link> <br />
+                                    <Link to='/'>Payment Method</Link>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -69,29 +73,25 @@ const Footer = () => {
                     <div class="collapse">
                         <input type="checkbox" />
                         <div class="collapse-title text-xl font-medium">
-                        <img src={Secure} alt="" />
-                        <p>Secure Database</p>
+                            <h2>Contact Us</h2>
                         </div>
-                        <div class="collapse-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, in.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="One-Step-Solution">
-                    <div class="collapse">
-                        <input type="checkbox" />
-                        <div class="collapse-title text-xl font-medium">
-                        <img src={Allinone} alt="" />
-                        <p>One Step Solution</p>
-                        </div>
-                        <div class="collapse-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, in.</p>
+                        <div className='contact-area'>
+                            <p>Address: Mirpur - 1207, Dhaka <br />Division, Bangladesh</p>
+                            <p>Phone: 0123456789</p>
+                            <p>Email: info@knot.com</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="footer-section-bottom">
                 <p>Copyright © {new Date().getFullYear()} Knot Corporation Pvt. Ltd. All Rights Reserved.</p>
+                <br />
+                <div className="icon">
+                    <a href="https://www.facebook.com/"><AiFillFacebook /></a>
+                    <a href="https://www.instagram.com/"><AiFillInstagram /></a>
+                    <a href="https://www.linkedin.com/"><AiFillLinkedin /></a>
+                    <a href="https://www.youtube.com/"><AiFillYoutube /></a>
+                </div>
             </div>
 
         </div>
