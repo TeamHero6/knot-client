@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './Hrdashboard.css'
 
 const Hrdashboard = () => {
+    const [requests,setRequest]=useState([]);
+
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res=>res.json())
+        .then(data=>setRequest(data))
+    },[]);
+    console.log(requests);
     return (
         <div>
             <div className='flex border-b border-gray-600'>
@@ -46,6 +54,7 @@ const Hrdashboard = () => {
                     </div>
 
                     {/* Leave Requst Section */}
+                    
                     <div className='px-5'>
                         <h1 className='text-2xl text-center font-bold my-5'>Leave Request</h1>
                         <div class="overflow-x-auto">
@@ -63,57 +72,22 @@ const Hrdashboard = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <tr>
-                                        <th>1</th>
+                                {
+                        requests.map(request => 
+                            <tr>
+                                        <th>{request.id}</th>
                                         <td>Cy Ganderton</td>
                                         <td>Quality Control Specialist</td>
                                         <td>Littel, Schaden and Vandervort</td>
                                         <td>Canada</td>
                                         <td>12/16/2020</td>
-                                        <td>Blue</td>
-                                        <td>Blue</td>
-                                    </tr>
-                                    <tr>
-                                        <th>2</th>
-                                        <td>Cy Ganderton</td>
-                                        <td>Quality Control Specialist</td>
-                                        <td>Littel, Schaden and Vandervort</td>
-                                        <td>Canada</td>
-                                        <td>12/16/2020</td>
-                                        <td>Blue</td>
+                                        <td>{request.name}</td>
                                         <td>Blue</td>
                                     </tr>
-                                    <tr>
-                                        <th>3</th>
-                                        <td>Cy Ganderton</td>
-                                        <td>Quality Control Specialist</td>
-                                        <td>Littel, Schaden and Vandervort</td>
-                                        <td>Canada</td>
-                                        <td>12/16/2020</td>
-                                        <td>Blue</td>
-                                        <td>Blue</td>
-                                    </tr>
-                                    <tr>
-                                        <th>4</th>
-                                        <td>Cy Ganderton</td>
-                                        <td>Quality Control Specialist</td>
-                                        <td>Littel, Schaden and Vandervort</td>
-                                        <td>Canada</td>
-                                        <td>12/16/2020</td>
-                                        <td>Blue</td>
-                                        <td>Blue</td>
-                                    </tr>
-                                    <tr>
-                                        <th>5</th>
-                                        <td>Cy Ganderton</td>
-                                        <td>Quality Control Specialist</td>
-                                        <td>Littel, Schaden and Vandervort</td>
-                                        <td>Canada</td>
-                                        <td>12/16/2020</td>
-                                        <td>Blue</td>
-                                        <td>Blue</td>
-                                    </tr>
+                                    )
+                    }
+                                    
+                                   
                                 </tbody>
 
                             </table>

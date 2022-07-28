@@ -14,6 +14,7 @@ import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import Home from "./Components/Pages/Home/Home";
 
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import UserDashboard from "./Components/Pages/UserDashboard/UserDashboard";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/userdashboard" element={<UserDashboard />} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/FAQ"
