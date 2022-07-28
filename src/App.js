@@ -9,14 +9,17 @@ import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSec
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
+import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import Home from "./Components/Pages/Home/Home";
+import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
 
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
 
 function App() {
     return (
@@ -29,6 +32,10 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
+                <Route path="/marketingTS" element={<MarketingAutomation />}>
+                    <Route index element={<EmailMarketing />}></Route>
+                    <Route path="customerListing" element={<CustomerListing />}></Route>
+                </Route>
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
