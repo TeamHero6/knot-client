@@ -12,6 +12,8 @@ import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import Home from "./Components/Pages/Home/Home";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 import UserDashboard from "./Components/Pages/UserDashboard/UserDashboard";
@@ -47,6 +49,7 @@ function App() {
                     />
                 </Route>
             </Routes>
+            <ToastContainer></ToastContainer>
         </div>
     );
 }

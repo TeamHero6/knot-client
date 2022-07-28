@@ -1,20 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserNavbar from '../../Shared/UserNavbar/UserNavbar';
 import { BiPlus } from 'react-icons/bi';
 import { useForm } from "react-hook-form";
 import { FaSave } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const UserDashboard = () => {
-    const { register, handleSubmit } = useForm();
-    const [leave,setleave]=useState([]);
+    const { register, handleSubmit, reset } = useForm();
+    const [leave, setleave] = useState([]);
 
-    useEffect(()=>{
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then(res=>res.json())
-        .then(data=>setleave(data))
-    },[]);
-    const onSubmit = data => console.log(data);
+    useEffect(() => {
+        fetch('http://localhost:5000/user')
+            .then(res => res.json())
+            .then(data => setleave(data))
+    }, []);
+    const onSubmit = data => {
+
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(inserted => {
+                if (inserted.insertedId) {
+                    reset();
+                    toast.success("Add succesfully")
+                }
+            })
+    };
 
     return (
         <div>
@@ -125,7 +142,7 @@ const UserDashboard = () => {
                                         <input
                                             type="text"
                                             className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("dep-id")}
+                                            {...register("dep_id")}
                                         />
 
 
@@ -137,7 +154,7 @@ const UserDashboard = () => {
                                         <input
                                             type="text"
                                             className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("leave-date")}
+                                            {...register("leave_date")}
                                         />
 
 
@@ -149,30 +166,73 @@ const UserDashboard = () => {
                                         <input
                                             type="text"
                                             className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("e-date")}
+                                            {...register("e_date")}
                                         />
 
 
                                     </div>
                                 </div>
                             </div>
-                            
+
 
 
                             <div className='flex items-center bg-[#EEEEEE]  w-24 p-2 rounded-lg mx-auto border-solid border border-[#0182be] mt-5'>
                                 <FaSave></FaSave>
-                               <input className='pl-2 font-medium' type="submit" /> 
+                                <input className='pl-2 font-medium' type="submit" />
                             </div>
 
                         </form>
 
+                    </div>
+                    <div className='px-5'>
+                        <h1 className='text-2xl text-center font-bold my-5'>Request Status</h1>
+                        <div class="overflow-x-auto">
+                            <table class="table table-compact w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Dept</th>
+                                        <th>Designation</th>
+                                        <th>Type Of Leave</th>
+                                        <th>View Details</th>
+                                        <th>Leave Request Date</th>
+                                        <th>Approval Status <br />
+                                            (HR+TeamLeader) </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        leave.map(le =>
+                                            <tr>
+                                                <th>{le.e_date
+                                                }</th>
+                                                <td>{le.id}</td>
+                                                <td>{le.Name}</td>
+                                                <td>{le.dep}</td>
+                                                <td>{le.Designation}</td>
+                                                <td>{le.leave_type}</td>
+                                                <td>{le.leave}</td>
+                                                <td>{le.leave_date
+                                                }</td>
+                                                <td>APPROVAL</td>
+                                            </tr>
+                                        )
+                                    }
+
+
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
                     <Outlet></Outlet>
                 </div>
                 <div class="drawer-side">
                     <label for="dashboard-sidebar" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-52 text-base-content gray">
-                        <li><Link className='' to="/hrDashboard">
+                        <li><Link className='' to="/userdashboard">
                             Leave Request</Link></li>
 
                     </ul>

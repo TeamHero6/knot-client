@@ -6,7 +6,7 @@ const Hrdashboard = () => {
     const [requests,setRequest]=useState([]);
 
     useEffect(()=>{
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('http://localhost:5000/user')
         .then(res=>res.json())
         .then(data=>setRequest(data))
     },[]);
@@ -76,13 +76,13 @@ const Hrdashboard = () => {
                         requests.map(request => 
                             <tr>
                                         <th>{request.id}</th>
-                                        <td>Cy Ganderton</td>
-                                        <td>Quality Control Specialist</td>
-                                        <td>Littel, Schaden and Vandervort</td>
-                                        <td>Canada</td>
-                                        <td>12/16/2020</td>
-                                        <td>{request.name}</td>
-                                        <td>Blue</td>
+                                        <td>{request.Name}</td>
+                                        <td>{request.dep}</td>
+                                        <td>{request.Designation}</td>
+                                        <td>{request.e_date}</td>
+                                        <td>{request.leave}</td>
+                                        <td>{request.leave_date}</td>
+                                        <td>Not</td>
                                     </tr>
                                     )
                     }
