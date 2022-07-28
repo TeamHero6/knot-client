@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const DailyTask = () => {
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/alltasks")
+            .then((res) => res.json())
+            .then((data) => setTasks(data));
+    }, []);
     return (
         <div>
             <div class="overflow-x-auto">
@@ -18,26 +25,22 @@ const DailyTask = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Littel, Schaden and Vandervort</td>
-                            <td>Canada</td>
-                            <td>12/16/2020</td>
-                            <td>Blue</td>
-                            <td>dfd</td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Zemlak, Daniel and Leannon</td>
-                            <td>United States</td>
-                            <td>12/5/2020</td>
-                            <td>Purple</td>
-                            <td>hkshs</td>
-                        </tr>
+                        {tasks?.map((task, index) => (
+                            <>
+                                <tr>
+                                    <th>{index + 1}</th>
+                                    <td>{task.name}</td>
+                                    <td>{task.employeeID}</td>
+                                    <td>{task.department}</td>
+                                    <td>{task.task}</td>
+                                    <td>{task.DueDate}</td>
+                                    <td>
+                                        <button>Running</button>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </>
+                        ))}
                     </tbody>
                 </table>
             </div>
