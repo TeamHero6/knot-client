@@ -1,6 +1,7 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { AiOutlineMenu } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
@@ -8,6 +9,7 @@ import auth from "../../../firebase.init";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const [arrow, setArrow] = useState(false);
     if (user) {
         console.log(user.displayName);
     }
@@ -89,6 +91,14 @@ const Navbar = () => {
                         <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
+                    </div>
+                    <div className="navbar-end md:hidden">
+                        <label
+                            for="my-drawer-2"
+                            class="drawer-button lg:hidden"
+                        >
+                            <AiOutlineMenu />
+                        </label>
                     </div>
                     <section>
                         {user ? (
