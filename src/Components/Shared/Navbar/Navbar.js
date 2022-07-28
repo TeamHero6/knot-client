@@ -1,7 +1,6 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
@@ -64,14 +63,7 @@ const Navbar = () => {
                             Access your apps
                         </Link>
                     </div>
-                    <div className="md:hidden">
-                        <label
-                            for="my-drawer-2"
-                            class="drawer-button lg:hidden"
-                        >
-                            <AiOutlineMenu />
-                        </label>
-                    </div>
+
                     <section>
                         {user ? (
                             <div class="dropdown dropdown-end">
