@@ -30,6 +30,9 @@ const AdminDashboard = () => {
                         <li>
                             <Link to="addtask">Add Task</Link>
                         </li>
+                        <li>
+                            <Link to="teamManagement">Team Management</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
