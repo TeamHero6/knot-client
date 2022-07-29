@@ -6,6 +6,10 @@ import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManag
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
+import AddTask from "./Components/Features/Admin/AddTask";
+import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
+import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
+import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
@@ -30,6 +34,14 @@ function App() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
+                <Route path="/admin" element={<AdminDashboard />}>
+                    <Route index element={<DailyTask />}></Route>
+                    <Route path="addTask" element={<AddTask />}></Route>
+                    <Route
+                        path="teamManagement"
+                        element={<TeamManagement />}
+                    ></Route>
+                </Route>
                 <Route
                     path="/FAQ"
                     element={
