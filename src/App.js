@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Blog from "./Components/AdditionalLinkPages/Blog/Blog";
 import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManagement/AccountManagement";
@@ -16,7 +18,6 @@ import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import Home from "./Components/Pages/Home/Home";
-
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
                     />
                 </Route>
             </Routes>
+            <ToastContainer></ToastContainer>
         </div>
     );
 }
