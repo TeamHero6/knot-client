@@ -22,10 +22,10 @@ const Footer = () => {
                         Build and sell extensions for <br /> Zoho products.
                     </h3>
                     <div className="icon">
-                        <AiFillFacebook />
-                        <AiFillInstagram />
-                        <AiFillLinkedin />
-                        <AiFillYoutube />
+                        <a href="https://www.facebook.com/"><AiFillFacebook /></a>
+                        <a href="https://www.instagram.com/"><AiFillInstagram /></a>
+                        <a href="https://www.linkedin.com/"><AiFillLinkedin /></a>
+                        <a href="https://www.youtube.com/"><AiFillYoutube /></a>
                     </div>
                 </section>
                 <section className="additional-link-area">

@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import adminLogo from "../../../Assets/icons/Admin/adminLogo.png";
+import hr from "../../../Assets/icons/Admin/hr.png";
 import finance from "../../../Assets/icons/financereport.png";
 import marketing from "../../../Assets/icons/marketing-automation.png";
 import sales from "../../../Assets/icons/sales2.png";
-import background from "../../../Assets/images/networkMash.jpg";
+import background from "../../../Assets/images/worldwideBG.jpg";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import AccessAppsCard from "./AccessAppsCard/AccessAppsCard";
 
 const AccessYourApps = () => {
-    const [allProducts, setProducts] = useState([]);
     const [filterResult, setFilterResult] = useState([]);
 
     const products = [
         {
             id: 1,
-            name: "Sales",
-            link: "/salesTS",
-            icon: sales,
+            name: "Admin",
+            link: "/admin",
+            icon: adminLogo,
         },
         {
             id: 2,
-            name: "Marketing",
-            link: "/marketingTS",
-            icon: marketing,
+            name: "Hr",
+            link: "/hrdashboard",
+            icon: hr,
         },
         {
             id: 3,
