@@ -1,13 +1,16 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const [arrow, setArrow] = useState(false);
+    if (user) {
+        console.log(user.displayName);
+    }
     return (
         <div className=" md:px-8 lg:px-12">
             <div class="navbar bg-base-100 ">
@@ -34,30 +37,58 @@ const Navbar = () => {
                             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
-                                <Link to="/customers">Customers</Link>
-                            </li>
-                            <li>
-                                <Link to="/support" className="px-4">
-                                    Support
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/contactSales" className="px-4">
-                                    Contact Sales
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/events" className="px-4">
-                                    Events
-                                </Link>
-                            </li>
-                            <li>
                                 <Link
-                                    to="/accessYourApps"
+                                    to="/accessApps"
                                     className="px-4 text-green-500"
                                 >
                                     Access your apps
                                 </Link>
+                            </li>
+                            <li>
+                                {user ? (
+                                    <div class="dropdown dropdown-end">
+                                        <label
+                                            tabindex="0"
+                                            class="btn btn-ghost btn-circle avatar"
+                                        >
+                                            <div class="w-10 rounded-full">
+                                                <img src="https://placeimg.com/80/80/people" />
+                                            </div>
+                                        </label>
+                                        <ul
+                                            tabindex="0"
+                                            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                        >
+                                            <li>
+                                                <a class="justify-between">
+                                                    Profile
+                                                    <span class="badge">
+                                                        New
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a>Settings</a>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    onClick={() =>
+                                                        signOut(auth)
+                                                    }
+                                                >
+                                                    Logout
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                ) : (
+                                    <Link
+                                        to="login"
+                                        className="px-4 text-green-500"
+                                    >
+                                        Login
+                                    </Link>
+                                )}
                             </li>
                         </ul>
                     </div>
@@ -71,59 +102,10 @@ const Navbar = () => {
                 </div>
                 <div class="navbar-end">
                     <div className="hidden lg:flex">
-                        <Link to="/customers" className="px-4">
-                            Customers
-                        </Link>
-                        <Link to="/support" className="px-4">
-                            Support
-                        </Link>
-                        <Link to="/contactSales" className="px-4">
-                            Contact Sales
-                        </Link>
-                        <Link to="/events" className="px-4">
-                            Events
-                        </Link>
                         <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
                     </div>
-                    <section>
-                        {user ? (
-                            <div class="dropdown dropdown-end">
-                                <label
-                                    tabindex="0"
-                                    class="btn btn-ghost btn-circle avatar"
-                                >
-                                    <div class="w-10 rounded-full">
-                                        <img src="https://placeimg.com/80/80/people" />
-                                    </div>
-                                </label>
-                                <ul
-                                    tabindex="0"
-                                    class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                                >
-                                    <li>
-                                        <a class="justify-between">
-                                            Profile
-                                            <span class="badge">New</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>Settings</a>
-                                    </li>
-                                    <li>
-                                        <p onClick={() => signOut(auth)}>
-                                            Logout
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                        ) : (
-                            <Link to="login">
-                                <FaUserCircle className="text-2xl ml-2" />
-                            </Link>
-                        )}
-                    </section>
                 </div>
             </div>
         </div>
