@@ -9,6 +9,7 @@ import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSec
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
+import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
@@ -32,6 +33,10 @@ function App() {
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
+                    <Route
+                        path="teamManagement"
+                        element={<TeamManagement />}
+                    ></Route>
                 </Route>
                 <Route
                     path="/FAQ"
