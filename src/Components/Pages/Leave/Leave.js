@@ -27,7 +27,7 @@ const Leave = () => {
                             {
                                 show ? <div className='ml-3 md:ml-5'>
                                     <p className='text-xl text-[#0182BE]'>Leave Request</p>
-                                    <div className='md:flex text-xl'>
+                                    <div className='md:flex'>
                                         <table>
                                             <tr>
                                                 <td>Employee Names : </td>
@@ -78,7 +78,7 @@ const Leave = () => {
                                             </table>
                                         </div>
                                     </div>
-                                    <div className='md:flex text-xl my-4'>
+                                    <div className='md:flex my-4'>
                                         <p>Approval : <input className='border-2 rounded-md border-[#0182BE] bg-[#EEEEEE] md:mr-16' type="text" /></p>
                                         <p>ID : <input className='border-2 rounded-md border-[#0182BE] bg-[#EEEEEE] mt-2 md:mt-0' type="text" /></p>
                                     </div>
