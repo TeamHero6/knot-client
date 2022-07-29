@@ -10,6 +10,7 @@ import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
+import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/userdashboard" element={<UserDashboard />} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>
