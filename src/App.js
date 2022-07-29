@@ -1,5 +1,6 @@
-import "antd/dist/antd.less";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Blog from "./Components/AdditionalLinkPages/Blog/Blog";
 import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManagement/AccountManagement";
@@ -10,17 +11,14 @@ import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
+import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import Home from "./Components/Pages/Home/Home";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
-import UserDashboard from "./Components/Pages/UserDashboard/UserDashboard";
 
 function App() {
     return (
