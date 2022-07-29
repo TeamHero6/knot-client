@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import adminLogo from "../../../Assets/icons/Admin/adminLogo.png";
+import dashboard from "../../../Assets/icons/Admin/dashboard.png";
 import hr from "../../../Assets/icons/Admin/hr.png";
 import finance from "../../../Assets/icons/financereport.png";
 import marketing from "../../../Assets/icons/marketing-automation.png";
@@ -46,9 +47,9 @@ const AccessYourApps = () => {
         },
         {
             id: 6,
-            name: "Finance",
-            link: "/financeTS",
-            icon: finance,
+            name: "UserDashboard",
+            link: "/userDashboard",
+            icon: dashboard,
         },
     ];
     useEffect(() => {
