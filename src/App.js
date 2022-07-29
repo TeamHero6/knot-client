@@ -1,4 +1,3 @@
-import "antd/dist/antd.less";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Blog from "./Components/AdditionalLinkPages/Blog/Blog";
