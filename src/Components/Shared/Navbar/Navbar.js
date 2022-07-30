@@ -1,7 +1,6 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
@@ -45,6 +44,52 @@ const Navbar = () => {
                                     Access your apps
                                 </Link>
                             </li>
+                            <li>
+                                {user ? (
+                                    <div class="dropdown dropdown-end">
+                                        <label
+                                            tabindex="0"
+                                            class="btn btn-ghost btn-circle avatar"
+                                        >
+                                            <div class="w-10 rounded-full">
+                                                <img src="https://placeimg.com/80/80/people" />
+                                            </div>
+                                        </label>
+                                        <ul
+                                            tabindex="0"
+                                            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                        >
+                                            <li>
+                                                <a class="justify-between">
+                                                    Profile
+                                                    <span class="badge">
+                                                        New
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a>Settings</a>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    onClick={() =>
+                                                        signOut(auth)
+                                                    }
+                                                >
+                                                    Logout
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                ) : (
+                                    <Link
+                                        to="login"
+                                        className="px-4 text-green-500"
+                                    >
+                                        Login
+                                    </Link>
+                                )}
+                            </li>
                         </ul>
                     </div>
                     <a href="/">
@@ -57,58 +102,10 @@ const Navbar = () => {
                 </div>
                 <div class="navbar-end">
                     <div className="hidden lg:flex">
-                        <Link to="/admin" className="px-4">
-                            Admin
-                        </Link>
                         <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
                     </div>
-                    <div className="md:hidden">
-                        <label
-                            for="my-drawer-2"
-                            class="drawer-button lg:hidden"
-                        >
-                            <AiOutlineMenu />
-                        </label>
-                    </div>
-                    <section>
-                        {user ? (
-                            <div class="dropdown dropdown-end">
-                                <label
-                                    tabindex="0"
-                                    class="btn btn-ghost btn-circle avatar"
-                                >
-                                    <div class="w-10 rounded-full">
-                                        <img src="https://placeimg.com/80/80/people" />
-                                    </div>
-                                </label>
-                                <ul
-                                    tabindex="0"
-                                    class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                                >
-                                    <li>
-                                        <a class="justify-between">
-                                            Profile
-                                            <span class="badge">New</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>Settings</a>
-                                    </li>
-                                    <li>
-                                        <p onClick={() => signOut(auth)}>
-                                            Logout
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                        ) : (
-                            <Link to="login" className="btn btn-sm">
-                                Login
-                            </Link>
-                        )}
-                    </section>
                 </div>
             </div>
         </div>

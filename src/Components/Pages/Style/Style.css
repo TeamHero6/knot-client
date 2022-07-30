@@ -133,8 +133,8 @@
     .footer-section-top-sm-md {
         width: 90%;
         margin: auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: column;
         color: #f1f2f2;
         margin-top: 20px;
     }
@@ -146,6 +146,12 @@
     .footer-section-top-sm-md p {
         text-align: left;
         font-size: 15px;
+    }
+    .footer-section-bottom .icon{
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding-top: 10px;
     }
 }
 /* 640px to Max- 768px Tavlet View */
@@ -165,12 +171,15 @@
     }
     .footer-section-top {
         display: none;
+    }   
+    .link ul li{
+        text-align: left;
     }
     .footer-section-top-sm-md {
         width: 90%;
         margin: auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: column;
         color: #f1f2f2;
         margin-top: 20px;
     }
@@ -182,6 +191,28 @@
     .footer-section-top-sm-md p {
         text-align: left;
         font-size: 15px;
+    }
+    .link ul li{
+        text-align: left;
+    }
+    .Secure-Database h2{
+        text-align: left;
+    }
+    .Secure-Database p{
+        padding-left: 18px;
+    }
+    .footer-section-bottom p{
+        padding-top: 20px;
+    }
+    .footer-section-top-sm-md p {
+        text-align: left;
+        font-size: 15px;
+    }
+    .footer-section-bottom .icon{
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding-top: 10px;
     }
 }
 /* 769px to Max- 1024px Desktop View */
