@@ -10,6 +10,7 @@ import auth, { storage } from "../../../../firebase.init";
 
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { MdOutlineAddBusiness } from "react-icons/md";
+import Swal from "sweetalert2";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
 import Navbar from "../../../Shared/Navbar/Navbar";
@@ -25,8 +26,8 @@ const BusinessSignup = () => {
     const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
     const [loading, setLoading] = useState(false);
+
     const onSubmit = async (data) => {
-        setLoading(true);
         const profilePhoto = await data?.image[0];
         const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
         uploadBytes(imageref, profilePhoto).then((snapshot) => {
@@ -51,7 +52,7 @@ const BusinessSignup = () => {
             const password = data.password;
             const companyName = data.businessName;
             const role = data.userRole;
-            const details = {
+            const userInfo = {
                 name,
                 email,
                 password,
@@ -61,9 +62,28 @@ const BusinessSignup = () => {
                 CompanyLogo: BusinessLogoUrl,
             };
 
-            console.log(details);
+            //send user Data to DB
+            fetch("http://localhost:5000/createdUser", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(userInfo),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (
+                        data.companyResult.acknowledged &&
+                        data.userResult.acknowledged
+                    ) {
+                        Swal.fire(
+                            "Good job!",
+                            "Your Business Account is Created",
+                            "success"
+                        );
+                    }
+                });
         }
-        setLoading(false);
     };
     return (
         <div className="min-h-screen">
