@@ -17,6 +17,7 @@ import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
+import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Home from "./Components/Pages/Home/Home";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 
@@ -58,6 +59,8 @@ function App() {
                         element={<RulesAndPolitics />}
                     />
                 </Route>
+
+                <Route path="/BusinessLogin" element={<BusinessSignup />} />
             </Routes>
             <ToastContainer></ToastContainer>
         </div>
