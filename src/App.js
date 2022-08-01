@@ -11,6 +11,7 @@ import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
+import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
@@ -36,6 +37,10 @@ function App() {
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
+                    <Route
+                        path="teamOrganize"
+                        element={<TeamOrganize />}
+                    ></Route>
                     <Route
                         path="teamManagement"
                         element={<TeamManagement />}

@@ -102,10 +102,7 @@ const Navbar = () => {
                 </div>
                 <div class="navbar-end">
                     <div className="hidden lg:flex">
-                        <Link
-                            to="/BusinessLogin"
-                            className="px-4 text-green-500"
-                        >
+                        <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
                         <div>
