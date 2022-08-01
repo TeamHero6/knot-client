@@ -33,7 +33,7 @@ const Hrdashboard = () => {
                                 <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
                                     <span className='font-medium'>Total
                                         Employees
-                                        12</span>
+                                        20</span>
                                 </div>
                                 <h3 className='text-center font-medium pt-3'>Employee By Gender</h3>
                             </div>
