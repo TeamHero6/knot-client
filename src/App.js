@@ -21,6 +21,7 @@ import Home from "./Components/Pages/Home/Home";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
 import Performance from "./Components/Pages/Hrdashboard/Performance";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                     <Route index element={<Dashboard />}></Route>
                     <Route path="employeeorg" element={<EmployeesOrganize />}></Route>
                     <Route path="performance" element={<Performance />}></Route>
+                    <Route path="payrolls" element={<Payrolls />}></Route>
                 </Route>
                 
                 <Route path="/signup" element={<Signup />} />

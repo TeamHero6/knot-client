@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
 import { FiEye } from 'react-icons/fi';
 import { useForm } from "react-hook-form";
@@ -6,8 +6,16 @@ import { useForm } from "react-hook-form";
 const Performance = () => {
     
     const { register, handleSubmit, reset } = useForm();
-    const onSubmit = data => {
+    const {promotion,setPromotion}=useState();
 
+    useEffect(() => {
+        fetch('http://localhost:5000/user')
+            .then(res => res.json())
+            .then(data => setPromotion(data))
+    }, []);
+
+    const onSubmit = data => {
+     
         
     };
     return (
@@ -169,6 +177,11 @@ const Performance = () => {
                             </table>
                         </div>
                     </div>
+
+
+
+
+                    
             <label for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
                         <span><BiPlus></BiPlus></span>
                         <span className='capitalize'> Transfer</span>
