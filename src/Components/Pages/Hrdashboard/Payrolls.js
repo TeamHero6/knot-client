@@ -2,13 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
 import { FiEye } from 'react-icons/fi';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const Payrolls = () => {
     
     const { register, handleSubmit, reset } = useForm();
+    const [payrolls,setPayrolls]=useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/payrolls')
+        .then(res=>res.json())
+        .then(data=>setPayrolls(data))
+    },[]);
 
     const onSubmit = data => {
-     
+        fetch('http://localhost:5000/payrolls', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(inserted => {
+                if (inserted.insertedId) {
+                    reset();
+                    toast.success("Save change")
+                }
+            })
         
     };
     return (
@@ -51,7 +71,7 @@ const Payrolls = () => {
                                         <label className="label w-48">
                                             <span className="label-text text-xl">Payroll Type:</span>
                                         </label>
-                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] ">
+                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "  {...register("Payroll_Type")}>
                                             <option value=""></option>
                                             <option value="Salary">Salary</option>
                                             <option value="House_Rent">House Rent</option>
@@ -80,9 +100,9 @@ const Payrolls = () => {
                                     </div>
                                     <div className='flex items-center'>
                                         <label className="label w-48">
-                                            <span className="label-text text-xl">Pay Amount:</span>
+                                            <span className="label-text text-xl">Pay stutas:</span>
                                         </label>
-                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] ">
+                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] " {...register("Pay_stutas")}>
                                             <option value=""></option>
                                             <option value="unpaid">unpaid</option>
                                             <option value="paid">paid</option>
@@ -172,18 +192,24 @@ const Payrolls = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {
+                                        payrolls.map(pr=>
                                             <tr>
-                                                <th>Habib ullha</th>
-                                                <th>2512</th>
-                                                <th>Sales</th>
-                                                <th className='text-[#0182be]'><FiEye></FiEye></th>
+                                            
+                                                <th>{pr.Employee_ID}</th>
+                                                <th>{pr.Name}</th>
+                                                <th>{pr.Depertment}</th>
+                                                <th>{pr.Depertment}</th>
+                                                <th>{pr.Payable_Amount}</th>
+                                                <th>{pr.Payment_Date
+}</th>
+                                                <th>{pr.Pay_stutas}</th>
+
+                                                
                                             </tr>
-                                            <tr>
-                                                <th>Habib ullha</th>
-                                                <th>2512</th>
-                                                <th>Sales</th>
-                                                <th className='text-[#0182be]'><FiEye></FiEye></th>
-                                            </tr>
+                                           
+                                           )
+                                       }
                                         
 
 
