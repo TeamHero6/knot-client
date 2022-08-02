@@ -2,22 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
 import { FiEye } from 'react-icons/fi';
 import { useForm } from "react-hook-form";
-import { toast } from 'react-toastify';
-import Transfer from './Transfer';
 
-const Performance = () => {
+import { toast } from 'react-toastify';
+
+const Transfer = () => {
     
     const { register, handleSubmit, reset } = useForm();
-    const [promo,setPromo]=useState([]);
+    const [transfer,setTransfer]=useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/performance')
+        fetch('http://localhost:5000/transfer')
         .then(res=>res.json())
-        .then(data=>setPromo(data))
+        .then(data=>setTransfer(data))
     },[]);
-
     const onSubmit = data => {
-        fetch('http://localhost:5000/performance', {
+        fetch('http://localhost:5000/transfer', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -31,17 +30,17 @@ const Performance = () => {
                     toast.success("Save change")
                 }
             })
-     
         
+
     };
     return (
         <div>
             <label for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
                         <span><BiPlus></BiPlus></span>
-                        <span className='capitalize'> Promotion</span>
+                        <span className='capitalize'> Transfer</span>
 
             </label>
-                    <div className='mt-5 p-5 mx-auto w-4/5  bg-[#EEEEEE] rounded-lg'>
+            <div className='mt-5 p-5 mx-auto w-4/5  bg-[#EEEEEE] rounded-lg'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='grid grid-cols-2'>
                                 {/* ff */}
@@ -72,9 +71,9 @@ const Performance = () => {
                                     </div>
                                     <div className='flex items-center'>
                                         <label className="label w-48">
-                                            <span className="label-text text-xl">Promoted Type:</span>
+                                            <span className="label-text text-xl">Transfer office Location:</span>
                                         </label>
-                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] " {...register("Promoted_Type")}>
+                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "  {...register("Location")}>
                                             <option value=""></option>
                                             <option value="Designation">Designation</option>
                                             <option value="Salary">Salary</option>
@@ -84,12 +83,12 @@ const Performance = () => {
                                     </div>
                                     <div className='flex items-center'>
                                         <label className="label w-48">
-                                            <span className="label-text text-xl">Promoted Designation:</span>
+                                            <span className="label-text text-xl">Transfer Reason Note:</span>
                                         </label>
                                         <input
                                             type="text"
                                             className="w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Promoted_Designation")}
+                                            {...register("Transfer_Reason")}
                                         />
 
 
@@ -126,24 +125,12 @@ const Performance = () => {
                                     </div>
                                     <div className='flex items-center'>
                                         <label className="label w-48">
-                                            <span className="label-text text-xl">Pormotion Date:</span>
+                                            <span className="label-text text-xl">Transfer Date:</span>
                                         </label>
                                         <input
                                             type="text"
                                             className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Pormotion_Date")}
-                                        />
-
-
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Incriment Salary:</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Incriment_Salary")}
+                                            {...register("Transfer_Date")}
                                         />
 
 
@@ -160,7 +147,7 @@ const Performance = () => {
                         </form>
 
                     </div>
-                    <div className='mx-auto w-4/5 rounded-lg my-5 '>
+                    <div className='mx-auto w-4/5 rounded-lg mt-5 '>
                         <div class="overflow-x-auto">
                             <table class="table table-compact w-full">
                                 <thead>
@@ -173,8 +160,8 @@ const Performance = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                       {
-                                        promo.map(pr=>
+                                {
+                                        transfer.map(pr=>
                                             <tr>
                                                 <th>{pr.Name}</th>
                                                 <th>{pr.Employee_ID}</th>
@@ -183,9 +170,7 @@ const Performance = () => {
                                             </tr>
                                            
                                            )
-                                       }    
-                                           
-                                            
+                                       }
                                         
 
 
@@ -194,14 +179,9 @@ const Performance = () => {
                             </table>
                         </div>
                     </div>
-
-
-                    <Transfer></Transfer>
-
-                    
             
         </div>
     );
 };
 
-export default Performance;
+export default Transfer;

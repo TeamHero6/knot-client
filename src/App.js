@@ -18,6 +18,7 @@ import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import Home from "./Components/Pages/Home/Home";
+import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
@@ -37,6 +38,7 @@ function App() {
                     <Route path="employeeorg" element={<EmployeesOrganize />}></Route>
                     <Route path="performance" element={<Performance />}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
+                    <Route path="attendance" element={<Attendance />}></Route>
                 </Route>
                 
                 <Route path="/signup" element={<Signup />} />

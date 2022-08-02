@@ -21,7 +21,8 @@ const Hrdashboard = () => {
                         <li><Link  to="">Dashboard</Link></li>
                         <li><Link  to="employeeorg">Employees Organize</Link></li>
                         <li><Link  to="performance">Performance</Link></li>
-                        <li><Link  to="payrolls ">Payrolls</Link></li>
+                        <li><Link  to="payrolls">Payrolls</Link></li>
+                        <li><Link  to="attendance">Attendance</Link></li>
 
                     </ul>
 
