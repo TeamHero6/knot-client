@@ -11,11 +11,6 @@ import WarningModal from "./WarningModal/WarningModal";
 const TeamOrganize = () => {
     const [modalName, setModalName] = useState("createMeeting");
     const [meetings, setMettings] = useState([]);
-
-    // const { data, isLoading } = useQuery("meetings", () =>
-    //     fetch("http://localhost:5000/meetings").then((res) => res.json())
-    // );
-    //Fetch Meetings Data
     const {
         isLoading: meetingLoading,
         data: meetingData,
@@ -41,12 +36,6 @@ const TeamOrganize = () => {
     if (meetingLoading || warningLoading || awardLoading) {
         return <Loader />;
     }
-
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/meetings")
-    //         .then((res) => res.json())
-    //         .then((data) => setMettings(data));
-    // }, []);
 
     return (
         <div>
@@ -100,7 +89,7 @@ const TeamOrganize = () => {
                 {/*Warning table*/}
                 <div>
                     {modalName === "awardModal" && (
-                        <AwardTable {...{ award: awardData }} />
+                        <AwardTable {...{ award: awardData, awardLoading }} />
                     )}
                 </div>
                 {/*Award table*/}

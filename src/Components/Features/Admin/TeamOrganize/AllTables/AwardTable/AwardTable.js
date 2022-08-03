@@ -1,9 +1,12 @@
 import React from "react";
+import Loader from "../../../../../Shared/Loader/Loader";
 
-const AwardTable = ({ award }) => {
+const AwardTable = ({ award, awardLoading }) => {
     return (
         <div className="w-full">
-            <p className="my-2 px-2">All Meetings</p>
+            <p className="my-2 px-2">
+                {awardLoading ? <Loader /> : "All Awards"}
+            </p>
             <div class="overflow-x-auto">
                 <table class="table w-full ">
                     <thead>
@@ -16,7 +19,7 @@ const AwardTable = ({ award }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {award.map((aw) => (
+                        {award?.map((aw) => (
                             <>
                                 <tr>
                                     <td>{aw.awardDate}</td>

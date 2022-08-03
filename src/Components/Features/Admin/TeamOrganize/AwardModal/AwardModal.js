@@ -1,5 +1,4 @@
 import React from "react";
-import Swal from "sweetalert2";
 
 const AwardModal = ({ refetch }) => {
     const handleAward = (e) => {
@@ -31,11 +30,6 @@ const AwardModal = ({ refetch }) => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
-                    Swal.fire(
-                        "Good job!",
-                        "Your meeting is now ready",
-                        "success"
-                    );
                     refetch();
                     e.target.reset();
                 }
