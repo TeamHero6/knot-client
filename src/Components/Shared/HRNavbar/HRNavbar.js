@@ -14,6 +14,7 @@ const HRNavbar = () => {
                     <p className='md:mx-20 mx-4 md:text-xl flex'>User Name <BiUserCircle className='m-1 text-[#0182BE]'></BiUserCircle></p>
                 </div>
             </div>
+            <hr />
         </div>
     );
 };
