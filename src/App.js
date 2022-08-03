@@ -20,6 +20,10 @@ import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireA
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Home from "./Components/Pages/Home/Home";
+
+import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
+import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
+import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 
 function App() {
@@ -35,6 +39,13 @@ function App() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
+                <Route path="/marketingTS" element={<MarketingAutomation />}>
+                    <Route index element={<EmailMarketing />}></Route>
+                    <Route
+                        path="customerListing"
+                        element={<CustomerListing />}
+                    ></Route>
+                </Route>
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
