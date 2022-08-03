@@ -1,34 +1,86 @@
 import React from "react";
+import Swal from "sweetalert2";
 
-const AwardModal = () => {
+const AwardModal = ({ refetch }) => {
+    const handleAward = (e) => {
+        e.preventDefault();
+        const awardDate = e.target.date.value;
+        const name = e.target.name.value;
+        const employeeID = e.target.employeeID.value;
+        const department = e.target.Department.value;
+        const designation = e.target.designation.value;
+        const awardProvidingDate = e.target.awardProvidingDate.value;
+        const awardType = e.target.awardType.value;
+        const newAward = {
+            awardDate,
+            name,
+            employeeID,
+            department,
+            designation,
+            awardProvidingDate,
+            awardType,
+        };
+
+        fetch("http://localhost:5000/createAward", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(newAward),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.acknowledged) {
+                    Swal.fire(
+                        "Good job!",
+                        "Your meeting is now ready",
+                        "success"
+                    );
+                    refetch();
+                    e.target.reset();
+                }
+            });
+    };
     return (
-        <div className="w-full bg-[#EEEEEE] rounded-lg lg:w-[50%] mx-auto p-3 px-6">
+        <div
+            className="w-full bg-[#EEEEEE] rounded-lg lg:w-[50%] mx-auto p-3 px-6"
+            onSubmit={handleAward}
+        >
             <form className="flex flex-col">
-                <input type="date" className="bg-transparent my-2" />
+                <input
+                    type="date"
+                    className="bg-transparent my-2"
+                    name="date"
+                />
                 <input
                     type="text"
                     placeholder="Team Member Name"
                     className="my-2 p-1 px-3 rounded-md"
+                    name="name"
                 />
                 <input
                     type="text"
                     placeholder="Employee ID"
                     className="my-2 p-1 px-3 rounded-md"
+                    name="employeeID"
                 />
                 <input
                     type="text"
                     placeholder="Department"
                     className="my-2 p-1 px-3 rounded-md"
+                    name="Department"
                 />
                 <input
                     type="text"
                     placeholder="Designation"
                     className="my-2 p-1 px-3 rounded-md"
+                    name="designation"
                 />
                 <input
                     type="text"
                     placeholder="Award Providing Date"
                     className="my-2 p-1 px-3 rounded-md"
+                    name="awardProvidingDate"
                 />
                 <select name="awardType" className="my-2 p-1 px-3 rounded-md">
                     <option value="employeeOfTheMonth">

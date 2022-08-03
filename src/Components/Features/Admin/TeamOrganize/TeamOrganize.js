@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Loader from "../../../Shared/Loader/Loader";
+import AwardTable from "./AllTables/AwardTable/AwardTable";
 import MeetingTable from "./AllTables/MeetingTable/MeetingTable";
 import WarningTable from "./AllTables/WarningTable/WarningTable";
 import AwardModal from "./AwardModal/AwardModal";
@@ -30,7 +31,14 @@ const TeamOrganize = () => {
     } = useQuery(["warnings"], () =>
         fetch("http://localhost:5000/warnings").then((res) => res.json())
     );
-    if (meetingLoading || warningLoading) {
+    const {
+        isLoading: awardLoading,
+        data: awardData,
+        refetch: awardRefetch,
+    } = useQuery(["award"], () =>
+        fetch("http://localhost:5000/award").then((res) => res.json())
+    );
+    if (meetingLoading || warningLoading || awardLoading) {
         return <Loader />;
     }
 
@@ -70,7 +78,9 @@ const TeamOrganize = () => {
                 {modalName === "warningModal" && (
                     <WarningModal {...{ refetch: warningRefetch }} />
                 )}
-                {modalName === "awardModal" && <AwardModal />}
+                {modalName === "awardModal" && (
+                    <AwardModal {...{ refetch: awardRefetch }} />
+                )}
                 {/*Meeting Modal*/}
             </section>
             {/*All Form*/}
@@ -88,7 +98,11 @@ const TeamOrganize = () => {
                     )}
                 </div>
                 {/*Warning table*/}
-                <div></div>
+                <div>
+                    {modalName === "awardModal" && (
+                        <AwardTable {...{ award: awardData }} />
+                    )}
+                </div>
                 {/*Award table*/}
             </section>
             {/*All Tables*/}
