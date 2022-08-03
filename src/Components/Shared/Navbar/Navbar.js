@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
@@ -7,7 +7,6 @@ import auth from "../../../firebase.init";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
-    const [arrow, setArrow] = useState(false);
     if (user) {
         console.log(user.displayName);
     }
@@ -83,7 +82,7 @@ const Navbar = () => {
                                     </div>
                                 ) : (
                                     <Link
-                                        to="login"
+                                        to="/BusinessSignUp"
                                         className="px-4 text-green-500"
                                     >
                                         Login
@@ -138,7 +137,7 @@ const Navbar = () => {
                                 </div>
                             ) : (
                                 <Link
-                                    to="login"
+                                    to="/BusinessSignUp"
                                     className="px-3 py-2 rounded bg-green-500 hover:bg-green-400 duration-500 text-white"
                                 >
                                     Login
