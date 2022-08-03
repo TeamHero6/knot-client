@@ -10,18 +10,22 @@ import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSec
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
-import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
-import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
+import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
+import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
+import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
-import Signup from "./Components/Pages/Authentications/Signup/Signup";
+import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
+import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Home from "./Components/Pages/Home/Home";
+import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
+import Leave from "./Components/Pages/Leave/Leave";
 
-import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
-import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
+import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
+import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 
 function App() {
@@ -29,9 +33,15 @@ function App() {
         <div>
             <Routes>
                 <Route path="/" element={<Home />}></Route>
+                <Route path="/leave" element={<Leave></Leave>}></Route>
+                <Route
+                    path="/employeedetails"
+                    element={<EmployeeDetails></EmployeeDetails>}
+                ></Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/hrdashboard" element={<Hrdashboard />} />
-                <Route path="/signup" element={<Signup />} />
+                <Route path="/BusinessSignUp" element={<BusinessSignup />} />
+                <Route path="/BusinessLogin" element={<BusinessLogin />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
@@ -46,6 +56,10 @@ function App() {
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
+                    <Route
+                        path="teamOrganize"
+                        element={<TeamOrganize />}
+                    ></Route>
                     <Route
                         path="teamManagement"
                         element={<TeamManagement />}
