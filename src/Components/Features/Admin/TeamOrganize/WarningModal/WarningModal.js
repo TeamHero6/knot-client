@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const WarningModal = ({ refetch }) => {
     const handleWarning = (e) => {
@@ -7,6 +8,21 @@ const WarningModal = ({ refetch }) => {
         const warningReason = e.target.reason.value;
         const type = e.target.type.value;
         const warningDetails = { warningDate, warningReason, type };
+        fetch("http://localhost:5000/createWarning", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(warningDetails),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.acknowledged) {
+                    e.target.reset();
+                    Swal.fire("Good job!", "Warning is created", "success");
+                    refetch();
+                }
+            });
     };
     return (
         <div

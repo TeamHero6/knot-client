@@ -14,11 +14,23 @@ const TeamOrganize = () => {
     // const { data, isLoading } = useQuery("meetings", () =>
     //     fetch("http://localhost:5000/meetings").then((res) => res.json())
     // );
-
-    const { isLoading, error, data, refetch } = useQuery(["repoData"], () =>
+    //Fetch Meetings Data
+    const {
+        isLoading: meetingLoading,
+        data: meetingData,
+        refetch: meetingRefetch,
+    } = useQuery(["meetings"], () =>
         fetch("http://localhost:5000/meetings").then((res) => res.json())
     );
-    if (isLoading) {
+    //Fetch Warning Data
+    const {
+        isLoading: warningLoading,
+        data: warningData,
+        refetch: warningRefetch,
+    } = useQuery(["warnings"], () =>
+        fetch("http://localhost:5000/warnings").then((res) => res.json())
+    );
+    if (meetingLoading || warningLoading) {
         return <Loader />;
     }
 
@@ -53,12 +65,12 @@ const TeamOrganize = () => {
             {/*Meeting, Warning, Award Button*/}
             <section className="w-[100%] mt-12">
                 {modalName === "createMeeting" && (
-                    <MeetingModal {...{ refetch }} />
+                    <MeetingModal {...{ refetch: meetingRefetch }} />
                 )}
                 {modalName === "warningModal" && (
-                    <WarningModal {...{ refetch }} />
+                    <WarningModal {...{ refetch: warningRefetch }} />
                 )}
-                {modalName === "awardModal" && <AwardModal {...{ refetch }} />}
+                {modalName === "awardModal" && <AwardModal />}
                 {/*Meeting Modal*/}
             </section>
             {/*All Form*/}
@@ -66,11 +78,15 @@ const TeamOrganize = () => {
             <section className="mt-8">
                 <div>
                     {modalName == "createMeeting" && (
-                        <MeetingTable {...{ meetings: data }} />
+                        <MeetingTable {...{ meetings: meetingData }} />
                     )}
                 </div>{" "}
                 {/*Meeting table*/}
-                <div>{modalName === "warningModal" && <WarningTable />}</div>
+                <div>
+                    {modalName === "warningModal" && (
+                        <WarningTable {...{ warnings: warningData }} />
+                    )}
+                </div>
                 {/*Warning table*/}
                 <div></div>
                 {/*Award table*/}
