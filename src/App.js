@@ -17,7 +17,6 @@ import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
-import Signup from "./Components/Pages/Authentications/Signup/Signup";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Home from "./Components/Pages/Home/Home";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
@@ -29,7 +28,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/hrdashboard" element={<Hrdashboard />} />
-                <Route path="/signup" element={<Signup />} />
+                <Route path="/BusinessSignUp" element={<BusinessSignup />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
@@ -64,8 +63,6 @@ function App() {
                         element={<RulesAndPolitics />}
                     />
                 </Route>
-
-                <Route path="/BusinessLogin" element={<BusinessSignup />} />
             </Routes>
             <ToastContainer></ToastContainer>
         </div>

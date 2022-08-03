@@ -1,31 +1,36 @@
 import React, { useState } from "react";
-import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import auth, { storage } from "../../../../firebase.init";
 
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { MdOutlineAddBusiness } from "react-icons/md";
-import Swal from "sweetalert2";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
+import Loader from "../../../Shared/Loader/Loader";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessSignup = () => {
+    //Authentications
+    const [createUserWithEmailAndPassword, user, Createloading, error] =
+        useCreateUserWithEmailAndPassword(auth);
     const {
         register,
-        getValues,
         formState: { errors },
         handleSubmit,
     } = useForm();
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
     const [loading, setLoading] = useState(false);
+
+    let location = useLocation();
+    const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
         const profilePhoto = await data?.image[0];
@@ -35,7 +40,7 @@ const BusinessSignup = () => {
                 setProfileImageUrl(url);
             });
         });
-        // Profile Photo Upload 27 - 33
+        // Profile Photo Upload 48 - 56
 
         const BusinessLogo = await data?.logo[0];
         const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
@@ -46,6 +51,7 @@ const BusinessSignup = () => {
         });
         // Business Logo Upload 35-41
 
+        //Data Collect and sent to server 59 - 94
         if (BusinessLogoUrl && profileImageUrl) {
             const email = data.email;
             const name = data.name;
@@ -64,7 +70,7 @@ const BusinessSignup = () => {
 
             //send user Data to DB
             fetch("http://localhost:5000/createdUser", {
-                method: "POST",
+                method: "PUT",
                 headers: {
                     "content-type": "application/json",
                 },
@@ -72,17 +78,19 @@ const BusinessSignup = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    if (
-                        data.companyResult.acknowledged &&
-                        data.userResult.acknowledged
-                    ) {
-                        Swal.fire(
-                            "Good job!",
-                            "Your Business Account is Created",
-                            "success"
-                        );
+                    const token = data.token;
+                    if (token) {
+                        createUserWithEmailAndPassword(email, password);
                     }
                 });
+        }
+
+        if (Createloading) {
+            return <Loader />;
+        }
+        if (user) {
+            navigate(from, { replace: true });
+            console.log(user);
         }
     };
     return (

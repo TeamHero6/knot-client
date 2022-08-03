@@ -8,13 +8,13 @@ import { useForm } from "react-hook-form";
 import { AiFillApple } from "react-icons/ai";
 import { FaFacebookF, FaGoogle, FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
 import Navbar from "../../../Shared//Navbar/Navbar";
 import Loader from "../../../Shared/Loader/Loader";
 
 const Login = () => {
-    const [signInWithEmailAndPassword, , loading] =
+    const [signInWithEmailAndPassword, user, loading] =
         useSignInWithEmailAndPassword(auth);
     const {
         register,
@@ -36,12 +36,12 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
         navigate("/");
     };
-    if (Guser || Fuser) {
+    if (Guser || Fuser || user) {
         navigate(from, { replace: true });
     }
 
     if (googleLoading || Floading) {
-        return <Loader></Loader>
+        return <Loader></Loader>;
     }
     return (
         <div>
@@ -112,16 +112,16 @@ const Login = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.email?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.email.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.email.message}
+                                                </span>
+                                            )}
                                             {errors.email?.type ===
                                                 "pattern" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.email.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.email.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>
                                     <section>
@@ -149,16 +149,16 @@ const Login = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.password?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.password.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.password.message}
+                                                </span>
+                                            )}
                                             {errors.password?.type ===
                                                 "minLength" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.password.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.password.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>
                                     <div></div>
