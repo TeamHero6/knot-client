@@ -20,6 +20,8 @@ import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireA
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Home from "./Components/Pages/Home/Home";
+import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
+import Leave from "./Components/Pages/Leave/Leave";
 
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
 import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
@@ -31,6 +33,11 @@ function App() {
         <div>
             <Routes>
                 <Route path="/" element={<Home />}></Route>
+                <Route path="/leave" element={<Leave></Leave>}></Route>
+                <Route
+                    path="/employeedetails"
+                    element={<EmployeeDetails></EmployeeDetails>}
+                ></Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/hrdashboard" element={<Hrdashboard />} />
                 <Route path="/BusinessSignUp" element={<BusinessSignup />} />
