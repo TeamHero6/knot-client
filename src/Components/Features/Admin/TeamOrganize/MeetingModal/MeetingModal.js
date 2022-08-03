@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const MeetingModal = () => {
+const MeetingModal = ({ refetch }) => {
     const handleCreateMeeting = (e) => {
         e.preventDefault();
         const date = e.target.date.value;
@@ -33,6 +33,7 @@ const MeetingModal = () => {
                         "Your meeting is now ready",
                         "success"
                     );
+                    refetch();
                     e.target.reset();
                 }
             });
