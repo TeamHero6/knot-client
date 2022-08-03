@@ -22,7 +22,12 @@ import Home from "./Components/Pages/Home/Home";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
+import Attendance from "./Components/Pages/Hrdashboard/Attendance";
+import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
+import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
+import Performance from "./Components/Pages/Hrdashboard/Performance";
 
 function App() {
     return (
@@ -30,7 +35,16 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/login" element={<Login />} />
-                <Route path="/hrdashboard" element={<Hrdashboard />} />
+
+
+                <Route path="/hrdashboard" element={<Hrdashboard />} >
+                    <Route index element={<Dashboard />}></Route>
+                    <Route path="employeeorg" element={<EmployeesOrganize />}></Route>
+                    <Route path="performance" element={<Performance />}></Route>
+                    <Route path="payrolls" element={<Payrolls />}></Route>
+                    <Route path="attendance" element={<Attendance />}></Route>
+                </Route>
+
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
