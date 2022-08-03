@@ -8,14 +8,12 @@ import { useForm } from "react-hook-form";
 import { AiFillApple } from "react-icons/ai";
 import { FaFacebookF, FaGoogle, FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import auth from "../../../../firebase.init";
-import Navbar from "../../../Shared//Navbar/Navbar";
 import Loader from "../../../Shared/Loader/Loader";
+import Navbar from "../../../Shared/Navbar/Navbar";
 
-const Login = () => {
-    const [signInWithEmailAndPassword, user, loading] =
-        useSignInWithEmailAndPassword(auth);
+const BusinessLogin = () => {
     const {
         register,
         formState: { errors },
@@ -25,23 +23,33 @@ const Login = () => {
         useSignInWithGoogle(auth);
     const [signInWithFacebook, Fuser, Floading, Ferror] =
         useSignInWithFacebook(auth);
-    const navigate = useNavigate();
-
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    const [signInWithEmailAndPassword, user, loading, error] =
+        useSignInWithEmailAndPassword(auth);
 
     const onSubmit = async (data) => {
         const email = data.email;
+        const role = data.userRole;
         const password = data.password;
-        await signInWithEmailAndPassword(email, password);
-        navigate("/");
-    };
-    if (Guser || Fuser || user) {
-        navigate(from, { replace: true });
-    }
+        const signInDetails = { email, role };
 
+        //check isRole
+        fetch("http://localhost:5000/isRole", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(signInDetails),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.role) {
+                    signInWithEmailAndPassword(email, password);
+                }
+            });
+    };
+    //HandleLoading
     if (googleLoading || Floading) {
-        return <Loader></Loader>;
+        return <Loader />;
     }
     return (
         <div>
@@ -88,7 +96,7 @@ const Login = () => {
                                     onSubmit={handleSubmit(onSubmit)}
                                 >
                                     <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl">
+                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <FaRegEnvelope className=" m-2 text-gray-400" />
                                             <input
                                                 {...register("email", {
@@ -124,6 +132,37 @@ const Login = () => {
                                             )}
                                         </h1>
                                     </section>
+                                    <section>
+                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                            <select
+                                                className="text-gray-400 bg-transparent w-full outline-none"
+                                                {...register("userRole", {
+                                                    required: {
+                                                        value: true,
+                                                        message:
+                                                            "Your Role is Required",
+                                                    },
+                                                })}
+                                            >
+                                                <option value="">
+                                                    Select Your Role
+                                                </option>
+                                                <option value="CEO">CEO</option>
+                                                <option value="Manager">
+                                                    Manager
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <h1 className="text-left ml-2">
+                                            {errors.userRole?.type ===
+                                                "required" && (
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.userRole.message}
+                                                </span>
+                                            )}
+                                        </h1>
+                                    </section>
+                                    {/*Choose your role*/}
                                     <section>
                                         <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <MdLockOutline className=" m-2 text-gray-400" />
@@ -162,7 +201,7 @@ const Login = () => {
                                         </h1>
                                     </section>
                                     <div></div>
-                                    {loading ? (
+                                    {googleLoading || Floading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Login...
                                         </button>
@@ -211,4 +250,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default BusinessLogin;
