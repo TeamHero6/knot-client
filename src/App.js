@@ -17,6 +17,7 @@ import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
+import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Home from "./Components/Pages/Home/Home";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/hrdashboard" element={<Hrdashboard />} />
                 <Route path="/BusinessSignUp" element={<BusinessSignup />} />
+                <Route path="/BusinessLogin" element={<BusinessLogin />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />

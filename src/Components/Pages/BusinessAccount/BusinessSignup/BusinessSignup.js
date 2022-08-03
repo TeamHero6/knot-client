@@ -8,7 +8,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth, { storage } from "../../../../firebase.init";
 
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+    useCreateUserWithEmailAndPassword,
+    useSignInWithFacebook,
+    useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { MdOutlineAddBusiness } from "react-icons/md";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
@@ -19,6 +23,10 @@ const BusinessSignup = () => {
     //Authentications
     const [createUserWithEmailAndPassword, user, Createloading, error] =
         useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, Guser, googleLoading, Gerror] =
+        useSignInWithGoogle(auth);
+    const [signInWithFacebook, Fuser, Floading, Ferror] =
+        useSignInWithFacebook(auth);
     const {
         register,
         formState: { errors },
@@ -377,7 +385,7 @@ const BusinessSignup = () => {
                             us.
                         </p>
                         <Link
-                            to="/login"
+                            to="/BusinessLogin"
                             className="border-2 border-white rounded-full md:px-3 lg:px-12 py-2 hover:bg-white hover:text-cyan-400 duration-500 transition-all"
                         >
                             Sign in
