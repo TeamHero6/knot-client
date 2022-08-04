@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import HRNavbar from '../../Shared/HRNavbar/HRNavbar';
 import LeaveRequest from '../Leave/LeaveRequest/LeaveRequest';
+import Award from './Award';
 import LeaveInfo from './LeaveInfo';
+import Meeting from './Meeting';
+import Warming from './Warming';
 
 const Leave = () => {
     const [show, setShow] = useState(false);
@@ -51,7 +55,9 @@ const Leave = () => {
                             }
                             <LeaveRequest></LeaveRequest>
                         </div>
-
+                        <Meeting></Meeting>
+                        <Warming></Warming>
+                        <Award></Award>
                     </div>
                 </div>
             </div>
