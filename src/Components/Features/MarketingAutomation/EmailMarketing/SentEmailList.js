@@ -7,7 +7,7 @@ const SentEmailList = () => {
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/sentEmail')
+        fetch('https://sheltered-cliffs-60290.herokuapp.com/sentEmail')
             .then(res => res.json())
             .then(data => setEmailList(data))
     }, []);
