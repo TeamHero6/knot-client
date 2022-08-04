@@ -45,7 +45,14 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
-                <Route path="/accessApps" element={<AccessYourApps />} />
+                <Route
+                    path="/accessApps"
+                    element={
+                        <RequireAuth>
+                            <AccessYourApps />
+                        </RequireAuth>
+                    }
+                />
                 <Route path="/marketingTS" element={<MarketingAutomation />}>
                     <Route index element={<EmailMarketing />}></Route>
                     <Route

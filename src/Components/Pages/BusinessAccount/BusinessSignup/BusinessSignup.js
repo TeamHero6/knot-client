@@ -22,11 +22,9 @@ const BusinessSignup = () => {
         register,
         formState: { errors },
         handleSubmit,
-        reset,
     } = useForm();
     const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
-    const [customLoading, setCustomLoading] = useState(false);
 
     //handle signup error
     const [customError, setCustomError] = useState("");
@@ -37,7 +35,6 @@ const BusinessSignup = () => {
 
     const onSubmit = async (data) => {
         setCustomError("");
-        setCustomLoading(true);
         const profilePhoto = await data?.image[0];
         const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
         uploadBytes(imageref, profilePhoto).then((snapshot) => {
@@ -89,7 +86,6 @@ const BusinessSignup = () => {
                         setCustomError(error);
                     }
                     if (token) {
-                        setCustomLoading(false);
                         createUserWithEmailAndPassword(email, password);
                     }
                 });
