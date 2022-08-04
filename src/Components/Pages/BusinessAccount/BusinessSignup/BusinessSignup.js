@@ -26,12 +26,18 @@ const BusinessSignup = () => {
     } = useForm();
     const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
+    const [customLoading, setCustomLoading] = useState(false);
+
+    //handle signup error
+    const [customError, setCustomError] = useState("");
 
     let location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        setCustomError("");
+        setCustomLoading(true);
         const profilePhoto = await data?.image[0];
         const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
         uploadBytes(imageref, profilePhoto).then((snapshot) => {
@@ -77,8 +83,13 @@ const BusinessSignup = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    const token = data.token;
+                    const token = data?.token;
+                    const error = data?.message;
+                    if (error) {
+                        setCustomError(error);
+                    }
                     if (token) {
+                        setCustomLoading(false);
                         createUserWithEmailAndPassword(email, password);
                     }
                 });
@@ -339,6 +350,12 @@ const BusinessSignup = () => {
                                         </h1>
                                     </section>{" "}
                                     {/*Business Logo*/}
+                                    <h1 className="text-left ml-2">
+                                        <span className="w-full text-left text-red-400 text-sm">
+                                            {customError}
+                                        </span>
+                                    </h1>
+                                    {/*handle signup error*/}
                                     {Googleloading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Loading...
