@@ -15,7 +15,7 @@ const EmailMarketing = () => {
         const emailToSend = { emailTo, emailSubject, emailDescription }
         console.log(emailToSend)
 
-        fetch('http://localhost:5000/sentEmail', {
+        fetch('https://sheltered-cliffs-60290.herokuapp.com/sentEmail', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -11,13 +11,13 @@ const UserDashboard = () => {
     const [leave, setleave] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        fetch('https://sheltered-cliffs-60290.herokuapp.com/user')
             .then(res => res.json())
             .then(data => setleave(data))
     }, []);
     const onSubmit = data => {
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://sheltered-cliffs-60290.herokuapp.com/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

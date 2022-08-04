@@ -2,6 +2,12 @@ import { Link, Outlet } from 'react-router-dom';
 import HRNavbar from '../../Shared/HRNavbar/HRNavbar'
 
 
+
+    useEffect(()=>{
+        fetch('https://sheltered-cliffs-60290.herokuapp.com/user')
+        .then(res=>res.json())
+        .then(data=>setRequest(data))
+    },[]);
 const Hrdashboard = () => {
     
     return (
