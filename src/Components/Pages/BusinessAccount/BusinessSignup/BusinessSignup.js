@@ -28,68 +28,73 @@ const BusinessSignup = () => {
 
     //handle signup error
     const [customError, setCustomError] = useState("");
+    const [token, setToken] = useState("");
 
     let location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        console.log("clickedd");
         setCustomError("");
         const profilePhoto = await data?.image[0];
         const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
-        uploadBytes(imageref, profilePhoto).then((snapshot) => {
+        await uploadBytes(imageref, profilePhoto).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setProfileImageUrl(url);
             });
         });
+
         // Profile Photo Upload 48 - 56
 
         const BusinessLogo = await data?.logo[0];
         const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
-        uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
+        await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setBusinessLogoUrl(url);
             });
         });
+        console.log("pic uploaded");
         // Business Logo Upload 35-41
 
         //Data Collect and sent to server 59 - 94
-        if (BusinessLogoUrl && profileImageUrl) {
-            const email = data.email;
-            const name = data.name;
-            const password = data.password;
-            const companyName = data.businessName;
-            const role = data.userRole;
-            const userInfo = {
-                name,
-                email,
-                password,
-                companyName,
-                userPhoto: profileImageUrl,
-                role,
-                CompanyLogo: BusinessLogoUrl,
-            };
 
-            //send user Data to DB
-            fetch("http://localhost:5000/createdUser", {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(userInfo),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    const token = data?.token;
-                    const error = data?.message;
-                    if (error) {
-                        setCustomError(error);
-                    }
-                    if (token) {
-                        createUserWithEmailAndPassword(email, password);
-                    }
-                });
-        }
+        const email = data.email;
+        const name = data.name;
+        const password = data.password;
+        const companyName = data.businessName;
+        const role = data.userRole;
+        const userInfo = {
+            name,
+            email,
+            password,
+            companyName,
+            userPhoto: profileImageUrl,
+            role,
+            CompanyLogo: BusinessLogoUrl,
+        };
+
+        //send user Data to DB
+        fetch("http://localhost:5000/createdUser", {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                const token = data?.token;
+                const error = data?.message;
+                if (error) {
+                    setCustomError(error);
+                }
+                if (token) {
+                    setToken(token);
+                }
+            });
+        await createUserWithEmailAndPassword(email, password);
+        console.log("account created");
 
         if (user) {
             navigate(from, { replace: true });

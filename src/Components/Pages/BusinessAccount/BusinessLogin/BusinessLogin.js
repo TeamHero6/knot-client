@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
-import Loader from "../../../Shared/Loader/Loader";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessLogin = () => {
@@ -16,8 +15,14 @@ const BusinessLogin = () => {
     } = useForm();
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
+    const [customError, setCustomError] = useState("");
+
+    let location = useLocation();
+    const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        setCustomError("");
         const email = data.email;
         const role = data.userRole;
         const password = data.password;
@@ -33,15 +38,16 @@ const BusinessLogin = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                if (data.role) {
+                if (data?.role) {
                     signInWithEmailAndPassword(email, password);
                 } else {
+                    setCustomError("You account have an issue! contact us.");
                 }
             });
     };
-    //HandleLoading
-    if (loading) {
-        return <Loader />;
+
+    if (user) {
+        navigate(from, { replace: true });
     }
     return (
         <div>
@@ -170,7 +176,9 @@ const BusinessLogin = () => {
                                             )}
                                         </h1>
                                     </section>
-                                    <div></div>
+                                    <div className="text-left ml2 w-full text-red-400 text-sm mt-2">
+                                        {customError}
+                                    </div>
                                     {loading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Login...
