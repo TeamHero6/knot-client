@@ -1,12 +1,7 @@
 import React from "react";
-import {
-    useSignInWithEmailAndPassword,
-    useSignInWithFacebook,
-    useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { AiFillApple } from "react-icons/ai";
-import { FaFacebookF, FaGoogle, FaRegEnvelope } from "react-icons/fa";
+import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
 import auth from "../../../../firebase.init";
@@ -19,10 +14,6 @@ const BusinessLogin = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
-    const [signInWithGoogle, Guser, googleLoading, Gerror] =
-        useSignInWithGoogle(auth);
-    const [signInWithFacebook, Fuser, Floading, Ferror] =
-        useSignInWithFacebook(auth);
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
 
@@ -44,11 +35,12 @@ const BusinessLogin = () => {
             .then((data) => {
                 if (data.role) {
                     signInWithEmailAndPassword(email, password);
+                } else {
                 }
             });
     };
     //HandleLoading
-    if (googleLoading || Floading) {
+    if (loading) {
         return <Loader />;
     }
     return (
@@ -65,28 +57,6 @@ const BusinessLogin = () => {
                                 Sign in to Account
                             </h2>
                             <div className="border-2 w-10 border-cyan-400 inline-block"></div>
-                            <div className="flex justify-center items-center my-2">
-                                <p
-                                    onClick={() => signInWithFacebook()}
-                                    className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
-                                >
-                                    <FaFacebookF className="text-sm" />
-                                </p>
-                                <p
-                                    className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
-                                    onClick={() => signInWithGoogle()}
-                                >
-                                    <FaGoogle className="text-sm" />
-                                </p>
-                                <a
-                                    href="facebook.com"
-                                    target={"_blank"}
-                                    className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
-                                >
-                                    <AiFillApple className="text-md" />
-                                </a>
-                            </div>{" "}
-                            {/* Social Login section */}
                             <p className="text-gray-400 my-3">
                                 or use your email account
                             </p>
@@ -201,7 +171,7 @@ const BusinessLogin = () => {
                                         </h1>
                                     </section>
                                     <div></div>
-                                    {googleLoading || Floading ? (
+                                    {loading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Login...
                                         </button>

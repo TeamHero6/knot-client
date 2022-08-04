@@ -8,33 +8,24 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth, { storage } from "../../../../firebase.init";
 
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import {
-    useCreateUserWithEmailAndPassword,
-    useSignInWithFacebook,
-    useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { MdOutlineAddBusiness } from "react-icons/md";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
-import Loader from "../../../Shared/Loader/Loader";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessSignup = () => {
     //Authentications
-    const [createUserWithEmailAndPassword, user, Createloading, error] =
+    const [createUserWithEmailAndPassword, user, Googleloading, error] =
         useCreateUserWithEmailAndPassword(auth);
-    const [signInWithGoogle, Guser, googleLoading, Gerror] =
-        useSignInWithGoogle(auth);
-    const [signInWithFacebook, Fuser, Floading, Ferror] =
-        useSignInWithFacebook(auth);
     const {
         register,
         formState: { errors },
         handleSubmit,
+        reset,
     } = useForm();
     const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
-    const [loading, setLoading] = useState(false);
 
     let location = useLocation();
     const navigate = useNavigate();
@@ -93,12 +84,8 @@ const BusinessSignup = () => {
                 });
         }
 
-        if (Createloading) {
-            return <Loader />;
-        }
         if (user) {
             navigate(from, { replace: true });
-            console.log(user);
         }
     };
     return (
@@ -352,7 +339,7 @@ const BusinessSignup = () => {
                                         </h1>
                                     </section>{" "}
                                     {/*Business Logo*/}
-                                    {loading ? (
+                                    {Googleloading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Loading...
                                         </button>

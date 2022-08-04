@@ -4,11 +4,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
+import Loader from "../Loader/Loader";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
-    if (user) {
-        console.log(user.displayName);
+    if (loading) {
+        return <Loader />;
     }
     return (
         <div className=" md:px-8 lg:px-12">
