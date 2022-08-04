@@ -12,6 +12,17 @@ const SentEmailList = () => {
             .then(data => setEmailList(data))
     }, []);
 
+    const deleteEmail = (id) => {
+        const proceed = window.confirm('Do you want to delete this task?');
+        if (proceed) {
+            const url = `http://localhost:5000/deleteEmail/${id}`;
+            fetch(url, {
+                method: "DELETE"
+            }).then(res => res.json())
+                .then(data => console.log(data))
+        }
+    }
+
     return (
         <div class="overflow-x-auto w-full my-16">
             <table class="table w-full">
@@ -53,7 +64,11 @@ const SentEmailList = () => {
                             <td>
                                 {email.emailDescription}
                             </td>
-                            <td><RiDeleteBin5Line className='text-xl text-red-500' /> </td>
+                            <td>
+                                <button onClick={() => deleteEmail(email._id)} className='btn btn-sm btn-ghost'>
+                                    <RiDeleteBin5Line className='text-xl text-red-500' />
+                                </button>
+                            </td>
                             <td><FaRegStar className='text-xl' /> </td>
                             <th>
                                 <button class="btn btn-outline btn-xs">Done</button>
