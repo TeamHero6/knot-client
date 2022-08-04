@@ -7,8 +7,8 @@ import auth from "../../../firebase.init";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
-    if (user) {
-        console.log(user.displayName);
+    if (loading) {
+        return;
     }
     return (
         <div className=" md:px-8 lg:px-12">
@@ -100,7 +100,7 @@ const Navbar = () => {
                     </a>
                 </div>
                 <div class="navbar-end">
-                    <div className="hidden lg:flex">
+                    <div className="hidden lg:flex items-center">
                         <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>

@@ -8,25 +8,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth, { storage } from "../../../../firebase.init";
 
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import {
-    useCreateUserWithEmailAndPassword,
-    useSignInWithFacebook,
-    useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { MdOutlineAddBusiness } from "react-icons/md";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
-import Loader from "../../../Shared/Loader/Loader";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessSignup = () => {
     //Authentications
-    const [createUserWithEmailAndPassword, user, Createloading, error] =
+    const [createUserWithEmailAndPassword, user, Googleloading, error] =
         useCreateUserWithEmailAndPassword(auth);
-    const [signInWithGoogle, Guser, googleLoading, Gerror] =
-        useSignInWithGoogle(auth);
-    const [signInWithFacebook, Fuser, Floading, Ferror] =
-        useSignInWithFacebook(auth);
     const {
         register,
         formState: { errors },
@@ -34,71 +25,79 @@ const BusinessSignup = () => {
     } = useForm();
     const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
-    const [loading, setLoading] = useState(false);
+
+    //handle signup error
+    const [customError, setCustomError] = useState("");
+    const [token, setToken] = useState("");
 
     let location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        console.log("clickedd");
+        setCustomError("");
         const profilePhoto = await data?.image[0];
         const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
-        uploadBytes(imageref, profilePhoto).then((snapshot) => {
+        await uploadBytes(imageref, profilePhoto).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setProfileImageUrl(url);
             });
         });
+
         // Profile Photo Upload 48 - 56
 
         const BusinessLogo = await data?.logo[0];
         const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
-        uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
+        await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setBusinessLogoUrl(url);
             });
         });
+        console.log("pic uploaded");
         // Business Logo Upload 35-41
 
         //Data Collect and sent to server 59 - 94
-        if (BusinessLogoUrl && profileImageUrl) {
-            const email = data.email;
-            const name = data.name;
-            const password = data.password;
-            const companyName = data.businessName;
-            const role = data.userRole;
-            const userInfo = {
-                name,
-                email,
-                password,
-                companyName,
-                userPhoto: profileImageUrl,
-                role,
-                CompanyLogo: BusinessLogoUrl,
-            };
 
-            //send user Data to DB
-            fetch("http://localhost:5000/createdUser", {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(userInfo),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    const token = data.token;
-                    if (token) {
-                        createUserWithEmailAndPassword(email, password);
-                    }
-                });
-        }
+        const email = data.email;
+        const name = data.name;
+        const password = data.password;
+        const companyName = data.businessName;
+        const role = data.userRole;
+        const userInfo = {
+            name,
+            email,
+            password,
+            companyName,
+            userPhoto: profileImageUrl,
+            role,
+            CompanyLogo: BusinessLogoUrl,
+        };
 
-        if (Createloading) {
-            return <Loader />;
-        }
+        //send user Data to DB
+        fetch("http://localhost:5000/createdUser", {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                const token = data?.token;
+                const error = data?.message;
+                if (error) {
+                    setCustomError(error);
+                }
+                if (token) {
+                    setToken(token);
+                }
+            });
+        await createUserWithEmailAndPassword(email, password);
+        console.log("account created");
+
         if (user) {
             navigate(from, { replace: true });
-            console.log(user);
         }
     };
     return (
@@ -352,7 +351,13 @@ const BusinessSignup = () => {
                                         </h1>
                                     </section>{" "}
                                     {/*Business Logo*/}
-                                    {loading ? (
+                                    <h1 className="text-left ml-2">
+                                        <span className="w-full text-left text-red-400 text-sm">
+                                            {customError}
+                                        </span>
+                                    </h1>
+                                    {/*handle signup error*/}
+                                    {Googleloading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Loading...
                                         </button>
