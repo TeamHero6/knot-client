@@ -27,11 +27,7 @@ import CustomerListing from "./Components/Features/MarketingAutomation/CustomerL
 import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
 import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
-import UserDashboard from "./Components/Pages/UserDashboard/UserDashboard";
-import LeaveInfo from "./Components/Pages/Leave/LeaveInfo";
-import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
-import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 
 function App() {
     return (
@@ -50,7 +46,10 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
-                <Route path="/userpayrolls" element={<UserPayrolls></UserPayrolls>} />
+                <Route
+                    path="/userpayrolls"
+                    element={<UserPayrolls></UserPayrolls>}
+                />
                 <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/accessApps"
