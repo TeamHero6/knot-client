@@ -1,31 +1,52 @@
 import React from "react";
-import {
-    AiFillFacebook,
-    AiFillInstagram,
-    AiFillLinkedin,
-    AiFillYoutube,
-} from "react-icons/ai";
+import { AiFillFacebook } from 'react-icons/ai';
+import { AiFillInstagram } from 'react-icons/ai';
+import { AiFillLinkedin } from 'react-icons/ai';
+import { AiFillYoutube } from 'react-icons/ai';
 import { Link } from "react-router-dom";
-import Allinone from "../../../Image/Icon/Allinone.png";
-import Easy from "../../../Image/Icon/Easy.png";
-import Secure from "../../../Image/Icon/Secure.png";
 import Logo from "../../../Image/Logo/KnotLogo.png";
 import "../../Pages/Style/Style.css";
+import { toast, ToastContainer } from 'react-toastify';
 
 const Footer = () => {
+
+    const emailSend = event => {
+        event.preventDefault()
+        const email = event.target.email.value
+
+        const newsletter = { email }
+      
+
+        fetch('https://sheltered-cliffs-60290.herokuapp.com/newsletter', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newsletter)
+        })
+            .then(res => res.json())
+            .then((data) => {
+                toast('Thanks for being with us');
+                event.target.reset()
+            })
+
+    }
     return (
         <div className="footer-container">
             <div className="footer-section-top">
+
                 <section className="logo-area">
-                    <img src={Logo} alt="" />
-                    <h3>
-                        Build and sell extensions for <br /> Zoho products.
-                    </h3>
                     <div className="icon">
                         <a href="https://www.facebook.com/"><AiFillFacebook /></a>
                         <a href="https://www.instagram.com/"><AiFillInstagram /></a>
                         <a href="https://www.linkedin.com/"><AiFillLinkedin /></a>
                         <a href="https://www.youtube.com/"><AiFillYoutube /></a>
+                    </div>
+                    <div>
+                        <img src={Logo} alt="" />
+                        <h3>
+                            Build and sell extensions for <br /> Knot products.
+                        </h3>
                     </div>
                 </section>
                 <section className="additional-link-area">
@@ -42,7 +63,7 @@ const Footer = () => {
                                 <Link to="/FAQ">FAQ</Link> <br />
                             </li>
                             <li>
-                                <Link to="/">Payment Method</Link>
+                                <Link to="/">Payment Policy</Link>
                             </li>
                         </ul>
                     </div>
@@ -58,7 +79,7 @@ const Footer = () => {
                 </section>
                 <section className="newsletter-area">
                     <h2>Newsletter</h2>
-                    <form>
+                    <form onSubmit={emailSend}>
                         <label htmlFor="email">Email</label> <br />
                         <input
                             className="newsletter-input"
@@ -81,14 +102,25 @@ const Footer = () => {
                     <div class="collapse">
                         <input type="checkbox" />
                         <div class="collapse-title text-xl font-medium">
-                            <img src={Easy} alt="" />
-                            <p>Easy to use</p>
+                            <h2>Additional Link</h2>
                         </div>
                         <div class="collapse-content">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Suscipit, in.
-                            </p>
+                            <div className="link">
+                                <ul>
+                                    <li>
+                                        <Link to="/about">About us</Link> <br />
+                                    </li>
+                                    <li>
+                                        <Link to="/blog">Blog</Link> <br />
+                                    </li>
+                                    <li>
+                                        <Link to="/FAQ">FAQ</Link> <br />
+                                    </li>
+                                    <li>
+                                        <Link to="/">Payment Method</Link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,39 +128,35 @@ const Footer = () => {
                     <div class="collapse">
                         <input type="checkbox" />
                         <div class="collapse-title text-xl font-medium">
-                            <img src={Secure} alt="" />
-                            <p>Secure Database</p>
+                            <h2>Contact Us</h2>
                         </div>
                         <div class="collapse-content">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Suscipit, in.
-                            </p>
+                            <section className="contact-area">
+                                <h4>
+                                    Address: Mirpur - 1207, Dhaka <br />
+                                    Division, Bangladesh
+                                </h4>
+                                <h4>Phone: 0123456789</h4>
+                                <h4>Email: info@knot.com</h4>
+                            </section>
                         </div>
                     </div>
                 </div>
-                <div className="One-Step-Solution">
-                    <div class="collapse">
-                        <input type="checkbox" />
-                        <div class="collapse-title text-xl font-medium">
-                            <img src={Allinone} alt="" />
-                            <p>One Step Solution</p>
-                        </div>
-                        <div class="collapse-content">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Suscipit, in.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div className="footer-section-bottom text-center">
                 <p>
                     Copyright © {new Date().getFullYear()} Knot Corporation Pvt.
                     Ltd. All Rights Reserved.
                 </p>
+                <div className="icon">
+                    <a href="https://www.facebook.com/"><AiFillFacebook /></a>
+                    <a href="https://www.instagram.com/"><AiFillInstagram /></a>
+                    <a href="https://www.linkedin.com/"><AiFillLinkedin /></a>
+                    <a href="https://www.youtube.com/"><AiFillYoutube /></a>
+                </div>
             </div>
+            <ToastContainer/>
         </div>
     );
 };

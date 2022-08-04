@@ -1,47 +1,53 @@
-import React from "react";
-import {
-    useSignInWithEmailAndPassword,
-    useSignInWithFacebook,
-    useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { AiFillApple } from "react-icons/ai";
-import { FaFacebookF, FaGoogle, FaRegEnvelope } from "react-icons/fa";
+import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
-import Navbar from "../../../Shared//Navbar/Navbar";
-import Loader from "../../../Shared/Loader/Loader";
+import Navbar from "../../../Shared/Navbar/Navbar";
 
-const Login = () => {
-    const [signInWithEmailAndPassword, user, loading] =
-        useSignInWithEmailAndPassword(auth);
+const BusinessLogin = () => {
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm();
-    const [signInWithGoogle, Guser, googleLoading, Gerror] =
-        useSignInWithGoogle(auth);
-    const [signInWithFacebook, Fuser, Floading, Ferror] =
-        useSignInWithFacebook(auth);
-    const navigate = useNavigate();
+    const [signInWithEmailAndPassword, user, loading, error] =
+        useSignInWithEmailAndPassword(auth);
+    const [customError, setCustomError] = useState("");
 
     let location = useLocation();
+    const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        setCustomError("");
         const email = data.email;
+        const role = data.userRole;
         const password = data.password;
-        await signInWithEmailAndPassword(email, password);
-        navigate("/");
-    };
-    if (Guser || Fuser || user) {
-        navigate(from, { replace: true });
-    }
+        const signInDetails = { email, role };
 
-    if (googleLoading || Floading) {
-        return <Loader></Loader>;
+        //check isRole
+        fetch("http://localhost:5000/isRole", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(signInDetails),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data?.role) {
+                    signInWithEmailAndPassword(email, password);
+                } else {
+                    setCustomError("You account have an issue! contact us.");
+                }
+            });
+    };
+
+    if (user) {
+        navigate(from, { replace: true });
     }
     return (
         <div>
@@ -57,28 +63,6 @@ const Login = () => {
                                 Sign in to Account
                             </h2>
                             <div className="border-2 w-10 border-cyan-400 inline-block"></div>
-                            <div className="flex justify-center items-center my-2">
-                                <p
-                                    onClick={() => signInWithFacebook()}
-                                    className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
-                                >
-                                    <FaFacebookF className="text-sm" />
-                                </p>
-                                <p
-                                    className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
-                                    onClick={() => signInWithGoogle()}
-                                >
-                                    <FaGoogle className="text-sm" />
-                                </p>
-                                <a
-                                    href="facebook.com"
-                                    target={"_blank"}
-                                    className="border-2 border-gray-200 rounded-full p-3 mx-1 hover:bg-cyan-400 hover:text-white duration-400 transition-all"
-                                >
-                                    <AiFillApple className="text-md" />
-                                </a>
-                            </div>{" "}
-                            {/* Social Login section */}
                             <p className="text-gray-400 my-3">
                                 or use your email account
                             </p>
@@ -88,7 +72,7 @@ const Login = () => {
                                     onSubmit={handleSubmit(onSubmit)}
                                 >
                                     <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl">
+                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <FaRegEnvelope className=" m-2 text-gray-400" />
                                             <input
                                                 {...register("email", {
@@ -126,6 +110,37 @@ const Login = () => {
                                     </section>
                                     <section>
                                         <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                            <select
+                                                className="text-gray-400 bg-transparent w-full outline-none"
+                                                {...register("userRole", {
+                                                    required: {
+                                                        value: true,
+                                                        message:
+                                                            "Your Role is Required",
+                                                    },
+                                                })}
+                                            >
+                                                <option value="">
+                                                    Select Your Role
+                                                </option>
+                                                <option value="CEO">CEO</option>
+                                                <option value="Manager">
+                                                    Manager
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <h1 className="text-left ml-2">
+                                            {errors.userRole?.type ===
+                                                "required" && (
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.userRole.message}
+                                                </span>
+                                            )}
+                                        </h1>
+                                    </section>
+                                    {/*Choose your role*/}
+                                    <section>
+                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <MdLockOutline className=" m-2 text-gray-400" />
                                             <input
                                                 {...register("password", {
@@ -161,7 +176,9 @@ const Login = () => {
                                             )}
                                         </h1>
                                     </section>
-                                    <div></div>
+                                    <div className="text-left ml2 w-full text-red-400 text-sm mt-2">
+                                        {customError}
+                                    </div>
                                     {loading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Login...
@@ -198,7 +215,7 @@ const Login = () => {
                             us.
                         </p>
                         <Link
-                            to="/signup"
+                            to="/BusinessSignUp"
                             className="border-2 border-white rounded-full md:px-3 lg:px-12 py-2 hover:bg-white hover:text-cyan-400 duration-500 transition-all"
                         >
                             Sign Up
@@ -211,4 +228,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default BusinessLogin;
