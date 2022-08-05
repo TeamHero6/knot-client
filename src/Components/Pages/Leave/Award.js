@@ -4,7 +4,7 @@ const Award = () => {
     const [awards, setAwards] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/award")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/award")
             .then((res) => res.json())
             .then((data) => setAwards(data));
     }, []);

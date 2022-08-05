@@ -4,7 +4,7 @@ import UserTable from "./UserTable";
 const Employee = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/inputData")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/inputData")
             .then((res) => res.json())
             .then((data) => setUsers(data));
     }, []);

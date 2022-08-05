@@ -7,12 +7,12 @@ const Dashboard = () => {
     const [allTask, setAlltask] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/user")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/user")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
     useEffect(() => {
-        fetch("http://localhost:5000/alltasks")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/alltasks")
             .then((res) => res.json())
             .then((data) => setAlltask(data));
     }, []);

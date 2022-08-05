@@ -5,13 +5,13 @@ const UserPayrolls = () => {
     const [userinfo, setUserinfo] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/payrolls")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/inputData")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/inputData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);

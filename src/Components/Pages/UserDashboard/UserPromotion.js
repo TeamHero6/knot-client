@@ -5,13 +5,13 @@ const UserPromotion = () => {
     const [transfers, setTransfers] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/performance")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromotions(data));
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/transfer")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer")
             .then((res) => res.json())
             .then((data) => setTransfers(data));
     }, []);

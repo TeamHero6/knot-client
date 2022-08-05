@@ -8,7 +8,7 @@ const WarningModal = ({ refetch }) => {
         const warningReason = e.target.reason.value;
         const type = e.target.type.value;
         const warningDetails = { warningDate, warningReason, type };
-        fetch("http://localhost:5000/createWarning", {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/createWarning", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

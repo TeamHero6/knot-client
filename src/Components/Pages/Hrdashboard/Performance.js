@@ -10,13 +10,13 @@ const Performance = () => {
     const [promo, setPromo] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/performance")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, []);
 
     const onSubmit = (data) => {
-        fetch("http://localhost:5000/performance", {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

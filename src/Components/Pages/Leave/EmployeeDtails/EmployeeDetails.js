@@ -71,7 +71,7 @@ const EmployeeDetails = () => {
         };
         // console.log(inputData)
 
-        const url = "http://localhost:5000/inputData";
+        const url = "https://sheltered-cliffs-60290.herokuapp.com/inputData";
         fetch(url, {
             method: "POST",
             headers: {

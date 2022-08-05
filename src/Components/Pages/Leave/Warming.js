@@ -4,7 +4,7 @@ const Warming = () => {
     const [warnings, setWarnings] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/warnings")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/warnings")
             .then((res) => res.json())
             .then((data) => setWarnings(data));
     }, []);

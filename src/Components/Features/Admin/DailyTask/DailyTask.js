@@ -4,7 +4,7 @@ const DailyTask = () => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/alltasks")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/alltasks")
             .then((res) => res.json())
             .then((data) => setTasks(data));
     }, []);

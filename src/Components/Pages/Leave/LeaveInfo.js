@@ -5,7 +5,7 @@ const LeaveInfo = ({ user }) => {
     const [singleUser, setSingleUser] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/leaveData/${_id}`)
+        fetch(`https://sheltered-cliffs-60290.herokuapp.com/leaveData/${_id}`)
             .then((res) => res.json())
             .then((data) => setSingleUser(data));
     }, [_id]);

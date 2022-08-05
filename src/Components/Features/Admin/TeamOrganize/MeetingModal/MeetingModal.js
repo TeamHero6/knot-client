@@ -18,7 +18,7 @@ const MeetingModal = ({ refetch }) => {
             meetingWith,
             meetingLink,
         };
-        fetch("http://localhost:5000/createNewMeeting", {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/createNewMeeting", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

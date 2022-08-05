@@ -17,7 +17,7 @@ const Footer = () => {
 
         const newsletter = { email };
 
-        fetch("http://localhost:5000/newsletter", {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/newsletter", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
