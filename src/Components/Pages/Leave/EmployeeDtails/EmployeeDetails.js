@@ -88,7 +88,7 @@ const EmployeeDetails = () => {
     }
     return (
         <div>
-            <HRNavbar></HRNavbar>
+            {/* <HRNavbar></HRNavbar> */}
             <div>
                 <div class="drawer drawer-mobile">
                     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />

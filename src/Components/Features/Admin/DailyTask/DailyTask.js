@@ -35,7 +35,7 @@ const DailyTask = () => {
                                     <td>{task.task}</td>
                                     <td>{task.DueDate}</td>
                                     <td>
-                                        <button>Running</button>
+                                        <p>Running</p>
                                     </td>
                                     <td></td>
                                 </tr>
