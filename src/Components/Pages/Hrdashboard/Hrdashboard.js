@@ -6,7 +6,7 @@ const Hrdashboard = () => {
     const [request, setRequest] = useState("");
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/user")
+        fetch("http://localhost:5000/user")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);

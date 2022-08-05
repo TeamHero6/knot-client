@@ -30,7 +30,7 @@ const AddTask = () => {
             DueDate,
         };
 
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/addNewTask", {
+        fetch("http://localhost:5000/addNewTask", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

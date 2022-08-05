@@ -12,6 +12,9 @@ import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
+import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
+import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
+import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
@@ -20,14 +23,18 @@ import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireA
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Home from "./Components/Pages/Home/Home";
+import Attendance from "./Components/Pages/Hrdashboard/Attendance";
+import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
+import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
+import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
+import Performance from "./Components/Pages/Hrdashboard/Performance";
 import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
 import Leave from "./Components/Pages/Leave/Leave";
-
-import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
-import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
-import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
-import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
+import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
+import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 
 function App() {
     return (
@@ -40,12 +47,28 @@ function App() {
                     element={<EmployeeDetails></EmployeeDetails>}
                 ></Route>
                 <Route path="/login" element={<Login />} />
-                <Route path="/hrdashboard" element={<Hrdashboard />} />
+                <Route path="/hrdashboard" element={<Hrdashboard />}>
+                    <Route index element={<Dashboard />}></Route>
+                    <Route
+                        path="employeeorg"
+                        element={<EmployeesOrganize />}
+                    ></Route>
+                    <Route path="performance" element={<Performance />}></Route>
+                    <Route path="payrolls" element={<Payrolls />}></Route>
+                    <Route path="attendance" element={<Attendance />}></Route>
+                </Route>
                 <Route path="/BusinessSignUp" element={<BusinessSignup />} />
                 <Route path="/BusinessLogin" element={<BusinessLogin />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
-                <Route path="/userdashboard" element={<UserDashboard />} />
+
+                <Route path="/userdashboard" element={<UserDashboard />}>
+                    <Route index element={<LeaveRequest />} />
+                    <Route path="attendance" element={<UserAttaindance />} />
+                    <Route path="performance" element={<UserPromotion />} />
+                    <Route path="Payrolls" element={<UserPayrolls />} />
+                </Route>
+
                 <Route
                     path="/userpayrolls"
                     element={<UserPayrolls></UserPayrolls>}

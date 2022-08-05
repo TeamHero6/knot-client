@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { RiDeleteBin5Line } from 'react-icons/ri';
-import { FaRegStar } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import { FaRegStar } from "react-icons/fa";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const SentEmailList = () => {
-
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
-        fetch('https://sheltered-cliffs-60290.herokuapp.com/sentEmail')
-            .then(res => res.json())
-            .then(data => setEmailList(data))
+        fetch("http://localhost:5000/sentEmail")
+            .then((res) => res.json())
+            .then((data) => setEmailList(data));
     }, []);
 
     const deleteEmail = (id) => {
-        const proceed = window.confirm('Do you want to delete this task?');
+        const proceed = window.confirm("Do you want to delete this task?");
         if (proceed) {
             const url = `http://localhost:5000/deleteEmail/${id}`;
             fetch(url, {
-                method: "DELETE"
-            }).then(res => res.json())
-                .then(data => console.log(data))
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
         }
-    }
+    };
 
     return (
         <div class="overflow-x-auto w-full my-16">
@@ -44,8 +44,8 @@ const SentEmailList = () => {
                 </thead>
                 <tbody>
                     {/* <!-- row 1 --> */}
-                    {
-                        emailList.map(email => <tr key={email._id}>
+                    {emailList.map((email) => (
+                        <tr key={email._id}>
                             <th>
                                 <label>
                                     <input type="checkbox" class="checkbox" />
@@ -58,24 +58,28 @@ const SentEmailList = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td className='font-semibold'>
+                            <td className="font-semibold">
                                 {email.emailSubject}
                             </td>
+                            <td>{email.emailDescription}</td>
                             <td>
-                                {email.emailDescription}
-                            </td>
-                            <td>
-                                <button onClick={() => deleteEmail(email._id)} className='btn btn-sm btn-ghost'>
-                                    <RiDeleteBin5Line className='text-xl text-red-500' />
+                                <button
+                                    onClick={() => deleteEmail(email._id)}
+                                    className="btn btn-sm btn-ghost"
+                                >
+                                    <RiDeleteBin5Line className="text-xl text-red-500" />
                                 </button>
                             </td>
-                            <td><FaRegStar className='text-xl' /> </td>
+                            <td>
+                                <FaRegStar className="text-xl" />{" "}
+                            </td>
                             <th>
-                                <button class="btn btn-outline btn-xs">Done</button>
+                                <button class="btn btn-outline btn-xs">
+                                    Done
+                                </button>
                             </th>
-                        </tr>)
-                    }
-
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

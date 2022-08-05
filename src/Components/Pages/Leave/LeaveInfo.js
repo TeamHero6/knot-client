@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const LeaveInfo = ({ user }) => {
-    const {_id} = user;
-    const [singleUser, setSingleUser ] = useState([]);
+    const { _id } = user;
+    const [singleUser, setSingleUser] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:5000/leaveData/${_id}`)
-            .then(res => res.json())
-            .then(data => setSingleUser(data))
-    }, [_id])
+            .then((res) => res.json())
+            .then((data) => setSingleUser(data));
+    }, [_id]);
 
     return (
-        <div className='md:flex'>
+        <div className="md:flex">
             <table>
                 <tr>
                     <td>Employee Names : </td>
@@ -37,7 +37,7 @@ const LeaveInfo = ({ user }) => {
                     <td>{singleUser.id}</td>
                 </tr>
             </table>
-            <div className='md:ml-32'>
+            <div className="md:ml-32">
                 <table>
                     <tr>
                         <td>Department Name : </td>
@@ -48,16 +48,20 @@ const LeaveInfo = ({ user }) => {
                         <td>{singleUser.leave_date}</td>
                     </tr>
                 </table>
-                <table className='mt-20'>
+                <table className="mt-20">
                     <tr>
                         <td>Department : </td>
-                        <td><p className='ml-3'>{singleUser.dep}</p></td>
+                        <td>
+                            <p className="ml-3">{singleUser.dep}</p>
+                        </td>
                     </tr>
                 </table>
                 <table>
                     <tr>
                         <td>Designation : </td>
-                        <td><p className='ml-3'>{singleUser.Designation}</p></td>
+                        <td>
+                            <p className="ml-3">{singleUser.Designation}</p>
+                        </td>
                     </tr>
                 </table>
             </div>
