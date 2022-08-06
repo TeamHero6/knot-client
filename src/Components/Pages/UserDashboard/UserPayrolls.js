@@ -43,7 +43,6 @@ const UserPayrolls = () => {
                         <tr>
                             <th>Employee ID </th>
                             <th>Name</th>
-                            <th>Salary Grade</th>
                             <th>Payrolls Amount <br />Details</th>
                             <th>Paid Amount</th>
                             <th>Pament Date</th>
@@ -56,7 +55,6 @@ const UserPayrolls = () => {
                                 <tr>
                                     <th>{payroll.Employee_ID}</th>
                                     <td>{payroll.Name}</td>
-                                    <td>salary grade</td>
                                     <td>{payroll.Payroll_Type}</td>
                                     <td>{payroll.Pay_Amount}</td>
                                     <td>{payroll.Payment_Date}</td>

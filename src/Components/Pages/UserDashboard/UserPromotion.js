@@ -37,7 +37,28 @@ const UserPromotion = () => {
                                         <th>{promotion.Name}</th>
                                         <td>{promotion.Employee_ID}</td>
                                         <td>{promotion.Depertment}</td>
-                                        <td>Details</td>
+                                        <td>
+                                            <div>
+                                                <label for="my-modal-6" class="btn modal-button">Details</label>
+                                                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                                <div class="modal modal-bottom sm:modal-middle">
+                                                    <div class="modal-box">
+                                                        <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+                                                        <p>Name : {promotion.Name}</p>
+                                                        <p>Department : {promotion.Depertment}</p>
+                                                        <p>Promoted Type : {promotion.Promoted_Type}</p>
+                                                        <p>Promoted Designati  : {promotion.Promoted_Designation}</p>
+                                                        <p>Employee ID : {promotion.Employee_ID}</p>
+                                                        <p>Designation : {promotion.Designation}</p>
+                                                        <p>Promotion Date : {promotion.Pormotion_Date}</p>
+                                                        <p>Increment Salary : {promotion.Incriment_Salary}</p>
+                                                        <div class="modal-action">
+                                                            <label for="my-modal-6" class="btn">Yay!</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 )
                             }
@@ -64,7 +85,27 @@ const UserPromotion = () => {
                                         <th>{transfer.Name}</th>
                                         <td>{transfer.Employee_ID}</td>
                                         <td>{transfer.Depertment}</td>
-                                        <td>Details</td>
+                                        <td>
+                                            <div>
+                                                <label for="my-modal-6" class="btn modal-button">Details</label>
+                                                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                                <div class="modal modal-bottom sm:modal-middle">
+                                                    <div class="modal-box">
+                                                        <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+                                                        <p>Name : {transfer.Name}</p>
+                                                        <p>Department : {transfer.Depertment}</p>
+                                                        <p>Location : {transfer.Location}</p>
+                                                        <p>Transfer Reason  : {transfer.Transfer_Reason}</p>
+                                                        <p>Employee ID : {transfer.Employee_ID}</p>
+                                                        <p>Designation : {transfer.Designation}</p>
+                                                        <p>Transfer Date : {transfer.Transfer_Date}</p>
+                                                        <div class="modal-action">
+                                                            <label for="my-modal-6" class="btn">Yay!</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 )
                             }

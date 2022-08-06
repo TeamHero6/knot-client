@@ -27,6 +27,9 @@ import LeaveInfo from "./Components/Pages/Leave/LeaveInfo";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+import Meeting from "./Components/Pages/Leave/Meeting";
+import Warming from "./Components/Pages/Leave/Warming";
+import Award from "./Components/Pages/Leave/Award";
 
 function App() {
     return (
@@ -41,7 +44,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
-                <Route path="/userpayrolls" element={<UserPayrolls></UserPayrolls>} />
+                <Route path="/award" element={<Award />} />
+                <Route path="/userpromotion" element={<UserPromotion></UserPromotion>} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>

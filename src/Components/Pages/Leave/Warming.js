@@ -16,13 +16,10 @@ const Warming = () => {
                 <table class="table w-full">
                     <thead>
                         <tr>
-                            <th>Warming Date</th>
-                            <th>Team Member Name</th>
-                            <th>Reason of Warming</th>
-                            <th>Special Note <br />Team Member</th>
-                            <th>Warming Type</th>
-                            <th>Team Member Feedback</th>
-                            <th>Save Change</th>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Warning Type</th>
+                            <th>Reason of Warning</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,11 +28,8 @@ const Warming = () => {
                                 <tr>
                                     <th>{warning.warningDate}</th>
                                     <td>Name</td>
-                                    <td>{warning.warningReason}</td>
-                                    <td>special</td>
                                     <td>{warning.type}</td>
-                                    <td>Feedback</td>
-                                    <td>change</td>
+                                    <td>{warning.warningReason}</td>
                                 </tr>
                             )
                         }

@@ -16,13 +16,9 @@ const Meeting = () => {
                     <thead>
                         <tr>
                             <th>Meeting Date $ Time</th>
-                            <th>Host Name</th>
-                            <th>Guest Name</th>
-                            <th>Meeting Status</th>
+                            <th>Meeting Topic</th>
                             <th>View Details</th>
                             <th>Meeting Link</th>
-                            <th>Feedback</th>
-                            <th>Save Change</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,19 +26,28 @@ const Meeting = () => {
                             meetings?.map(meeting =>
                                 <tr>
                                     <th>{meeting.date}</th>
-                                    <td>{meeting.meetingHost}</td>
-                                    <td>{meeting.meetingGuest}</td>
+                                    <td>{meeting.meetingTopic}</td>
                                     <td>
-                                        <select className='bg-[#EEEEEE] rounded p-2' name="cars" id="cars">
-                                            <option value="volvo"> </option>
-                                            <option value="saab">Will be start</option>
-                                            <option value="opel">Cancel</option>
-                                        </select>
+                                        <div>
+                                            <label for="my-modal-6" class="btn modal-button">Details</label>
+                                            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                            <div class="modal modal-bottom sm:modal-middle">
+                                                <div class="modal-box">
+                                                    <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+                                                    <p>Date : {meeting.date}</p>
+                                                    <p>Meeting Topic : {meeting.meetingTopic}</p>
+                                                    <p>Meeting Host : {meeting.meetingHost}</p>
+                                                    <p>Meeting Guest  : {meeting.meetingGuest}</p>
+                                                    <p>Meeting With : {meeting.meetingWith}</p>
+                                                    <p>Meeting Link : {meeting.meetingLink}</p>
+                                                    <div class="modal-action">
+                                                        <label for="my-modal-6" class="btn">Yay!</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
-                                    <td>Details</td>
                                     <td> <a className='bg-[#0182BE] text-white px-4 py-2 rounded' href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">Join Now</a> </td>
-                                    <td><textarea className='bg-[#EEEEEE] rounded' name="" id="" cols="10" rows="2"></textarea></td>
-                                    <td><input className='bg-[#0182BE] text-white px-4 py-2 rounded' type="submit" value="Save" /></td>
                                 </tr>
                             )
                         }
