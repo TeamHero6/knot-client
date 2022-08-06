@@ -44,8 +44,6 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/userdashboard" element={<UserDashboard />} />
-                <Route path="/award" element={<Award />} />
-                <Route path="/userpromotion" element={<UserPromotion></UserPromotion>} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<DailyTask />}></Route>

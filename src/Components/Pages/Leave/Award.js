@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AiOutlineEye } from "react-icons/ai";
 
 const Award = () => {
     const [awards, setAwards] = useState([]);
@@ -31,11 +32,11 @@ const Award = () => {
                                     <td>{award.department}</td>
                                     <td>
                                         <div>
-                                            <label for="my-modal-6" class="btn modal-button">Details</label>
-                                            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                            <label for={award._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
+                                            <input type="checkbox" id={award._id} class="modal-toggle" />
                                             <div class="modal modal-bottom sm:modal-middle">
                                                 <div class="modal-box">
-                                                    <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+                                                    <h3 class="font-bold text-lg">Award Information!</h3>
                                                     <p>Date : {award.awardDate}</p>
                                                     <p>Name : {award.name}</p>
                                                     <p>Employee ID : {award.employeeID}</p>
@@ -44,7 +45,7 @@ const Award = () => {
                                                     <p>Award Providing Date : {award.awardProvidingDate}</p>
                                                     <p>Award Type : {award.awardType}</p>
                                                     <div class="modal-action">
-                                                        <label for="my-modal-6" class="btn">Yay!</label>
+                                                        <label for={award._id} class="btn bg-[#0182BE]">Close!</label>
                                                     </div>
                                                 </div>
                                             </div>

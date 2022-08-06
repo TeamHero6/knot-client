@@ -5,7 +5,6 @@ import { BiPlus } from 'react-icons/bi';
 import { useForm } from "react-hook-form";
 import { FaSave } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import LeaveModal from './LeaveModal';
 import { AiOutlineEye } from "react-icons/ai";
 
 const UserDashboard = () => {
@@ -34,29 +33,6 @@ const UserDashboard = () => {
                 }
             })
     };
-
-    // const detailsButton = le => {
-    //     console.log(le._id)
-    //     return <div id="my-modal-6" class="modal-toggle">
-    //         <input type="checkbox" />
-    //         <div class="modal modal-bottom sm:modal-middle">
-    //             <div class="modal-box">
-    //                 <h3 class="font-bold text-lg">Leave Request Info</h3>
-    //                 <p>Date : {le.Date}</p>
-    //                 <p>Employee Name : {le.Name}</p>
-    //                 <p>Employee Id : {le.id}</p>
-    //                 <p>Department  : {le.dep}</p>
-    //                 <p>Designation : {le.Designation}</p>
-    //                 <p>Reason For Leave : {le.leave}</p>
-    //                 <p>Start Date : {le.s_date}</p>
-    //                 <p>End Date : {le.e_date}</p>
-    //                 <div class="modal-action">
-    //                     <label for="my-modal-6" class="btn">Close!</label>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // }
 
     return (
         <div>
@@ -203,10 +179,9 @@ const UserDashboard = () => {
                                                 <td>{le.Name}</td>
                                                 <td>{le.dep}</td>
                                                 <td>
-                                                    {/* <LeaveModal le={le}></LeaveModal> */}
                                                     <div>
-                                                        <label className='' for="my-modal-6" ><AiOutlineEye></AiOutlineEye></label>
-                                                        <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                                        <label className='' for={le._id} ><AiOutlineEye></AiOutlineEye></label>
+                                                        <input type="checkbox" id={le._id} class="modal-toggle" />
                                                         <div class="modal modal-bottom sm:modal-middle">
                                                             <div class="modal-box">
                                                                 <h3 class="font-bold text-lg">Leave Request Info</h3>
@@ -219,13 +194,13 @@ const UserDashboard = () => {
                                                                 <p>Start Date : {le.s_date}</p>
                                                                 <p>End Date : {le.e_date}</p>
                                                                 <div class="modal-action">
-                                                                    <label for="my-modal-6" class="btn">Close!</label>
+                                                                    <label for={le._id} class="btn bg-[#0182BE]">Close!</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>APPROVAL</td>
+                                                <td>{le.aprovel}</td>
                                             </tr>
                                         )
                                     }
