@@ -10,7 +10,7 @@ import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSec
 import ExDashboard from "./Components/ExampleDesign/ExDashboard";
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
-import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
+import AdminDashboardF from "./Components/Features/Admin/Dashboard/AdminDashboardF";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
@@ -90,7 +90,7 @@ function App() {
                         element={<CustomerListing />}
                     ></Route>
                 </Route>
-                <Route path="/admin" element={<AdminDashboard />}>
+                <Route path="/admin" element={<AdminDashboardF />}>
                     <Route index element={<DailyTask />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
                     <Route

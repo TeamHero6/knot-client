@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 import ExNavbar from "./ExNavbar";
 
 const ExDashboard = () => {
@@ -24,25 +25,37 @@ const ExDashboard = () => {
                 </svg>
             </span>
             <ExNavbar />
-            <div
-                className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md flex justify-center COPY
-                ease-in-out ${open ? "w-9/12" : "hidden lg:flex"}`}
-            >
-                <div>
-                    <p className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-purple ">
-                        Daily Task
-                    </p>
-                    <p className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-purple">
-                        Add Task
-                    </p>
-                    <p className="flex my-4 bg-custom-gray py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-purple">
-                        Team Management
-                    </p>
-                    <p className="flex my-4 bg-custom-gray py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-purple">
-                        Team Organize
-                    </p>
+            <section className="flex w-full">
+                <div
+                    className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md justify-center 
+                ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
+                >
+                    <div>
+                        <Link
+                            to=""
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
+                        >
+                            <p>Daily Task</p>
+                        </Link>
+                        <Link
+                            to="addTask"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                        >
+                            Add Task
+                        </Link>
+
+                        <p className="flex my-4 bg-custom-gray py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100">
+                            Team Management
+                        </p>
+                        <p className="flex my-4 bg-custom-gray py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100">
+                            Team Organize
+                        </p>
+                    </div>
                 </div>
-            </div>
+                <div className="px-3">
+                    <Outlet />
+                </div>
+            </section>
         </div>
     );
 };
