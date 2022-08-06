@@ -6,7 +6,7 @@ const ExDashboard = () => {
     return (
         <div className="min-h-screen bg-custom-gray">
             <span
-                className="absolute block lg:hidden bottom-6 bg-custom-light-gray p-3 hover:bg-custom-green hover:text-custom-light-gray duration-300 shadow-sm rounded-full right-3 hover:shadow-lg"
+                className="fixed block lg:hidden bottom-6 bg-custom-light-gray p-3 hover:bg-custom-green hover:text-custom-light-gray duration-300 shadow-sm rounded-full right-3 hover:shadow-lg"
                 onClick={() => setOpen(!open)}
             >
                 <svg
@@ -25,21 +25,21 @@ const ExDashboard = () => {
             </span>
             <ExNavbar />
             <div
-                className={`bg-custom-light-gray md:w-64 min-h-screen shadow-md flex justify-center ${
+                className={`bg-custom-light-gray md:w-2/12 duration-300 min-h-screen shadow-md flex justify-center ${
                     open ? "w-9/12 " : "hidden lg:flex "
                 }`}
             >
                 <div>
-                    <p className="flex my-4 hover:text-custom-green duration-300 transition cursor-pointer">
+                    <p className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-purple">
                         Daily Task
                     </p>
-                    <p className="flex my-4 hover:text-custom-green duration-300 transition cursor-pointer">
+                    <p className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-purple">
                         Add Task
                     </p>
-                    <p className="flex my-4 hover:text-custom-green duration-300 transition cursor-pointer">
+                    <p className="flex my-4 bg-custom-gray py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-purple">
                         Team Management
                     </p>
-                    <p className="flex my-4 hover:text-custom-green duration-300 transition cursor-pointer">
+                    <p className="flex my-4 bg-custom-gray py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-purple">
                         Team Organize
                     </p>
                 </div>
