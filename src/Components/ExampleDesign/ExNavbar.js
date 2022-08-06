@@ -3,7 +3,7 @@ import access from "../../Assets/icons/Dashboard/access.svg";
 
 const ExNavbar = () => {
     return (
-        <div className="h-[60px] w-full flex items-center justify-between bg-custom-light-gray mb-3 shadow-md">
+        <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

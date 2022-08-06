@@ -25,12 +25,11 @@ const ExDashboard = () => {
             </span>
             <ExNavbar />
             <div
-                className={`bg-custom-light-gray md:w-2/12 duration-300 min-h-screen shadow-md flex justify-center ${
-                    open ? "w-9/12 " : "hidden lg:flex "
-                }`}
+                className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md flex justify-center COPY
+                ease-in-out ${open ? "w-9/12" : "hidden lg:flex"}`}
             >
                 <div>
-                    <p className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-purple">
+                    <p className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-purple ">
                         Daily Task
                     </p>
                     <p className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-purple">
