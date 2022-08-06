@@ -7,6 +7,7 @@ import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManag
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
+import ExDashboard from "./Components/ExampleDesign/ExDashboard";
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
@@ -119,6 +120,7 @@ function App() {
                         element={<RulesAndPolitics />}
                     />
                 </Route>
+                <Route path="dash" element={<ExDashboard />} />
             </Routes>
             <ToastContainer></ToastContainer>
         </div>
