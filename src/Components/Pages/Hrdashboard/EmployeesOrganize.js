@@ -5,11 +5,18 @@ import { FiEdit } from 'react-icons/fi';
 
 const EmployeesOrganize = () => {
 
-    const [requests, setRequest] = useState([]);
+    const [warning,setWarning] = useState([]);
+    const [award, setAward] = useState([]);
+   
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        fetch('http://localhost:5000/warning')
             .then(res => res.json())
-            .then(data => setRequest(data))
+            .then(data => setWarning(data))
+    }, []);
+    useEffect(() => {
+        fetch('http://localhost:5000/award')
+            .then(res => res.json())
+            .then(data => setAward(data))
     }, []);
     return (
         <div>
@@ -39,7 +46,6 @@ const EmployeesOrganize = () => {
                                 <th>Warning Date</th>
                                 <th>Team Member Name</th>
                                 <th>Reason of Warning</th>
-                                <th>Special Note</th>
                                 <th>Warning Type</th>
                                 <th>Team Member Feedback</th>
                                 <th>Save Change</th>
@@ -48,36 +54,23 @@ const EmployeesOrganize = () => {
 
                         <tbody>
                             {
-                                requests.map(request =>
+                                warning.map(w =>
                                     <tr>
-                                        <th>{request.id}</th>
-                                        <td>{request.Name}</td>
+                                        <th>{w.warningDate}</th>
+                                        <td>{w.name}</td>
                                         <td className='flex items-center'>
-                                            <AiOutlineEyeInvisible></AiOutlineEyeInvisible>
-                                            <p className='pl-2'> Click Here to warning reason</p>
+                                           
+                                            <p className='pl-2'>{w.warningReason
+} </p>
                                         </td>
 
 
+                                        
                                         <td>
-                                            <div className='flex items-center'>
-                                                <AiOutlineEyeInvisible className='mr-2'></AiOutlineEyeInvisible>
-                                                <FiEdit></FiEdit>
-                                                <p className='pl-2'> Edit Option</p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option value="Light
-Midium
-High">Light Midiu High</option>
-                                                <option value=""></option>
-                                            </select>
+                                           {w.type}
                                         </td>
                                         <td className='flex items-center'>
-                                            <AiOutlineEyeInvisible></AiOutlineEyeInvisible>
-
-                                            <p className='pl-2'>  Team
-                                                Member Feedback</p>
+                                            <textarea rows="" cols=""></textarea>
                                         </td>
                                         <td className='text-center text-blue-600 '>
                                             <div className='w-10 mx-auto'>
@@ -125,26 +118,18 @@ High">Light Midiu High</option>
 
                         <tbody>
                             {
-                                requests.map(request =>
+                                award.map(a =>
                                     <tr>
-                                        <th>{request.id}</th>
-                                        <td>{request.Name}</td>
+                                        <th>{a.awardDate}</th>
+                                        <td>{a.name}</td>
                                         <td>
-                                            <select>
-                                        
-                                                <option value="Employee of the month">Employee of the month</option>
-                                                <option value="Employee of the month">Employee of the month</option>
-                                            </select>
+                                            {a.awardType}
                                         </td>
                                        
 
 
                                         <td>
-                                            <div className='flex items-center'>
-                                                <AiOutlineEyeInvisible className='mr-2'></AiOutlineEyeInvisible>
-                                                <FiEdit></FiEdit>
-                                                <p className='pl-2'> Edit Option</p>
-                                            </div>
+                                            <textarea rows="" cols=""></textarea>
                                         </td>
                                         
                                         <td className='text-center text-blue-600 '>
