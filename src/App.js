@@ -35,6 +35,7 @@ import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
 import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
+import FormSample from "./FromSample/FormSample";
 
 function App() {
     return (
@@ -42,6 +43,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/leave" element={<Leave></Leave>}></Route>
+                <Route path="/form" element={<FormSample></FormSample>}></Route>
                 <Route
                     path="/employeedetails"
                     element={<EmployeeDetails></EmployeeDetails>}
