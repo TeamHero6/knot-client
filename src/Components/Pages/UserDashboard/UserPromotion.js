@@ -33,14 +33,6 @@ const UserPromotion = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {promotions?.map((promotion) => (
-                                <tr>
-                                    <th>{promotion.Name}</th>
-                                    <td>{promotion.Employee_ID}</td>
-                                    <td>{promotion.Depertment}</td>
-                                    <td>Details</td>
-                                </tr>
-                            ))}
                             {
                                 promotions?.map(promotion =>
                                     <tr>
@@ -89,14 +81,6 @@ const UserPromotion = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {transfers?.map((transfer) => (
-                                <tr>
-                                    <th>{transfer.Name}</th>
-                                    <td>{transfer.Employee_ID}</td>
-                                    <td>{transfer.Depertment}</td>
-                                    <td>Details</td>
-                                </tr>
-                            ))}
                             {
                                 transfers?.map(transfer =>
                                     <tr>

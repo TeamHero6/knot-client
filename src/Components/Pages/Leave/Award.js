@@ -24,14 +24,6 @@ const Award = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {awards?.map((award) => (
-                            <tr>
-                                <th>{award.awardDate}</th>
-                                <td>{award.name}</td>
-                                <td>{award.awardType}</td>
-                                <td>status</td>
-                            </tr>
-                        ))}
                         {
                             awards?.map(award =>
                                 <tr>

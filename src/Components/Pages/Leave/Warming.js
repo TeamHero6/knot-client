@@ -17,15 +17,9 @@ const Warming = () => {
                     <thead>
                         <tr>
                             <th>Warning Date</th>
-                            <th>Team Member Name</th>
-                            <th>Reason of Warning</th>
-                            <th>
-                                Special Note <br />
-                                Team Member
-                            </th>
+                            <th>Name</th>
                             <th>Warning Type</th>
-                            <th>Team Member Feedback</th>
-                            <th>Save Change</th>
+                            <th>Reason For Warning</th>
                         </tr>
                     </thead>
                     <tbody>
