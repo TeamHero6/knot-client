@@ -89,14 +89,11 @@ const EmployeesOrganize = () => {
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
                             </tr>
                         </thead>
                         <thead>
                             <tr>
                                 <th>Warning Date</th>
-                                <th>Team Member Name</th>
                                 <th>Reason of Warning</th>
                                 <th>Warning Type</th>
                                 <th>Team Member Feedback</th>
@@ -109,7 +106,6 @@ const EmployeesOrganize = () => {
                                 warning.map(w =>
                                     <tr>
                                         <th>{w.warningDate}</th>
-                                        <td>{w.name}</td>
                                         <td className='flex items-center'>
                                            
                                             <p className='pl-2'>{w.warningReason

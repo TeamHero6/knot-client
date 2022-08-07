@@ -188,7 +188,6 @@ const Payrolls = () => {
                                         <th>Employee ID</th>
                                         <th>Name</th>
                                         <th>Depertment</th>
-                                        <th>Payrolls Amount Details</th>
                                         <th>Paid Amount</th>
                                         <th>Pament Date</th>
                                         <th>Payment Status</th>
@@ -202,7 +201,6 @@ const Payrolls = () => {
                                             
                                                 <th>{pr.Employee_ID}</th>
                                                 <th>{pr.Name}</th>
-                                                <th>{pr.Depertment}</th>
                                                 <th>{pr.Depertment}</th>
                                                 <th>{pr.Payable_Amount}</th>
                                                 <th>{pr.Payment_Date
