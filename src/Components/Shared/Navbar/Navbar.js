@@ -12,7 +12,7 @@ const Navbar = () => {
     }
     return (
         <div className=" md:px-8 lg:px-12">
-            <div class="navbar bg-base-100 ">
+            <div class="navbar ">
                 <div class="navbar-start">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -67,7 +67,9 @@ const Navbar = () => {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a>Settings</a>
+                                                <Link to="/profileSettings">
+                                                    Setting
+                                                </Link>
                                             </li>
                                             <li>
                                                 <p
@@ -126,7 +128,9 @@ const Navbar = () => {
                                             </a>
                                         </li>
                                         <li>
-                                            <a>Settings</a>
+                                            <Link to="/profileSettings">
+                                                Setting
+                                            </Link>
                                         </li>
                                         <li>
                                             <p onClick={() => signOut(auth)}>

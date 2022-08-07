@@ -33,6 +33,9 @@ import Performance from "./Components/Pages/Hrdashboard/Performance";
 import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
+import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
+import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
+import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
 import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
@@ -118,6 +121,13 @@ function App() {
                     <Route
                         path="rules&politics"
                         element={<RulesAndPolitics />}
+                    />
+                </Route>
+                <Route path="/profileSettings" element={<ProfileDashboard />}>
+                    <Route index element={<ProfileSettings />} />
+                    <Route
+                        path="companySettings"
+                        element={<CompanySettings />}
                     />
                 </Route>
                 <Route path="dash" element={<ExDashboard />} />

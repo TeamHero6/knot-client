@@ -86,7 +86,7 @@ const AdminDashboardF = () => {
                         </NavLink>
                     </div>
                 </div>
-                <div className="px-3 overflow-auto">
+                <div className="px-3 overflow-x-auto">
                     <Outlet />
                 </div>
             </section>
