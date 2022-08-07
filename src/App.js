@@ -19,7 +19,6 @@ import MarketingAutomation from "./Components/Features/MarketingAutomation/Marke
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
-import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
@@ -50,7 +49,6 @@ function App() {
                     path="/employeedetails"
                     element={<EmployeeDetails></EmployeeDetails>}
                 ></Route>
-                <Route path="/login" element={<Login />} />
                 <Route path="/hrdashboard" element={<Hrdashboard />}>
                     <Route index element={<Dashboard />}></Route>
                     <Route

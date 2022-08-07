@@ -28,22 +28,34 @@ const BusinessLogin = () => {
         const password = data.password;
         const signInDetails = { email, role };
 
-        //check isRole
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/isRole", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(signInDetails),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data?.role) {
-                    signInWithEmailAndPassword(email, password);
-                } else {
-                    setCustomError("You account have an issue! contact us.");
-                }
-            });
+        if (role === "Employee") {
+            setCustomError("");
+            const passcode = data.password;
+            const loginInfo = { email, passcode };
+            console.log(loginInfo);
+        }
+
+        if ((role === "Manager") | (role === "CEO")) {
+            setCustomError("");
+            //check isRole
+            fetch("https://sheltered-cliffs-60290.herokuapp.com/isRole", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(signInDetails),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data?.role) {
+                        signInWithEmailAndPassword(email, password);
+                    } else {
+                        setCustomError(
+                            "You account have an issue! contact us."
+                        );
+                    }
+                });
+        }
     };
 
     if (user) {
@@ -127,6 +139,9 @@ const BusinessLogin = () => {
                                                 <option value="Manager">
                                                     Manager
                                                 </option>
+                                                <option value="Employee">
+                                                    Employee
+                                                </option>
                                             </select>
                                         </div>
                                         <h1 className="text-left ml-2">
@@ -156,7 +171,7 @@ const BusinessLogin = () => {
                                                     },
                                                 })}
                                                 type="password"
-                                                placeholder="Password"
+                                                placeholder="Password | Passcode"
                                                 className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
                                                 id="password"
                                             />
