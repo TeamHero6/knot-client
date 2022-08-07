@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
+=======
+import React, { useEffect, useState } from 'react';
+import { AiOutlineEye } from "react-icons/ai";
+>>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
 
 const Meeting = () => {
     const [meetings, setMeetings] = useState([]);
@@ -16,16 +21,13 @@ const Meeting = () => {
                     <thead>
                         <tr>
                             <th>Meeting Date $ Time</th>
-                            <th>Host Name</th>
-                            <th>Guest Name</th>
-                            <th>Meeting Status</th>
+                            <th>Meeting Topic</th>
                             <th>View Details</th>
                             <th>Meeting Link</th>
-                            <th>Feedback</th>
-                            <th>Save Change</th>
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< HEAD
                         {meetings?.map((meeting) => (
                             <tr>
                                 <th>{meeting.date}</th>
@@ -74,6 +76,37 @@ const Meeting = () => {
                                 </td>
                             </tr>
                         ))}
+=======
+                        {
+                            meetings?.map(meeting =>
+                                <tr>
+                                    <th>{meeting.date}</th>
+                                    <td>{meeting.meetingTopic}</td>
+                                    <td>
+                                        <div>
+                                            <label for={meeting._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
+                                            <input type="checkbox" id={meeting._id} class="modal-toggle" />
+                                            <div class="modal modal-bottom sm:modal-middle">
+                                                <div class="modal-box">
+                                                    <h3 class="font-bold text-lg">Meeting Information!</h3>
+                                                    <p>Date : {meeting.date}</p>
+                                                    <p>Meeting Topic : {meeting.meetingTopic}</p>
+                                                    <p>Meeting Host : {meeting.meetingHost}</p>
+                                                    <p>Meeting Guest  : {meeting.meetingGuest}</p>
+                                                    <p>Meeting With : {meeting.meetingWith}</p>
+                                                    <p>Meeting Link : {meeting.meetingLink}</p>
+                                                    <div class="modal-action">
+                                                        <label for={meeting._id} class="btn bg-[#0182BE]">Close!</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td> <a className='bg-[#0182BE] text-white px-4 py-2 rounded' href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">Join Now</a> </td>
+                                </tr>
+                            )
+                        }
+>>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
                     </tbody>
                 </table>
             </div>

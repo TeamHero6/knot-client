@@ -73,6 +73,7 @@ function App() {
                     path="/userpayrolls"
                     element={<UserPayrolls></UserPayrolls>}
                 />
+                <Route path="/userdashboard" element={<UserDashboard />} />
                 <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/accessApps"
