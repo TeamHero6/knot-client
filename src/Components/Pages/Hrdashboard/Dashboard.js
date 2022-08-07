@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { BiSave } from 'react-icons/bi';
 import { AiOutlineEye } from 'react-icons/ai';
-import profile from '../../../Assets/icons/Live-chat-icon/profile_user.png'
-import { useForm } from "react-hook-form";
+import profile from '../../../Assets/icons/Live-chat-icon/profile_user.png';
 import { toast } from 'react-toastify';
 import './Hrdashboard.css'
 
 
-const Dashboard = ({users}) => {
-    console.log(users)
-    
-    const { register, handleSubmit, reset } = useForm();
+const Dashboard = () => {
     
     const [requests, setRequest] = useState([]);
     const [allTask, setAlltask] = useState([]);
+    const [upstatus, setUpstatus] = useState('');
+    const [tasku, setTasku] = useState('');
+   
 
     useEffect(() => {
         fetch('http://localhost:5000/users')
@@ -25,28 +24,57 @@ const Dashboard = ({users}) => {
             .then(res => res.json())
             .then(data => setAlltask(data))
     }, []);
+    
+     const approv = (event) => {
+        setUpstatus(event.target.value);
+      }
+     const taskup = (event) => {
+        setTasku(event.target.value);
+      }
+    const save=(id)=>{
+        const aprovel=upstatus;
 
-    // const approvalupdate= (event) => {
-    //     const status=event.target.value;
-    //     console.log(status);
-    //   }
-
-    const onSubmit = data => {
-        fetch('http://localhost:5000/users', {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json',
+        const updata={aprovel}
+        
+        const url=`http://localhost:5000/users/${id}`;
+        fetch(url,{
+            method:'PUT',
+            headers:{
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body:JSON.stringify(updata)
         })
-            .then(res => res.json())
-            .then(inserted => {
-                if (inserted.insertedId) {
-                    toast.success("Save change")
-                }
-            })
+        .then(res=>res.json())
+        .then(data=>{
+            toast.success('success')
+            
+        })
+   
+}
 
-    }
+const taskshandel=(id)=>{
+    const intask=tasku;
+
+    const taskcom={intask}
+    
+    const url=`http://localhost:5000/alltasks/${id}`;
+    fetch(url,{
+        method:'PUT',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(taskcom)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data);
+        toast.success('success Task')
+        
+    })
+
+}
+
+    
 
     return (
         <div>
@@ -146,14 +174,14 @@ const Dashboard = ({users}) => {
                                         </td>
 
                                         <td>
-                                        <form  onSubmit={handleSubmit(onSubmit)}>
-                                        <select {...register("approval")} >
+                                        
+                                        <select onChange={approv}>
                                                 <option value="approbal_statas">approval statas</option>
                                                 <option value="Approve">Approve</option>
                                                 <option value="Reject">Reject</option>
                                             </select>
-                                            <button type="submit" className='ml-3'> <BiSave></BiSave></button>
-                                        </form>
+                                            <button onClick={()=>save(request._id)} className='ml-3'> <BiSave></BiSave></button>
+                                        
                                            
                                         </td>
                                     </tr>
@@ -227,12 +255,12 @@ const Dashboard = ({users}) => {
                                             </div>
                                         </td>
                                         <td>
-                                            <select>
-                                                <option value="To Do"> To Do</option>
+                                            <select onChange={taskup}>
+                                                <option value="ToDo"> To Do</option>
                                                 <option value="Doing">Doing</option>
                                                 <option value="Done">Done</option>
                                             </select>
-                                            <button className='ml-3 '><BiSave></BiSave></button>
+                                            <button className='ml-3 ' onClick={()=>taskshandel(task._id)}><BiSave></BiSave></button>
 
                                         </td>
                                     </tr>

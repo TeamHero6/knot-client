@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { BsSave2 } from 'react-icons/bs';
 import { FiEdit } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 const EmployeesOrganize = () => {
 
     const [warning,setWarning] = useState([]);
     const [award, setAward] = useState([]);
+    const [feeds, setFeed] = useState("");
+    const [leader, setleader] = useState("");
    
     useEffect(() => {
         fetch('http://localhost:5000/warning')
@@ -18,6 +21,55 @@ const EmployeesOrganize = () => {
             .then(res => res.json())
             .then(data => setAward(data))
     }, []);
+
+    const feedback=(event)=>{
+        setFeed(event.target.value);
+    }
+    const ledarfeed=(event)=>{
+        setleader(event.target.value);
+    }
+
+    const teamfeed=(id)=>{
+     const infeed=feeds;
+
+     const colfeed={infeed}
+    
+    const url=`http://localhost:5000/warning/${id}`;
+    fetch(url,{
+        method:'PUT',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(colfeed)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        toast.success('successfully save warning data')
+        
+    })
+
+    }
+    const handelleader=(id)=>{
+        const ledarfeed=leader;
+
+    const leadercol={ledarfeed}
+    
+    const url=`http://localhost:5000/award/${id}`;
+    fetch(url,{
+        method:'PUT',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(leadercol)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        toast.success('successfully save award data')
+        
+    })
+
+    }
+
     return (
         <div>
             <div className='px-5'>
@@ -70,11 +122,11 @@ const EmployeesOrganize = () => {
                                            {w.type}
                                         </td>
                                         <td className='flex items-center'>
-                                            <textarea rows="" cols=""></textarea>
+                                            <textarea onChange={feedback} rows="" cols=""></textarea>
                                         </td>
                                         <td className='text-center text-blue-600 '>
                                             <div className='w-10 mx-auto'>
-                                            <BsSave2></BsSave2>
+                                            <button onClick={()=>teamfeed(w._id)}><BsSave2></BsSave2></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -129,12 +181,13 @@ const EmployeesOrganize = () => {
 
 
                                         <td>
-                                            <textarea rows="" cols=""></textarea>
+                                            <textarea onChange={ledarfeed} rows="" cols=""></textarea>
                                         </td>
                                         
                                         <td className='text-center text-blue-600 '>
                                             <div className='w-10 mx-auto'>
-                                            <BsSave2></BsSave2>
+                                                <button onClick={()=>handelleader(a._id)}><BsSave2></BsSave2></button>
+                                            
                                             </div>
                                         </td>
                                     </tr>

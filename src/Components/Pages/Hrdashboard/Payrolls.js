@@ -8,6 +8,8 @@ const Payrolls = () => {
     
     const { register, handleSubmit, reset } = useForm();
     const [payrolls,setPayrolls]=useState([]);
+    
+    const [show, setShow] = useState(false);
     useEffect(()=>{
         fetch('http://localhost:5000/payrolls')
         .then(res=>res.json())
@@ -33,12 +35,13 @@ const Payrolls = () => {
     };
     return (
         <div>
-           <label for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
+           <label  onClick={()=>setShow(!show)} for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
                         <span><BiPlus></BiPlus></span>
                         <span className='capitalize'> Payrolls</span>
 
             </label>
-                    <div className='mt-5 p-5 mx-auto w-4/5  bg-[#EEEEEE] rounded-lg'>
+
+            {show ?  <div className='mt-5 p-5 mx-auto w-4/5  bg-[#EEEEEE] rounded-lg'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='grid grid-cols-2'>
                                 {/* ff */}
@@ -175,7 +178,8 @@ const Payrolls = () => {
 
                         </form>
 
-                    </div>
+                    </div> : ''}
+                    
                     <div className='mx-auto w-4/5 rounded-lg my-5 '>
                         <div class="overflow-x-auto">
                             <table class="table table-compact w-full">

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
-import { FiEye } from 'react-icons/fi';
+
+import profile from '../../../Assets/icons/Live-chat-icon/profile_user.png';
+import { AiOutlineEye } from 'react-icons/ai';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import Transfer from './Transfer';
@@ -9,7 +11,9 @@ const Performance = () => {
     
     const { register, handleSubmit, reset } = useForm();
     const [promo,setPromo]=useState([]);
-     const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
+    console.log(promo)
+
 
     useEffect(()=>{
         fetch('http://localhost:5000/performance')
@@ -182,7 +186,42 @@ const Performance = () => {
                                                 <th>{pr.Name}</th>
                                                 <th>{pr.Employee_ID}</th>
                                                 <th>{pr.Depertment}</th>
-                                                <th className='text-[#0182be]'><FiEye></FiEye></th>
+                                                <th className='text-[#0182be]'>
+                                                <label for={pr._id} class="modal-button">
+                                            <AiOutlineEye className='text-2xl '></AiOutlineEye>
+                                             </label>
+                                             <input type="checkbox" id={pr._id} class="modal-toggle" />
+                                            <div class="modal">
+                                                <div class="modal-box">
+                                                    <div>
+                                                        <div className='flex items-center mb-5'>
+                                                            <img className='w-28' src={profile} alt="" />
+                                                            <div className='ml-5'>
+                                                                <h2 className='text-2xl capitalize'>{pr.Name}</h2>
+                                                                <span className='uppercase'>{pr.Depertment}</span>
+                    
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h1 className='text-xl border-b-2 border-yellow-500 capitalize mb-3'>Details info</h1>
+                                                            <div>
+                                                            <p><span className='font-medium capitalize'> Employee ID: </span>{pr.Employee_ID}</p>
+                                                            <p><span className='font-medium capitalize'>Incriment Salary: </span>{pr.Incriment_Salary}</p>
+                                                            <p><span className='font-medium capitalize'>Designation: </span>{pr.Designation}</p>
+                                                            <p><span className='font-medium capitalize'>Pormotion Date: </span>{pr.Pormotion_Date}</p>
+
+                                                            </div>
+                                                            
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-action">
+                                                        <label for={pr._id} class="btn btn-warning">Cancel</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                </th>
                                             </tr>
                                            
                                            )

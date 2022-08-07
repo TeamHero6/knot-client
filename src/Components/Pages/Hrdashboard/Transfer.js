@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
-import { FiEye } from 'react-icons/fi';
+import profile from '../../../Assets/icons/Live-chat-icon/profile_user.png';
+import { AiOutlineEye } from 'react-icons/ai';
 import { useForm } from "react-hook-form";
 
 import { toast } from 'react-toastify';
@@ -9,6 +10,9 @@ const Transfer = () => {
     
     const { register, handleSubmit, reset } = useForm();
     const [transfer,setTransfer]=useState([]);
+    console.log(transfer)
+    
+    const [show, setShow] = useState(false);
 
     useEffect(()=>{
         fetch('http://localhost:5000/transfer')
@@ -35,12 +39,12 @@ const Transfer = () => {
     };
     return (
         <div>
-            <label for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
+            <label onClick={()=>setShow(!show)} for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
                         <span><BiPlus></BiPlus></span>
                         <span className='capitalize'> Transfer</span>
 
             </label>
-            <div className='mt-5 p-5 mx-auto w-4/5  bg-[#EEEEEE] rounded-lg'>
+            {show ? <div className='mt-5 p-5 mx-auto w-4/5  bg-[#EEEEEE] rounded-lg'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='grid grid-cols-2'>
                                 {/* ff */}
@@ -146,7 +150,8 @@ const Transfer = () => {
 
                         </form>
 
-                    </div>
+                    </div> : ''}
+            
                     <div className='mx-auto w-4/5 rounded-lg mt-5 '>
                         <div class="overflow-x-auto">
                             <table class="table table-compact w-full">
@@ -166,7 +171,43 @@ const Transfer = () => {
                                                 <th>{pr.Name}</th>
                                                 <th>{pr.Employee_ID}</th>
                                                 <th>{pr.Depertment}</th>
-                                                <th className='text-[#0182be]'><FiEye></FiEye></th>
+                                                <th className='text-[#0182be]'>
+                                                <label for={pr._id} class="modal-button">
+                                            <AiOutlineEye className='text-2xl '></AiOutlineEye>
+                                             </label>
+                                             <input type="checkbox" id={pr._id} class="modal-toggle" />
+                                            <div class="modal">
+                                                <div class="modal-box">
+                                                    <div>
+                                                        <div className='flex items-center mb-5'>
+                                                            <img className='w-28' src={profile} alt="" />
+                                                            <div className='ml-5'>
+                                                                <h2 className='text-2xl capitalize'>{pr.Name}</h2>
+                                                                <span className='uppercase'>{pr.Depertment}</span>
+                    
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h1 className='text-xl border-b-2 border-yellow-500 capitalize mb-3'>Details info</h1>
+                                                            <div>
+                                                            <p><span className='font-medium capitalize'> Transfer Reason: </span>{pr.Transfer_Reason}</p>
+                                                            <p><span className='font-medium capitalize'>Location: </span>{pr.Location}</p>
+                                                            <p><span className='font-medium capitalize'>Designation: </span>{pr.Designation}</p>
+                                                            <p><span className='font-medium capitalize'>Transfer Date: </span>{pr.Transfer_Date}</p>
+
+                                                            </div>
+                                                            
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-action">
+                                                        <label for={pr._id} class="btn btn-warning">Cancel</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                    
+                                                    </th>
                                             </tr>
                                            
                                            )
