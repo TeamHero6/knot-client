@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
-=======
-import React, { useEffect, useState } from 'react';
 import { AiOutlineEye } from "react-icons/ai";
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
 
 const Award = () => {
     const [awards, setAwards] = useState([]);
@@ -28,7 +24,6 @@ const Award = () => {
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
                         {awards?.map((award) => (
                             <tr>
                                 <th>{award.awardDate}</th>
@@ -37,7 +32,6 @@ const Award = () => {
                                 <td>status</td>
                             </tr>
                         ))}
-=======
                         {
                             awards?.map(award =>
                                 <tr>
@@ -68,7 +62,6 @@ const Award = () => {
                                 </tr>
                             )
                         }
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
                     </tbody>
                 </table>
             </div>

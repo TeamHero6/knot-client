@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-=======
+
 import React, { useEffect, useState } from 'react';
 import { AiOutlineEye } from "react-icons/ai";
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
 
 const UserPromotion = () => {
     const [promotions, setPromotions] = useState([]);
@@ -36,7 +33,6 @@ const UserPromotion = () => {
                             </tr>
                         </thead>
                         <tbody>
-<<<<<<< HEAD
                             {promotions?.map((promotion) => (
                                 <tr>
                                     <th>{promotion.Name}</th>
@@ -45,7 +41,6 @@ const UserPromotion = () => {
                                     <td>Details</td>
                                 </tr>
                             ))}
-=======
                             {
                                 promotions?.map(promotion =>
                                     <tr>
@@ -77,7 +72,6 @@ const UserPromotion = () => {
                                     </tr>
                                 )
                             }
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
                         </tbody>
                     </table>
                 </div>
@@ -95,7 +89,6 @@ const UserPromotion = () => {
                             </tr>
                         </thead>
                         <tbody>
-<<<<<<< HEAD
                             {transfers?.map((transfer) => (
                                 <tr>
                                     <th>{transfer.Name}</th>
@@ -104,7 +97,6 @@ const UserPromotion = () => {
                                     <td>Details</td>
                                 </tr>
                             ))}
-=======
                             {
                                 transfers?.map(transfer =>
                                     <tr>
@@ -135,7 +127,6 @@ const UserPromotion = () => {
                                     </tr>
                                 )
                             }
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
                         </tbody>
                     </table>
                 </div>
