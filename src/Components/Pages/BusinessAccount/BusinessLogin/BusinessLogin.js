@@ -16,6 +16,7 @@ const BusinessLogin = () => {
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
     const [customError, setCustomError] = useState("");
+    const [employee, setEmployee] = useState(false);
 
     let location = useLocation();
     const navigate = useNavigate();
@@ -55,6 +56,13 @@ const BusinessLogin = () => {
                         );
                     }
                 });
+        }
+    };
+
+    //handle Employee || purpose for custom placeholder
+    const handleEmployee = (e) => {
+        if (e.target.value === "Employee") {
+            setEmployee(true);
         }
     };
 
@@ -131,6 +139,7 @@ const BusinessLogin = () => {
                                                             "Your Role is Required",
                                                     },
                                                 })}
+                                                onChange={handleEmployee}
                                             >
                                                 <option value="">
                                                     Select Your Role
@@ -171,7 +180,11 @@ const BusinessLogin = () => {
                                                     },
                                                 })}
                                                 type="password"
-                                                placeholder="Password | Passcode"
+                                                placeholder={
+                                                    employee
+                                                        ? "Passcode"
+                                                        : "Password"
+                                                }
                                                 className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
                                                 id="password"
                                             />
