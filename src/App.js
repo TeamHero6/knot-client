@@ -15,7 +15,7 @@ import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize"
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
 import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
 import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
-import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
+// import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import Login from "./Components/Pages/Authentications/Login/Login";
@@ -33,6 +33,7 @@ import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDet
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
 import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+import UserDashboard from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 
@@ -62,7 +63,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
 
-                <Route path="/userdashboard" element={<UserDashboard />}>
+                <Route path="/userdashboard" element={<UserDashboard></UserDashboard>}>
                     <Route index element={<LeaveRequest />} />
                     <Route path="attendance" element={<UserAttaindance />} />
                     <Route path="performance" element={<UserPromotion />} />
@@ -73,7 +74,7 @@ function App() {
                     path="/userpayrolls"
                     element={<UserPayrolls></UserPayrolls>}
                 />
-                <Route path="/userdashboard" element={<UserDashboard />} />
+                {/* <Route path="/userdashboard" element={<UserDashboard />} /> */}
                 <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/accessApps"
