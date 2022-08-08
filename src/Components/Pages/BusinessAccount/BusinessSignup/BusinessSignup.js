@@ -18,25 +18,30 @@ const BusinessSignup = () => {
     //Authentications
     const [createUserWithEmailAndPassword, user, Googleloading, error] =
         useCreateUserWithEmailAndPassword(auth);
+
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm();
+    //State for Profile and business logo url from firebase storage
     const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
 
     //handle signup error
     const [customError, setCustomError] = useState("");
     const [token, setToken] = useState("");
+    const [loading, setLoading] = useState(false);
 
     let location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        setLoading(true);
         console.log("clickedd");
         setCustomError("");
+        //Profile photo upload to firebase storage
         const profilePhoto = await data?.image[0];
         const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
         await uploadBytes(imageref, profilePhoto).then((snapshot) => {
@@ -45,8 +50,7 @@ const BusinessSignup = () => {
             });
         });
 
-        // Profile Photo Upload 48 - 56
-
+        //Business Logo upload to firebase storage
         const BusinessLogo = await data?.logo[0];
         const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
         await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
@@ -54,28 +58,28 @@ const BusinessSignup = () => {
                 setBusinessLogoUrl(url);
             });
         });
-        console.log("pic uploaded");
-        // Business Logo Upload 35-41
 
-        //Data Collect and sent to server 59 - 94
-
+        //Variable declare
         const email = data.email;
         const name = data.name;
         const password = data.password;
         const companyName = data.businessName;
         const role = data.userRole;
-        const userInfo = {
-            name,
-            email,
-            password,
-            companyName,
-            userPhoto: profileImageUrl,
-            role,
-            CompanyLogo: BusinessLogoUrl,
-        };
+        if (BusinessLogoUrl) {
+        }
 
         //send user Data to DB
         if (profileImageUrl && BusinessLogoUrl) {
+            //Create a data object
+            const userInfo = {
+                name,
+                email,
+                password,
+                companyName,
+                userPhoto: profileImageUrl,
+                role,
+                CompanyLogo: BusinessLogoUrl,
+            };
             fetch("http://localhost:5000/createdUser", {
                 method: "PUT",
                 headers: {
@@ -92,9 +96,10 @@ const BusinessSignup = () => {
                     }
                     if (token) {
                         setToken(token);
-                        createUserWithEmailAndPassword(email, password);
                     }
                 });
+            setLoading(false);
+            await createUserWithEmailAndPassword(email, password);
         }
         console.log("account created");
 
