@@ -75,25 +75,27 @@ const BusinessSignup = () => {
         };
 
         //send user Data to DB
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/createdUser", {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(userInfo),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                const token = data?.token;
-                const error = data?.message;
-                if (error) {
-                    setCustomError(error);
-                }
-                if (token) {
-                    setToken(token);
-                }
-            });
-        await createUserWithEmailAndPassword(email, password);
+        if (profileImageUrl && BusinessLogoUrl) {
+            fetch("http://localhost:5000/createdUser", {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(userInfo),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    const token = data?.token;
+                    const error = data?.message;
+                    if (error) {
+                        setCustomError(error);
+                    }
+                    if (token) {
+                        setToken(token);
+                        createUserWithEmailAndPassword(email, password);
+                    }
+                });
+        }
         console.log("account created");
 
         if (user) {
