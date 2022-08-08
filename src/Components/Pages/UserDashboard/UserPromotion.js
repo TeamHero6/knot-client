@@ -21,25 +21,25 @@ const UserPromotion = () => {
     return (
         <div>
             <div>
-                <h1 className="text-xl font-semibold my-5">Promotion</h1>
+                <h1 className='text-2xl text-center font-bold mt-5'>Promotion</h1>
                 <div class="overflow-x-auto">
-                    <table class="table w-full">
-                        <thead>
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                             <tr>
-                                <th>Name</th>
-                                <th>Employee ID</th>
-                                <th>Department</th>
-                                <th>View Details</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Employee ID</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 promotions?.map(promotion =>
-                                    <tr>
-                                        <th>{promotion.Name}</th>
-                                        <td>{promotion.Employee_ID}</td>
-                                        <td>{promotion.Depertment}</td>
-                                        <td>
+                                    <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                        <td className="py-3 px-6 whitespace-nowrap">{promotion.Name}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{promotion.Employee_ID}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{promotion.Depertment}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
                                             <div>
                                                 <label for={promotion._id} class="modal-button"><AiOutlineEye></AiOutlineEye></label>
                                                 <input type="checkbox" id={promotion._id} class="modal-toggle" />
@@ -69,25 +69,25 @@ const UserPromotion = () => {
                 </div>
             </div>
             <div>
-                <h1 className="text-xl font-semibold my-5">Transfer</h1>
+                <h1 className='text-2xl text-center font-bold mt-5'>Transfer</h1>
                 <div class="overflow-x-auto">
-                    <table class="table w-full">
-                        <thead>
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                             <tr>
-                                <th>Name</th>
-                                <th>Employee ID</th>
-                                <th>Department</th>
-                                <th>View Details</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Employee ID</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 transfers?.map(transfer =>
-                                    <tr>
-                                        <th>{transfer.Name}</th>
-                                        <td>{transfer.Employee_ID}</td>
-                                        <td>{transfer.Depertment}</td>
-                                        <td>
+                                    <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                        <td className="py-3 px-6 whitespace-nowrap">{transfer.Name}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{transfer.Employee_ID}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{transfer.Depertment}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
                                             <div>
                                                 <label for={transfer._id} class="modal-button"><AiOutlineEye></AiOutlineEye></label>
                                                 <input type="checkbox" id={transfer._id} class="modal-toggle" />

@@ -13,24 +13,24 @@ const Award = () => {
     return (
         <div className="flex my-10">
             <div class="overflow-x-auto w-3/5">
-                <h1 className="text-xl mb-3">Team Member Award Database</h1>
-                <table class="table w-full">
-                    <thead>
+                <h1 className='text-2xl text-center font-bold mt-5'>Team Member Award Database</h1>
+                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
-                            <th>Award Date</th>
-                            <th>Team Member Name</th>
-                            <th>Department</th>
-                            <th>Leader Feedback</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Award Date</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Team Member Name</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Leader Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             awards?.map(award =>
-                                <tr>
-                                    <th>{award.awardDate}</th>
-                                    <td>{award.name}</td>
-                                    <td>{award.department}</td>
-                                    <td>
+                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                    <td className="py-3 px-6 whitespace-nowrap">{award.awardDate}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{award.name}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{award.department}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">
                                         <div>
                                             <label for={award._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
                                             <input type="checkbox" id={award._id} class="modal-toggle" />
@@ -58,7 +58,7 @@ const Award = () => {
                 </table>
             </div>
             <div className="mx-5">
-                <h1 className="text-xl mb-3">Training Details</h1>
+                <h1 className='text-2xl text-center font-bold mt-5'>Training Details</h1>
                 <div className="bg-[#EEEEEE] rounded">
                     <table>
                         <thead>

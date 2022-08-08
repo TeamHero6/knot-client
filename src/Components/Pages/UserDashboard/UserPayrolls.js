@@ -38,32 +38,31 @@ const UserPayrolls = () => {
                 </div>
             </div>
             <div class="overflow-x-auto">
-                <table class="table w-full">
-                    <thead>
+                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
-                            <th>Employee ID </th>
-                            <th>Name</th>
-                            <th>Salary Grade</th>
-                            <th>
-                                Payrolls Amount <br />
-                                Details
-                            </th>
-                            <th>Payrolls Amount <br />Details</th>
-                            <th>Paid Amount</th>
-                            <th>Pament Date</th>
-                            <th>Payment Status</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Employee ID </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Salary Grade</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Payrolls Amount <br /> Details</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Payrolls Amount <br />Details</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Designation</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Pament Date</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Paid Amount </th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             payrolls?.map(payroll =>
-                                <tr>
-                                    <th>{payroll.Employee_ID}</th>
-                                    <td>{payroll.Name}</td>
-                                    <td>{payroll.Payroll_Type}</td>
-                                    <td>{payroll.Pay_Amount}</td>
-                                    <td>{payroll.Payment_Date}</td>
-                                    <td>{payroll.Pay_stutas}</td>
+                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                    <td className="py-3 px-6 whitespace-nowrap">{payroll.Employee_ID}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{payroll.Name}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Salary Grade</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{payroll.Payroll_Type}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{payroll.Payable_Amount}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{payroll.Designation}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{payroll.Payment_Date}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{payroll.Pay_Amount}</td>
                                 </tr>
                             )
                         }

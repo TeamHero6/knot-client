@@ -7,6 +7,7 @@ import Meeting from "../Meeting";
 import Warming from "../Warming";
 import { BiPlus } from 'react-icons/bi';
 import { AiOutlineEye } from "react-icons/ai";
+import { BsSaveFill } from 'react-icons/bs';
 
 const LeaveRequest = () => {
     const [userinfo, setUserinfo] = useState([]);
@@ -52,7 +53,7 @@ const LeaveRequest = () => {
                     </label>
                     <h1 className='text-[#0182be] ml-3 my-3 text-xl'>Leave Request:</h1>
                     <div className='ml-3 '>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <form  onSubmit={handleSubmit(onSubmit)}>
                             <div className='grid grid-cols-2'>
                                 {/* ff */}
                                 <div>
@@ -183,16 +184,16 @@ const LeaveRequest = () => {
 
 
 
-                            <div className='flex items-center bg-[#EEEEEE]  w-24 p-2 rounded-lg mx-auto border-solid border border-[#0182be] mt-5'>
+                            <div className='flex items-center w-2 rounded-lg mx-auto'>
                                 <FaSave></FaSave>
-                                <input className='pl-2 font-medium' type="submit" />
+                                <button className='flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm'><BsSaveFill /><input type="submit" value="Submit" /></button>
                             </div>
 
                         </form>
 
                     </div>
                     <div className='px-5'>
-                        <h1 className='text-2xl text-center font-bold my-5'>Request Status</h1>
+                        <h1 className='text-2xl text-center font-bold mt-5'>Request Status</h1>
                         <div class="overflow-x-auto">
                             <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                                 <thead className='text-white bg-cyan-500 border-b border-cyan-100'>

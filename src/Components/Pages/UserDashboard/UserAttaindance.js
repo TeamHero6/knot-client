@@ -16,35 +16,33 @@ const UserAttaindance = () => {
                 <div className='mt-16'>
                     <h1 className='text-[#0182BE] text-2xl font-semibold'>Total Tracked</h1>
                     <div class="overflow-x-auto">
-                        <table class="table w-full">
-                            <thead>
+                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                            <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Start Time</th>
-                                    <th>End Time</th>
-                                    <th>Total Working Hour</th>
-                                    <th>Over Time</th>
-                                    <th>Last 7 Days <br />Total Working Hour</th>
+                                    <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>
+                                    <th className="py-3 text-left px-6 whitespace-nowrap">Start Time</th>
+                                    <th className="py-3 text-left px-6 whitespace-nowrap">End Time</th>
+                                    <th className="py-3 text-left px-6 whitespace-nowrap">Total Working Hour</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>1</th>
-                                    <td>Cy Ganderton</td>
-                                    <td>Quality Control Specialist</td>
-                                    <td>Blue</td>
+                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                    <td className="py-3 px-6 whitespace-nowrap">1</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Cy Ganderton</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Quality Control Specialist</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Blue</td>
                                 </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>Hart Hagerty</td>
-                                    <td>Desktop Support Technician</td>
-                                    <td>Purple</td>
+                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                    <td className="py-3 px-6 whitespace-nowrap">2</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Hart Hagerty</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Desktop Support Technician</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Purple</td>
                                 </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <td>Brice Swyre</td>
-                                    <td>Tax Accountant</td>
-                                    <td>Red</td>
+                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                    <td className="py-3 px-6 whitespace-nowrap">3</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Brice Swyre</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Tax Accountant</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">Red</td>
                                 </tr>
                             </tbody>
                         </table>

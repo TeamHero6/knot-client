@@ -11,25 +11,25 @@ const Meeting = () => {
     }, []);
     return (
         <div className="my-5">
-            <h1 className="text-xl mb-3">Meeting Database</h1>
+            <h1 className='text-2xl text-center font-bold mt-5'>Meeting Database</h1>
             <div class="overflow-x-auto">
-                <table class="table w-full">
-                    <thead>
+                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
-                            <th>Meeting Date $ Time</th>
-                            <th>Meeting Topic</th>
-                            <th>View Details</th>
-                            <th>Meeting Link</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Meeting Date $ Time</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Meeting Topic</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">Meeting Link</th>
                         </tr>
                     </thead>
                     <tbody>
                         
                         {
                             meetings?.map(meeting =>
-                                <tr>
-                                    <th>{meeting.date}</th>
-                                    <td>{meeting.meetingTopic}</td>
-                                    <td>
+                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                    <td className="py-3 px-6 whitespace-nowrap">{meeting.date}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{meeting.meetingTopic}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">
                                         <div>
                                             <label for={meeting._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
                                             <input type="checkbox" id={meeting._id} class="modal-toggle" />
@@ -49,7 +49,7 @@ const Meeting = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td> <a className='bg-[#0182BE] text-white px-4 py-2 rounded' href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">Join Now</a> </td>
+                                    <td className="py-3 px-6 whitespace-nowrap"> <a className='bg-[#0182BE] text-white px-4 py-2 rounded' href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">Join Now</a> </td>
                                 </tr>
                             )
                         }
