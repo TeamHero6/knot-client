@@ -13,6 +13,19 @@ const CompanySettings = () => {
     const handleEmployee = () => {
         if (passcode && employeeEmail !== "") {
             setCustomError("");
+            const employee = {
+                email: employeeEmail,
+                passcode: passcode,
+            };
+            fetch("http://localhost:5000/createNewEmployee", {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(employee),
+            })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
         } else {
             setCustomError("Please Fill all field carefully");
         }
@@ -49,12 +62,9 @@ const CompanySettings = () => {
                         />
                     </section>
                     <div className="my-3 flex">
-                        <input
-                            type="email"
-                            className="w-full border-2 border-gray-100 rounded-tl rounded-bl focus:outline-none px-2 text-gray-400"
-                            value={passcode}
-                            disabled
-                        />
+                        <p className="w-full border-2 border-gray-100 rounded-tl rounded-bl focus:outline-none px-2 text-gray-400">
+                            {passcode}
+                        </p>
                         <button
                             className="bg-gray-200 p-1 rounded-tr rounded-br"
                             onClick={passCodeGenerate}
