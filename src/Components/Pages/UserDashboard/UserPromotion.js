@@ -5,13 +5,13 @@ const UserPromotion = () => {
     const [transfers, setTransfers] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
+        fetch("https://knot-business-solution-server.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromotions(data));
     }, []);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer")
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
             .then((res) => res.json())
             .then((data) => setTransfers(data));
     }, []);

@@ -39,13 +39,16 @@ const BusinessLogin = () => {
         if ((role === "Manager") | (role === "CEO")) {
             setCustomError("");
             //check isRole
-            fetch("https://sheltered-cliffs-60290.herokuapp.com/isRole", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(signInDetails),
-            })
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/isRole",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(signInDetails),
+                }
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     if (data?.role) {

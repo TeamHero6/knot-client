@@ -30,13 +30,16 @@ const AddTask = () => {
             DueDate,
         };
 
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/addNewTask", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(NewTask),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewTask",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(NewTask),
+            }
+        )
             .then((res) => res.json())
             .then((data) => console.log(data));
     };

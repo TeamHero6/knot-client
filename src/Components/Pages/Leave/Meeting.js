@@ -4,7 +4,7 @@ const Meeting = () => {
     const [meetings, setMeetings] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/meetings")
+        fetch("https://knot-business-solution-server.herokuapp.com/meetings")
             .then((res) => res.json())
             .then((data) => setMeetings(data));
     }, []);

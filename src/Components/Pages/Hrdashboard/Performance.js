@@ -10,19 +10,22 @@ const Performance = () => {
     const [promo, setPromo] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
+        fetch("https://knot-business-solution-server.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, []);
 
     const onSubmit = (data) => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/performance",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {

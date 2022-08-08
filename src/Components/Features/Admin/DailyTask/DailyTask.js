@@ -6,9 +6,9 @@ const DailyTask = () => {
     const [value, setValue] = useState("Monir");
 
     const { data, isLoading } = useQuery(["alltasks", "task"], () =>
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/alltasks").then(
-            (res) => res.json()
-        )
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/alltasks"
+        ).then((res) => res.json())
     );
 
     if (isLoading) {
