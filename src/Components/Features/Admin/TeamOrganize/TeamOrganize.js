@@ -16,7 +16,9 @@ const TeamOrganize = () => {
         data: meetingData,
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
-        fetch("http://localhost:5000/meetings").then((res) => res.json())
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/meetings").then(
+            (res) => res.json()
+        )
     );
     //Fetch Warning Data
     const {
@@ -24,14 +26,18 @@ const TeamOrganize = () => {
         data: warningData,
         refetch: warningRefetch,
     } = useQuery(["warnings"], () =>
-        fetch("http://localhost:5000/warnings").then((res) => res.json())
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/warnings").then(
+            (res) => res.json()
+        )
     );
     const {
         isLoading: awardLoading,
         data: awardData,
         refetch: awardRefetch,
     } = useQuery(["award"], () =>
-        fetch("http://localhost:5000/award").then((res) => res.json())
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/award").then(
+            (res) => res.json()
+        )
     );
     if (meetingLoading || warningLoading || awardLoading) {
         return <Loader />;

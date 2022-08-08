@@ -75,7 +75,7 @@ const BusinessSignup = () => {
         };
 
         //send user Data to DB
-        fetch("http://localhost:5000/createdUser", {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/createdUser", {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

@@ -20,7 +20,7 @@ const AwardModal = ({ refetch }) => {
             awardType,
         };
 
-        fetch("http://localhost:5000/createAward", {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/createAward", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
