@@ -29,6 +29,7 @@ const BusinessSignup = () => {
     //State for Profile and business logo url from firebase storage
     // const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
+    const [loadingMessage, setLoadingMessage] = useState("");
 
     //handle signup error
     const [customError, setCustomError] = useState("");
@@ -39,6 +40,7 @@ const BusinessSignup = () => {
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        setLoadingMessage("Please Wait...");
         console.log("clicked");
         setCustomError("");
         //Variable declare
@@ -95,13 +97,19 @@ const BusinessSignup = () => {
                                 dispatch(loginAction(loggerInfo));
                                 console.log(loggerInfo);
                                 createUserWithEmailAndPassword(email, password);
+                                setLoadingMessage("");
                             }
                         });
                 }
             });
         });
 
+        if (Googleloading) {
+            setLoadingMessage("Please Wait...");
+        }
+
         if (user) {
+            setLoadingMessage("");
             navigate(from, { replace: true });
         }
     };
@@ -330,9 +338,9 @@ const BusinessSignup = () => {
                                         </span>
                                     </h1>
                                     {/*handle signup error*/}
-                                    {Googleloading ? (
+                                    {Googleloading || loadingMessage ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
-                                            Loading...
+                                            {loadingMessage}
                                         </button>
                                     ) : (
                                         <input
