@@ -52,9 +52,10 @@ const BusinessLogin = () => {
             })
                 .then((res) => res.json())
                 .then(async (data) => {
-                    const { role, loggerInfo } = data;
+                    const { role, loggerInfo, token } = data;
                     if (role) {
                         dispatch(loginAction(loggerInfo));
+                        localStorage.setItem("accessToken", token);
                         await signInWithEmailAndPassword(email, password);
                     } else {
                         setCustomError(

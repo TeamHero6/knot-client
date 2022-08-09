@@ -22,6 +22,7 @@ const BusinessSignup = () => {
         register,
         formState: { errors },
         handleSubmit,
+        reset,
     } = useForm();
     //State for Profile and business logo url from firebase storage
     // const [profileImageUrl, setProfileImageUrl] = useState("");
@@ -45,68 +46,67 @@ const BusinessSignup = () => {
         const password = data.password;
         const companyName = data.businessName;
         const role = data.userRole;
-        //Profile photo upload to firebase storage
-        // const profilePhoto = await data?.image[0];
-        // const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
-        // await uploadBytes(imageref, profilePhoto).then((snapshot) => {
-        //     getDownloadURL(snapshot.ref).then((url) => {
-        //         setProfileImageUrl(url);
-        //     });
-        // });
 
-        //Business Logo upload to firebase storage
-        const BusinessLogo = await data?.logo[0];
-        const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
-        await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                //When url is ready
-                if (url) {
-                    const userInfo = {
-                        name,
-                        email,
-                        password,
-                        companyName,
-                        userPhoto: "",
-                        role,
-                        CompanyLogo: url,
-                    };
+        //Sign up for CEO and Manger
+        if (role !== "Employee") {
+            //Business Logo upload to firebase storage
+            const BusinessLogo = await data?.logo[0];
+            const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
+            await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then((url) => {
+                    //When url is ready
+                    if (url) {
+                        const userInfo = {
+                            name,
+                            email,
+                            password,
+                            companyName,
+                            userPhoto: "",
+                            role,
+                            CompanyLogo: url,
+                        };
 
-                    // Send Data to Server
-                    fetch("http://localhost:5000/createdUser", {
-                        method: "PUT",
-                        headers: {
-                            "content-type": "application/json",
-                        },
-                        body: JSON.stringify(userInfo),
-                    })
-                        .then((res) => res.json())
-                        .then((data) => {
-                            const token = data?.token;
-                            const loggerInfo = data?.loggerInfo;
-                            const error = data?.message;
-                            if (error) {
-                                setCustomError(error);
-                            }
-                            if (token) {
-                                localStorage.setItem("accessToken", token);
-                                dispatch(loginAction(loggerInfo));
-                                createUserWithEmailAndPassword(email, password);
-                                setLoadingMessage("");
-                            }
-                        });
-                }
+                        // Send Data to Server
+                        fetch("http://localhost:5000/createdUser", {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(userInfo),
+                        })
+                            .then((res) => res.json())
+                            .then((data) => {
+                                const token = data?.token;
+                                const loggerInfo = data?.loggerInfo;
+                                const error = data?.message;
+                                if (error) {
+                                    setCustomError(error);
+                                }
+                                if (token) {
+                                    localStorage.setItem("accessToken", token);
+                                    dispatch(loginAction(loggerInfo));
+                                    createUserWithEmailAndPassword(
+                                        email,
+                                        password
+                                    );
+                                    setLoadingMessage("");
+                                    reset();
+                                }
+                            });
+                    }
+                });
             });
-        });
 
-        //handle dynamic input field for Employee Sign up
+            //handle dynamic input field for Employee Sign up
 
-        if (Googleloading) {
-            setLoadingMessage("Please Wait...");
-        }
+            if (Googleloading) {
+                setLoadingMessage("Please Wait...");
+            }
 
-        if (user) {
-            setLoadingMessage("");
-            navigate(from, { replace: true });
+            if (user) {
+                setLoadingMessage("");
+                navigate(from, { replace: true });
+            }
         }
     };
 
