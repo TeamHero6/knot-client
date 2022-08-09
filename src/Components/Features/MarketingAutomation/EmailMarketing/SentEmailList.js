@@ -74,9 +74,7 @@ const SentEmailList = () => {
                                 <FaRegStar className="text-xl" />{" "}
                             </td>
                             <th className="py-3 px-10 whitespace-nowrap">
-                                <button class="btn btn-outline btn-xs">
-                                    Done
-                                </button>
+                                <button className='flex items-center bg-green-400 py-1 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'>Done</button>
                             </th>
                         </tr>
                     ))}

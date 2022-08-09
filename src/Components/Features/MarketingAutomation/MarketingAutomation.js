@@ -33,19 +33,19 @@ const MarketingAutomation = () => {
                     <div>
                         <Link
                             to=""
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
+                            className="flex my-4 mx-2 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             <p>Email-Marketing</p>
                         </Link>
                         <Link
                             to='customerListing'
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                            className="flex bg-custom-gray my-4 mx-2 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Customer-Listing
                         </Link>
                     </div>
                 </div>
-                <div className="px-3">
+                <div className="overflow-auto px-3">
                     <Outlet />
                 </div>
             </section>
