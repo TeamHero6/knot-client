@@ -15,6 +15,17 @@ import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize"
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
 import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
 import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
+import Bill from "./Components/Features/SalesManagement/Bill/Bill";
+import Customer from "./Components/Features/SalesManagement/Customer/Customer";
+import SalesDashboard from "./Components/Features/SalesManagement/Dashboard/SalesDashboard";
+import Items from "./Components/Features/SalesManagement/Items/Items";
+import PaymentReceive from "./Components/Features/SalesManagement/PaymentReceive/PaymentReceive";
+import PurchaseOrder from "./Components/Features/SalesManagement/PurchaseOrder/PurchaseOrder";
+import Return from "./Components/Features/SalesManagement/Return/Return";
+import SalesManagement from "./Components/Features/SalesManagement/SalesManagement";
+import SalesOrder from "./Components/Features/SalesManagement/SalesOrder/SalesOrder";
+import SalesTeamMembers from "./Components/Features/SalesManagement/SalesTeamMembers/SalesTeamMembers";
+import Vendor from "./Components/Features/SalesManagement/Vendor/Vendor";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
@@ -83,6 +94,45 @@ function App() {
                         </RequireAuth>
                     }
                 />
+                <Route path="/salesTS" element={<SalesManagement />}>
+                    <Route index element={<SalesDashboard />}></Route>
+                    <Route
+                        path="items"
+                        element={<Items />}
+                    ></Route>
+                    <Route
+                        path="salesTeamMembers"
+                        element={<SalesTeamMembers />}
+                    ></Route>
+                    <Route
+                        path="customer"
+                        element={<Customer />}
+                    ></Route>
+                    <Route
+                        path="salesOrder"
+                        element={<SalesOrder />}
+                    ></Route>
+                    <Route
+                        path="paymentReceive"
+                        element={<PaymentReceive />}
+                    ></Route>
+                    <Route
+                        path="return"
+                        element={<Return />}
+                    ></Route>
+                    <Route
+                        path="vendor"
+                        element={<Vendor />}
+                    ></Route>
+                    <Route
+                        path="purchaseOrder"
+                        element={<PurchaseOrder />}
+                    ></Route>
+                    <Route
+                        path="bill"
+                        element={<Bill />}
+                    ></Route>
+                </Route>
                 <Route path="/marketingTS" element={<MarketingAutomation />}>
                     <Route index element={<EmailMarketing />}></Route>
                     <Route
