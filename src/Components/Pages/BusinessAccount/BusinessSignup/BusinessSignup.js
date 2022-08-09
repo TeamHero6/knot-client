@@ -29,6 +29,7 @@ const BusinessSignup = () => {
 
     //handle signup error
     const [customError, setCustomError] = useState("");
+    const [employeeSignUp, setEmployeeSignUp] = useState(false);
     const dispatch = useDispatch();
 
     let location = useLocation();
@@ -97,6 +98,8 @@ const BusinessSignup = () => {
             });
         });
 
+        //handle dynamic input field for Employee Sign up
+
         if (Googleloading) {
             setLoadingMessage("Please Wait...");
         }
@@ -104,6 +107,15 @@ const BusinessSignup = () => {
         if (user) {
             setLoadingMessage("");
             navigate(from, { replace: true });
+        }
+    };
+
+    const handleEmployeeSignUp = (e) => {
+        if (e.target.value !== "Employee") {
+            setEmployeeSignUp(false);
+        }
+        if (e.target.value === "Employee") {
+            setEmployeeSignUp(true);
         }
     };
     return (
@@ -158,67 +170,6 @@ const BusinessSignup = () => {
                                     </section>{" "}
                                     <section>
                                         <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <MdOutlineAddBusiness className=" m-2 text-gray-400" />
-                                            <input
-                                                {...register("businessName", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Company name is required",
-                                                    },
-                                                })}
-                                                type="text"
-                                                placeholder="Your Company Name"
-                                                className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
-                                                id="Businessname"
-                                            />
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.businessName?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {
-                                                        errors?.businessName
-                                                            .message
-                                                    }
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*Company Name Field*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <select
-                                                className="text-gray-400 bg-transparent w-full outline-none"
-                                                {...register("userRole", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Your Role is Required",
-                                                    },
-                                                })}
-                                            >
-                                                <option value="">
-                                                    Select Your Role
-                                                </option>
-                                                <option value="CEO">CEO</option>
-                                                <option value="Manager">
-                                                    Manager
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.userRole?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {errors?.userRole.message}
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*Company Role*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <FaRegEnvelope className=" m-2 text-gray-400" />
                                             <input
                                                 {...register("email", {
@@ -257,6 +208,76 @@ const BusinessSignup = () => {
                                     {/*Email Field*/}
                                     <section>
                                         <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                            <select
+                                                className="text-gray-400 bg-transparent w-full outline-none"
+                                                {...register("userRole", {
+                                                    required: {
+                                                        value: true,
+                                                        message:
+                                                            "Your Role is Required",
+                                                    },
+                                                })}
+                                                onChange={handleEmployeeSignUp}
+                                            >
+                                                <option value="">
+                                                    Select Your Role
+                                                </option>
+                                                <option value="CEO">CEO</option>
+                                                <option value="Manager">
+                                                    Manager
+                                                </option>
+                                                <option value="Employee">
+                                                    Employee
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <h1 className="text-left ml-2">
+                                            {errors.userRole?.type ===
+                                                "required" && (
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.userRole.message}
+                                                </span>
+                                            )}
+                                        </h1>
+                                    </section>{" "}
+                                    {/*Company Role*/}
+                                    {!employeeSignUp && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <MdOutlineAddBusiness className=" m-2 text-gray-400" />
+                                                <input
+                                                    {...register(
+                                                        "businessName",
+                                                        {
+                                                            required: {
+                                                                value: true,
+                                                                message:
+                                                                    "Company name is required",
+                                                            },
+                                                        }
+                                                    )}
+                                                    type="text"
+                                                    placeholder="Your Company Name"
+                                                    className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
+                                                    id="Businessname"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.businessName?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.businessName
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
+                                    {/*Company Name Field*/}
+                                    <section>
+                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <MdLockOutline className=" m-2 text-gray-400" />
                                             <input
                                                 {...register("password", {
@@ -293,38 +314,39 @@ const BusinessSignup = () => {
                                         </h1>
                                     </section>
                                     {/*Password Field*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <AiOutlineCloudUpload className=" m-2 text-gray-400" />
-                                            <label
-                                                htmlFor="businessLogo"
-                                                className="outline-none h-full text-sm text-gray-400 bg-gray-100"
-                                            >
-                                                Upload Company Logo
-                                            </label>
-                                            <input
-                                                {...register("logo", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Your Businessn Logo is Required",
-                                                    },
-                                                })}
-                                                type="file"
-                                                id="businessLogo"
-                                                className="hidden"
-                                            />
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.logo?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {errors?.logo.message}
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*Business Logo*/}
+                                    {!employeeSignUp && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <AiOutlineCloudUpload className=" m-2 text-gray-400" />
+                                                <label
+                                                    htmlFor="businessLogo"
+                                                    className="outline-none h-full text-sm text-gray-400 bg-gray-100"
+                                                >
+                                                    Upload Company Logo
+                                                </label>
+                                                <input
+                                                    {...register("logo", {
+                                                        required: {
+                                                            value: true,
+                                                            message:
+                                                                "Your Businessn Logo is Required",
+                                                        },
+                                                    })}
+                                                    type="file"
+                                                    id="businessLogo"
+                                                    className="hidden"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.logo?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {errors?.logo.message}
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
                                     <h1 className="text-left ml-2">
                                         <span className="w-full text-left text-red-400 text-sm">
                                             {customError}

@@ -18,7 +18,8 @@ const BusinessLogin = () => {
     const [signInWithEmailAndPassword, user, Eloading, error] =
         useSignInWithEmailAndPassword(auth);
     const [customError, setCustomError] = useState("");
-    const [employee, setEmployee] = useState(false);
+    const [employeeWantLogin, setEmployeeWantLogin] = useState(false);
+
     const dispatch = useDispatch();
 
     let location = useLocation();
@@ -64,10 +65,13 @@ const BusinessLogin = () => {
         }
     };
 
-    //handle Employee || purpose for custom placeholder
+    //handle Employee || purpose for secret code input field
     const handleEmployee = (e) => {
+        if (e.target.value !== "Employee") {
+            setEmployeeWantLogin(false);
+        }
         if (e.target.value === "Employee") {
-            setEmployee(true);
+            setEmployeeWantLogin(true);
         }
     };
 
@@ -185,11 +189,7 @@ const BusinessLogin = () => {
                                                     },
                                                 })}
                                                 type="password"
-                                                placeholder={
-                                                    employee
-                                                        ? "Passcode"
-                                                        : "Password"
-                                                }
+                                                placeholder="Password"
                                                 className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
                                                 id="password"
                                             />
@@ -209,6 +209,38 @@ const BusinessLogin = () => {
                                             )}
                                         </h1>
                                     </section>
+                                    {/*Password Field*/}
+                                    {employeeWantLogin && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <MdLockOutline className=" m-2 text-gray-400" />
+                                                <input
+                                                    {...register("secretCode", {
+                                                        required: {
+                                                            value: true,
+                                                            message:
+                                                                "Secret Code is Required",
+                                                        },
+                                                    })}
+                                                    type="password"
+                                                    placeholder="Secret Code"
+                                                    className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
+                                                    id="password"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.secretCode?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.secretCode
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
                                     <div className="text-left ml2 w-full text-red-400 text-sm mt-2">
                                         {customError}
                                     </div>
