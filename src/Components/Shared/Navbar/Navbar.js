@@ -9,7 +9,6 @@ import auth from "../../../firebase.init";
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
     //use Info from Redux
-
     const authInfo = useSelector((state) => state.auth);
 
     //loger info will be use next time

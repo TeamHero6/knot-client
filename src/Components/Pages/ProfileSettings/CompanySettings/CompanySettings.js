@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../../../firebase.init";
 
 const CompanySettings = () => {
+    const [createUserWithEmailAndPassword, user, loading, error] =
+        useCreateUserWithEmailAndPassword(auth);
     const [passcode, setPassCode] = useState();
     const [employeeEmail, setEmployeeEmail] = useState("");
     const [customError, setCustomError] = useState("");
@@ -28,11 +32,15 @@ const CompanySettings = () => {
                 }
             )
                 .then((res) => res.json())
-                .then((data) => console.log(data));
+                .then(async (data) => console.log(data));
         } else {
             setCustomError("Please Fill all field carefully");
         }
     };
+
+    if (user) {
+        console.log(user);
+    }
     return (
         <div>
             <section className="w-full flex justify-center">
