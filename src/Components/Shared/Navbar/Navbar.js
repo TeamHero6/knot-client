@@ -1,12 +1,16 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const authInfo = useSelector((state) => state.auth);
+    const { isAuth, loggerInfo } = authInfo;
+
     if (loading) {
         return;
     }
@@ -44,7 +48,7 @@ const Navbar = () => {
                                 </Link>
                             </li>
                             <li>
-                                {user ? (
+                                {isAuth ? (
                                     <div class="dropdown dropdown-end">
                                         <label
                                             tabindex="0"
@@ -107,7 +111,7 @@ const Navbar = () => {
                             Access your apps
                         </Link>
                         <div>
-                            {user ? (
+                            {isAuth ? (
                                 <div class="dropdown dropdown-end">
                                     <label
                                         tabindex="0"

@@ -10,8 +10,10 @@ import auth, { storage } from "../../../../firebase.init";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { MdOutlineAddBusiness } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
+import { loginAction } from "../../../../Redux/Authentication/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessSignup = () => {
@@ -30,13 +32,14 @@ const BusinessSignup = () => {
 
     //handle signup error
     const [customError, setCustomError] = useState("");
-    const [token, setToken] = useState("");
+    const dispatch = useDispatch();
 
     let location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        console.log("clicked");
         setCustomError("");
         //Profile photo upload to firebase storage
         const profilePhoto = await data?.image[0];
@@ -87,13 +90,15 @@ const BusinessSignup = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     const token = data?.token;
+                    const loggerInfo = data?.loggerInfo;
                     const error = data?.message;
                     if (error) {
                         setCustomError(error);
                     }
                     if (token) {
-                        setToken(token);
                         localStorage.setItem("accessToken", token);
+                        dispatch(loginAction(loggerInfo));
+                        console.log(loggerInfo);
                         createUserWithEmailAndPassword(email, password);
                     }
                 });
