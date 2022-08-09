@@ -31,15 +31,12 @@ const BusinessSignup = () => {
     //handle signup error
     const [customError, setCustomError] = useState("");
     const [token, setToken] = useState("");
-    const [loading, setLoading] = useState(false);
 
     let location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
-        setLoading(true);
-        console.log("clickedd");
         setCustomError("");
         //Profile photo upload to firebase storage
         const profilePhoto = await data?.image[0];
@@ -96,12 +93,11 @@ const BusinessSignup = () => {
                     }
                     if (token) {
                         setToken(token);
+                        localStorage.setItem("accessToken", token);
+                        createUserWithEmailAndPassword(email, password);
                     }
                 });
-            setLoading(false);
-            await createUserWithEmailAndPassword(email, password);
         }
-        console.log("account created");
 
         if (user) {
             navigate(from, { replace: true });
