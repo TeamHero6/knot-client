@@ -46,8 +46,14 @@ const UserDashboard = () => {
                 <div class="drawer-side">
                     <label for="dashboard-sidebar" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-52 text-base-content gray">
-                        <li><Link className='' to="/userdashboard">
-                            Leave Request</Link></li>
+                        <li><Link to="/userdashboard">
+                            Dashboard</Link></li>
+                        <li><Link to="attendance">Attendance
+                            </Link></li>
+                        <li><Link to="performance">
+                            Performance</Link></li>
+                        <li><Link to="Payrolls">
+                            Payrolls</Link></li>
 
                     </ul>
 

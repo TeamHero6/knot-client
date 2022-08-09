@@ -49,7 +49,7 @@ const Meeting = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap"> <a className='bg-[#0182BE] text-white px-4 py-2 rounded' href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">Join Now</a> </td>
+                                    <td className="py-3 px-6 whitespace-nowrap"> <a className='flex items-center gap-2 bg-green-400	 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">Join Now</a> </td>
                                 </tr>
                             )
                         }
