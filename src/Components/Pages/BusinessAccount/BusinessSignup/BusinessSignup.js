@@ -1,18 +1,15 @@
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
-import { MdLockOutline } from "react-icons/md";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import auth, { storage } from "../../../../firebase.init";
-
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { MdOutlineAddBusiness } from "react-icons/md";
+import { MdLockOutline, MdOutlineAddBusiness } from "react-icons/md";
 import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
+import auth, { storage } from "../../../../firebase.init";
 import { loginAction } from "../../../../Redux/Authentication/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
@@ -28,7 +25,6 @@ const BusinessSignup = () => {
     } = useForm();
     //State for Profile and business logo url from firebase storage
     // const [profileImageUrl, setProfileImageUrl] = useState("");
-    const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
     const [loadingMessage, setLoadingMessage] = useState("");
 
     //handle signup error
@@ -41,7 +37,6 @@ const BusinessSignup = () => {
 
     const onSubmit = async (data) => {
         setLoadingMessage("Please Wait...");
-        console.log("clicked");
         setCustomError("");
         //Variable declare
         const email = data.email;
@@ -63,7 +58,6 @@ const BusinessSignup = () => {
         const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
         await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
-                setBusinessLogoUrl(url);
                 //When url is ready
                 if (url) {
                     const userInfo = {
@@ -95,7 +89,6 @@ const BusinessSignup = () => {
                             if (token) {
                                 localStorage.setItem("accessToken", token);
                                 dispatch(loginAction(loggerInfo));
-                                console.log(loggerInfo);
                                 createUserWithEmailAndPassword(email, password);
                                 setLoadingMessage("");
                             }

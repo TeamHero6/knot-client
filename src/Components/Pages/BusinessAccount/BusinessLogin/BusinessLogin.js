@@ -13,10 +13,11 @@ const BusinessLogin = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
-    const [signInWithEmailAndPassword, user, loading, error] =
+    const [signInWithEmailAndPassword, user, Eloading, error] =
         useSignInWithEmailAndPassword(auth);
     const [customError, setCustomError] = useState("");
     const [employee, setEmployee] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     let location = useLocation();
     const navigate = useNavigate();
@@ -50,9 +51,9 @@ const BusinessLogin = () => {
                 }
             )
                 .then((res) => res.json())
-                .then((data) => {
+                .then(async (data) => {
                     if (data?.role) {
-                        signInWithEmailAndPassword(email, password);
+                        await signInWithEmailAndPassword(email, password);
                     } else {
                         setCustomError(
                             "You account have an issue! contact us."
@@ -210,7 +211,7 @@ const BusinessLogin = () => {
                                     <div className="text-left ml2 w-full text-red-400 text-sm mt-2">
                                         {customError}
                                     </div>
-                                    {loading ? (
+                                    {Eloading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Login...
                                         </button>
