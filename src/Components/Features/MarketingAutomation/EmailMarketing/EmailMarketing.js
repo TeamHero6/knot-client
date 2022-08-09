@@ -33,13 +33,13 @@ const EmailMarketing = () => {
     return (
         <div className="mx-5 mt-3">
             <div className="flex justify-between items-center">
-                <div class="form-control min-w-[400px] border rounded-3xl bg-[#EEEEEE] border-[#0182BE]">
+                <div class="form-control min-w-[400px] border border-gray-300 bg-slate-50 rounded">
                     <div class="input-group ">
                         <button class="btn btn-ghost text-2xl">
                             <BiSearchAlt></BiSearchAlt>
                         </button>
                         <input
-                            className="text-xl w-full bg-[#EEEEEE] mr-4"
+                            className="text-xl bg-slate-50 py-2 pl-3 w-full my-1 outline-none"
                             type="text"
                             placeholder="Search Here"
                             class="input"
@@ -54,7 +54,7 @@ const EmailMarketing = () => {
                     <div>
                         <button
                             onClick={() => setCompose(!compose)}
-                            className="btn btn-outline flex justify-center items-center text-xl py-2 px-4 bg-[#EEEEEE]"
+                            className="btn btn-outline flex justify-center items-center text-xl py-2 px-4 border-gray-300 bg-slate-50 rounded"
                         >
                             <FaRegEdit />
                             <p>Compose</p>
@@ -64,7 +64,7 @@ const EmailMarketing = () => {
             </div>
             <div>
                 {compose ? (
-                    <div className="mt-8 z-50 border rounded-lg">
+                    <div className="mt-8 z-50 border rounded">
                         <form onSubmit={handleEmailForm}>
                             <input
                                 className="px-4 z-10 py-2 border-b w-full"

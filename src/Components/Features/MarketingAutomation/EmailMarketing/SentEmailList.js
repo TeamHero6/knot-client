@@ -25,44 +25,44 @@ const SentEmailList = () => {
 
     return (
         <div class="overflow-x-auto w-full my-16">
-            <table class="table w-full">
+            <table class="shadow-2xl border-[1px] border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                 {/* <!-- head --> */}
-                <thead>
+                <thead className=' bg-cyan-100 border-b border-cyan-100'>
                     <tr>
-                        <th>
+                        <th className="py-3 text-left pl-10 pr-4 whitespace-nowrap">
                             <label>
                                 <input type="checkbox" class="checkbox" />
                             </label>
                         </th>
-                        <th>Company</th>
-                        <th>Campaign</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th className="py-3 text-left px-6 whitespace-nowrap">Company</th>
+                        <th className="py-3 text-left px-6 whitespace-nowrap">Campaign</th>
+                        <th className="py-3 text-left px-6 whitespace-nowrap"></th>
+                        <th className="py-3 text-left px-6 whitespace-nowrap"></th>
+                        <th className="py-3 text-left px-6 whitespace-nowrap"></th>
+                        <th className="py-3 text-left px-10 whitespace-nowrap"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {/* <!-- row 1 --> */}
                     {emailList.map((email) => (
-                        <tr key={email._id}>
-                            <th>
+                        <tr key={email._id} className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                            <th className="py-3 pl-10 pr-4 whitespace-nowrap">
                                 <label>
                                     <input type="checkbox" class="checkbox" />
                                 </label>
                             </th>
-                            <td>
+                            <td className="py-3 px-6 whitespace-nowrap">
                                 <div class="flex items-center space-x-3">
                                     <div>
                                         <div>KNOT</div>
                                     </div>
                                 </div>
                             </td>
-                            <td className="font-semibold">
+                            <td className="py-3 px-6 whitespace-nowrap">
                                 {email.emailSubject}
                             </td>
                             <td>{email.emailDescription}</td>
-                            <td>
+                            <td className="py-3 px-6 whitespace-nowrap">
                                 <button
                                     onClick={() => deleteEmail(email._id)}
                                     className="btn btn-sm btn-ghost"
@@ -70,10 +70,10 @@ const SentEmailList = () => {
                                     <RiDeleteBin5Line className="text-xl text-red-500" />
                                 </button>
                             </td>
-                            <td>
+                            <td className="py-3 px-6 whitespace-nowrap">
                                 <FaRegStar className="text-xl" />{" "}
                             </td>
-                            <th>
+                            <th className="py-3 px-10 whitespace-nowrap">
                                 <button class="btn btn-outline btn-xs">
                                     Done
                                 </button>
