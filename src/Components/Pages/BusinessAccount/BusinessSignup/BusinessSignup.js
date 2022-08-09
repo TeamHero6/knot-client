@@ -27,7 +27,7 @@ const BusinessSignup = () => {
         handleSubmit,
     } = useForm();
     //State for Profile and business logo url from firebase storage
-    const [profileImageUrl, setProfileImageUrl] = useState("");
+    // const [profileImageUrl, setProfileImageUrl] = useState("");
     const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
 
     //handle signup error
@@ -41,14 +41,20 @@ const BusinessSignup = () => {
     const onSubmit = async (data) => {
         console.log("clicked");
         setCustomError("");
+        //Variable declare
+        const email = data.email;
+        const name = data.name;
+        const password = data.password;
+        const companyName = data.businessName;
+        const role = data.userRole;
         //Profile photo upload to firebase storage
-        const profilePhoto = await data?.image[0];
-        const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
-        await uploadBytes(imageref, profilePhoto).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setProfileImageUrl(url);
-            });
-        });
+        // const profilePhoto = await data?.image[0];
+        // const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
+        // await uploadBytes(imageref, profilePhoto).then((snapshot) => {
+        //     getDownloadURL(snapshot.ref).then((url) => {
+        //         setProfileImageUrl(url);
+        //     });
+        // });
 
         //Business Logo upload to firebase storage
         const BusinessLogo = await data?.logo[0];
@@ -56,53 +62,44 @@ const BusinessSignup = () => {
         await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setBusinessLogoUrl(url);
+                //When url is ready
+                if (url) {
+                    const userInfo = {
+                        name,
+                        email,
+                        password,
+                        companyName,
+                        userPhoto: "",
+                        role,
+                        CompanyLogo: url,
+                    };
+
+                    // Send Data to Server
+                    fetch("http://localhost:5000/createdUser", {
+                        method: "PUT",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify(userInfo),
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const token = data?.token;
+                            const loggerInfo = data?.loggerInfo;
+                            const error = data?.message;
+                            if (error) {
+                                setCustomError(error);
+                            }
+                            if (token) {
+                                localStorage.setItem("accessToken", token);
+                                dispatch(loginAction(loggerInfo));
+                                console.log(loggerInfo);
+                                createUserWithEmailAndPassword(email, password);
+                            }
+                        });
+                }
             });
         });
-
-        //Variable declare
-        const email = data.email;
-        const name = data.name;
-        const password = data.password;
-        const companyName = data.businessName;
-        const role = data.userRole;
-        if (BusinessLogoUrl) {
-        }
-
-        //send user Data to DB
-        if (profileImageUrl && BusinessLogoUrl) {
-            //Create a data object
-            const userInfo = {
-                name,
-                email,
-                password,
-                companyName,
-                userPhoto: profileImageUrl,
-                role,
-                CompanyLogo: BusinessLogoUrl,
-            };
-            fetch("http://localhost:5000/createdUser", {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(userInfo),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    const token = data?.token;
-                    const loggerInfo = data?.loggerInfo;
-                    const error = data?.message;
-                    if (error) {
-                        setCustomError(error);
-                    }
-                    if (token) {
-                        localStorage.setItem("accessToken", token);
-                        dispatch(loginAction(loggerInfo));
-                        console.log(loggerInfo);
-                        createUserWithEmailAndPassword(email, password);
-                    }
-                });
-        }
 
         if (user) {
             navigate(from, { replace: true });
@@ -295,38 +292,6 @@ const BusinessSignup = () => {
                                         </h1>
                                     </section>
                                     {/*Password Field*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <AiOutlineCloudUpload className=" m-2 text-gray-400" />
-                                            <label
-                                                htmlFor="userPhoto"
-                                                className="outline-none h-full text-sm text-gray-400 bg-gray-100"
-                                            >
-                                                Your Photo
-                                            </label>
-                                            <input
-                                                {...register("image", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Photo is Required",
-                                                    },
-                                                })}
-                                                type="file"
-                                                id="userPhoto"
-                                                className="hidden"
-                                            />
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.photo?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {errors?.photo.message}
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*User Photo*/}
                                     <section>
                                         <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <AiOutlineCloudUpload className=" m-2 text-gray-400" />

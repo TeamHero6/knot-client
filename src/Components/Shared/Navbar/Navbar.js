@@ -1,15 +1,26 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
+import { loginAction } from "../../../Redux/Authentication/authAction";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const dispatch = useDispatch();
+    //use Info from Redux
     const authInfo = useSelector((state) => state.auth);
-    const { isAuth, loggerInfo } = authInfo;
+
+    //loger info will be use next time
+    let { loggerInfo } = authInfo;
+
+    //Sign out user
+    const handleSignOut = () => {
+        signOut(auth);
+        dispatch(loginAction(null));
+    };
 
     if (loading) {
         return;
@@ -48,7 +59,7 @@ const Navbar = () => {
                                 </Link>
                             </li>
                             <li>
-                                {isAuth ? (
+                                {user ? (
                                     <div class="dropdown dropdown-end">
                                         <label
                                             tabindex="0"
@@ -76,11 +87,7 @@ const Navbar = () => {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <p
-                                                    onClick={() =>
-                                                        signOut(auth)
-                                                    }
-                                                >
+                                                <p onClick={handleSignOut}>
                                                     Logout
                                                 </p>
                                             </li>
@@ -111,7 +118,7 @@ const Navbar = () => {
                             Access your apps
                         </Link>
                         <div>
-                            {isAuth ? (
+                            {user ? (
                                 <div class="dropdown dropdown-end">
                                     <label
                                         tabindex="0"
@@ -137,7 +144,7 @@ const Navbar = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <p onClick={() => signOut(auth)}>
+                                            <p onClick={handleSignOut}>
                                                 Logout
                                             </p>
                                         </li>
