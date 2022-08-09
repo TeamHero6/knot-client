@@ -3,8 +3,10 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
+import { loginAction } from "../../../../Redux/Authentication/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessLogin = () => {
@@ -17,7 +19,7 @@ const BusinessLogin = () => {
         useSignInWithEmailAndPassword(auth);
     const [customError, setCustomError] = useState("");
     const [employee, setEmployee] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
 
     let location = useLocation();
     const navigate = useNavigate();
@@ -40,19 +42,18 @@ const BusinessLogin = () => {
         if ((role === "Manager") | (role === "CEO")) {
             setCustomError("");
             //check isRole
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/isRole",
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(signInDetails),
-                }
-            )
+            fetch("http://localhost:5000/isRole", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(signInDetails),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
-                    if (data?.role) {
+                    const { role, loggerInfo } = data;
+                    if (role) {
+                        dispatch(loginAction(loggerInfo));
                         await signInWithEmailAndPassword(email, password);
                     } else {
                         setCustomError(

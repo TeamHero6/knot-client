@@ -1,25 +1,25 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
-import { loginAction } from "../../../Redux/Authentication/authAction";
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
-    const dispatch = useDispatch();
     //use Info from Redux
+
     const authInfo = useSelector((state) => state.auth);
 
     //loger info will be use next time
-    let { loggerInfo } = authInfo;
+    if (authInfo.isAuth) {
+        console.log(authInfo);
+    }
 
     //Sign out user
     const handleSignOut = () => {
         signOut(auth);
-        dispatch(loginAction(null));
     };
 
     if (loading) {
