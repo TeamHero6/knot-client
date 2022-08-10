@@ -21,13 +21,16 @@ const CompanySettings = () => {
                 email: employeeEmail,
                 passcode: passcode,
             };
-            fetch("http://localhost:5000/createNewEmployee", {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(employee),
-            })
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/createNewEmployee",
+                {
+                    method: "PUT",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(employee),
+                }
+            )
                 .then((res) => res.json())
                 .then(async (data) => console.log(data));
         } else {

@@ -69,13 +69,16 @@ const BusinessSignup = () => {
                         };
 
                         // Send Data to Server
-                        fetch("http://localhost:5000/createdUser", {
-                            method: "PUT",
-                            headers: {
-                                "content-type": "application/json",
-                            },
-                            body: JSON.stringify(userInfo),
-                        })
+                        fetch(
+                            "https://knot-business-solution-server.herokuapp.com/createdUser",
+                            {
+                                method: "PUT",
+                                headers: {
+                                    "content-type": "application/json",
+                                },
+                                body: JSON.stringify(userInfo),
+                            }
+                        )
                             .then((res) => res.json())
                             .then((data) => {
                                 const token = data?.token;
@@ -123,13 +126,16 @@ const BusinessSignup = () => {
         if (role === "Employee") {
             const info = { email, secretCode };
 
-            fetch("http://localhost:5000/checkEmployee", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(info),
-            })
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(info),
+                }
+            )
                 .then((res) => res.json())
                 .then(async (data) => {
                     const role = data?.role;
@@ -155,7 +161,7 @@ const BusinessSignup = () => {
                         });
                     }
                 });
-            // fetch(`http://localhost:5000/employeeRole/${email}`)
+            // fetch(`https://knot-business-solution-server.herokuapp.com/employeeRole/${email}`)
             //     .then((res) => res.json())
             //     .then(async (data) => {
             //         const { role, message, message2 } = data;
