@@ -91,8 +91,16 @@ const BusinessSignup = () => {
                                         email,
                                         password
                                     );
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "Your account is now ready",
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                    });
                                     setLoadingMessage("");
                                     reset();
+                                    navigate(from, { replace: true });
                                 }
                             });
                     }
@@ -129,6 +137,13 @@ const BusinessSignup = () => {
                     if (role) {
                         setLoadingMessage("");
                         await createUserWithEmailAndPassword(email, password);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your account is now ready",
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
                         navigate(from);
                     } else {
                         setLoadingMessage("");

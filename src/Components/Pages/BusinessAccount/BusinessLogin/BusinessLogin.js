@@ -5,6 +5,7 @@ import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import auth from "../../../../firebase.init";
 import { loginAction } from "../../../../Redux/Authentication/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
@@ -35,9 +36,34 @@ const BusinessLogin = () => {
 
         if (role === "Employee") {
             setCustomError("");
-            const passcode = data.password;
-            const loginInfo = { email, passcode };
-            console.log(loginInfo);
+            const secretCode = data?.secretCode;
+            const info = { email, secretCode };
+            console.log(info);
+            fetch("http://localhost:5000/checkEmployee", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            })
+                .then((res) => res.json())
+                .then(async (data) => {
+                    const role = data?.role;
+                    const message = data?.message;
+                    if (role) {
+                        setCustomError("");
+                        await signInWithEmailAndPassword(email, password);
+                        navigate(from, { replace: true });
+                    } else {
+                        setCustomError("");
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${message}`,
+                            footer: `Please Contact with your manager.`,
+                        });
+                    }
+                });
         }
 
         if ((role === "Manager") | (role === "CEO")) {
@@ -223,7 +249,7 @@ const BusinessLogin = () => {
                                                                 "Secret Code is Required",
                                                         },
                                                     })}
-                                                    type="password"
+                                                    type="text"
                                                     placeholder="Secret Code"
                                                     className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
                                                     id="password"
