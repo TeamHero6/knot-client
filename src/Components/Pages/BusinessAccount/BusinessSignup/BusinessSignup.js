@@ -47,6 +47,7 @@ const BusinessSignup = () => {
         const password = data.password;
         const companyName = data.businessName;
         const role = data.userRole;
+        const secretCode = data?.secretCode;
 
         //Sign up for CEO and Manger
         if (role !== "Employee") {
@@ -112,25 +113,52 @@ const BusinessSignup = () => {
 
         //Sign up for Employee
         if (role === "Employee") {
-            fetch(`http://localhost:5000/employeeRole/${email}`)
+            const info = { email, secretCode };
+
+            fetch("http://localhost:5000/checkEmployee", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
-                    const { role, message, message2 } = data;
-                    if (role !== "") {
+                    const role = data?.role;
+                    const message = data?.message;
+                    if (role) {
                         setLoadingMessage("");
                         await createUserWithEmailAndPassword(email, password);
-                        navigate("/");
-                    }
-                    if (role === "") {
+                        navigate(from);
+                    } else {
                         setLoadingMessage("");
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
                             text: `${message}`,
-                            footer: `${message2}`,
+                            footer: `Please Contact with your manager.`,
                         });
                     }
                 });
+            // fetch(`http://localhost:5000/employeeRole/${email}`)
+            //     .then((res) => res.json())
+            //     .then(async (data) => {
+            //         const { role, message, message2 } = data;
+            //         if (role !== "") {
+            //             setLoadingMessage("");
+            //             await createUserWithEmailAndPassword(email, password);
+            //             navigate("/");
+            //         }
+            //         if (role === "") {
+            //             setLoadingMessage("");
+            // Swal.fire({
+            //     icon: "error",
+            //     title: "Oops...",
+            //     text: `${message}`,
+            //     footer: `${message2}`,
+            // });
+            //         }
+            //     });
         }
     };
 
@@ -371,6 +399,37 @@ const BusinessSignup = () => {
                                             </h1>
                                         </section>
                                     )}
+                                    {employeeSignUp && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <MdLockOutline className=" m-2 text-gray-400" />
+                                                <input
+                                                    {...register("secretCode", {
+                                                        required: {
+                                                            value: true,
+                                                            message:
+                                                                "secretCode is required",
+                                                        },
+                                                    })}
+                                                    type="text"
+                                                    placeholder="Company Secret Code"
+                                                    className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.secretCode?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.secretCode
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
+                                    {/*Secret Code*/}
                                     <h1 className="text-left ml-2">
                                         <span className="w-full text-left text-red-400 text-sm">
                                             {customError}
