@@ -7,6 +7,7 @@ import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { MdLockOutline, MdOutlineAddBusiness } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
 import auth, { storage } from "../../../../firebase.init";
@@ -107,6 +108,29 @@ const BusinessSignup = () => {
                 setLoadingMessage("");
                 navigate(from, { replace: true });
             }
+        }
+
+        //Sign up for Employee
+        if (role === "Employee") {
+            fetch(`http://localhost:5000/employeeRole/${email}`)
+                .then((res) => res.json())
+                .then(async (data) => {
+                    const { role, message, message2 } = data;
+                    if (role !== "") {
+                        setLoadingMessage("");
+                        await createUserWithEmailAndPassword(email, password);
+                        navigate("/");
+                    }
+                    if (role === "") {
+                        setLoadingMessage("");
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${message}`,
+                            footer: `${message2}`,
+                        });
+                    }
+                });
         }
     };
 
