@@ -36,6 +36,7 @@ import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserDashboard from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
+import Calender from "./Components/Shared/Calender/Calender";
 
 function App() {
     return (
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/BusinessLogin" element={<BusinessLogin />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/calender" element={<Calender />} />
 
                 <Route path="/userdashboard" element={<UserDashboard></UserDashboard>}>
                     <Route index element={<LeaveRequest />} />
