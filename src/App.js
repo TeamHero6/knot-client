@@ -12,6 +12,9 @@ import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
+import HR from "./Components/Features/LiveChat/HR";
+import LiveChat from "./Components/Features/LiveChat/LiveChat";
+import UserLogin from "./Components/Features/LiveChat/UserLogin";
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
 import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
 import MarketingAutomation from "./Components/Features/MarketingAutomation/MarketingAutomation";
@@ -70,6 +73,10 @@ function App() {
                     <Route path="performance" element={<UserPromotion />} />
                     <Route path="Payrolls" element={<UserPayrolls />} />
                 </Route>
+
+                <Route path="/liveChat" element={<LiveChat></LiveChat>}></Route>
+                <Route path="/userlogin" element={<UserLogin></UserLogin>}></Route>
+                <Route path="/hrchat" element={<HR></HR>}></Route>
 
                 <Route
                     path="/userpayrolls"

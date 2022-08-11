@@ -25,11 +25,7 @@ const FormSample = () => {
                     <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none' type="datetime-local" name="" id="" />
                 </div>
                 <div className='flex justify-between gap-5'>
-                    <select className='w-6/12 pl-3 py-2 border border-gray-300 bg-slate-50 rounded outline-none'>
-                        <option className='text-gray-400' disabled selected>Type Of Leave</option>
-                        <option className='text-green-400'>Approve</option>
-                        <option className='text-red-600'>Reject</option>
-                    </select>
+                    
                     <select className='w-6/12 pl-3 border border-gray-300 bg-slate-50 rounded outline-none'>
                         <option className='text-gray-400' disabled selected>Type Of Leave</option>
                         <option>Casual leave</option>
