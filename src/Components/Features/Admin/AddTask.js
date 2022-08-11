@@ -1,114 +1,106 @@
-import { format } from "date-fns";
+import DateMomentUtils from "@date-io/moment";
+import {
+    KeyboardDateTimePicker,
+    MuiPickersUtilsProvider,
+} from "@material-ui/pickers";
+import moment from "moment";
 import React, { useState } from "react";
 
 const AddTask = () => {
-    const [isPickDate, setPickDate] = useState(false);
-    const [today, setToday] = useState(new Date());
+    const [selectedDate, handleDateChange] = useState(new Date());
 
-    const handleNewTask = (e) => {
+    const handleTask = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
-        const employeeID = e.target.employeeID.value;
+        const employeeEmail = e.target.employeeEmail.value;
         const department = e.target.department.value;
-        const designation = e.target.designation.value;
-        const task = e.target.task.value;
-        const assignBy = e.target.assignBy.value;
-        const assignerEmployeeID = e.target.assignerEmployeeID.value;
-        const AssignerDepartment = e.target.AssignerDepartment.value;
-        const AssignerDesignation = e.target.AssignerDesignation.value;
-        const DueDate = format(today, "PP");
-        const NewTask = {
+        const taskTitle = e.target.taskTitle.value;
+        const taskDescription = e.target.taskDescription.value;
+        const deadline = moment(selectedDate).format(
+            "DD/MM/YYYY hh:mm a",
+            true
+        );
+        const result = {
             name,
+            employeeEmail,
             department,
-            employeeID,
-            designation,
-            task,
-            assignBy,
-            assignerEmployeeID,
-            AssignerDepartment,
-            AssignerDesignation,
-            DueDate,
+            taskTitle,
+            taskDescription,
+            deadline,
         };
-
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewTask",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(NewTask),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+        console.log(result);
     };
+
+    // fetch(
+    //     "https://knot-business-solution-server.herokuapp.com/addNewTask",
+    //     {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json",
+    //         },
+    //         body: JSON.stringify(NewTask),
+    //     }
+    // )
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data));
     return (
         <div>
-            <form onSubmit={handleNewTask}>
-                <h1 className="text-2xl">Task Details</h1>
+            <form
+                className="w-full mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto"
+                onSubmit={handleTask}
+            >
+                <div className="flex flex-col lg:flex-row md:gap-5 w-full">
+                    <input
+                        className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                    />
+                    <input
+                        className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                        type="text"
+                        name="employeeEmail"
+                        placeholder="Employee email"
+                    />
+                </div>
+                <div className="flex flex-col lg:flex-row md:gap-5 w-full">
+                    <input
+                        className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                        type="text"
+                        name="department"
+                        placeholder="Department"
+                    />
+                    <MuiPickersUtilsProvider utils={DateMomentUtils}>
+                        <KeyboardDateTimePicker
+                            className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                            label="Pick a Deadline"
+                            variant="inline"
+                            ampm={true}
+                            disablePast
+                            format="yyyy/MM/dd HH:mm"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                        />
+                    </MuiPickersUtilsProvider>
+                </div>
                 <input
+                    className="py-2 pl-3 w-full  my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                     type="text"
-                    placeholder="Name"
-                    class="input w-full max-w-xs m-1"
-                    name="name"
+                    name="taskTitle"
+                    placeholder="Task Title"
                 />
-                <input
+                <textarea
+                    className="py-2 pl-3 w-full  my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                     type="text"
-                    placeholder="Employee ID"
-                    class="input w-full max-w-xs m-1"
-                    name="employeeID"
+                    name="taskDescription"
+                    placeholder="Task Description"
                 />
+
                 <input
-                    type="text"
-                    placeholder="Department"
-                    class="input w-full max-w-xs m-1"
-                    name="department"
+                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                    type="submit"
+                    value="ADD TASK"
                 />
-                <input
-                    type="text"
-                    placeholder="Designation"
-                    class="input w-full max-w-xs m-1"
-                    name="designation"
-                />
-                <input
-                    type="text"
-                    placeholder="Task"
-                    class="input w-full max-w-xs m-1"
-                    name="task"
-                />
-                <h1 className="text-2xl">Assign Task</h1>
-                <input
-                    type="text"
-                    placeholder="Dept. Head"
-                    class="input w-full max-w-xs m-1"
-                />
-                <input
-                    type="text"
-                    placeholder="assignBy"
-                    class="input w-full max-w-xs m-1"
-                    name="assignBy"
-                />
-                <input
-                    type="text"
-                    placeholder="assignerEmployeeID"
-                    class="input w-full max-w-xs m-1"
-                    name="assignerEmployeeID"
-                />
-                <input
-                    type="text"
-                    placeholder="AssignerDepartment"
-                    class="input w-full max-w-xs m-1"
-                    name="AssignerDepartment"
-                />
-                <input
-                    type="text"
-                    placeholder="AssignerDesignation"
-                    class="input w-full max-w-xs m-1"
-                    name="AssignerDesignation"
-                />{" "}
-                <br />
-                <input type="submit" value="SAVE" className="btn my-2" />
             </form>
         </div>
     );
