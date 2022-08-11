@@ -55,17 +55,6 @@ const UserPayrolls = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {payrolls?.map((payroll) => (
-                            <tr>
-                                <th>{payroll.Employee_ID}</th>
-                                <td>{payroll.Name}</td>
-                                <td>salary grade</td>
-                                <td>{payroll.Payroll_Type}</td>
-                                <td>{payroll.Pay_Amount}</td>
-                                <td>{payroll.Payment_Date}</td>
-                                <td>{payroll.Pay_stutas}</td>
-                            </tr>
-                        ))}
                         {
                             payrolls?.map(payroll =>
                                 <tr>

@@ -41,8 +41,9 @@ const Warming = () => {
                     }
                 </tbody>
             </table>
+                        
+            </div>
         </div>
-        </div >
     );
 };
 

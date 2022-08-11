@@ -23,54 +23,6 @@ const Meeting = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {meetings?.map((meeting) => (
-                            <tr>
-                                <th>{meeting.date}</th>
-                                <td>{meeting.meetingHost}</td>
-                                <td>{meeting.meetingGuest}</td>
-                                <td>
-                                    <select
-                                        className="bg-[#EEEEEE] rounded p-2"
-                                        name="cars"
-                                        id="cars"
-                                    >
-                                        <option value="volvo"> </option>
-                                        <option value="saab">
-                                            Will be start
-                                        </option>
-                                        <option value="opel">Cancel</option>
-                                    </select>
-                                </td>
-                                <td>Details</td>
-                                <td>
-                                    {" "}
-                                    <a
-                                        className="bg-[#0182BE] text-white px-4 py-2 rounded"
-                                        href={meeting.meetingLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        Join Now
-                                    </a>{" "}
-                                </td>
-                                <td>
-                                    <textarea
-                                        className="bg-[#EEEEEE] rounded"
-                                        name=""
-                                        id=""
-                                        cols="10"
-                                        rows="2"
-                                    ></textarea>
-                                </td>
-                                <td>
-                                    <input
-                                        className="bg-[#0182BE] text-white px-4 py-2 rounded"
-                                        type="submit"
-                                        value="Save"
-                                    />
-                                </td>
-                            </tr>
-                        ))}
                         {
                             meetings?.map(meeting =>
                                 <tr>
