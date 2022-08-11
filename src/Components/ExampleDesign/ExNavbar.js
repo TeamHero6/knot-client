@@ -1,7 +1,17 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
 import access from "../../Assets/icons/Dashboard/access.svg";
+import auth from "../../firebase.init";
 
 const ExNavbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const handleSignOut = () => {
+        console.log("click for sign out");
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+    };
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
@@ -24,30 +34,39 @@ const ExNavbar = () => {
 
             {/*Profile DropDown*/}
             <div className="px-6">
-                <div class="dropdown dropdown-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" />
-                        </div>
-                    </label>
-                    <ul
-                        tabindex="0"
-                        class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                    >
-                        <li>
-                            <a class="justify-between">
-                                Profile
-                                <span class="badge">New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>Settings</a>
-                        </li>
-                        <li>
-                            <p>Logout</p>
-                        </li>
-                    </ul>
-                </div>
+                {user ? (
+                    <div class="dropdown dropdown-end">
+                        <label
+                            tabindex="0"
+                            class="btn btn-ghost btn-circle avatar"
+                        >
+                            <div class="w-10 rounded-full">
+                                <img src="https://placeimg.com/80/80/people" />
+                            </div>
+                        </label>
+                        <ul
+                            tabindex="0"
+                            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                        >
+                            <li>
+                                <a class="justify-between">
+                                    Profile
+                                    <span class="badge">New</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>Settings</a>
+                            </li>
+                            <li>
+                                <p onClick={handleSignOut}>Logout</p>
+                            </li>
+                        </ul>
+                    </div>
+                ) : (
+                    <Link to="/BusinessSignUp" className="px-4 text-green-500">
+                        Login
+                    </Link>
+                )}
             </div>
         </div>
     );

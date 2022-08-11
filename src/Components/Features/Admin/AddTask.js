@@ -7,6 +7,7 @@ import moment from "moment";
 import React, { useState } from "react";
 import { ImCross } from "react-icons/im";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import FilterCard from "./FilterCard";
 
 const AddTask = () => {
@@ -14,9 +15,8 @@ const AddTask = () => {
     const [employeeEmail, setEmployeeEmail] = useState();
     const [employeeName, setEmployeeName] = useState("");
     const [search, setSearch] = useState("");
-
     const authInfo = useSelector((state) => state.auth);
-    console.log(authInfo);
+
     const users = [
         {
             id: 1,
@@ -51,6 +51,7 @@ const AddTask = () => {
             "DD/MM/YYYY hh:mm a",
             true
         );
+        const companyName = authInfo.loggerInfo?.companyName;
         const result = {
             name,
             employeeEmail,
@@ -58,8 +59,33 @@ const AddTask = () => {
             taskTitle,
             taskDescription,
             deadline,
+            companyName,
         };
         console.log(result);
+
+        //Post data to server
+        fetch("http://localhost:5000/v1/addNewTask", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(result),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.acknowledged) {
+                    e.target.reset();
+                    setEmployeeEmail("");
+                    setEmployeeName("");
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `Task is assigned to ${employeeName}`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
     };
 
     // fetch(

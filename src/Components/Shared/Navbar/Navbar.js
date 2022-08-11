@@ -7,17 +7,9 @@ import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 
 const Navbar = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     //use Info from Redux
     const authInfo = useSelector((state) => state.auth);
-
-    //loger info will be use next time
-    if (authInfo.isAuth) {
-        console.log(authInfo);
-    }
-    if (error) {
-        console.log(error);
-    }
 
     const handleLogout = () => {
         signOut(auth);
