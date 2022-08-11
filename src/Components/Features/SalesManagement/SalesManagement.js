@@ -93,7 +93,7 @@ const SalesManagement = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="px-3">
+                <div className="px-3 overflow-auto w-full">
                     <Outlet />
                 </div>
             </section>

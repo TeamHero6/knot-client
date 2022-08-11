@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FaRegStar } from "react-icons/fa";
-import { RiDeleteBin5Line } from "react-icons/ri";
+import { AiFillDelete } from 'react-icons/ai';
 
 const SentEmailList = () => {
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/sentEmail")
+        fetch("http://localhost:5000/sentEmail")
             .then((res) => res.json())
             .then((data) => setEmailList(data));
     }, []);
@@ -65,9 +65,9 @@ const SentEmailList = () => {
                             <td className="py-3 px-6 whitespace-nowrap">
                                 <button
                                     onClick={() => deleteEmail(email._id)}
-                                    className="btn btn-sm btn-ghost"
+                                    className="flex items-center gap-2 py-1 px-3 text-white font-bold rounded  hover:bg-white hover:text-red-600 hover:outline-1 hover:border hover:border-red-600 hover:shadow-red-400 hover:shadow-sm"
                                 >
-                                    <RiDeleteBin5Line className="text-xl text-red-500" />
+                                    <AiFillDelete className="text-xl text-red-500" />
                                 </button>
                             </td>
                             <td className="py-3 px-6 whitespace-nowrap">
