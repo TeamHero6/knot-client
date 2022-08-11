@@ -4,6 +4,7 @@ import ExNavbar from "../../../ExampleDesign/ExNavbar";
 
 const AdminDashboardF = () => {
     const [open, setOpen] = useState(false);
+
     return (
         <div className="min-h-screen bg-custom-gray">
             <span

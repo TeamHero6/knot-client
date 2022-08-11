@@ -16,6 +16,7 @@ const AddTask = () => {
     const [employeeName, setEmployeeName] = useState("");
     const [search, setSearch] = useState("");
     const authInfo = useSelector((state) => state.auth);
+    console.log(authInfo);
 
     const users = [
         {
