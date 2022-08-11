@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import adminLogo from "../../../Assets/icons/Admin/adminLogo.png";
+import dashboard from "../../../Assets/icons/Admin/dashboard.png";
 import hr from "../../../Assets/icons/Admin/hr.png";
 import finance from "../../../Assets/icons/financereport.png";
 import marketing from "../../../Assets/icons/marketing-automation.png";
 import sales from "../../../Assets/icons/sales2.png";
-import background from "../../../Assets/images/worldwideBG.jpg";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import AccessAppsCard from "./AccessAppsCard/AccessAppsCard";
 
@@ -46,9 +46,9 @@ const AccessYourApps = () => {
         },
         {
             id: 6,
-            name: "Finance",
-            link: "/financeTS",
-            icon: finance,
+            name: "UserDashboard",
+            link: "/userDashboard",
+            icon: dashboard,
         },
     ];
     useEffect(() => {
@@ -73,11 +73,11 @@ const AccessYourApps = () => {
     const navigate = useNavigate();
     return (
         <div
-            style={{
-                backgroundImage: `url(${background})`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-            }}
+            // style={{
+            //     backgroundImage: `url(${background})`,
+            //     backgroundPosition: "center",
+            //     backgroundRepeat: "no-repeat",
+            // }}
             className="min-h-screen"
         >
             <div className="flex relative justify-end md:justify-center items-center h-10 border-[0.5px] border-gray-400">
