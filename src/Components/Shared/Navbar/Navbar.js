@@ -19,6 +19,10 @@ const Navbar = () => {
         console.log(error);
     }
 
+    const handleLogout = () => {
+        signOut(auth);
+    };
+
     //Sign out user
     if (loading) {
         return;
@@ -85,9 +89,9 @@ const Navbar = () => {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <p onClick={signOut(auth)}>
+                                                <button onClick={handleLogout}>
                                                     Logout
-                                                </p>
+                                                </button>
                                             </li>
                                         </ul>
                                     </div>
@@ -142,9 +146,9 @@ const Navbar = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <p onClick={signOut(auth)}>
+                                            <button onClick={handleLogout}>
                                                 Logout
-                                            </p>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
