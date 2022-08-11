@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
-import { FiEye } from 'react-icons/fi';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import { AiFillSave } from 'react-icons/ai';
 
 const Payrolls = () => {
     
@@ -14,7 +14,7 @@ const Payrolls = () => {
         fetch('http://localhost:5000/payrolls')
         .then(res=>res.json())
         .then(data=>setPayrolls(data))
-    },[]);
+    },[payrolls]);
 
     const onSubmit = data => {
         fetch('http://localhost:5000/payrolls', {
@@ -41,171 +41,91 @@ const Payrolls = () => {
 
             </label>
 
-            {show ?  <div className='mt-5 p-5 mx-auto w-4/5  bg-[#EEEEEE] rounded-lg'>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className='grid grid-cols-2'>
-                                {/* ff */}
-                                <div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Employees Name:</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Name")}
-                                        />
+            {show ?  <div className='py-20'>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
 
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Depertment:</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Depertment")}
-                                        />
+                <section className='lg:w-6/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto'>
+                    <label className='font-bold text-purple-800' htmlFor="name">Payrolls Info</label> <br />
+                    <br />
+                    <div className='flex flex-row gap-5'>
+                        <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"  {...register("Name")} id="" placeholder='Employee Name' />
 
-
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Payroll Type:</span>
-                                        </label>
-                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "  {...register("Payroll_Type")}>
-                                            <option value=""></option>
-                                            <option value="Salary">Salary</option>
-                                            <option value="House_Rent">House Rent</option>
-                                            <option value="Hospitali_Bill">Hospitali Bill</option>
-                                            <option value="Internet_Bill">Internet Bill</option>
-                                            <option value="KPI">KPI</option>
-                                            <option value="Overtime">Overtime</option>
-                                            <option value="TA/DA">TA/DA</option>
-                                            <option value="Lunch_Bill">Lunch Bill</option>
-                                            <option value="Phone_Bill">Phone Bill</option>
-                                        </select>
-
-
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Payment Date:</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Payment_Date")}
-                                        />
-
-
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Pay stutas:</span>
-                                        </label>
-                                        <select className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] " {...register("Pay_stutas")}>
-                                            <option value=""></option>
-                                            <option value="unpaid">unpaid</option>
-                                            <option value="paid">paid</option>
-                                        </select>
-
-
-                                    </div>
-                                    
-
-                                </div>
-
-                                {/* ff */}
-                                <div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Employee ID:</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Employee_ID")}
-                                        />
-
-
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Designation:</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Designation")}
-                                        />
-
-
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Payable Amount: </span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Payable_Amount")}
-                                        />
-
-
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <label className="label w-48">
-                                            <span className="label-text text-xl">Pay Amount:</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                            {...register("Pay_Amount")}
-                                        />
-
-
-                                    </div>
-                                </div>
-                            </div>
+                        <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"  {...register("Depertment")} id="" placeholder='Depertment' />
 
 
 
-                            <div className='flex items-center bg-[#0182be]  w-32 p-2 rounded-lg mx-auto border-solid border border-[#0182be] mt-5'>
-                                <input className='pl-2 font-medium text-white' type="submit" value='Save Change' />
-                            </div>
+                    </div>
+                    <div className='flex flex-row gap-5'>
+                        <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text" {...register("Pay_Amount")} id="" placeholder='Pay_Amount' />
+                        <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"   {...register("Designation")} id="" placeholder='Designation' />
+                    </div>
 
-                        </form>
-
-                    </div> : ''}
+                    <div className='flex flex-row gap-5'>
+                        <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text" {...register("Payable_Amount")} id="" placeholder='Payable Amount' />
+                        <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="date"   {...register("Payment_Date")} id="" placeholder='Payment_Date' />
+                    </div>
                     
-                    <div className='mx-auto w-4/5 rounded-lg my-5 '>
-                        <div class="overflow-x-auto">
-                            <table class="table table-compact w-full">
-                                <thead>
+
+                    <div className='flex flex-row gap-5'>
+                        
+                        <select className='w-6/12 pl-3 py-2 border border-gray-300 bg-slate-50 rounded outline-none' {...register("Payroll_Type")}>
+                            <option className='text-gray-400' disabled selected>Payroll_Type</option>
+                            <option value="Salary">Salary</option>
+                            <option value="House_Rent">House Rent</option>
+                            <option value="Hospitali_Bill">Hospitali Bill</option>
+                            <option value="Internet_Bill">Internet Bill</option>
+                            <option value="KPI">KPI</option>
+                            <option value="Overtime">Overtime</option>
+                            <option value="TA/DA">TA/DA</option>
+                            <option value="Lunch_Bill">Lunch Bill</option>
+                            <option value="Phone_Bill">Phone Bill</option>
+                        </select>
+                        <select className='w-6/12 pl-3 py-2 border border-gray-300 bg-slate-50 rounded outline-none' {...register("Pay_stutas")}>
+                            <option className='text-gray-400' disabled selected>Type Of Leave</option>
+                            <option value="unpaid">unpaid</option>
+                            <option value="paid">paid</option>
+                        </select>
+                    </div>
+                    <div className='flex flex-row gap-5'>
+                       <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"  {...register("Employee_ID")} id="" placeholder='Employee ID' />    
+                        
+                    </div>
+
+
+                    <div className='lg:flex justify-between md:flex pt-2'>
+                        <button className='flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm' type='subimt'><AiFillSave />Save</button>
+                    </div>
+                </section>
+            </form>
+        </div>: ''}
+                    
+                    <div className='mx-auto w-full rounded-lg my-5 '>
+                        <div class="overflow-auto  rounded-none">
+                            <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                                <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                     <tr>
-                                        <th>Employee ID</th>
-                                        <th>Name</th>
-                                        <th>Depertment</th>
-                                        <th>Paid Amount</th>
-                                        <th>Pament Date</th>
-                                        <th>Payment Status</th>
+                                        <th  className="py-3 text-left px-6 whitespace-nowrap">Employee ID</th>
+                                        <th  className="py-3 text-left px-6 whitespace-nowrap">Name</th>
+                                        <th  className="py-3 text-left px-6 whitespace-nowrap">Depertment</th>
+                                        <th  className="py-3 text-left px-6 whitespace-nowrap">Paid Amount</th>
+                                        <th  className="py-3 text-left px-6 whitespace-nowrap">Pament Date</th>
+                                        <th  className="py-3 text-left px-6 whitespace-nowrap">Payment Status</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                 {
                                         payrolls.map(pr=>
-                                            <tr>
+                                            <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
                                             
-                                                <th>{pr.Employee_ID}</th>
-                                                <th>{pr.Name}</th>
-                                                <th>{pr.Depertment}</th>
-                                                <th>{pr.Payable_Amount}</th>
-                                                <th>{pr.Payment_Date
-}</th>
-                                                <th>{pr.Pay_stutas}</th>
+                                                <td className="py-3 px-6 whitespace-nowrap">{pr.Employee_ID}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{pr.Name}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{pr.Depertment}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{pr.Payable_Amount}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{pr.Payment_Date
+}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{pr.Pay_stutas}</td>
 
                                                 
                                             </tr>

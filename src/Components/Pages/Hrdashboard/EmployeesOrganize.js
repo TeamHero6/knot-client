@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import React, { useEffect,useState } from 'react';
 import { BsSave2 } from 'react-icons/bs';
-import { FiEdit } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
 const EmployeesOrganize = () => {
@@ -44,7 +42,7 @@ const EmployeesOrganize = () => {
     })
     .then(res=>res.json())
     .then(data=>{
-        toast.success('successfully save warning data')
+        toast.success('successfully save warning data');
         
     })
 
@@ -64,7 +62,7 @@ const EmployeesOrganize = () => {
     })
     .then(res=>res.json())
     .then(data=>{
-        toast.success('successfully save award data')
+        toast.success('successfully save award data');
         
     })
 
@@ -74,39 +72,25 @@ const EmployeesOrganize = () => {
         <div>
             <div className='px-5'>
                 <h1 className='text-xl  my-5'>Team Members Warning Database</h1>
-                <div class="overflow-x-auto">
-                    <table class="table table-compact w-full">
-                        <thead className='border-b border-gray-600'>
+                <div class="rounded-none">
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        
+                        <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th>Date
-                                    <select className='bg-transparent'>
-                                        <option></option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            <tr>
-                                <th>Warning Date</th>
-                                <th>Reason of Warning</th>
-                                <th>Warning Type</th>
-                                <th>Team Member Feedback</th>
-                                <th>Save Change</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Warning Date</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Reason of Warning</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Warning Type</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Team Member Feedback</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Save Change</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             {
                                 warning.map(w =>
-                                    <tr>
-                                        <th>{w.warningDate}</th>
-                                        <td className='flex items-center'>
+                                    <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                        <td className="py-3 px-6 whitespace-nowrap">{w.warningDate}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
                                            
                                             <p className='pl-2'>{w.warningReason
 } </p>
@@ -114,13 +98,14 @@ const EmployeesOrganize = () => {
 
 
                                         
-                                        <td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
                                            {w.type}
                                         </td>
-                                        <td className='flex items-center'>
-                                            <textarea onChange={feedback} rows="" cols=""></textarea>
+                                        <td className="py-3 px-6 whitespace-nowrap">
+                                            
+                                            <textarea  onChange={feedback} rows="" cols=""></textarea>
                                         </td>
-                                        <td className='text-center text-blue-600 '>
+                                        <td className="py-3 px-6 whitespace-nowrap">
                                             <div className='w-10 mx-auto'>
                                             <button onClick={()=>teamfeed(w._id)}><BsSave2></BsSave2></button>
                                             </div>
@@ -137,50 +122,35 @@ const EmployeesOrganize = () => {
             </div>
             <div className='px-5'>
                 <h1 className='text-xl  my-5 '>Team Member Award Database</h1>
-                <div class="overflow-x-auto">
-                    <table class="table table-compact w-full">
-                        <thead className='border-b border-gray-600'>
+                <div class="rounded-none">
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        <thead  className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th>Date
-                                    <select className='bg-transparent'>
-                                        <option></option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            <tr>
-                                <th>Award Date</th>
-                                <th>Team Member Name</th>
-                                <th>Type Of Award</th>
-                                <th>Leader Feedback</th>
-                                <th>Save Change</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Award Date</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Team Member Name</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Type Of Award</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Leader Feedback</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Save Change</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             {
                                 award.map(a =>
-                                    <tr>
-                                        <th>{a.awardDate}</th>
-                                        <td>{a.name}</td>
-                                        <td>
+                                    <tr  className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                        <td className="py-3 px-6 whitespace-nowrap">{a.awardDate}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{a.name}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
                                             {a.awardType}
                                         </td>
                                        
 
 
-                                        <td>
-                                            <textarea onChange={ledarfeed} rows="" cols=""></textarea>
+                                        <td className="py-3 px-6 whitespace-nowrap">
+                                            <textarea required  onChange={ledarfeed} rows="" cols=""></textarea>
                                         </td>
                                         
-                                        <td className='text-center text-blue-600 '>
+                                        <td className="py-3 px-6 whitespace-nowrap">
                                             <div className='w-10 mx-auto'>
                                                 <button onClick={()=>handelleader(a._id)}><BsSave2></BsSave2></button>
                                             

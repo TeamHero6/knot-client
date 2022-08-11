@@ -24,6 +24,9 @@ import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize"
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
 import Performance from "./Components/Pages/Hrdashboard/Performance";
+import Recruitment from "./Components/Pages/Hrdashboard/Recruitment/Recruitment";
+import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
+import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
 
 function App() {
     return (
@@ -39,6 +42,9 @@ function App() {
                     <Route path="performance" element={<Performance />}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
                     <Route path="attendance" element={<Attendance />}></Route>
+                    <Route path="vacancy" element={<Recruitment />}></Route>
+                    <Route path="interview" element={<Interview />}></Route>
+                    <Route path="joining" element={<Joining />}></Route>
                 </Route>
                 
                 <Route path="/signup" element={<Signup />} />
