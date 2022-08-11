@@ -10,12 +10,12 @@ const Transfer = () => {
     const [transfer, setTransfer] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer")
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
             .then((res) => res.json())
             .then((data) => setTransfer(data));
     }, []);
     const onSubmit = (data) => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer", {
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

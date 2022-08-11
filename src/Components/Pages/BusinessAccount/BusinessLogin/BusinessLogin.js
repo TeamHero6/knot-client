@@ -3,8 +3,11 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import auth from "../../../../firebase.init";
+import { loginAction } from "../../../../Redux/Authentication/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessLogin = () => {
@@ -13,9 +16,12 @@ const BusinessLogin = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
-    const [signInWithEmailAndPassword, user, loading, error] =
+    const [signInWithEmailAndPassword, user, Eloading, error] =
         useSignInWithEmailAndPassword(auth);
     const [customError, setCustomError] = useState("");
+    const [employeeWantLogin, setEmployeeWantLogin] = useState(false);
+
+    const dispatch = useDispatch();
 
     let location = useLocation();
     const navigate = useNavigate();
@@ -28,22 +34,78 @@ const BusinessLogin = () => {
         const password = data.password;
         const signInDetails = { email, role };
 
-        //check isRole
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/isRole", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(signInDetails),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data?.role) {
-                    signInWithEmailAndPassword(email, password);
-                } else {
-                    setCustomError("You account have an issue! contact us.");
+        if (role === "Employee") {
+            setCustomError("");
+            const secretCode = data?.secretCode;
+            const info = { email, secretCode };
+            console.log(info);
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(info),
                 }
-            });
+            )
+                .then((res) => res.json())
+                .then(async (data) => {
+                    const role = data?.role;
+                    const message = data?.message;
+                    if (role) {
+                        setCustomError("");
+                        await signInWithEmailAndPassword(email, password);
+                        navigate(from, { replace: true });
+                    } else {
+                        setCustomError("");
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${message}`,
+                            footer: `Please Contact with your manager.`,
+                        });
+                    }
+                });
+        }
+
+        if ((role === "Manager") | (role === "CEO")) {
+            setCustomError("");
+            //check isRole
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/isRole",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(signInDetails),
+                }
+            )
+                .then((res) => res.json())
+                .then(async (data) => {
+                    const { role, loggerInfo, token } = data;
+                    if (role) {
+                        dispatch(loginAction(loggerInfo));
+                        localStorage.setItem("accessToken", token);
+                        await signInWithEmailAndPassword(email, password);
+                    } else {
+                        setCustomError(
+                            "You account have an issue! contact us."
+                        );
+                    }
+                });
+        }
+    };
+
+    //handle Employee || purpose for secret code input field
+    const handleEmployee = (e) => {
+        if (e.target.value !== "Employee") {
+            setEmployeeWantLogin(false);
+        }
+        if (e.target.value === "Employee") {
+            setEmployeeWantLogin(true);
+        }
     };
 
     if (user) {
@@ -119,6 +181,7 @@ const BusinessLogin = () => {
                                                             "Your Role is Required",
                                                     },
                                                 })}
+                                                onChange={handleEmployee}
                                             >
                                                 <option value="">
                                                     Select Your Role
@@ -126,6 +189,9 @@ const BusinessLogin = () => {
                                                 <option value="CEO">CEO</option>
                                                 <option value="Manager">
                                                     Manager
+                                                </option>
+                                                <option value="Employee">
+                                                    Employee
                                                 </option>
                                             </select>
                                         </div>
@@ -176,10 +242,42 @@ const BusinessLogin = () => {
                                             )}
                                         </h1>
                                     </section>
+                                    {/*Password Field*/}
+                                    {employeeWantLogin && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <MdLockOutline className=" m-2 text-gray-400" />
+                                                <input
+                                                    {...register("secretCode", {
+                                                        required: {
+                                                            value: true,
+                                                            message:
+                                                                "Secret Code is Required",
+                                                        },
+                                                    })}
+                                                    type="text"
+                                                    placeholder="Secret Code"
+                                                    className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
+                                                    id="password"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.secretCode?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.secretCode
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
                                     <div className="text-left ml2 w-full text-red-400 text-sm mt-2">
                                         {customError}
                                     </div>
-                                    {loading ? (
+                                    {Eloading ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
                                             Login...
                                         </button>

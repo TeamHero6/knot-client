@@ -1,103 +1,194 @@
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
-import { MdLockOutline } from "react-icons/md";
+import { MdLockOutline, MdOutlineAddBusiness } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import auth, { storage } from "../../../../firebase.init";
-
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { MdOutlineAddBusiness } from "react-icons/md";
+import Swal from "sweetalert2";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
+import auth, { storage } from "../../../../firebase.init";
+import { loginAction } from "../../../../Redux/Authentication/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessSignup = () => {
     //Authentications
     const [createUserWithEmailAndPassword, user, Googleloading, error] =
         useCreateUserWithEmailAndPassword(auth);
+
     const {
         register,
         formState: { errors },
         handleSubmit,
+        reset,
     } = useForm();
-    const [profileImageUrl, setProfileImageUrl] = useState("");
-    const [BusinessLogoUrl, setBusinessLogoUrl] = useState("");
+    //State for Profile and business logo url from firebase storage
+    // const [profileImageUrl, setProfileImageUrl] = useState("");
+    const [loadingMessage, setLoadingMessage] = useState("");
 
     //handle signup error
     const [customError, setCustomError] = useState("");
-    const [token, setToken] = useState("");
+    const [employeeSignUp, setEmployeeSignUp] = useState(false);
+    const dispatch = useDispatch();
 
     let location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
-        console.log("clickedd");
+        setLoadingMessage("Please Wait...");
         setCustomError("");
-        const profilePhoto = await data?.image[0];
-        const imageref = ref(storage, `users/${profilePhoto.name + v4()}`);
-        await uploadBytes(imageref, profilePhoto).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setProfileImageUrl(url);
-            });
-        });
-
-        // Profile Photo Upload 48 - 56
-
-        const BusinessLogo = await data?.logo[0];
-        const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
-        await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setBusinessLogoUrl(url);
-            });
-        });
-        console.log("pic uploaded");
-        // Business Logo Upload 35-41
-
-        //Data Collect and sent to server 59 - 94
-
+        //Variable declare
         const email = data.email;
         const name = data.name;
         const password = data.password;
         const companyName = data.businessName;
         const role = data.userRole;
-        const userInfo = {
-            name,
-            email,
-            password,
-            companyName,
-            userPhoto: profileImageUrl,
-            role,
-            CompanyLogo: BusinessLogoUrl,
-        };
+        const secretCode = data?.secretCode;
 
-        //send user Data to DB
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/createdUser", {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(userInfo),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                const token = data?.token;
-                const error = data?.message;
-                if (error) {
-                    setCustomError(error);
-                }
-                if (token) {
-                    setToken(token);
-                }
+        //Sign up for CEO and Manger
+        if (role !== "Employee") {
+            //Business Logo upload to firebase storage
+            const BusinessLogo = await data?.logo[0];
+            const logoRef = ref(storage, `logos/${BusinessLogo.name + v4()}`);
+            await uploadBytes(logoRef, BusinessLogo).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then((url) => {
+                    //When url is ready
+                    if (url) {
+                        const userInfo = {
+                            name,
+                            email,
+                            password,
+                            companyName,
+                            userPhoto: "",
+                            role,
+                            CompanyLogo: url,
+                        };
+
+                        // Send Data to Server
+                        fetch(
+                            "https://knot-business-solution-server.herokuapp.com/createdUser",
+                            {
+                                method: "PUT",
+                                headers: {
+                                    "content-type": "application/json",
+                                },
+                                body: JSON.stringify(userInfo),
+                            }
+                        )
+                            .then((res) => res.json())
+                            .then((data) => {
+                                const token = data?.token;
+                                const loggerInfo = data?.loggerInfo;
+                                const error = data?.message;
+                                if (error) {
+                                    setCustomError(error);
+                                }
+                                if (token) {
+                                    localStorage.setItem("accessToken", token);
+                                    dispatch(loginAction(loggerInfo));
+                                    createUserWithEmailAndPassword(
+                                        email,
+                                        password
+                                    );
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "Your account is now ready",
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                    });
+                                    setLoadingMessage("");
+                                    reset();
+                                    navigate(from, { replace: true });
+                                }
+                            });
+                    }
+                });
             });
-        await createUserWithEmailAndPassword(email, password);
-        console.log("account created");
 
-        if (user) {
-            navigate(from, { replace: true });
+            //handle dynamic input field for Employee Sign up
+
+            if (Googleloading) {
+                setLoadingMessage("Please Wait...");
+            }
+
+            if (user) {
+                setLoadingMessage("");
+                navigate(from, { replace: true });
+            }
+        }
+
+        //Sign up for Employee
+        if (role === "Employee") {
+            const info = { email, secretCode };
+
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(info),
+                }
+            )
+                .then((res) => res.json())
+                .then(async (data) => {
+                    const role = data?.role;
+                    const message = data?.message;
+                    if (role) {
+                        setLoadingMessage("");
+                        await createUserWithEmailAndPassword(email, password);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your account is now ready",
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+                        navigate(from);
+                    } else {
+                        setLoadingMessage("");
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${message}`,
+                            footer: `Please Contact with your manager.`,
+                        });
+                    }
+                });
+            // fetch(`https://knot-business-solution-server.herokuapp.com/employeeRole/${email}`)
+            //     .then((res) => res.json())
+            //     .then(async (data) => {
+            //         const { role, message, message2 } = data;
+            //         if (role !== "") {
+            //             setLoadingMessage("");
+            //             await createUserWithEmailAndPassword(email, password);
+            //             navigate("/");
+            //         }
+            //         if (role === "") {
+            //             setLoadingMessage("");
+            // Swal.fire({
+            //     icon: "error",
+            //     title: "Oops...",
+            //     text: `${message}`,
+            //     footer: `${message2}`,
+            // });
+            //         }
+            //     });
+        }
+    };
+
+    const handleEmployeeSignUp = (e) => {
+        if (e.target.value !== "Employee") {
+            setEmployeeSignUp(false);
+        }
+        if (e.target.value === "Employee") {
+            setEmployeeSignUp(true);
         }
     };
     return (
@@ -152,67 +243,6 @@ const BusinessSignup = () => {
                                     </section>{" "}
                                     <section>
                                         <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <MdOutlineAddBusiness className=" m-2 text-gray-400" />
-                                            <input
-                                                {...register("businessName", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Company name is required",
-                                                    },
-                                                })}
-                                                type="text"
-                                                placeholder="Your Company Name"
-                                                className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
-                                                id="Businessname"
-                                            />
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.businessName?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {
-                                                        errors?.businessName
-                                                            .message
-                                                    }
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*Company Name Field*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <select
-                                                className="text-gray-400 bg-transparent w-full outline-none"
-                                                {...register("userRole", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Your Role is Required",
-                                                    },
-                                                })}
-                                            >
-                                                <option value="">
-                                                    Select Your Role
-                                                </option>
-                                                <option value="CEO">CEO</option>
-                                                <option value="Manager">
-                                                    Manager
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.userRole?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {errors?.userRole.message}
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*Company Role*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <FaRegEnvelope className=" m-2 text-gray-400" />
                                             <input
                                                 {...register("email", {
@@ -251,6 +281,76 @@ const BusinessSignup = () => {
                                     {/*Email Field*/}
                                     <section>
                                         <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                            <select
+                                                className="text-gray-400 bg-transparent w-full outline-none"
+                                                {...register("userRole", {
+                                                    required: {
+                                                        value: true,
+                                                        message:
+                                                            "Your Role is Required",
+                                                    },
+                                                })}
+                                                onChange={handleEmployeeSignUp}
+                                            >
+                                                <option value="">
+                                                    Select Your Role
+                                                </option>
+                                                <option value="CEO">CEO</option>
+                                                <option value="Manager">
+                                                    Manager
+                                                </option>
+                                                <option value="Employee">
+                                                    Employee
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <h1 className="text-left ml-2">
+                                            {errors.userRole?.type ===
+                                                "required" && (
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.userRole.message}
+                                                </span>
+                                            )}
+                                        </h1>
+                                    </section>{" "}
+                                    {/*Company Role*/}
+                                    {!employeeSignUp && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <MdOutlineAddBusiness className=" m-2 text-gray-400" />
+                                                <input
+                                                    {...register(
+                                                        "businessName",
+                                                        {
+                                                            required: {
+                                                                value: true,
+                                                                message:
+                                                                    "Company name is required",
+                                                            },
+                                                        }
+                                                    )}
+                                                    type="text"
+                                                    placeholder="Your Company Name"
+                                                    className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
+                                                    id="Businessname"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.businessName?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.businessName
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
+                                    {/*Company Name Field*/}
+                                    <section>
+                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
                                             <MdLockOutline className=" m-2 text-gray-400" />
                                             <input
                                                 {...register("password", {
@@ -287,79 +387,79 @@ const BusinessSignup = () => {
                                         </h1>
                                     </section>
                                     {/*Password Field*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <AiOutlineCloudUpload className=" m-2 text-gray-400" />
-                                            <label
-                                                htmlFor="userPhoto"
-                                                className="outline-none h-full text-sm text-gray-400 bg-gray-100"
-                                            >
-                                                Your Photo
-                                            </label>
-                                            <input
-                                                {...register("image", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Photo is Required",
-                                                    },
-                                                })}
-                                                type="file"
-                                                id="userPhoto"
-                                                className="hidden"
-                                            />
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.photo?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {errors?.photo.message}
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*User Photo*/}
-                                    <section>
-                                        <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
-                                            <AiOutlineCloudUpload className=" m-2 text-gray-400" />
-                                            <label
-                                                htmlFor="businessLogo"
-                                                className="outline-none h-full text-sm text-gray-400 bg-gray-100"
-                                            >
-                                                Upload Company Logo
-                                            </label>
-                                            <input
-                                                {...register("logo", {
-                                                    required: {
-                                                        value: true,
-                                                        message:
-                                                            "Your Businessn Logo is Required",
-                                                    },
-                                                })}
-                                                type="file"
-                                                id="businessLogo"
-                                                className="hidden"
-                                            />
-                                        </div>
-                                        <h1 className="text-left ml-2">
-                                            {errors.logo?.type ===
-                                                "required" && (
-                                                <span className="w-full text-left text-red-400 text-sm">
-                                                    {errors?.logo.message}
-                                                </span>
-                                            )}
-                                        </h1>
-                                    </section>{" "}
-                                    {/*Business Logo*/}
+                                    {!employeeSignUp && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <AiOutlineCloudUpload className=" m-2 text-gray-400" />
+                                                <label
+                                                    htmlFor="businessLogo"
+                                                    className="outline-none h-full text-sm text-gray-400 bg-gray-100"
+                                                >
+                                                    Upload Company Logo
+                                                </label>
+                                                <input
+                                                    {...register("logo", {
+                                                        required: {
+                                                            value: true,
+                                                            message:
+                                                                "Your Businessn Logo is Required",
+                                                        },
+                                                    })}
+                                                    type="file"
+                                                    id="businessLogo"
+                                                    className="hidden"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.logo?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {errors?.logo.message}
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
+                                    {employeeSignUp && (
+                                        <section>
+                                            <div className="flex items-center bg-gray-100 p-2 w-full rounded-xl mt-3">
+                                                <MdLockOutline className=" m-2 text-gray-400" />
+                                                <input
+                                                    {...register("secretCode", {
+                                                        required: {
+                                                            value: true,
+                                                            message:
+                                                                "secretCode is required",
+                                                        },
+                                                    })}
+                                                    type="text"
+                                                    placeholder="Company Secret Code"
+                                                    className="flex-1 outline-none h-full bg-transparent text-sm text-gray-400"
+                                                />
+                                            </div>
+                                            <h1 className="text-left ml-2">
+                                                {errors.secretCode?.type ===
+                                                    "required" && (
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.secretCode
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
+                                            </h1>
+                                        </section>
+                                    )}
+                                    {/*Secret Code*/}
                                     <h1 className="text-left ml-2">
                                         <span className="w-full text-left text-red-400 text-sm">
                                             {customError}
                                         </span>
                                     </h1>
                                     {/*handle signup error*/}
-                                    {Googleloading ? (
+                                    {Googleloading || loadingMessage ? (
                                         <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
-                                            Loading...
+                                            {loadingMessage}
                                         </button>
                                     ) : (
                                         <input
