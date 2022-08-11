@@ -15,13 +15,11 @@ const Navbar = () => {
     if (authInfo.isAuth) {
         console.log(authInfo);
     }
+    if (error) {
+        console.log(error);
+    }
 
     //Sign out user
-    const handleSignOut = () => {
-        signOut(auth);
-        localStorage.removeItem("accessToken");
-    };
-
     if (loading) {
         return;
     }
@@ -87,7 +85,7 @@ const Navbar = () => {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <p onClick={handleSignOut}>
+                                                <p onClick={signOut(auth)}>
                                                     Logout
                                                 </p>
                                             </li>
@@ -144,7 +142,7 @@ const Navbar = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <p onClick={handleSignOut}>
+                                            <p onClick={signOut(auth)}>
                                                 Logout
                                             </p>
                                         </li>

@@ -6,8 +6,7 @@ import AddTask from "../AddTask";
 import AllTasks from "../AllTasks/AllTasks";
 
 const DailyTask = () => {
-    const [edit, setEdit] = useState(false);
-    const [value, setValue] = useState("Monir");
+    const [isOpen, setOpen] = useState(false);
 
     const { data, isLoading } = useQuery(["alltasks", "task"], () =>
         fetch(
@@ -24,7 +23,10 @@ const DailyTask = () => {
             <section className="bg-white rounded drop-shadow-md w-full h-auto p-4">
                 <div className="w-full flex flex-row my-2">
                     <div className="basis-1/6">
-                        <button className="flex items-center gap-2 bg-green-400	 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 transition duration-300 hover:shadow-green-200 hover: shadow-sm">
+                        <button
+                            className="flex items-center gap-2 bg-green-400	 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 transition duration-300 hover:shadow-green-200 hover: shadow-sm"
+                            onClick={() => setOpen(!isOpen)}
+                        >
                             <MdOutlineAddTask />
                             Add Task
                         </button>
@@ -38,7 +40,7 @@ const DailyTask = () => {
                         />
                     </div>
                 </div>
-                <section>
+                <section className={`${isOpen ? "visible" : "hidden"}`}>
                     <AddTask />
                 </section>
             </section>
