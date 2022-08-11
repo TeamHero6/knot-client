@@ -74,7 +74,6 @@ function App() {
                     path="/userpayrolls"
                     element={<UserPayrolls></UserPayrolls>}
                 />
-                <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/accessApps"
                     element={
