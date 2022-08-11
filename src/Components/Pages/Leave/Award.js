@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineEye } from "react-icons/ai";
 
 const Award = () => {
     const [awards, setAwards] = useState([]);
+    const [awardModal, setAwardModal] = useState({});
 
     useEffect(() => {
         fetch("https://sheltered-cliffs-60290.herokuapp.com/award")
@@ -32,23 +32,8 @@ const Award = () => {
                                     <td className="py-3 px-6 whitespace-nowrap">{award.department}</td>
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <div>
-                                            <label for={award._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
-                                            <input type="checkbox" id={award._id} class="modal-toggle" />
-                                            <div class="modal modal-bottom sm:modal-middle">
-                                                <div class="modal-box">
-                                                    <h3 class="font-bold text-lg">Award Information!</h3>
-                                                    <p>Date : {award.awardDate}</p>
-                                                    <p>Name : {award.name}</p>
-                                                    <p>Employee ID : {award.employeeID}</p>
-                                                    <p>Department  : {award.department}</p>
-                                                    <p>Designation : {award.designation}</p>
-                                                    <p>Award Providing Date : {award.awardProvidingDate}</p>
-                                                    <p>Award Type : {award.awardType}</p>
-                                                    <div class="modal-action">
-                                                        <label for={award._id} class="btn bg-[#0182BE]">Close!</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <label for={award._id} onClick={()=> setAwardModal(award)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -56,6 +41,22 @@ const Award = () => {
                         }
                     </tbody>
                 </table>
+                <input type="checkbox" id={awardModal._id} class="modal-toggle" />
+                <div class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box">
+                        <h3 class="font-bold text-lg">Award Information!</h3>
+                        <p>Date : {awardModal.awardDate}</p>
+                        <p>Name : {awardModal.name}</p>
+                        <p>Employee ID : {awardModal.employeeID}</p>
+                        <p>Department  : {awardModal.department}</p>
+                        <p>Designation : {awardModal.designation}</p>
+                        <p>Award Providing Date : {awardModal.awardProvidingDate}</p>
+                        <p>Award Type : {awardModal.awardType}</p>
+                        <div class="modal-action">
+                            <label for={awardModal._id} class="btn bg-[#0182BE]">Close!</label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="mx-5">
                 <h1 className='text-2xl text-center font-bold mt-5'>Training Details</h1>

@@ -16,7 +16,7 @@ const UserAttaindance = () => {
                 <div className='mt-16'>
                     <h1 className='text-[#0182BE] text-2xl font-semibold'>Total Tracked</h1>
                     <div class="overflow-x-auto">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
                             <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>
@@ -55,13 +55,13 @@ const UserAttaindance = () => {
             <div className='w-11/12'>
                 <h1 className='text-[#0182BE] text-2xl font-semibold'>Time Tracking</h1>
                 <div className='flex justify-evenly mt-10 mb-20'>
-                    <h1 className='bg-[#0182BE] p-6 rounded-full text-white'>Start</h1>
-                    <h1 className='bg-[#0182BE] p-6 rounded-full text-white'>End</h1>
+                    <button className='flex ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'>Start</button>
+                    <button className='flex ml-5 items-center gap-2 bg-red-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-red-500 hover:outline-1 hover:border hover:border-red-500 hover: shadow-green-200 hover: shadow-sm'>End</button>
                 </div>
                 <hr />
-                <div className='mt-16'>
+                {/* <div className='mt-16'>
                     <h1 className='text-[#0182BE] text-2xl font-semibold'>Your Action</h1>
-                </div>
+                </div> */}
             </div>
         </div>
     );

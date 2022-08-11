@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaSave } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Award from "../Award";
 import Meeting from "../Meeting";
 import Warming from "../Warming";
 import { BiPlus } from 'react-icons/bi';
-import { AiOutlineEye } from "react-icons/ai";
 import { BsSaveFill } from 'react-icons/bs';
 
 const LeaveRequest = () => {
     const [userinfo, setUserinfo] = useState([]);
     const [leave, setleave] = useState([]);
     const [show, setShow] = useState(false);
+    const [leaveModal, setLeaveModal] = useState({});
 
     useEffect(() => {
         fetch("https://sheltered-cliffs-60290.herokuapp.com/leaveData")
@@ -47,9 +46,8 @@ const LeaveRequest = () => {
     return (
         <div>
             <section>
-                <label for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
-                    <span><BiPlus></BiPlus></span>
-                    <span onClick={() => setShow(!show)} className='capitalize'> New</span>
+                <label for="my-drawer" >
+                    <button onClick={() => setShow(!show)} className='flex ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'><BiPlus></BiPlus> New</button>
                 </label>
                 {
                     show ?
@@ -221,25 +219,8 @@ const LeaveRequest = () => {
                                             <td className="py-3 px-6 whitespace-nowrap">{le.dep}</td>
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 <div>
-                                                    <label for={le._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
-                                                    <input type="checkbox" id={le._id} class="modal-toggle" />
-                                                    <div class="modal modal-bottom sm:modal-middle">
-                                                        <div class="modal-box">
-                                                            <h3 class="font-bold text-lg">Leave Request Information!</h3>
-                                                            <p>Date : {le.Date}</p>
-                                                            <p>Name : {le.Name}</p>
-                                                            <p>Employee ID : {le.id}</p>
-                                                            <p>Designation : {le.Designation}</p>
-                                                            <p>Reason For Leave : {le.leave}</p>
-                                                            <p>Department : {le.dep}</p>
-                                                            <p>Start Date : {le.s_date}</p>
-                                                            <p>End Date : {le.e_date}</p>
-                                                            <p>Type Of Leave : {le.leave_type}</p>
-                                                            <div class="modal-action">
-                                                                <label for={le._id} class="btn bg-[#0182BE]">Close!</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <label for={le._id} onClick={() => setLeaveModal(le)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+
                                                 </div>
                                             </td>
                                             <td className="py-3 px-6 whitespace-nowrap">{le.leave_type}</td>
@@ -251,6 +232,26 @@ const LeaveRequest = () => {
                             </tbody>
 
                         </table>
+
+                        <input type="checkbox" id={leaveModal._id} class="modal-toggle" />
+                        <div class="modal modal-bottom sm:modal-middle">
+                            <div class="modal-box">
+                                <h3 class="font-bold text-lg">Leave Request Information!</h3>
+                                <p>Date : {leaveModal.Date}</p>
+                                <p>Name : {leaveModal.Name}</p>
+                                <p>Employee ID : {leaveModal.id}</p>
+                                <p>Designation : {leaveModal.Designation}</p>
+                                <p>Reason For Leave : {leaveModal.leave}</p>
+                                <p>Department : {leaveModal.dep}</p>
+                                <p>Start Date : {leaveModal.s_date}</p>
+                                <p>End Date : {leaveModal.e_date}</p>
+                                <p>Type Of Leave : {leaveModal.leave_type}</p>
+                                <div class="modal-action">
+                                    <label for={leaveModal._id} class="btn bg-[#0182BE]">Close!</label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
