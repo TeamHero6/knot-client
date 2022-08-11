@@ -16,7 +16,6 @@ const Warming = () => {
                 <table class="table w-full">
                     <thead>
                         <tr>
-<<<<<<< HEAD
                             <th>Warning Date</th>
                             <th>Team Member Name</th>
                             <th>Reason of Warning</th>
@@ -29,41 +28,21 @@ const Warming = () => {
                             <th>Save Change</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {warnings?.map((warning) => (
+                <tbody>
+                    {
+                        warnings?.map(warning =>
                             <tr>
                                 <th>{warning.warningDate}</th>
                                 <td>Name</td>
-                                <td>{warning.warningReason}</td>
-                                <td>special</td>
                                 <td>{warning.type}</td>
-                                <td>Feedback</td>
-                                <td>change</td>
+                                <td>{warning.warningReason}</td>
                             </tr>
-                        ))}
-=======
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Warning Type</th>
-                            <th>Reason of Warning</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {
-                            warnings?.map(warning =>
-                                <tr>
-                                    <th>{warning.warningDate}</th>
-                                    <td>Name</td>
-                                    <td>{warning.type}</td>
-                                    <td>{warning.warningReason}</td>
-                                </tr>
-                            )
-                        }
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
-                    </tbody>
-                </table>
-            </div>
+                        )
+                    }
+                </tbody>
+            </table>
         </div>
+        </div >
     );
 };
 

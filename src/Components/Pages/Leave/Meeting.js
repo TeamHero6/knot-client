@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-=======
 import React, { useEffect, useState } from 'react';
 import { AiOutlineEye } from "react-icons/ai";
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
 
 const Meeting = () => {
     const [meetings, setMeetings] = useState([]);
@@ -27,7 +23,6 @@ const Meeting = () => {
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
                         {meetings?.map((meeting) => (
                             <tr>
                                 <th>{meeting.date}</th>
@@ -76,7 +71,6 @@ const Meeting = () => {
                                 </td>
                             </tr>
                         ))}
-=======
                         {
                             meetings?.map(meeting =>
                                 <tr>
@@ -106,7 +100,6 @@ const Meeting = () => {
                                 </tr>
                             )
                         }
->>>>>>> 968b9fbbac261c932cdad216b506b7eca7842b7b
                     </tbody>
                 </table>
             </div>
