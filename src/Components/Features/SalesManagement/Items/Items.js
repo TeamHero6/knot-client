@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { AiFillSave } from 'react-icons/ai';
 import ItemsList from './ItemsList';
+import ItemDetailsModal from './ItemDetailsModal';
 
 const Items = () => {
     const [addNewItem, setAddNewItem] = useState(false);
@@ -9,6 +10,7 @@ const Items = () => {
     const [purchaseAmount, setPurchaseAmount] = useState();
     const [revenue, setRevenue] = useState(0);
     const [tax, setTax] = useState(0);
+    const [singleItemDetail, setSingleItemDetail] = useState({});
 
     const handlePurchaseAmount = (event) => {
         setPurchaseAmount(event.target.value);
@@ -25,6 +27,7 @@ const Items = () => {
     const handleAddProduct = (e) => {
         e.preventDefault();
         const productName = e.target.productName.value;
+        const productId = e.target.productId.value;
         const productTitle = e.target.productTitle.value;
         const flavour = e.target.flavour.value;
         const color = e.target.color.value;
@@ -32,6 +35,7 @@ const Items = () => {
 
         const product = {
             productName,
+            productId,
             productTitle,
             flavour,
             color,
@@ -82,6 +86,10 @@ const Items = () => {
                                     <div className='md:flex items-center'>
                                         <label className='font-bold w-40' htmlFor="name">Product name : </label> <br />
                                         <input className='py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none' type="text" name="productName" id="" placeholder='' required /> <br />
+                                    </div>
+                                    <div className='md:flex items-center'>
+                                        <label className='font-bold w-40' htmlFor="name">Product id : </label> <br />
+                                        <input className='py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none' type="text" name="productId" id="" placeholder='' required /> <br />
                                     </div>
                                     <div className='md:flex items-center'>
                                         <label className='font-bold w-40' htmlFor="name">Product title : </label> <br />
@@ -138,7 +146,8 @@ const Items = () => {
                     </div>
                     : ''
             }
-            <ItemsList></ItemsList>
+            <ItemsList setSingleItemDetail={setSingleItemDetail} ></ItemsList>
+            <ItemDetailsModal singleItemDetail={singleItemDetail}></ItemDetailsModal>
         </div>
     );
 };

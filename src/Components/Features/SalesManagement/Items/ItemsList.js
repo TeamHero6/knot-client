@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ItemsList = () => {
+const ItemsList = ({ setSingleItemDetail }) => {
     const [itemList, setItemList] = useState([]);
 
     useEffect(() => {
@@ -34,7 +34,10 @@ const ItemsList = () => {
                                 } $</td>
                                 <td className="py-3 px-6 whitespace-nowrap">{item.vendorName}</td>
                                 <td className="py-3 px-6 pr-10 whitespace-nowrap">
-                                    <span className='hover:underline hover:text-blue-500 hover:font-medium'>Details</span>
+                                    <label for="item-details-modal"
+                                        onClick={() => setSingleItemDetail(item)} >
+                                        <span className='underline hover:text-blue-500 hover:font-medium'>Details</span>
+                                    </label>
                                 </td>
                             </tr>)
                         }
