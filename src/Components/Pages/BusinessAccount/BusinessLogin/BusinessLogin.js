@@ -283,7 +283,7 @@ const BusinessLogin = () => {
                                     <div className="text-left ml2 w-full text-red-400 text-sm mt-2">
                                         {customError}
                                     </div>
-                                    {Eloading ? (
+                                    {Eloading || loadingMessage ? (
                                         <div className="flex items-center justify-center w-full mt-3">
                                             <button className="border-2 border-cyan-400 rounded-full px-12 py-2 flex items-center justify-center">
                                                 <Puff
