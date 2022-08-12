@@ -2,15 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdOutlineAddTask } from "react-icons/md";
+import { useSelector } from "react-redux";
 import AddTask from "../AddTask";
 import AllTasks from "../AllTasks/AllTasks";
 
 const DailyTask = () => {
     const [isOpen, setOpen] = useState(false);
 
-    const { data, isLoading } = useQuery(["alltasks", "task"], () =>
+    const authInfo = useSelector((state) => state.auth);
+    const { isAuth, loggerInfo } = authInfo;
+
+    const { data, isLoading, refetch } = useQuery(["alltasks", "task"], () =>
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/alltasks"
+            `https://knot-business-solution-server.herokuapp.com/v1/allTasks?company=${loggerInfo.companyName}`
         ).then((res) => res.json())
     );
 
@@ -41,12 +45,12 @@ const DailyTask = () => {
                     </div>
                 </div>
                 <section className={`${isOpen ? "visible" : "hidden"}`}>
-                    <AddTask />
+                    <AddTask refetch={refetch} />
                 </section>
             </section>
             <section className="bg-white rounded drop-shadow-md w-full h-auto p-4 my-4">
                 <div className="overflow-x-auto">
-                    <AllTasks />
+                    <AllTasks data={data} />
                 </div>
             </section>
         </div>

@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import FilterCard from "./FilterCard";
 
-const AddTask = () => {
+const AddTask = ({ refetch }) => {
     const [selectedDate, handleDateChange] = useState(new Date());
     const [employeeEmail, setEmployeeEmail] = useState();
     const [employeeName, setEmployeeName] = useState("");
@@ -65,17 +65,21 @@ const AddTask = () => {
         console.log(result);
 
         //Post data to server
-        fetch("http://localhost:5000/v1/addNewTask", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(result),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(result),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
                     e.target.reset();
+                    refetch();
                     setEmployeeEmail("");
                     setEmployeeName("");
                     Swal.fire({
