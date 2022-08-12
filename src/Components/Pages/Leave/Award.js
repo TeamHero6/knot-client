@@ -5,7 +5,7 @@ const Award = () => {
     const [awardModal, setAwardModal] = useState({});
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/award")
+        fetch("https://knot-business-solution-server.herokuapp.com/award")
             .then((res) => res.json())
             .then((data) => setAwards(data));
     }, []);
@@ -17,6 +17,7 @@ const Award = () => {
                 <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
+<<<<<<< HEAD
                             <th className="py-3 text-left px-6 whitespace-nowrap">Award Date</th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Team Member Name</th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
@@ -39,6 +40,23 @@ const Award = () => {
                                 </tr>
                             )
                         }
+=======
+                            <th>Award Date</th>
+                            <th>Team Member Name</th>
+                            <th>Type of Award</th>
+                            <th>Leader Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {awards?.map((award) => (
+                            <tr>
+                                <th>{award.awardDate}</th>
+                                <td>{award.name}</td>
+                                <td>{award.awardType}</td>
+                                <td>status</td>
+                            </tr>
+                        ))}
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
                     </tbody>
                 </table>
                 <input type="checkbox" id={awardModal._id} class="modal-toggle" />

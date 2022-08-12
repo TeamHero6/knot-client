@@ -5,11 +5,20 @@ const UserPayrolls = () => {
     const [payrollModal, setPayrollModal] = useState({});
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/payrolls")
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);
 
+<<<<<<< HEAD
+=======
+    useEffect(() => {
+        fetch("https://knot-business-solution-server.herokuapp.com/inputData")
+            .then((res) => res.json())
+            .then((data) => setUserinfo(data));
+    }, []);
+
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
     return (
         <div>
             <div className="flex justify-evenly my-5">
@@ -35,6 +44,7 @@ const UserPayrolls = () => {
                 <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
+<<<<<<< HEAD
                             <th className="py-3 text-left px-6 whitespace-nowrap">Employee ID </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
@@ -59,6 +69,32 @@ const UserPayrolls = () => {
                                 </tr>
                             )
                         }
+=======
+                            <th>Employee ID </th>
+                            <th>Name</th>
+                            <th>Salary Grade</th>
+                            <th>
+                                Payrolls Amount <br />
+                                Details
+                            </th>
+                            <th>Paid Amount</th>
+                            <th>Pament Date</th>
+                            <th>Payment Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {payrolls?.map((payroll) => (
+                            <tr>
+                                <th>{payroll.Employee_ID}</th>
+                                <td>{payroll.Name}</td>
+                                <td>salary grade</td>
+                                <td>{payroll.Payroll_Type}</td>
+                                <td>{payroll.Pay_Amount}</td>
+                                <td>{payroll.Payment_Date}</td>
+                                <td>{payroll.Pay_stutas}</td>
+                            </tr>
+                        ))}
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
                     </tbody>
                 </table>
                 <input type="checkbox" id={payrollModal._id} class="modal-toggle" />

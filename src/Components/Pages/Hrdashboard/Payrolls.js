@@ -7,13 +7,13 @@ const Payrolls = () => {
     const { register, handleSubmit, reset } = useForm();
     const [payrolls, setPayrolls] = useState([]);
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/payrolls")
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);
 
     const onSubmit = (data) => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/payrolls", {
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

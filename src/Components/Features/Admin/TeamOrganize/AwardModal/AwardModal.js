@@ -20,13 +20,16 @@ const AwardModal = ({ refetch }) => {
             awardType,
         };
 
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/createAward", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(newAward),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/createAward",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(newAward),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {

@@ -7,12 +7,12 @@ const Dashboard = () => {
     const [allTask, setAlltask] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/user")
+        fetch("https://knot-business-solution-server.herokuapp.com/user")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/alltasks")
+        fetch("https://knot-business-solution-server.herokuapp.com/alltasks")
             .then((res) => res.json())
             .then((data) => setAlltask(data));
     }, []);

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
 
 const UserPromotion = () => {
     const [promotions, setPromotions] = useState([]);
@@ -7,13 +11,13 @@ const UserPromotion = () => {
     const [transferModal, setTransferModal] = useState({});
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
+        fetch("https://knot-business-solution-server.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromotions(data));
     }, []);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer")
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
             .then((res) => res.json())
             .then((data) => setTransfers(data));
     }, []);
@@ -33,6 +37,7 @@ const UserPromotion = () => {
                             </tr>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
                             {
                                 promotions?.map(promotion =>
                                     <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
@@ -48,6 +53,16 @@ const UserPromotion = () => {
                                     </tr>
                                 )
                             }
+=======
+                            {promotions?.map((promotion) => (
+                                <tr>
+                                    <th>{promotion.Name}</th>
+                                    <td>{promotion.Employee_ID}</td>
+                                    <td>{promotion.Depertment}</td>
+                                    <td>Details</td>
+                                </tr>
+                            ))}
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
                         </tbody>
                     </table>
                     <input type="checkbox" id={promotionModal._id} class="modal-toggle" />
@@ -82,6 +97,7 @@ const UserPromotion = () => {
                             </tr>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
                             {
                                 transfers?.map(transfer =>
                                     <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
@@ -97,6 +113,16 @@ const UserPromotion = () => {
                                     </tr>
                                 )
                             }
+=======
+                            {transfers?.map((transfer) => (
+                                <tr>
+                                    <th>{transfer.Name}</th>
+                                    <td>{transfer.Employee_ID}</td>
+                                    <td>{transfer.Depertment}</td>
+                                    <td>Details</td>
+                                </tr>
+                            ))}
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
                         </tbody>
                     </table>
                     <input type="checkbox" id={transferModal._id} class="modal-toggle" />

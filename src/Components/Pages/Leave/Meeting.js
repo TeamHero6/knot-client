@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
 
 const Meeting = () => {
     const [meetings, setMeetings] = useState([]);
     const [meetingModal, setMeetingModal] = useState({});
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/meetings")
+        fetch("https://knot-business-solution-server.herokuapp.com/meetings")
             .then((res) => res.json())
             .then((data) => setMeetings(data));
     }, []);
@@ -16,6 +20,7 @@ const Meeting = () => {
                 <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
+<<<<<<< HEAD
                             <th className="py-3 text-left px-6 whitespace-nowrap">Meeting Date $ Time</th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Meeting Topic</th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
@@ -39,6 +44,67 @@ const Meeting = () => {
                                 </tr>
                             )
                         }
+=======
+                            <th>Meeting Date $ Time</th>
+                            <th>Host Name</th>
+                            <th>Guest Name</th>
+                            <th>Meeting Status</th>
+                            <th>View Details</th>
+                            <th>Meeting Link</th>
+                            <th>Feedback</th>
+                            <th>Save Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {meetings?.map((meeting) => (
+                            <tr>
+                                <th>{meeting.date}</th>
+                                <td>{meeting.meetingHost}</td>
+                                <td>{meeting.meetingGuest}</td>
+                                <td>
+                                    <select
+                                        className="bg-[#EEEEEE] rounded p-2"
+                                        name="cars"
+                                        id="cars"
+                                    >
+                                        <option value="volvo"> </option>
+                                        <option value="saab">
+                                            Will be start
+                                        </option>
+                                        <option value="opel">Cancel</option>
+                                    </select>
+                                </td>
+                                <td>Details</td>
+                                <td>
+                                    {" "}
+                                    <a
+                                        className="bg-[#0182BE] text-white px-4 py-2 rounded"
+                                        href={meeting.meetingLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Join Now
+                                    </a>{" "}
+                                </td>
+                                <td>
+                                    <textarea
+                                        className="bg-[#EEEEEE] rounded"
+                                        name=""
+                                        id=""
+                                        cols="10"
+                                        rows="2"
+                                    ></textarea>
+                                </td>
+                                <td>
+                                    <input
+                                        className="bg-[#0182BE] text-white px-4 py-2 rounded"
+                                        type="submit"
+                                        value="Save"
+                                    />
+                                </td>
+                            </tr>
+                        ))}
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
                     </tbody>
                 </table>
                 <input type="checkbox" id={meetingModal._id} class="modal-toggle" />

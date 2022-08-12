@@ -4,7 +4,7 @@ const Warming = () => {
     const [warnings, setWarnings] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/warnings")
+        fetch("https://knot-business-solution-server.herokuapp.com/warnings")
             .then((res) => res.json())
             .then((data) => setWarnings(data));
     }, []);
@@ -16,6 +16,7 @@ const Warming = () => {
                 <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
+<<<<<<< HEAD
                             <th className="py-3 text-left px-6 whitespace-nowrap">Warning Date</th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Warning Type</th>
@@ -33,6 +34,32 @@ const Warming = () => {
                                 </tr>
                             )
                         }
+=======
+                            <th>Warning Date</th>
+                            <th>Team Member Name</th>
+                            <th>Reason of Warning</th>
+                            <th>
+                                Special Note <br />
+                                Team Member
+                            </th>
+                            <th>Warning Type</th>
+                            <th>Team Member Feedback</th>
+                            <th>Save Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {warnings?.map((warning) => (
+                            <tr>
+                                <th>{warning.warningDate}</th>
+                                <td>Name</td>
+                                <td>{warning.warningReason}</td>
+                                <td>special</td>
+                                <td>{warning.type}</td>
+                                <td>Feedback</td>
+                                <td>change</td>
+                            </tr>
+                        ))}
+>>>>>>> 88606e86582b97aa66f1228b0bec652f645cb951
                     </tbody>
                 </table>
             </div>
