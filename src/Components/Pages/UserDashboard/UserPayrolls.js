@@ -48,12 +48,30 @@ const UserPayrolls = () => {
                                 Payrolls Amount <br />
                                 Details
                             </th>
+<<<<<<< HEAD
+                            <th>Payrolls Amount <br />Details</th>
+=======
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                             <th>Paid Amount</th>
                             <th>Pament Date</th>
                             <th>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< HEAD
+                        {
+                            payrolls?.map(payroll =>
+                                <tr>
+                                    <th>{payroll.Employee_ID}</th>
+                                    <td>{payroll.Name}</td>
+                                    <td>{payroll.Payroll_Type}</td>
+                                    <td>{payroll.Pay_Amount}</td>
+                                    <td>{payroll.Payment_Date}</td>
+                                    <td>{payroll.Pay_stutas}</td>
+                                </tr>
+                            )
+                        }
+=======
                         {payrolls?.map((payroll) => (
                             <tr>
                                 <th>{payroll.Employee_ID}</th>
@@ -65,6 +83,7 @@ const UserPayrolls = () => {
                                 <td>{payroll.Pay_stutas}</td>
                             </tr>
                         ))}
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                     </tbody>
                 </table>
             </div>

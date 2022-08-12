@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import UserNavbar from '../../Shared/UserNavbar/UserNavbar';
+
+const UserDashboard = () => {
+=======
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiPlus } from "react-icons/bi";
@@ -31,17 +38,16 @@ const UserDashboard = () => {
                 }
             });
     };
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
 
     return (
         <div>
             <UserNavbar></UserNavbar>
             <div class="drawer drawer-mobile">
-                <input
-                    id="dashboard-sidebar"
-                    type="checkbox"
-                    class="drawer-toggle"
-                />
+                <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
+<<<<<<< HEAD
+=======
                     <label
                         for="my-drawer"
                         class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none"
@@ -247,18 +253,15 @@ const UserDashboard = () => {
                             </table>
                         </div>
                     </div>
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                     <Outlet></Outlet>
                 </div>
                 <div class="drawer-side">
-                    <label
-                        for="dashboard-sidebar"
-                        class="drawer-overlay"
-                    ></label>
+                    <label for="dashboard-sidebar" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-52 text-base-content gray">
                         <li>
-                            <Link className="" to="/userdashboard">
-                                Leave Request
-                            </Link>
+                            <Link className='' to="/userdashboard">
+                                Leave Request</Link>
                         </li>
                     </ul>
                 </div>

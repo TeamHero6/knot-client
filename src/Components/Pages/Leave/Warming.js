@@ -28,20 +28,26 @@ const Warming = () => {
                             <th>Save Change</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {warnings?.map((warning) => (
+                <tbody>
+                    {
+                        warnings?.map(warning =>
                             <tr>
                                 <th>{warning.warningDate}</th>
                                 <td>Name</td>
-                                <td>{warning.warningReason}</td>
-                                <td>special</td>
                                 <td>{warning.type}</td>
-                                <td>Feedback</td>
-                                <td>change</td>
+                                <td>{warning.warningReason}</td>
                             </tr>
+<<<<<<< HEAD
+                        )
+                    }
+                </tbody>
+            </table>
+                        
+=======
                         ))}
                     </tbody>
                 </table>
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
             </div>
         </div>
     );

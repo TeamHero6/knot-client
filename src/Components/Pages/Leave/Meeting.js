@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from 'react';
+import { AiOutlineEye } from "react-icons/ai";
+=======
 import React, { useEffect, useState } from "react";
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
 
 const Meeting = () => {
     const [meetings, setMeetings] = useState([]);
@@ -26,6 +31,37 @@ const Meeting = () => {
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< HEAD
+                        {
+                            meetings?.map(meeting =>
+                                <tr>
+                                    <th>{meeting.date}</th>
+                                    <td>{meeting.meetingTopic}</td>
+                                    <td>
+                                        <div>
+                                            <label for={meeting._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
+                                            <input type="checkbox" id={meeting._id} class="modal-toggle" />
+                                            <div class="modal modal-bottom sm:modal-middle">
+                                                <div class="modal-box">
+                                                    <h3 class="font-bold text-lg">Meeting Information!</h3>
+                                                    <p>Date : {meeting.date}</p>
+                                                    <p>Meeting Topic : {meeting.meetingTopic}</p>
+                                                    <p>Meeting Host : {meeting.meetingHost}</p>
+                                                    <p>Meeting Guest  : {meeting.meetingGuest}</p>
+                                                    <p>Meeting With : {meeting.meetingWith}</p>
+                                                    <p>Meeting Link : {meeting.meetingLink}</p>
+                                                    <div class="modal-action">
+                                                        <label for={meeting._id} class="btn bg-[#0182BE]">Close!</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td> <a className='bg-[#0182BE] text-white px-4 py-2 rounded' href={meeting.meetingLink} target="_blank" rel="noopener noreferrer">Join Now</a> </td>
+                                </tr>
+                            )
+                        }
+=======
                         {meetings?.map((meeting) => (
                             <tr>
                                 <th>{meeting.date}</th>
@@ -74,6 +110,7 @@ const Meeting = () => {
                                 </td>
                             </tr>
                         ))}
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                     </tbody>
                 </table>
             </div>
