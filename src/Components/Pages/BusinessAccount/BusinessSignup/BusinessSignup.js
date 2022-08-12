@@ -26,8 +26,7 @@ const BusinessSignup = () => {
         handleSubmit,
         reset,
     } = useForm();
-    //State for Profile and business logo url from firebase storage
-    // const [profileImageUrl, setProfileImageUrl] = useState("");
+    //State for loader
     const [loadingMessage, setLoadingMessage] = useState("");
 
     //handle signup error
@@ -86,6 +85,7 @@ const BusinessSignup = () => {
                                 const loggerInfo = data?.loggerInfo;
                                 const error = data?.message;
                                 if (error) {
+                                    setLoadingMessage("");
                                     setCustomError(error);
                                 }
                                 if (token) {
