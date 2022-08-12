@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { AiFillDelete } from "react-icons/ai";
 import { FaRegStar } from "react-icons/fa";
-import { AiFillDelete } from 'react-icons/ai';
 
 const SentEmailList = () => {
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
-<<<<<<< HEAD
-        fetch("http://localhost:5000/sentEmail")
-=======
         fetch("https://knot-business-solution-server.herokuapp.com/sentEmail")
->>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
             .then((res) => res.json())
             .then((data) => setEmailList(data));
     }, []);
@@ -31,15 +27,19 @@ const SentEmailList = () => {
         <div class="overflow-x-auto w-full my-16">
             <table class="shadow-2xl border-[1px] border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                 {/* <!-- head --> */}
-                <thead className=' bg-cyan-100 border-b border-cyan-100'>
+                <thead className=" bg-cyan-100 border-b border-cyan-100">
                     <tr>
                         <th className="py-3 text-left pl-10 pr-4 whitespace-nowrap">
                             <label>
                                 <input type="checkbox" class="checkbox" />
                             </label>
                         </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">Company</th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">Campaign</th>
+                        <th className="py-3 text-left px-6 whitespace-nowrap">
+                            Company
+                        </th>
+                        <th className="py-3 text-left px-6 whitespace-nowrap">
+                            Campaign
+                        </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap"></th>
                         <th className="py-3 text-left px-6 whitespace-nowrap"></th>
                         <th className="py-3 text-left px-6 whitespace-nowrap"></th>
@@ -49,7 +49,10 @@ const SentEmailList = () => {
                 <tbody>
                     {/* <!-- row 1 --> */}
                     {emailList.map((email) => (
-                        <tr key={email._id} className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                        <tr
+                            key={email._id}
+                            className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                        >
                             <th className="py-3 pl-10 pr-4 whitespace-nowrap">
                                 <label>
                                     <input type="checkbox" class="checkbox" />
@@ -78,7 +81,9 @@ const SentEmailList = () => {
                                 <FaRegStar className="text-xl" />{" "}
                             </td>
                             <th className="py-3 px-10 whitespace-nowrap">
-                                <button className='flex items-center bg-green-400 py-1 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'>Done</button>
+                                <button className="flex items-center bg-green-400 py-1 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm">
+                                    Done
+                                </button>
                             </th>
                         </tr>
                     ))}
