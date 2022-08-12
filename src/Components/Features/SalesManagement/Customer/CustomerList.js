@@ -4,7 +4,7 @@ const CustomerList = () => {
     const [customerList, setCustomerList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addCustomer")
+        fetch("https://knot-business-solution-server.herokuapp.com/addCustomer")
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
     }, [customerList]);

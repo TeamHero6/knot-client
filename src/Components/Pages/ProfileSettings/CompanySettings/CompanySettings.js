@@ -22,7 +22,7 @@ const CompanySettings = () => {
                 passcode: passcode,
             };
             fetch(
-                "http://localhost:5000/createNewEmployee",
+                "https://knot-business-solution-server.herokuapp.com/createNewEmployee",
                 {
                     method: "PUT",
                     headers: {

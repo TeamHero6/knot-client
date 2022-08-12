@@ -17,7 +17,7 @@ const TeamOrganize = () => {
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
         fetch(
-            "http://localhost:5000/meetings"
+            "https://knot-business-solution-server.herokuapp.com/meetings"
         ).then((res) => res.json())
     );
     //Fetch Warning Data
@@ -27,7 +27,7 @@ const TeamOrganize = () => {
         refetch: warningRefetch,
     } = useQuery(["warnings"], () =>
         fetch(
-            "http://localhost:5000/warnings"
+            "https://knot-business-solution-server.herokuapp.com/warnings"
         ).then((res) => res.json())
     );
     const {
@@ -35,7 +35,7 @@ const TeamOrganize = () => {
         data: awardData,
         refetch: awardRefetch,
     } = useQuery(["award"], () =>
-        fetch("http://localhost:5000/award").then(
+        fetch("https://knot-business-solution-server.herokuapp.com/award").then(
             (res) => res.json()
         )
     );

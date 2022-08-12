@@ -14,7 +14,7 @@ const DailyTask = () => {
 
     const { data, isLoading, refetch } = useQuery(["alltasks", "task"], () =>
         fetch(
-            `http://localhost:5000/v1/allTasks?company=${loggerInfo.companyName}`
+            `https://knot-business-solution-server.herokuapp.com/v1/allTasks?company=${loggerInfo.companyName}`
         ).then((res) => res.json())
     );
 

@@ -70,7 +70,7 @@ const BusinessSignup = () => {
 
                         // Send Data to Server
                         fetch(
-                            "http://localhost:5000/createdUser",
+                            "https://knot-business-solution-server.herokuapp.com/createdUser",
                             {
                                 method: "PUT",
                                 headers: {
@@ -128,7 +128,7 @@ const BusinessSignup = () => {
             const info = { email, secretCode };
 
             fetch(
-                "http://localhost:5000/checkEmployee",
+                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
                 {
                     method: "POST",
                     headers: {
@@ -162,7 +162,7 @@ const BusinessSignup = () => {
                         });
                     }
                 });
-            // fetch(`http://localhost:5000/employeeRole/${email}`)
+            // fetch(`https://knot-business-solution-server.herokuapp.com/employeeRole/${email}`)
             //     .then((res) => res.json())
             //     .then(async (data) => {
             //         const { role, message, message2 } = data;
@@ -236,10 +236,10 @@ const BusinessSignup = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.name?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.name.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.name.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>{" "}
                                     <section>
@@ -267,16 +267,16 @@ const BusinessSignup = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.email?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.email.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.email.message}
+                                                </span>
+                                            )}
                                             {errors.email?.type ===
                                                 "pattern" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.email.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.email.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>
                                     {/*Email Field*/}
@@ -308,10 +308,10 @@ const BusinessSignup = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.userRole?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.userRole.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.userRole.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>{" "}
                                     {/*Company Role*/}
@@ -339,13 +339,13 @@ const BusinessSignup = () => {
                                             <h1 className="text-left ml-2">
                                                 {errors.businessName?.type ===
                                                     "required" && (
-                                                        <span className="w-full text-left text-red-400 text-sm">
-                                                            {
-                                                                errors?.businessName
-                                                                    .message
-                                                            }
-                                                        </span>
-                                                    )}
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.businessName
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
                                             </h1>
                                         </section>
                                     )}
@@ -375,16 +375,16 @@ const BusinessSignup = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.password?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.password.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.password.message}
+                                                </span>
+                                            )}
                                             {errors.password?.type ===
                                                 "minLength" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.password.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.password.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>
                                     {/*Password Field*/}
@@ -414,10 +414,10 @@ const BusinessSignup = () => {
                                             <h1 className="text-left ml-2">
                                                 {errors.logo?.type ===
                                                     "required" && (
-                                                        <span className="w-full text-left text-red-400 text-sm">
-                                                            {errors?.logo.message}
-                                                        </span>
-                                                    )}
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {errors?.logo.message}
+                                                    </span>
+                                                )}
                                             </h1>
                                         </section>
                                     )}
@@ -441,13 +441,13 @@ const BusinessSignup = () => {
                                             <h1 className="text-left ml-2">
                                                 {errors.secretCode?.type ===
                                                     "required" && (
-                                                        <span className="w-full text-left text-red-400 text-sm">
-                                                            {
-                                                                errors?.secretCode
-                                                                    .message
-                                                            }
-                                                        </span>
-                                                    )}
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.secretCode
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
                                             </h1>
                                         </section>
                                     )}

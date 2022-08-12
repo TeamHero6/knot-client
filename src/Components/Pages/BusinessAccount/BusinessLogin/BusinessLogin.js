@@ -43,7 +43,7 @@ const BusinessLogin = () => {
             const info = { email, secretCode };
             console.log(info);
             fetch(
-                "http://localhost:5000/checkEmployee",
+                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
                 {
                     method: "POST",
                     headers: {
@@ -77,7 +77,7 @@ const BusinessLogin = () => {
             setCustomError("");
             //check isRole
             fetch(
-                "http://localhost:5000/isRole",
+                "https://knot-business-solution-server.herokuapp.com/isRole",
                 {
                     method: "POST",
                     headers: {
@@ -164,16 +164,16 @@ const BusinessLogin = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.email?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.email.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.email.message}
+                                                </span>
+                                            )}
                                             {errors.email?.type ===
                                                 "pattern" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.email.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.email.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>
                                     <section>
@@ -204,10 +204,10 @@ const BusinessLogin = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.userRole?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.userRole.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.userRole.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>
                                     {/*Choose your role*/}
@@ -236,16 +236,16 @@ const BusinessLogin = () => {
                                         <h1 className="text-left ml-2">
                                             {errors.password?.type ===
                                                 "required" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.password.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.password.message}
+                                                </span>
+                                            )}
                                             {errors.password?.type ===
                                                 "minLength" && (
-                                                    <span className="w-full text-left text-red-400 text-sm">
-                                                        {errors?.password.message}
-                                                    </span>
-                                                )}
+                                                <span className="w-full text-left text-red-400 text-sm">
+                                                    {errors?.password.message}
+                                                </span>
+                                            )}
                                         </h1>
                                     </section>
                                     {/*Password Field*/}
@@ -270,13 +270,13 @@ const BusinessLogin = () => {
                                             <h1 className="text-left ml-2">
                                                 {errors.secretCode?.type ===
                                                     "required" && (
-                                                        <span className="w-full text-left text-red-400 text-sm">
-                                                            {
-                                                                errors?.secretCode
-                                                                    .message
-                                                            }
-                                                        </span>
-                                                    )}
+                                                    <span className="w-full text-left text-red-400 text-sm">
+                                                        {
+                                                            errors?.secretCode
+                                                                .message
+                                                        }
+                                                    </span>
+                                                )}
                                             </h1>
                                         </section>
                                     )}

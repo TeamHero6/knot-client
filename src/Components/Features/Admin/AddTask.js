@@ -1,4 +1,3 @@
-import DateMomentUtils from "@date-io/moment";
 // import {
 //     KeyboardDateTimePicker,
 //     MuiPickersUtilsProvider,
@@ -66,7 +65,7 @@ const AddTask = ({ refetch }) => {
 
         //Post data to server
         fetch(
-            "http://localhost:5000/v1/addNewTask",
+            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
             {
                 method: "POST",
                 headers: {
@@ -94,7 +93,7 @@ const AddTask = ({ refetch }) => {
     };
 
     // fetch(
-    //     "http://localhost:5000/addNewTask",
+    //     "https://knot-business-solution-server.herokuapp.com/addNewTask",
     //     {
     //         method: "POST",
     //         headers: {
@@ -131,9 +130,11 @@ const AddTask = ({ refetch }) => {
                         />
                     </div>
                     <div
-                        className={`${employeeName ? "hidden" : "absolute"
-                            } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${!search ? "p-0" : "py-2 pl-3"
-                            }`}
+                        className={`${
+                            employeeName ? "hidden" : "absolute"
+                        } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${
+                            !search ? "p-0" : "py-2 pl-3"
+                        }`}
                     >
                         {users
                             .filter((val) => {

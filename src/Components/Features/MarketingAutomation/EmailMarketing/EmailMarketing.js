@@ -15,7 +15,7 @@ const EmailMarketing = () => {
         const emailToSend = { emailTo, emailSubject, emailDescription };
         console.log(emailToSend);
 
-        fetch("http://localhost:5000/sentEmail", {
+        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -71,7 +71,12 @@ const EmailMarketing = () => {
                                 type="text"
                                 value={"New Mail"}
                             /> */}
-                            <label className='block px-4 py-2 border-b bg-slate-50' htmlFor="emailTo">New Mail</label>
+                            <label
+                                className="block px-4 py-2 border-b bg-slate-50"
+                                htmlFor="emailTo"
+                            >
+                                New Mail
+                            </label>
                             <input
                                 className="px-4 py-2 border-b w-full bg-slate-50"
                                 type="email"
@@ -98,7 +103,7 @@ const EmailMarketing = () => {
                                 required
                             ></textarea>
                             <button
-                                className='flex items-center bg-blue-600 py-1 px-3 ml-4 mb-2 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm'
+                                className="flex items-center bg-blue-600 py-1 px-3 ml-4 mb-2 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                                 type="submit"
                             >
                                 <div className="flex items-center gap-1">

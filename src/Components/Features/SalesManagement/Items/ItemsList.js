@@ -4,7 +4,7 @@ const ItemsList = ({ setSingleItemDetail }) => {
     const [itemList, setItemList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addProduct")
+        fetch("https://knot-business-solution-server.herokuapp.com/addProduct")
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
     }, [itemList]);

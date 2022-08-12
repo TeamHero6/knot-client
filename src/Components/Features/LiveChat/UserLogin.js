@@ -13,7 +13,7 @@ const UserLogin = () => {
 
         const loginUser = { name, employeeID };
 
-        fetch("http://localhost:5000/loginuser", {
+        fetch("https://knot-business-solution-server.herokuapp.com/loginuser", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
