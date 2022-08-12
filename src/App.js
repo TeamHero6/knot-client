@@ -53,6 +53,9 @@ import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import FormSample from "./FromSample/FormSample";
+import Recruitment from "./Components/Pages/Hrdashboard/Recruitment/Recruitment";
+import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
+import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
 
 function App() {
     return (
@@ -74,6 +77,9 @@ function App() {
                     <Route path="performance" element={<Performance />}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
                     <Route path="attendance" element={<Attendance />}></Route>
+                    <Route path="vacancy" element={<Recruitment />}></Route>
+                    <Route path="interview" element={<Interview />}></Route>
+                    <Route path="joining" element={<Joining />}></Route>
                 </Route>
                 <Route path="/BusinessSignUp" element={<BusinessSignup />} />
                 <Route path="/BusinessLogin" element={<BusinessLogin />} />
