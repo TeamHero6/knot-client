@@ -81,6 +81,7 @@ const SalesOrder = () => {
                 console.log(data);
                 if (data) {
                     e.target.reset();
+                    setTotalAmount(0)
                 }
             });
     };

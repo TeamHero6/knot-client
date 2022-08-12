@@ -43,12 +43,12 @@ const SalesManagement = () => {
                         >
                             Items
                         </Link>
-                        <Link
+                        {/* <Link
                             to="salesTeamMembers"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Sales Team members
-                        </Link>
+                        </Link> */}
                         <Link
                             to="customer"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
@@ -61,36 +61,36 @@ const SalesManagement = () => {
                         >
                             Sales Order
                         </Link>
-                        <Link
+                        {/* <Link
                             to="paymentReceive"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Payment Receive
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="return"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             Return
-                        </Link>
+                        </Link> */}
                         <Link
                             to="vendor"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Vendor
                         </Link>
-                        <Link
+                        {/* <Link
                             to="purchaseOrder"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Purchase order
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="bill"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Bill
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
                 <div className="px-3 overflow-auto w-full">
