@@ -5,7 +5,7 @@ const Meeting = () => {
     const [meetings, setMeetings] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/meetings")
+        fetch("http://localhost:5000/meetings")
             .then((res) => res.json())
             .then((data) => setMeetings(data));
     }, []);

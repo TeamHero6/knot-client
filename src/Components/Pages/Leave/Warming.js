@@ -4,7 +4,7 @@ const Warming = () => {
     const [warnings, setWarnings] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/warnings")
+        fetch("http://localhost:5000/warnings")
             .then((res) => res.json())
             .then((data) => setWarnings(data));
     }, []);

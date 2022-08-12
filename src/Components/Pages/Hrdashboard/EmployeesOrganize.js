@@ -6,7 +6,7 @@ import { FiEdit } from "react-icons/fi";
 const EmployeesOrganize = () => {
     const [requests, setRequest] = useState([]);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user")
+        fetch("http://localhost:5000/user")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);

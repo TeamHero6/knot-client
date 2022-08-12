@@ -91,7 +91,7 @@ function App() {
 
                 <Route path="/chat" element={<LiveChatDashboard></LiveChatDashboard>}>
                     <Route index element={<UserLogin></UserLogin>}></Route>
-                    <Route path="hrchat" element={<HR/>} />
+                    <Route path="hrchat" element={<HR />} />
                 </Route>
 
                 <Route
@@ -100,11 +100,7 @@ function App() {
                 />
                 <Route
                     path="/accessApps"
-                    element={
-                        <RequireAuth>
-                            <AccessYourApps />
-                        </RequireAuth>
-                    }
+                    element={<AccessYourApps />}
                 />
                 <Route path="/salesTS" element={<SalesManagement />}>
                     <Route index element={<SalesDashboard />}></Route>

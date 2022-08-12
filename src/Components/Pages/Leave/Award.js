@@ -5,7 +5,7 @@ const Award = () => {
     const [awards, setAwards] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/award")
+        fetch("http://localhost:5000/award")
             .then((res) => res.json())
             .then((data) => setAwards(data));
     }, []);

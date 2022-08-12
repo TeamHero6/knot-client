@@ -10,14 +10,14 @@ const Performance = () => {
     const [promo, setPromo] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/performance")
+        fetch("http://localhost:5000/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, []);
 
     const onSubmit = (data) => {
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/performance",
+            "http://localhost:5000/performance",
             {
                 method: "POST",
                 headers: {

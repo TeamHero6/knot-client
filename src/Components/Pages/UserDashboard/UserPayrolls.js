@@ -5,13 +5,13 @@ const UserPayrolls = () => {
     const [userinfo, setUserinfo] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
+        fetch("http://localhost:5000/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/inputData")
+        fetch("http://localhost:5000/inputData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);

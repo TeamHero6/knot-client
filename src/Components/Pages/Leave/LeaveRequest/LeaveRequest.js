@@ -13,7 +13,7 @@ const LeaveRequest = () => {
     const [leave, setleave] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/leaveData")
+        fetch("http://localhost:5000/leaveData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);
@@ -21,12 +21,12 @@ const LeaveRequest = () => {
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user")
+        fetch("http://localhost:5000/user")
             .then((res) => res.json())
             .then((data) => setleave(data));
     }, []);
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user", {
+        fetch("http://localhost:5000/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

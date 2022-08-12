@@ -18,7 +18,7 @@ const Footer = () => {
         const newsletter = { email };
 
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/newsletter",
+            "http://localhost:5000/newsletter",
             {
                 method: "POST",
                 headers: {

@@ -1,29 +1,23 @@
-<<<<<<< HEAD
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserNavbar from '../../Shared/UserNavbar/UserNavbar';
-
-const UserDashboard = () => {
-=======
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiPlus } from "react-icons/bi";
 import { FaSave } from "react-icons/fa";
-import { Link, Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
-import UserNavbar from "../../Shared/UserNavbar/UserNavbar";
 
 const UserDashboard = () => {
     const { register, handleSubmit, reset } = useForm();
     const [leave, setleave] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user")
+        fetch("http://localhost:5000/user")
             .then((res) => res.json())
             .then((data) => setleave(data));
     }, []);
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user", {
+        fetch("http://localhost:5000/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -38,7 +32,6 @@ const UserDashboard = () => {
                 }
             });
     };
->>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
 
     return (
         <div>
@@ -46,8 +39,6 @@ const UserDashboard = () => {
             <div class="drawer drawer-mobile">
                 <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
-<<<<<<< HEAD
-=======
                     <label
                         for="my-drawer"
                         class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none"
@@ -253,9 +244,8 @@ const UserDashboard = () => {
                             </table>
                         </div>
                     </div>
->>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                     <Outlet></Outlet>
-                </div>
+                </div >
                 <div class="drawer-side">
                     <label for="dashboard-sidebar" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-52 text-base-content gray">
@@ -265,8 +255,8 @@ const UserDashboard = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

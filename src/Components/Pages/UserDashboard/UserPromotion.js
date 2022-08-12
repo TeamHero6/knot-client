@@ -6,16 +6,19 @@ const UserPromotion = () => {
     const [transfers, setTransfers] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/performance")
+        fetch("http://localhost:5000/performance")
             .then((res) => res.json())
             .then((data) => setPromotions(data));
     }, []);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
+        fetch("http://localhost:5000/transfer")
             .then((res) => res.json())
             .then((data) => setTransfers(data));
     }, []);
+
+    console.log(transfers);
+    console.log(promotions)
 
     return (
         <div>

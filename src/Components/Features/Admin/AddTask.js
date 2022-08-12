@@ -1,8 +1,8 @@
 import DateMomentUtils from "@date-io/moment";
-import {
-    KeyboardDateTimePicker,
-    MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
+// import {
+//     KeyboardDateTimePicker,
+//     MuiPickersUtilsProvider,
+// } from "@material-ui/pickers";
 import moment from "moment";
 import React, { useState } from "react";
 import { ImCross } from "react-icons/im";
@@ -66,7 +66,7 @@ const AddTask = ({ refetch }) => {
 
         //Post data to server
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
+            "http://localhost:5000/v1/addNewTask",
             {
                 method: "POST",
                 headers: {
@@ -94,7 +94,7 @@ const AddTask = ({ refetch }) => {
     };
 
     // fetch(
-    //     "https://knot-business-solution-server.herokuapp.com/addNewTask",
+    //     "http://localhost:5000/addNewTask",
     //     {
     //         method: "POST",
     //         headers: {
@@ -131,11 +131,9 @@ const AddTask = ({ refetch }) => {
                         />
                     </div>
                     <div
-                        className={`${
-                            employeeName ? "hidden" : "absolute"
-                        } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${
-                            !search ? "p-0" : "py-2 pl-3"
-                        }`}
+                        className={`${employeeName ? "hidden" : "absolute"
+                            } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${!search ? "p-0" : "py-2 pl-3"
+                            }`}
                     >
                         {users
                             .filter((val) => {
@@ -179,7 +177,7 @@ const AddTask = ({ refetch }) => {
                         <option value="finance">Finance</option>
                         <option value="admin">Admin</option>
                     </select>
-                    <MuiPickersUtilsProvider utils={DateMomentUtils}>
+                    {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
                         <KeyboardDateTimePicker
                             className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                             label="Pick a Deadline"
@@ -190,7 +188,7 @@ const AddTask = ({ refetch }) => {
                             value={selectedDate}
                             onChange={handleDateChange}
                         />
-                    </MuiPickersUtilsProvider>
+                    </MuiPickersUtilsProvider> */}
                 </div>
                 <input
                     className="py-2 pl-3 w-full  my-1 border border-gray-300 bg-slate-50 rounded outline-none"
