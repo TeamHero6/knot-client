@@ -31,6 +31,7 @@ import SalesOrder from "./Components/Features/SalesManagement/SalesOrder/SalesOr
 import SalesTeamMembers from "./Components/Features/SalesManagement/SalesTeamMembers/SalesTeamMembers";
 import Vendor from "./Components/Features/SalesManagement/Vendor/Vendor";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
+
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
@@ -50,12 +51,14 @@ import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
 import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+import UserDashboardK from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import FormSample from "./FromSample/FormSample";
 import Recruitment from "./Components/Pages/Hrdashboard/Recruitment/Recruitment";
 import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
 import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
+import Calender from "./Components/Shared/Calender/Calender";
 
 function App() {
     return (
@@ -85,8 +88,9 @@ function App() {
                 <Route path="/BusinessLogin" element={<BusinessLogin />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/calender" element={<Calender />} />
 
-                <Route path="/userdashboard" element={<UserDashboard />}>
+                <Route path="/userdashboard" element={<UserDashboardK></UserDashboardK>}>
                     <Route index element={<LeaveRequest />} />
                     <Route path="attendance" element={<UserAttaindance />} />
                     <Route path="performance" element={<UserPromotion />} />
@@ -104,6 +108,8 @@ function App() {
                     path="/userpayrolls"
                     element={<UserPayrolls></UserPayrolls>}
                 />
+                <Route path="/userdashboard" element={<UserDashboard />} />
+                <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/accessApps"
                     element={<AccessYourApps />}
