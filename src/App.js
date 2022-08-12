@@ -14,6 +14,7 @@ import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManag
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
 import HR from "./Components/Features/LiveChat/HR";
 import LiveChat from "./Components/Features/LiveChat/LiveChat";
+import LiveChatDashboard from "./Components/Features/LiveChat/LiveChatDashboard";
 import UserLogin from "./Components/Features/LiveChat/UserLogin";
 import CustomerListing from "./Components/Features/MarketingAutomation/CustomerListing/CustomerListing";
 import EmailMarketing from "./Components/Features/MarketingAutomation/EmailMarketing/EmailMarketing";
@@ -86,8 +87,11 @@ function App() {
                 </Route>
 
                 <Route path="/liveChat" element={<LiveChat></LiveChat>}></Route>
-                <Route path="/userlogin" element={<UserLogin></UserLogin>}></Route>
-                <Route path="/hrchat" element={<HR></HR>}></Route>
+
+                <Route path="/chat" element={<LiveChatDashboard></LiveChatDashboard>}>
+                    <Route index element={<UserLogin></UserLogin>}></Route>
+                    <Route path="hrchat" element={<HR/>} />
+                </Route>
 
                 <Route
                     path="/userpayrolls"

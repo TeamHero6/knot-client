@@ -11,6 +11,8 @@
     height: 500px;
 }
 .chatCard{
-    height: 450px;
+    height: 340px;
 }
-
+.chatField input{
+    width: 100%;
+}

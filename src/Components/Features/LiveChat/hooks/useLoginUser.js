@@ -5,7 +5,7 @@ const useLoginUser = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/loginuser')
         .then(res => res.json())
-        .then (data=>setLoginUser(data))
+        .then (data=>setLoginUser(data.reverse()))
     },[])
     return [loginUser, setLoginUser];
 };
