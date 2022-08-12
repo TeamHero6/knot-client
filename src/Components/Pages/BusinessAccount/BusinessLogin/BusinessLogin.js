@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { FaRegEnvelope } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
+import { Puff } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -19,6 +20,7 @@ const BusinessLogin = () => {
     const [signInWithEmailAndPassword, user, Eloading, error] =
         useSignInWithEmailAndPassword(auth);
     const [customError, setCustomError] = useState("");
+    const [loadingMessage, setLoadingMessage] = useState("");
     const [employeeWantLogin, setEmployeeWantLogin] = useState(false);
 
     const dispatch = useDispatch();
@@ -28,6 +30,7 @@ const BusinessLogin = () => {
     let from = location.state?.from?.pathname || "/";
 
     const onSubmit = async (data) => {
+        setLoadingMessage("Please Wait...");
         setCustomError("");
         const email = data.email;
         const role = data.userRole;
@@ -56,6 +59,7 @@ const BusinessLogin = () => {
                     if (role) {
                         setCustomError("");
                         await signInWithEmailAndPassword(email, password);
+                        setLoadingMessage("");
                         navigate(from, { replace: true });
                     } else {
                         setCustomError("");
@@ -89,7 +93,9 @@ const BusinessLogin = () => {
                         dispatch(loginAction(loggerInfo));
                         localStorage.setItem("accessToken", token);
                         await signInWithEmailAndPassword(email, password);
+                        setLoadingMessage("");
                     } else {
+                        setLoadingMessage("");
                         setCustomError(
                             "You account have an issue! contact us."
                         );
@@ -277,10 +283,23 @@ const BusinessLogin = () => {
                                     <div className="text-left ml2 w-full text-red-400 text-sm mt-2">
                                         {customError}
                                     </div>
-                                    {Eloading ? (
-                                        <button className="border-2 mt-3 border-cyan-400 rounded-full px-12 py-2">
-                                            Login...
-                                        </button>
+                                    {Eloading || loadingMessage ? (
+                                        <div className="flex items-center justify-center w-full mt-3">
+                                            <button className="border-2 border-cyan-400 rounded-full px-12 py-2 flex items-center justify-center">
+                                                <Puff
+                                                    height="20"
+                                                    width="20"
+                                                    radius="9"
+                                                    color="black"
+                                                    ariaLabel="three-dots-loading"
+                                                    wrapperStyle
+                                                    wrapperClass
+                                                />
+                                                <span className="ml-2">
+                                                    {loadingMessage}
+                                                </span>
+                                            </button>
+                                        </div>
                                     ) : (
                                         <input
                                             type="submit"
