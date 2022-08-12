@@ -15,7 +15,7 @@ const EmailMarketing = () => {
         const emailToSend = { emailTo, emailSubject, emailDescription };
         console.log(emailToSend);
 
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/sentEmail", {
+        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

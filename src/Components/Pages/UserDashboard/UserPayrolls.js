@@ -5,13 +5,13 @@ const UserPayrolls = () => {
     const [userinfo, setUserinfo] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/payrolls")
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/inputData")
+        fetch("https://knot-business-solution-server.herokuapp.com/inputData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);
@@ -48,13 +48,17 @@ const UserPayrolls = () => {
                                 Payrolls Amount <br />
                                 Details
                             </th>
+<<<<<<< HEAD
                             <th>Payrolls Amount <br />Details</th>
+=======
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                             <th>Paid Amount</th>
                             <th>Pament Date</th>
                             <th>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< HEAD
                         {
                             payrolls?.map(payroll =>
                                 <tr>
@@ -67,6 +71,19 @@ const UserPayrolls = () => {
                                 </tr>
                             )
                         }
+=======
+                        {payrolls?.map((payroll) => (
+                            <tr>
+                                <th>{payroll.Employee_ID}</th>
+                                <td>{payroll.Name}</td>
+                                <td>salary grade</td>
+                                <td>{payroll.Payroll_Type}</td>
+                                <td>{payroll.Pay_Amount}</td>
+                                <td>{payroll.Payment_Date}</td>
+                                <td>{payroll.Pay_stutas}</td>
+                            </tr>
+                        ))}
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                     </tbody>
                 </table>
             </div>

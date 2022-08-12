@@ -1,18 +1,22 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { AiOutlineEye } from "react-icons/ai";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
 
 const UserPromotion = () => {
     const [promotions, setPromotions] = useState([]);
     const [transfers, setTransfers] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
+        fetch("https://knot-business-solution-server.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromotions(data));
     }, []);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer")
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
             .then((res) => res.json())
             .then((data) => setTransfers(data));
     }, []);
@@ -40,6 +44,7 @@ const UserPromotion = () => {
                                     <td>Details</td>
                                 </tr>
                             ))}
+<<<<<<< HEAD
                             {
                                 promotions?.map(promotion =>
                                     <tr>
@@ -71,6 +76,8 @@ const UserPromotion = () => {
                                     </tr>
                                 )
                             }
+=======
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                         </tbody>
                     </table>
                 </div>
@@ -96,6 +103,7 @@ const UserPromotion = () => {
                                     <td>Details</td>
                                 </tr>
                             ))}
+<<<<<<< HEAD
                             {
                                 transfers?.map(transfer =>
                                     <tr>
@@ -126,6 +134,8 @@ const UserPromotion = () => {
                                     </tr>
                                 )
                             }
+=======
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                         </tbody>
                     </table>
                 </div>

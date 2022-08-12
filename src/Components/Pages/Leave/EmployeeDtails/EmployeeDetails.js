@@ -71,7 +71,8 @@ const EmployeeDetails = () => {
         };
         // console.log(inputData)
 
-        const url = "https://sheltered-cliffs-60290.herokuapp.com/inputData";
+        const url =
+            "https://knot-business-solution-server.herokuapp.com/inputData";
         fetch(url, {
             method: "POST",
             headers: {

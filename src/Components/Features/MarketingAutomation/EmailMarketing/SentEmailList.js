@@ -6,7 +6,11 @@ const SentEmailList = () => {
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
+<<<<<<< HEAD
         fetch("http://localhost:5000/sentEmail")
+=======
+        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail")
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
             .then((res) => res.json())
             .then((data) => setEmailList(data));
     }, []);
@@ -14,7 +18,7 @@ const SentEmailList = () => {
     const deleteEmail = (id) => {
         const proceed = window.confirm("Do you want to delete this task?");
         if (proceed) {
-            const url = `https://sheltered-cliffs-60290.herokuapp.com/deleteEmail/${id}`;
+            const url = `https://knot-business-solution-server.herokuapp.com/deleteEmail/${id}`;
             fetch(url, {
                 method: "DELETE",
             })

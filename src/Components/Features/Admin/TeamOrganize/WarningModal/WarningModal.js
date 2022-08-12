@@ -8,13 +8,16 @@ const WarningModal = ({ refetch }) => {
         const warningReason = e.target.reason.value;
         const type = e.target.type.value;
         const warningDetails = { warningDate, warningReason, type };
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/createWarning", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(warningDetails),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/createWarning",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(warningDetails),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {

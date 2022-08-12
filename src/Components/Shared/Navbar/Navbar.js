@@ -1,18 +1,27 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 
 const Navbar = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
+    //use Info from Redux
+    const authInfo = useSelector((state) => state.auth);
+
+    const handleLogout = () => {
+        signOut(auth);
+    };
+
+    //Sign out user
     if (loading) {
         return;
     }
     return (
         <div className=" md:px-8 lg:px-12">
-            <div class="navbar bg-base-100 ">
+            <div class="navbar ">
                 <div class="navbar-start">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -67,16 +76,14 @@ const Navbar = () => {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a>Settings</a>
+                                                <Link to="/profileSettings">
+                                                    Setting
+                                                </Link>
                                             </li>
                                             <li>
-                                                <p
-                                                    onClick={() =>
-                                                        signOut(auth)
-                                                    }
-                                                >
+                                                <button onClick={handleLogout}>
                                                     Logout
-                                                </p>
+                                                </button>
                                             </li>
                                         </ul>
                                     </div>
@@ -126,12 +133,14 @@ const Navbar = () => {
                                             </a>
                                         </li>
                                         <li>
-                                            <a>Settings</a>
+                                            <Link to="/profileSettings">
+                                                Setting
+                                            </Link>
                                         </li>
                                         <li>
-                                            <p onClick={() => signOut(auth)}>
+                                            <button onClick={handleLogout}>
                                                 Logout
-                                            </p>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>

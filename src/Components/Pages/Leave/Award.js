@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { AiOutlineEye } from "react-icons/ai";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
 
 const Award = () => {
     const [awards, setAwards] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/award")
+        fetch("https://knot-business-solution-server.herokuapp.com/award")
             .then((res) => res.json())
             .then((data) => setAwards(data));
     }, []);
@@ -19,11 +23,12 @@ const Award = () => {
                         <tr>
                             <th>Award Date</th>
                             <th>Team Member Name</th>
-                            <th>Department</th>
+                            <th>Type of Award</th>
                             <th>Leader Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< HEAD
                         {
                             awards?.map(award =>
                                 <tr>
@@ -54,6 +59,16 @@ const Award = () => {
                                 </tr>
                             )
                         }
+=======
+                        {awards?.map((award) => (
+                            <tr>
+                                <th>{award.awardDate}</th>
+                                <td>{award.name}</td>
+                                <td>{award.awardType}</td>
+                                <td>status</td>
+                            </tr>
+                        ))}
+>>>>>>> 724ec9760913e5b9f17d3c352a7ee0b036b7bb78
                     </tbody>
                 </table>
             </div>

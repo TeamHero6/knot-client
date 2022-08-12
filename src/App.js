@@ -9,7 +9,7 @@ import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolit
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
-import AdminDashboard from "./Components/Features/Admin/Dashboard/AdminDashboard";
+import AdminDashboardF from "./Components/Features/Admin/Dashboard/AdminDashboardF";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
 import HR from "./Components/Features/LiveChat/HR";
@@ -33,7 +33,6 @@ import Vendor from "./Components/Features/SalesManagement/Vendor/Vendor";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
-import Login from "./Components/Pages/Authentications/Login/Login";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
@@ -47,6 +46,9 @@ import Performance from "./Components/Pages/Hrdashboard/Performance";
 import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
+import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
+import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
+import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
 import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
@@ -63,7 +65,6 @@ function App() {
                     path="/employeedetails"
                     element={<EmployeeDetails></EmployeeDetails>}
                 ></Route>
-                <Route path="/login" element={<Login />} />
                 <Route path="/hrdashboard" element={<Hrdashboard />}>
                     <Route index element={<Dashboard />}></Route>
                     <Route
@@ -97,8 +98,6 @@ function App() {
                     path="/userpayrolls"
                     element={<UserPayrolls></UserPayrolls>}
                 />
-                <Route path="/userdashboard" element={<UserDashboard />} />
-                <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/accessApps"
                     element={
@@ -153,7 +152,7 @@ function App() {
                         element={<CustomerListing />}
                     ></Route>
                 </Route>
-                <Route path="/admin" element={<AdminDashboard />}>
+                <Route path="/admin" element={<AdminDashboardF />}>
                     <Route index element={<DailyTask />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
                     <Route
@@ -181,6 +180,13 @@ function App() {
                     <Route
                         path="rules&politics"
                         element={<RulesAndPolitics />}
+                    />
+                </Route>
+                <Route path="/profileSettings" element={<ProfileDashboard />}>
+                    <Route index element={<ProfileSettings />} />
+                    <Route
+                        path="companySettings"
+                        element={<CompanySettings />}
                     />
                 </Route>
             </Routes>

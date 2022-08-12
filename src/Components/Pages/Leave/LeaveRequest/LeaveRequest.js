@@ -13,7 +13,7 @@ const LeaveRequest = () => {
     const [leave, setleave] = useState([]);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/leaveData")
+        fetch("https://knot-business-solution-server.herokuapp.com/leaveData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);
@@ -21,12 +21,12 @@ const LeaveRequest = () => {
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/user")
+        fetch("https://knot-business-solution-server.herokuapp.com/user")
             .then((res) => res.json())
             .then((data) => setleave(data));
     }, []);
     const onSubmit = (data) => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/user", {
+        fetch("https://knot-business-solution-server.herokuapp.com/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
