@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaSave } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Award from "../Award";
 import Meeting from "../Meeting";
 import Warming from "../Warming";
 import { BiPlus } from 'react-icons/bi';
-import { AiOutlineEye } from "react-icons/ai";
+import { BsSaveFill } from 'react-icons/bs';
 
 const LeaveRequest = () => {
     const [userinfo, setUserinfo] = useState([]);
     const [leave, setleave] = useState([]);
+    const [show, setShow] = useState(false);
+    const [leaveModal, setLeaveModal] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/leaveData")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/leaveData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);
@@ -21,12 +22,12 @@ const LeaveRequest = () => {
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/user")
             .then((res) => res.json())
             .then((data) => setleave(data));
     }, []);
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user", {
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -45,154 +46,156 @@ const LeaveRequest = () => {
     return (
         <div>
             <section>
-                <label for="my-drawer" class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none">
-                    <span><BiPlus></BiPlus></span>
-                    <span className='capitalize'> New</span>
-
+                <label for="my-drawer" >
+                    <button onClick={() => setShow(!show)} className='flex ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'><BiPlus></BiPlus> New</button>
                 </label>
-                <h1 className='text-[#0182be] ml-3 my-3 text-xl'>Leave Request:</h1>
-                <div className='ml-3 '>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className='grid grid-cols-2'>
-                            {/* ff */}
-                            <div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Date :</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("Date")}
-                                    />
+                {
+                    show ?
+                        <div>
+                            <h1 className='text-2xl text-center font-semibold mt-5 text-[#0182BE]'>Leave Request  </h1>
+                            <div className='ml-3 '>
+                                <form className='lg:w-10/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto' onSubmit={handleSubmit(onSubmit)}>
+                                    <div className='grid lg:grid-cols-2'>
+                                        {/* ff */}
+                                        <div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Date :</span>
+                                                </label>
+                                                <input required
+                                                    type="text" placeholder="Enter Date"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("Date")}
+                                                />
 
 
-                                </div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Employees Name :</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("Name")}
-                                    />
+                                            </div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Employee Name :</span>
+                                                </label>
+                                                <input required
+                                                    type="text" placeholder="Employee Name"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("Name")}
+                                                />
 
 
-                                </div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Employees ID:</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("id")}
-                                    />
+                                            </div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Employee ID:</span>
+                                                </label>
+                                                <input required
+                                                    type="text" placeholder="Employee ID"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("id")}
+                                                />
 
 
-                                </div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Designation:</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("Designation")}
-                                    />
+                                            </div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Designation:</span>
+                                                </label>
+                                                <input required
+                                                    type="text" placeholder="Designation"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("Designation")}
+                                                />
 
 
-                                </div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Reason For Leave:</span>
-                                    </label>
-                                    <textarea
-                                        type="text"
-                                        className=" w-64 h-20 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("leave")}
-                                    />
+                                            </div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Reason For Leave:</span>
+                                                </label>
+                                                <textarea required
+                                                    type="text" placeholder="Reason For Leave"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("leave")}
+                                                />
 
 
-                                </div>
+                                            </div>
 
 
-                            </div>
+                                        </div>
 
-                            {/* ff */}
-                            <div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Depertment:</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("dep_id")}
-                                    />
-
-
-                                </div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Start Date:</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("s_date")}
-                                    />
+                                        {/* ff */}
+                                        <div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Depertment:</span>
+                                                </label>
+                                                <input required
+                                                    type="text" placeholder="Department"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("dep")}
+                                                />
 
 
-                                </div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">End Date:</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className=" w-42 h-8 pl-5 rounded-lg border-solid border border-[#0182be] "
-                                        {...register("e_date")}
-                                    />
+                                            </div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Start Date:</span>
+                                                </label>
+                                                <input required
+                                                    type="text" placeholder="Start Date"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("s_date")}
+                                                />
 
 
-                                </div>
-                                <div className='flex items-center'>
-                                    <label className="label w-48">
-                                        <span className="label-text text-xl">Type Of Leave:</span>
-                                    </label>
+                                            </div>
+                                            <div className='flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">End Date:</span>
+                                                </label>
+                                                <input required
+                                                    type="text" placeholder="End Date"
+                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
+                                                    {...register("e_date")}
+                                                />
 
-                                    <div className='mt-5'>
 
-                                        <input {...register("leave_type")} type="radio" value="Casual leave" />
-                                        <span className='px-3  text-xl'>Casual leave</span>
-                                        <br />
-                                        <input {...register("leave_type")} type="radio" value="Sick leave" />
-                                        <span className='px-3  text-xl'>Sick leave</span>
-                                        <br />
-                                        <input {...register("leave_type")} type="radio" value="Annual leave" />
-                                        <span className='px-3  text-xl'>Annual leave</span>
+                                            </div>
+                                            <div className='lg:flex items-center'>
+                                                <label className="label w-48">
+                                                    <span className="label-text text-xl">Type Of Leave:</span>
+                                                </label>
+
+                                                <div className='lg:mt-5'>
+
+                                                    <input {...register("leave_type")} type="radio" value="Casual leave" />
+                                                    <span className='px-3  text-xl'>Casual leave</span>
+                                                    <br />
+                                                    <input {...register("leave_type")} type="radio" value="Sick leave" />
+                                                    <span className='px-3  text-xl'>Sick leave</span>
+                                                    <br />
+                                                    <input {...register("leave_type")} type="radio" value="Annual leave" />
+                                                    <span className='px-3  text-xl'>Annual leave</span>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
                                     </div>
 
 
 
-                                </div>
+                                    <div className='flex items-center rounded-lg w-fit mx-auto mt-3'>
+                                        <button className='flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm'><BsSaveFill /><input type="submit" value="Submit" /></button>
+                                    </div>
+
+                                </form>
+
                             </div>
-                        </div>
-
-
-
-                        <div className='flex items-center bg-[#EEEEEE]  w-24 p-2 rounded-lg mx-auto border-solid border border-[#0182be] mt-5'>
-                            <FaSave></FaSave>
-                            <input className='pl-2 font-medium' type="submit" />
-                        </div>
-
-                    </form>
-
-                </div>
+                        </div> : ' '
+                }
                 <div className='px-5'>
-                    <h1 className='text-2xl text-center font-bold my-5'>Request Status</h1>
+                    <h1 className='text-2xl text-center font-bold mt-5'>Request Status</h1>
                     <div class="overflow-x-auto">
                         <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
@@ -216,25 +219,8 @@ const LeaveRequest = () => {
                                             <td className="py-3 px-6 whitespace-nowrap">{le.dep}</td>
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 <div>
-                                                    <label for={le._id} class=" modal-button"><AiOutlineEye></AiOutlineEye></label>
-                                                    <input type="checkbox" id={le._id} class="modal-toggle" />
-                                                    <div class="modal modal-bottom sm:modal-middle">
-                                                        <div class="modal-box">
-                                                            <h3 class="font-bold text-lg">Leave Request Information!</h3>
-                                                            <p>Date : {le.Date}</p>
-                                                            <p>Name : {le.Name}</p>
-                                                            <p>Employee ID : {le.id}</p>
-                                                            <p>Designation : {le.Designation}</p>
-                                                            <p>Reason For Leave : {le.leave}</p>
-                                                            <p>Department : {le.dep}</p>
-                                                            <p>Start Date : {le.s_date}</p>
-                                                            <p>End Date : {le.e_date}</p>
-                                                            <p>Type Of Leave : {le.leave_type}</p>
-                                                            <div class="modal-action">
-                                                                <label for={le._id} class="btn bg-[#0182BE]">Close!</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <label for={le._id} onClick={() => setLeaveModal(le)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+
                                                 </div>
                                             </td>
                                             <td className="py-3 px-6 whitespace-nowrap">{le.leave_type}</td>
@@ -246,6 +232,26 @@ const LeaveRequest = () => {
                             </tbody>
 
                         </table>
+
+                        <input type="checkbox" id={leaveModal._id} class="modal-toggle" />
+                        <div class="modal modal-bottom sm:modal-middle">
+                            <div class="modal-box">
+                                <h3 class="font-bold text-lg">Leave Request Information!</h3>
+                                <p>Date : {leaveModal.Date}</p>
+                                <p>Name : {leaveModal.Name}</p>
+                                <p>Employee ID : {leaveModal.id}</p>
+                                <p>Designation : {leaveModal.Designation}</p>
+                                <p>Reason For Leave : {leaveModal.leave}</p>
+                                <p>Department : {leaveModal.dep}</p>
+                                <p>Start Date : {leaveModal.s_date}</p>
+                                <p>End Date : {leaveModal.e_date}</p>
+                                <p>Type Of Leave : {leaveModal.leave_type}</p>
+                                <div class="modal-action">
+                                    <label for={leaveModal._id} class="btn bg-[#0182BE]">Close!</label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>

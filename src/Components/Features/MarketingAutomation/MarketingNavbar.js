@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DigitalClock from '../../Shared/DigitalClock/DigitalClock';
 
 const MarketingNavbar = () => {
@@ -19,7 +20,7 @@ const MarketingNavbar = () => {
             </div>
 
             <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
-                <img src='https://raw.githubusercontent.com/TeamHero6/knot-client/monir/src/Assets/icons/Dashboard/access.svg' className={`w-6`} alt="icon" />
+                <Link to='/accessApps'><img src='https://raw.githubusercontent.com/TeamHero6/knot-client/monir/src/Assets/icons/Dashboard/access.svg' className={`w-6`} alt="icon" /></Link>
             </div>
 
             {/*Profile DropDown*/}

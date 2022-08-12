@@ -8,21 +8,21 @@ const SalesDashboard = () => {
     const [singleItemDetail, setSingleItemDetail] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/addProduct")
+        fetch("http://localhost:5000/addProduct")
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
     }, [itemList]);
 
     useEffect(() => {
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewVendor"
+            "http://localhost:5000/addNewVendor"
         )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
     }, [vendorList]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/addCustomer")
+        fetch("http://localhost:5000/addCustomer")
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
     }, [customerList]);

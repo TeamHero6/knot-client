@@ -1,164 +1,168 @@
-import React, { useEffect, useState } from "react";
-import { AiOutlineEyeInvisible } from "react-icons/ai";
-import { BsSave2 } from "react-icons/bs";
-import { FiEdit } from "react-icons/fi";
+import React, { useEffect, useState } from 'react';
+import { BsSave2 } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 
 const EmployeesOrganize = () => {
-    const [requests, setRequest] = useState([]);
+
+    const [warning, setWarning] = useState([]);
+    const [award, setAward] = useState([]);
+    const [feeds, setFeed] = useState("");
+    const [leader, setleader] = useState("");
+
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/user")
-            .then((res) => res.json())
-            .then((data) => setRequest(data));
+        fetch('http://localhost:5000/warning')
+            .then(res => res.json())
+            .then(data => setWarning(data))
     }, []);
+    useEffect(() => {
+        fetch('http://localhost:5000/award')
+            .then(res => res.json())
+            .then(data => setAward(data))
+    }, []);
+
+    const feedback = (event) => {
+        setFeed(event.target.value);
+    }
+    const ledarfeed = (event) => {
+        setleader(event.target.value);
+    }
+
+    const teamfeed = (id) => {
+        const infeed = feeds;
+
+        const colfeed = { infeed }
+
+        const url = `http://localhost:5000/warning/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(colfeed)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('successfully save warning data');
+
+            })
+
+    }
+    const handelleader = (id) => {
+        const ledarfeed = leader;
+
+        const leadercol = { ledarfeed }
+
+        const url = `http://localhost:5000/award/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(leadercol)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('successfully save award data');
+
+            })
+
+    }
+
     return (
         <div>
-            <div className="px-5">
-                <h1 className="text-xl  my-5">Team Members Warning Database</h1>
-                <div class="overflow-x-auto">
-                    <table class="table table-compact w-full">
-                        <thead className="border-b border-gray-600">
+            <div className='px-5'>
+                <h1 className='text-xl  my-5'>Team Members Warning Database</h1>
+                <div class="rounded-none">
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+
+                        <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th>
-                                    Date
-                                    <select className="bg-transparent">
-                                        <option></option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            <tr>
-                                <th>Warning Date</th>
-                                <th>Team Member Name</th>
-                                <th>Reason of Warning</th>
-                                <th>Special Note</th>
-                                <th>Warning Type</th>
-                                <th>Team Member Feedback</th>
-                                <th>Save Change</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Warning Date</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Reason of Warning</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Warning Type</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Team Member Feedback</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Save Change</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            {requests.map((request) => (
-                                <tr>
-                                    <th>{request.id}</th>
-                                    <td>{request.Name}</td>
-                                    <td className="flex items-center">
-                                        <AiOutlineEyeInvisible></AiOutlineEyeInvisible>
-                                        <p className="pl-2">
-                                            {" "}
-                                            Click Here to warning reason
-                                        </p>
-                                    </td>
+                            {
+                                warning.map(w =>
+                                    <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                        <td className="py-3 px-6 whitespace-nowrap">{w.warningDate}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
 
-                                    <td>
-                                        <div className="flex items-center">
-                                            <AiOutlineEyeInvisible className="mr-2"></AiOutlineEyeInvisible>
-                                            <FiEdit></FiEdit>
-                                            <p className="pl-2"> Edit Option</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option
-                                                value="Light
-Midium
-High"
-                                            >
-                                                Light Midiu High
-                                            </option>
-                                            <option value=""></option>
-                                        </select>
-                                    </td>
-                                    <td className="flex items-center">
-                                        <AiOutlineEyeInvisible></AiOutlineEyeInvisible>
+                                            <p className='pl-2'>{w.warningReason
+                                            } </p>
+                                        </td>
 
-                                        <p className="pl-2">
-                                            {" "}
-                                            Team Member Feedback
-                                        </p>
-                                    </td>
-                                    <td className="text-center text-blue-600 ">
-                                        <div className="w-10 mx-auto">
-                                            <BsSave2></BsSave2>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+
+
+                                        <td className="py-3 px-6 whitespace-nowrap">
+                                            {w.type}
+                                        </td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
+
+                                            <textarea onChange={feedback} rows="" cols=""></textarea>
+                                        </td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
+                                            <div className='w-10 mx-auto'>
+                                                <button onClick={() => teamfeed(w._id)}><BsSave2></BsSave2></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            }
+
+
                         </tbody>
+
                     </table>
                 </div>
             </div>
-            <div className="px-5">
-                <h1 className="text-xl  my-5 ">Team Member Award Database</h1>
-                <div class="overflow-x-auto">
-                    <table class="table table-compact w-full">
-                        <thead className="border-b border-gray-600">
+            <div className='px-5'>
+                <h1 className='text-xl  my-5 '>Team Member Award Database</h1>
+                <div class="rounded-none">
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th>
-                                    Date
-                                    <select className="bg-transparent">
-                                        <option></option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            <tr>
-                                <th>Award Date</th>
-                                <th>Team Member Name</th>
-                                <th>Type Of Award</th>
-                                <th>Leader Feedback</th>
-                                <th>Save Change</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Award Date</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Team Member Name</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Type Of Award</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Leader Feedback</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">Save Change</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            {requests.map((request) => (
-                                <tr>
-                                    <th>{request.id}</th>
-                                    <td>{request.Name}</td>
-                                    <td>
-                                        <select>
-                                            <option value="Employee of the month">
-                                                Employee of the month
-                                            </option>
-                                            <option value="Employee of the month">
-                                                Employee of the month
-                                            </option>
-                                        </select>
-                                    </td>
+                            {
+                                award.map(a =>
+                                    <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                        <td className="py-3 px-6 whitespace-nowrap">{a.awardDate}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{a.name}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">
+                                            {a.awardType}
+                                        </td>
 
-                                    <td>
-                                        <div className="flex items-center">
-                                            <AiOutlineEyeInvisible className="mr-2"></AiOutlineEyeInvisible>
-                                            <FiEdit></FiEdit>
-                                            <p className="pl-2"> Edit Option</p>
-                                        </div>
-                                    </td>
 
-                                    <td className="text-center text-blue-600 ">
-                                        <div className="w-10 mx-auto">
-                                            <BsSave2></BsSave2>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+
+                                        <td className="py-3 px-6 whitespace-nowrap">
+                                            <textarea required onChange={ledarfeed} rows="" cols=""></textarea>
+                                        </td>
+
+                                        <td className="py-3 px-6 whitespace-nowrap">
+                                            <div className='w-10 mx-auto'>
+                                                <button onClick={() => handelleader(a._id)}><BsSave2></BsSave2></button>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            }
+
+
                         </tbody>
+
                     </table>
                 </div>
             </div>
