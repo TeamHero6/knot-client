@@ -5,7 +5,7 @@ const Meeting = () => {
     const [meetingModal, setMeetingModal] = useState({});
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/meetings")
+        fetch("http://localhost:5000/meetings")
             .then((res) => res.json())
             .then((data) => setMeetings(data));
     }, []);
