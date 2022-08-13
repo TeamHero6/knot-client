@@ -42,8 +42,11 @@ import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
+import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
 import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
 import Performance from "./Components/Pages/Hrdashboard/Performance";
+import Recruitment from "./Components/Pages/Hrdashboard/Recruitment/Recruitment";
 import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
@@ -54,11 +57,8 @@ import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserDashboardK from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
-import FormSample from "./FromSample/FormSample";
-import Recruitment from "./Components/Pages/Hrdashboard/Recruitment/Recruitment";
-import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
-import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
 import Calender from "./Components/Shared/Calender/Calender";
+import FormSample from "./FromSample/FormSample";
 
 function App() {
     return (
@@ -90,7 +90,10 @@ function App() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/calender" element={<Calender />} />
 
-                <Route path="/userdashboard" element={<UserDashboardK></UserDashboardK>}>
+                <Route
+                    path="/userdashboard"
+                    element={<UserDashboardK></UserDashboardK>}
+                >
                     <Route index element={<LeaveRequest />} />
                     <Route path="attendance" element={<UserAttaindance />} />
                     <Route path="performance" element={<UserPromotion />} />
@@ -99,7 +102,10 @@ function App() {
 
                 <Route path="/liveChat" element={<LiveChat></LiveChat>}></Route>
 
-                <Route path="/chat" element={<LiveChatDashboard></LiveChatDashboard>}>
+                <Route
+                    path="/chat"
+                    element={<LiveChatDashboard></LiveChatDashboard>}
+                >
                     <Route index element={<UserLogin></UserLogin>}></Route>
                     <Route path="hrchat" element={<HR />} />
                 </Route>
@@ -109,49 +115,34 @@ function App() {
                     element={<UserPayrolls></UserPayrolls>}
                 />
                 <Route path="/userdashboard" element={<UserDashboard />} />
-                <Route path="/accessApps" element={<AccessYourApps />} />
                 <Route
                     path="/accessApps"
-                    element={<AccessYourApps />}
+                    element={
+                        <RequireAuth>
+                            <AccessYourApps />
+                        </RequireAuth>
+                    }
                 />
                 <Route path="/salesTS" element={<SalesManagement />}>
                     <Route index element={<SalesDashboard />}></Route>
-                    <Route
-                        path="items"
-                        element={<Items />}
-                    ></Route>
+                    <Route path="items" element={<Items />}></Route>
                     <Route
                         path="salesTeamMembers"
                         element={<SalesTeamMembers />}
                     ></Route>
-                    <Route
-                        path="customer"
-                        element={<Customer />}
-                    ></Route>
-                    <Route
-                        path="salesOrder"
-                        element={<SalesOrder />}
-                    ></Route>
+                    <Route path="customer" element={<Customer />}></Route>
+                    <Route path="salesOrder" element={<SalesOrder />}></Route>
                     <Route
                         path="paymentReceive"
                         element={<PaymentReceive />}
                     ></Route>
-                    <Route
-                        path="return"
-                        element={<Return />}
-                    ></Route>
-                    <Route
-                        path="vendor"
-                        element={<Vendor />}
-                    ></Route>
+                    <Route path="return" element={<Return />}></Route>
+                    <Route path="vendor" element={<Vendor />}></Route>
                     <Route
                         path="purchaseOrder"
                         element={<PurchaseOrder />}
                     ></Route>
-                    <Route
-                        path="bill"
-                        element={<Bill />}
-                    ></Route>
+                    <Route path="bill" element={<Bill />}></Route>
                 </Route>
                 <Route path="/marketingTS" element={<MarketingAutomation />}>
                     <Route index element={<EmailMarketing />}></Route>
