@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
-import { FiEye } from "react-icons/fi";
 import {
     Bar,
     BarChart,
@@ -22,36 +21,52 @@ const Attendance = () => {
         <div>
             <h3 className="text-[#0182be] text-2xl p-5">Employee Attendance</h3>
             <div className="mx-auto w-4/5 rounded-lg my-5 ">
-                <div class="overflow-x-auto">
-                    <table class="table table-compact w-full">
-                        <thead>
+                <div class="rounded-none">
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th>Date</th>
-                                <th>Start Time</th>
-                                <th>End Time</th>
-                                <th>Total Working Hour</th>
-                                <th>Over Time</th>
-                                <th>Employee Details</th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                    Date
+                                </th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                    Start Time
+                                </th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                    End Time
+                                </th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                    Total Working Hour
+                                </th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                    Over Time
+                                </th>
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                    Employee Details
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>Habib ullha</th>
-                                <th>2512</th>
-                                <th>Sales</th>
-                                <th>Sales</th>
-                                <th>Sales</th>
-                                <th className="text-[#0182be]">
-                                    <CgProfile></CgProfile>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>Habib ullha</th>
-                                <th>2512</th>
-                                <th>Sales</th>
-                                <th className="text-[#0182be]">
-                                    <FiEye></FiEye>
-                                </th>
+                            <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    Habib ullha
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    2512
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    Sales
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    Sales
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    Sales
+                                </td>
+                                <td className="text-[#0182be]">
+                                    <button>
+                                        <CgProfile></CgProfile>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -83,7 +98,11 @@ const Attendance = () => {
                         <Bar dataKey="Payable_Amount" fill="#82ca9d" />
                     </BarChart>
                 </div>
-                <div></div>
+                {/* <li><Link  to="">Dashboard</Link></li>
+                        <li><Link  to="employeeorg">Employees Organize</Link></li>
+                        <li><Link  to="performance">Performance</Link></li>
+                        <li><Link  to="payrolls">Payrolls</Link></li>
+                        <li><Link  to="attendance">Attendance</Link></li> */}
             </div>
         </div>
     );

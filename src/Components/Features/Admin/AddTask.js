@@ -1,8 +1,7 @@
-import DateMomentUtils from "@date-io/moment";
-import {
-    KeyboardDateTimePicker,
-    MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
+// import {
+//     KeyboardDateTimePicker,
+//     MuiPickersUtilsProvider,
+// } from "@material-ui/pickers";
 import moment from "moment";
 import React, { useState } from "react";
 import { ImCross } from "react-icons/im";
@@ -179,7 +178,7 @@ const AddTask = ({ refetch }) => {
                         <option value="finance">Finance</option>
                         <option value="admin">Admin</option>
                     </select>
-                    <MuiPickersUtilsProvider utils={DateMomentUtils}>
+                    {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
                         <KeyboardDateTimePicker
                             className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                             label="Pick a Deadline"
@@ -190,7 +189,7 @@ const AddTask = ({ refetch }) => {
                             value={selectedDate}
                             onChange={handleDateChange}
                         />
-                    </MuiPickersUtilsProvider>
+                    </MuiPickersUtilsProvider> */}
                 </div>
                 <input
                     className="py-2 pl-3 w-full  my-1 border border-gray-300 bg-slate-50 rounded outline-none"
