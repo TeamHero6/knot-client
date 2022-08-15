@@ -11,6 +11,7 @@ const DailyTask = () => {
 
     const authInfo = useSelector((state) => state.auth);
     const { isAuth, loggerInfo } = authInfo;
+    console.log(loggerInfo);
 
     const { data, isLoading, refetch } = useQuery(["alltasks", "task"], () =>
         fetch(
@@ -23,37 +24,38 @@ const DailyTask = () => {
     }
 
     return (
-        <div>
-            <section className="bg-white rounded drop-shadow-md w-full h-auto p-4">
-                <div className="w-full flex flex-row my-2">
-                    <div className="basis-1/6">
+        <>
+            <section className="bg-white rounded drop-shadow-md w-full h-auto p-2">
+                <div className="w-full">
+                    <div className="flex">
                         <button
-                            className="flex items-center gap-2 bg-green-400	 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 transition duration-300 hover:shadow-green-200 hover: shadow-sm"
+                            className="flex items-center basis-1/6 mr-2 bg-green-400 py-1 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 transition duration-300 hover:shadow-green-200 hover: shadow-sm"
                             onClick={() => setOpen(!isOpen)}
                         >
                             <MdOutlineAddTask />
                             Add Task
                         </button>
-                    </div>
-                    <div className="basis-5/6 flex items-center border border-gray-400 rounded px-2">
-                        <BsSearch className="text-gray-400" />
-                        <input
-                            type="text"
-                            placeholder="filter by name/task"
-                            className="py-2 px-2 w-[100%] outline-none text-gray-400"
-                        />
+                        <div className="basis-5/6 flex items-center border border-gray-400 rounded px-2">
+                            <BsSearch className="text-gray-400" />
+                            <input
+                                type="text"
+                                placeholder="filter by name/task"
+                                className="py-1 px-2 w-[100%] outline-none text-gray-400"
+                            />
+                        </div>
                     </div>
                 </div>
-                <section className={`${isOpen ? "visible" : "hidden"}`}>
-                    <AddTask refetch={refetch} />
-                </section>
             </section>
+            <section className={`${isOpen ? "visible" : "hidden"}`}>
+                <AddTask />
+            </section>
+            {/*All tasks Data in AllTask component*/}
             <section className="bg-white rounded drop-shadow-md w-full h-auto p-4 my-4">
                 <div className="overflow-x-auto">
-                    <AllTasks data={data} />
+                    <AllTasks />
                 </div>
             </section>
-        </div>
+        </>
     );
 };
 

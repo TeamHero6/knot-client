@@ -45,19 +45,6 @@ const AdminDashboardF = () => {
                                 </span>
                             )}
                         </NavLink>
-                        <NavLink to="addTask">
-                            {({ isActive }) => (
-                                <span
-                                    className={
-                                        isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100"
-                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
-                                    }
-                                >
-                                    Add Task
-                                </span>
-                            )}
-                        </NavLink>
 
                         <NavLink to="teamManagement">
                             {({ isActive }) => (
@@ -87,7 +74,7 @@ const AdminDashboardF = () => {
                         </NavLink>
                     </div>
                 </div>
-                <div className="px-3 overflow-x-auto">
+                <div className="px-3 overflow-x-auto w-full">
                     <Outlet />
                 </div>
             </section>

@@ -32,29 +32,29 @@ const EmailMarketing = () => {
     };
     return (
         <div className="mx-5 mt-3">
-            <div className="flex justify-between items-center">
-                <div class="form-control min-w-[400px] border rounded-3xl bg-[#EEEEEE] border-[#0182BE]">
+            <div className="flex flex-wrap justify-between items-center">
+                <div class="form-control md:min-w-[400px] border border-gray-300 bg-slate-50 rounded">
                     <div class="input-group ">
                         <button class="btn btn-ghost text-2xl">
                             <BiSearchAlt></BiSearchAlt>
                         </button>
                         <input
-                            className="text-xl w-full bg-[#EEEEEE] mr-4"
+                            className="text-xl py-2 pl-3 w-full my-1 outline-none"
                             type="text"
                             placeholder="Search Here"
                             class="input"
                         />
                     </div>
                 </div>
-                <div className="flex justify-center items-center gap-8">
-                    <div className="text-xl">
+                <div className="flex justify-center items-center gap-4 md:gap-8">
+                    <div className="text-lg md:text-xl whitespace-nowrap">
                         <p>Total Sent Mail: 12</p>
                         <p>Total Subscribe: 06</p>
                     </div>
                     <div>
                         <button
                             onClick={() => setCompose(!compose)}
-                            className="btn btn-outline flex justify-center items-center text-xl py-2 px-4 bg-[#EEEEEE]"
+                            className="btn btn-outline flex flex-nowrap justify-center items-center text-lg md:text-xl md:py-2 md:px-4 border-gray-300 bg-slate-50 rounded"
                         >
                             <FaRegEdit />
                             <p>Compose</p>
@@ -64,16 +64,21 @@ const EmailMarketing = () => {
             </div>
             <div>
                 {compose ? (
-                    <div className="mt-8 z-50 border rounded-lg">
+                    <div className="mt-8 z-50 border rounded">
                         <form onSubmit={handleEmailForm}>
-                            <input
+                            {/* <label
                                 className="px-4 z-10 py-2 border-b w-full"
                                 type="text"
                                 value={"New Mail"}
-                            />
-                            <br />
+                            /> */}
+                            <label
+                                className="block px-4 py-2 border-b bg-slate-50"
+                                htmlFor="emailTo"
+                            >
+                                New Mail
+                            </label>
                             <input
-                                className="px-4 py-2 border-b w-full"
+                                className="px-4 py-2 border-b w-full bg-slate-50"
                                 type="email"
                                 name="emailTo"
                                 placeholder="To"
@@ -81,7 +86,7 @@ const EmailMarketing = () => {
                             />
                             <br />
                             <input
-                                className="px-4 py-2 border-b w-full"
+                                className="px-4 py-2 border-b w-full bg-slate-50"
                                 type="text"
                                 name="emailSubject"
                                 placeholder="Subject"
@@ -89,7 +94,7 @@ const EmailMarketing = () => {
                             />
                             <br />
                             <textarea
-                                className="px-4 py-2  w-full"
+                                className="px-4 py-2 w-full bg-slate-50"
                                 name="emailDescription"
                                 placeholder="..."
                                 id=""
@@ -98,7 +103,7 @@ const EmailMarketing = () => {
                                 required
                             ></textarea>
                             <button
-                                className="btn btn-outline btn-sm px-4 mx-4 mb-4"
+                                className="flex items-center bg-blue-600 py-1 px-3 ml-4 mb-2 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                                 type="submit"
                             >
                                 <div className="flex items-center gap-1">

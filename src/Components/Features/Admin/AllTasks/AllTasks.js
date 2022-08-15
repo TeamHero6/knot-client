@@ -5,7 +5,7 @@ const AllTasks = ({ data }) => {
 
     return (
         <div>
-            <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto text-base overflow-hidden ">
+            <table className="shadow-2xl border-2 border-cyan-300 min-w-full mx-auto text-base overflow-hidden ">
                 <thead className="text-white bg-cyan-400 border-b border-cyan-300">
                     <tr className="">
                         <th className="py-3 text-left px-6 whitespace-nowrap">
