@@ -1,19 +1,27 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 
 const Navbar = () => {
-    const [user, loading, error] = useAuthState(auth);
-    const [arrow, setArrow] = useState(false);
-    if (user) {
-        console.log(user.displayName);
+    const [user, loading] = useAuthState(auth);
+    //use Info from Redux
+    const authInfo = useSelector((state) => state.auth);
+
+    const handleLogout = () => {
+        signOut(auth);
+    };
+
+    //Sign out user
+    if (loading) {
+        return;
     }
     return (
         <div className=" md:px-8 lg:px-12">
-            <div class="navbar bg-base-100 ">
+            <div class="navbar ">
                 <div class="navbar-start">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -68,22 +76,20 @@ const Navbar = () => {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a>Settings</a>
+                                                <Link to="/profileSettings">
+                                                    Setting
+                                                </Link>
                                             </li>
                                             <li>
-                                                <p
-                                                    onClick={() =>
-                                                        signOut(auth)
-                                                    }
-                                                >
+                                                <button onClick={handleLogout}>
                                                     Logout
-                                                </p>
+                                                </button>
                                             </li>
                                         </ul>
                                     </div>
                                 ) : (
                                     <Link
-                                        to="login"
+                                        to="/BusinessSignUp"
                                         className="px-4 text-green-500"
                                     >
                                         Login
@@ -101,10 +107,52 @@ const Navbar = () => {
                     </a>
                 </div>
                 <div class="navbar-end">
-                    <div className="hidden lg:flex">
+                    <div className="hidden lg:flex items-center">
                         <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
+                        <div>
+                            {user ? (
+                                <div class="dropdown dropdown-end">
+                                    <label
+                                        tabindex="0"
+                                        class="btn btn-ghost btn-circle avatar"
+                                    >
+                                        <div class="w-10 rounded-full">
+                                            <img src="https://placeimg.com/80/80/people" />
+                                        </div>
+                                    </label>
+                                    <ul
+                                        tabindex="0"
+                                        class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                    >
+                                        <li>
+                                            <a class="justify-between">
+                                                Profile
+                                                <span class="badge">New</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <Link to="/profileSettings">
+                                                Setting
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <button onClick={handleLogout}>
+                                                Logout
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            ) : (
+                                <Link
+                                    to="/BusinessSignUp"
+                                    className="px-3 py-2 rounded bg-green-500 hover:bg-green-400 duration-500 text-white"
+                                >
+                                    Login
+                                </Link>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

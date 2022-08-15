@@ -80,11 +80,11 @@ const Hrdashboard = () => {
                             Joining
                         </Link> */}
 
-                        
+
                     </div>
                 </div>
                 <div className="mx-auto overflow-auto">
-                    <Outlet  />
+                    <Outlet />
                 </div>
             </section>
         </div>

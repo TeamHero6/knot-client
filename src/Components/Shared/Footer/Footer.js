@@ -1,26 +1,61 @@
 import React from "react";
-import { AiFillFacebook } from 'react-icons/ai';
-import { AiFillInstagram } from 'react-icons/ai';
-import { AiFillLinkedin } from 'react-icons/ai';
-import { AiFillYoutube } from 'react-icons/ai';
+import {
+    AiFillFacebook,
+    AiFillInstagram,
+    AiFillLinkedin,
+    AiFillYoutube,
+} from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import Logo from "../../../Image/Logo/KnotLogo.png";
 import "../../Pages/Style/Style.css";
 
 const Footer = () => {
+    const emailSend = (event) => {
+        event.preventDefault();
+        const email = event.target.email.value;
+
+        const newsletter = { email };
+
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/newsletter",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(newsletter),
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                toast("Thanks for being with us");
+                event.target.reset();
+            });
+    };
     return (
         <div className="footer-container">
             <div className="footer-section-top">
                 <section className="logo-area">
-                    <img src={Logo} alt="" />
-                    <h3>
-                        Build and sell extensions for <br /> Zoho products.
-                    </h3>
                     <div className="icon">
-                        <a href="https://www.facebook.com/"><AiFillFacebook /></a>
-                        <a href="https://www.instagram.com/"><AiFillInstagram /></a>
-                        <a href="https://www.linkedin.com/"><AiFillLinkedin /></a>
-                        <a href="https://www.youtube.com/"><AiFillYoutube /></a>
+                        <a href="https://www.facebook.com/">
+                            <AiFillFacebook />
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <AiFillInstagram />
+                        </a>
+                        <a href="https://www.linkedin.com/">
+                            <AiFillLinkedin />
+                        </a>
+                        <a href="https://www.youtube.com/">
+                            <AiFillYoutube />
+                        </a>
+                    </div>
+                    <div>
+                        <img src={Logo} alt="" />
+                        <h3>
+                            Build and sell extensions for <br /> Knot products.
+                        </h3>
                     </div>
                 </section>
                 <section className="additional-link-area">
@@ -37,7 +72,7 @@ const Footer = () => {
                                 <Link to="/FAQ">FAQ</Link> <br />
                             </li>
                             <li>
-                                <Link to="/">Payment Method</Link>
+                                <Link to="/">Payment Policy</Link>
                             </li>
                         </ul>
                     </div>
@@ -53,7 +88,7 @@ const Footer = () => {
                 </section>
                 <section className="newsletter-area">
                     <h2>Newsletter</h2>
-                    <form>
+                    <form onSubmit={emailSend}>
                         <label htmlFor="email">Email</label> <br />
                         <input
                             className="newsletter-input"
@@ -116,20 +151,6 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                {/* <div className="One-Step-Solution">
-                    <div class="collapse">
-                        <input type="checkbox" />
-                        <div class="collapse-title text-xl font-medium">
-                            <p>One Step Solution</p>
-                        </div>
-                        <div class="collapse-content">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Suscipit, in.
-                            </p>
-                        </div>
-                    </div>
-                </div> */}
             </div>
             <div className="footer-section-bottom text-center">
                 <p>
@@ -137,12 +158,21 @@ const Footer = () => {
                     Ltd. All Rights Reserved.
                 </p>
                 <div className="icon">
-                    <a href="https://www.facebook.com/"><AiFillFacebook /></a>
-                    <a href="https://www.instagram.com/"><AiFillInstagram /></a>
-                    <a href="https://www.linkedin.com/"><AiFillLinkedin /></a>
-                    <a href="https://www.youtube.com/"><AiFillYoutube /></a>
+                    <a href="https://www.facebook.com/">
+                        <AiFillFacebook />
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <AiFillInstagram />
+                    </a>
+                    <a href="https://www.linkedin.com/">
+                        <AiFillLinkedin />
+                    </a>
+                    <a href="https://www.youtube.com/">
+                        <AiFillYoutube />
+                    </a>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
