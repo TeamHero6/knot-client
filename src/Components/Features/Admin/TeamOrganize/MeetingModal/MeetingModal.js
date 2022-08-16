@@ -42,47 +42,47 @@ const MeetingModal = ({ refetch }) => {
             });
     };
     return (
-        <div className="w-full bg-[#EEEEEE] rounded-lg lg:w-[50%] mx-auto p-3 px-6">
+        <div className="w-full bg-white rounded-lg lg:w-[35%] drop-shadow-lg mx-auto p-3 px-6">
             <form className="flex flex-col" onSubmit={handleCreateMeeting}>
                 <input
                     type="date"
-                    className="bg-transparent my-2"
+                    className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                     name="date"
                 />
                 <input
                     type="text"
                     placeholder="Meeting Topic"
-                    className="my-2 p-1 px-3 rounded-md"
+                    className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                     name="meetingTopic"
                 />
                 <input
                     type="text"
                     placeholder="Meeting Host"
-                    className="my-2 p-1 px-3 rounded-md"
+                    className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                     name="meetingHost"
                 />
                 <input
                     type="text"
                     placeholder="Meeting Guest"
-                    className="my-2 p-1 px-3 rounded-md"
+                    className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                     name="meetingGuest"
                 />
                 <input
                     type="text"
                     placeholder="Meeting With"
-                    className="my-2 p-1 px-3 rounded-md"
+                    className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                     name="meetingWith"
                 />
                 <input
                     type="text"
                     placeholder="Meeting Link"
-                    className="my-2 p-1 px-3 rounded-md"
+                    className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                     name="meetingLink"
                 />
                 <input
                     type="submit"
                     value="Submit"
-                    className="px-4 py-2 rounded-full bg-white my-2"
+                    className="py-2 pl-3 w-full my-2 border border-green-300 bg-transparent rounded-md outline-none hover:bg-green-400 hover:text-white transition duration-500"
                 />
             </form>
         </div>
