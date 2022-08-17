@@ -1,14 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Loader from "../../../Shared/Loader/Loader";
+import MeetingCard from "./AllTables/MeetingTable/MeetingCards/MeetingCard";
+import AwardCard from "./AwardModal/AwardCard";
 import AwardModalDaisyUI from "./AwardModal/AwardModalDaisyUI";
 import MeetingModalDaisyUI from "./MeetingModal/MeetingModalDaisyUI";
+import WarningCard from "./WarningModal/WarningCard";
 import WarningModalDaisyUI from "./WarningModal/WarningModalDaisyUI";
 
 const TeamOrganize = () => {
     const [meetingModal, setMeetingModal] = useState(false);
     const [warningModal, setWarningModal] = useState(false);
     const [awardModal, setAwardModal] = useState(false);
+    const [dropDownFilter, setDropDownFilter] = useState("allMettings");
+
+    // handler for drop down filter
+    const handleDropDownFilter = (e) => {
+        setDropDownFilter(e.target.value);
+    };
     const {
         isLoading: meetingLoading,
         data: meetingData,
@@ -42,8 +51,8 @@ const TeamOrganize = () => {
     }
 
     return (
-        <div>
-            <section className="w-full bg-white py-4">
+        <div className="bg-white">
+            <section className="w-full py-4 px-2  md:flex md:justify-between md:items-center">
                 <section className="flex flex-col md:flex-row">
                     <label
                         for="my-modal-4"
@@ -143,7 +152,7 @@ const TeamOrganize = () => {
                     </label>
                 </section>
                 {/*modal*/}
-                <section className="w-[100%] mt-12">
+                <section className="">
                     {meetingModal && (
                         <MeetingModalDaisyUI {...{ setMeetingModal }} />
                     )}
@@ -152,9 +161,48 @@ const TeamOrganize = () => {
                     )}
                     {awardModal && <AwardModalDaisyUI {...{ setAwardModal }} />}
                 </section>
-                {/*Data*/}
-                <section></section>
+                {/*Filtering UI*/}
+                <div className="mx-2">
+                    <input
+                        type="text"
+                        className="border-[1px] rounded-md w-64 px-2 py-1 md:mx-2 outline-none"
+                        placeholder="Filter by name"
+                    />
+                    <select
+                        name="meet-warn-award-filter"
+                        id=""
+                        className="mt-2"
+                        onChange={handleDropDownFilter}
+                    >
+                        <option value="allMettings">All Meetings</option>
+                        <option value="allWarning">All Warning</option>
+                        <option value="allAward">All Award</option>
+                    </select>
+                </div>
             </section>
+            {/*All meetings*/}
+            <hr />
+            {dropDownFilter === "allMettings" && (
+                <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-5 py-3 mt-8">
+                    {meetingData.map((meeting) => (
+                        <MeetingCard />
+                    ))}
+                </section>
+            )}
+            {dropDownFilter === "allWarning" && (
+                <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-3 mt-8">
+                    {warningData.map((warning) => (
+                        <WarningCard />
+                    ))}
+                </section>
+            )}
+            {dropDownFilter === "allAward" && (
+                <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-3 mt-8">
+                    {awardData.map((award) => (
+                        <AwardCard />
+                    ))}
+                </section>
+            )}
         </div>
     );
 };

@@ -118,7 +118,7 @@ const MeetingModalDaisyUI = ({ setMeetingModal }) => {
                             onSubmit={handleCreateMeeting}
                         >
                             <input
-                                type="date"
+                                type="datetime-local"
                                 className="py-2 pl-3 lg:max-w-lg my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                                 name="date"
                                 id="date"
