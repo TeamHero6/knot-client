@@ -9,6 +9,7 @@ import marketing from "../../../Assets/icons/marketing-automation.png";
 import sales from "../../../Assets/icons/sales2.png";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import AccessAppsCard from "./AccessAppsCard/AccessAppsCard";
+import chat from "../../../Assets/icons/Live-chat-icon/chat.png"
 
 const AccessYourApps = () => {
     const [filterResult, setFilterResult] = useState([]);
@@ -49,6 +50,12 @@ const AccessYourApps = () => {
             name: "UserDashboard",
             link: "/userDashboard",
             icon: dashboard,
+        },
+        {
+            id: 7,
+            name: "Live Chat",
+            link: "/chat",
+            icon: chat,
         },
     ];
     useEffect(() => {
