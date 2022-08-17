@@ -188,21 +188,21 @@ const TeamOrganize = () => {
             <hr />
             {dropDownFilter === "allMettings" && (
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-5 py-3 mt-8">
-                    {meetingData.map((meeting) => (
+                    {meetingData?.map((meeting) => (
                         <MeetingCard />
                     ))}
                 </section>
             )}
             {dropDownFilter === "allWarning" && (
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-3 mt-8">
-                    {warningData.map((warning) => (
+                    {warningData?.map((warning) => (
                         <WarningCard />
                     ))}
                 </section>
             )}
             {dropDownFilter === "allAward" && (
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-3 mt-8">
-                    {awardData.map((award) => (
+                    {awardData?.map((award) => (
                         <AwardCard {...{ award }} />
                     ))}
                 </section>

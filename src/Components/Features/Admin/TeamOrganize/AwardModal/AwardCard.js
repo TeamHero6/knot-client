@@ -1,7 +1,6 @@
 import React from "react";
 
 const AwardCard = ({ award }) => {
-    console.log(award);
     return (
         <div className="bg-transparent border-l-4 border-orange-500 px-4 py-2 rounded-md shadow-xl">
             <div class="flex justify-between text-green-400">
