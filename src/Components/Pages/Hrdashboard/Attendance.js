@@ -17,6 +17,7 @@ const Attendance = () => {
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);
+    console.log(payrolls);
     return (
         <div>
             <h3 className="text-[#0182be] text-2xl p-5">Employee Attendance</h3>
