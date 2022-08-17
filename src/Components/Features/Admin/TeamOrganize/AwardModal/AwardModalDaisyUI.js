@@ -1,30 +1,34 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const AwardModalDaisyUI = () => {
-    const handleWarning = (e) => {
+const AwardModalDaisyUI = ({ setAwardModal, awardRefetch }) => {
+    const handleAward = (e) => {
         e.preventDefault();
-        const warningDate = e.target.date.value;
-        const warningReason = e.target.reason.value;
-        const type = e.target.type.value;
-        const warningFor = e.target.email.value;
-        const warningDetails = { warningDate, warningReason, type, warningFor };
-        console.log(warningDetails);
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/createWarning",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(warningDetails),
-            }
-        )
+        const AwardDate = e.target.date.value;
+        const employeeEmail = e.target.email.value;
+        const awardTitle = e.target.title.value;
+        const successMessage = e.target.message.value;
+        const awardDetails = {
+            AwardDate,
+            employeeEmail,
+            awardTitle,
+            successMessage,
+        };
+        console.log(awardDetails);
+        fetch("http://localhost:5000/createAward", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(awardDetails),
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
+                    awardRefetch();
                     e.target.reset();
-                    Swal.fire("Good job!", "Warning is created", "success");
+                    Swal.fire("Good job!", "Award is created", "success");
+                    setAwardModal(false);
                 }
             });
     };
@@ -62,10 +66,7 @@ const AwardModalDaisyUI = () => {
                         <h1 className="text-amber-400">Add Award</h1>
                     </div>
                     <div>
-                        <form
-                            className="flex flex-col"
-                            onSubmit={handleWarning}
-                        >
+                        <form className="flex flex-col" onSubmit={handleAward}>
                             <input
                                 type="date"
                                 className="py-2 pl-3 lg:max-w-lg my-2 border text-sm border-gray-300 bg-slate-50 rounded-md outline-none"
@@ -79,16 +80,26 @@ const AwardModalDaisyUI = () => {
                                 placeholder="Choose an Employee"
                             />
                             <select
-                                name="type"
+                                name="title"
                                 className="py-2 pl-3 w-full my-2 border text-sm border-gray-30 rounded-md outline-none"
                             >
-                                <option value="light">
+                                <option value="Employee of the month">
                                     Employee of the month
                                 </option>
-                                <option value="medium" className="bg-red-300">
+                                <option
+                                    value="Best Team Member of the Month"
+                                    className="bg-red-300"
+                                >
                                     Best Team Member of the Month
                                 </option>
                             </select>
+                            <textarea
+                                name="message"
+                                cols="30"
+                                rows="3"
+                                className="py-2 pl-3 w-full my-2 border text-sm border-gray-30 rounded-md outline-none"
+                                placeholder="Write success message"
+                            ></textarea>
 
                             <input
                                 type="submit"

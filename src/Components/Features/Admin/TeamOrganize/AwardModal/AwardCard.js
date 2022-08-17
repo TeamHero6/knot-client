@@ -1,6 +1,7 @@
 import React from "react";
 
-const AwardCard = () => {
+const AwardCard = ({ award }) => {
+    console.log(award);
     return (
         <div className="bg-transparent border-l-4 border-orange-500 px-4 py-2 rounded-md shadow-xl">
             <div class="flex justify-between text-green-400">
@@ -28,16 +29,15 @@ const AwardCard = () => {
             </div>
             <div className="mt-3">
                 <p className="my-1 text-gray-500 font-semibold">
-                    Congratulation!
+                    Congratulation! You are {award.awardTitle}
                 </p>
                 <p className="h-24 text-gray-400 overflow-auto">
-                    Seems you are doing best performance in your office. and
-                    that's for our company annual market flow 13% increased.
+                    {award.successMessage}
                 </p>
             </div>
             <div>
                 <p className="text-right text-xs text-gray-400">
-                    August 17, 2022
+                    {award.AwardDate}
                 </p>
             </div>
         </div>

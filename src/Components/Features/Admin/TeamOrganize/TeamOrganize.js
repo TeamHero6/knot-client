@@ -159,7 +159,11 @@ const TeamOrganize = () => {
                     {warningModal && (
                         <WarningModalDaisyUI {...{ setWarningModal }} />
                     )}
-                    {awardModal && <AwardModalDaisyUI {...{ setAwardModal }} />}
+                    {awardModal && (
+                        <AwardModalDaisyUI
+                            {...{ setAwardModal, awardRefetch }}
+                        />
+                    )}
                 </section>
                 {/*Filtering UI*/}
                 <div className="mx-2">
@@ -199,7 +203,7 @@ const TeamOrganize = () => {
             {dropDownFilter === "allAward" && (
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-3 mt-8">
                     {awardData.map((award) => (
-                        <AwardCard />
+                        <AwardCard {...{ award }} />
                     ))}
                 </section>
             )}
