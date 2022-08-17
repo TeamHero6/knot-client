@@ -24,7 +24,7 @@ const PurchaseOrderModal = ({ singlePurchaseOrderDetail }) => {
                     <hr className='mb-2' />
                     <h3 className="font-medium">Order Date: {orderDate}</h3>
                     <h3 className="font-medium">Order Number: {orderNo}</h3>
-                    <p className='text-sm'>Order Quantity - {orderQuantity}$</p>
+                    <p className='text-sm'>Order Quantity - {orderQuantity} pcs</p>
                     <p className='text-sm'>Unit Price - {unitPrice}$</p>
                     <p className='text-sm'>Vat - {vat}$</p>
                     <p className='text-sm'>Total Amount - {totalAmount}$</p>

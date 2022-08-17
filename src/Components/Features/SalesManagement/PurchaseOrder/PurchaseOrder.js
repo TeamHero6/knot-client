@@ -98,7 +98,7 @@ const PurchaseOrder = () => {
             </div>
             {addNewPurchaseOrder ? (
                 <div>
-                    <div className="w-2/3 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                    <div className="w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                         <form onSubmit={handleSetPurchaseOrder}>
                             <div>
                                 <h1 className="font-bold text-center text-purple-800 mb-2 text-lg">
