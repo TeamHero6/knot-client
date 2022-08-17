@@ -11,6 +11,7 @@ const DailyTask = () => {
 
     const authInfo = useSelector((state) => state.auth);
     const { isAuth, loggerInfo } = authInfo;
+    console.log(loggerInfo);
 
     const { data, isLoading, refetch } = useQuery(["alltasks", "task"], () =>
         fetch(
