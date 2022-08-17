@@ -12,9 +12,9 @@ const Award = () => {
 
     return (
         <div className="lg:flex my-10">
-            <div class="overflow-x-auto lg:w-3/5 w-full">
+            <div className="overflow-x-auto lg:w-3/5 w-full">
                 <h1 className='text-2xl text-center font-bold mt-5'>Team Member Award Database</h1>
-                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Award Date</th>
@@ -32,7 +32,7 @@ const Award = () => {
                                     <td className="py-3 px-6 whitespace-nowrap">{award.department}</td>
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <div>
-                                            <label for={award._id} onClick={() => setAwardModal(award)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                            <label for={award._id} onClick={() => setAwardModal(award)} className=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                         </div>
                                     </td>
@@ -41,10 +41,10 @@ const Award = () => {
                         }
                     </tbody>
                 </table>
-                <input type="checkbox" id={awardModal._id} class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">Award Information!</h3>
+                <input type="checkbox" id={awardModal._id} className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Award Information!</h3>
                         <p>Date : {awardModal.awardDate}</p>
                         <p>Name : {awardModal.name}</p>
                         <p>Employee ID : {awardModal.employeeID}</p>
@@ -52,8 +52,8 @@ const Award = () => {
                         <p>Designation : {awardModal.designation}</p>
                         <p>Award Providing Date : {awardModal.awardProvidingDate}</p>
                         <p>Award Type : {awardModal.awardType}</p>
-                        <div class="modal-action">
-                            <label for={awardModal._id} class="btn bg-[#0182BE]">Close!</label>
+                        <div className="modal-action">
+                            <label for={awardModal._id} className="btn bg-[#0182BE]">Close!</label>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ const Award = () => {
             <div className="mx-5">
                 <h1 className='text-2xl text-center font-bold mt-5'>Training Details</h1>
                 <div className="bg-[#EEEEEE] rounded">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">Training Date <br /> and Time</th>

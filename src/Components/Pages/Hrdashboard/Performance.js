@@ -42,7 +42,7 @@ const Performance = () => {
             <label
                 onClick={() => setShow(!show)}
                 for="my-drawer"
-                class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none"
+                className="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none"
             >
                 <span>
                     <BiPlus></BiPlus>
@@ -153,8 +153,8 @@ const Performance = () => {
                 ""
             )}
             <div className="w-fit rounded-lg my-5 ">
-                <div class="rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className="rounded-none">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -187,7 +187,7 @@ const Performance = () => {
                                         <label
                                             for={pr._id}
                                             onClick={() => setmodal(pr)}
-                                            class="modal-button"
+                                            className="modal-button"
                                         >
                                             <AiOutlineEye className="text-2xl "></AiOutlineEye>
                                         </label>
@@ -202,10 +202,10 @@ const Performance = () => {
                         required
                         type="checkbox"
                         id={modal._id}
-                        class="modal-toggle"
+                        className="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -255,8 +255,8 @@ const Performance = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={modal._id} class="btn btn-warning">
+                            <div className="modal-action">
+                                <label for={modal._id} className="btn btn-warning">
                                     Cancel
                                 </label>
                             </div>

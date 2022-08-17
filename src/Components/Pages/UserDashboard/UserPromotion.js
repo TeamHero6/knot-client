@@ -22,8 +22,8 @@ const UserPromotion = () => {
         <div>
             <div>
                 <h1 className='text-2xl text-center font-bold mt-5'>Promotion</h1>
-                <div class="overflow-x-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
+                <div className="overflow-x-auto">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
                         <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
@@ -41,7 +41,7 @@ const UserPromotion = () => {
                                         <td className="py-3 px-6 whitespace-nowrap">{promotion.Depertment}</td>
                                         <td className="py-3 px-6 whitespace-nowrap">
                                             <div>
-                                                <label for={promotion._id} onClick={() => setPromotionModal(promotion)} class="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                                <label for={promotion._id} onClick={() => setPromotionModal(promotion)} className="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                             </div>
                                         </td>
@@ -50,10 +50,10 @@ const UserPromotion = () => {
                             }
                         </tbody>
                     </table>
-                    <input type="checkbox" id={promotionModal._id} class="modal-toggle" />
-                    <div class="modal modal-bottom sm:modal-middle">
-                        <div class="modal-box">
-                            <h3 class="font-bold text-lg">Promotion Information!</h3>
+                    <input type="checkbox" id={promotionModal._id} className="modal-toggle" />
+                    <div className="modal modal-bottom sm:modal-middle">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Promotion Information!</h3>
                             <p>Name : {promotionModal.Name}</p>
                             <p>Department : {promotionModal.Depertment}</p>
                             <p>Promoted Type : {promotionModal.Promoted_Type}</p>
@@ -62,8 +62,8 @@ const UserPromotion = () => {
                             <p>Designation : {promotionModal.Designation}</p>
                             <p>Promotion Date : {promotionModal.Pormotion_Date}</p>
                             <p>Increment Salary : {promotionModal.Incriment_Salary}</p>
-                            <div class="modal-action">
-                                <label for={promotionModal._id} class="btn bg-[#0182BE]">Close!</label>
+                            <div className="modal-action">
+                                <label for={promotionModal._id} className="btn bg-[#0182BE]">Close!</label>
                             </div>
                         </div>
                     </div>
@@ -71,8 +71,8 @@ const UserPromotion = () => {
             </div>
             <div>
                 <h1 className='text-2xl text-center font-bold mt-5'>Transfer</h1>
-                <div class="overflow-x-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
+                <div className="overflow-x-auto">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
                         <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
@@ -90,7 +90,7 @@ const UserPromotion = () => {
                                         <td className="py-3 px-6 whitespace-nowrap">{transfer.Depertment}</td>
                                         <td className="py-3 px-6 whitespace-nowrap">
                                             <div>
-                                                <label for={transfer._id} onClick={() => setTransferModal(transfer)} class="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                                <label for={transfer._id} onClick={() => setTransferModal(transfer)} className="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                             </div>
                                         </td>
@@ -99,10 +99,10 @@ const UserPromotion = () => {
                             }
                         </tbody>
                     </table>
-                    <input type="checkbox" id={transferModal._id} class="modal-toggle" />
-                    <div class="modal modal-bottom sm:modal-middle">
-                        <div class="modal-box">
-                            <h3 class="font-bold text-lg">Transfer Information!</h3>
+                    <input type="checkbox" id={transferModal._id} className="modal-toggle" />
+                    <div className="modal modal-bottom sm:modal-middle">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Transfer Information!</h3>
                             <p>Name : {transferModal.Name}</p>
                             <p>Department : {transferModal.Depertment}</p>
                             <p>Location : {transferModal.Location}</p>
@@ -110,8 +110,8 @@ const UserPromotion = () => {
                             <p>Employee ID : {transferModal.Employee_ID}</p>
                             <p>Designation : {transferModal.Designation}</p>
                             <p>Transfer Date : {transferModal.Transfer_Date}</p>
-                            <div class="modal-action">
-                                <label for={transferModal._id} class="btn bg-[#0182BE]">Close!</label>
+                            <div className="modal-action">
+                                <label for={transferModal._id} className="btn bg-[#0182BE]">Close!</label>
                             </div>
                         </div>
                     </div>

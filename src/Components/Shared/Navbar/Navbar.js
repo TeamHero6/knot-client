@@ -21,13 +21,13 @@ const Navbar = () => {
     }
     return (
         <div className=" md:px-8 lg:px-12">
-            <div class="navbar ">
-                <div class="navbar-start">
-                    <div class="dropdown">
-                        <label tabindex="0" class="btn btn-ghost lg:hidden">
+            <div className="navbar ">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabindex="0" className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
+                                className="h-5 w-5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -42,7 +42,7 @@ const Navbar = () => {
                         </label>
                         <ul
                             tabindex="0"
-                            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
                                 <Link
@@ -54,23 +54,23 @@ const Navbar = () => {
                             </li>
                             <li>
                                 {user ? (
-                                    <div class="dropdown dropdown-end">
+                                    <div className="dropdown dropdown-end">
                                         <label
                                             tabindex="0"
-                                            class="btn btn-ghost btn-circle avatar"
+                                            className="btn btn-ghost btn-circle avatar"
                                         >
-                                            <div class="w-10 rounded-full">
+                                            <div className="w-10 rounded-full">
                                                 <img src="https://placeimg.com/80/80/people" />
                                             </div>
                                         </label>
                                         <ul
                                             tabindex="0"
-                                            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                                         >
                                             <li>
-                                                <a class="justify-between">
+                                                <a className="justify-between">
                                                     Profile
-                                                    <span class="badge">
+                                                    <span className="badge">
                                                         New
                                                     </span>
                                                 </a>
@@ -106,30 +106,30 @@ const Navbar = () => {
                         />
                     </a>
                 </div>
-                <div class="navbar-end">
+                <div className="navbar-end">
                     <div className="hidden lg:flex items-center">
                         <Link to="/accessApps" className="px-4 text-green-500">
                             Access your apps
                         </Link>
                         <div>
                             {user ? (
-                                <div class="dropdown dropdown-end">
+                                <div className="dropdown dropdown-end">
                                     <label
                                         tabindex="0"
-                                        class="btn btn-ghost btn-circle avatar"
+                                        className="btn btn-ghost btn-circle avatar"
                                     >
-                                        <div class="w-10 rounded-full">
+                                        <div className="w-10 rounded-full">
                                             <img src="https://placeimg.com/80/80/people" />
                                         </div>
                                     </label>
                                     <ul
                                         tabindex="0"
-                                        class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                        className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                                     >
                                         <li>
-                                            <a class="justify-between">
+                                            <a className="justify-between">
                                                 Profile
-                                                <span class="badge">New</span>
+                                                <span className="badge">New</span>
                                             </a>
                                         </li>
                                         <li>

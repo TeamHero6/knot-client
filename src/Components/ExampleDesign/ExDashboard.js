@@ -15,7 +15,7 @@ const ExDashboard = () => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-chevron-expand"
+                    className="bi bi-chevron-expand"
                     viewBox="0 0 16 16"
                 >
                     <path

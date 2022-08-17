@@ -31,8 +31,8 @@ const UserPayrolls = () => {
                     <h1>TA/DA : </h1>
                 </div> */}
             </div>
-            <div class="overflow-x-auto">
-                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
+            <div className="overflow-x-auto">
+                <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Employee ID </th>
@@ -52,7 +52,7 @@ const UserPayrolls = () => {
                                     <td className="py-3 px-6 whitespace-nowrap">{payroll.Payable_Amount}</td>
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <div>
-                                            <label for={payroll._id} onClick={() => setPayrollModal(payroll)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                            <label for={payroll._id} onClick={() => setPayrollModal(payroll)} className=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                         </div>
                                     </td>
@@ -61,10 +61,10 @@ const UserPayrolls = () => {
                         }
                     </tbody>
                 </table>
-                <input type="checkbox" id={payrollModal._id} class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">Payrolls Information!</h3>
+                <input type="checkbox" id={payrollModal._id} className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Payrolls Information!</h3>
                         <p>Employee ID : {payrollModal.Employee_ID}</p>
                         <p>Name : {payrollModal.Name}</p>
                         <p>Department : {payrollModal.Depertment}</p>
@@ -72,8 +72,8 @@ const UserPayrolls = () => {
                         <p>Pay Amount  : {payrollModal.Pay_Amount}</p>
                         <p>Designation : {payrollModal.Designation}</p>
                         <p>Payable Amount : {payrollModal.Payable_Amount}</p>
-                        <div class="modal-action">
-                            <label for={payrollModal._id} class="btn bg-[#0182BE]">Close!</label>
+                        <div className="modal-action">
+                            <label for={payrollModal._id} className="btn bg-[#0182BE]">Close!</label>
                         </div>
                     </div>
                 </div>

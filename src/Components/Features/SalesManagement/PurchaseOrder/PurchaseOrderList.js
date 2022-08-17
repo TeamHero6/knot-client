@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from "react";
 
-const VendorList = ({ setSingleVendorDetail }) => {
-    const [vendorList, setVendorList] = useState([]);
+const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
+    const [purchaseOrderList, setPurchaseOrderList] = useState([]);
 
     useEffect(() => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewVendor"
-        )
+        fetch("http://localhost:5000/addNewPurchaseOrder")
             .then((res) => res.json())
-            .then((data) => setVendorList(data.reverse()));
-    }, [vendorList]);
+            .then((data) => setPurchaseOrderList(data.reverse()));
+    }, [purchaseOrderList]);
 
     return (
         <div>
-            <h1 className="text-center text-2xl font-bold">Vendor List</h1>
+            <h1 className="text-center text-2xl font-bold">Purchase Order List</h1>
             <div className="overflow-auto rounded-none">
                 <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
-                        {/* <thead className=' border-b border-cyan-100'> */}
                         <tr>
                             <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">
-                                Company Name
+                                Date
                             </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
-                                Contact Person
+                                Order No.
                             </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
-                                Phone Number
+                                Product
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Vendor
                             </th>
                             <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
                                 Details
@@ -34,28 +34,31 @@ const VendorList = ({ setSingleVendorDetail }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {vendorList.map((vendor) => (
+                        {purchaseOrderList.map((purchaseOrder) => (
                             <tr
-                                key={vendor._id}
+                                key={purchaseOrder._id}
                                 className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
                             >
                                 <td className="py-3 px-6 pl-10 whitespace-nowrap">
-                                    {vendor.companyName}
+                                    {purchaseOrder.orderDate}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap text-center">
-                                    {vendor.contactPerson}
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {purchaseOrder.orderNo}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap text-center">
-                                    {vendor.mobile}
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {purchaseOrder.productName}
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {purchaseOrder.vendorName}
                                 </td>
                                 <td className="py-3 px-6 pr-10 whitespace-nowrap">
                                     <label
-                                        for="item-details-modal"
+                                        for="purchase-order-details-modal"
                                         onClick={() =>
-                                            setSingleVendorDetail(vendor)
+                                            setSinglePurchaseOrderDetail(purchaseOrder)
                                         }
                                     >
-                                        <span className="underline hover:text-blue-500 hover:font-medium hover:cursor-pointer">
+                                        <span className="underline hover:text-blue-500 hover:font-medium">
                                             Details
                                         </span>
                                     </label>
@@ -69,4 +72,4 @@ const VendorList = ({ setSingleVendorDetail }) => {
     );
 };
 
-export default VendorList;
+export default PurchaseOrderList;

@@ -196,8 +196,8 @@ const LeaveRequest = () => {
                 }
                 <div className='px-5'>
                     <h1 className='text-2xl text-center font-bold mt-5'>Request Status</h1>
-                    <div class="overflow-x-auto">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <div className="overflow-x-auto">
+                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>
@@ -219,7 +219,7 @@ const LeaveRequest = () => {
                                             <td className="py-3 px-6 whitespace-nowrap">{le.dep}</td>
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 <div>
-                                                    <label for={le._id} onClick={() => setLeaveModal(le)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                                    <label for={le._id} onClick={() => setLeaveModal(le)} className=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                                 </div>
                                             </td>
@@ -233,10 +233,10 @@ const LeaveRequest = () => {
 
                         </table>
 
-                        <input type="checkbox" id={leaveModal._id} class="modal-toggle" />
-                        <div class="modal modal-bottom sm:modal-middle">
-                            <div class="modal-box">
-                                <h3 class="font-bold text-lg">Leave Request Information!</h3>
+                        <input type="checkbox" id={leaveModal._id} className="modal-toggle" />
+                        <div className="modal modal-bottom sm:modal-middle">
+                            <div className="modal-box">
+                                <h3 className="font-bold text-lg">Leave Request Information!</h3>
                                 <p>Date : {leaveModal.Date}</p>
                                 <p>Name : {leaveModal.Name}</p>
                                 <p>Employee ID : {leaveModal.id}</p>
@@ -246,8 +246,8 @@ const LeaveRequest = () => {
                                 <p>Start Date : {leaveModal.s_date}</p>
                                 <p>End Date : {leaveModal.e_date}</p>
                                 <p>Type Of Leave : {leaveModal.leave_type}</p>
-                                <div class="modal-action">
-                                    <label for={leaveModal._id} class="btn bg-[#0182BE]">Close!</label>
+                                <div className="modal-action">
+                                    <label for={leaveModal._id} className="btn bg-[#0182BE]">Close!</label>
                                 </div>
                             </div>
                         </div>

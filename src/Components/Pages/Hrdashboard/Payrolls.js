@@ -36,7 +36,7 @@ const Payrolls = () => {
             <label
                 onClick={() => setShow(!show)}
                 for="my-drawer"
-                class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none"
+                className="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none"
             >
                 <span>
                     <BiPlus></BiPlus>
@@ -178,8 +178,8 @@ const Payrolls = () => {
             )}
 
             <div className="mx-auto w-full rounded-lg my-5 ">
-                <div class="overflow-auto  rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className="overflow-auto  rounded-none">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">

@@ -77,7 +77,7 @@ const Dashboard = () => {
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 p-5">
                     <div className="gray pb-3">
-                        <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
+                        <div className="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
                             <span className="font-medium">
                                 Total Employees 12
                             </span>
@@ -87,7 +87,7 @@ const Dashboard = () => {
                         </h3>
                     </div>
                     <div className="gray pb-3">
-                        <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
+                        <div className="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
                             <span className="font-medium">
                                 HR <br /> 8
                             </span>
@@ -97,7 +97,7 @@ const Dashboard = () => {
                         </h3>
                     </div>
                     <div className="gray pb-3">
-                        <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
+                        <div className="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
                             <span className="font-medium">
                                 CEO <br />1
                             </span>
@@ -115,8 +115,8 @@ const Dashboard = () => {
                 <h1 className="text-2xl text-center font-bold my-5">
                     Leave Request
                 </h1>
-                <div class="overflow-auto rounded-none">
-                    <table class="lg:w-11/12 shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                <div className="overflow-auto rounded-none">
+                    <table className="lg:w-11/12 shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -177,7 +177,7 @@ const Dashboard = () => {
                                                 onClick={() =>
                                                     setLeave(request)
                                                 }
-                                                class="modal-button"
+                                                className="modal-button"
                                             >
                                                 <AiOutlineEye className="text-2xl w-10 lg:mx-auto"></AiOutlineEye>
                                             </label>
@@ -216,10 +216,10 @@ const Dashboard = () => {
                     <input
                         type="checkbox"
                         id={leave.Name}
-                        class="modal-toggle"
+                        className="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -268,8 +268,8 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={leave.Name} class="btn btn-warning">
+                            <div className="modal-action">
+                                <label for={leave.Name} className="btn btn-warning">
                                     Cancel
                                 </label>
                             </div>
@@ -283,8 +283,8 @@ const Dashboard = () => {
                 <h1 className="text-2xl text-center font-bold my-5">
                     Daily Task Overview
                 </h1>
-                <div class=" rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className=" rounded-none">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -320,7 +320,7 @@ const Dashboard = () => {
                                         <label
                                             for={task._id}
                                             onClick={() => setDaily(task)}
-                                            class="modal-button"
+                                            className="modal-button"
                                         >
                                             <AiOutlineEye className="text-2xl w-10 lg:mx-auto"></AiOutlineEye>
                                         </label>
@@ -350,10 +350,10 @@ const Dashboard = () => {
                     <input
                         type="checkbox"
                         id={daily._id}
-                        class="modal-toggle"
+                        className="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -402,8 +402,8 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={daily._id} class="btn btn-warning">
+                            <div className="modal-action">
+                                <label for={daily._id} className="btn btn-warning">
                                     Cancel
                                 </label>
                             </div>

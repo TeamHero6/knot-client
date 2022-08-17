@@ -14,8 +14,8 @@ const Meeting = () => {
             <h1 className="text-2xl text-center font-bold mt-5">
                 Meeting Database
             </h1>
-            <div class="overflow-x-auto">
-                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+            <div className="overflow-x-auto">
+                <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -48,7 +48,7 @@ const Meeting = () => {
                                             onClick={() =>
                                                 setMeetingModal(meeting)
                                             }
-                                            class=" modal-button"
+                                            className=" modal-button"
                                         >
                                             <span className="underline hover:text-blue-500 hover:font-medium">
                                                 Details
@@ -74,21 +74,21 @@ const Meeting = () => {
                 <input
                     type="checkbox"
                     id={meetingModal._id}
-                    class="modal-toggle"
+                    className="modal-toggle"
                 />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">Meeting Information!</h3>
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Meeting Information!</h3>
                         <p>Date : {meetingModal.date}</p>
                         <p>Meeting Topic : {meetingModal.meetingTopic}</p>
                         <p>Meeting Host : {meetingModal.meetingHost}</p>
                         <p>Meeting Guest : {meetingModal.meetingGuest}</p>
                         <p>Meeting With : {meetingModal.meetingWith}</p>
                         <p>Meeting Link : {meetingModal.meetingLink}</p>
-                        <div class="modal-action">
+                        <div className="modal-action">
                             <label
                                 for={meetingModal._id}
-                                class="btn bg-[#0182BE]"
+                                className="btn bg-[#0182BE]"
                             >
                                 Close!
                             </label>

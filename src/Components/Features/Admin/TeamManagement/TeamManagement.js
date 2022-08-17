@@ -3,8 +3,8 @@ import React from "react";
 const TeamManagement = () => {
     return (
         <section className="w-full h-[40vh]">
-            <div class="rounded-none">
-                <table class=" border-2 border-custom-cyan-300 mx-auto text-base ">
+            <div className="rounded-none">
+                <table className=" border-2 border-custom-cyan-300 mx-auto text-base ">
                     <thead className=" bg-[#FFFFFF]  border-b border-custom-cyan-100">
                         {/* <thead className=' border-b border-cyan-100'> */}
                         <tr>
