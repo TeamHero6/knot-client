@@ -12,6 +12,11 @@ import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboardF from "./Components/Features/Admin/Dashboard/AdminDashboardF";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
+import DirectExpense from "./Components/Features/Finance/AllExpense/DirectExpense";
+import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
+import FinanceDashboard from "./Components/Features/Finance/FinanceDashboard/FinanceDashboard";
+import FinanceManagement from "./Components/Features/Finance/FinanceManagement";
+import Partners from "./Components/Features/Finance/Partners/Partners";
 import HR from "./Components/Features/LiveChat/HR";
 import LiveChat from "./Components/Features/LiveChat/LiveChat";
 import LiveChatDashboard from "./Components/Features/LiveChat/LiveChatDashboard";
@@ -59,6 +64,7 @@ import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import FormSample from "./FromSample/FormSample";
+
 
 function App() {
     return (
@@ -187,6 +193,12 @@ function App() {
                         path="companySettings"
                         element={<CompanySettings />}
                     />
+                </Route>
+                <Route path="/financeTS" element={<FinanceManagement />}>
+                    <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
+                    <Route path="partners" element={<Partners/>}></Route>
+                    <Route path="allLedger" element={<AllLedger/>}></Route>
+                    <Route path="directExpense" element={<DirectExpense/>}></Route>
                 </Route>
             </Routes>
             <ToastContainer></ToastContainer>
