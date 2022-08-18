@@ -74,10 +74,10 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                 </div>
                 <div className="col-span-2 mx-6 my-auto">
                     <div className="mx-auto my-auto shadow-2xl px-6 py-4 rounded-3xl">
-                        <p className="font-semibold text-lg my-2">Total Vendor: </p>
-                        <p className="font-semibold text-lg my-2">Total Purchase Order: </p>
-                        <p className="font-semibold text-lg my-2">Vendor Paid Amount: </p>
-                        <p className="font-semibold text-lg my-2">Vendor Due Amount: </p>
+                        <p className="font-semibold text-lg my-2">Total Vendor: 25</p>
+                        <p className="font-semibold text-lg my-2">Total Purchase Order: 75</p>
+                        <p className="font-semibold text-lg my-2">Vendor Paid Amount: 551200 $</p>
+                        <p className="font-semibold text-lg my-2">Vendor Due Amount: 154800 $</p>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillSave } from 'react-icons/ai';
 import { toast, ToastContainer } from 'react-toastify';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const Bill = () => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
@@ -100,11 +101,13 @@ const Bill = () => {
                             </td>
                             <td className="py-3 px-6 whitespace-nowrap">
                                 <input
+                                    defaultValue={purchaseOrder?.paidAmount}
                                     onChange={handlePaidAmount}
                                     className='py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none' type="number" name="paidAmount" id="" required />
                             </td>
                             <td className="py-3 px-6 whitespace-nowrap">
                                 <input
+                                    defaultValue={purchaseOrder?.dueAmount}
                                     onChange={handleDueAmount}
                                     className='py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none' type="number" name="dueAmount" id="" required />
                             </td>
@@ -119,6 +122,17 @@ const Bill = () => {
                     ))}
                 </tbody>
             </table>
+            <div className="w-1/2 mb-4 mx-auto bg-white px-6 py-4">
+                <h1 className="text-xl text-center my-2 font-medium">Vendor Vs Due Amount</h1>
+                <BarChart width={500} height={250} data={purchaseOrderList}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="vendorName" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="dueAmount" fill={"#CC3333"}></Bar>
+                </BarChart>
+            </div>
             <ToastContainer />
         </div>
     );
