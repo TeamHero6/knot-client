@@ -64,9 +64,7 @@ const UserDashboard = () => {
 
                     </div>
                 </div>
-                <div className="mx-auto overflow-auto">
-                    <Outlet />
-                </div>
+                <Outlet />
             </section>
         </div>
     );

@@ -47,7 +47,7 @@ const LeaveRequest = () => {
         <div>
             <section>
                 <label for="my-drawer" >
-                    <button onClick={() => setShow(!show)} className='flex ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'><BiPlus></BiPlus> New</button>
+                    <button onClick={() => setShow(!show)} className='flex border-transparent ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'><BiPlus></BiPlus> New</button>
                 </label>
                 {
                     show ?
@@ -170,74 +170,51 @@ const LeaveRequest = () => {
                                                     <option value="Sick leave">Sick leave</option>
                                                     <option value="Annual leave">Annual leave</option>
                                                 </select>
-
-                                                {/* <div className='lg:mt-5'>
-
-                                                    <input {...register("leave_type")} type="radio" value="Casual leave" />
-                                                    <span className='px-3  text-xl'>Casual leave</span>
-                                                    <br />
-                                                    <input {...register("leave_type")} type="radio" value="Sick leave" />
-                                                    <span className='px-3  text-xl'>Sick leave</span>
-                                                    <br />
-                                                    <input {...register("leave_type")} type="radio" value="Annual leave" />
-                                                    <span className='px-3  text-xl'>Annual leave</span>
-                                                </div> */}
-
-
-
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                     <div className='flex items-center rounded-lg w-fit mx-auto mt-3'>
                                         <button className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"><AiFillSave /><input type="submit" value="Submit" /></button>
                                     </div>
-
                                 </form>
-
                             </div>
                         </div> : ' '
                 }
-                <div className='px-5'>
-                    <h1 className='text-2xl text-center font-bold mt-5'>Request Status</h1>
-                    <div class="overflow-x-auto">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
-                            <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
-                                <tr>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">Id</th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">Approval Status <br />
-                                        (HR) </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    leave.map(le =>
-                                        <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
-                                            <td className="py-3 px-6 whitespace-nowrap">{le.Date}</td>
-                                            <td className="py-3 px-6 whitespace-nowrap">{le.id}</td>
-                                            <td className="py-3 px-6 whitespace-nowrap">{le.Name}</td>
-                                            <td className="py-3 px-6 whitespace-nowrap">{le.dep}</td>
-                                            <td className="py-3 px-6 whitespace-nowrap">
-                                                <div>
-                                                    <label for={le._id} onClick={() => setLeaveModal(le)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
-
-                                                </div>
-                                            </td>
-                                            <td className="py-3 px-6 whitespace-nowrap">{le.leave_type}</td>
-                                        </tr>
-                                    )
-                                }
+                <div className='px-5 flex'>
+                    <div class="overflow-x-auto w-3/5">
+                        <h1 className='text-2xl text-center font-bold'>Request Status</h1>
+                        <div className="h-80">
+                            <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                                <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
+                                    <tr>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Approval Status <br />
+                                            (HR) </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        leave.map(le =>
+                                            <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                                <td className="py-3 px-6 whitespace-nowrap">{le.Date}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{le.Name}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">
+                                                    <div>
+                                                        <label for={le._id} onClick={() => setLeaveModal(le)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                                    </div>
+                                                </td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{le.leave_type}</td>
+                                            </tr>
+                                        )
+                                    }
 
 
-                            </tbody>
+                                </tbody>
 
-                        </table>
+                            </table>
+                        </div>
 
                         <input type="checkbox" id={leaveModal._id} class="modal-toggle" />
                         <div class="modal modal-bottom sm:modal-middle">
@@ -253,15 +230,14 @@ const LeaveRequest = () => {
                                 <p>End Date : {leaveModal.e_date}</p>
                                 <p>Type Of Leave : {leaveModal.leave_type}</p>
                                 <div class="modal-action">
-                                    <label for={leaveModal._id} class="btn bg-[#0182BE]">Close!</label>
+                                    <label for={leaveModal._id} className='flex ml-5 items-center gap-2 bg-red-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-red-400 hover:outline-1 hover:border hover:border-red-400 hover: shadow-red-200 hover: shadow-sm'>Close!</label>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <Meeting />
                 </div>
             </section>
-            <Meeting />
             <Warming />
             <Award />
         </div>
