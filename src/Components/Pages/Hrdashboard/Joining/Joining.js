@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { AiFillSave, AiTwotoneEye } from 'react-icons/ai';
+import { AiFillSave } from 'react-icons/ai';
 import Assigntranning from './Assigntranning';
+import { toast } from "react-toastify";
 
 const Joining = () => {
 
     const { register, handleSubmit, reset } = useForm();
+    const [joining, setJoining] = useState([]);
+    // const [employinfo, setEmployinfo] = useState({});
+    useEffect(() => {
+        fetch("http://localhost:5000/joining")
+            .then((res) => res.json())
+            .then((data) => setJoining(data));
+    }, [joining]);
+
     const onSubmit = data => {
-        console.log(data);
+        fetch("http://localhost:5000/joining", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((inserted) => {
+                if (inserted.insertedId) {
+                    reset();
+                    toast.success("add New employee");
+                }
+            });
 
 
     };
@@ -23,36 +45,10 @@ const Joining = () => {
                             <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"  {...register("Name")} id="" placeholder='Employee Name' />
 
                             <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"  {...register("Depertment")} id="" placeholder='Depertment' />
-
-
-
                         </div>
-                        <div className='flex flex-row gap-5'>
-                            <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="email" {...register("Email")} id="" placeholder='Email' />
-                            <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"   {...register("Designation")} id="" placeholder='Designation' />
-                        </div>
-
-                        <div className='flex flex-row gap-5'>
-                            <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="number" {...register("number")} id="" placeholder='Number' />
-                            <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="datetime-local"   {...register("joinig_date")} id="" placeholder='joinig_date' />
-                        </div>
-
-                        <div className='flex flex-row gap-5'>
-
-                            <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"   {...register("address")} id="" placeholder='Address' />
-                            <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"   {...register("salary")} id="" placeholder='Salary' />
-
-                        </div>
-                        <div className='flex flex-row gap-5'>
-
-
-                            <input className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' type="text"   {...register("salary_grade")} id="" placeholder='Salary Grade' />
-
-                        </div>
-
 
                         <div className='lg:flex justify-between md:flex pt-2'>
-                            <button className='flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm' type='subimt'><AiFillSave />Add New Employee</button>
+                            <button className='flex  border-transparent items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover: shadow-blue-300 hover: shadow-sm' type='subimt'><AiFillSave />Add New Employee</button>
                         </div>
                     </section>
                 </form>
@@ -72,14 +68,17 @@ const Joining = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
-                                    <td className="py-3 px-6 whitespace-nowrap">Habib ullha</td>
-                                    <td className="py-3 px-6 whitespace-nowrap">2512</td>
-                                    <td className="py-3 px-6 whitespace-nowrap">date</td>
-                                    <td className='text-[#0182be]  text-center'>
-                                        <button><AiTwotoneEye></AiTwotoneEye></button>
-                                    </td>
-                                </tr>
+                                {
+                                    joining.map(j => <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                        <td className="py-3 px-6 whitespace-nowrap">{j.Name}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{j.Depertment}</td>
+                                        <td className="py-3 px-6 whitespace-nowrap">{j.joinig_date}</td>
+                                        <td className='text-[#0182be]  text-center'>
+                                            <button>Details</button>
+                                        </td>
+                                    </tr>)
+                                }
+
                             </tbody>
 
                         </table>

@@ -62,6 +62,12 @@ const Hrdashboard = () => {
                             Attendance
                         </Link>
                         <Link
+                            to="hrdetails"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                        >
+                            Employee Details
+                        </Link>
+                        <Link
                             to="vacancy"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
@@ -73,17 +79,17 @@ const Hrdashboard = () => {
                         >
                             Interview
                         </Link>
-                        {/* <Link
+                        <Link
                             to="joining"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Joining
-                        </Link> */}
+                        </Link>
 
 
                     </div>
                 </div>
-                <div className="mx-auto overflow-auto">
+                <div className="mx-5">
                     <Outlet />
                 </div>
             </section>

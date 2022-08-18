@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BsSave2 } from "react-icons/bs";
+import { AiFillSave } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const EmployeesOrganize = () => {
@@ -7,12 +7,13 @@ const EmployeesOrganize = () => {
     const [award, setAward] = useState([]);
     const [feeds, setFeed] = useState("");
     const [leader, setleader] = useState("");
+    // const [show, setShow] = useState('');
 
     useEffect(() => {
         fetch("https://knot-business-solution-server.herokuapp.com/warning")
             .then((res) => res.json())
             .then((data) => setWarning(data));
-    }, []);
+    }, [feeds]);
     useEffect(() => {
         fetch("https://knot-business-solution-server.herokuapp.com/award")
             .then((res) => res.json())
@@ -67,8 +68,8 @@ const EmployeesOrganize = () => {
         <div>
             <div className="px-5">
                 <h1 className="text-xl  my-5">Team Members Warning Database</h1>
-                <div className="rounded-none">
-                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div class="rounded-none overflow-auto">
+                    <table class="lg:w-11/12 shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -106,19 +107,25 @@ const EmployeesOrganize = () => {
                                     </td>
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <textarea
+                                            className="pl-3 pt-3"
                                             onChange={feedback}
                                             rows=""
                                             cols=""
-                                        ></textarea>
+                                            placeholder={w.infeed}
+                                        >{w.infeed}</textarea>
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
-                                        <div className="w-10 mx-auto">
-                                            <button
-                                                onClick={() => teamfeed(w._id)}
-                                            >
-                                                <BsSave2></BsSave2>
-                                            </button>
-                                        </div>
+                                    <td className="py-3  whitespace-nowrap">
+
+                                        <button
+                                            onClick={() => teamfeed(w._id)}
+                                            className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                            type="subimt"
+                                        >
+                                            <AiFillSave />
+                                            Save
+                                        </button>
+
+
                                     </td>
                                 </tr>
                             ))}
@@ -128,8 +135,8 @@ const EmployeesOrganize = () => {
             </div>
             <div className="px-5">
                 <h1 className="text-xl  my-5 ">Team Member Award Database</h1>
-                <div className="rounded-none">
-                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div class="rounded-none overflow-auto">
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -165,23 +172,25 @@ const EmployeesOrganize = () => {
 
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <textarea
+                                            className="pl-3 pt-3"
                                             required
                                             onChange={ledarfeed}
+                                            placeholder={a.ledarfeed}
                                             rows=""
                                             cols=""
-                                        ></textarea>
+                                        >{a.ledarfeed}</textarea>
                                     </td>
 
                                     <td className="py-3 px-6 whitespace-nowrap">
-                                        <div className="w-10 mx-auto">
-                                            <button
-                                                onClick={() =>
-                                                    handelleader(a._id)
-                                                }
-                                            >
-                                                <BsSave2></BsSave2>
-                                            </button>
-                                        </div>
+
+                                        <button
+                                            onClick={() => handelleader(a._id)}
+                                            className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                            type="subimt"
+                                        >
+                                            <AiFillSave />
+                                            Save
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
