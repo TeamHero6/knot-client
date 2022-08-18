@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useRef } from 'react';
 import { AiFillSave } from 'react-icons/ai';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Bill = () => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
-    const [paidAmount, setPaidAmount] = useState();
-    const [dueAmount, setDueAmount] = useState();
+    const [paidAmount, setPaidAmount] = useState('');
+    const [dueAmount, setDueAmount] = useState('');
 
     useEffect(() => {
         fetch("http://localhost:5000/addNewPurchaseOrder")
@@ -15,20 +15,41 @@ const Bill = () => {
 
     const handlePaidAmount = (event) => {
         const paid = event.target.value;
-        console.log(paid)
         setPaidAmount(paid);
     };
     const handleDueAmount = e => {
         const due = e.target.value;
-        console.log(due)
         setDueAmount(due);
     };
 
-    const handleSaveBill = () => {
-        // const order = {
+    const handleSaveBill = (id) => {
 
-        // }
-    }
+        const amount = {
+            paidAmount,
+            dueAmount
+        };
+
+        if (paidAmount && dueAmount) {
+            const url = `http://localhost:5000/addNewPurchaseOrder/${id}`;
+            fetch(url, {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(amount),
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data) {
+                        toast.success('Successfully updated your payment info')
+                    }
+                })
+        }
+        else {
+            toast('Excuse me what are you doing')
+        }
+    };
 
     return (
         <div>
@@ -43,16 +64,16 @@ const Bill = () => {
                             Order No.
                         </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Vendor
+                            Vendor Name
                         </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Total Amount
+                            Total Amount($)
                         </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Paid Amount
+                            Paid Amount($)
                         </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Due Amount
+                            Due Amount($)
                         </th>
                         <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
                             Save Bill
@@ -75,23 +96,21 @@ const Bill = () => {
                                 {purchaseOrder.vendorName}
                             </td>
                             <td className="py-3 px-6 whitespace-nowrap">
-                                ${purchaseOrder.totalAmount}
+                                {purchaseOrder.totalAmount}
                             </td>
                             <td className="py-3 px-6 whitespace-nowrap">
                                 <input
-                                    value={paidAmount}
                                     onChange={handlePaidAmount}
                                     className='py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none' type="number" name="paidAmount" id="" required />
                             </td>
                             <td className="py-3 px-6 whitespace-nowrap">
                                 <input
-                                    defaultValue={dueAmount}
                                     onChange={handleDueAmount}
                                     className='py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none' type="number" name="dueAmount" id="" required />
                             </td>
                             <td className="py-3 px-6 pr-10 whitespace-nowrap">
                                 <button
-                                    onClick={handleSaveBill}
+                                    onClick={() => handleSaveBill(purchaseOrder._id)}
                                     className='flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm'>
                                     <AiFillSave />Save Bill
                                 </button>
@@ -100,6 +119,7 @@ const Bill = () => {
                     ))}
                 </tbody>
             </table>
+            <ToastContainer />
         </div>
     );
 };
