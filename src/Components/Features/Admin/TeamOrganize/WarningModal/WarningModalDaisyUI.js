@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const WarningModalDaisyUI = () => {
+const WarningModalDaisyUI = ({ setWarningModal, warningRefetch }) => {
     const handleWarning = (e) => {
         e.preventDefault();
         const warningDate = e.target.date.value;
@@ -10,21 +10,20 @@ const WarningModalDaisyUI = () => {
         const warningFor = e.target.email.value;
         const warningDetails = { warningDate, warningReason, type, warningFor };
         console.log(warningDetails);
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/createWarning",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(warningDetails),
-            }
-        )
+        fetch("http://localhost:5000/createWarning", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(warningDetails),
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
                     e.target.reset();
+                    warningRefetch();
                     Swal.fire("Good job!", "Warning is created", "success");
+                    setWarningModal(false);
                 }
             });
     };

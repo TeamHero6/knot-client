@@ -1,11 +1,22 @@
 import React from "react";
 
-const MeetingCard = ({ data }) => {
+const MeetingCard = ({ meeting }) => {
+    const { meetingWith, date, meetingLink, meetingTopic } = meeting;
+    const result = new Date(date);
+    const time = result.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+    });
+    // console.log(`${a}:${b}`);
+    // if (meeting) {
+    //     console.log(meeting);
+    // }
     return (
         <div>
-            <div class="w-48 rounded-xl bg-white p-3 m-auto drop-shadow-md">
+            <div class="w-64 rounded-xl bg-white p-3 m-auto drop-shadow-md">
                 <div class="flex justify-between text-green-400">
-                    <p>Monir</p>
+                    <p>{meetingWith}</p>
                     <img
                         class="w-7 rounded-full"
                         src="https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/298535184_3335161630078341_50621954687104169_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHbrNDCT5hJroVFCIuhc19Q_FvO6cAZXwn8W87pwBlfCd8T1GY39ygZgFI8DIrW2DZQMxx0uQWGtPyf8En960VD&_nc_ohc=ZhxwVKi7wKoAX8Ugq-q&_nc_oc=AQmGekLZM8RC22kDHjR1aHmiJChuiQM6nO3GCPv99DJHoCs7cbfEEK8OMowv8Fg6G7Q&_nc_ht=scontent.fdac27-1.fna&oh=00_AT8qfV86JoLF6NP0gspH6Lz694Gyr7wy5ek_iR1KqBbZuw&oe=6300FAFE"
@@ -13,7 +24,7 @@ const MeetingCard = ({ data }) => {
                     />
                 </div>
                 <div class="my-3 text-gray-400">
-                    <p class="text-sm my-1">Topic: UI Upgradation</p>
+                    <p class="text-sm my-1">Topic: {meetingTopic}</p>
                     <p class="flex items-center text-xs">
                         <span class="mr-1">
                             <svg
@@ -28,13 +39,18 @@ const MeetingCard = ({ data }) => {
                                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
                             </svg>
                         </span>
-                        11:00 PM
+                        {time}
                     </p>
                 </div>
                 <div class="flex justify-end">
-                    <button class="relative rounded-md bg-green-400 hover:bg-green-300 px-2 text-white">
+                    <a
+                        href={meetingLink}
+                        target="_blank"
+                        class="relative rounded-md bg-green-400 hover:bg-green-300 px-2 text-white"
+                        rel="noreferrer"
+                    >
                         Join
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

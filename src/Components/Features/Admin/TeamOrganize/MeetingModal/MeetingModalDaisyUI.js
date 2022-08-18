@@ -1,34 +1,29 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const MeetingModalDaisyUI = ({ setMeetingModal }) => {
+const MeetingModalDaisyUI = ({ setMeetingModal, meetingRefetch }) => {
     const handleCreateMeeting = (e) => {
         e.preventDefault();
         const date = e.target.date.value;
         const meetingTopic = e.target.meetingTopic.value;
         const meetingHost = e.target.meetingHost.value;
-        const meetingGuest = e.target.meetingGuest.value;
         const meetingWith = e.target.meetingWith.value;
         const meetingLink = e.target.meetingLink.value;
         const newMeeting = {
             date,
             meetingTopic,
             meetingHost,
-            meetingGuest,
             meetingWith,
             meetingLink,
         };
         console.log(newMeeting);
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/createNewMeeting",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(newMeeting),
-            }
-        )
+        fetch("http://localhost:5000/createNewMeeting", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(newMeeting),
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
@@ -38,6 +33,7 @@ const MeetingModalDaisyUI = ({ setMeetingModal }) => {
                         "success"
                     );
                     e.target.reset();
+                    meetingRefetch();
                     setMeetingModal(false);
                 }
             });
@@ -134,12 +130,6 @@ const MeetingModalDaisyUI = ({ setMeetingModal }) => {
                                 placeholder="Meeting Host"
                                 className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
                                 name="meetingHost"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Meeting Guest"
-                                className="py-2 pl-3 w-full my-2 border border-gray-300 bg-slate-50 rounded-md outline-none"
-                                name="meetingGuest"
                             />
                             <input
                                 type="text"
