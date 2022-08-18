@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { BiUserCircle } from "react-icons/bi";
 
 const Meeting = () => {
     const [meetings, setMeetings] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/meetings")
+        fetch("https://sheltered-cliffs-60290.herokuapp.com/meetings")
             .then((res) => res.json())
             .then((data) => setMeetings(data.reverse()));
     }, []);
@@ -19,7 +20,10 @@ const Meeting = () => {
                 {
                     meetings.slice(0, 4).map(meeting => (
                         <div class="px-4 py-2 w-48 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                            <p className="text-green-500 my-2">{meeting.meetingHost}</p>
+                            <div className="flex justify-between items-center">
+                                <p className="text-green-500 my-2">{meeting.meetingHost}</p>
+                                <BiUserCircle className="text-green-300" size={30}></BiUserCircle>
+                            </div>
                             <p><span className="font-semibold">Topic :</span> {meeting.meetingTopic}</p>
                             <p className="text-gray-400 mb-2">{meeting.date}</p>
                             <div className="card-actions justify-end">
