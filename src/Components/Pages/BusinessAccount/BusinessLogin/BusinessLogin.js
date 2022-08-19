@@ -12,16 +12,19 @@ import { loginAction } from "../../../../Redux/Authentication/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessLogin = () => {
+    // all components state
+    const [customError, setCustomError] = useState("");
+    const [loadingMessage, setLoadingMessage] = useState("");
+    const [employeeWantLogin, setEmployeeWantLogin] = useState(false);
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm();
+
+    // sign in with email and password
     const [signInWithEmailAndPassword, user, Eloading, error] =
         useSignInWithEmailAndPassword(auth);
-    const [customError, setCustomError] = useState("");
-    const [loadingMessage, setLoadingMessage] = useState("");
-    const [employeeWantLogin, setEmployeeWantLogin] = useState(false);
 
     const dispatch = useDispatch();
 
