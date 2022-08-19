@@ -35,9 +35,9 @@ const Calender = () => {
 
     return (
         <div className="App">
-            <div className="text-center">
-                <h1>Calendar</h1>
-                <h2>Add New Event</h2>
+            <div className='lg:w-10/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto text-center'>
+                <h1 className="text-xl font-semibold">Calendar</h1>
+                <h2 className="text-xl font-semibold mb-3">Add New Event</h2>
                 <div>
                     <input type="text" placeholder="Add Title" className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
                     <DatePicker placeholderText="Start Date" className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none ' selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
@@ -47,7 +47,7 @@ const Calender = () => {
                     </button>
                 </div>
             </div>
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
+            <Calendar className='lg:w-10/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto' localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
         </div>
     );
 };

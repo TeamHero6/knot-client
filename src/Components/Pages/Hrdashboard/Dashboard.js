@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiFillSave, AiOutlineEye } from "react-icons/ai";
-import { BiSave } from "react-icons/bi";
+import { AiFillSave } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { Pie, PieChart } from "recharts";
 import profile from "../../../Assets/icons/Live-chat-icon/profile_user.png";
@@ -9,56 +8,56 @@ import "./Hrdashboard.css";
 const Dashboard = () => {
     const data01 = [
         {
-          "name": "Group A",
-          "value": 400
+            "name": "Group A",
+            "value": 400
         },
         {
-          "name": "Group B",
-          "value": 300
+            "name": "Group B",
+            "value": 300
         },
         {
-          "name": "Group C",
-          "value": 300
+            "name": "Group C",
+            "value": 300
         },
         {
-          "name": "Group D",
-          "value": 200
+            "name": "Group D",
+            "value": 200
         },
         {
-          "name": "Group E",
-          "value": 278
+            "name": "Group E",
+            "value": 278
         },
         {
-          "name": "Group F",
-          "value": 189
+            "name": "Group F",
+            "value": 189
         }
-      ];
-      const data02 = [
+    ];
+    const data02 = [
         {
-          "name": "Group A",
-          "value": 2400
+            "name": "Group A",
+            "value": 2400
         },
         {
-          "name": "Group B",
-          "value": 4567
+            "name": "Group B",
+            "value": 4567
         },
         {
-          "name": "Group C",
-          "value": 1398
+            "name": "Group C",
+            "value": 1398
         },
         {
-          "name": "Group D",
-          "value": 9800
+            "name": "Group D",
+            "value": 9800
         },
         {
-          "name": "Group E",
-          "value": 3908
+            "name": "Group E",
+            "value": 3908
         },
         {
-          "name": "Group F",
-          "value": 4800
+            "name": "Group F",
+            "value": 4800
         }
-      ];
+    ];
     const [requests, setRequest] = useState([]);
     const [allTask, setAlltask] = useState([]);
     const [upstatus, setUpstatus] = useState("");
@@ -130,20 +129,20 @@ const Dashboard = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 p-5">
                     <div className="card w-72 bg-base-100 shadow-xl">
                         <div className="w-62 mx-auto">
-                        <PieChart width={300} height={250}>
+                            <PieChart width={300} height={250}>
                                 <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#fff814d4" />
                                 <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#2d1856" label />
                             </PieChart>
                         </div>
-                            
-                        
+
+
                         <h3 className="text-center font-medium py-3">
                             Employee By Gender
                         </h3>
                     </div>
                     <div className="card w-72 bg-base-100 shadow-xl">
-                    <div className="w-62 mx-auto">
-                        <PieChart width={300} height={250}>
+                        <div className="w-62 mx-auto">
+                            <PieChart width={300} height={250}>
                                 <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#a3dfce" />
                                 <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#82ca9d" label />
                             </PieChart>
@@ -153,8 +152,8 @@ const Dashboard = () => {
                         </h3>
                     </div>
                     <div className="card w-72 bg-base-100 shadow-xl">
-                    <div className="w-62 mx-auto">
-                        <PieChart width={300} height={250}>
+                        <div className="w-62 mx-auto">
+                            <PieChart width={300} height={250}>
                                 <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
                                 <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#f16b1c" label />
                             </PieChart>
@@ -234,7 +233,7 @@ const Dashboard = () => {
                                                 onClick={() =>
                                                     setLeave(request)
                                                 }
-                                                class="modal-button"
+                                                className="modal-button"
                                             >
                                                 Details
                                             </label>
@@ -277,8 +276,8 @@ const Dashboard = () => {
                         id={leave._id}
                         class="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -342,8 +341,8 @@ const Dashboard = () => {
                 <h1 className="text-2xl text-center font-bold my-5">
                     Daily Task Overview
                 </h1>
-                <div class=" rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className=" rounded-none">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -379,9 +378,9 @@ const Dashboard = () => {
                                         <label
                                             for={task._id}
                                             onClick={() => setDaily(task)}
-                                            class="modal-button"
+                                            className="modal-button"
                                         >
-                                           Details
+                                            Details
                                         </label>
                                     </td>
                                     <td className="py-3 px-6 whitespace-nowrap flex">
@@ -409,10 +408,10 @@ const Dashboard = () => {
                     <input
                         type="checkbox"
                         id={daily._id}
-                        class="modal-toggle"
+                        className="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -461,8 +460,8 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={daily._id} class="btn btn-warning">
+                            <div className="modal-action">
+                                <label for={daily._id} className="btn btn-warning">
                                     Cancel
                                 </label>
                             </div>

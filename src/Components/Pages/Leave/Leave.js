@@ -18,19 +18,19 @@ const Leave = () => {
     return (
         <div>
             <div>
-                <div class="drawer drawer-mobile">
+                <div className="drawer drawer-mobile">
                     <input
                         id="my-drawer-2"
                         type="checkbox"
-                        class="drawer-toggle"
+                        className="drawer-toggle"
                     />
-                    <div class="drawer-content">
-                        <div class="dropdown">
+                    <div className="drawer-content">
+                        <div className="dropdown">
                             <label tabindex="0">
-                                <div class="w-10">
+                                <div className="w-10">
                                     <label
                                         for="my-drawer"
-                                        class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button"
+                                        className="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button"
                                     >
                                         Request
                                     </label>
@@ -38,7 +38,7 @@ const Leave = () => {
                             </label>
                             <ul
                                 tabindex="0"
-                                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ml-16"
+                                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ml-16"
                             >
                                 {userinfo?.map((user) => (
                                     <li>

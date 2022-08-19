@@ -15,7 +15,7 @@ const UserDashboard = () => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-chevron-expand"
+                    className="bi bi-chevron-expand"
                     viewBox="0 0 16 16"
                 >
                     <path
@@ -55,12 +55,16 @@ const UserDashboard = () => {
                         >
                             Payrolls
                         </Link>
+                        <Link
+                            to="Calender"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                        >
+                            Corporate Calender
+                        </Link>
 
                     </div>
                 </div>
-                <div className="mx-auto overflow-auto">
-                    <Outlet />
-                </div>
+                <Outlet />
             </section>
         </div>
     );

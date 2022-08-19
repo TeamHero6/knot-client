@@ -115,8 +115,8 @@ const EmployeesOrganize = () => {
                                         >{w.infeed}</textarea>
                                     </td>
                                     <td className="py-3  whitespace-nowrap">
-                                    
-                                            <button
+
+                                        <button
                                             onClick={() => teamfeed(w._id)}
                                             className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                                             type="subimt"
@@ -124,8 +124,8 @@ const EmployeesOrganize = () => {
                                             <AiFillSave />
                                             Save
                                         </button>
-                                            
-                                       
+
+
                                     </td>
                                 </tr>
                             ))}
@@ -182,7 +182,7 @@ const EmployeesOrganize = () => {
                                     </td>
 
                                     <td className="py-3 px-6 whitespace-nowrap">
-                                        
+
                                         <button
                                             onClick={() => handelleader(a._id)}
                                             className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"

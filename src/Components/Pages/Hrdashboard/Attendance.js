@@ -22,8 +22,8 @@ const Attendance = () => {
         <div>
             <h3 className="text-[#0182be] text-2xl p-5">Employee Attendance</h3>
             <div className="mx-auto w-4/5 rounded-lg my-5 ">
-                <div class="rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className="rounded-none">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">

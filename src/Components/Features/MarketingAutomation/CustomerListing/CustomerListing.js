@@ -19,7 +19,7 @@ const CustomerListing = () => {
             <h1 className="text-center text-3xl my-2">Customer Collection</h1>
             <div className="mx-5 mt-3">
                 <div className="overflow-x-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto text-base overflow-hidden">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
