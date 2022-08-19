@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const PartnerDetails = () => {
     const [partnerList, setPartnerList] = useState([]);
 
-    const { partnerName,
-        contactNumber,
-        address,
-        email,
-        UpdateInvest,
-        _id
-    } = partnerList;
+    const { partnerName, contactNumber, address, email, UpdateInvest, _id } =
+        partnerList;
 
     useEffect(() => {
-        fetch("http://localhost:5000/partner")
+        fetch("https://knot-business-solution-server.herokuapp.com/partner")
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList]);
@@ -20,7 +15,7 @@ const PartnerDetails = () => {
     return (
         <div>
             <div>
-                <h2 className='text-base font-semibold'>Partner List</h2>
+                <h2 className="text-base font-semibold">Partner List</h2>
                 <table class="shadow-2xl h-80 border-2 border-cyan-300 min-w-1/2 mx-auto my-8 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         {/* <thead className=' border-b border-cyan-100'> */}
@@ -56,7 +51,6 @@ const PartnerDetails = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 };

@@ -12,7 +12,9 @@ const PurchaseOrder = () => {
     const [orderQuantity, setOrderQuantity] = useState(1);
     const [vat, setVat] = useState();
     const [totalAmount, setTotalAmount] = useState(0);
-    const [singlePurchaseOrderDetail, setSinglePurchaseOrderDetail] = useState({});
+    const [singlePurchaseOrderDetail, setSinglePurchaseOrderDetail] = useState(
+        {}
+    );
 
     useEffect(() => {
         fetch(
@@ -38,10 +40,11 @@ const PurchaseOrder = () => {
 
     const handleVat = (e) => {
         const vat = e.target.value;
-        setVat(vat)
-        const totalPrice = parseInt(unitPrice) * parseInt(orderQuantity) + parseInt(vat);
+        setVat(vat);
+        const totalPrice =
+            parseInt(unitPrice) * parseInt(orderQuantity) + parseInt(vat);
         setTotalAmount(totalPrice);
-    }
+    };
 
     const handleSetPurchaseOrder = (e) => {
         e.preventDefault();
@@ -64,7 +67,7 @@ const PurchaseOrder = () => {
         };
         // console.log(newOrder);
         fetch(
-            "http://localhost:5000/addNewPurchaseOrder",
+            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder",
             {
                 method: "POST",
                 headers: {
@@ -156,22 +159,14 @@ const PurchaseOrder = () => {
                                         <option selected disabled>
                                             Select Product
                                         </option>
-                                        {productList.map(
-                                            (product) => (
-                                                <option
-                                                    key={
-                                                        product._id
-                                                    }
-                                                    value={
-                                                        product.productName
-                                                    }
-                                                >
-                                                    {
-                                                        product.productName
-                                                    }
-                                                </option>
-                                            )
-                                        )}
+                                        {productList.map((product) => (
+                                            <option
+                                                key={product._id}
+                                                value={product.productName}
+                                            >
+                                                {product.productName}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="md:flex items-center">

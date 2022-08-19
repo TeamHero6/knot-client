@@ -37,16 +37,16 @@ const AdminDashboardF = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100"
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
                                             : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
                                     }
                                 >
-                                    Daily Task
+                                    <span>Daily Task</span>
                                 </span>
                             )}
                         </NavLink>
 
-                        <NavLink to="teamManagement">
+                        {/* <NavLink to="teamManagement">
                             {({ isActive }) => (
                                 <span
                                     className={
@@ -58,13 +58,13 @@ const AdminDashboardF = () => {
                                     Management
                                 </span>
                             )}
-                        </NavLink>
+                        </NavLink> */}
                         <NavLink to="teamOrganize">
                             {({ isActive }) => (
                                 <span
                                     className={
                                         isActive
-                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100"
+                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
                                             : "flex my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray"
                                     }
                                 >

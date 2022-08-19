@@ -15,13 +15,16 @@ const AwardModalDaisyUI = ({ setAwardModal, awardRefetch }) => {
             successMessage,
         };
         console.log(awardDetails);
-        fetch("http://localhost:5000/createAward", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(awardDetails),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/createAward",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(awardDetails),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {

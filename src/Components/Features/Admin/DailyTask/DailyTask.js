@@ -52,7 +52,7 @@ const DailyTask = () => {
             {/*All tasks Data in AllTask component*/}
             <section className="bg-white rounded drop-shadow-md w-full h-auto p-4 my-4">
                 <div className="overflow-x-auto">
-                    <AllTasks />
+                    <AllTasks {...{ data }} />
                 </div>
             </section>
         </>
