@@ -9,8 +9,10 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { persistor, store } from "./store/store";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
+
 root.render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>

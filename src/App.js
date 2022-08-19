@@ -12,6 +12,11 @@ import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboardF from "./Components/Features/Admin/Dashboard/AdminDashboardF";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
+import DirectExpense from "./Components/Features/Finance/AllExpense/DirectExpense";
+import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
+import FinanceDashboard from "./Components/Features/Finance/FinanceDashboard/FinanceDashboard";
+import FinanceManagement from "./Components/Features/Finance/FinanceManagement";
+import Partners from "./Components/Features/Finance/Partners/Partners";
 import HR from "./Components/Features/LiveChat/HR";
 import LiveChat from "./Components/Features/LiveChat/LiveChat";
 import LiveChatDashboard from "./Components/Features/LiveChat/LiveChatDashboard";
@@ -42,6 +47,7 @@ import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import Hrdetails from "./Components/Pages/Hrdashboard/Hrdetails/Hrdetails";
 import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
 import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
 import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
@@ -60,6 +66,7 @@ import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import FormSample from "./FromSample/FormSample";
 
+
 function App() {
     return (
         <div>
@@ -77,9 +84,11 @@ function App() {
                         path="employeeorg"
                         element={<EmployeesOrganize />}
                     ></Route>
+                    
                     <Route path="performance" element={<Performance />}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
                     <Route path="attendance" element={<Attendance />}></Route>
+                    <Route path="hrdetails" element={<Hrdetails />}></Route>
                     <Route path="vacancy" element={<Recruitment />}></Route>
                     <Route path="interview" element={<Interview />}></Route>
                     <Route path="joining" element={<Joining />}></Route>
@@ -187,6 +196,12 @@ function App() {
                         path="companySettings"
                         element={<CompanySettings />}
                     />
+                </Route>
+                <Route path="/financeTS" element={<FinanceManagement />}>
+                    <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
+                    <Route path="partners" element={<Partners/>}></Route>
+                    <Route path="allLedger" element={<AllLedger/>}></Route>
+                    <Route path="directExpense" element={<DirectExpense/>}></Route>
                 </Route>
             </Routes>
             <ToastContainer></ToastContainer>

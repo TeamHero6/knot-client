@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { AiFillSave, AiTwotoneEye } from 'react-icons/ai';
 import Assigntranning from './Assigntranning';
+import { toast } from "react-toastify";
 
 const Joining = () => {
 
     const { register, handleSubmit, reset } = useForm();
+    const [joining, setJoining] = useState([]);
+    // const [employinfo, setEmployinfo] = useState({});
+    useEffect(() => {
+        fetch("http://localhost:5000/joining")
+            .then((res) => res.json())
+            .then((data) => setJoining(data));
+    }, [joining]);
+
     const onSubmit = data => {
-        console.log(data);
+        fetch("http://localhost:5000/joining", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((inserted) => {
+                if (inserted.insertedId) {
+                    reset();
+                    toast.success("add New employee");
+                }
+            });
         
 
     };
@@ -52,7 +74,7 @@ const Joining = () => {
                 
 
                 <div className='lg:flex justify-between md:flex pt-2'>
-                    <button className='flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm' type='subimt'><AiFillSave />Add New Employee</button> 
+                    <button className='flex  border-transparent items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover: shadow-blue-300 hover: shadow-sm' type='subimt'><AiFillSave />Add New Employee</button> 
                 </div>
             </section>
             </form>
@@ -72,14 +94,17 @@ const Joining = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
-                                    <td className="py-3 px-6 whitespace-nowrap">Habib ullha</td>
-                                    <td className="py-3 px-6 whitespace-nowrap">2512</td>
-                                    <td className="py-3 px-6 whitespace-nowrap">date</td>
+                                {
+                                    joining.map(j=> <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                    <td className="py-3 px-6 whitespace-nowrap">{j.Name}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{j.Depertment}</td>
+                                    <td className="py-3 px-6 whitespace-nowrap">{j.joinig_date}</td>
                                     <td className='text-[#0182be]  text-center'>
-                                        <button><AiTwotoneEye></AiTwotoneEye></button>
+                                        <button>Details</button>
                                     </td>
-                                </tr>
+                                </tr>)
+                                }
+                                
                             </tbody>
 
                         </table>
