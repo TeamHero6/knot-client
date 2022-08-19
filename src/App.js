@@ -107,6 +107,7 @@ function App() {
                     <Route path="attendance" element={<UserAttaindance />} />
                     <Route path="performance" element={<UserPromotion />} />
                     <Route path="Payrolls" element={<UserPayrolls />} />
+                    <Route path="Calender" element={<Calender></Calender>} />
                 </Route>
 
                 <Route path="/liveChat" element={<LiveChat></LiveChat>}></Route>

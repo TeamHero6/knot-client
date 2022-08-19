@@ -1,13 +1,15 @@
 import React from 'react';
+import moment from 'moment';
 
 const UserAttaindance = () => {
+
     return (
         <div className='flex mt-5'>
             <div className='mx-5'>
                 <div className='bg-[#EEEEEE] p-5 rounded-lg'>
                     <h1 className='text-[#0182BE] text-2xl font-semibold'>TimeSheet</h1>
-                    <p>Today</p>
-                    <p>Start Time : </p>
+                    <p className='font-semibold text-xl'>Today</p>
+                    <p>Start Time :</p>
                     <p>End Time : </p>
                     <p>Working Hour : </p>
                     <p>Dew Working Hour : </p>
@@ -54,10 +56,29 @@ const UserAttaindance = () => {
             </div>
             <div className='w-11/12'>
                 <h1 className='text-[#0182BE] text-2xl font-semibold'>Time Tracking</h1>
-                <div className='flex justify-evenly mt-10 mb-20'>
-                    <button className='flex ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'>Start</button>
+                {/* <div className='flex justify-evenly mt-10 mb-20'>
+                    <button className='flex ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'><input
+                                    type="hidden"
+                                    name="time"
+                                    id=""
+                                    value={moment().format(
+                                        "MMMM Do YYYY, h:mm:ss a"
+                                    )}
+                                /></button>
                     <button className='flex ml-5 items-center gap-2 bg-red-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-red-500 hover:outline-1 hover:border hover:border-red-500 hover: shadow-green-200 hover: shadow-sm'>End</button>
-                </div>
+                </div> */}
+
+                <form>
+                    <input
+                        type="hidden"
+                        name="time"
+                        id=""
+                        value={moment().format(
+                            "MMMM Do YYYY, h:mm:ss a"
+                        )}
+                    />
+                    <input type="submit" value="Start" />
+                </form>
                 <hr />
                 {/* <div className='mt-16'>
                     <h1 className='text-[#0182BE] text-2xl font-semibold'>Your Action</h1>

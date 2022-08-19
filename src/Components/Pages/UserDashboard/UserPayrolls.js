@@ -11,28 +11,9 @@ const UserPayrolls = () => {
     }, []);
 
     return (
-        <div>
-            <div className="flex justify-evenly my-5">
-                {/* <div className="w-2/5 bg-[#EEEEEE] rounded-lg px-5 py-2">
-                    <h1 className="mb-5">User Name</h1>
-                    <h1>ID Number : </h1>
-                    <h1>Department : </h1>
-                    <h1>Designation : </h1>
-                </div>
-                <div className="w-2/5 bg-[#EEEEEE] rounded-lg px-5 py-2">
-                    <h1 className="text-center">Salary Grade </h1>
-                    <h1>Basic Salary : </h1>
-                    <h1>House Rant : </h1>
-                    <h1>Hospital Bill : </h1>
-                    <h1>Internet Bill : </h1>
-                    <h1>KPL : </h1>
-                    <h1>Lunch Bill : </h1>
-                    <h1>Over Time : </h1>
-                    <h1>TA/DA : </h1>
-                </div> */}
-            </div>
-            <div className="overflow-x-auto">
-                <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
+        <div className="mx-auto w-full">
+            <div className='w-full mb-5 flex justify-between rounded py-6 px-6 mt-5'>
+                <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                         <tr>
                             <th className="py-3 text-left px-6 whitespace-nowrap">Employee ID </th>
@@ -61,20 +42,20 @@ const UserPayrolls = () => {
                         }
                     </tbody>
                 </table>
-                <input type="checkbox" id={payrollModal._id} className="modal-toggle" />
-                <div className="modal modal-bottom sm:modal-middle">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg">Payrolls Information!</h3>
-                        <p>Employee ID : {payrollModal.Employee_ID}</p>
-                        <p>Name : {payrollModal.Name}</p>
-                        <p>Department : {payrollModal.Depertment}</p>
-                        <p>Payment Date : {payrollModal.Payment_Date}</p>
-                        <p>Pay Amount  : {payrollModal.Pay_Amount}</p>
-                        <p>Designation : {payrollModal.Designation}</p>
-                        <p>Payable Amount : {payrollModal.Payable_Amount}</p>
-                        <div className="modal-action">
-                            <label for={payrollModal._id} className="btn bg-[#0182BE]">Close!</label>
-                        </div>
+            </div>
+            <input type="checkbox" id={payrollModal._id} class="modal-toggle" />
+            <div class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <h3 class="font-bold text-lg">Payrolls Information!</h3>
+                    <p>Employee ID : {payrollModal.Employee_ID}</p>
+                    <p>Name : {payrollModal.Name}</p>
+                    <p>Department : {payrollModal.Depertment}</p>
+                    <p>Payment Date : {payrollModal.Payment_Date}</p>
+                    <p>Pay Amount  : {payrollModal.Pay_Amount}</p>
+                    <p>Designation : {payrollModal.Designation}</p>
+                    <p>Payable Amount : {payrollModal.Payable_Amount}</p>
+                    <div class="modal-action">
+                        <label for={payrollModal._id} className='flex ml-5 items-center gap-2 bg-red-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-red-400 hover:outline-1 hover:border hover:border-red-400 hover: shadow-red-200 hover: shadow-sm'>Close!</label>
                     </div>
                 </div>
             </div>

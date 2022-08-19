@@ -55,12 +55,16 @@ const UserDashboard = () => {
                         >
                             Payrolls
                         </Link>
+                        <Link
+                            to="Calender"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                        >
+                            Corporate Calender
+                        </Link>
 
                     </div>
                 </div>
-                <div className="mx-auto overflow-auto">
-                    <Outlet />
-                </div>
+                <Outlet />
             </section>
         </div>
     );
