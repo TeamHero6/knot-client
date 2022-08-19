@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { ImCross } from "react-icons/im";
+import { useSelector } from "react-redux";
 import FilterCard from "./FilterCard";
 
 const AddTask = ({ refetch }) => {
     const [employeeEmail, setEmployeeEmail] = useState();
     const [employeeName, setEmployeeName] = useState("");
     const [search, setSearch] = useState("");
-    // const authInfo = useSelector((state) => state.auth);
-    // console.log(authInfo);
+    const authInfo = useSelector((state) => state.auth);
+    console.log(authInfo);
     const users = [
         {
             id: 1,
