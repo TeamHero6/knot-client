@@ -66,7 +66,6 @@ import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import FormSample from "./FromSample/FormSample";
 
-
 function App() {
     return (
         <div>
@@ -84,7 +83,7 @@ function App() {
                         path="employeeorg"
                         element={<EmployeesOrganize />}
                     ></Route>
-                    
+
                     <Route path="performance" element={<Performance />}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
                     <Route path="attendance" element={<Attendance />}></Route>
@@ -191,18 +190,26 @@ function App() {
                         element={<RulesAndPolitics />}
                     />
                 </Route>
-                <Route path="/profileSettings" element={<ProfileDashboard />}>
+                <Route path="/settings" element={<ProfileDashboard />}>
                     <Route index element={<ProfileSettings />} />
+                    <Route path="profile" element={<ProfileSettings />} />
                     <Route
                         path="companySettings"
                         element={<CompanySettings />}
                     />
                 </Route>
+
                 <Route path="/financeTS" element={<FinanceManagement />}>
-                    <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
-                    <Route path="partners" element={<Partners/>}></Route>
-                    <Route path="allLedger" element={<AllLedger/>}></Route>
-                    <Route path="directExpense" element={<DirectExpense/>}></Route>
+                    <Route
+                        index
+                        element={<FinanceDashboard></FinanceDashboard>}
+                    ></Route>
+                    <Route path="partners" element={<Partners />}></Route>
+                    <Route path="allLedger" element={<AllLedger />}></Route>
+                    <Route
+                        path="directExpense"
+                        element={<DirectExpense />}
+                    ></Route>
                 </Route>
             </Routes>
             <ToastContainer></ToastContainer>

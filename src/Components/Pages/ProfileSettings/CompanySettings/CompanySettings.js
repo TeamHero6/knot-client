@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import auth from "../../../../firebase.init";
+import { useSelector } from "react-redux";
 
 const CompanySettings = () => {
-    const [createUserWithEmailAndPassword, user, loading, error] =
-        useCreateUserWithEmailAndPassword(auth);
+    // Declare react states
     const [passcode, setPassCode] = useState();
     const [employeeEmail, setEmployeeEmail] = useState("");
     const [customError, setCustomError] = useState("");
+
+    // Getting logger Info
+    const state = useSelector((state) => state.auth);
+
+    // Distructure
+    const { companyLogo, companyName } = state.loggerInfo;
 
     const passCodeGenerate = () => {
         const pass = Math.floor(Math.random() * 100000) + 1;
@@ -20,27 +24,26 @@ const CompanySettings = () => {
             const employee = {
                 email: employeeEmail,
                 passcode: passcode,
+                companyLogo: companyLogo,
+                companyName: companyName,
             };
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/createNewEmployee",
-                {
-                    method: "PUT",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(employee),
-                }
-            )
+            fetch("http://localhost:5000/createNewEmployee", {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(employee),
+            })
                 .then((res) => res.json())
-                .then(async (data) => console.log(data));
+                .then((data) => {
+                    if (data) {
+                        console.log(data);
+                    }
+                });
         } else {
             setCustomError("Please Fill all field carefully");
         }
     };
-
-    if (user) {
-        console.log(user);
-    }
     return (
         <div>
             <section className="w-full flex justify-center">
@@ -67,8 +70,10 @@ const CompanySettings = () => {
                     <section className="my-3">
                         <input
                             type="email"
+                            name="employeeEmail"
                             className="w-full border-2 border-gray-100 rounded-tl rounded-bl focus:outline-none px-2 text-gray-400"
                             placeholder="Put Employees Email"
+                            value={employeeEmail}
                             onChange={(e) => setEmployeeEmail(e.target.value)}
                         />
                     </section>

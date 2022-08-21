@@ -76,7 +76,7 @@ const Navbar = () => {
                                                 </a>
                                             </li>
                                             <li>
-                                                <Link to="/profileSettings">
+                                                <Link to="/settings">
                                                     Setting
                                                 </Link>
                                             </li>
@@ -129,11 +129,13 @@ const Navbar = () => {
                                         <li>
                                             <a className="justify-between">
                                                 Profile
-                                                <span className="badge">New</span>
+                                                <span className="badge">
+                                                    New
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <Link to="/profileSettings">
+                                            <Link to="/settings/profile">
                                                 Setting
                                             </Link>
                                         </li>
