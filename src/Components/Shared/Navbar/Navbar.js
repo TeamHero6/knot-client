@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const Navbar = () => {
     const navigate = useNavigate();
     //use Info from Redux
     const authInfo = useSelector((state) => state.auth);
-    useEffect(() => console.log(authInfo), []);
+    const { userPhoto } = authInfo.loggerInfo;
 
     const handleLogout = () => {
         dispatch(logout());
@@ -66,7 +66,14 @@ const Navbar = () => {
                                             className="btn btn-ghost btn-circle avatar"
                                         >
                                             <div className="w-10 rounded-full">
-                                                <img src="https://placeimg.com/80/80/people" />
+                                                <img
+                                                    src={`${
+                                                        userPhoto
+                                                            ? userPhoto
+                                                            : "https://placeimg.com/80/80/people"
+                                                    }`}
+                                                    alt=""
+                                                />
                                             </div>
                                         </label>
                                         <ul
@@ -125,7 +132,14 @@ const Navbar = () => {
                                         className="btn btn-ghost btn-circle avatar"
                                     >
                                         <div className="w-10 rounded-full">
-                                            <img src="https://placeimg.com/80/80/people" />
+                                            <img
+                                                src={`${
+                                                    userPhoto
+                                                        ? userPhoto
+                                                        : "https://placeimg.com/80/80/people"
+                                                }`}
+                                                alt=""
+                                            />
                                         </div>
                                     </label>
                                     <ul
