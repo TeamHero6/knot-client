@@ -1,26 +1,30 @@
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import { Puff } from "react-loader-spinner";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { storage } from "../../../../firebase.init";
+import { updateName, updatePhoto } from "../../../../Redux/Auth/authAction";
 
 const ProfileSettings = () => {
     const loggerInfo = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
     // All states
     const [edit, setEdit] = useState(false);
     const [changes, setChanges] = useState(false);
-    const [updatename, setUpdateName] = useState("");
+    const [updatenamein, setUpdateNamein] = useState("");
     const [updatedEmail, setUpdatedEmail] = useState();
     const [userPhoto, setUserPhoto] = useState("");
     const [loadingForPhoto, setLoadingForPhoto] = useState(false);
 
     useEffect(() => {
         const { name, email, userPhoto } = loggerInfo.loggerInfo;
-        setUpdateName(name);
+        setUpdateNamein(name);
         setUpdatedEmail(email);
+        setUserPhoto(userPhoto);
     }, [loggerInfo]);
 
+    // update profile photo
     const uploadProfilePhotoHandler = async (e) => {
         setLoadingForPhoto(true);
         const photo = e.target.files[0];
@@ -29,10 +33,47 @@ const ProfileSettings = () => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setUserPhoto(url);
                 if (url) {
+                    // update photo in DB
+                    const photoInfo = { email: updatedEmail, photoUrl: url };
+                    fetch("http://localhost:5000/updateProfilePhoto", {
+                        method: "PUT",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify(photoInfo),
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            if (data.acknowledged) {
+                                return;
+                            }
+                        });
+                    // update profile photo to redux store
+                    dispatch(updatePhoto(url));
                     setLoadingForPhoto(false);
                 }
             });
         });
+    };
+
+    // update name
+    const updateNameHandler = () => {
+        const info = { email: updatedEmail, name: updatenamein };
+        console.log(info);
+        fetch("http://localhost:5000/updateName", {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(info),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data) {
+                    return;
+                }
+            });
+        dispatch(updateName(updatenamein));
     };
 
     return (
@@ -69,6 +110,7 @@ const ProfileSettings = () => {
             {/* user profile */}
             <section className="my-6 px-6 md:flex">
                 <div className="w-auto flex flex-col items-center flex-initial mr-0 md:mr-12">
+                    {/*Profile Photo*/}
                     <img
                         src={userPhoto}
                         alt=""
@@ -107,8 +149,9 @@ const ProfileSettings = () => {
                         />
                     </div>
                 </div>
+                {/*Name field*/}
                 <div className="w-full md:w-[60%] lg:w-[40%]">
-                    <form>
+                    <form onSubmit={updateNameHandler}>
                         {/* Name field */}
                         <div>
                             <label
@@ -123,11 +166,12 @@ const ProfileSettings = () => {
                                 } appearance-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
                                 id="username"
                                 type="text"
-                                value={updatename}
+                                value={updatenamein}
+                                name="name"
                                 placeholder={`${edit ? "Type your name" : ""}`}
                                 onChange={(e) => {
                                     setChanges(true);
-                                    setUpdateName(e.target.value);
+                                    setUpdateNamein(e.target.value);
                                 }}
                                 disabled={!edit}
                             />
@@ -172,6 +216,7 @@ const ProfileSettings = () => {
                             onClick={() => {
                                 setEdit(false);
                                 setChanges(false);
+                                updateNameHandler(updateName);
                             }}
                         />
                     </form>

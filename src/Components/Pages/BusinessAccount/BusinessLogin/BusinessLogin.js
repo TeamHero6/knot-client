@@ -23,7 +23,7 @@ const BusinessLogin = () => {
     } = useForm();
 
     // sign in with email and password
-    const [signInWithEmailAndPassword, user, Eloading, error] =
+    const [signInWithEmailAndPassword, user, Eloading] =
         useSignInWithEmailAndPassword(auth);
 
     const dispatch = useDispatch();

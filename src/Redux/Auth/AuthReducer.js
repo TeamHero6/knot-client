@@ -14,6 +14,22 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 loggerInfo: null,
             };
+        case "UPDATEPROFILEPHOTO":
+            return {
+                ...state,
+                loggerInfo: {
+                    ...state.loggerInfo,
+                    userPhoto: action.payload,
+                },
+            };
+        case "UPDATENAME":
+            return {
+                ...state,
+                loggerInfo: {
+                    ...state.loggerInfo,
+                    name: action.payload,
+                },
+            };
 
         default:
             return state;

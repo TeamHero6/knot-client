@@ -10,3 +10,17 @@ export const logout = () => {
         type: "LOGOUT",
     };
 };
+
+export const updatePhoto = (imgLink) => {
+    return {
+        type: "UPDATEPROFILEPHOTO",
+        payload: imgLink,
+    };
+};
+
+export const updateName = (name) => {
+    return {
+        type: "UPDATENAME",
+        payload: name,
+    };
+};

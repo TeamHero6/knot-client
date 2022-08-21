@@ -159,25 +159,6 @@ const BusinessSignup = () => {
                         });
                     }
                 });
-            // fetch(`https://knot-business-solution-server.herokuapp.com/employeeRole/${email}`)
-            //     .then((res) => res.json())
-            //     .then(async (data) => {
-            //         const { role, message, message2 } = data;
-            //         if (role !== "") {
-            //             setLoadingMessage("");
-            //             await createUserWithEmailAndPassword(email, password);
-            //             navigate("/");
-            //         }
-            //         if (role === "") {
-            //             setLoadingMessage("");
-            // Swal.fire({
-            //     icon: "error",
-            //     title: "Oops...",
-            //     text: `${message}`,
-            //     footer: `${message2}`,
-            // });
-            //         }
-            //     });
         }
     };
 
