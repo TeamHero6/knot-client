@@ -125,7 +125,7 @@ const BusinessSignup = () => {
 
         //Sign up for Employee
         if (role === "Employee") {
-            const info = { email, secretCode };
+            const info = { email, secretCode, name };
 
             fetch("http://localhost:5000/checkEmployee", {
                 method: "POST",

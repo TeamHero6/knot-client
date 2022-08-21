@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,11 +9,17 @@ import { logout } from "../../../Redux/Auth/authAction";
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
+    const [userProfile, setuserprofile] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
     //use Info from Redux
     const authInfo = useSelector((state) => state.auth);
-    const { userPhoto } = authInfo.loggerInfo;
+    useEffect(() => {
+        if (authInfo.loggerInfo !== null) {
+            const { userPhoto } = authInfo?.loggerInfo;
+            setuserprofile(userPhoto);
+        }
+    }, [authInfo]);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -68,8 +74,8 @@ const Navbar = () => {
                                             <div className="w-10 rounded-full">
                                                 <img
                                                     src={`${
-                                                        userPhoto
-                                                            ? userPhoto
+                                                        userProfile
+                                                            ? userProfile
                                                             : "https://placeimg.com/80/80/people"
                                                     }`}
                                                     alt=""
@@ -134,8 +140,8 @@ const Navbar = () => {
                                         <div className="w-10 rounded-full">
                                             <img
                                                 src={`${
-                                                    userPhoto
-                                                        ? userPhoto
+                                                    userProfile
+                                                        ? userProfile
                                                         : "https://placeimg.com/80/80/people"
                                                 }`}
                                                 alt=""

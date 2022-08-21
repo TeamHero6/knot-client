@@ -75,16 +75,13 @@ const BusinessLogin = () => {
         if ((role === "Manager") | (role === "CEO")) {
             setCustomError("");
             //check isRole
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/isRole",
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(signInDetails),
-                }
-            )
+            fetch("http://localhost:5000/isRole", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(signInDetails),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
                     const { role, loggerInfo, token } = data;

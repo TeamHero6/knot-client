@@ -190,7 +190,14 @@ function App() {
                         element={<RulesAndPolitics />}
                     />
                 </Route>
-                <Route path="/settings" element={<ProfileDashboard />}>
+                <Route
+                    path="/settings"
+                    element={
+                        <RequireAuth>
+                            <ProfileDashboard />
+                        </RequireAuth>
+                    }
+                >
                     <Route index element={<ProfileSettings />} />
                     <Route path="profile" element={<ProfileSettings />} />
                     <Route

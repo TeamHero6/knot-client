@@ -1,9 +1,13 @@
 import React from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../../Shared/Navbar/Navbar";
 
 const ProfileDashboard = () => {
-    const navigate = useNavigate();
+    const authInfo = useSelector((state) => state.auth);
+    console.log(authInfo.loggerInfo);
+    const { role } = authInfo?.loggerInfo;
+    console.log(role);
     return (
         <div className="bg-custom-gray min-h-screen">
             <Navbar />
@@ -18,10 +22,7 @@ const ProfileDashboard = () => {
                                     : "cursor-pointer p-3 text-center flex-1 hover:bg-cyan-400 rounded-tl-md rounded-bl-md flex flex-col items-center transition duration-300"
                             }
                         >
-                            <section
-                            // className="cursor-pointer p-3 text-center flex-1 hover:bg-cyan-400 rounded-tl-md rounded-bl-md flex flex-col items-center hover:text-white transition duration-300"
-                            // onClick={() => navigate("/profileSettings")}
-                            >
+                            <section>
                                 <div>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +42,12 @@ const ProfileDashboard = () => {
                             to="companySettings"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "bg-cyan-400 text-white cursor-pointer p-3 text-center flex-1 hover:bg-cyan-400 rounded-tr-md rounded-br-md flex flex-col items-center"
-                                    : "cursor-pointer p-3 text-center flex-1 hover:bg-cyan-400 rounded-tr-md rounded-br-md flex flex-col items-center transition duration-300"
+                                    ? `bg-cyan-400 text-white cursor-pointer p-3 text-center flex-1 hover:bg-cyan-400 rounded-tr-md rounded-br-md flex flex-col items-center ${
+                                          role === "employee" && "hidden"
+                                      }`
+                                    : `cursor-pointer p-3 text-center flex-1 hover:bg-cyan-400 rounded-tr-md rounded-br-md flex flex-col items-center transition duration-300 ${
+                                          role === "employee" && "hidden"
+                                      }`
                             }
                         >
                             <div>
