@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../../../firebase.init";
-import { loginAction } from "../../../../Redux/Authentication/authAction";
+import { authAction } from "../../../../Redux/Auth/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessLogin = () => {
@@ -44,25 +44,21 @@ const BusinessLogin = () => {
             setCustomError("");
             const secretCode = data?.secretCode;
             const info = { email, secretCode };
-            console.log(info);
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(info),
-                }
-            )
+            fetch("http://localhost:5000/checkEmployee", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
-                    const role = data?.role;
-                    const message = data?.message;
+                    const { role, message, loggerInfo } = data;
                     if (role) {
                         setCustomError("");
                         await signInWithEmailAndPassword(email, password);
                         setLoadingMessage("");
+                        dispatch(authAction(loggerInfo));
                         navigate(from, { replace: true });
                     } else {
                         setCustomError("");
@@ -93,9 +89,9 @@ const BusinessLogin = () => {
                 .then(async (data) => {
                     const { role, loggerInfo, token } = data;
                     if (role) {
-                        dispatch(loginAction(loggerInfo));
                         localStorage.setItem("accessToken", token);
                         await signInWithEmailAndPassword(email, password);
+                        dispatch(authAction(loggerInfo));
                         setLoadingMessage("");
                     } else {
                         setLoadingMessage("");

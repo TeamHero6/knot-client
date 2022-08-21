@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
 import auth, { storage } from "../../../../firebase.init";
-import { loginAction } from "../../../../Redux/Authentication/authAction";
+import { authAction } from "../../../../Redux/Auth/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessSignup = () => {
@@ -90,7 +90,7 @@ const BusinessSignup = () => {
                                 }
                                 if (token) {
                                     localStorage.setItem("accessToken", token);
-                                    dispatch(loginAction(loggerInfo));
+                                    dispatch(authAction(loggerInfo));
                                     createUserWithEmailAndPassword(
                                         email,
                                         password
@@ -127,23 +127,20 @@ const BusinessSignup = () => {
         if (role === "Employee") {
             const info = { email, secretCode };
 
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(info),
-                }
-            )
+            fetch("http://localhost:5000/checkEmployee", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
-                    const role = data?.role;
-                    const message = data?.message;
+                    const { role, message, loggerInfo } = data;
                     if (role) {
                         setLoadingMessage("");
                         await createUserWithEmailAndPassword(email, password);
+                        dispatch(authAction(loggerInfo));
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
