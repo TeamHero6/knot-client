@@ -10,12 +10,12 @@ const EmployeesOrganize = () => {
     // const [show, setShow] = useState('');
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/warning")
+        fetch("http://localhost:5000/warnings")
             .then((res) => res.json())
             .then((data) => setWarning(data));
     }, [feeds]);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/award")
+        fetch("http://localhost:5000/awards")
             .then((res) => res.json())
             .then((data) => setAward(data));
     }, []);
@@ -32,7 +32,7 @@ const EmployeesOrganize = () => {
 
         const colfeed = { infeed };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/warning/${id}`;
+        const url = `http://localhost:5000/warnings/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -50,7 +50,7 @@ const EmployeesOrganize = () => {
 
         const leadercol = { ledarfeed };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/award/${id}`;
+        const url = `http://localhost:5000/awards/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -68,8 +68,8 @@ const EmployeesOrganize = () => {
         <div>
             <div className="px-5">
                 <h1 className="text-xl  my-5">Team Members Warning Database</h1>
-                <div class="rounded-none overflow-auto">
-                    <table class="lg:w-11/12 shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                <div class="rounded-none overflow-auto w-10/12">
+                    <table class="lg:w-10/12 shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">

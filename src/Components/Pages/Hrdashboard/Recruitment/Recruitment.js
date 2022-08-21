@@ -59,7 +59,7 @@ const Recruitment = () => {
             });
     };
     return (
-        <div>
+        <div className="ml-5">
             <div className="grid grid-cols-2 gap-5">
                 <div>
                     <button
@@ -408,6 +408,7 @@ const Recruitment = () => {
                     </div>
                 </div>
             </div>
+           
         </div>
     );
 };

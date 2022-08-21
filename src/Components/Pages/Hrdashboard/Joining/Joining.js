@@ -34,7 +34,7 @@ const Joining = () => {
 
     };
     return (
-        <div>
+        <div className='ml-5'>
             <div className=''>
             <form onSubmit={handleSubmit(onSubmit)}>
                 

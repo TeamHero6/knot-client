@@ -26,7 +26,7 @@ const Hrdetails = () => {
             });
     };
     return (
-        <div>
+        <div className="ml-5">
              <button
                             onClick={() => setShow(!show)}
                             class="flex  border-transparent items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover: shadow-blue-300 hover: shadow-sm"
