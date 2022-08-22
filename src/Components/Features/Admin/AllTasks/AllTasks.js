@@ -1,7 +1,20 @@
+import moment from "moment";
 import React, { useState } from "react";
 
 const AllTasks = ({ data }) => {
     const [edit, setEdit] = useState(false);
+
+    const updateStatus = (status, id) => {
+        fetch("http://localhost:5000/updateStatus", {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ status, id }),
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+    };
 
     return (
         <div>
@@ -42,13 +55,21 @@ const AllTasks = ({ data }) => {
                                     {task?.taskTitle}
                                 </td>
                                 <td className="py-3 px-6 whitespace-nowrap">
-                                    {task?.deadline}
+                                    {moment(task?.deadline).format(
+                                        "MMMM Do YYYY, h:mm a"
+                                    )}
                                 </td>
                                 <td className="py-3 px-6 whitespace-nowrap">
                                     <select
                                         name=""
                                         id=""
                                         className="px-2 py-1 bg-green-500 text-white"
+                                        onChange={(e) =>
+                                            updateStatus(
+                                                e.target.value,
+                                                task?._id
+                                            )
+                                        }
                                     >
                                         <option value="running">Running</option>
                                         <option value="done">Done</option>
