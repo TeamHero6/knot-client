@@ -58,7 +58,7 @@ import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
 import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
-import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+import UserAttendance from "./Components/Pages/UserDashboard/UserAttendance";
 import UserDashboardK from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
@@ -101,7 +101,7 @@ function App() {
                     element={<UserDashboardK></UserDashboardK>}
                 >
                     <Route index element={<LeaveRequest />} />
-                    <Route path="attendance" element={<UserAttaindance />} />
+                    <Route path="attendance" element={<UserAttendance />} />
                     <Route path="performance" element={<UserPromotion />} />
                     <Route path="Payrolls" element={<UserPayrolls />} />
                 </Route>
@@ -199,6 +199,7 @@ function App() {
                     <Route path="partners" element={<Partners/>}></Route>
                     <Route path="allLedger" element={<AllLedger/>}></Route>
                     <Route path="directExpense" element={<DirectExpense/>}></Route>
+                    <Route path="attendance" element={<UserAttendance />} />
                 </Route>
             </Routes>
             <ToastContainer></ToastContainer>
