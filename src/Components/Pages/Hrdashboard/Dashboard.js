@@ -124,11 +124,11 @@ const Dashboard = () => {
     return (
         <div>
             <div className="pt-5">
-                <h1 className="text-2xl text-center font-bold">
+                <h1 className=" text-left lg:text-center text-2xl font-bold ml-3">
                     Employee Database
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 p-5">
-                    <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card w-96 lg:w-72 bg-base-100 shadow-xl">
                         <div className="w-62 mx-auto">
                         <PieChart width={300} height={250}>
                                 <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#fff814d4" />
@@ -141,7 +141,7 @@ const Dashboard = () => {
                             Employee By Gender
                         </h3>
                     </div>
-                    <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card w-96 lg:w-72 bg-base-100 shadow-xl">
                     <div className="w-62 mx-auto">
                         <PieChart width={300} height={250}>
                                 <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#a3dfce" />
@@ -152,7 +152,7 @@ const Dashboard = () => {
                             Employee By Department
                         </h3>
                     </div>
-                    <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card w-96 lg:w-72 bg-base-100 shadow-xl">
                     <div className="w-62 mx-auto">
                         <PieChart width={300} height={250}>
                                 <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
@@ -169,11 +169,11 @@ const Dashboard = () => {
             {/* Leave Requst Section */}
 
             <div className="px-5">
-                <h1 className="text-2xl text-center font-bold my-5">
+                <h1 className="text-2xl text-left lg:text-center font-bold my-5">
                     Leave Request
                 </h1>
-                <div class="overflow-auto rounded-none  " style={{ width: "1000px" }}>
-                    <table class="shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                <div class="overflow-auto rounded-none w-96 lg:w-full">
+                    <table class="w-11/12  shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -187,12 +187,6 @@ const Dashboard = () => {
                                 </th>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Dept
-                                </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
-                                    type of leave
-                                </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
-                                    Leave Request Date
                                 </th>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     view details
@@ -221,12 +215,7 @@ const Dashboard = () => {
                                         {request.dep}
                                     </td>
 
-                                    <td className="py-3 px-6 whitespace-nowrap">
-                                        {request.leave_type}
-                                    </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
-                                        {request.e_date}
-                                    </td>
+                                   
                                     <td>
                                         <div>
                                             <label
@@ -339,16 +328,13 @@ const Dashboard = () => {
 
             {/* Daily Task Overview Section */}
             <div className="px-5">
-                <h1 className="text-2xl text-center font-bold my-5">
+                <h1 className="text-2xl text-left lg:text-center font-bold my-5">
                     Daily Task Overview
                 </h1>
-                <div class=" rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div class="overflow-auto rounded-none w-96 lg:w-11/12">
+                    <table class="w-11/12 shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
-                                    Assign Date & Time
-                                </th>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Name
                                 </th>
@@ -366,9 +352,7 @@ const Dashboard = () => {
                         <tbody>
                             {allTask.map((task) => (
                                 <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
-                                    <td className="py-3 px-6 whitespace-nowrap">
-                                        {task.DueDate}
-                                    </td>
+                                    
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {task.name}
                                     </td>

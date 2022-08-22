@@ -32,7 +32,7 @@ const Payrolls = () => {
             });
     };
     return (
-        <div>
+        <div className="ml-5">
             <label
                 onClick={() => setShow(!show)}
                 for="my-drawer"
