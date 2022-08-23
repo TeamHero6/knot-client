@@ -87,17 +87,17 @@ const EmployeeDetails = () => {
         <div>
             {/* <HRNavbar></HRNavbar> */}
             <div>
-                <div class="drawer drawer-mobile">
+                <div className="drawer drawer-mobile">
                     <input
                         id="my-drawer-2"
                         type="checkbox"
-                        class="drawer-toggle"
+                        className="drawer-toggle"
                     />
-                    <div class="drawer-content">
+                    <div className="drawer-content">
                         <label
                             onClick={() => setShow(!show)}
                             for="my-drawer"
-                            class="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button"
+                            className="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button"
                         >
                             + New
                         </label>

@@ -30,30 +30,30 @@ const SalesDashboard = () => {
     return (
         <div>
             <section className="flex justify-center	gap-5">
-                <div class="card w-72 bg-base-100 shadow-xl">
-                    <div class="card-body">
-                        <h2 class="card-title "></h2>
+                <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <h2 className="card-title "></h2>
                         <p>Total Order</p>
                     </div>
                 </div>
-                <div class="card w-72 bg-base-100 shadow-xl">
-                    <div class="card-body text-center">
-                        <h2 class="font-bold text-lg">
+                <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-lg">
                             {customerList?.length}
                         </h2>
                         <p>Happy Customer</p>
                     </div>
                 </div>
-                <div class="card w-72 bg-base-100 shadow-xl">
-                    <div class="card-body text-center">
-                        <h2 class="font-bold text-lg">{vendorList?.length}</h2>
+                <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-lg">{vendorList?.length}</h2>
                         <p>Total Vendor</p>
                     </div>
                 </div>
             </section>
             <section>
-                <div class="overflow-auto rounded-none mx-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300 mx-auto my-12 text-base overflow-hidden">
+                <div className="overflow-auto rounded-none mx-auto">
+                    <table className="shadow-2xl border-2 border-cyan-300 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             {/* <thead className=' border-b border-cyan-100'> */}
                             <tr>

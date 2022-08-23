@@ -24,14 +24,14 @@ const SentEmailList = () => {
     };
 
     return (
-        <div class="overflow-x-auto w-full my-16">
-            <table class="shadow-2xl border-[1px] border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+        <div className="overflow-x-auto w-full my-16">
+            <table className="shadow-2xl border-[1px] border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                 {/* <!-- head --> */}
                 <thead className=" bg-cyan-100 border-b border-cyan-100">
                     <tr>
                         <th className="py-3 text-left pl-10 pr-4 whitespace-nowrap">
                             <label>
-                                <input type="checkbox" class="checkbox" />
+                                <input type="checkbox" className="checkbox" />
                             </label>
                         </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -55,11 +55,11 @@ const SentEmailList = () => {
                         >
                             <th className="py-3 pl-10 pr-4 whitespace-nowrap">
                                 <label>
-                                    <input type="checkbox" class="checkbox" />
+                                    <input type="checkbox" className="checkbox" />
                                 </label>
                             </th>
                             <td className="py-3 px-6 whitespace-nowrap">
-                                <div class="flex items-center space-x-3">
+                                <div className="flex items-center space-x-3">
                                     <div>
                                         <div>KNOT</div>
                                     </div>

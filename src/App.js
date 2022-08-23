@@ -47,6 +47,7 @@ import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
+import Hrdetails from "./Components/Pages/Hrdashboard/Hrdetails/Hrdetails";
 import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
 import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
 import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
@@ -83,9 +84,11 @@ function App() {
                         path="employeeorg"
                         element={<EmployeesOrganize />}
                     ></Route>
+                    
                     <Route path="performance" element={<Performance />}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
                     <Route path="attendance" element={<Attendance />}></Route>
+                    <Route path="hrdetails" element={<Hrdetails />}></Route>
                     <Route path="vacancy" element={<Recruitment />}></Route>
                     <Route path="interview" element={<Interview />}></Route>
                     <Route path="joining" element={<Joining />}></Route>
@@ -104,6 +107,7 @@ function App() {
                     <Route path="attendance" element={<UserAttendance />} />
                     <Route path="performance" element={<UserPromotion />} />
                     <Route path="Payrolls" element={<UserPayrolls />} />
+                    <Route path="Calender" element={<Calender></Calender>} />
                 </Route>
 
                 <Route path="/liveChat" element={<LiveChat></LiveChat>}></Route>

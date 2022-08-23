@@ -38,8 +38,8 @@ const Interview = () => {
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Interview</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div class="rounded-none">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <div className="rounded-none">
+                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -78,7 +78,7 @@ const Interview = () => {
                                             <label
                                                 for={s._id}
                                                 onClick={() => setmodal(s)}
-                                                class="modal-button text-center"
+                                                className="modal-button text-center"
                                             >
                                                 <AiTwotoneEye></AiTwotoneEye>
                                             </label>
@@ -125,10 +125,10 @@ const Interview = () => {
                             required
                             type="checkbox"
                             id={modal._id}
-                            class="modal-toggle"
+                            className="modal-toggle"
                         />
-                        <div class="modal">
-                            <div class="modal-box">
+                        <div className="modal">
+                            <div className="modal-box">
                                 <div>
                                     <div>
                                         <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
@@ -163,10 +163,10 @@ const Interview = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-action">
+                                <div className="modal-action">
                                     <label
                                         for={modal._id}
-                                        class="btn btn-warning"
+                                        className="btn btn-warning"
                                     >
                                         Cancel
                                     </label>

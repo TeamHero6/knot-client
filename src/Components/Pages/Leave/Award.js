@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 const Award = () => {
     const [awards, setAwards] = useState([]);
-    const [awardModal, setAwardModal] = useState({});
 
     useEffect(() => {
         fetch("https://sheltered-cliffs-60290.herokuapp.com/award")
@@ -11,72 +10,22 @@ const Award = () => {
     }, []);
 
     return (
-        <div className="lg:flex my-10">
-            <div class="overflow-x-auto lg:w-3/5 w-full">
-                <h1 className='text-2xl text-center font-bold mt-5'>Team Member Award Database</h1>
-                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
-                    <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
-                        <tr>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">Award Date</th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">Team Member Name</th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            awards?.map(award =>
-                                <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
-                                    <td className="py-3 px-6 whitespace-nowrap">{award.awardDate}</td>
-                                    <td className="py-3 px-6 whitespace-nowrap">{award.name}</td>
-                                    <td className="py-3 px-6 whitespace-nowrap">{award.department}</td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
-                                        <div>
-                                            <label for={award._id} onClick={() => setAwardModal(award)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
-                <input type="checkbox" id={awardModal._id} class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">Award Information!</h3>
-                        <p>Date : {awardModal.awardDate}</p>
-                        <p>Name : {awardModal.name}</p>
-                        <p>Employee ID : {awardModal.employeeID}</p>
-                        <p>Department  : {awardModal.department}</p>
-                        <p>Designation : {awardModal.designation}</p>
-                        <p>Award Providing Date : {awardModal.awardProvidingDate}</p>
-                        <p>Award Type : {awardModal.awardType}</p>
-                        <div class="modal-action">
-                            <label for={awardModal._id} class="btn bg-[#0182BE]">Close!</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="mx-5">
-                <h1 className='text-2xl text-center font-bold mt-5'>Training Details</h1>
-                <div className="bg-[#EEEEEE] rounded">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
-                        <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
-                            <tr>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">Training Date <br /> and Time</th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">Trainer Details</th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">Trainer</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
-                                <td className="py-3 px-6 whitespace-nowrap">18-july-2022 10:00 PM</td>
-                                <td className="py-3 px-6 whitespace-nowrap"> Name : <br /> Designation{" "}</td>
-                                <td className="py-3 px-6 whitespace-nowrap">Department : <br /> Contact Number :{" "}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div className="my-10">
+            <div class="overflow-x-auto">
+                <h1 className='text-2xl text-center font-bold my-5'>Team Member Award Database</h1>
+                <div className="grid grid-cols-3 gap-4">
+                    {
+                        awards.map(award => (
+                            <div class="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <div className="flex items-center justify-between">
+                                    <p className="my-2 font-semibold">{award.name}</p>
+                                </div>
+                                <p><span className="font-semibold">Email :</span> {award.employeeEmail}</p>
+                                <p>{award.awardTitle}</p>
+                                <p className="card-actions justify-end text-green-500 font-semibold">{award.AwardDate}</p>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>

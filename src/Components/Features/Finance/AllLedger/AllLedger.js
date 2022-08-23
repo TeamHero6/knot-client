@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import AllLedgerList from './AllLedgerList';
-
+import AllLedgerList from "./AllLedgerList";
 
 const AllLedger = () => {
     const [cashBook, setCashBook] = useState(false);
     const [bankBook, setBankBook] = useState(false);
-
 
     const handleAddCashBook = (e) => {
         e.preventDefault();
@@ -26,16 +24,13 @@ const AllLedger = () => {
         };
 
         console.log(CashBook);
-        fetch(
-            "http://localhost:5000/cashBook",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(CashBook),
-            }
-        )
+        fetch("https://knot-business-solution-server.herokuapp.com/cashBook", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(CashBook),
+        })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -45,8 +40,6 @@ const AllLedger = () => {
             });
     };
 
-
-
     const handleAddBankBook = (e) => {
         e.preventDefault();
         const date = e.target.date.value;
@@ -55,26 +48,21 @@ const AllLedger = () => {
         const amount = e.target.amount.value;
         const expenseType = e.target.expenseType.value;
 
-
         const BankBook = {
             date,
             voucherNo,
             expenseHead,
             amount,
             expenseType,
-
         };
         // console.log(BankBook);
-        fetch(
-            "http://localhost:5000/bankBook",
-            {
-                method: "POST", 
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(BankBook),
-            }
-        )
+        fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(BankBook),
+        })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -86,7 +74,7 @@ const AllLedger = () => {
     return (
         <div>
             <div>
-                <div className='flex gap-5'>
+                <div className="flex gap-5">
                     <div>
                         <button
                             onClick={() => setCashBook(!cashBook)}
@@ -108,13 +96,11 @@ const AllLedger = () => {
                         </button>{" "}
                         <br />
                     </div>
-
                 </div>
                 {cashBook ? (
                     <div>
                         <div className="md:w-3/6 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8 ">
                             <form onSubmit={handleAddCashBook}>
-
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
                                         Cash Book
@@ -208,9 +194,7 @@ const AllLedger = () => {
                                         />{" "}
                                         <br />
                                     </div>
-
                                 </div>
-
 
                                 <div className="flex justify-center mt-2">
                                     <button
@@ -229,13 +213,11 @@ const AllLedger = () => {
                     ""
                 )}
 
-                <div className='flex gap-5'>
-                </div>
+                <div className="flex gap-5"></div>
                 {bankBook ? (
                     <div>
                         <div className="md:w-3/6 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                             <form onSubmit={handleAddBankBook}>
-
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
                                         Bank Book
@@ -277,8 +259,6 @@ const AllLedger = () => {
                                         />{" "}
                                         <br />
                                     </div>
-
-          
 
                                     <div className="md:flex items-center">
                                         <label
@@ -331,9 +311,7 @@ const AllLedger = () => {
                                         />{" "}
                                         <br />
                                     </div>
-
                                 </div>
-
 
                                 <div className="flex justify-center mt-2">
                                     <button
@@ -353,7 +331,7 @@ const AllLedger = () => {
                 )}
             </div>
             <div>
-                <AllLedgerList/>
+                <AllLedgerList />
             </div>
         </div>
     );

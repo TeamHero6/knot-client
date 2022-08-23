@@ -8,22 +8,22 @@ const AdminDashboard = () => {
         <div className="relative">
             <Navbar />
 
-            <div class="drawer drawer-mobile">
-                <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content ">
+            <div className="drawer drawer-mobile">
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content ">
                     <Outlet />
                 </div>
-                <div class="drawer-side">
+                <div className="drawer-side">
                     <div className="md:hidden absolute top-[3%] left-0">
                         <label
                             for="my-drawer-2"
-                            class="drawer-button lg:hidden"
+                            className="drawer-button lg:hidden"
                         >
                             <BsArrowRightCircleFill className="text-2xl" />
                         </label>
                     </div>
-                    <label for="my-drawer-2" class="drawer-overlay"></label>
-                    <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                    <label for="my-drawer-2" className="drawer-overlay"></label>
+                    <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                         <li>
                             <Link to="">Daily Task</Link>
                         </li>

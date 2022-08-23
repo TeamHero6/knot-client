@@ -65,7 +65,7 @@ const Recruitment = () => {
                     <button
                         onClick={() => setShow(!show)}
                         for="my-drawer"
-                        class="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                        className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                     >
                         <span>
                             <BiPlus></BiPlus>
@@ -181,8 +181,8 @@ const Recruitment = () => {
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Cercular</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div class="rounded-none">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <div className="rounded-none">
+                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -219,7 +219,7 @@ const Recruitment = () => {
                                             <label
                                                 for={c._id}
                                                 onClick={() => setmodal(c)}
-                                                class="modal-button text-center"
+                                                className="modal-button text-center"
                                             >
                                                 <AiOutlineEye className="text-2xl "></AiOutlineEye>
                                             </label>
@@ -242,10 +242,10 @@ const Recruitment = () => {
                             required
                             type="checkbox"
                             id={modal._id}
-                            class="modal-toggle"
+                            className="modal-toggle"
                         />
-                        <div class="modal">
-                            <div class="modal-box">
+                        <div className="modal">
+                            <div className="modal-box">
                                 <div>
                                     <div>
                                         <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
@@ -280,10 +280,10 @@ const Recruitment = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-action">
+                                <div className="modal-action">
                                     <label
                                         for={modal._id}
-                                        class="btn btn-warning"
+                                        className="btn btn-warning"
                                     >
                                         Cancel
                                     </label>
@@ -298,8 +298,8 @@ const Recruitment = () => {
                     Applicant Short List
                 </h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div class="rounded-none">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <div className="rounded-none">
+                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -336,7 +336,7 @@ const Recruitment = () => {
                                             <label
                                                 for={ap._id}
                                                 onClick={() => setapplican(ap)}
-                                                class="modal-button text-center"
+                                                className="modal-button text-center"
                                             >
                                                 <AiOutlineEye className="text-2xl "></AiOutlineEye>
                                             </label>
@@ -357,10 +357,10 @@ const Recruitment = () => {
                             required
                             type="checkbox"
                             id={applican._id}
-                            class="modal-toggle"
+                            className="modal-toggle"
                         />
-                        <div class="modal">
-                            <div class="modal-box">
+                        <div className="modal">
+                            <div className="modal-box">
                                 <div>
                                     <div>
                                         <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
@@ -395,10 +395,10 @@ const Recruitment = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-action">
+                                <div className="modal-action">
                                     <label
                                         for={applican._id}
-                                        class="btn btn-warning"
+                                        className="btn btn-warning"
                                     >
                                         Cancel
                                     </label>

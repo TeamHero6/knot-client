@@ -1,11 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineEye } from "react-icons/ai";
-import { BiSave } from "react-icons/bi";
+import { AiFillSave } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { Pie, PieChart } from "recharts";
 import profile from "../../../Assets/icons/Live-chat-icon/profile_user.png";
 import "./Hrdashboard.css";
 
 const Dashboard = () => {
+    const data01 = [
+        {
+            "name": "Group A",
+            "value": 400
+        },
+        {
+            "name": "Group B",
+            "value": 300
+        },
+        {
+            "name": "Group C",
+            "value": 300
+        },
+        {
+            "name": "Group D",
+            "value": 200
+        },
+        {
+            "name": "Group E",
+            "value": 278
+        },
+        {
+            "name": "Group F",
+            "value": 189
+        }
+    ];
+    const data02 = [
+        {
+            "name": "Group A",
+            "value": 2400
+        },
+        {
+            "name": "Group B",
+            "value": 4567
+        },
+        {
+            "name": "Group C",
+            "value": 1398
+        },
+        {
+            "name": "Group D",
+            "value": 9800
+        },
+        {
+            "name": "Group E",
+            "value": 3908
+        },
+        {
+            "name": "Group F",
+            "value": 4800
+        }
+    ];
     const [requests, setRequest] = useState([]);
     const [allTask, setAlltask] = useState([]);
     const [upstatus, setUpstatus] = useState("");
@@ -64,7 +116,6 @@ const Dashboard = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 toast.success("success Task");
             });
     };
@@ -76,33 +127,38 @@ const Dashboard = () => {
                     Employee Database
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 p-5">
-                    <div className="gray pb-3">
-                        <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
-                            <span className="font-medium">
-                                Total Employees 12
-                            </span>
+                    <div className="card w-72 bg-base-100 shadow-xl">
+                        <div className="w-62 mx-auto">
+                            <PieChart width={300} height={250}>
+                                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#fff814d4" />
+                                <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#2d1856" label />
+                            </PieChart>
                         </div>
-                        <h3 className="text-center font-medium pt-3">
+
+
+                        <h3 className="text-center font-medium py-3">
                             Employee By Gender
                         </h3>
                     </div>
-                    <div className="gray pb-3">
-                        <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
-                            <span className="font-medium">
-                                HR <br /> 8
-                            </span>
+                    <div className="card w-72 bg-base-100 shadow-xl">
+                        <div className="w-62 mx-auto">
+                            <PieChart width={300} height={250}>
+                                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#a3dfce" />
+                                <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#82ca9d" label />
+                            </PieChart>
                         </div>
-                        <h3 className="text-center font-medium pt-3">
+                        <h3 className="text-center font-medium py-3">
                             Employee By Department
                         </h3>
                     </div>
-                    <div className="gray pb-3">
-                        <div class="w-24 h-24 rounded-full bg-white mx-auto text-center pt-3 mt-4 border-4 border-indigo-500/100">
-                            <span className="font-medium">
-                                CEO <br />1
-                            </span>
+                    <div className="card w-72 bg-base-100 shadow-xl">
+                        <div className="w-62 mx-auto">
+                            <PieChart width={300} height={250}>
+                                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
+                                <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#f16b1c" label />
+                            </PieChart>
                         </div>
-                        <h3 className="text-center font-medium pt-3">
+                        <h3 className="text-center font-medium py-3">
                             Employee By Designation
                         </h3>
                     </div>
@@ -115,8 +171,8 @@ const Dashboard = () => {
                 <h1 className="text-2xl text-center font-bold my-5">
                     Leave Request
                 </h1>
-                <div class="overflow-auto rounded-none">
-                    <table class="lg:w-11/12 shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                <div class="overflow-auto rounded-none  " style={{ width: "1000px" }}>
+                    <table class="shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -173,24 +229,24 @@ const Dashboard = () => {
                                     <td>
                                         <div>
                                             <label
-                                                for={request.Name}
+                                                for={request._id}
                                                 onClick={() =>
                                                     setLeave(request)
                                                 }
-                                                class="modal-button"
+                                                className="modal-button"
                                             >
-                                                <AiOutlineEye className="text-2xl w-10 lg:mx-auto"></AiOutlineEye>
+                                                Details
                                             </label>
                                         </div>
                                     </td>
 
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <select
-                                            className="lg:my-3"
+                                            className="lg:my-3 bg-transparent"
                                             onChange={approv}
                                         >
-                                            <option value="approbal_statas">
-                                                approval statas
+                                            <option value="approval_statas">
+                                                {request.aprovel ? request.aprovel : 'Approve Statas'}
                                             </option>
                                             <option value="Approve">
                                                 Approve
@@ -200,13 +256,15 @@ const Dashboard = () => {
                                             </option>
                                         </select>
                                     </td>
+
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <button
-                                            className=" btn btn-xs"
                                             onClick={() => save(request._id)}
+                                            className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                            type="subimt"
                                         >
-                                            {" "}
-                                            save
+                                            <AiFillSave />
+                                            Save
                                         </button>
                                     </td>
                                 </tr>
@@ -215,11 +273,11 @@ const Dashboard = () => {
                     </table>
                     <input
                         type="checkbox"
-                        id={leave.Name}
+                        id={leave._id}
                         class="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -269,7 +327,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div class="modal-action">
-                                <label for={leave.Name} class="btn btn-warning">
+                                <label for={leave._id} class="btn btn-warning">
                                     Cancel
                                 </label>
                             </div>
@@ -283,8 +341,8 @@ const Dashboard = () => {
                 <h1 className="text-2xl text-center font-bold my-5">
                     Daily Task Overview
                 </h1>
-                <div class=" rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className=" rounded-none">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -320,27 +378,27 @@ const Dashboard = () => {
                                         <label
                                             for={task._id}
                                             onClick={() => setDaily(task)}
-                                            class="modal-button"
+                                            className="modal-button"
                                         >
-                                            <AiOutlineEye className="text-2xl w-10 lg:mx-auto"></AiOutlineEye>
+                                            Details
                                         </label>
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-3 px-6 whitespace-nowrap flex">
                                         <select
                                             onChange={taskup}
-                                            className="lg:my-3"
+                                            className="lg:my-3 bg-transparent"
                                         >
-                                            <option value="ToDo"> To Do</option>
+                                            <option value="ToDo">{task.intask ? task.intask : 'To Do'}</option>
                                             <option value="Doing">Doing</option>
                                             <option value="Done">Done</option>
                                         </select>
                                         <button
-                                            className="ml-3 "
-                                            onClick={() =>
-                                                taskshandel(task._id)
-                                            }
+                                            onClick={() => taskshandel(task._id)}
+                                            className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                            type="subimt"
                                         >
-                                            <BiSave></BiSave>
+                                            <AiFillSave />
+                                            Save
                                         </button>
                                     </td>
                                 </tr>
@@ -350,10 +408,10 @@ const Dashboard = () => {
                     <input
                         type="checkbox"
                         id={daily._id}
-                        class="modal-toggle"
+                        className="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -402,8 +460,8 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={daily._id} class="btn btn-warning">
+                            <div className="modal-action">
+                                <label for={daily._id} className="btn btn-warning">
                                     Cancel
                                 </label>
                             </div>

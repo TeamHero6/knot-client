@@ -7,8 +7,8 @@ const AwardTable = ({ award, awardLoading }) => {
             <p className="my-2 px-2">
                 {awardLoading ? <Loader /> : "All Awards"}
             </p>
-            <div class="overflow-x-auto">
-                <table class="table w-full ">
+            <div className="overflow-x-auto">
+                <table className="table w-full ">
                     <thead>
                         <tr>
                             <th>Date</th>

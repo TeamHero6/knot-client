@@ -1,6 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 
 const UserAttaindance = () => {
+
     return (
         <div>
             <div className='lg:w-full mx-20 flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto'>
