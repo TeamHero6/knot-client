@@ -61,18 +61,12 @@ const SalesManagement = () => {
                         >
                             Sales Order
                         </Link>
-                        {/* <Link
-                            to="paymentReceive"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                        >
-                            Payment Receive
-                        </Link> */}
-                        {/* <Link
+                        <Link
                             to="return"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             Return
-                        </Link> */}
+                        </Link>
                         <Link
                             to="vendor"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
@@ -90,6 +84,12 @@ const SalesManagement = () => {
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Bill
+                        </Link>
+                        <Link
+                            to="paymentReceive"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
+                        >
+                            Inventory
                         </Link>
                     </div>
                 </div>
