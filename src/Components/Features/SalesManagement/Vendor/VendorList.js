@@ -14,8 +14,8 @@ const VendorList = ({ setSingleVendorDetail }) => {
     return (
         <div>
             <h1 className="text-center text-2xl font-bold">Vendor List</h1>
-            <div class="overflow-auto rounded-none">
-                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+            <div className="overflow-auto rounded-none">
+                <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         {/* <thead className=' border-b border-cyan-100'> */}
                         <tr>

@@ -5,8 +5,8 @@ const WarningTable = ({ warnings }) => {
     return (
         <div className="w-full">
             <p className="my-2 px-2">All Meetings</p>
-            <div class="overflow-x-auto">
-                <table class="table w-full ">
+            <div className="overflow-x-auto">
+                <table className="table w-full ">
                     <thead>
                         <tr>
                             <th>Date</th>

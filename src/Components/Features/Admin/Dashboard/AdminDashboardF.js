@@ -4,7 +4,6 @@ import ExNavbar from "../../../ExampleDesign/ExNavbar";
 
 const AdminDashboardF = () => {
     const [open, setOpen] = useState(false);
-
     return (
         <div className="min-h-screen bg-custom-gray">
             <span
@@ -16,7 +15,7 @@ const AdminDashboardF = () => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-chevron-expand"
+                    className="bi bi-chevron-expand"
                     viewBox="0 0 16 16"
                 >
                     <path
@@ -32,39 +31,26 @@ const AdminDashboardF = () => {
                 ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div>
-                        <NavLink to="">
+                        <NavLink to="dailyTask">
                             {({ isActive }) => (
                                 <span
                                     className={
                                         isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100"
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
                                             : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
                                     }
                                 >
-                                    Daily Task
+                                    <span>Daily Task</span>
                                 </span>
                             )}
                         </NavLink>
-
-                        <NavLink to="teamManagement">
-                            {({ isActive }) => (
-                                <span
-                                    className={
-                                        isActive
-                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100"
-                                            : "flex my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray w-full"
-                                    }
-                                >
-                                    Management
-                                </span>
-                            )}
-                        </NavLink>
+                        npm install react-spring
                         <NavLink to="teamOrganize">
                             {({ isActive }) => (
                                 <span
                                     className={
                                         isActive
-                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100"
+                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
                                             : "flex my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray"
                                     }
                                 >

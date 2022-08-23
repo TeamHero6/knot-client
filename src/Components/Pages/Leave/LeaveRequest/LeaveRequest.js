@@ -217,10 +217,10 @@ const LeaveRequest = () => {
                         </div>
                         {/* <RequestStatus></RequestStatus> */}
 
-                        <input type="checkbox" id={leaveModal._id} class="modal-toggle" />
-                        <div class="modal modal-bottom sm:modal-middle">
-                            <div class="modal-box">
-                                <h3 class="font-bold text-lg">Leave Request Information!</h3>
+                        <input type="checkbox" id={leaveModal._id} className="modal-toggle" />
+                        <div className="modal modal-bottom sm:modal-middle">
+                            <div className="modal-box">
+                                <h3 className="font-bold text-lg">Leave Request Information!</h3>
                                 <p>Date : {leaveModal.Date}</p>
                                 <p>Name : {leaveModal.Name}</p>
                                 <p>Employee ID : {leaveModal.id}</p>

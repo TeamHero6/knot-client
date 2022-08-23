@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { BiUserCircle } from "react-icons/bi";
 
 const Meeting = () => {
     const [meetings, setMeetings] = useState([]);

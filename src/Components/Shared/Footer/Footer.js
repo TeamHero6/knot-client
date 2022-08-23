@@ -108,12 +108,12 @@ const Footer = () => {
             </div>
             <div className="footer-section-top-sm-md">
                 <div className="Easy-to-use">
-                    <div class="collapse">
+                    <div className="collapse">
                         <input type="checkbox" />
-                        <div class="collapse-title text-xl font-medium">
+                        <div className="collapse-title text-xl font-medium">
                             <h2>Additional Link</h2>
                         </div>
-                        <div class="collapse-content">
+                        <div className="collapse-content">
                             <div className="link">
                                 <ul>
                                     <li>
@@ -134,12 +134,12 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="Secure-Database">
-                    <div class="collapse">
+                    <div className="collapse">
                         <input type="checkbox" />
-                        <div class="collapse-title text-xl font-medium">
+                        <div className="collapse-title text-xl font-medium">
                             <h2>Contact Us</h2>
                         </div>
-                        <div class="collapse-content">
+                        <div className="collapse-content">
                             <section className="contact-area">
                                 <h4>
                                     Address: Mirpur - 1207, Dhaka <br />

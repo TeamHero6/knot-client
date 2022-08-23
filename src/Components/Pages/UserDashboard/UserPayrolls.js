@@ -34,7 +34,7 @@ const UserPayrolls = () => {
                                     <td className="py-3 px-6 whitespace-nowrap">{payroll.Payable_Amount}</td>
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         <div>
-                                            <label for={payroll._id} onClick={() => setPayrollModal(payroll)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                            <label for={payroll._id} onClick={() => setPayrollModal(payroll)} className=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                         </div>
                                     </td>

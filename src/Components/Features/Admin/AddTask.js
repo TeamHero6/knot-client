@@ -1,28 +1,20 @@
-// import {
-//     KeyboardDateTimePicker,
-//     MuiPickersUtilsProvider,
-// } from "@material-ui/pickers";
-import moment from "moment";
 import React, { useState } from "react";
 import { ImCross } from "react-icons/im";
 import { useSelector } from "react-redux";
-import Swal from "sweetalert2";
 import FilterCard from "./FilterCard";
 
 const AddTask = ({ refetch }) => {
-    const [selectedDate, handleDateChange] = useState(new Date());
     const [employeeEmail, setEmployeeEmail] = useState();
     const [employeeName, setEmployeeName] = useState("");
     const [search, setSearch] = useState("");
     const authInfo = useSelector((state) => state.auth);
     console.log(authInfo);
-
     const users = [
         {
             id: 1,
             name: "Monir Hossain Rabby",
             email: "raj021159@gmail.com",
-            img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/298535184_3335161630078341_50621954687104169_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHbrNDCT5hJroVFCIuhc19Q_FvO6cAZXwn8W87pwBlfCd8T1GY39ygZgFI8DIrW2DZQMxx0uQWGtPyf8En960VD&_nc_ohc=7aOmwVjMxYEAX_LBUx0&_nc_oc=AQld1YKwtzBRn15GmqTEeKz2n5mKB5p2DHbVGLUR12kSQB2P8Me9bSOfIcmjBdnwc4k&_nc_ht=scontent.fdac27-1.fna&oh=00_AT-t96CmSuNxea_qUXVPIxLADJkI7DkTGPZOGogtJg7VOg&oe=62F911FE",
+            img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/298535184_3335161630078341_50621954687104169_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHbrNDCT5hJroVFCIuhc19Q_FvO6cAZXwn8W87pwBlfCd8T1GY39ygZgFI8DIrW2DZQMxx0uQWGtPyf8En960VD&_nc_ohc=iymhZlRqO-cAX_kEC6m&_nc_oc=AQkZTzpdjQaN1joVzUv3o3dpOepgrYAOQaUc9t86940bgZcUfuglLRdr-yVLMqqCxg4&_nc_ht=scontent.fdac27-1.fna&oh=00_AT_j1C49jJ9lAZAt643KZNot14djn-xzKhQiTU6AWfH1HA&oe=6304EF7E",
         },
         {
             id: 2,
@@ -47,11 +39,8 @@ const AddTask = ({ refetch }) => {
         const department = e.target.department.value;
         const taskTitle = e.target.taskTitle.value;
         const taskDescription = e.target.taskDescription.value;
-        const deadline = moment(selectedDate).format(
-            "DD/MM/YYYY hh:mm a",
-            true
-        );
-        const companyName = authInfo.loggerInfo?.companyName;
+        const deadline = e.target.deadline.value;
+        const companyName = "";
         const result = {
             name,
             employeeEmail,
@@ -64,46 +53,33 @@ const AddTask = ({ refetch }) => {
         console.log(result);
 
         //Post data to server
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(result),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.acknowledged) {
-                    e.target.reset();
-                    refetch();
-                    setEmployeeEmail("");
-                    setEmployeeName("");
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: `Task is assigned to ${employeeName}`,
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                }
-            });
+        // fetch(
+        //     "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
+        //     {
+        //         method: "POST",
+        //         headers: {
+        //             "content-type": "application/json",
+        //         },
+        //         body: JSON.stringify(result),
+        //     }
+        // )
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         if (data.acknowledged) {
+        //             e.target.reset();
+        //             refetch();
+        //             setEmployeeEmail("");
+        //             setEmployeeName("");
+        //             Swal.fire({
+        //                 position: "top-end",
+        //                 icon: "success",
+        //                 title: `Task is assigned to ${employeeName}`,
+        //                 showConfirmButton: false,
+        //                 timer: 1500,
+        //             });
+        //         }
+        //     });
     };
-
-    // fetch(
-    //     "https://knot-business-solution-server.herokuapp.com/addNewTask",
-    //     {
-    //         method: "POST",
-    //         headers: {
-    //             "content-type": "application/json",
-    //         },
-    //         body: JSON.stringify(NewTask),
-    //     }
-    // )
-    //     .then((res) => res.json())
-    //     .then((data) => console.log(data));
     return (
         <div>
             <form
@@ -178,18 +154,11 @@ const AddTask = ({ refetch }) => {
                         <option value="finance">Finance</option>
                         <option value="admin">Admin</option>
                     </select>
-                    {/* <MuiPickersUtilsProvider utils={DateMomentUtils}>
-                        <KeyboardDateTimePicker
-                            className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
-                            label="Pick a Deadline"
-                            variant="inline"
-                            ampm={true}
-                            disablePast
-                            format="yyyy/MM/dd HH:mm"
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                        />
-                    </MuiPickersUtilsProvider> */}
+                    <input
+                        type="datetime-local"
+                        name="deadline"
+                        className="py-2 pl-3 w-full lg:w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                    />
                 </div>
                 <input
                     className="py-2 pl-3 w-full  my-1 border border-gray-300 bg-slate-50 rounded outline-none"

@@ -17,8 +17,8 @@ const UserAttaindance = () => {
                 </div>
                 <div className='mt-16'>
                     <h1 className='text-[#0182BE] text-2xl font-semibold'>Total Tracked</h1>
-                    <div class="overflow-x-auto">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
+                    <div className="overflow-x-auto">
+                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden w-full">
                             <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>

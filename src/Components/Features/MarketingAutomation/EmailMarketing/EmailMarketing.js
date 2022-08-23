@@ -33,16 +33,16 @@ const EmailMarketing = () => {
     return (
         <div className="mx-5 mt-3">
             <div className="flex flex-wrap justify-between items-center">
-                <div class="form-control md:min-w-[400px] border border-gray-300 bg-slate-50 rounded">
-                    <div class="input-group ">
-                        <button class="btn btn-ghost text-2xl">
+                <div className="form-control md:min-w-[400px] border border-gray-300 bg-slate-50 rounded">
+                    <div className="input-group ">
+                        <button className="btn btn-ghost text-2xl">
                             <BiSearchAlt></BiSearchAlt>
                         </button>
                         <input
                             className="text-xl py-2 pl-3 w-full my-1 outline-none"
                             type="text"
                             placeholder="Search Here"
-                            class="input"
+                            className="input"
                         />
                     </div>
                 </div>

@@ -41,7 +41,7 @@ const UserPromotion = () => {
                                         <td className="py-3 px-6 whitespace-nowrap">{promotion.Depertment}</td>
                                         <td className="py-3 px-6 whitespace-nowrap">
                                             <div>
-                                                <label for={promotion._id} onClick={() => setPromotionModal(promotion)} class="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                                <label for={promotion._id} onClick={() => setPromotionModal(promotion)} className="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                             </div>
                                         </td>
@@ -50,10 +50,10 @@ const UserPromotion = () => {
                             }
                         </tbody>
                     </table>
-                    <input type="checkbox" id={promotionModal._id} class="modal-toggle" />
-                    <div class="modal modal-bottom sm:modal-middle">
-                        <div class="modal-box">
-                            <h3 class="font-bold text-lg">Promotion Information!</h3>
+                    <input type="checkbox" id={promotionModal._id} className="modal-toggle" />
+                    <div className="modal modal-bottom sm:modal-middle">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Promotion Information!</h3>
                             <p>Name : {promotionModal.Name}</p>
                             <p>Department : {promotionModal.Depertment}</p>
                             <p>Promoted Type : {promotionModal.Promoted_Type}</p>
@@ -122,7 +122,7 @@ const UserPromotion = () => {
                                         <td className="py-3 px-6 whitespace-nowrap">{transfer.Depertment}</td>
                                         <td className="py-3 px-6 whitespace-nowrap">
                                             <div>
-                                                <label for={transfer._id} onClick={() => setTransferModal(transfer)} class="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
+                                                <label for={transfer._id} onClick={() => setTransferModal(transfer)} className="modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
 
                                             </div>
                                         </td>
@@ -130,12 +130,20 @@ const UserPromotion = () => {
                                 )
                             }
                         </tbody>
+<<<<<<< HEAD
                     </table> */}
 
                     {/* <input type="checkbox" id={transferModal._id} class="modal-toggle" />
                     <div class="modal modal-bottom sm:modal-middle">
                         <div class="modal-box">
                             <h3 class="font-bold text-lg">Transfer Information!</h3>
+=======
+                    </table>
+                    <input type="checkbox" id={transferModal._id} className="modal-toggle" />
+                    <div className="modal modal-bottom sm:modal-middle">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Transfer Information!</h3>
+>>>>>>> 7fb08ca68b1fbf492e37ee593c18a186e3a68a95
                             <p>Name : {transferModal.Name}</p>
                             <p>Department : {transferModal.Depertment}</p>
                             <p>Location : {transferModal.Location}</p>
@@ -155,3 +163,16 @@ const UserPromotion = () => {
 };
 
 export default UserPromotion;
+
+
+{/* <Route
+                    path="/userdashboard"
+                    element={<UserDashboardK></UserDashboardK>}
+                >
+                    <Route index element={<LeaveRequest />} />
+                    <Route path="userManagement" element={<UserManagement></UserManagement>} />
+                    <Route path="attendance" element={<UserAttaindance />} />
+                    <Route path="performance" element={<UserPromotion />} />
+                    <Route path="Payrolls" element={<UserPayrolls />} />
+                    <Route path="Calender" element={<Calender></Calender>} />
+                </Route> */}

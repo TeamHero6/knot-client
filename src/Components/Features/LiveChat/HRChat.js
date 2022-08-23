@@ -14,8 +14,8 @@ const HRChat = () => {
 
     return (
         <div className="chatCard ">
-            <div class="overflow-auto rounded-none mr-5 ">
-                <table class="shadow-sm w-full mx-auto mt-12 mb-1 text-base overflow-hidden">
+            <div className="overflow-auto rounded-none mr-5 ">
+                <table className="shadow-sm w-full mx-auto mt-12 mb-1 text-base overflow-hidden">
                     <tbody>
                         {chatList.map((chatList) => (
                             <tr
