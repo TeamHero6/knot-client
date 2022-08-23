@@ -45,12 +45,12 @@ const HR = () => {
 
     return (
         <div>
-            <section className="relative chatBox lg:w-9/12 mx-auto bg-white shadow-gray-300 border shadow-sm rounded pt-5 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto">
+            <section className="relative chatBox lg:w-full mx-auto bg-white shadow-gray-300 border shadow-sm rounded pt-5 px-5 md:w-9/12 sm:w-11/12 sm:mx-auto">
                 <div className="flex justify-end"></div>
                 <div className="flex gap-8  ">
                     <div className="groupName">
                         {loginUser.slice(0, 1).map((loginUser) => (
-                            <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                            <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                 <td className="py-3 px-6 font-semibold text-blue-500 whitespace-normal">
                                     {loginUser.name}
                                 </td>
@@ -62,7 +62,7 @@ const HR = () => {
                         <h2 className="text-purple-700">Group Members</h2>
 
                         {userInfo.map((userInfo) => (
-                            <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                            <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                 <td className="py-3 px-6 whitespace-normal">
                                     {userInfo?.name}
                                 </td>
@@ -70,7 +70,7 @@ const HR = () => {
                         ))}
                     </div>
 
-                    <div className="chat w-full h-96">
+                    <div className="chat w-full h-full">
                         <div className="sticky top-0 py-3 bg-white flex justify-between">
                             <h2 className="text-center text-blue-500 text-xl font-semibold">
                                 HR Management Live Chat

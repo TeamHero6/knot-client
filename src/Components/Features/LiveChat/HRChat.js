@@ -20,7 +20,7 @@ const HRChat = () => {
                         {chatList.map((chatList) => (
                             <tr
                                 key={chatList._id}
-                                className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100"
                             >
                                 <td className="px-5 py-2 text-black whitespace-normal">
                                     <div className="flex justify-between font-semibold">
