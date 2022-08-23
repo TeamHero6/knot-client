@@ -34,7 +34,7 @@ const Interview = () => {
             });
     };
     return (
-        <div>
+        <div className="ml-5">
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Interview</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">

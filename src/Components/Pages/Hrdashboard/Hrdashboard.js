@@ -89,9 +89,9 @@ const Hrdashboard = () => {
 
                     </div>
                 </div>
-                <div className="mx-5">
+               
                     <Outlet />
-                </div>
+               
             </section>
         </div>
     );
