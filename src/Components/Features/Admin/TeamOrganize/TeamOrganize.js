@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Loader from "../../../Shared/Loader/Loader";
 import MeetingCard from "./AllTables/MeetingTable/MeetingCards/MeetingCard";
@@ -55,7 +56,12 @@ const TeamOrganize = () => {
     }
 
     return (
-        <div className="bg-white">
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: 1 }}
+            exit={{ opacity: 0 }}
+            className="bg-white"
+        >
             <section className="w-full py-4 px-2  md:flex md:justify-between md:items-center">
                 <section className="flex flex-col md:flex-row">
                     <label
@@ -215,7 +221,7 @@ const TeamOrganize = () => {
                     ))}
                 </section>
             )}
-        </div>
+        </motion.div>
     );
 };
 

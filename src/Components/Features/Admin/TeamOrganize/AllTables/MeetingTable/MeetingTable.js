@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { BiSave } from "react-icons/bi";
 import { FiEye } from "react-icons/fi";
@@ -21,41 +22,65 @@ const MeetingTable = ({ meetings }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {meetings.map((meeting) => (
-                            <>
-                                <tr className="text-center">
-                                    <td>{meeting.date}</td>
-                                    <td>{meeting.meetingHost}</td>
-                                    <td>{meeting.meetingGuest}</td>
-                                    <td>
-                                        <FiEye />
-                                    </td>
-                                    <td>edit</td>
-                                    <td>
-                                        <select name="meetingStatus">
-                                            <option value="willBeStart">
-                                                Will be Start
-                                            </option>
-                                            <option value="cancle">
-                                                Cancle
-                                            </option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <a
-                                            href={meeting.meetingLink}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            Join
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <BiSave />
-                                    </td>
-                                </tr>
-                            </>
-                        ))}
+                        <AnimatePresence>
+                            {meetings.map((meeting, i) => (
+                                <>
+                                    <motion.tr
+                                        variants={{
+                                            hidden: {
+                                                opacity: 0,
+                                                x: -50,
+                                            },
+                                            visible: (i) => ({
+                                                opacity: 1,
+                                                x: 0,
+                                                transition: {
+                                                    delay: i * 0.5,
+                                                },
+                                            }),
+                                            removed: {
+                                                opacity: 0,
+                                            },
+                                        }}
+                                        initial="hidden"
+                                        animate="visible"
+                                        custom={{ i }}
+                                        exit="removed"
+                                        className="text-center"
+                                    >
+                                        <td>{meeting.date}</td>
+                                        <td>{meeting.meetingHost}</td>
+                                        <td>{meeting.meetingGuest}</td>
+                                        <td>
+                                            <FiEye />
+                                        </td>
+                                        <td>edit</td>
+                                        <td>
+                                            <select name="meetingStatus">
+                                                <option value="willBeStart">
+                                                    Will be Start
+                                                </option>
+                                                <option value="cancle">
+                                                    Cancle
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <a
+                                                href={meeting.meetingLink}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                Join
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <BiSave />
+                                        </td>
+                                    </motion.tr>
+                                </>
+                            ))}
+                        </AnimatePresence>
                     </tbody>
                 </table>
             </div>
