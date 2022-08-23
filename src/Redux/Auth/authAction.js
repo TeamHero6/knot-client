@@ -24,3 +24,10 @@ export const updateName = (name) => {
         payload: name,
     };
 };
+
+export const getAllEmployees = (allEmployees) => {
+    return {
+        type: "ALLEMPLOYEES",
+        payload: allEmployees,
+    };
+};

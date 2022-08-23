@@ -1,5 +1,6 @@
 const initialState = {
     loggerInfo: null,
+    allEmployees: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -13,6 +14,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loggerInfo: null,
+                allEmployees: null,
             };
         case "UPDATEPROFILEPHOTO":
             return {
@@ -31,6 +33,11 @@ const authReducer = (state = initialState, action) => {
                 },
             };
 
+        case "ALLEMPLOYEES":
+            return {
+                ...state,
+                allEmployees: action.payload,
+            };
         default:
             return state;
     }

@@ -5,11 +5,11 @@ import adminLogo from "../../../Assets/icons/Admin/adminLogo.png";
 import dashboard from "../../../Assets/icons/Admin/dashboard.png";
 import hr from "../../../Assets/icons/Admin/hr.png";
 import finance from "../../../Assets/icons/financereport.png";
+import chat from "../../../Assets/icons/Live-chat-icon/chat.png";
 import marketing from "../../../Assets/icons/marketing-automation.png";
 import sales from "../../../Assets/icons/sales2.png";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import AccessAppsCard from "./AccessAppsCard/AccessAppsCard";
-import chat from "../../../Assets/icons/Live-chat-icon/chat.png"
 
 const AccessYourApps = () => {
     const [filterResult, setFilterResult] = useState([]);
@@ -79,14 +79,7 @@ const AccessYourApps = () => {
 
     const navigate = useNavigate();
     return (
-        <div
-            // style={{
-            //     backgroundImage: `url(${background})`,
-            //     backgroundPosition: "center",
-            //     backgroundRepeat: "no-repeat",
-            // }}
-            className="min-h-screen"
-        >
+        <div className="min-h-screen">
             <div className="flex relative justify-end md:justify-center items-center h-10 border-[0.5px] border-gray-400">
                 <img
                     src={logo}

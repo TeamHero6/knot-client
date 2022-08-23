@@ -8,6 +8,7 @@ import AddTaskModal from "./AddTaskModal/AddTaskModal";
 
 const DailyTask = () => {
     const [isOpen, setOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
 
     // Getting redux state
     const authInfo = useSelector((state) => state.auth);
@@ -42,6 +43,7 @@ const DailyTask = () => {
                                 type="text"
                                 placeholder="filter by name/task"
                                 className="py-1 px-2 w-[100%] outline-none text-gray-400"
+                                onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
                     </div>
@@ -53,7 +55,7 @@ const DailyTask = () => {
             {/*All tasks Data in AllTask component*/}
             <section className="bg-white rounded drop-shadow-md w-full h-auto p-4 my-4">
                 <div className="overflow-x-auto">
-                    <AllTasks {...{ data }} />
+                    <AllTasks {...{ data, searchTerm }} />
                 </div>
             </section>
         </>

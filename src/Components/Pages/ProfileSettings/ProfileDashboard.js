@@ -5,9 +5,7 @@ import Navbar from "../../Shared/Navbar/Navbar";
 
 const ProfileDashboard = () => {
     const authInfo = useSelector((state) => state.auth);
-    console.log(authInfo.loggerInfo);
     const { role } = authInfo?.loggerInfo;
-    console.log(role);
     return (
         <div className="bg-custom-gray min-h-screen">
             <Navbar />
