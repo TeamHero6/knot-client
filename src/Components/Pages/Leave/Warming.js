@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Training from "./Training";
 
 const Warming = () => {
     const [warnings, setWarnings] = useState([]);
@@ -11,13 +12,13 @@ const Warming = () => {
     }, []);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/Trainnig")
+        fetch("http://localhost:5000/Trainnig")
             .then((res) => res.json())
             .then((data) => setTrainings(data.reverse()));
     }, []);
 
     return (
-        <div className="my-10 flex">
+        <div className="my-10">
             <div class="overflow-x-auto mx-5">
                 <h1 className='text-2xl text-center font-bold mt-5 mb-2'>Team Members Warning Database</h1>
                 <div className="h-80 overflow-x-auto">
@@ -47,7 +48,8 @@ const Warming = () => {
             </div>
             <div className="mx-5">
                 <h1 className='text-2xl text-center font-bold mt-5 mb-2'>Training Details</h1>
-                <div className="grid grid-cols-2 gap-4">
+                <Training></Training>
+                {/* <div className="grid grid-cols-2 gap-4">
                     {
                         trainings.slice(0, 4).map(training => (
                             <div class="px-4 py-2 w-60 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -79,7 +81,7 @@ const Warming = () => {
                             </div>
                         ))
                     }
-                </div>
+                </div> */}
 
             </div>
         </div>

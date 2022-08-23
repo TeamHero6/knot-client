@@ -34,7 +34,7 @@ const Calender = () => {
     // console.log(allEvents);
 
     return (
-        <div className="App">
+        <div className="w-full mx-auto">
             <div className='lg:w-10/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto text-center'>
                 <h1 className="text-xl font-semibold">Calendar</h1>
                 <h2 className="text-xl font-semibold mb-3">Add New Event</h2>

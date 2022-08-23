@@ -9,7 +9,6 @@ import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
-import AdminDashboardF from "./Components/Features/Admin/Dashboard/AdminDashboardF";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
 import DirectExpense from "./Components/Features/Finance/AllExpense/DirectExpense";
 import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
@@ -63,6 +62,9 @@ import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import Loader from "./Components/Shared/Loader/Loader";
 import FormSample from "./FromSample/FormSample";
+const AdminDashboardF = lazy(() =>
+    import("./Components/Features/Admin/Dashboard/AdminDashboardF")
+);
 const Home = lazy(() => import("./Components/Pages/Home/Home"));
 
 function App() {
@@ -241,6 +243,7 @@ function App() {
                             element={<DirectExpense />}
                         ></Route>
                     </Route>
+                    <Route path="load" element={<Loader />} />
                 </Routes>
             </Suspense>
             <ToastContainer></ToastContainer>
