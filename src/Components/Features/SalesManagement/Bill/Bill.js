@@ -56,7 +56,7 @@ const Bill = () => {
                     }
                 });
         } else {
-            toast("Excuse me what are you doing");
+            toast.error("Please Input Paid amount and Due amount.");
         }
     };
 
@@ -133,9 +133,7 @@ const Bill = () => {
                             </td>
                             <td className="py-3 px-6 pr-10 whitespace-nowrap">
                                 <button
-                                    onClick={() =>
-                                        handleSaveBill(purchaseOrder._id)
-                                    }
+                                    onClick={() => handleSaveBill(purchaseOrder._id)}
                                     className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                                 >
                                     <AiFillSave />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Outlet } from "react-router-dom";
 import SalesNavbar from './SalesNavbar';
+import { ToastContainer } from 'react-toastify';
 
 const SalesManagement = () => {
     const [open, setOpen] = useState(false);
@@ -97,6 +98,7 @@ const SalesManagement = () => {
                     <Outlet />
                 </div>
             </section>
+            <ToastContainer />
         </div>
     );
 };
