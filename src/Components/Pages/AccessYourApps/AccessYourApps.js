@@ -17,8 +17,8 @@ const AccessYourApps = () => {
     const products = [
         {
             id: 1,
-            name: "Admin",
-            link: "/admin",
+            name: "Team Management",
+            link: "/teamManagement",
             icon: adminLogo,
         },
         {

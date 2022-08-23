@@ -31,7 +31,7 @@ const AdminDashboardF = () => {
                 ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div>
-                        <NavLink to="">
+                        <NavLink to="dailyTask">
                             {({ isActive }) => (
                                 <span
                                     className={

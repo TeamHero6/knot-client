@@ -7,10 +7,8 @@ import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManag
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
-import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import AdminDashboardF from "./Components/Features/Admin/Dashboard/AdminDashboardF";
-import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
 import DirectExpense from "./Components/Features/Finance/AllExpense/DirectExpense";
 import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
@@ -160,16 +158,12 @@ function App() {
                         element={<CustomerListing />}
                     ></Route>
                 </Route>
-                <Route path="/admin" element={<AdminDashboardF />}>
+                <Route path="/teamManagement" element={<AdminDashboardF />}>
                     <Route index element={<DailyTask />}></Route>
-                    <Route path="addTask" element={<AddTask />}></Route>
+                    <Route path="dailyTask" element={<DailyTask />} />
                     <Route
                         path="teamOrganize"
                         element={<TeamOrganize />}
-                    ></Route>
-                    <Route
-                        path="teamManagement"
-                        element={<TeamManagement />}
                     ></Route>
                 </Route>
                 <Route
