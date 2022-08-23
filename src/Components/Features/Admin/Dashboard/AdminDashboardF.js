@@ -4,7 +4,6 @@ import ExNavbar from "../../../ExampleDesign/ExNavbar";
 
 const AdminDashboardF = () => {
     const [open, setOpen] = useState(false);
-
     return (
         <div className="min-h-screen bg-custom-gray">
             <span
@@ -32,7 +31,7 @@ const AdminDashboardF = () => {
                 ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div>
-                        <NavLink to="">
+                        <NavLink to="dailyTask">
                             {({ isActive }) => (
                                 <span
                                     className={
@@ -45,20 +44,7 @@ const AdminDashboardF = () => {
                                 </span>
                             )}
                         </NavLink>
-
-                        {/* <NavLink to="teamManagement">
-                            {({ isActive }) => (
-                                <span
-                                    className={
-                                        isActive
-                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100"
-                                            : "flex my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray w-full"
-                                    }
-                                >
-                                    Management
-                                </span>
-                            )}
-                        </NavLink> */}
+                        npm install react-spring
                         <NavLink to="teamOrganize">
                             {({ isActive }) => (
                                 <span
