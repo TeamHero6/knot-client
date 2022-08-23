@@ -42,9 +42,9 @@ const LeaveRequest = () => {
                 }
             });
     };
-    // console.log(userinfo)
+
     return (
-        <div>
+        <div className="w-full">
             <section>
                 <label for="my-drawer" >
                     <button onClick={() => setShow(!show)} className='flex border-transparent ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'><BiPlus></BiPlus> New</button>
@@ -237,10 +237,7 @@ const LeaveRequest = () => {
                         </div>
                     </div>
                 </div>
-                <Meeting />
             </section>
-            <Warming />
-            <Award />
         </div>
     );
 };

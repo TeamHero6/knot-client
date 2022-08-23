@@ -52,6 +52,7 @@ import Recruitment from "./Components/Pages/Hrdashboard/Recruitment/Recruitment"
 import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
+import UserManagement from "./Components/Pages/Leave/UserManagement";
 import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
@@ -117,6 +118,10 @@ function App() {
                         element={<UserDashboardK></UserDashboardK>}
                     >
                         <Route index element={<LeaveRequest />} />
+                        <Route
+                            path="userManagement"
+                            element={<UserManagement></UserManagement>}
+                        />
                         <Route
                             path="attendance"
                             element={<UserAttaindance />}
