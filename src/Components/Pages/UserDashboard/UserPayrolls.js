@@ -12,6 +12,7 @@ const UserPayrolls = () => {
 
     return (
         <div className="mx-auto w-full">
+            <h1 className='text-2xl text-center font-bold mt-5'>Payrolls</h1>
             <div className='w-full mb-5 flex justify-between rounded py-6 px-6 mt-5'>
                 <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">
                     <thead className='text-white bg-cyan-500 border-b border-cyan-100'>

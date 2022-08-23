@@ -180,11 +180,11 @@ const LeaveRequest = () => {
                             </div>
                         </div> : ' '
                 }
-                <div className='px-5 flex'>
-                    <div class="overflow-x-auto w-3/5">
+                <div className='px-5'>
+                    <div class="overflow-x-auto">
                         <h1 className='text-2xl text-center font-bold'>Request Status</h1>
-                        <div className="h-80">
-                            <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                        <div className="h-80 w-full mb-5 flex justify-between rounded py-6 px-6 mt-5">
+                            <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">
                                 <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                                     <tr>
                                         <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>
@@ -215,6 +215,7 @@ const LeaveRequest = () => {
 
                             </table>
                         </div>
+                        {/* <RequestStatus></RequestStatus> */}
 
                         <input type="checkbox" id={leaveModal._id} class="modal-toggle" />
                         <div class="modal modal-bottom sm:modal-middle">
@@ -235,8 +236,8 @@ const LeaveRequest = () => {
                             </div>
                         </div>
                     </div>
-                    <Meeting />
                 </div>
+                <Meeting />
             </section>
             <Warming />
             <Award />

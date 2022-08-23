@@ -12,17 +12,17 @@ const Meeting = () => {
 
     return (
         <div className="mx-5">
-            <h1 className="text-2xl text-center font-bold mb-12">
+            <h1 className="text-2xl text-center font-bold mt-12 mb-5">
                 Meeting Database
             </h1>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
                     meetings.slice(0, 4).map(meeting => (
-                        <div class="px-4 py-2 w-48 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div class="px-4 py-2 w-60 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                             <div className="flex justify-between items-center">
-                                <p className="text-green-500 my-2">{meeting.meetingHost}</p>
-                                <BiUserCircle className="text-green-300" size={30}></BiUserCircle>
+                                <p className="text-xl my-2 font-semibold">{meeting.meetingHost}</p>
+                                {/* <BiUserCircle className="text-green-300" size={30}></BiUserCircle> */}
                             </div>
                             <p><span className="font-semibold">Topic :</span> {meeting.meetingTopic}</p>
                             <p className="text-gray-400 mb-2">{meeting.date}</p>
