@@ -50,9 +50,6 @@ const AllTasks = ({ data }) => {
                                         id=""
                                         className="px-2 py-1 bg-green-500 text-white"
                                     >
-                                        <option value={task?.status}>
-                                            {task?.status}
-                                        </option>
                                         <option value="running">Running</option>
                                         <option value="done">Done</option>
                                         <option value="missed">Missed</option>

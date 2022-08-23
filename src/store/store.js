@@ -9,12 +9,11 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = configureStore({
+
+export const store = configureStore({
     reducer: persistedReducer,
     middleware: getDefaultMiddleware(),
+    devTools: process.env.NODE_ENV !== "production",
 });
 
-const persistor = persistStore(store);
-
-export default store;
-export { persistor };
+export let persistor = persistStore(store);

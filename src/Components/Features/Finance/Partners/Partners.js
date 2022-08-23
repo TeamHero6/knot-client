@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { IoIosAddCircleOutline } from "react-icons/io";
+import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
-import PartnerList from './PartnerList';
-import PartnerDetailsModal from './PartnerDetailsModal';
-import PartnerInvestChart from './PartnerInvestChart';
-import PartnerInvestShareChart from './PartnerInvestShareChart';
-import PartnerDetails from '../FinanceDashboard/PartnerDetails';
+import { IoIosAddCircleOutline } from "react-icons/io";
+import PartnerDetailsModal from "./PartnerDetailsModal";
+import PartnerInvestChart from "./PartnerInvestChart";
+import PartnerInvestShareChart from "./PartnerInvestShareChart";
+import PartnerList from "./PartnerList";
 
 const Partners = () => {
     const [addNewPartners, setAddNewPartners] = useState(false);
     const [singlePartnerDetail, setSinglePartnerDetail] = useState({});
     const [partnerList, setPartnerList] = useState([]);
 
-
     useEffect(() => {
-        fetch("http://localhost:5000/partner")
+        fetch("https://knot-business-solution-server.herokuapp.com/partner")
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList]);
@@ -34,7 +32,7 @@ const Partners = () => {
         };
 
         fetch(
-            "http://localhost:5000/addPartner",
+            "https://knot-business-solution-server.herokuapp.com/addPartner",
             {
                 method: "POST",
                 headers: {
@@ -51,10 +49,10 @@ const Partners = () => {
                 }
             });
     };
-    
+
     return (
         <div>
-            <div className='flex gap-5'>
+            <div className="flex gap-5">
                 <div>
                     <button
                         onClick={() => setAddNewPartners(!addNewPartners)}
@@ -65,7 +63,6 @@ const Partners = () => {
                     </button>{" "}
                     <br />
                 </div>
-                
             </div>
             {addNewPartners ? (
                 <div>
@@ -149,7 +146,6 @@ const Partners = () => {
                                 </div>
                             </div>
 
-
                             <div className="flex justify-center mt-2">
                                 <button
                                     type="submit"
@@ -166,16 +162,18 @@ const Partners = () => {
             ) : (
                 ""
             )}
-            <div className='flex justify-between lg:w-full bg-white shadow-gray-300 border shadow-sm rounded py-6 px-6 mt-5 sm:w-9/12 sm:w-11/12 sm:mx-auto'>
-                <PartnerList setSinglePartnerDetail={setSinglePartnerDetail}></PartnerList>
+            <div className="flex justify-between lg:w-full bg-white shadow-gray-300 border shadow-sm rounded py-6 px-6 mt-5 sm:w-9/12 sm:w-11/12 sm:mx-auto">
+                <PartnerList
+                    setSinglePartnerDetail={setSinglePartnerDetail}
+                ></PartnerList>
                 <PartnerInvestChart />
             </div>
-            <div className='flex justify-between lg:w-full bg-white shadow-gray-300 border shadow-sm rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto mb-10'>
+            <div className="flex justify-between lg:w-full bg-white shadow-gray-300 border shadow-sm rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto mb-10">
                 <PartnerInvestShareChart />
             </div>
             <PartnerDetailsModal
                 singlePartnerDetail={singlePartnerDetail}
-            ></PartnerDetailsModal>     
+            ></PartnerDetailsModal>
         </div>
     );
 };
