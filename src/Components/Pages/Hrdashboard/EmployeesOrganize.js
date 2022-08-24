@@ -67,9 +67,9 @@ const EmployeesOrganize = () => {
     return (
         <div>
             <div className="px-5">
-                <h1 className="text-xl  my-5">Team Members Warning Database</h1>
+                <h1 className="text-xl my-5">Team Members Warning Database</h1>
                 <div class="rounded-none overflow-auto">
-                    <table class="lg:w-11/12 shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                    <table class="shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -92,11 +92,11 @@ const EmployeesOrganize = () => {
 
                         <tbody>
                             {warning.map((w) => (
-                                <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                <tr className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100">
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {w.warningDate}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-3 px-6 ">
                                         <p className="pl-2">
                                             {w.warningReason}{" "}
                                         </p>

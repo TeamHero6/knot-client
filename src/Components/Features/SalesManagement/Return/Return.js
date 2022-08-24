@@ -12,7 +12,7 @@ const Return = () => {
     return (
         <div>
             <div className="overflow-auto rounded-none bg-white p-6">
-                <h1 className="text-center text-2xl font-bold mb-4">All Order List</h1>
+                <h1 className="text-center text-2xl font-semibold mb-4">Returned Order</h1>
                 <table className="shadow-sm w-full border-2 border-cyan-300 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
@@ -30,9 +30,6 @@ const Return = () => {
                             </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
                                 Total Amount
-                            </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
-                                Cancel Order
                             </th>
                         </tr>
                     </thead>
@@ -56,16 +53,6 @@ const Return = () => {
                                 </td>
                                 <td className="py-3 px-6 whitespace-nowrap">
                                     {order.totalAmount}
-                                </td>
-                                <td className="py-3 ">
-                                    {
-                                        order.isCancel ?
-                                            <button
-                                                disabled
-                                                className='flex items-center bg-red-600	py-2 px-2 ml-7 text-white font-bold rounded border border-white'>Cancelled</button>
-                                            :
-                                            ""
-                                    }
                                 </td>
                             </tr>
                         ))}

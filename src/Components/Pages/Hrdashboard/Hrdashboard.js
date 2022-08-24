@@ -33,13 +33,13 @@ const Hrdashboard = () => {
                     <div>
                         <Link
                             to=""
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             <p>Dashboard</p>
                         </Link>
                         <Link
                             to="employeeorg"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Employees Organize
                         </Link>

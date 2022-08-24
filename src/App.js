@@ -27,8 +27,8 @@ import MarketingAutomation from "./Components/Features/MarketingAutomation/Marke
 import Bill from "./Components/Features/SalesManagement/Bill/Bill";
 import Customer from "./Components/Features/SalesManagement/Customer/Customer";
 import SalesDashboard from "./Components/Features/SalesManagement/Dashboard/SalesDashboard";
+import Inventory from "./Components/Features/SalesManagement/Inventory/Inventory";
 import Items from "./Components/Features/SalesManagement/Items/Items";
-import PaymentReceive from "./Components/Features/SalesManagement/PaymentReceive/PaymentReceive";
 import PurchaseOrder from "./Components/Features/SalesManagement/PurchaseOrder/PurchaseOrder";
 import Return from "./Components/Features/SalesManagement/Return/Return";
 import SalesManagement from "./Components/Features/SalesManagement/SalesManagement";
@@ -36,7 +36,6 @@ import SalesOrder from "./Components/Features/SalesManagement/SalesOrder/SalesOr
 import SalesTeamMembers from "./Components/Features/SalesManagement/SalesTeamMembers/SalesTeamMembers";
 import Vendor from "./Components/Features/SalesManagement/Vendor/Vendor";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
-
 import About from "./Components/Pages/About/About";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
@@ -84,7 +83,7 @@ function App() {
                         path="employeeorg"
                         element={<EmployeesOrganize />}
                     ></Route>
-                    
+
                     <Route path="performance" element={<Performance />}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
                     <Route path="attendance" element={<Attendance />}></Route>
@@ -142,10 +141,6 @@ function App() {
                     ></Route>
                     <Route path="customer" element={<Customer />}></Route>
                     <Route path="salesOrder" element={<SalesOrder />}></Route>
-                    <Route
-                        path="paymentReceive"
-                        element={<PaymentReceive />}
-                    ></Route>
                     <Route path="return" element={<Return />}></Route>
                     <Route path="vendor" element={<Vendor />}></Route>
                     <Route
@@ -153,6 +148,7 @@ function App() {
                         element={<PurchaseOrder />}
                     ></Route>
                     <Route path="bill" element={<Bill />}></Route>
+                    <Route path="inventory" element={<Inventory />}></Route>
                 </Route>
                 <Route path="/marketingTS" element={<MarketingAutomation />}>
                     <Route index element={<EmailMarketing />}></Route>
@@ -200,9 +196,9 @@ function App() {
                 </Route>
                 <Route path="/financeTS" element={<FinanceManagement />}>
                     <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
-                    <Route path="partners" element={<Partners/>}></Route>
-                    <Route path="allLedger" element={<AllLedger/>}></Route>
-                    <Route path="directExpense" element={<DirectExpense/>}></Route>
+                    <Route path="partners" element={<Partners />}></Route>
+                    <Route path="allLedger" element={<AllLedger />}></Route>
+                    <Route path="directExpense" element={<DirectExpense />}></Route>
                 </Route>
             </Routes>
             <ToastContainer></ToastContainer>

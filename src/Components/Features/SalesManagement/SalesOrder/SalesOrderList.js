@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AiFillDelete } from 'react-icons/ai';
 import { toast } from "react-toastify";
 
 const SalesOrderList = () => {
@@ -38,7 +37,9 @@ const SalesOrderList = () => {
                     toast.success("Successfully updated your Sales Order info");
                 }
             });
-    }
+    };
+
+    const latestOrderList = orderList.filter(order => order.isCancel !== 'cancelled');
 
     return (
         <div>
@@ -68,7 +69,7 @@ const SalesOrderList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {orderList.map((order) => (
+                        {latestOrderList.map((order) => (
                             <tr
                                 key={order._id}
                                 className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
@@ -88,19 +89,12 @@ const SalesOrderList = () => {
                                 <td className="py-3 px-6 whitespace-nowrap">
                                     {order.totalAmount}
                                 </td>
-                                <td className="py-3 ">
-                                    {
-                                        order.isCancel ?
-                                            <button
-                                                disabled
-                                                className='flex items-center bg-red-600	py-2 px-2 ml-7 text-white font-bold rounded border border-white'>Cancelled</button>
-                                            :
-                                            <button
-                                                onClick={() => handleOrderCancel(order._id)}
-                                                className='flex items-center gap-2 bg-red-600	 py-2 px-6 ml-10 text-white font-bold rounded border border-white hover:bg-white hover:text-red-600 hover:outline-1 hover:border hover:border-red-600 hover: shadow-red-400 hover: shadow-sm'>
-                                                <AiFillDelete />
-                                            </button>
-                                    }
+                                <td className="py-3 px-6">
+                                    <button
+                                        onClick={() => handleOrderCancel(order._id)}
+                                        className='flex items-center gap-2 bg-red-600 py-2 px-6 text-white font-bold rounded border border-white hover:bg-white hover:text-red-600 hover:outline-1 hover:border hover:border-red-600 hover: shadow-red-400 hover: shadow-sm'>
+                                        Cancel
+                                    </button>
                                 </td>
                             </tr>
                         ))}
