@@ -32,8 +32,8 @@ const Navbar = () => {
         return;
     }
     return (
-        <div className=" md:px-8 lg:px-12">
-            <div className="navbar ">
+        <div className="relative ">
+            <div className="navbar md:px-8 lg:px-12 bg-white h-[80px]">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabindex="0" className="btn btn-ghost lg:hidden">
@@ -108,7 +108,7 @@ const Navbar = () => {
                                     </div>
                                 ) : (
                                     <Link
-                                        to="/BusinessSignUp"
+                                        to="/BusinessLogin"
                                         className="px-4 text-green-500"
                                     >
                                         Login
@@ -174,7 +174,7 @@ const Navbar = () => {
                                 </div>
                             ) : (
                                 <Link
-                                    to="/BusinessSignUp"
+                                    to="/BusinessLogin"
                                     className="px-3 py-2 rounded bg-green-500 hover:bg-green-400 duration-500 text-white"
                                 >
                                     Login
