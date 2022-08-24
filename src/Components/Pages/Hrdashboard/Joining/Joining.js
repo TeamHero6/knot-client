@@ -10,13 +10,13 @@ const Joining = () => {
     const [joining, setJoining] = useState([]);
     // const [employinfo, setEmployinfo] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/joining")
+        fetch("http://localhost:5000/joining")
             .then((res) => res.json())
             .then((data) => setJoining(data));
     }, [joining]);
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/joining", {
+        fetch("http://localhost:5000/joining", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

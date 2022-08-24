@@ -11,12 +11,12 @@ const EmployeesOrganize = () => {
     // const [show, setShow] = useState('');
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/warning")
+        fetch("http://localhost:5000/warning")
             .then((res) => res.json())
             .then((data) => setWarning(data));
     }, [feeds]);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/award")
+        fetch("http://localhost:5000/award")
             .then((res) => res.json())
             .then((data) => setAward(data));
     }, []);
@@ -33,7 +33,7 @@ const EmployeesOrganize = () => {
 
         const colfeed = { infeed };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/warning/${id}`;
+        const url = `http://localhost:5000/warning/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -51,7 +51,7 @@ const EmployeesOrganize = () => {
 
         const leadercol = { ledarfeed };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/award/${id}`;
+        const url = `http://localhost:5000/award/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {

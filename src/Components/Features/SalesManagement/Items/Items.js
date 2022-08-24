@@ -49,16 +49,13 @@ const Items = () => {
             vendorName,
         };
 
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewProduct",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(product),
-            }
-        )
+        fetch("http://localhost:5000/addNewProduct", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(product),
+        })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

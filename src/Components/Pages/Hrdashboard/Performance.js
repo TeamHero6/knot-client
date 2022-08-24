@@ -14,22 +14,19 @@ const Performance = () => {
     const [modal, setmodal] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/performance")
+        fetch("http://localhost:5000/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, [promo]);
 
     const onSubmit = (data) => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/performance",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(data),
-            }
-        )
+        fetch("http://localhost:5000/performance", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {

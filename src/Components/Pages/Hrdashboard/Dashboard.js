@@ -67,12 +67,12 @@ const Dashboard = () => {
     const [daily, setDaily] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/users")
+        fetch("http://localhost:5000/users")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/alltasks")
+        fetch("http://localhost:5000/alltasks")
             .then((res) => res.json())
             .then((data) => setAlltask(data));
     }, []);
@@ -88,7 +88,7 @@ const Dashboard = () => {
 
         const updata = { aprovel };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/users/${id}`;
+        const url = `http://localhost:5000/users/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -107,7 +107,7 @@ const Dashboard = () => {
 
         const taskcom = { intask };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/alltasks/${id}`;
+        const url = `http://localhost:5000/alltasks/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {

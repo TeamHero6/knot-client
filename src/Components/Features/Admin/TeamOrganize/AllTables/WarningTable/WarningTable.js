@@ -1,9 +1,15 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { FiEye } from "react-icons/fi";
 
 const WarningTable = ({ warnings }) => {
     return (
-        <div className="w-full">
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 1, opacity: 1, transition: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+            className="w-full"
+        >
             <p className="my-2 px-2">All Meetings</p>
             <div className="overflow-x-auto">
                 <table className="table w-full ">
@@ -37,7 +43,7 @@ const WarningTable = ({ warnings }) => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

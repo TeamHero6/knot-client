@@ -5,7 +5,12 @@ import { FiEye } from "react-icons/fi";
 
 const MeetingTable = ({ meetings }) => {
     return (
-        <div className="w-full">
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 1, opacity: 1, transition: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+            className="w-full"
+        >
             <p className="my-2 px-2">All Meetings</p>
             <div className="overflow-x-auto">
                 <table className="table w-full ">
@@ -29,7 +34,7 @@ const MeetingTable = ({ meetings }) => {
                                         variants={{
                                             hidden: {
                                                 opacity: 0,
-                                                x: -50,
+                                                y: -50,
                                             },
                                             visible: (i) => ({
                                                 opacity: 1,
@@ -40,6 +45,7 @@ const MeetingTable = ({ meetings }) => {
                                             }),
                                             removed: {
                                                 opacity: 0,
+                                                y: -50,
                                             },
                                         }}
                                         initial="hidden"
@@ -84,7 +90,7 @@ const MeetingTable = ({ meetings }) => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

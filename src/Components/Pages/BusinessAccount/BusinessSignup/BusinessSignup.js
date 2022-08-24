@@ -69,16 +69,13 @@ const BusinessSignup = () => {
                         };
 
                         // Send Data to Server
-                        fetch(
-                            "https://knot-business-solution-server.herokuapp.com/createdUser",
-                            {
-                                method: "PUT",
-                                headers: {
-                                    "content-type": "application/json",
-                                },
-                                body: JSON.stringify(userInfo),
-                            }
-                        )
+                        fetch("http://localhost:5000/createdUser", {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(userInfo),
+                        })
                             .then((res) => res.json())
                             .then((data) => {
                                 const token = data?.token;
