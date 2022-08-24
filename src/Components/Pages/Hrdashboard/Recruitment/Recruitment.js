@@ -176,11 +176,11 @@ const Recruitment = () => {
                         ""
                     )}
                 </div>
-                <Applicant></Applicant>
+                {/* <Applicant></Applicant> */}
             </div>
 
             <div className="my-5">
-                <h3 className="text-[#0182be] text-2xl">Cercular</h3>
+                <h3 className="text-[#0182be] text-2xl">Circular</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
                     <div class="rounded-none w-96  lg:w-1/2">
                         <table class="shadow-2xl border-2 border-cyan-300 w-96 lg:w-1/2 mx-auto my-12 text-base overflow-hidden">

@@ -38,10 +38,16 @@ const Hrdashboard = () => {
                             <p>Dashboard</p>
                         </Link>
                         <Link
+                            to="hrLeaveRequest"
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
+                        >
+                            <p>Leave Request</p>
+                        </Link>
+                        <Link
                             to="employeeorg"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
-                            Employees Organize
+                            Employees
                         </Link>
                         <Link
                             to="performance"

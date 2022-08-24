@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import profile from "../../../Assets/icons/Live-chat-icon/profile_user.png";
 import "./Hrdashboard.css";
 
-const Dashboard = () => {
+const HRLeaveRequest = () => {
     const [requests, setRequest] = useState([]);
     const [upstatus, setUpstatus] = useState("");
     const [leave, setLeave] = useState({});
@@ -14,7 +14,7 @@ const Dashboard = () => {
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
-  
+
 
     const approv = (event) => {
         setUpstatus(event.target.value);
@@ -41,16 +41,12 @@ const Dashboard = () => {
 
     return (
         <div>
-           
-
-            {/* Leave Requst Section */}
-
             <div className="px-5">
                 <h1 className="text-2xl text-left lg:text-center font-bold my-5">
                     Leave Request
                 </h1>
-                <div class="overflow-auto rounded-none w-96 lg:w-full">
-                    <table class="w-11/12  shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                <div className="bg-white w-full py-5">
+                    <table class="w-11/12  shadow-sm border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -78,7 +74,7 @@ const Dashboard = () => {
                         </thead>
                         <tbody>
                             {requests.map((request) => (
-                                <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {request.Date}
                                     </td>
@@ -92,7 +88,7 @@ const Dashboard = () => {
                                         {request.dep}
                                     </td>
 
-                                   
+
                                     <td>
                                         <div>
                                             <label
@@ -138,6 +134,9 @@ const Dashboard = () => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+                <div >
+
                     <input
                         type="checkbox"
                         id={leave._id}
@@ -206,4 +205,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default HRLeaveRequest;

@@ -7,7 +7,7 @@ const HRChat = () => {
     // console.log(chatList);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/hrchat")
+        fetch("http://localhost:5000/hrchat")
             .then((res) => res.json())
             .then((data) => setChatList(data));
     }, [chatList]);

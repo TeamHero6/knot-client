@@ -12,8 +12,9 @@ const UserLogin = () => {
         const employeeID = event.target.employeeID.value;
 
         const loginUser = { name, employeeID };
+        console.log(loginUser);
 
-        fetch("https://knot-business-solution-server.herokuapp.com/loginuser", {
+        fetch("http://localhost:5000/loginuser", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

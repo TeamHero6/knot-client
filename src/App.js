@@ -17,6 +17,16 @@ import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
 import FinanceDashboard from "./Components/Features/Finance/FinanceDashboard/FinanceDashboard";
 import FinanceManagement from "./Components/Features/Finance/FinanceManagement";
 import Partners from "./Components/Features/Finance/Partners/Partners";
+import HRDashboard from "./Components/Features/HRDashboard/Dashboard/HRDashboard";
+import EmployeeManagement from "./Components/Features/HRDashboard/EmployeeManagement/EmployeeManagement";
+import HRWarning from "./Components/Features/HRDashboard/EmployeeManagement/HRWarning";
+import HrEmployeeDetails from "./Components/Features/HRDashboard/HREmployeeDetails/HrEmployeeDetails";
+import HrJoining from "./Components/Features/HRDashboard/HRJoining/HrJoining";
+import HrLeaveRequest from "./Components/Features/HRDashboard/HRLeaveRequest/HrLeaveRequest";
+import HRManagement from "./Components/Features/HRDashboard/HRManagement";
+import HrPayroll from "./Components/Features/HRDashboard/HRPayroll/HrPayroll";
+import HrPerformance from "./Components/Features/HRDashboard/HRPerformance/HrPerformance";
+import HrVacancy from "./Components/Features/HRDashboard/HRVacancy/HrVacancy";
 import HR from "./Components/Features/LiveChat/HR";
 import LiveChat from "./Components/Features/LiveChat/LiveChat";
 import LiveChatDashboard from "./Components/Features/LiveChat/LiveChatDashboard";
@@ -48,6 +58,7 @@ import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 import Hrdetails from "./Components/Pages/Hrdashboard/Hrdetails/Hrdetails";
+import HRLeaveRequest from "./Components/Pages/Hrdashboard/HRLeaveRequest";
 import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
 import Joining from "./Components/Pages/Hrdashboard/Joining/Joining";
 import Payrolls from "./Components/Pages/Hrdashboard/Payrolls";
@@ -80,12 +91,9 @@ function App() {
                 ></Route>
                 <Route path="/hrdashboard" element={<Hrdashboard />}>
                     <Route index element={<Dashboard />}></Route>
-                    <Route
-                        path="employeeorg"
-                        element={<EmployeesOrganize />}
-                    ></Route>
-                    
+                    <Route path="employeeorg"element={<EmployeesOrganize />}></Route>
                     <Route path="performance" element={<Performance />}></Route>
+                    <Route path="hrLeaveRequest" element={<HRLeaveRequest/>}></Route>
                     <Route path="payrolls" element={<Payrolls />}></Route>
                     <Route path="attendance" element={<Attendance />}></Route>
                     <Route path="hrdetails" element={<Hrdetails />}></Route>
@@ -93,6 +101,7 @@ function App() {
                     <Route path="interview" element={<Interview />}></Route>
                     <Route path="joining" element={<Joining />}></Route>
                 </Route>
+                
                 <Route path="/BusinessSignUp" element={<BusinessSignup />} />
                 <Route path="/BusinessLogin" element={<BusinessLogin />} />
                 <Route path="/about" element={<About />} />
@@ -204,6 +213,18 @@ function App() {
                     <Route path="allLedger" element={<AllLedger/>}></Route>
                     <Route path="directExpense" element={<DirectExpense/>}></Route>
                     <Route path="attendance" element={<UserAttendance />} />
+                </Route>
+
+                <Route path="/hrManagement" element={<HRManagement />}>
+                    <Route index element={<HRDashboard/>}></Route>
+                    <Route path="hrLeaveRequest" element={<HrLeaveRequest/>}></Route>
+                    <Route path="employeeManagement" element={<EmployeeManagement/>}></Route>
+                    <Route path="hrWarning" element={<HRWarning/>}></Route>
+                    <Route path="hrPerformance" element={<HrPerformance/>}></Route>
+                    <Route path="hrPayroll" element={<HrPayroll/>}></Route>
+                    <Route path="hrEmployeeDetails" element={<HrEmployeeDetails/>}></Route>
+                    <Route path="hrVacancy" element={<HrVacancy/>}></Route>
+                    <Route path="hrJoining" element={<HrJoining/>}></Route>
                 </Route>
             </Routes>
             <ToastContainer></ToastContainer>
