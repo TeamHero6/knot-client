@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -8,55 +9,55 @@ import "./Hrdashboard.css";
 const Dashboard = () => {
     const data01 = [
         {
-            "name": "Group A",
-            "value": 400
+            name: "Group A",
+            value: 400,
         },
         {
-            "name": "Group B",
-            "value": 300
+            name: "Group B",
+            value: 300,
         },
         {
-            "name": "Group C",
-            "value": 300
+            name: "Group C",
+            value: 300,
         },
         {
-            "name": "Group D",
-            "value": 200
+            name: "Group D",
+            value: 200,
         },
         {
-            "name": "Group E",
-            "value": 278
+            name: "Group E",
+            value: 278,
         },
         {
-            "name": "Group F",
-            "value": 189
-        }
+            name: "Group F",
+            value: 189,
+        },
     ];
     const data02 = [
         {
-            "name": "Group A",
-            "value": 2400
+            name: "Group A",
+            value: 2400,
         },
         {
-            "name": "Group B",
-            "value": 4567
+            name: "Group B",
+            value: 4567,
         },
         {
-            "name": "Group C",
-            "value": 1398
+            name: "Group C",
+            value: 1398,
         },
         {
-            "name": "Group D",
-            "value": 9800
+            name: "Group D",
+            value: 9800,
         },
         {
-            "name": "Group E",
-            "value": 3908
+            name: "Group E",
+            value: 3908,
         },
         {
-            "name": "Group F",
-            "value": 4800
-        }
+            name: "Group F",
+            value: 4800,
+        },
     ];
     const [requests, setRequest] = useState([]);
     const [allTask, setAlltask] = useState([]);
@@ -121,7 +122,11 @@ const Dashboard = () => {
     };
 
     return (
-        <div>
+        <motion.div
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="pt-5">
                 <h1 className="text-2xl text-center font-bold">
                     Employee Database
@@ -130,11 +135,28 @@ const Dashboard = () => {
                     <div className="card w-72 bg-base-100 shadow-xl">
                         <div className="w-62 mx-auto">
                             <PieChart width={300} height={250}>
-                                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#fff814d4" />
-                                <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#2d1856" label />
+                                <Pie
+                                    data={data01}
+                                    dataKey="value"
+                                    nameKey="name"
+                                    cx="50%"
+                                    cy="50%"
+                                    outerRadius={50}
+                                    fill="#fff814d4"
+                                />
+                                <Pie
+                                    data={data02}
+                                    dataKey="value"
+                                    nameKey="name"
+                                    cx="50%"
+                                    cy="50%"
+                                    innerRadius={60}
+                                    outerRadius={80}
+                                    fill="#2d1856"
+                                    label
+                                />
                             </PieChart>
                         </div>
-
 
                         <h3 className="text-center font-medium py-3">
                             Employee By Gender
@@ -143,8 +165,26 @@ const Dashboard = () => {
                     <div className="card w-72 bg-base-100 shadow-xl">
                         <div className="w-62 mx-auto">
                             <PieChart width={300} height={250}>
-                                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#a3dfce" />
-                                <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#82ca9d" label />
+                                <Pie
+                                    data={data01}
+                                    dataKey="value"
+                                    nameKey="name"
+                                    cx="50%"
+                                    cy="50%"
+                                    outerRadius={50}
+                                    fill="#a3dfce"
+                                />
+                                <Pie
+                                    data={data02}
+                                    dataKey="value"
+                                    nameKey="name"
+                                    cx="50%"
+                                    cy="50%"
+                                    innerRadius={60}
+                                    outerRadius={80}
+                                    fill="#82ca9d"
+                                    label
+                                />
                             </PieChart>
                         </div>
                         <h3 className="text-center font-medium py-3">
@@ -154,8 +194,26 @@ const Dashboard = () => {
                     <div className="card w-72 bg-base-100 shadow-xl">
                         <div className="w-62 mx-auto">
                             <PieChart width={300} height={250}>
-                                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
-                                <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#f16b1c" label />
+                                <Pie
+                                    data={data01}
+                                    dataKey="value"
+                                    nameKey="name"
+                                    cx="50%"
+                                    cy="50%"
+                                    outerRadius={50}
+                                    fill="#8884d8"
+                                />
+                                <Pie
+                                    data={data02}
+                                    dataKey="value"
+                                    nameKey="name"
+                                    cx="50%"
+                                    cy="50%"
+                                    innerRadius={60}
+                                    outerRadius={80}
+                                    fill="#f16b1c"
+                                    label
+                                />
                             </PieChart>
                         </div>
                         <h3 className="text-center font-medium py-3">
@@ -171,7 +229,10 @@ const Dashboard = () => {
                 <h1 className="text-2xl text-center font-bold my-5">
                     Leave Request
                 </h1>
-                <div class="overflow-auto rounded-none  " style={{ width: "1000px" }}>
+                <div
+                    class="overflow-auto rounded-none  "
+                    style={{ width: "1000px" }}
+                >
                     <table class="shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
@@ -246,7 +307,9 @@ const Dashboard = () => {
                                             onChange={approv}
                                         >
                                             <option value="approval_statas">
-                                                {request.aprovel ? request.aprovel : 'Approve Statas'}
+                                                {request.aprovel
+                                                    ? request.aprovel
+                                                    : "Approve Statas"}
                                             </option>
                                             <option value="Approve">
                                                 Approve
@@ -388,12 +451,18 @@ const Dashboard = () => {
                                             onChange={taskup}
                                             className="lg:my-3 bg-transparent"
                                         >
-                                            <option value="ToDo">{task.intask ? task.intask : 'To Do'}</option>
+                                            <option value="ToDo">
+                                                {task.intask
+                                                    ? task.intask
+                                                    : "To Do"}
+                                            </option>
                                             <option value="Doing">Doing</option>
                                             <option value="Done">Done</option>
                                         </select>
                                         <button
-                                            onClick={() => taskshandel(task._id)}
+                                            onClick={() =>
+                                                taskshandel(task._id)
+                                            }
                                             className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                                             type="subimt"
                                         >
@@ -461,7 +530,10 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div className="modal-action">
-                                <label for={daily._id} className="btn btn-warning">
+                                <label
+                                    for={daily._id}
+                                    className="btn btn-warning"
+                                >
                                     Cancel
                                 </label>
                             </div>
@@ -469,7 +541,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

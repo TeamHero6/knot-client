@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
@@ -31,7 +32,11 @@ const Joining = () => {
             });
     };
     return (
-        <div>
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <div className="">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <section className="lg:w-11/12 lg:mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto">
@@ -109,7 +114,7 @@ const Joining = () => {
                 </div>
             </div>
             <Assigntranning></Assigntranning>
-        </div>
+        </motion.div>
     );
 };
 

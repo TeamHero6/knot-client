@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import HRNavbar from "../../Shared/HRNavbar/HRNavbar";
@@ -26,11 +27,18 @@ const Hrdashboard = () => {
             </span>
             <HRNavbar></HRNavbar>
             <section className="flex w-full">
-                <div
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md justify-center 
                 ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
-                    <div>
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 1, opacity: 1, transition: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                    >
                         <Link
                             to=""
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
@@ -85,10 +93,8 @@ const Hrdashboard = () => {
                         >
                             Joining
                         </Link>
-
-
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
                 <div className="mx-5">
                     <Outlet />
                 </div>

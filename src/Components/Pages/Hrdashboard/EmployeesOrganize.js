@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -65,7 +66,11 @@ const EmployeesOrganize = () => {
     };
 
     return (
-        <div>
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <div className="px-5">
                 <h1 className="text-xl  my-5">Team Members Warning Database</h1>
                 <div class="rounded-none overflow-auto">
@@ -112,10 +117,11 @@ const EmployeesOrganize = () => {
                                             rows=""
                                             cols=""
                                             placeholder={w.infeed}
-                                        >{w.infeed}</textarea>
+                                        >
+                                            {w.infeed}
+                                        </textarea>
                                     </td>
                                     <td className="py-3  whitespace-nowrap">
-
                                         <button
                                             onClick={() => teamfeed(w._id)}
                                             className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
@@ -124,8 +130,6 @@ const EmployeesOrganize = () => {
                                             <AiFillSave />
                                             Save
                                         </button>
-
-
                                     </td>
                                 </tr>
                             ))}
@@ -178,11 +182,12 @@ const EmployeesOrganize = () => {
                                             placeholder={a.ledarfeed}
                                             rows=""
                                             cols=""
-                                        >{a.ledarfeed}</textarea>
+                                        >
+                                            {a.ledarfeed}
+                                        </textarea>
                                     </td>
 
                                     <td className="py-3 px-6 whitespace-nowrap">
-
                                         <button
                                             onClick={() => handelleader(a._id)}
                                             className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
@@ -198,7 +203,7 @@ const EmployeesOrganize = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave, AiOutlineEye, AiTwotoneDelete } from "react-icons/ai";
@@ -59,7 +60,11 @@ const Recruitment = () => {
             });
     };
     return (
-        <div>
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <div className="grid grid-cols-2 gap-5">
                 <div>
                     <button
@@ -408,7 +413,7 @@ const Recruitment = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
@@ -32,7 +33,11 @@ const Payrolls = () => {
             });
     };
     return (
-        <div>
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <label
                 onClick={() => setShow(!show)}
                 for="my-drawer"
@@ -229,7 +234,7 @@ const Payrolls = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
