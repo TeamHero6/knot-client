@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 const AllTasks = ({ data, searchTerm }) => {
     const [edit, setEdit] = useState(false);
-    const [filterResult, setFilterResult] = useState([]);
 
     // update task status
     const updateStatus = (status, id) => {
@@ -18,21 +17,6 @@ const AllTasks = ({ data, searchTerm }) => {
             .then((res) => res.json())
             .then((data) => console.log(data));
     };
-
-    // Get all task by filter
-    // const handleFilter = () => {
-    //     if(searchFilter < 0){
-    //         setFilterResult(data)
-    //     }
-    //     else {
-    //         const regex = new RegExp(`${searchFilter}`, "gi")
-    //         const maches = data.filter((task) => {
-    //             if(task.name.match(regex)){
-    //                 return task;
-    //             }
-    //         })
-    //     }
-    // }
 
     return (
         <div>
@@ -68,83 +52,93 @@ const AllTasks = ({ data, searchTerm }) => {
                                 } else if (
                                     task.name
                                         .toLowerCase()
+                                        .includes(searchTerm.toLowerCase()) ||
+                                    task.taskTitle
+                                        .toLowerCase()
                                         .includes(searchTerm.toLowerCase())
                                 ) {
                                     return task;
                                 }
                             })
-                            .map((task, i) => (
-                                <>
-                                    <motion.tr
-                                        variants={{
-                                            hidden: (i) => ({
-                                                opacity: 0,
-                                                y: -50 * i,
-                                            }),
-                                            visible: (i) => ({
-                                                opacity: 1,
-                                                y: 0,
-                                                transition: {
-                                                    delay: i * 0.015,
+                            .map((task, i) => {
+                                return (
+                                    <>
+                                        <motion.tr
+                                            variants={{
+                                                hidden: (i) => ({
+                                                    opacity: 0,
+                                                    y: -50 * i,
+                                                    h: 0,
+                                                }),
+                                                visible: (i) => ({
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    h: 1,
+                                                    transition: {
+                                                        delay: i * 0.015,
+                                                    },
+                                                }),
+                                                removed: {
+                                                    opacity: 0,
+                                                    h: 0,
                                                 },
-                                            }),
-                                            removed: {
-                                                opacity: 0,
-                                            },
-                                        }}
-                                        initial="hidden"
-                                        animate="visible"
-                                        exit="removed"
-                                        custom={i}
-                                        className="duration-500 cursor-pointer border-b border-gray-300 rounded"
-                                    >
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {task?.name}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {task?.department}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {task?.taskTitle}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {moment(task?.deadline).format(
-                                                "MMMM Do YYYY, h:mm a"
-                                            )}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            <select
-                                                name=""
-                                                id=""
-                                                className="px-2 py-1 bg-green-500 text-white"
-                                                onChange={(e) =>
-                                                    updateStatus(
-                                                        e.target.value,
-                                                        task?._id
-                                                    )
-                                                }
-                                            >
-                                                <option value="running">
-                                                    Running
-                                                </option>
-                                                <option value="done">
-                                                    Done
-                                                </option>
-                                                <option value="missed">
-                                                    Missed
-                                                </option>
-                                            </select>
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap hover:underline hover:text-blue-500">
-                                            <button
-                                                onClick={() => setEdit(!edit)}
-                                            >
-                                                Edit
-                                            </button>
-                                        </td>
-                                    </motion.tr>
-                                </>
-                            ))}
+                                            }}
+                                            initial="hidden"
+                                            animate="visible"
+                                            exit="removed"
+                                            custom={i}
+                                            className="duration-500 cursor-pointer border-b border-gray-300 rounded"
+                                        >
+                                            <td className="py-3 px-6 whitespace-nowrap">
+                                                {task?.name}
+                                            </td>
+                                            <td className="py-3 px-6 whitespace-nowrap">
+                                                {task?.department}
+                                            </td>
+                                            <td className="py-3 px-6 whitespace-nowrap">
+                                                {task?.taskTitle}
+                                            </td>
+                                            <td className="py-3 px-6 whitespace-nowrap">
+                                                {moment(task?.deadline).format(
+                                                    "MMMM Do YYYY, h:mm a"
+                                                )}
+                                            </td>
+                                            <td className="py-3 px-6 whitespace-nowrap">
+                                                <select
+                                                    name=""
+                                                    id=""
+                                                    className="px-2 py-1 bg-green-500 text-white"
+                                                    onChange={(e) =>
+                                                        updateStatus(
+                                                            e.target.value,
+                                                            task?._id
+                                                        )
+                                                    }
+                                                >
+                                                    <option value="running">
+                                                        Running
+                                                    </option>
+                                                    <option value="done">
+                                                        Done
+                                                    </option>
+                                                    <option value="missed">
+                                                        Missed
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td className="py-3 px-6 whitespace-nowrap hover:underline hover:text-blue-500">
+                                                <button
+                                                    onClick={() =>
+                                                        setEdit(!edit)
+                                                    }
+                                                >
+                                                    Edit
+                                                </button>
+                                            </td>
+                                        </motion.tr>
+                                    </>
+                                );
+                            })}
                     </AnimatePresence>
                 </tbody>
             </table>
