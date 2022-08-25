@@ -4,7 +4,7 @@ const WarningCard = ({ warning }) => {
     const { type, warningDate, warningReason, name, photo } = warning;
     console.log(warning);
     return (
-        <div className="bg-red-100 border-l-4 border-red-500 px-4 py-2 rounded-md min-w-[256px]">
+        <div className="bg-red-100 border-l-4 border-red-500 py-2 px-4 m-auto rounded-md w-[256px] h-[180px]">
             <div class="flex justify-between text-green-400">
                 <div className="flex items-center">
                     <p className="text-gray-600">{name}</p>

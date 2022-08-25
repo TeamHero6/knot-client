@@ -17,16 +17,13 @@ const Footer = () => {
 
         const newsletter = { email };
 
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/newsletter",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(newsletter),
-            }
-        )
+        fetch("http://localhost:5000/newsletter", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(newsletter),
+        })
             .then((res) => res.json())
             .then((data) => {
                 toast("Thanks for being with us");

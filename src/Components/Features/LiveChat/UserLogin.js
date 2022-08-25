@@ -22,7 +22,7 @@ const UserLogin = () => {
             .then((data) => {
                 const { role, message, loggerInfo } = data;
                 if (!role) {
-                    Swal.fire("Good job!", `${message}`, "success");
+                    Swal.fire("Sorry!", `${message}`, "success");
                 }
                 navigate("/chat/hrchat");
             });

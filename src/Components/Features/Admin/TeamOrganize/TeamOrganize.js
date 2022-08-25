@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import Loader from "../../../Shared/Loader/Loader";
 import MeetingCard from "./AllTables/MeetingTable/MeetingCards/MeetingCard";
@@ -23,9 +24,7 @@ const TeamOrganize = () => {
         data: meetingData,
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/meetings"
-        ).then((res) => res.json())
+        fetch("http://localhost:5000/meetings").then((res) => res.json())
     );
     //Fetch Warning Data
     const {
@@ -33,18 +32,14 @@ const TeamOrganize = () => {
         data: warningData,
         refetch: warningRefetch,
     } = useQuery(["warnings"], () =>
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/warnings"
-        ).then((res) => res.json())
+        fetch("http://localhost:5000/warnings").then((res) => res.json())
     );
     const {
         isLoading: awardLoading,
         data: awardData,
         refetch: awardRefetch,
     } = useQuery(["award"], () =>
-        fetch("https://knot-business-solution-server.herokuapp.com/award").then(
-            (res) => res.json()
-        )
+        fetch("http://localhost:5000/award").then((res) => res.json())
     );
 
     if (warningData) {
@@ -55,7 +50,12 @@ const TeamOrganize = () => {
     }
 
     return (
-        <div className="bg-white">
+        <motion.div
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0 }}
+            className="bg-white"
+        >
             <section className="w-full py-4 px-2  md:flex md:justify-between md:items-center">
                 <section className="flex flex-col md:flex-row">
                     <label
@@ -195,27 +195,63 @@ const TeamOrganize = () => {
             {/*All meetings*/}
             <hr />
             {dropDownFilter === "allMettings" && (
-                <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-3 mt-8">
-                    {meetingData.map((meeting) => (
-                        <MeetingCard {...{ meeting }} />
-                    ))}
-                </section>
+                <AnimatePresence>
+                    <motion.section
+                        initial={{ opacity: 0, height: 0, y: -50 }}
+                        animate={{
+                            opacity: 1,
+                            height: "auto",
+                            transition: 0.5,
+                            y: 1,
+                        }}
+                        exit={{ opacity: 0, height: 0, y: -50 }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-6 mt-8"
+                    >
+                        {meetingData.map((meeting) => (
+                            <MeetingCard {...{ meeting }} />
+                        ))}
+                    </motion.section>
+                </AnimatePresence>
             )}
             {dropDownFilter === "allWarning" && (
-                <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-3 mt-8">
-                    {warningData.map((warning) => (
-                        <WarningCard {...{ warning }} />
-                    ))}
-                </section>
+                <AnimatePresence>
+                    <motion.section
+                        initial={{ opacity: 0, height: 0, y: -50 }}
+                        animate={{
+                            opacity: 1,
+                            height: "auto",
+                            transition: 0.5,
+                            y: 1,
+                        }}
+                        exit={{ opacity: 0, height: 0, y: -50 }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
+                    >
+                        {warningData.map((warning) => (
+                            <WarningCard {...{ warning }} />
+                        ))}
+                    </motion.section>
+                </AnimatePresence>
             )}
             {dropDownFilter === "allAward" && (
-                <section className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-3 mt-8">
-                    {awardData.map((award) => (
-                        <AwardCard {...{ award }} />
-                    ))}
-                </section>
+                <AnimatePresence>
+                    <motion.section
+                        initial={{ opacity: 0, height: 0, y: -50 }}
+                        animate={{
+                            opacity: 1,
+                            height: "auto",
+                            transition: 0.5,
+                            y: 1,
+                        }}
+                        exit={{ opacity: 0, height: 0, y: -50 }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
+                    >
+                        {awardData.map((award) => (
+                            <AwardCard {...{ award }} />
+                        ))}
+                    </motion.section>
+                </AnimatePresence>
             )}
-        </div>
+        </motion.div>
     );
 };
 

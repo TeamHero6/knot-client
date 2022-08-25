@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdOutlineAddTask } from "react-icons/md";
@@ -26,7 +27,12 @@ const DailyTask = () => {
 
     return (
         <>
-            <section className="bg-white rounded drop-shadow-md w-full h-auto p-2">
+            <motion.section
+                initial={{ opacity: 0, scaleY: 0 }}
+                animate={{ opacity: 1, scaleY: 1 }}
+                exit={{ opacity: 0, scaleY: 0 }}
+                className="bg-white rounded drop-shadow-md w-full h-auto p-2"
+            >
                 <div className="w-full">
                     <div className="flex">
                         <label
@@ -48,7 +54,7 @@ const DailyTask = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
             <section>
                 {isOpen && <AddTaskModal {...{ refetch, setOpen }} />}
             </section>
