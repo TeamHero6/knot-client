@@ -1,5 +1,5 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
-
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -10,16 +10,13 @@ const Hrdetails = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = (data) => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/employeedetails",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(data),
-            }
-        )
+        fetch("http://localhost:5000/employeedetails", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {
@@ -29,7 +26,11 @@ const Hrdetails = () => {
             });
     };
     return (
-        <div>
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <button
                 onClick={() => setShow(!show)}
                 class="flex  border-transparent items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover: shadow-blue-300 hover: shadow-sm"
@@ -199,7 +200,7 @@ const Hrdetails = () => {
                 )}
                 <Hrtable />
             </div>
-        </div>
+        </motion.div>
     );
 };
 

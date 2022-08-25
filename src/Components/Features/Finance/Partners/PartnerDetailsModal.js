@@ -17,7 +17,7 @@ const PartnerDetailsModal = ({ singlePartnerDetail }) => {
             share,
         };
         console.log(UpdateInvest);
-        const url = `https://knot-business-solution-server.herokuapp.com/partner/${_id}`;
+        const url = `http://localhost:5000/partner/${_id}`;
         fetch(url, {
             method: "PUT",
             headers: {

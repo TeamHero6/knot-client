@@ -43,12 +43,12 @@ const UserDashboard = () => {
                         >
                             <p>User Management</p>
                         </Link>
-                        <Link
+                        {/* <Link
                             to="attendance"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Attendance
-                        </Link>
+                        </Link> */}
                         <Link
                             to="performance"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"

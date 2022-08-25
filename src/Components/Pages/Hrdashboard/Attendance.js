@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import {
@@ -13,13 +14,17 @@ import {
 const Attendance = () => {
     const [payrolls, setPayrolls] = useState([]);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
+        fetch("http://localhost:5000/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);
     console.log(payrolls);
     return (
-        <div>
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <h3 className="text-[#0182be] text-2xl p-5">Employee Attendance</h3>
             <div className="mx-auto w-4/5 rounded-lg my-5 ">
                 <div className="rounded-none">
@@ -105,7 +110,7 @@ const Attendance = () => {
                         <li><Link  to="payrolls">Payrolls</Link></li>
                         <li><Link  to="attendance">Attendance</Link></li> */}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

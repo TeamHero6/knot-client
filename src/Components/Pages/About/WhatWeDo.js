@@ -1,10 +1,15 @@
+import { motion } from "framer-motion";
 import React from "react";
 import handleBusiness from "../../../Assets/images/undraw_engineering_team_re_fvat.svg";
 
 const WhatWeDo = () => {
     return (
         <section className="md:flex md:justify-center md:align-center w-full h-auto md:px-8 lg:px-12 mt-12">
-            <div className="text-left w-[100%] flex flex-col justify-center  md:w-1/2 px-4">
+            <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 1 }}
+                className="text-left w-[100%] flex flex-col justify-center  md:w-1/2 px-4"
+            >
                 <h2 className="text-4xl font-bold tracking-wide mb-4">
                     We Handle All Your Problem Business
                 </h2>
@@ -21,10 +26,15 @@ const WhatWeDo = () => {
                     similique quam molestiae quos, harum dolores a assumenda aut
                     expedita, iste iusto voluptas reprehenderit inventore
                 </p>
-            </div>
-            <div className="w-[100%] md:w-1/2 mt-6 md:mt-0">
+            </motion.div>
+            <motion.div
+                initial={{ opacity: 0, x: 150 }}
+                animate={{ opacity: 1, transition: 2, x: 1 }}
+                exit={{ opacity: 0, x: 150 }}
+                className="w-[100%] md:w-1/2 mt-6 md:mt-0"
+            >
                 <img src={handleBusiness} className="w-full" alt="" />
-            </div>
+            </motion.div>
         </section>
     );
 };

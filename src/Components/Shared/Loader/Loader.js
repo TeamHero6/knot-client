@@ -8,8 +8,8 @@ const Loader = ({ children }) => {
             <div className="flex flex-col justify-center items-center">
                 <img src={logo} className="w-24 mr-3" alt="" />
                 <ThreeDots
-                    height="80"
-                    width="80"
+                    height="40"
+                    width="40"
                     radius="9"
                     color="gray"
                     ariaLabel="three-dots-loading"

@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 import { logout } from "../../../Redux/Auth/authAction";
@@ -32,10 +32,10 @@ const Navbar = () => {
         return;
     }
     return (
-        <div className=" md:px-8 lg:px-12">
-            <div className="navbar ">
+        <div className="relative ">
+            <div className="navbar md:px-8 lg:px-12 bg-white h-[80px]">
                 <div className="navbar-start">
-                    <div className="dropdown">
+                    <div className="dropdown relative">
                         <label tabindex="0" className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -57,64 +57,78 @@ const Navbar = () => {
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
-                                <Link
-                                    to="/accessApps"
-                                    className="px-4 text-green-500"
+                                <NavLink
+                                    to="/about"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                            : "text-green-400  px-2 py-2 rounded-md mx-1"
+                                    }
                                 >
-                                    Access your apps
-                                </Link>
+                                    Pricing
+                                </NavLink>
                             </li>
                             <li>
-                                {user ? (
-                                    <div className="dropdown dropdown-end">
-                                        <label
-                                            tabindex="0"
-                                            className="btn btn-ghost btn-circle avatar"
-                                        >
-                                            <div className="w-10 rounded-full">
-                                                <img
-                                                    src={`${
-                                                        userProfile
-                                                            ? userProfile
-                                                            : "https://placeimg.com/80/80/people"
-                                                    }`}
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </label>
-                                        <ul
-                                            tabindex="0"
-                                            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                                        >
-                                            <li>
-                                                <a className="justify-between">
-                                                    Profile
-                                                    <span className="badge">
-                                                        New
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <Link to="/settings">
-                                                    Setting
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <button onClick={handleLogout}>
-                                                    Logout
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                ) : (
-                                    <Link
-                                        to="/BusinessSignUp"
-                                        className="px-4 text-green-500"
-                                    >
-                                        Login
-                                    </Link>
-                                )}
+                                <NavLink
+                                    to="/FAQ"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                            : "text-green-400  px-2 py-2 rounded-md mx-1"
+                                    }
+                                >
+                                    Support
+                                </NavLink>
                             </li>
+                            <li>
+                                <NavLink
+                                    to="/about"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-4 py-1 rounded-md"
+                                            : "text-green-400  rounded-md px-4 py-2"
+                                    }
+                                >
+                                    About
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/accessApps"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-4 py-1 rounded-md"
+                                            : "text-green-400  px-4 py-2"
+                                    }
+                                >
+                                    Access your apps
+                                </NavLink>
+                            </li>
+                            {/*Login Button for small device*/}
+                            {!user && (
+                                <NavLink
+                                    to="/BusinessLogin"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                            : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                    }
+                                >
+                                    Login
+                                </NavLink>
+                            )}
+                            {user && (
+                                <NavLink
+                                    to="/settings/profile"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-4 py-1 rounded-md"
+                                            : "text-green-400 hover:bg-green-400 text-sm hover:text-white px-4 py-2 rounded-md"
+                                    }
+                                >
+                                    Profile
+                                </NavLink>
+                            )}
                         </ul>
                     </div>
                     <a href="/">
@@ -127,9 +141,46 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <div className="hidden lg:flex items-center">
-                        <Link to="/accessApps" className="px-4 text-green-500">
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
+                            }
+                        >
+                            Pricing
+                        </NavLink>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
+                            }
+                        >
+                            About
+                        </NavLink>
+                        <NavLink
+                            to="/FAQ"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
+                            }
+                        >
+                            Support
+                        </NavLink>
+                        <NavLink
+                            to="/accessApps"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white px-2 py-2 rounded-md mx-1"
+                                    : "text-green-400  rounded-md px-2 py-2 mx-1"
+                            }
+                        >
                             Access your apps
-                        </Link>
+                        </NavLink>
                         <div>
                             {user ? (
                                 <div className="dropdown dropdown-end">
@@ -173,12 +224,16 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                             ) : (
-                                <Link
-                                    to="/BusinessSignUp"
-                                    className="px-3 py-2 rounded bg-green-500 hover:bg-green-400 duration-500 text-white"
+                                <NavLink
+                                    to="/BusinessLogin"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                            : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                    }
                                 >
                                     Login
-                                </Link>
+                                </NavLink>
                             )}
                         </div>
                     </div>
