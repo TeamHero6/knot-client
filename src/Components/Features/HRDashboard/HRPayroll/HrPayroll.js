@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { BiPlus } from "react-icons/bi";
+import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
 
-const Payrolls = () => {
+const HrPayroll = () => {
     const { register, handleSubmit, reset } = useForm();
     const [payrolls, setPayrolls] = useState([]);
 
@@ -33,16 +34,15 @@ const Payrolls = () => {
     };
     return (
         <div className="ml-5">
-            <label
-                onClick={() => setShow(!show)}
-                for="my-drawer"
-                className="btn btn-xs bg-[#0182be] mt-5 ml-3 md:ml-5 drawer-button border-none"
-            >
-                <span>
-                    <BiPlus></BiPlus>
-                </span>
-                <span className="capitalize"> Payrolls</span>
-            </label>
+            <div>
+                    <button
+                        onClick={() => setShow(!show)}
+                        className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover:outline-1 hover:border hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
+                    >
+                        <IoIosAddCircleOutline className="text-2xl" />
+                        Promotion
+                    </button>{" "}
+                </div>
 
             {show ? (
                 <div className="py-20">
@@ -233,4 +233,4 @@ const Payrolls = () => {
     );
 };
 
-export default Payrolls;
+export default HrPayroll;

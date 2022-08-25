@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave, AiOutlineEye, AiTwotoneDelete } from "react-icons/ai";
 import { BiPlus } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Applicant from "./Applicant";
 
@@ -59,13 +60,13 @@ const Recruitment = () => {
             });
     };
     return (
-        <div>
+        <div className="ml-5">
             <div className="grid grid-cols-2 gap-5">
                 <div>
                     <button
                         onClick={() => setShow(!show)}
                         for="my-drawer"
-                        className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                        class="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                     >
                         <span>
                             <BiPlus></BiPlus>
@@ -161,7 +162,7 @@ const Recruitment = () => {
 
                                     <div className="lg:flex justify-between md:flex pt-2">
                                         <button
-                                            className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                            className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                                             type="subimt"
                                         >
                                             <AiFillSave />
@@ -175,14 +176,14 @@ const Recruitment = () => {
                         ""
                     )}
                 </div>
-                <Applicant></Applicant>
+                {/* <Applicant></Applicant> */}
             </div>
 
             <div className="my-5">
-                <h3 className="text-[#0182be] text-2xl">Cercular</h3>
+                <h3 className="text-[#0182be] text-2xl">Circular</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div className="rounded-none">
-                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <div class="rounded-none w-96  lg:w-1/2">
+                        <table class="shadow-2xl border-2 border-cyan-300 w-96 lg:w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -219,7 +220,7 @@ const Recruitment = () => {
                                             <label
                                                 for={c._id}
                                                 onClick={() => setmodal(c)}
-                                                className="modal-button text-center"
+                                                class="modal-button text-center"
                                             >
                                                 <AiOutlineEye className="text-2xl "></AiOutlineEye>
                                             </label>
@@ -242,10 +243,10 @@ const Recruitment = () => {
                             required
                             type="checkbox"
                             id={modal._id}
-                            className="modal-toggle"
+                            class="modal-toggle"
                         />
-                        <div className="modal">
-                            <div className="modal-box">
+                        <div class="modal">
+                            <div class="modal-box">
                                 <div>
                                     <div>
                                         <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
@@ -280,10 +281,10 @@ const Recruitment = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="modal-action">
+                                <div class="modal-action">
                                     <label
                                         for={modal._id}
-                                        className="btn btn-warning"
+                                        class="btn btn-warning"
                                     >
                                         Cancel
                                     </label>
@@ -293,121 +294,94 @@ const Recruitment = () => {
                     </div>
                 </div>
             </div>
-            <div className="my-5">
-                <h3 className="text-[#0182be] text-2xl">
-                    Applicant Short List
-                </h3>
-                <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div className="rounded-none">
-                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
-                            <thead className="text-white bg-cyan-500 border-b border-cyan-100">
-                                <tr>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Applicant Name
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Job Title
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Position
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        View
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Delete
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {short.map((ap) => (
-                                    <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {ap.Applicant_Name}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {ap.Job_Title}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {ap.Position}
-                                        </td>
 
-                                        <td className="text-[#0182be]  text-center">
-                                            <label
-                                                for={ap._id}
-                                                onClick={() => setapplican(ap)}
-                                                className="modal-button text-center"
-                                            >
-                                                <AiOutlineEye className="text-2xl "></AiOutlineEye>
-                                            </label>
-                                        </td>
-                                        <td className="text-red-700 text-center">
-                                            <button
-                                                onClick={() => deleteap(ap._id)}
-                                            >
-                                                {" "}
-                                                <AiTwotoneDelete></AiTwotoneDelete>{" "}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <input
-                            required
-                            type="checkbox"
-                            id={applican._id}
-                            className="modal-toggle"
-                        />
-                        <div className="modal">
-                            <div className="modal-box">
-                                <div>
-                                    <div>
-                                        <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
-                                            Details info
-                                        </h1>
-                                        <div>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    {" "}
-                                                    Applicant Name:{" "}
-                                                </span>
-                                                {applican.Applicant_Name}
-                                            </p>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    Employee Applyed Date:{" "}
-                                                </span>
-                                                {applican.Employee_Applyed_Date}
-                                            </p>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    Last Date Apply:{" "}
-                                                </span>
-                                                {applican.Last_Date_Apply}
-                                            </p>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    Interview Date:{" "}
-                                                </span>
-                                                {applican.Interview_Date}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="modal-action">
+            <h3 className="text-[#0182be] text-2xl">
+                Applicant Short List
+            </h3>
+            <div className="my-3   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {short.map(ap =>
+                    <div className="">
+                        <div class="card w-96 lg:w-80 bg-base-100 shadow-xl">
+                            <label  onClick={() => deleteap(ap._id)} class="btn btn-sm btn-circle absolute right-2 top-2 border-none bg-[#F000B8] hover:bg-[#c30196]">✕</label>
+                            <div class="card-body">
+                                <h2 class="card-title">
+                                    {ap.Applicant_Name}
+                                    <div class="badge badge-secondary">{ap.Position}</div>
+                                </h2>
+                                <p>Job Title: {ap.Job_Title}</p>
+                                <p>Apply Date: {ap.Employee_Applyed_Date}</p>
+                                <p>Interview Date: {ap.Interview_Date}</p>
+                                <div class="card-actions justify-end">
+                                  
                                     <label
-                                        for={applican._id}
-                                        className="btn btn-warning"
+                                        for={ap._id}
+                                        onClick={() => setapplican(ap)}
+                                        class="modal-button text-center btn btn-sm border-none bg-orange-400 hover:bg-orange-600"
                                     >
-                                        Cancel
+                                        Details
                                     </label>
+                                    <a href={ap.Meeting_Link} class="btn btn-sm border-none bg-green-400 hover:bg-green-600">Join</a>
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+
+                )}
+                <input
+                    required
+                    type="checkbox"
+                    id={applican._id}
+                    class="modal-toggle"
+                />
+                <div class="modal">
+                    <div class="modal-box">
+                        <div>
+                            <div>
+                                <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
+                                    Details info
+                                </h1>
+                                <div>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            {" "}
+                                            Applicant Name:{" "}
+                                        </span>
+                                        {applican.Applicant_Name}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Employee Applyed Date:{" "}
+                                        </span>
+                                        {applican.Employee_Applyed_Date}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Last Date Apply:{" "}
+                                        </span>
+                                        {applican.Last_Date_Apply}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Interview Date:{" "}
+                                        </span>
+                                        {applican.Interview_Date}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-action">
+                            <label
+                                for={applican._id}
+                                class="btn btn-warning"
+                            >
+                                Cancel
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

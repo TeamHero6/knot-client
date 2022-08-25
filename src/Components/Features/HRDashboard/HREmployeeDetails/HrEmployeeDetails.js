@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
-
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
+import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
-import Hrtable from "./Hrtable";
+import HrEmployeeData from "./HrEmployeeData";
 
-const Hrdetails = () => {
+const HrEmployeeDetails = () => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, reset } = useForm();
 
@@ -27,12 +27,15 @@ const Hrdetails = () => {
     };
     return (
         <div className="ml-5">
-             <button
-                            onClick={() => setShow(!show)}
-                            class="flex  border-transparent items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover: shadow-blue-300 hover: shadow-sm"
-                            
-                        > + New
-                        </button>
+             <div>
+                    <button
+                        onClick={() => setShow(!show)}
+                        className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover:outline-1 hover:border hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
+                    >
+                        <IoIosAddCircleOutline className="text-2xl" />
+                        Add Employee
+                    </button>{" "}
+                </div>
                         <div className="mt-5">
                             {show ? (
                                 <div>
@@ -189,12 +192,11 @@ const Hrdetails = () => {
                             ) : (
                                 ""
                             )}
-                            <Hrtable />
                            
                         </div>
-                        
+                        <HrEmployeeData/>
         </div>
     );
 };
 
-export default Hrdetails;
+export default HrEmployeeDetails;

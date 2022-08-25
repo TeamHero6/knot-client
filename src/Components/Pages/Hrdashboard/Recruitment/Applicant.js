@@ -29,8 +29,8 @@ const Applicant = () => {
         <div>
             <button
                 onClick={() => setShows(!shows)}
-                for="my-drawer"
-                className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+               
+                class="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
             >
                 <span>
                     <BiPlus></BiPlus>
@@ -70,7 +70,7 @@ const Applicant = () => {
                             <div className="flex flex-row gap-5">
                                 <input
                                     className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
+                                    type="date"
                                     {...register("Last_Date_Apply")}
                                     id=""
                                     placeholder="Last Date for Apply"
@@ -79,7 +79,7 @@ const Applicant = () => {
                             <div className="flex flex-row gap-5">
                                 <input
                                     className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
+                                    type="date"
                                     {...register("Employee_Applyed_Date")}
                                     id=""
                                     placeholder="Employee Applyed Date"
@@ -106,7 +106,7 @@ const Applicant = () => {
                             <div className="flex flex-row gap-5">
                                 <input
                                     className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
+                                    type="date"
                                     {...register("Interview_Date")}
                                     id=""
                                     placeholder="Interview Date & Time"
@@ -124,7 +124,7 @@ const Applicant = () => {
 
                             <div className="lg:flex justify-between md:flex pt-2">
                                 <button
-                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1  hover: shadow-blue-300 hover: shadow-sm"
                                     type="subimt"
                                 >
                                     <AiFillSave />

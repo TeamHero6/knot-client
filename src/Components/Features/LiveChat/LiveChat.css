@@ -7,9 +7,12 @@
     height: 450px;
     overflow: scroll;
 }
-.chatBox{
+/* .chatBoard{
+    height: 70vh;
+} */
+/* .chatBox{
     height: 500px;
-}
+} */
 .chatCard{
     height: 340px;
 }

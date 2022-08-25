@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Outlet } from "react-router-dom";
-import FinanceNavbar from './FinanceNavbar';
+import HRNavbar from '../../Shared/HRNavbar/HRNavbar';
 
-const FinanceManagement = () => {
+const HRManagement = () => {
     const [open, setOpen] = useState(false);
-
     return (
         <div className="min-h-screen bg-custom-gray">
             <span
@@ -25,7 +24,7 @@ const FinanceManagement = () => {
                     />
                 </svg>
             </span>
-            <FinanceNavbar />
+            <HRNavbar />
             <section className="flex w-full">
                 <div
                     className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md justify-center 
@@ -39,47 +38,47 @@ const FinanceManagement = () => {
                             Dashboard
                         </Link>
                         <Link
-                            to="allLedger"
+                            to="hrLeaveRequest"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
-                            All Ledger
+                            Leave Request
                         </Link>
                         <Link
-                            to="directExpense"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                            to="employeeManagement"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition  cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
-                            All Expense
+                            Management
                         </Link>
                         <Link
-                            to="partners"
+                            to="hrPerformance"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
-                            Partners
+                            Performance
                         </Link>
                         <Link
-                            to="attendance"
+                            to="hrPayroll"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
-                            Attendance
+                            Payroll
                         </Link>
-                        {/* <Link
-                        to="salesOrder"
-                        className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                    >
-                        Sales Order
-                    </Link> */}
-                        {/* <Link
-                        to="paymentReceive"
-                        className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                    >
-                        Payment Receive
-                    </Link> */}
-                        {/* <Link
-                        to="return"
+                        <Link
+                            to="hrEmployeeDetails"
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
+                        >
+                            Employee Details
+                        </Link>
+                        <Link
+                            to="hrVacancy"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
+                        >
+                            Vacancy
+                        </Link>
+                        <Link
+                        to="hrJoining"
                         className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                     >
-                        Return
-                    </Link> */}
+                        Joining
+                    </Link>
                         {/* <Link
                         to="vendor"
                         className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
@@ -108,4 +107,4 @@ const FinanceManagement = () => {
     );
 };
 
-export default FinanceManagement;
+export default HRManagement;
