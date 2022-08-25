@@ -26,14 +26,27 @@ const HRChat = () => {
                                     <div className="flex gap-6">
                                         <div class="avatar placeholder py-1 items-center">
                                             <div class="bg-neutral-focus text-neutral-content rounded-full w-10">
-                                                <img src={chatList?.userPhoto} alt="" />
+                                                <img
+                                                    src={chatList?.userPhoto}
+                                                    alt=""
+                                                />
                                             </div>
                                         </div>
                                         <div>
                                             <div className="flex justify-between ">
-                                                <p ><span className="text-blue-600 font-semibold">{chatList.userName}</span></p>
+                                                <p>
+                                                    <span className="text-blue-600 font-semibold">
+                                                        {chatList.userName}
+                                                    </span>
+                                                </p>
                                             </div>
-                                            <div><p><small className="text-gray-400 italic">{chatList.time}</small></p></div>
+                                            <div>
+                                                <p>
+                                                    <small className="text-gray-400 italic">
+                                                        {chatList.time}
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div>

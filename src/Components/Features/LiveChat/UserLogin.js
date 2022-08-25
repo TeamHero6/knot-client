@@ -1,43 +1,53 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useUserInfo from "./hooks/useUserInfo";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UserLogin = () => {
-    const [userInfo] = useUserInfo();
-    console.log(userInfo);
+    const [secretCode, setSecretCode] = useState("");
+    const navigate = useNavigate();
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { email } = loggerInfo;
 
-    const handelLoginUser = (event) => {
-        event.preventDefault();
-        const name = event.target.name.value;
-        const employeeID = event.target.employeeID.value;
-
-        const loginUser = { name, employeeID };
-        console.log(loginUser);
-
-        fetch("http://localhost:5000/loginuser", {
+    const liveAuth = () => {
+        const info = { secretCode, email };
+        fetch("http://localhost:5000/checkEmployee", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(loginUser),
+            body: JSON.stringify(info),
         })
             .then((res) => res.json())
             .then((data) => {
-                navigete("/chat/hrchat");
-                event.target.reset();
+                const { role, message, loggerInfo } = data;
+                if (!role) {
+                    Swal.fire("Good job!", `${message}`, "success");
+                }
+                navigate("/chat/hrchat");
             });
     };
 
-    const navigete = useNavigate();
-
     return (
-        <div class="flex h-screen w-full items-center justify-center">
+        <div class="flex h-[90vh] w-full items-center justify-center">
             <div class="rounded-md bg-cyan-400 px-4 py-5 sm:max-w-sm md:max-w-md lg:max-w-lg">
                 <div class="flex flex-col">
-                    <label for="secret" class="text-gray-200">Type your Secret Code</label>
-                    <input id="secret" type="text" class="rounded-sm border-b-2 border-white bg-transparent px-2 text-white outline-none" />
+                    <label for="secret" class="text-gray-200">
+                        Type your Secret Code
+                    </label>
+                    <input
+                        id="secret"
+                        type="text"
+                        class="rounded-sm border-b-2 border-white bg-transparent px-2 text-white outline-none"
+                        onChange={(e) => setSecretCode(e.target.value)}
+                    />
                 </div>
-                <button class="w-full border-2 border-white mt-2 py-1 rounded-xl text-white">Login</button>
+                <button
+                    class="w-full border-2 border-white mt-2 py-1 rounded-xl text-white"
+                    onClick={liveAuth}
+                >
+                    Login
+                </button>
             </div>
         </div>
     );
