@@ -12,10 +12,10 @@ const HrLeaveRequest = () => {
     }, [requests]);
     return (
         <div>
-            <div className='bg-white px-3 py-3'>
-                <h1 className='font-semibold text-xl mb-8'>Approval Leave Request</h1>
+            <div className=' px-3 py-3'>
+                <h1 className='font-semibold text-xl mb-4 ml-5'>Approval Leave Request</h1>
 
-                <div className='flex gap-5 flex-wrap'>
+                <div className='grid grid-rows-2 grid-flow-col gap-5'>
                     {
                         requests.slice(0, 20).map(leave => <LeaveRequestCard
                             leave={leave}

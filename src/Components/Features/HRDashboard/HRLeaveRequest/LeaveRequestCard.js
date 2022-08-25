@@ -34,8 +34,8 @@ const LeaveRequestCard = (props) => {
             });
     };
     return (
-        <div className='bg-custom-gray px-5 py-5 rounded-md shadow-sm'>
-                <p>Department: <span className='text-green-500 font-semibold'>{dep}</span></p>
+        <div className='bg-white shadow-gray-300 px-5 py-5 rounded-md shadow-sm'>
+                <p>Department: <span className='text-blue-600 font-semibold'>{dep}</span></p>
             <div className='flex justify-between items-center'>
                 <div>
                     <p><span className='font-semibold'>Request Date:</span> <small className='italic text-gray-400'>{Date}</small></p>
@@ -74,7 +74,7 @@ const LeaveRequestCard = (props) => {
             <p><span className='font-semibold'>Employee ID:</span> {id}</p>
             <p>Name: {Name}</p>
             <p><span className='font-semibold'>Leave Type: </span>{leave_type}
-                <small className='font-semibold ml-5'>Leave Date: {e_date}</small>
+                <small className='font-semibold ml-5'>Date: {e_date}</small>
             </p>
         </div>
     );
