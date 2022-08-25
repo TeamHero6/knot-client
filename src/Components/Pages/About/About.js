@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -9,14 +10,26 @@ import WhatWeDo from "./WhatWeDo";
 const About = () => {
     return (
         <div>
-            <header className="w-[100%]" id="about">
-                <img src={topBG} alt="relative" />
+            <motion.header
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 1, opacity: 1 }}
+                exit={{ y: -50, opacity: 0 }}
+                className="w-[100%]"
+                id="about"
+            >
+                <motion.img
+                    initial={{ y: -50, opacity: 0 }}
+                    animate={{ y: 1, opacity: 1 }}
+                    exit={{ y: -50, opacity: 0 }}
+                    src={topBG}
+                    alt="relative"
+                />
                 <div className="absolute top-[2%] md:top-[10%] left-[45%] ">
                     <h2 className="text-xl md:text-4xl font-semibold text-white">
                         About US
                     </h2>
                 </div>
-            </header>
+            </motion.header>
             <WhatWeDo />
             <CompanyGoals />
             <OurTeam />

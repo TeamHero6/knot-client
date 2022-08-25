@@ -51,9 +51,9 @@ const TeamOrganize = () => {
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0 }}
             className="bg-white"
         >
             <section className="w-full py-4 px-2  md:flex md:justify-between md:items-center">

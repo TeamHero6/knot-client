@@ -1,5 +1,6 @@
+import { AnimatePresence } from "framer-motion";
 import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -68,184 +69,230 @@ const AdminDashboardF = lazy(() =>
 const Home = lazy(() => import("./Components/Pages/Home/Home"));
 
 function App() {
+    const location = useLocation();
     return (
         <div>
-            <Suspense fallback={<Loader />}>
-                <Routes>
-                    <Route path="/" element={<Home />}></Route>
-                    <Route path="/leave" element={<Leave></Leave>}></Route>
-                    <Route
-                        path="/form"
-                        element={<FormSample></FormSample>}
-                    ></Route>
-                    <Route
-                        path="/employeedetails"
-                        element={<EmployeeDetails></EmployeeDetails>}
-                    ></Route>
-                    <Route path="/hrdashboard" element={<Hrdashboard />}>
-                        <Route index element={<Dashboard />}></Route>
+            <AnimatePresence>
+                <Suspense fallback={<Loader />}>
+                    <Routes location={location} key={location.pathname}>
+                        <Route path="/" element={<Home />}></Route>
+                        <Route path="/leave" element={<Leave></Leave>}></Route>
                         <Route
-                            path="employeeorg"
-                            element={<EmployeesOrganize />}
+                            path="/form"
+                            element={<FormSample></FormSample>}
                         ></Route>
+                        <Route
+                            path="/employeedetails"
+                            element={<EmployeeDetails></EmployeeDetails>}
+                        ></Route>
+                        <Route path="/hrdashboard" element={<Hrdashboard />}>
+                            <Route index element={<Dashboard />}></Route>
+                            <Route
+                                path="employeeorg"
+                                element={<EmployeesOrganize />}
+                            ></Route>
 
+                            <Route
+                                path="performance"
+                                element={<Performance />}
+                            ></Route>
+                            <Route
+                                path="payrolls"
+                                element={<Payrolls />}
+                            ></Route>
+                            <Route
+                                path="attendance"
+                                element={<Attendance />}
+                            ></Route>
+                            <Route
+                                path="hrdetails"
+                                element={<Hrdetails />}
+                            ></Route>
+                            <Route
+                                path="vacancy"
+                                element={<Recruitment />}
+                            ></Route>
+                            <Route
+                                path="interview"
+                                element={<Interview />}
+                            ></Route>
+                            <Route path="joining" element={<Joining />}></Route>
+                        </Route>
                         <Route
-                            path="performance"
-                            element={<Performance />}
-                        ></Route>
-                        <Route path="payrolls" element={<Payrolls />}></Route>
-                        <Route
-                            path="attendance"
-                            element={<Attendance />}
-                        ></Route>
-                        <Route path="hrdetails" element={<Hrdetails />}></Route>
-                        <Route path="vacancy" element={<Recruitment />}></Route>
-                        <Route path="interview" element={<Interview />}></Route>
-                        <Route path="joining" element={<Joining />}></Route>
-                    </Route>
-                    <Route
-                        path="/BusinessSignUp"
-                        element={<BusinessSignup />}
-                    />
-                    <Route path="/BusinessLogin" element={<BusinessLogin />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/calender" element={<Calender />} />
-
-                    <Route
-                        path="/userdashboard"
-                        element={<UserDashboardK></UserDashboardK>}
-                    >
-                        <Route index element={<LeaveRequest />} />
-                        <Route
-                            path="attendance"
-                            element={<UserAttaindance />}
-                        />
-                        <Route path="performance" element={<UserPromotion />} />
-                        <Route path="Payrolls" element={<UserPayrolls />} />
-                        <Route
-                            path="Calender"
-                            element={<Calender></Calender>}
-                        />
-                    </Route>
-
-                    <Route
-                        path="/liveChat"
-                        element={<LiveChat></LiveChat>}
-                    ></Route>
-
-                    <Route
-                        path="/chat"
-                        element={<LiveChatDashboard></LiveChatDashboard>}
-                    >
-                        <Route index element={<UserLogin></UserLogin>}></Route>
-                        <Route path="hrchat" element={<HR />} />
-                    </Route>
-
-                    <Route
-                        path="/userpayrolls"
-                        element={<UserPayrolls></UserPayrolls>}
-                    />
-                    <Route path="/userdashboard" element={<UserDashboard />} />
-                    <Route
-                        path="/accessApps"
-                        element={
-                            <RequireAuth>
-                                <AccessYourApps />
-                            </RequireAuth>
-                        }
-                    />
-                    <Route path="/salesTS" element={<SalesManagement />}>
-                        <Route index element={<SalesDashboard />}></Route>
-                        <Route path="items" element={<Items />}></Route>
-                        <Route
-                            path="salesTeamMembers"
-                            element={<SalesTeamMembers />}
-                        ></Route>
-                        <Route path="customer" element={<Customer />}></Route>
-                        <Route
-                            path="salesOrder"
-                            element={<SalesOrder />}
-                        ></Route>
-                        <Route
-                            path="paymentReceive"
-                            element={<PaymentReceive />}
-                        ></Route>
-                        <Route path="return" element={<Return />}></Route>
-                        <Route path="vendor" element={<Vendor />}></Route>
-                        <Route
-                            path="purchaseOrder"
-                            element={<PurchaseOrder />}
-                        ></Route>
-                        <Route path="bill" element={<Bill />}></Route>
-                    </Route>
-                    <Route
-                        path="/marketingTS"
-                        element={<MarketingAutomation />}
-                    >
-                        <Route index element={<EmailMarketing />}></Route>
-                        <Route
-                            path="customerListing"
-                            element={<CustomerListing />}
-                        ></Route>
-                    </Route>
-                    <Route path="/teamManagement" element={<AdminDashboardF />}>
-                        <Route index element={<DailyTask />}></Route>
-                        <Route path="dailyTask" element={<DailyTask />} />
-                        <Route
-                            path="teamOrganize"
-                            element={<TeamOrganize />}
-                        ></Route>
-                    </Route>
-                    <Route
-                        path="/FAQ"
-                        element={
-                            <RequireAuth>
-                                <Faq />
-                            </RequireAuth>
-                        }
-                    >
-                        <Route index element={<AccountManagement />} />
-                        <Route
-                            path="safetyandsecuirity"
-                            element={<SafetyAndSecurity />}
+                            path="/BusinessSignUp"
+                            element={<BusinessSignup />}
                         />
                         <Route
-                            path="rules&politics"
-                            element={<RulesAndPolitics />}
+                            path="/BusinessLogin"
+                            element={<BusinessLogin />}
                         />
-                    </Route>
-                    <Route
-                        path="/settings"
-                        element={
-                            <RequireAuth>
-                                <ProfileDashboard />
-                            </RequireAuth>
-                        }
-                    >
-                        <Route index element={<ProfileSettings />} />
-                        <Route path="profile" element={<ProfileSettings />} />
-                        <Route
-                            path="companySettings"
-                            element={<CompanySettings />}
-                        />
-                    </Route>
+                        <Route path="/about" element={<About />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/calender" element={<Calender />} />
 
-                    <Route path="/financeTS" element={<FinanceManagement />}>
                         <Route
-                            index
-                            element={<FinanceDashboard></FinanceDashboard>}
-                        ></Route>
-                        <Route path="partners" element={<Partners />}></Route>
-                        <Route path="allLedger" element={<AllLedger />}></Route>
+                            path="/userdashboard"
+                            element={<UserDashboardK></UserDashboardK>}
+                        >
+                            <Route index element={<LeaveRequest />} />
+                            <Route
+                                path="attendance"
+                                element={<UserAttaindance />}
+                            />
+                            <Route
+                                path="performance"
+                                element={<UserPromotion />}
+                            />
+                            <Route path="Payrolls" element={<UserPayrolls />} />
+                            <Route
+                                path="Calender"
+                                element={<Calender></Calender>}
+                            />
+                        </Route>
+
                         <Route
-                            path="directExpense"
-                            element={<DirectExpense />}
+                            path="/liveChat"
+                            element={<LiveChat></LiveChat>}
                         ></Route>
-                    </Route>
-                    <Route path="load" element={<Loader />} />
-                </Routes>
-            </Suspense>
+
+                        <Route
+                            path="/chat"
+                            element={<LiveChatDashboard></LiveChatDashboard>}
+                        >
+                            <Route
+                                index
+                                element={<UserLogin></UserLogin>}
+                            ></Route>
+                            <Route path="hrchat" element={<HR />} />
+                        </Route>
+
+                        <Route
+                            path="/userpayrolls"
+                            element={<UserPayrolls></UserPayrolls>}
+                        />
+                        <Route
+                            path="/userdashboard"
+                            element={<UserDashboard />}
+                        />
+                        <Route
+                            path="/accessApps"
+                            element={
+                                <RequireAuth>
+                                    <AccessYourApps />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route path="/salesTS" element={<SalesManagement />}>
+                            <Route index element={<SalesDashboard />}></Route>
+                            <Route path="items" element={<Items />}></Route>
+                            <Route
+                                path="salesTeamMembers"
+                                element={<SalesTeamMembers />}
+                            ></Route>
+                            <Route
+                                path="customer"
+                                element={<Customer />}
+                            ></Route>
+                            <Route
+                                path="salesOrder"
+                                element={<SalesOrder />}
+                            ></Route>
+                            <Route
+                                path="paymentReceive"
+                                element={<PaymentReceive />}
+                            ></Route>
+                            <Route path="return" element={<Return />}></Route>
+                            <Route path="vendor" element={<Vendor />}></Route>
+                            <Route
+                                path="purchaseOrder"
+                                element={<PurchaseOrder />}
+                            ></Route>
+                            <Route path="bill" element={<Bill />}></Route>
+                        </Route>
+                        <Route
+                            path="/marketingTS"
+                            element={<MarketingAutomation />}
+                        >
+                            <Route index element={<EmailMarketing />}></Route>
+                            <Route
+                                path="customerListing"
+                                element={<CustomerListing />}
+                            ></Route>
+                        </Route>
+                        {/*Team Organize section in AdminDashboardF*/}
+                        <Route
+                            path="/teamManagement"
+                            element={<AdminDashboardF />}
+                        >
+                            <Route index element={<DailyTask />}></Route>
+                            <Route path="dailyTask" element={<DailyTask />} />
+                            <Route
+                                path="teamOrganize"
+                                element={<TeamOrganize />}
+                            ></Route>
+                        </Route>
+                        <Route
+                            path="/FAQ"
+                            element={
+                                <RequireAuth>
+                                    <Faq />
+                                </RequireAuth>
+                            }
+                        >
+                            <Route index element={<AccountManagement />} />
+                            <Route
+                                path="safetyandsecuirity"
+                                element={<SafetyAndSecurity />}
+                            />
+                            <Route
+                                path="rules&politics"
+                                element={<RulesAndPolitics />}
+                            />
+                        </Route>
+                        <Route
+                            path="/settings"
+                            element={
+                                <RequireAuth>
+                                    <ProfileDashboard />
+                                </RequireAuth>
+                            }
+                        >
+                            <Route index element={<ProfileSettings />} />
+                            <Route
+                                path="profile"
+                                element={<ProfileSettings />}
+                            />
+                            <Route
+                                path="companySettings"
+                                element={<CompanySettings />}
+                            />
+                        </Route>
+
+                        <Route
+                            path="/financeTS"
+                            element={<FinanceManagement />}
+                        >
+                            <Route
+                                index
+                                element={<FinanceDashboard></FinanceDashboard>}
+                            ></Route>
+                            <Route
+                                path="partners"
+                                element={<Partners />}
+                            ></Route>
+                            <Route
+                                path="allLedger"
+                                element={<AllLedger />}
+                            ></Route>
+                            <Route
+                                path="directExpense"
+                                element={<DirectExpense />}
+                            ></Route>
+                        </Route>
+                        <Route path="load" element={<Loader />} />
+                    </Routes>
+                </Suspense>
+            </AnimatePresence>
             <ToastContainer></ToastContainer>
         </div>
     );
