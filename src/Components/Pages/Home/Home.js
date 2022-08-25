@@ -1,21 +1,23 @@
-import React from "react";
-import Footer from "../../Shared/Footer/Footer";
-
-import Navbar from "../../Shared/Navbar/Navbar";
-import AllKnotApp from "./AllKnotApp/AllKnotApp";
-import Header from "./Header.js/Header";
-import Intro from "./Intro";
-import Promotion from "./Promotion/Promotion";
+import React, { lazy, Suspense } from "react";
+const Navbar = lazy(() => import("../../Shared/Navbar/Navbar"));
+const Header = lazy(() => import("./Header.js/Header"));
+const Promotion = lazy(() => import("./Promotion/Promotion"));
+const AllKnotApp = lazy(() => import("./AllKnotApp/AllKnotApp"));
+const Intro = lazy(() => import("./Intro"));
+const Footer = lazy(() => import("../../Shared/Footer/Footer"));
+const Loader = lazy(() => import("../../Shared/Loader/Loader"));
 
 const Home = () => {
     return (
         <div>
-            <Navbar />
-            <Header />
-            <Promotion />
-            <AllKnotApp />
-            <Intro />
-            <Footer />
+            <Suspense fallback={<Loader />}>
+                <Navbar />
+                <Header />
+                <Promotion />
+                <AllKnotApp />
+                <Intro />
+                <Footer />
+            </Suspense>
         </div>
     );
 };

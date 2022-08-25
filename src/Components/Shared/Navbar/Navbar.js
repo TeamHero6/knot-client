@@ -1,18 +1,30 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
+import { logout } from "../../../Redux/Auth/authAction";
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
+    const [userProfile, setuserprofile] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     //use Info from Redux
     const authInfo = useSelector((state) => state.auth);
+    useEffect(() => {
+        if (authInfo.loggerInfo !== null) {
+            const { userPhoto } = authInfo?.loggerInfo;
+            setuserprofile(userPhoto);
+        }
+    }, [authInfo]);
 
     const handleLogout = () => {
+        dispatch(logout());
         signOut(auth);
+        navigate("/");
     };
 
     //Sign out user
@@ -60,7 +72,14 @@ const Navbar = () => {
                                             className="btn btn-ghost btn-circle avatar"
                                         >
                                             <div className="w-10 rounded-full">
-                                                <img src="https://placeimg.com/80/80/people" />
+                                                <img
+                                                    src={`${
+                                                        userProfile
+                                                            ? userProfile
+                                                            : "https://placeimg.com/80/80/people"
+                                                    }`}
+                                                    alt=""
+                                                />
                                             </div>
                                         </label>
                                         <ul
@@ -76,7 +95,7 @@ const Navbar = () => {
                                                 </a>
                                             </li>
                                             <li>
-                                                <Link to="/profileSettings">
+                                                <Link to="/settings">
                                                     Setting
                                                 </Link>
                                             </li>
@@ -119,7 +138,14 @@ const Navbar = () => {
                                         className="btn btn-ghost btn-circle avatar"
                                     >
                                         <div className="w-10 rounded-full">
-                                            <img src="https://placeimg.com/80/80/people" />
+                                            <img
+                                                src={`${
+                                                    userProfile
+                                                        ? userProfile
+                                                        : "https://placeimg.com/80/80/people"
+                                                }`}
+                                                alt=""
+                                            />
                                         </div>
                                     </label>
                                     <ul
@@ -129,11 +155,13 @@ const Navbar = () => {
                                         <li>
                                             <a className="justify-between">
                                                 Profile
-                                                <span className="badge">New</span>
+                                                <span className="badge">
+                                                    New
+                                                </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <Link to="/profileSettings">
+                                            <Link to="/settings/profile">
                                                 Setting
                                             </Link>
                                         </li>

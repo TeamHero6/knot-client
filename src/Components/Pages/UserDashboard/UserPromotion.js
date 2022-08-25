@@ -4,7 +4,7 @@ const UserPromotion = () => {
     const [promotions, setPromotions] = useState([]);
     const [transfers, setTransfers] = useState([]);
     const [promotionModal, setPromotionModal] = useState({});
-    const [transferModal, setTransferModal] = useState({});
+    // const [transferModal, setTransferModal] = useState({});
 
     useEffect(() => {
         fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
@@ -15,15 +15,15 @@ const UserPromotion = () => {
     useEffect(() => {
         fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer")
             .then((res) => res.json())
-            .then((data) => setTransfers(data));
+            .then((data) => setTransfers(data.reverse()));
     }, []);
 
     return (
-        <div className='flex w-11/12'>
+        <div className='w-full'>
             <div className='mx-3'>
                 <h1 className='text-2xl text-center font-bold mt-5'>Promotion</h1>
-                <div class="h-80 overflow-x-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div class="w-full mb-5 flex justify-between rounded py-6 px-6 mt-5">
+                    <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">
                         <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
@@ -69,10 +69,42 @@ const UserPromotion = () => {
                     </div>
                 </div>
             </div>
-            <div className='mx-3'>
-                <h1 className='text-2xl text-center font-bold mt-5'>Transfer</h1>
-                <div class="h-80 overflow-x-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+            <div className='m-8'>
+                <h1 className='text-2xl text-center font-bold mt-12 mb-6'>Transfer</h1>
+                <div class="overflow-x-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {
+                        transfers.slice(0, 8).map(transfer => (
+                            <div class="px-4 py-2 w-64 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <div className="flex items-center justify-between">
+                                    <p className="my-2 font-semibold">{transfer.Name}</p>
+                                    <label for={transfer._id}><span className='modal-button underline text-green-500 hover:font-medium'>Details</span></label>
+                                    <input type="checkbox" id={transfer._id} class="modal-toggle" />
+                                    <div class="modal modal-bottom sm:modal-middle">
+                                        <div class="modal-box">
+                                            <h3 class="font-bold text-lg">Transfer Information!</h3>
+                                            <p>Name : {transfer.Name}</p>
+                                            <p>Employee ID : {transfer.Employee_ID}</p>
+                                            <p>Depertment : {transfer.Depertment}</p>
+                                            <p>Location : {transfer.Location}</p>
+                                            <p>Transfer Reason  : {transfer.Transfer_Reason}</p>
+                                            <p>Designation : {transfer.Designation}</p>
+                                            <p>Transfer_Date : {transfer.Transfer_Date}</p>
+                                            <div class="modal-action">
+                                                <label for={transfer._id} className='flex ml-5 items-center gap-2 bg-red-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-red-400 hover:outline-1 hover:border hover:border-red-400 hover: shadow-red-200 hover: shadow-sm'>Close!</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>{transfer.Depertment} Dept.</p>
+                                <p>Location : {transfer.Location}</p>
+                                <p>Reason : {transfer.Transfer_Reason}</p>
+                                <p className="card-actions justify-end text-green-500">{transfer.Transfer_Date}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+                    {/* <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
@@ -98,11 +130,20 @@ const UserPromotion = () => {
                                 )
                             }
                         </tbody>
+<<<<<<< HEAD
+                    </table> */}
+
+                    {/* <input type="checkbox" id={transferModal._id} class="modal-toggle" />
+                    <div class="modal modal-bottom sm:modal-middle">
+                        <div class="modal-box">
+                            <h3 class="font-bold text-lg">Transfer Information!</h3>
+=======
                     </table>
                     <input type="checkbox" id={transferModal._id} className="modal-toggle" />
                     <div className="modal modal-bottom sm:modal-middle">
                         <div className="modal-box">
                             <h3 className="font-bold text-lg">Transfer Information!</h3>
+>>>>>>> 7fb08ca68b1fbf492e37ee593c18a186e3a68a95
                             <p>Name : {transferModal.Name}</p>
                             <p>Department : {transferModal.Depertment}</p>
                             <p>Location : {transferModal.Location}</p>
@@ -114,7 +155,7 @@ const UserPromotion = () => {
                                 <label for={transferModal._id} className='flex ml-5 items-center gap-2 bg-red-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-red-400 hover:outline-1 hover:border hover:border-red-400 hover: shadow-red-200 hover: shadow-sm'>Close!</label>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
@@ -122,3 +163,16 @@ const UserPromotion = () => {
 };
 
 export default UserPromotion;
+
+
+{/* <Route
+                    path="/userdashboard"
+                    element={<UserDashboardK></UserDashboardK>}
+                >
+                    <Route index element={<LeaveRequest />} />
+                    <Route path="userManagement" element={<UserManagement></UserManagement>} />
+                    <Route path="attendance" element={<UserAttaindance />} />
+                    <Route path="performance" element={<UserPromotion />} />
+                    <Route path="Payrolls" element={<UserPayrolls />} />
+                    <Route path="Calender" element={<Calender></Calender>} />
+                </Route> */}

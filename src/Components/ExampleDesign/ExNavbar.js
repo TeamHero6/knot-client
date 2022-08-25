@@ -1,12 +1,19 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import access from "../../Assets/icons/Dashboard/access.svg";
 import auth from "../../firebase.init";
 
 const ExNavbar = () => {
     const [user, loading, error] = useAuthState(auth);
+
+    // Getting all neccasary user information from redux store
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyLogo } = loggerInfo;
+
+    // sign out handler
     const handleSignOut = () => {
         console.log("click for sign out");
         signOut(auth);
@@ -15,16 +22,9 @@ const ExNavbar = () => {
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="w-10"
-                    viewBox="0 0 16 16"
-                >
-                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z" />
-                </svg>
+                <span>
+                    <img src={companyLogo} className="w-10 h-10 mr-2" alt="" />
+                </span>
                 <span>Dashboard</span>
             </div>
 
