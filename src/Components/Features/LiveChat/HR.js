@@ -6,6 +6,10 @@ import HRChat from "./HRChat";
 import "./LiveChat.css";
 
 const HR = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    if (loggerInfo) {
+        // console.log(loggerInfo);
+    }
     const [singChatDetail, setSingleChatDetail] = useState({});
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { Department, userPhoto } = loggerInfo;
@@ -18,8 +22,12 @@ const HR = () => {
         const chat = e.target.chat.value;
         const userName = e.target.userName.value;
         const time = e.target.time.value;
+        const department = e.target.department.value;
+
+
 
         const hrchat = { chat, userName, time, userPhoto, Department };
+
 
         fetch("http://localhost:5000/chat", {
             method: "POST",
@@ -93,6 +101,12 @@ const HR = () => {
                                     name="userName"
                                     id=""
                                     value={loggerInfo?.name}
+                                />
+                                <input
+                                    type="hidden"
+                                    name="department"
+                                    id=""
+                                    value={loggerInfo?.Department}
                                 />
                                 <input
                                     type="hidden"
