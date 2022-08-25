@@ -180,7 +180,7 @@ const LeaveRequest = () => {
                             </div>
                         </div> : ' '
                 }
-                <div className='px-5'>
+                <div className='px-5 mt-10'>
                     <div class="overflow-x-auto">
                         <h1 className='text-2xl text-center font-bold'>Request Status</h1>
                         <div className="h-80 w-full mb-5 flex justify-between rounded py-6 px-6 mt-5">

@@ -74,7 +74,7 @@ const UserPromotion = () => {
                 <div class="overflow-x-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {
-                        transfers.slice(0, 8).map(transfer => (
+                        transfers?.slice(0, 8).map(transfer => (
                             <div class="px-4 py-2 w-64 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                                 <div className="flex items-center justify-between">
                                     <p className="my-2 font-semibold">{transfer.Name}</p>
