@@ -10,6 +10,7 @@ import WarningCard from "./WarningModal/WarningCard";
 import WarningModalDaisyUI from "./WarningModal/WarningModalDaisyUI";
 
 const TeamOrganize = () => {
+    const [searchTerm, setSearchTerm] = useState("");
     const [meetingModal, setMeetingModal] = useState(false);
     const [warningModal, setWarningModal] = useState(false);
     const [awardModal, setAwardModal] = useState(false);
@@ -34,6 +35,9 @@ const TeamOrganize = () => {
     } = useQuery(["warnings"], () =>
         fetch("http://localhost:5000/warnings").then((res) => res.json())
     );
+    if (warningData) {
+        console.log(warningData);
+    }
     const {
         isLoading: awardLoading,
         data: awardData,
@@ -179,6 +183,7 @@ const TeamOrganize = () => {
                         type="text"
                         className="border-[1px] rounded-md w-64 px-2 py-1 md:mx-2 outline-none"
                         placeholder="Filter by name"
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <select
                         name="meet-warn-award-filter"
@@ -207,9 +212,21 @@ const TeamOrganize = () => {
                         exit={{ opacity: 0, height: 0, y: -50 }}
                         className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-6 mt-8"
                     >
-                        {meetingData.map((meeting) => (
-                            <MeetingCard {...{ meeting }} />
-                        ))}
+                        {meetingData
+                            .filter((meeting) => {
+                                if (searchTerm === "") {
+                                    return meeting;
+                                } else if (
+                                    meeting.meetingWith
+                                        .toLowerCase()
+                                        .includes(searchTerm.toLowerCase())
+                                ) {
+                                    return meeting;
+                                }
+                            })
+                            .map((meeting) => (
+                                <MeetingCard {...{ meeting }} />
+                            ))}
                     </motion.section>
                 </AnimatePresence>
             )}
@@ -226,9 +243,21 @@ const TeamOrganize = () => {
                         exit={{ opacity: 0, height: 0, y: -50 }}
                         className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
                     >
-                        {warningData.map((warning) => (
-                            <WarningCard {...{ warning }} />
-                        ))}
+                        {warningData
+                            .filter((warning) => {
+                                if (searchTerm === "") {
+                                    return warning;
+                                } else if (
+                                    warning?.name
+                                        ?.toLowerCase()
+                                        .includes(searchTerm.toLowerCase())
+                                ) {
+                                    return warning;
+                                }
+                            })
+                            .map((warning) => (
+                                <WarningCard {...{ warning }} />
+                            ))}
                     </motion.section>
                 </AnimatePresence>
             )}
@@ -243,11 +272,23 @@ const TeamOrganize = () => {
                             y: 1,
                         }}
                         exit={{ opacity: 0, height: 0, y: -50 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 py-6 mt-8"
                     >
-                        {awardData.map((award) => (
-                            <AwardCard {...{ award }} />
-                        ))}
+                        {awardData
+                            .filter((award) => {
+                                if (searchTerm === "") {
+                                    return award;
+                                } else if (
+                                    award?.name
+                                        ?.toLowerCase()
+                                        .includes(searchTerm.toLowerCase())
+                                ) {
+                                    return award;
+                                }
+                            })
+                            .map((award) => (
+                                <AwardCard {...{ award }} />
+                            ))}
                     </motion.section>
                 </AnimatePresence>
             )}

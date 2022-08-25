@@ -5,7 +5,7 @@ const AwardCard = ({ award }) => {
         <div className="bg-transparent border-l-4 h-[180px] border-orange-500 px-4 mx-auto py-2 rounded-md shadow-xl relative">
             <div class="flex justify-between text-green-400">
                 <div className="flex items-center">
-                    <p className="text-gray-600 mr-2">Monir Hossain</p>
+                    <p className="text-gray-600 mr-2">{award.name}</p>
                     <span>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

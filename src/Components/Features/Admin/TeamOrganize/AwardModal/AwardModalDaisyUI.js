@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
 const AwardModalDaisyUI = ({ setAwardModal, awardRefetch }) => {
-    const handleAward = (e) => {
+    const [name, setName] = useState("");
+    const allEmployees = useSelector((state) => state.auth.allEmployees);
+    if (allEmployees) {
+        console.log(allEmployees);
+    }
+    const handleAward = async (e) => {
         e.preventDefault();
         const AwardDate = e.target.date.value;
         const employeeEmail = e.target.email.value;
         const awardTitle = e.target.title.value;
         const successMessage = e.target.message.value;
         const awardDetails = {
+            name: e.name,
             AwardDate,
             employeeEmail,
             awardTitle,
             successMessage,
         };
+
         console.log(awardDetails);
         fetch("http://localhost:5000/createAward", {
             method: "POST",
