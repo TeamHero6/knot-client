@@ -322,23 +322,6 @@ const HrPerformance = () => {
                                 />
                                 <br />
                             </div>
-                            {/* <div className="md:flex items-center">
-                                <label
-                                    className="font-bold w-40"
-                                    htmlFor="name"
-                                >
-                                    Employee ID :{" "}
-                                </label>{" "}
-                                <br />
-                                <input
-                                    className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
-                                    {...register("Employee_ID")}
-                                    id=""
-                                    placeholder="Employee ID"
-                                />
-                                <br />
-                            </div> */}
                             <div className="flex justify-center mt-2">
                                 <button
                                     type="submit"
