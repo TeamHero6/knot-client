@@ -132,64 +132,64 @@ const HrLeaveRequest = () => {
             </div>
             <div >
 
-                    <input
-                        type="checkbox"
-                        id={leave._id}
-                        class="modal-toggle"
-                    />
-                    <div class="modal">
-                        <div class="modal-box">
+                <input
+                    type="checkbox"
+                    id={leave._id}
+                    class="modal-toggle"
+                />
+                <div class="modal">
+                    <div class="modal-box">
+                        <div>
+                            <div className="flex items-center mb-5">
+                                <div className="ml-5">
+                                    <h2 className="text-2xl capitalize">
+                                        {leave.Name}
+                                    </h2>
+                                    <span className="uppercase">
+                                        {leave.dep}
+                                    </span>
+                                </div>
+                            </div>
                             <div>
-                                <div className="flex items-center mb-5">
-                                    <div className="ml-5">
-                                        <h2 className="text-2xl capitalize">
-                                            {leave.Name}
-                                        </h2>
-                                        <span className="uppercase">
-                                            {leave.dep}
-                                        </span>
-                                    </div>
-                                </div>
+                                <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
+                                    Details info
+                                </h1>
                                 <div>
-                                    <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
-                                        Details info
-                                    </h1>
-                                    <div>
-                                        <p>
-                                            <span className="font-medium capitalize">
-                                                Date:{" "}
-                                            </span>
-                                            {leave.Name}
-                                        </p>
-                                        <p>
-                                            <span className="font-medium capitalize">
-                                                Employee ID:{" "}
-                                            </span>
-                                            {leave.id}
-                                        </p>
-                                        <p>
-                                            <span className="font-medium capitalize">
-                                                type of leave:{" "}
-                                            </span>
-                                            {leave.leave_type}
-                                        </p>
-                                        <p>
-                                            <span className="font-medium capitalize">
-                                                Leave request Date:{" "}
-                                            </span>
-                                            {leave.e_date}
-                                        </p>
-                                    </div>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Date:{" "}
+                                        </span>
+                                        {leave.Name}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Employee ID:{" "}
+                                        </span>
+                                        {leave.id}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            type of leave:{" "}
+                                        </span>
+                                        {leave.leave_type}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Leave request Date:{" "}
+                                        </span>
+                                        {leave.e_date}
+                                    </p>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={leave._id} class="btn btn-warning">
-                                    Cancel
-                                </label>
-                            </div>
+                        </div>
+                        <div class="modal-action">
+                            <label for={leave._id} class="btn btn-warning">
+                                Cancel
+                            </label>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     );
 };
