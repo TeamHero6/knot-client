@@ -68,6 +68,9 @@ const AllTasks = ({ data, searchTerm }) => {
                                 } else if (
                                     task.name
                                         .toLowerCase()
+                                        .includes(searchTerm.toLowerCase()) ||
+                                    task.taskTitle
+                                        .toLowerCase()
                                         .includes(searchTerm.toLowerCase())
                                 ) {
                                     return task;
@@ -80,16 +83,19 @@ const AllTasks = ({ data, searchTerm }) => {
                                             hidden: (i) => ({
                                                 opacity: 0,
                                                 y: -50 * i,
+                                                h: 0,
                                             }),
                                             visible: (i) => ({
                                                 opacity: 1,
                                                 y: 0,
+                                                h: 1,
                                                 transition: {
                                                     delay: i * 0.015,
                                                 },
                                             }),
                                             removed: {
                                                 opacity: 0,
+                                                h: 0,
                                             },
                                         }}
                                         initial="hidden"
