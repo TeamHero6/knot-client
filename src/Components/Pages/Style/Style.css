@@ -6,7 +6,7 @@
     width: 90%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin-top: 50px;
     padding-top: 50px;
     padding-bottom: 30px;
@@ -56,47 +56,13 @@
     text-align: left;
 }
 
-.newsletter-area h2 {
-    color: #f1f2f2;
-    text-align: left;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.newsletter-area form {
-    text-align: left;
-    color: #f1f2f2;
-}
-
-.newsletter-area form label {
-    font-size: 18px;
-}
-
-.newsletter-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 5px;
-    color: #000000;
-    outline: none;
-}
-
-.newsletter-send-btn {
-    text-align: left;
-    color: #45bdf8;
-    border: 1px solid #45bdf8;
-    margin-top: 10px;
-    padding: 8px 35px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .footer-section-bottom {
     font-size: 14px;
     color: #f1f2f2;
-    padding-bottom: 50px;
+    padding-bottom: 25px;
 }
-.footer-section-top .logo-area{
+
+.footer-section-top .logo-area {
     display: flex;
 
 }
