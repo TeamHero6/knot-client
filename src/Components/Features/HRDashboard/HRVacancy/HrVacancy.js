@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { AiFillSave, AiOutlineEye, AiTwotoneDelete } from "react-icons/ai";
-import { BiPlus } from "react-icons/bi";
+import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import HRCircularCard from "./HRCircularCard";
 
@@ -12,9 +10,6 @@ const HrVacancy = () => {
     const { register, handleSubmit, reset } = useForm();
     const [carcular, setCarcular] = useState([]);
     const [short, setShort] = useState([]);
-    const [shows, setShows] = useState(false);
-    const [modal, setmodal] = useState({});
-    const [applican, setapplican] = useState({});
 
 
 
@@ -30,22 +25,8 @@ const HrVacancy = () => {
             .then((data) => setCarcular(data));
     }, [carcular]);
 
-    const handaldelete = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/vacancy/${id}`;
-        fetch(url, { method: "DELETE" })
-            .then((res) => res.json())
-            .then((data) => {
-                toast.warning("Delete carcular");
-            });
-    };
-    const deleteap = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/applicant/${id}`;
-        fetch(url, { method: "DELETE" })
-            .then((res) => res.json())
-            .then((data) => {
-                toast.warning("Delete applicant");
-            });
-    };
+
+   
 
     const onSubmit = (data) => {
         fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
@@ -183,118 +164,7 @@ const HrVacancy = () => {
             </div>
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Circular</h3>
-                {/* <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div class="rounded-none w-full mx-auto ">
-                        <table class="shadow-2xl border-2 border-cyan-300 w-full mx-auto my-12 text-base overflow-hidden">
-                            <thead className="text-white bg-cyan-500 border-b border-cyan-100">
-                                <tr>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Position
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Number of openings
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Last Date for Apply
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        View
-                                    </th>
-                                    <th className="py-3 text-left px-6 whitespace-nowrap">
-                                        Delete
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {carcular.map((c) => (
-                                    <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {c.Position}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {c.Number_openings}
-                                        </td>
-                                        <td className="py-3 px-6 whitespace-nowrap">
-                                            {c.Last_Date_Apply}
-                                        </td>
 
-                                        <td className="text-[#0182be]  text-center">
-                                            <label
-                                                for={c._id}
-                                                onClick={() => setmodal(c)}
-                                                class="modal-button text-center"
-                                            >
-                                                <AiOutlineEye className="text-2xl "></AiOutlineEye>
-                                            </label>
-                                        </td>
-                                        <td className="text-red-700 text-center">
-                                            <button
-                                                onClick={() =>
-                                                    handaldelete(c._id)
-                                                }
-                                            >
-                                                {" "}
-                                                <AiTwotoneDelete></AiTwotoneDelete>{" "}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <input
-                            required
-                            type="checkbox"
-                            id={modal._id}
-                            class="modal-toggle"
-                        />
-                        <div class="modal">
-                            <div class="modal-box">
-                                <div>
-                                    <div>
-                                        <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
-                                            Details info
-                                        </h1>
-                                        <div>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    {" "}
-                                                    Position:{" "}
-                                                </span>
-                                                {modal.Position}
-                                            </p>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    Number of openings:{" "}
-                                                </span>
-                                                {modal.Number_openings}
-                                            </p>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    Last Date Apply:{" "}
-                                                </span>
-                                                {modal.Last_Date_Apply}
-                                            </p>
-                                            <p>
-                                                <span className="font-medium capitalize">
-                                                    Salary Range:{" "}
-                                                </span>
-                                                {modal.Salary_Range}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-action">
-                                    <label
-                                        for={modal._id}
-                                        class="btn btn-warning"
-                                    >
-                                        Cancel
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
 
                 <div className='flex justify-between gap-5'>
                     {
