@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -12,7 +13,7 @@ const Partners = () => {
     const [partnerList, setPartnerList] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/partner")
+        fetch("http://localhost:5000/partner")
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList]);
@@ -31,16 +32,13 @@ const Partners = () => {
             email,
         };
 
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addPartner",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(Partner),
-            }
-        )
+        fetch("http://localhost:5000/addPartner", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(Partner),
+        })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -51,7 +49,11 @@ const Partners = () => {
     };
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="flex gap-5">
                 <div>
                     <button
@@ -174,7 +176,7 @@ const Partners = () => {
             <PartnerDetailsModal
                 singlePartnerDetail={singlePartnerDetail}
             ></PartnerDetailsModal>
-        </div>
+        </motion.div>
     );
 };
 

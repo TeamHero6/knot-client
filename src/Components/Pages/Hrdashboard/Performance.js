@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave, AiOutlineEye } from "react-icons/ai";
@@ -13,22 +14,19 @@ const Performance = () => {
     const [modal, setmodal] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/performance")
+        fetch("http://localhost:5000/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, [promo]);
 
     const onSubmit = (data) => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/performance",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(data),
-            }
-        )
+        fetch("http://localhost:5000/performance", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {
@@ -38,7 +36,11 @@ const Performance = () => {
             });
     };
     return (
-        <div className="ml-5">
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <label
                 onClick={() => setShow(!show)}
                 for="my-drawer"
@@ -256,7 +258,10 @@ const Performance = () => {
                                 </div>
                             </div>
                             <div className="modal-action">
-                                <label for={modal._id} className="btn btn-warning">
+                                <label
+                                    for={modal._id}
+                                    className="btn btn-warning"
+                                >
                                     Cancel
                                 </label>
                             </div>
@@ -266,7 +271,7 @@ const Performance = () => {
             </div>
 
             <Transfer></Transfer>
-        </div>
+        </motion.div>
     );
 };
 

@@ -69,16 +69,13 @@ const BusinessSignup = () => {
                         };
 
                         // Send Data to Server
-                        fetch(
-                            "https://knot-business-solution-server.herokuapp.com/createdUser",
-                            {
-                                method: "PUT",
-                                headers: {
-                                    "content-type": "application/json",
-                                },
-                                body: JSON.stringify(userInfo),
-                            }
-                        )
+                        fetch("http://localhost:5000/createdUser", {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(userInfo),
+                        })
                             .then((res) => res.json())
                             .then((data) => {
                                 const token = data?.token;
@@ -171,9 +168,9 @@ const BusinessSignup = () => {
         }
     };
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen relative">
             <Navbar />
-            <section className="flex justify-center items-center w-full flex-1 text-center px-3 md:px-20 bg-gray-100 min-h-screen">
+            <section className="flex justify-center items-center w-full flex-1 text-center px-3 md:px-20 my-8 bg-gray-100 min-h-screen">
                 <div className="bg-white rounded-2xl shadow-2xl md:flex w-[100%] md:w-3/4 lg:w-2/3 max-w-4xl mt-8 mb-8">
                     <div className="w-full lg:w-3/5 p-5 my-auto">
                         <div className="text-left font-bold">

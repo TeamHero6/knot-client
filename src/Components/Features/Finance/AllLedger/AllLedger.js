@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -24,7 +25,7 @@ const AllLedger = () => {
         };
 
         console.log(CashBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/cashBook", {
+        fetch("http://localhost:5000/cashBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -56,7 +57,7 @@ const AllLedger = () => {
             expenseType,
         };
         // console.log(BankBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
+        fetch("http://localhost:5000/bankBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -72,7 +73,11 @@ const AllLedger = () => {
             });
     };
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div>
                 <div className="flex gap-5">
                     <div>
@@ -333,7 +338,7 @@ const AllLedger = () => {
             <div>
                 <AllLedgerList />
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -7,7 +7,7 @@ const PartnerDetails = () => {
         partnerList;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/partner")
+        fetch("http://localhost:5000/partner")
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList]);
