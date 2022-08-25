@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-
-=======
 import { motion } from "framer-motion";
 import React, { useState } from "react";
->>>>>>> monirV3
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { toast } from "react-toastify";

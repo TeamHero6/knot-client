@@ -36,15 +36,11 @@ const Performance = () => {
             });
     };
     return (
-<<<<<<< HEAD
-        <div className="ml-5">
-=======
         <motion.div
             initial={{ y: -50, opacity: 0 }}
             animate={{ opacity: 1, y: 1 }}
             exit={{ y: -50, opacity: 0 }}
         >
->>>>>>> monirV3
             <label
                 onClick={() => setShow(!show)}
                 for="my-drawer"

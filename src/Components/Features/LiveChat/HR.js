@@ -11,7 +11,6 @@ const HR = () => {
         // console.log(loggerInfo);
     }
     const [singChatDetail, setSingleChatDetail] = useState({});
-    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { Department, userPhoto } = loggerInfo;
     if (loggerInfo) {
         console.log(loggerInfo);
@@ -24,10 +23,7 @@ const HR = () => {
         const time = e.target.time.value;
         const department = e.target.department.value;
 
-
-
         const hrchat = { chat, userName, time, userPhoto, Department };
-
 
         fetch("http://localhost:5000/chat", {
             method: "POST",
