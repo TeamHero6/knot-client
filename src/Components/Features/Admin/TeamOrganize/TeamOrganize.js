@@ -46,6 +46,10 @@ const TeamOrganize = () => {
             (res) => res.json()
         )
     );
+
+    if (warningData) {
+        console.log(warningData);
+    }
     if (meetingLoading || warningLoading || awardLoading) {
         return <Loader />;
     }

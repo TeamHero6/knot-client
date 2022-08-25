@@ -1,11 +1,23 @@
 import React from "react";
+import { ThreeDots } from "react-loader-spinner";
+import logo from "../../../Assets/logo/KnotLogo.png";
 
 const Loader = ({ children }) => {
     return (
-        <div className="flex items-center justify-center w-full min-h-screen space-x-2 animate-bounce">
-            <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
-            <div className="w-8 h-8 bg-green-400 rounded-full"></div>
-            <div className="w-8 h-8 bg-black rounded-full"></div>
+        <div className="w-full h-screen flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
+                <img src={logo} className="w-24 mr-3" alt="" />
+                <ThreeDots
+                    height="80"
+                    width="80"
+                    radius="9"
+                    color="gray"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClassName=""
+                    visible={true}
+                />
+            </div>
         </div>
     );
 };
