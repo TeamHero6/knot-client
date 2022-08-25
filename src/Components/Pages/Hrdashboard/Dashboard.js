@@ -10,11 +10,10 @@ const Dashboard = () => {
     const [leave, setLeave] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/users")
+        fetch("http://localhost:5000/users")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
-  
 
     const approv = (event) => {
         setUpstatus(event.target.value);
@@ -24,7 +23,7 @@ const Dashboard = () => {
 
         const updata = { aprovel };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/users/${id}`;
+        const url = `http://localhost:5000/users/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -38,11 +37,8 @@ const Dashboard = () => {
             });
     };
 
-
     return (
         <div>
-           
-
             {/* Leave Requst Section */}
 
             <div className="px-5">
@@ -92,7 +88,6 @@ const Dashboard = () => {
                                         {request.dep}
                                     </td>
 
-                                   
                                     <td>
                                         <div>
                                             <label
@@ -113,7 +108,9 @@ const Dashboard = () => {
                                             onChange={approv}
                                         >
                                             <option value="approval_statas">
-                                                {request.aprovel ? request.aprovel : 'Approve Statas'}
+                                                {request.aprovel
+                                                    ? request.aprovel
+                                                    : "Approve Statas"}
                                             </option>
                                             <option value="Approve">
                                                 Approve

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import HRNavbar from "../../Shared/HRNavbar/HRNavbar";
 
-const Hrdashboard = () => {
+const HRManagement = () => {
     const [open, setOpen] = useState(false);
     return (
         <div className="min-h-screen bg-custom-gray">
@@ -15,7 +15,7 @@ const Hrdashboard = () => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    className="bi bi-chevron-expand"
+                    class="bi bi-chevron-expand"
                     viewBox="0 0 16 16"
                 >
                     <path
@@ -24,83 +24,69 @@ const Hrdashboard = () => {
                     />
                 </svg>
             </span>
-            <HRNavbar></HRNavbar>
+            <HRNavbar />
             <section className="flex w-full">
                 <div
                     className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md justify-center 
-                ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
+            ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
-                    <div>
+                    <div className="md:mx-2 lg:mx-4">
                         <Link
                             to=""
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
-                            <p>Dashboard</p>
+                            Dashboard
                         </Link>
                         <Link
                             to="hrLeaveRequest"
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
-                        >
-                            <p>Leave Request</p>
-                        </Link>
-                        <Link
-                            to="employeeorg"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
-                            Employees
+                            Leave Request
                         </Link>
                         <Link
-                            to="performance"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                            to="employeeManagement"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition  cursor-pointer rounded hover:bg-custom-cyan-100"
+                        >
+                            Management
+                        </Link>
+                        <Link
+                            to="hrPerformance"
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Performance
                         </Link>
                         <Link
-                            to="payrolls"
+                            to="hrPayroll"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
-                            Payrolls
+                            Payroll
                         </Link>
                         <Link
-                            to="attendance"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Attendance
-                        </Link>
-                        <Link
-                            to="hrdetails"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                            to="hrEmployeeDetails"
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Employee Details
                         </Link>
                         <Link
-                            to="vacancy"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                            to="hrVacancy"
+                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Vacancy
                         </Link>
                         <Link
-                            to="interview"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Interview
-                        </Link>
-                        <Link
-                            to="joining"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
+                            to="hrJoining"
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             Joining
                         </Link>
-
-
                     </div>
                 </div>
-               
+                <div className="px-3 overflow-auto w-full">
                     <Outlet />
-               
+                </div>
             </section>
         </div>
     );
 };
 
-export default Hrdashboard;
+export default HRManagement;

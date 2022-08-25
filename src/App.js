@@ -15,6 +15,16 @@ import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
 import FinanceDashboard from "./Components/Features/Finance/FinanceDashboard/FinanceDashboard";
 import FinanceManagement from "./Components/Features/Finance/FinanceManagement";
 import Partners from "./Components/Features/Finance/Partners/Partners";
+import HRDashboard from "./Components/Features/HRDashboard/Dashboard/HRDashboard";
+import EmployeeManagement from "./Components/Features/HRDashboard/EmployeeManagement/EmployeeManagement";
+import HRWarning from "./Components/Features/HRDashboard/EmployeeManagement/HRWarning";
+import HrEmployeeDetails from "./Components/Features/HRDashboard/HREmployeeDetails/HrEmployeeDetails";
+import HrJoining from "./Components/Features/HRDashboard/HRJoining/HrJoining";
+import HrLeaveRequest from "./Components/Features/HRDashboard/HRLeaveRequest/HrLeaveRequest";
+import HRManagement from "./Components/Features/HRDashboard/HRManagement";
+import HrPayroll from "./Components/Features/HRDashboard/HRPayroll/HrPayroll";
+import HrPerformance from "./Components/Features/HRDashboard/HRPerformance/HrPerformance";
+import HrVacancy from "./Components/Features/HRDashboard/HRVacancy/HrVacancy";
 import HR from "./Components/Features/LiveChat/HR";
 import LiveChat from "./Components/Features/LiveChat/LiveChat";
 import LiveChatDashboard from "./Components/Features/LiveChat/LiveChatDashboard";
@@ -62,16 +72,6 @@ import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import Loader from "./Components/Shared/Loader/Loader";
 import FormSample from "./FromSample/FormSample";
-import HRManagement from "./Components/Features/HRDashboard/HRManagement";
-import HRDashboard from "./Components/Features/HRDashboard/Dashboard/HRDashboard";
-import HrLeaveRequest from "./Components/Features/HRDashboard/HRLeaveRequest/HrLeaveRequest";
-import EmployeeManagement from "./Components/Features/HRDashboard/EmployeeManagement/EmployeeManagement";
-import HRWarning from "./Components/Features/HRDashboard/EmployeeManagement/HRWarning";
-import HrPerformance from "./Components/Features/HRDashboard/HRPerformance/HrPerformance";
-import HrPayroll from "./Components/Features/HRDashboard/HRPayroll/HrPayroll";
-import HrEmployeeDetails from "./Components/Features/HRDashboard/HREmployeeDetails/HrEmployeeDetails";
-import HrVacancy from "./Components/Features/HRDashboard/HRVacancy/HrVacancy";
-import HrJoining from "./Components/Features/HRDashboard/HRJoining/HrJoining";
 const AdminDashboardF = lazy(() =>
     import("./Components/Features/Admin/Dashboard/AdminDashboardF")
 );
@@ -113,17 +113,29 @@ function App() {
                         <Route path="interview" element={<Interview />}></Route>
                         <Route path="joining" element={<Joining />}></Route>
                     </Route>
-<Route path="/hrManagement" element={<HRManagement />}>
-                    <Route index element={<HRDashboard/>}></Route>
-                    <Route path="hrLeaveRequest" element={<HrLeaveRequest/>}></Route>
-                    <Route path="employeeManagement" element={<EmployeeManagement/>}></Route>
-                    <Route path="hrWarning" element={<HRWarning/>}></Route>
-                    <Route path="hrPerformance" element={<HrPerformance/>}></Route>
-                    <Route path="hrPayroll" element={<HrPayroll/>}></Route>
-                    <Route path="hrEmployeeDetails" element={<HrEmployeeDetails/>}></Route>
-                    <Route path="hrVacancy" element={<HrVacancy/>}></Route>
-                    <Route path="hrJoining" element={<HrJoining/>}></Route>
-                </Route>
+                    <Route path="/hrManagement" element={<HRManagement />}>
+                        <Route index element={<HRDashboard />}></Route>
+                        <Route
+                            path="hrLeaveRequest"
+                            element={<HrLeaveRequest />}
+                        ></Route>
+                        <Route
+                            path="employeeManagement"
+                            element={<EmployeeManagement />}
+                        ></Route>
+                        <Route path="hrWarning" element={<HRWarning />}></Route>
+                        <Route
+                            path="hrPerformance"
+                            element={<HrPerformance />}
+                        ></Route>
+                        <Route path="hrPayroll" element={<HrPayroll />}></Route>
+                        <Route
+                            path="hrEmployeeDetails"
+                            element={<HrEmployeeDetails />}
+                        ></Route>
+                        <Route path="hrVacancy" element={<HrVacancy />}></Route>
+                        <Route path="hrJoining" element={<HrJoining />}></Route>
+                    </Route>
 
                     <Route
                         path="/BusinessSignUp"

@@ -44,7 +44,6 @@ const AdminDashboardF = () => {
                                 </span>
                             )}
                         </NavLink>
-                        npm install react-spring
                         <NavLink to="teamOrganize">
                             {({ isActive }) => (
                                 <span

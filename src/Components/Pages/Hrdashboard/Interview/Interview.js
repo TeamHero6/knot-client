@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { AiFillSave, AiTwotoneEye } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -7,7 +8,7 @@ const Interview = () => {
     const [short, setShort] = useState([]);
     const [modal, setmodal] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
+        fetch("http://localhost:5000/applicant")
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short]);
@@ -20,7 +21,7 @@ const Interview = () => {
 
         const updata = { aprovel };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/applicant/${id}`;
+        const url = `http://localhost:5000/applicant/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -34,7 +35,11 @@ const Interview = () => {
             });
     };
     return (
-        <div className="ml-5">
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Interview</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
@@ -176,7 +181,7 @@ const Interview = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

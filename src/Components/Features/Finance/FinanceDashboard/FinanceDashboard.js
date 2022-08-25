@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import {
     Legend,
@@ -15,12 +16,16 @@ const FinanceDashboard = () => {
     const [partnerList, setPartnerList] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/partner")
+        fetch("http://localhost:5000/partner")
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList]);
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <section className="flex gap-5">
                 <div class="card w-72 bg-base-100 shadow-xl">
                     <div class="card-body">
@@ -85,7 +90,7 @@ const FinanceDashboard = () => {
                     </div>
                 </div>
             </section>
-        </div>
+        </motion.div>
     );
 };
 

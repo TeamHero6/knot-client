@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave, AiOutlineEye, AiTwotoneDelete } from "react-icons/ai";
 import { BiPlus } from "react-icons/bi";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Applicant from "./Applicant";
 
 const Recruitment = () => {
     const [show, setShow] = useState(false);
@@ -15,19 +13,19 @@ const Recruitment = () => {
     const [modal, setmodal] = useState({});
     const [applican, setapplican] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
+        fetch("http://localhost:5000/applicant")
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy")
+        fetch("http://localhost:5000/vacancy")
             .then((res) => res.json())
             .then((data) => setCarcular(data));
     }, [carcular]);
 
     const handaldelete = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/vacancy/${id}`;
+        const url = `http://localhost:5000/vacancy/${id}`;
         fetch(url, { method: "DELETE" })
             .then((res) => res.json())
             .then((data) => {
@@ -35,7 +33,7 @@ const Recruitment = () => {
             });
     };
     const deleteap = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/applicant/${id}`;
+        const url = `http://localhost:5000/applicant/${id}`;
         fetch(url, { method: "DELETE" })
             .then((res) => res.json())
             .then((data) => {
@@ -44,7 +42,7 @@ const Recruitment = () => {
     };
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
+        fetch("http://localhost:5000/vacancy", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -295,24 +293,28 @@ const Recruitment = () => {
                 </div>
             </div>
 
-            <h3 className="text-[#0182be] text-2xl">
-                Applicant Short List
-            </h3>
+            <h3 className="text-[#0182be] text-2xl">Applicant Short List</h3>
             <div className="my-3   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {short.map(ap =>
+                {short.map((ap) => (
                     <div className="">
                         <div class="card w-96 lg:w-80 bg-base-100 shadow-xl">
-                            <label  onClick={() => deleteap(ap._id)} class="btn btn-sm btn-circle absolute right-2 top-2 border-none bg-[#F000B8] hover:bg-[#c30196]">✕</label>
+                            <label
+                                onClick={() => deleteap(ap._id)}
+                                class="btn btn-sm btn-circle absolute right-2 top-2 border-none bg-[#F000B8] hover:bg-[#c30196]"
+                            >
+                                ✕
+                            </label>
                             <div class="card-body">
                                 <h2 class="card-title">
                                     {ap.Applicant_Name}
-                                    <div class="badge badge-secondary">{ap.Position}</div>
+                                    <div class="badge badge-secondary">
+                                        {ap.Position}
+                                    </div>
                                 </h2>
                                 <p>Job Title: {ap.Job_Title}</p>
                                 <p>Apply Date: {ap.Employee_Applyed_Date}</p>
                                 <p>Interview Date: {ap.Interview_Date}</p>
                                 <div class="card-actions justify-end">
-                                  
                                     <label
                                         for={ap._id}
                                         onClick={() => setapplican(ap)}
@@ -320,14 +322,17 @@ const Recruitment = () => {
                                     >
                                         Details
                                     </label>
-                                    <a href={ap.Meeting_Link} class="btn btn-sm border-none bg-green-400 hover:bg-green-600">Join</a>
+                                    <a
+                                        href={ap.Meeting_Link}
+                                        class="btn btn-sm border-none bg-green-400 hover:bg-green-600"
+                                    >
+                                        Join
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-                )}
+                ))}
                 <input
                     required
                     type="checkbox"
@@ -371,17 +376,13 @@ const Recruitment = () => {
                             </div>
                         </div>
                         <div class="modal-action">
-                            <label
-                                for={applican._id}
-                                class="btn btn-warning"
-                            >
+                            <label for={applican._id} class="btn btn-warning">
                                 Cancel
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
