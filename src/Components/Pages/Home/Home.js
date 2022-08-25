@@ -3,6 +3,7 @@ import Footer from "../../Shared/Footer/Footer";
 
 import Navbar from "../../Shared/Navbar/Navbar";
 import AllKnotApp from "./AllKnotApp/AllKnotApp";
+import Client from "./Client/Client";
 import Header from "./Header.js/Header";
 import Intro from "./Intro";
 import Promotion from "./Promotion/Promotion";
@@ -14,6 +15,7 @@ const Home = () => {
             <Header />
             <Promotion />
             <AllKnotApp />
+            <Client />
             <Intro />
             <Footer />
         </div>

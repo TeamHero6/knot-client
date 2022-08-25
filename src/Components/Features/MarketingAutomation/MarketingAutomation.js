@@ -45,7 +45,7 @@ const MarketingAutomation = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="overflow-auto px-3">
+                <div className="overflow-auto w-full px-3">
                     <Outlet />
                 </div>
             </section>
