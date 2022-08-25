@@ -19,14 +19,14 @@ const Warming = () => {
     return (
         <div className="m-10">
             <div class="overflow-x-auto">
-                <h1 className='text-2xl text-center font-bold mt-12 mb-6'>Team Members Warning Database</h1>
+                <h1 className='text-2xl text-red-500 font-bold my-6'>Warning Database</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         warnings?.slice(0, 20).map(warning => (
                             <div class="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                                 <div className="flex items-center justify-between">
                                     <p className="my-2 font-semibold">{warning.name}</p>
-                                    <label for={warning._id}><span className='modal-button underline text-green-500 hover:font-medium'>Details</span></label>
+                                    <label for={warning._id}><span className='modal-button underline text-red-500 hover:font-medium'>Details</span></label>
                                     <input type="checkbox" id={warning._id} class="modal-toggle" />
                                     <div class="modal modal-bottom sm:modal-middle">
                                         <div class="modal-box">
@@ -52,14 +52,14 @@ const Warming = () => {
                 </div>
             </div>
             <div>
-                <h1 className='text-2xl text-center font-bold mt-5 mb-2'>Training Details</h1>
+                <h1 className='text-2xl font-bold my-6'>Training Details</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         trainings?.slice(0, 20).map(training => (
                             <div class="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                                 <div className="flex items-center justify-between">
                                     <p className="my-2 font-semibold">{training.Applicant_Name}</p>
-                                    <label for={training._id}><span className='modal-button underline text-green-500 hover:font-medium'>Details</span></label>
+                                    <label for={training._id}><span className='modal-button underline hover:font-medium'>Details</span></label>
                                     <input type="checkbox" id={training._id} class="modal-toggle" />
                                     <div class="modal modal-bottom sm:modal-middle">
                                         <div class="modal-box">

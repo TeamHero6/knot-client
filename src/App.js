@@ -66,6 +66,7 @@ import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
 import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+import UserAttendance from "./Components/Pages/UserDashboard/UserAttendance";
 import UserDashboardK from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
@@ -151,16 +152,9 @@ function App() {
                             path="userManagement"
                             element={<UserManagement></UserManagement>}
                         />
-                        <Route
-                            path="attendance"
-                            element={<UserAttaindance />}
-                        />
+                        <Route path="attendance" element={<UserAttendance/>}></Route>
                         <Route path="performance" element={<UserPromotion />} />
                         <Route path="Payrolls" element={<UserPayrolls />} />
-                        <Route
-                            path="Calender"
-                            element={<Calender></Calender>}
-                        />
                     </Route>
 
                     <Route
