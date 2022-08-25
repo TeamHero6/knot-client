@@ -51,7 +51,6 @@ import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/Busi
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
-import EmployeesOrganize from "./Components/Pages/Hrdashboard/EmployeesOrganize";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
 import Hrdetails from "./Components/Pages/Hrdashboard/Hrdetails/Hrdetails";
 import Interview from "./Components/Pages/Hrdashboard/Interview/Interview";
@@ -94,10 +93,6 @@ function App() {
                     ></Route>
                     <Route path="/hrdashboard" element={<Hrdashboard />}>
                         <Route index element={<Dashboard />}></Route>
-                        <Route
-                            path="employeeorg"
-                            element={<EmployeesOrganize />}
-                        ></Route>
 
                         <Route
                             path="performance"
