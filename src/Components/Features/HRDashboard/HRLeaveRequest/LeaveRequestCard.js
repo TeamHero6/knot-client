@@ -7,11 +7,8 @@ const LeaveRequestCard = (props) => {
     const { _id, Date, id, Name, dep, leave_type, e_date, aprovel } = props.leave
     const [requests, setRequest] = useState([]);
     const [upstatus, setUpstatus] = useState("");
-    // const [leave, setLeave] = useState({});
 
     const approv = (event) => {
-
-
 
         setUpstatus(event.target.value);
     };

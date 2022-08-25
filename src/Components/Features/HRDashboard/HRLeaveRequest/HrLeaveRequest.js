@@ -6,14 +6,14 @@ const HrLeaveRequest = () => {
     const [requests, setRequest] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/users")
+        fetch("http://localhost:5000/users")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, [requests]);
     return (
         <div>
             <div className=' px-3 py-3'>
-                <h1 className='font-semibold text-xl mb-4 ml-5'>Approval Leave Request</h1>
+                <h1 className='font-semibold text-blue-500 text-xl mb-4 ml-5'>Approval Leave Request</h1>
 
                 <div className='grid grid-rows-2 grid-flow-col gap-5'>
                     {
