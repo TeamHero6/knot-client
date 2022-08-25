@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -48,7 +49,11 @@ const Partners = () => {
     };
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="flex gap-5">
                 <div>
                     <button
@@ -171,7 +176,7 @@ const Partners = () => {
             <PartnerDetailsModal
                 singlePartnerDetail={singlePartnerDetail}
             ></PartnerDetailsModal>
-        </div>
+        </motion.div>
     );
 };
 
