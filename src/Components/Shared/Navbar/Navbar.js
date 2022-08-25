@@ -61,8 +61,32 @@ const Navbar = () => {
                                     to="/about"
                                     className={({ isActive }) =>
                                         isActive
+                                            ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                            : "text-green-400  px-2 py-2 rounded-md mx-1"
+                                    }
+                                >
+                                    Pricing
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/FAQ"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                            : "text-green-400  px-2 py-2 rounded-md mx-1"
+                                    }
+                                >
+                                    Support
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/about"
+                                    className={({ isActive }) =>
+                                        isActive
                                             ? "bg-green-400 text-white px-4 py-1 rounded-md"
-                                            : "text-green-400 hover:bg-green-400 hover:text-white rounded-md px-4 py-2"
+                                            : "text-green-400  rounded-md px-4 py-2"
                                     }
                                 >
                                     About
@@ -74,7 +98,7 @@ const Navbar = () => {
                                     className={({ isActive }) =>
                                         isActive
                                             ? "bg-green-400 text-white px-4 py-1 rounded-md"
-                                            : "text-green-400 hover:bg-green-400 hover:text-white px-4 py-2"
+                                            : "text-green-400  px-4 py-2"
                                     }
                                 >
                                     Access your apps
@@ -122,17 +146,37 @@ const Navbar = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
-                                    : "text-green-400 hover:bg-green-400 hover:text-white px-2 py-2 rounded-md mx-1"
+                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
+                            }
+                        >
+                            Pricing
+                        </NavLink>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
                             }
                         >
                             About
+                        </NavLink>
+                        <NavLink
+                            to="/FAQ"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
+                            }
+                        >
+                            Support
                         </NavLink>
                         <NavLink
                             to="/accessApps"
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-green-400 text-white px-2 py-2 rounded-md mx-1"
-                                    : "text-green-400 hover:bg-green-400 hover:text-white rounded-md px-2 py-2 mx-1"
+                                    : "text-green-400  rounded-md px-2 py-2 mx-1"
                             }
                         >
                             Access your apps
