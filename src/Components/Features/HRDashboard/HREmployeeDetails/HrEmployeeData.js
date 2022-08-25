@@ -11,11 +11,12 @@ const HrEmployeeData = () => {
             .then((res) => res.json())
             .then((data) => setDetails(data));
     }, [details]);
+    console.log(details);
 
     return (
-        <div className="mx-auto w-4/5 rounded-lg my-5 ">
+        <div className="mx-auto w-full rounded-lg my-5 ">
             <div class="rounded-none">
-                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <table class="shadow-sm w-full border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -28,10 +29,13 @@ const HrEmployeeData = () => {
                                 Email
                             </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
-                                Blood
+                                Department
                             </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
-                                Department
+                                Designation
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Emergency Contact
                             </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
                                 Details
@@ -51,10 +55,14 @@ const HrEmployeeData = () => {
                                     {d.Email}
                                 </td>
                                 <td className="py-3 px-6 whitespace-nowrap">
-                                    {d.Blood_Group}
+                                    {d.Department}
                                 </td>
                                 <td className="py-3 px-6 whitespace-nowrap">
-                                    {d.Department}
+                                    {d.Designation}
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {d.contact_Name} <br />
+                                    <small>{d.Emergency_contact}</small>
                                 </td>
                                 <td className="text-[#0182be]">
                                     <label
@@ -79,7 +87,7 @@ const HrEmployeeData = () => {
                         <div>
                             <div>
                                 <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
-                                    Details info
+                                    Employee info
                                 </h1>
                                 <div>
                                     <p>
@@ -96,15 +104,80 @@ const HrEmployeeData = () => {
                                     </p>
                                     <p>
                                         <span className="font-medium capitalize">
+                                            Personal Email:
+                                        </span>
+                                        {employinfo.Email}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
                                             Company Email:
                                         </span>
                                         {employinfo.Company_Email}
                                     </p>
                                     <p>
                                         <span className="font-medium capitalize">
+                                            Address:
+                                        </span>
+                                        {employinfo.Address}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Department:
+                                        </span>
+                                        {employinfo.Department}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Designation:
+                                        </span>
+                                        {employinfo.Designation}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
                                             Joining Date:
                                         </span>
                                         {employinfo.Joining_Date}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Salary:
+                                        </span>
+                                        {employinfo.Salary}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Salary Grad:
+                                        </span>
+                                        {employinfo.Salary_Grad}
+                                    </p>
+                                </div> <br />
+                                <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
+                                    Emergency Contact Info
+                                </h1>
+                                <div>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Contact Person:
+                                        </span>
+                                        {employinfo.contact_Name}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Emergency Contact No:
+                                        </span>
+                                        {employinfo.Emergency_contact}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Relation:
+                                        </span>
+                                        {employinfo.Relation}
+                                    </p>
+                                    <p>
+                                        <span className="font-medium capitalize">
+                                            Address:
+                                        </span>
+                                        {employinfo.C_Address}
                                     </p>
                                 </div>
                             </div>

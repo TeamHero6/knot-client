@@ -5,23 +5,23 @@ import access from "../../../Assets/icons/Dashboard/access.svg";
 import DigitalClock from "../../Shared/DigitalClock/DigitalClock";
 
 const FinanceNavbar = () => {
-    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    const { companyLogo, userPhoto } = loggerInfo;
-    console.log(loggerInfo);
+    // const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    // const { companyLogo, userPhoto } = loggerInfo;
+    // console.log(loggerInfo);
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
-                <img
+                {/* <img
                     src={loggerInfo.companyLogo}
                     className="w-6 h-6 mr-2"
                     alt=""
-                />
+                /> */}
                 <span>Finance</span>
             </div>
 
             <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
                 <Link to="/accessApps">
-                    <img src={access} className={`w-6`} alt="icon" />
+                    {/* <img src={access} className={`w-6`} alt="icon" /> */}
                 </Link>
             </div>
 
@@ -35,14 +35,14 @@ const FinanceNavbar = () => {
                 <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
-                            <img
+                            {/* <img
                                 src={
                                     userPhoto
                                         ? userPhoto
                                         : "https://placeimg.com/80/80/people"
                                 }
                                 alt=""
-                            />
+                            /> */}
                         </div>
                     </label>
                     <ul
