@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 import { logout } from "../../../Redux/Auth/authAction";
@@ -57,12 +57,28 @@ const Navbar = () => {
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
-                                <Link
+                                <NavLink
+                                    to="/about"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-4 py-1 rounded-md"
+                                            : "text-green-400 hover:bg-green-400 hover:text-white rounded-md px-4 py-2"
+                                    }
+                                >
+                                    About
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
                                     to="/accessApps"
-                                    className="px-4 text-green-500"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-4 py-1 rounded-md"
+                                            : "text-green-400 hover:bg-green-400 hover:text-white px-4 py-2"
+                                    }
                                 >
                                     Access your apps
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
                                 {user ? (
@@ -107,12 +123,16 @@ const Navbar = () => {
                                         </ul>
                                     </div>
                                 ) : (
-                                    <Link
+                                    <NavLink
                                         to="/BusinessLogin"
-                                        className="px-4 text-green-500"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "bg-green-400 text-white px-4 py-1 rounded-md"
+                                                : "text-green-400 hover:bg-green-400 hover:text-white px-4 py-2"
+                                        }
                                     >
                                         Login
-                                    </Link>
+                                    </NavLink>
                                 )}
                             </li>
                         </ul>
@@ -127,9 +147,26 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <div className="hidden lg:flex items-center">
-                        <Link to="/accessApps" className="px-4 text-green-500">
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                    : "text-green-400 hover:bg-green-400 hover:text-white px-2 py-2 rounded-md mx-1"
+                            }
+                        >
+                            About
+                        </NavLink>
+                        <NavLink
+                            to="/accessApps"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-green-400 text-white px-2 py-2 rounded-md mx-1"
+                                    : "text-green-400 hover:bg-green-400 hover:text-white rounded-md px-2 py-2 mx-1"
+                            }
+                        >
                             Access your apps
-                        </Link>
+                        </NavLink>
                         <div>
                             {user ? (
                                 <div className="dropdown dropdown-end">
@@ -173,12 +210,16 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                             ) : (
-                                <Link
+                                <NavLink
                                     to="/BusinessLogin"
-                                    className="px-3 py-2 rounded bg-green-500 hover:bg-green-400 duration-500 text-white"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                            : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                    }
                                 >
                                     Login
-                                </Link>
+                                </NavLink>
                             )}
                         </div>
                     </div>
