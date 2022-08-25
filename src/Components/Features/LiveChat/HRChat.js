@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
 const HRChat = () => {
     const [chatList, setChatList] = useState([]);
-    const { _id } = chatList;
-    // console.log(chatList);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { Department } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/hrchat")
+        fetch(`http://localhost:5000/conversations/${Department}`)
             .then((res) => res.json())
             .then((data) => setChatList(data));
     }, [chatList]);

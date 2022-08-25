@@ -1,24 +1,27 @@
 import moment from "moment";
 import React, { useState } from "react";
+import { FiSend } from "react-icons/fi";
+import { useSelector } from "react-redux";
 import HRChat from "./HRChat";
 import "./LiveChat.css";
-import { useSelector } from "react-redux";
-import { FiSend } from 'react-icons/fi';
 
 const HR = () => {
     const [singChatDetail, setSingleChatDetail] = useState({});
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { Department, userPhoto } = loggerInfo;
+    if (loggerInfo) {
+        console.log(loggerInfo);
+    }
 
     const handleHRChat = (e) => {
         e.preventDefault();
         const chat = e.target.chat.value;
         const userName = e.target.userName.value;
-        const userPhoto = e.target.userPhoto.value;
         const time = e.target.time.value;
 
-        const hrchat = { chat, userName, time, userPhoto };
-        console.log(hrchat);
+        const hrchat = { chat, userName, time, userPhoto, Department };
 
-        fetch("http://localhost:5000/hrchat", {
+        fetch("http://localhost:5000/chat", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -33,11 +36,6 @@ const HR = () => {
                 }
             });
     };
-
-    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    if (loggerInfo) {
-        // console.log(loggerInfo);
-    }
 
     return (
         <div>
@@ -69,17 +67,23 @@ const HR = () => {
                             </div>
                             <div>
                                 <p>{loggerInfo?.name}</p>
-                                <p><small className="italic text-gray-400">{loggerInfo?.role}</small></p>
+                                <p>
+                                    <small className="italic text-gray-400">
+                                        {loggerInfo?.role}
+                                    </small>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div className="border-l-2 pr-1"></div>
                     <div className="w-9/12">
                         <div className="h-[72vh] overflow-y-scroll ">
-                            <HRChat setSingleItemDetail={singChatDetail}></HRChat>
+                            <HRChat
+                                setSingleItemDetail={singChatDetail}
+                            ></HRChat>
                         </div>
                         <div>
-                        <hr className="mx-8 " />
+                            <hr className="mx-8 " />
                             <form
                                 onSubmit={handleHRChat}
                                 className="flex gap-5 bg-white pt-4 pr-36"
@@ -120,10 +124,11 @@ const HR = () => {
                                         <button className="text-2xl">
                                             <div class="avatar placeholder ">
                                                 <div class=" bg-blue-500 text-neutral-content rounded-full w-12">
-                                                    <span><FiSend /></span>
+                                                    <span>
+                                                        <FiSend />
+                                                    </span>
                                                 </div>
                                             </div>
-                                            
                                         </button>
                                     </div>
                                 </div>
@@ -131,7 +136,6 @@ const HR = () => {
                         </div>
                     </div>
                 </div>
-
             </section>
             {/* <section className="relative chatBox lg:w-full mx-auto bg-white shadow-gray-300 border shadow-sm rounded pt-5 px-5 md:w-9/12 sm:w-11/12 sm:mx-auto">
                 <div className="flex justify-end"></div>
