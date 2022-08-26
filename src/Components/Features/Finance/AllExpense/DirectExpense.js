@@ -65,7 +65,7 @@ const DirectExpense = () => {
             <div className="grid grid-cols-3 gap-4">
                 <div class="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
                     <div class="card-body text-center">
-                        <h2 className="font-bold text-2xl text-red-500">
+                        <h2 className="font-bold text-2xl ">
                             $500
                         </h2>
                         <p className="text-lg">Direct Expense</p>
@@ -73,15 +73,15 @@ const DirectExpense = () => {
                 </div>
                 <div class="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
                     <div class="card-body text-center">
-                        <h2 className="font-bold text-2xl text-red-500">
+                        <h2 className="font-bold text-2xl ">
                             $500
                         </h2>
                         <p className="text-lg">General & Admin Expense</p>
                     </div>
                 </div>
                 <div class="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
-                    <div class="card-body">
-                        <h2 className="font-bold text-2xl text-red-500">
+                    <div class="card-body text-center">
+                        <h2 className="font-bold text-2xl ">
                             $500
                         </h2>
                         <p className="text-lg">Salary Expense</p>
@@ -136,7 +136,7 @@ const DirectExpense = () => {
                             label
                         />
                     </PieChart>
-                    <p className="text-center text-red-500 font-bold">
+                    <p className="text-center text-blue-500 font-bold">
                         Direct Expense
                     </p>
                 </div>
@@ -163,7 +163,7 @@ const DirectExpense = () => {
                             label
                         />
                     </PieChart>
-                    <p className="text-center text-red-500 font-bold">
+                    <p className="text-center text-green-500 font-bold">
                         General & Admin Expense
                     </p>
                 </div>
@@ -190,7 +190,7 @@ const DirectExpense = () => {
                             label
                         />
                     </PieChart>
-                    <p className="text-center text-red-500 font-bold">
+                    <p className="text-center text-lime-500 font-bold">
                         Salary Expense
                     </p>
                 </div>

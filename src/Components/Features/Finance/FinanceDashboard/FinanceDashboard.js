@@ -26,7 +26,7 @@ const FinanceDashboard = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <section className="flex gap-5">
+            {/* <section className="flex gap-5">
                 <div class="card w-72 bg-base-100 shadow-xl">
                     <div class="card-body">
                         <p>Cash On Hand</p>
@@ -51,7 +51,7 @@ const FinanceDashboard = () => {
                         <h2 class="card-title "></h2>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <section className="lg:w-full flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto">
                 <div className="w-4/12">
