@@ -110,9 +110,9 @@ function App() {
                         <Route path="joining" element={<Joining />}></Route>
                     </Route>
                     <Route path="/hrManagement" element={<HRManagement />}>
-                        <Route index element={<HRDashboard />}></Route>
+                        {/* <Route index element={<HRDashboard />}></Route> */}
                         <Route
-                            path="hrLeaveRequest"
+                            index
                             element={<HrLeaveRequest />}
                         ></Route>
                         <Route
