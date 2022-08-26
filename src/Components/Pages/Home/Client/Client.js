@@ -9,7 +9,7 @@ import squareGroup from '../../../../Assets/clientLogo/square-logo.jpg';
 
 const Client = () => {
     return (
-        <div className='bg-slate-100 py-24'>
+        <div className='min-h-[60vh] py-40'>
             <div className='text-center'>
                 <h1 className='text-5xl font-medium'>Our Valuable Client</h1>
                 <p className='text-xl mt-4'>Rated by thousands of Clients all over the world</p>
