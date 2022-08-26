@@ -1,9 +1,20 @@
 import React from "react";
 import access from "../../../Assets/icons/access.svg";
 import DigitalClock from "../DigitalClock/DigitalClock";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import auth from "../../../firebase.init";
 
 const UserNavbar = () => {
+    const navigate = useNavigate();
+
+    // sign out handler
+    const handleSignOut = () => {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/");
+    };
+
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
@@ -24,17 +35,18 @@ const UserNavbar = () => {
                 <Link to='/accessApps'><img src={access} className={`w-6`} alt="icon" /></Link>
             </div>
 
-
-
             {/*Profile DropDown*/}
-            <div className="px-6 flex items-center">
-                <div className="font-semibold mr-3">
-                    <DigitalClock></DigitalClock>
+            <div className="px-6 flex items-center gap-4">
+                <div>
+                    <p className='text-xl font-medium'><DigitalClock></DigitalClock></p>
                 </div>
                 <div className="dropdown dropdown-end">
-                    <label tabindex="0" className="btn btn-ghost btn-circle avatar">
+                    <label
+                        tabindex="0"
+                        className="btn btn-ghost btn-circle avatar"
+                    >
                         <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" />
+                            <img src="https://placeimg.com/80/80/people" alt="" />
                         </div>
                     </label>
                     <ul
@@ -42,16 +54,16 @@ const UserNavbar = () => {
                         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                     >
                         <li>
-                            <a className="justify-between">
+                            <p className="justify-between">
                                 Profile
                                 <span className="badge">New</span>
-                            </a>
+                            </p>
                         </li>
                         <li>
-                            <a>Settings</a>
+                            <p>Settings</p>
                         </li>
                         <li>
-                            <p>Logout</p>
+                            <p onClick={handleSignOut}>Logout</p>
                         </li>
                     </ul>
                 </div>

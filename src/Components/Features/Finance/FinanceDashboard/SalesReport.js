@@ -7,15 +7,18 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
+import { useSelector } from "react-redux";
 
 const SalesReport = () => {
     const [orderList, setOrderList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewOrder")
+        fetch(`http://localhost:5000/addNewOrder/${companyName}`)
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
-    }, [orderList]);
+    }, [orderList, companyName]);
     // console.log(orderList);
     return (
         <div>
