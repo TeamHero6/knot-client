@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const VendorList = ({ setSingleVendorDetail }) => {
     const [vendorList, setVendorList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewVendor"
-        )
+        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
-    }, [vendorList]);
+    }, [vendorList, companyName]);
 
     return (
         <div>
@@ -42,7 +43,7 @@ const VendorList = ({ setSingleVendorDetail }) => {
                                     className="hover:shadow-md hover:bg-cyan-100 duration-300 cursor-pointer border-b border-cyan-100"
                                 >
                                     <td className="py-3 px-6 whitespace-nowrap">
-                                        {vendor.companyName}
+                                        {vendor.company}
                                     </td>
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {vendor.contactPerson}

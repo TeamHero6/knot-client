@@ -205,6 +205,7 @@ function App() {
                             element={<PurchaseOrder />}
                         ></Route>
                         <Route path="bill" element={<Bill />}></Route>
+                        <Route path="inventory" element={<Inventory />}></Route>
                     </Route>
                     <Route
                         path="/marketingTS"
@@ -223,6 +224,8 @@ function App() {
                             path="teamOrganize"
                             element={<TeamOrganize />}
                         ></Route>
+                        <Route path="addTask" element={<AddTask />}></Route>
+                        <Route path="teamManagement" element={<TeamManagement />}></Route>
                     </Route>
                     <Route
                         path="/FAQ"
@@ -280,13 +283,6 @@ function App() {
                     />
                     <Route path="/learnMore" element={<AllKnotApp />} />
                     <Route path="Calender" element={<Calender></Calender>} />
-                    <Route path="inventory" element={<Inventory />}></Route>
-                    <Route path="addTask" element={<AddTask />}></Route>
-                    <Route
-                        path="teamManagement"
-                        element={<TeamManagement />}
-                    ></Route>
-
                     <Route path="load" element={<Loader />} />
                 </Routes>
             </Suspense>

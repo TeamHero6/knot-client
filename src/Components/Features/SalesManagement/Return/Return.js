@@ -1,14 +1,18 @@
+import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 
 const Return = () => {
     const [cancelledOrder, setCancelledOrder] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
+
     useEffect(() => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/cancelledSalesOrder"
-        )
-            .then((res) => res.json())
-            .then((data) => setCancelledOrder(data));
-    }, []);
+        const url = `http://localhost:5000/cancelledSalesOrder/${companyName}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setCancelledOrder(data))
+    }, [companyName]);
+
     return (
         <div>
             <div className="overflow-auto rounded-none bg-white p-6">

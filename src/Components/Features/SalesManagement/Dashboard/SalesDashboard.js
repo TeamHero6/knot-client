@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import {
     Bar,
@@ -9,6 +8,7 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
+import { useSelector } from "react-redux";
 import ItemDetailsModal from "../Items/ItemDetailsModal";
 
 const SalesDashboard = () => {
@@ -16,43 +16,33 @@ const SalesDashboard = () => {
     const [customerList, setCustomerList] = useState([]);
     const [itemList, setItemList] = useState([]);
     const [singleItemDetail, setSingleItemDetail] = useState({});
-    // const [purchaseOrderList, setPurchaseOrderList] = useState([]);
+    const [purchaseOrderList, setPurchaseOrderList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/addProduct")
+        fetch(`http://localhost:5000/addProduct/${companyName}`)
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
-    }, [itemList]);
+    }, [itemList, companyName]);
 
     useEffect(() => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewVendor"
-        )
+        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
-    }, [vendorList]);
+    }, [vendorList, companyName]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/addCustomer")
+        fetch(`http://localhost:5000/addCustomer/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
-    }, [customerList]);
+    }, [companyName]);
 
-    const { data: purchaseOrderList, isLoading } = useQuery(
-        ["purchaseOrderList"],
-        () =>
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
-            ).then((res) => res.json())
-    );
-
-    // useEffect(() => {
-    //     fetch(
-    //         "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
-    //     )
-    //         .then((res) => res.json())
-    //         .then((data) => setPurchaseOrderList(data));
-    // }, [purchaseOrderList]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setPurchaseOrderList(data.result.reverse()));
+    }, [purchaseOrderList, companyName]);
 
     return (
         <div>
@@ -154,11 +144,7 @@ const SalesDashboard = () => {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar
-                            dataKey="dueAmount"
-                            name="Paid Amount"
-                            fill={"#CC3333"}
-                        ></Bar>
+                        <Bar dataKey="dueAmount" name="Due Amount" fill={"#CC3333"}></Bar>
                     </BarChart>
                 </div>
             </section>

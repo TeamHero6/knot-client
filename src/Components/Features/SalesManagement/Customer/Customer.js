@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import CustomerList from "./CustomerList";
 
 const Customer = () => {
     const [addNewItem, setAddNewItem] = useState(false);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     const handleAddCustomer = (e) => {
         e.preventDefault();
@@ -18,6 +21,7 @@ const Customer = () => {
             customerEmail,
             mobileNo,
             customerAddress,
+            companyName
         };
         console.log(newCustomer);
         fetch(
