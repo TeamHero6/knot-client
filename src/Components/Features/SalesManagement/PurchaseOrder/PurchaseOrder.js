@@ -66,13 +66,16 @@ const PurchaseOrder = () => {
             companyName
         };
         // console.log(newOrder);
-        fetch("http://localhost:5000/addNewPurchaseOrder", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(newPurchaseOrder),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(newPurchaseOrder),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

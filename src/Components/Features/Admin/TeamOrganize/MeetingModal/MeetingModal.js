@@ -18,13 +18,16 @@ const MeetingModal = ({ refetch }) => {
             meetingWith,
             meetingLink,
         };
-        fetch("http://localhost:5000/createNewMeeting", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(newMeeting),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/createNewMeeting",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(newMeeting),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {

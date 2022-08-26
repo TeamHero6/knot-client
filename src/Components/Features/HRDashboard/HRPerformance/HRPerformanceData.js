@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import HRTransferCard from './HRTransferCard';
+import React, { useEffect, useState } from "react";
+import HRTransferCard from "./HRTransferCard";
 
 const HRPerformanceData = () => {
     const [promo, setPromo] = useState([]);
     const [transfer, setTransfer] = useState([]);
 
-
     useEffect(() => {
-        fetch("http://localhost:5000/transfer")
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
             .then((res) => res.json())
             .then((data) => setTransfer(data));
     }, [transfer]);
     console.log(transfer);
 
     useEffect(() => {
-        fetch("http://localhost:5000/performance")
+        fetch("https://knot-business-solution-server.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, [promo]);
@@ -24,7 +23,9 @@ const HRPerformanceData = () => {
         <div>
             <div>
                 <div>
-                    <h1 className='font-semibold text-green-500 text-xl  mt-5 ml-5'>Employee Promotion Database</h1>
+                    <h1 className="font-semibold text-green-500 text-xl  mt-5 ml-5">
+                        Employee Promotion Database
+                    </h1>
                     <div className="w-full h-80 mb-5">
                         <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto mt-4 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
@@ -81,13 +82,13 @@ const HRPerformanceData = () => {
                 </div>
             </div>
             <div>
-                <h1 className='font-semibold text-xl my-5 ml-5'>Employee Transfer Database</h1>
-                <div className='grid grid-rows-2 mb-10 grid-flow-col gap-5'>
-                    {
-                        transfer.slice(0, 20).map(transfer => <HRTransferCard
-                            transfer={transfer}
-                        ></HRTransferCard>)
-                    }
+                <h1 className="font-semibold text-xl my-5 ml-5">
+                    Employee Transfer Database
+                </h1>
+                <div className="grid grid-rows-2 mb-10 grid-flow-col gap-5">
+                    {transfer.slice(0, 20).map((transfer) => (
+                        <HRTransferCard transfer={transfer}></HRTransferCard>
+                    ))}
                 </div>
             </div>
         </div>

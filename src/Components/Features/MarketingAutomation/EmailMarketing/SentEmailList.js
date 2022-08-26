@@ -6,7 +6,7 @@ const SentEmailList = () => {
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/sentEmail")
+        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail")
             .then((res) => res.json())
             .then((data) => setEmailList(data.reverse()));
     }, [emailList]);
@@ -14,7 +14,7 @@ const SentEmailList = () => {
     const deleteEmail = (id) => {
         const proceed = window.confirm("Do you want to delete this task?");
         if (proceed) {
-            const url = `http://localhost:5000/deleteEmail/${id}`;
+            const url = `https://knot-business-solution-server.herokuapp.com/deleteEmail/${id}`;
             fetch(url, {
                 method: "DELETE",
             })
@@ -32,7 +32,10 @@ const SentEmailList = () => {
                         <tr>
                             <th className="py-3 text-left pl-6 px-4 whitespace-nowrap">
                                 <label>
-                                    <input type="checkbox" className="checkbox border-white" />
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox border-white"
+                                    />
                                 </label>
                             </th>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -56,7 +59,10 @@ const SentEmailList = () => {
                             >
                                 <th className="py-3 pl-6 pr-4 whitespace-nowrap">
                                     <label>
-                                        <input type="checkbox" className="checkbox" />
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox"
+                                        />
                                     </label>
                                 </th>
                                 <td className="py-3 px-6 whitespace-nowrap">

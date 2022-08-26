@@ -7,13 +7,16 @@ const AllTasks = ({ data, searchTerm }) => {
 
     // update task status
     const updateStatus = (status, id) => {
-        fetch("http://localhost:5000/updateStatus", {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({ status, id }),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/updateStatus",
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({ status, id }),
+            }
+        )
             .then((res) => res.json())
             .then((data) => console.log(data));
     };

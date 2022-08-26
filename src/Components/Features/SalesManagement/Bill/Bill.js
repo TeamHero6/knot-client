@@ -41,7 +41,7 @@ const Bill = () => {
         };
 
         if (paidAmount && dueAmount) {
-            const url = `http://localhost:5000/addNewPurchaseOrder/${id}`;
+            const url = `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${id}`;
             fetch(url, {
                 method: "PUT",
                 headers: {
@@ -135,7 +135,9 @@ const Bill = () => {
                                 </td>
                                 <td className="py-3 px-6 whitespace-nowrap">
                                     <button
-                                        onClick={() => handleSaveBill(purchaseOrder._id)}
+                                        onClick={() =>
+                                            handleSaveBill(purchaseOrder._id)
+                                        }
                                         className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                                     >
                                         <AiFillSave />
@@ -157,7 +159,11 @@ const Bill = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="totalAmount" name="Total Amount" fill={"#48bb78"}></Bar>
+                    <Bar
+                        dataKey="totalAmount"
+                        name="Total Amount"
+                        fill={"#48bb78"}
+                    ></Bar>
                 </BarChart>
             </div>
             <ToastContainer />

@@ -5,7 +5,7 @@ const AllLedgerList = () => {
     const [bankBookList, setBankBookList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/cashBook")
+        fetch("https://knot-business-solution-server.herokuapp.com/cashBook")
             .then((res) => res.json())
             .then((data) => setCashBookList(data.reverse()));
     }, [cashBookList]);
@@ -13,7 +13,7 @@ const AllLedgerList = () => {
     // console.log(cashBookList);
 
     useEffect(() => {
-        fetch("http://localhost:5000/bankBook")
+        fetch("https://knot-business-solution-server.herokuapp.com/bankBook")
             .then((res) => res.json())
             .then((data) => setBankBookList(data.reverse()));
     }, [bankBookList]);
@@ -75,7 +75,7 @@ const AllLedgerList = () => {
             </div>
 
             <div>
-            <h1 className="font-semibold text-xl ml-5">Bank Book</h1>
+                <h1 className="font-semibold text-xl ml-5">Bank Book</h1>
                 <div className="w-full h-80 mt-5 mb-5">
                     <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">

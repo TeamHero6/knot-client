@@ -2,27 +2,32 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const HrPayroll = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { register, handleSubmit, reset } = useForm();
     const [payrolls, setPayrolls] = useState([]);
-
     const [show, setShow] = useState(false);
+
+    const { companyName } = loggerInfo;
+
     useEffect(() => {
-        fetch("http://localhost:5000/payrolls")
+        fetch(`http://localhost:5000/payrolls/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, [payrolls]);
-    console.log(payrolls);
 
     const onSubmit = (data) => {
-        fetch("http://localhost:5000/payrolls", {
+        const newData = { ...data, companyName };
+
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(newData),
         })
             .then((res) => res.json())
             .then((inserted) => {
@@ -44,7 +49,6 @@ const HrPayroll = () => {
                 </button>{" "}
             </div>
 
-
             {show ? (
                 <div className="mt-6">
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -57,7 +61,6 @@ const HrPayroll = () => {
                             </label>{" "}
                             <br />
                             <br />
-
                             <div className="md:flex items-center">
                                 <label
                                     className="font-bold w-40"
@@ -176,7 +179,7 @@ const HrPayroll = () => {
             ) : (
                 ""
             )}
-            
+
             <div>
                 <div className="w-full h-80 mt-5 mb-5">
                     <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">

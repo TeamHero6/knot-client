@@ -11,7 +11,7 @@ const PartnerInvestShareChart = () => {
     const [partnerList, setPartnerList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/partner")
+        fetch("https://knot-business-solution-server.herokuapp.com/partner")
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList]);

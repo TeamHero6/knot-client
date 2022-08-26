@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AiFillSave, AiOutlineEye } from "react-icons/ai";
+import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
 import HRPerformanceData from "./HRPerformanceData";
@@ -14,20 +14,19 @@ const HrPerformance = () => {
     const [modal, setmodal] = useState({});
     const [transfer, setTransfer] = useState([]);
 
+    //     useEffect(() => {
+    //         fetch("https://knot-business-solution-server.herokuapp.com/transfer")
+    //             .then((res) => res.json())
+    //             .then((data) => setTransfer(data));
+    //     }, [transfer]);
+    // // console.log(transfer);
 
-//     useEffect(() => {
-//         fetch("https://knot-business-solution-server.herokuapp.com/transfer")
-//             .then((res) => res.json())
-//             .then((data) => setTransfer(data));
-//     }, [transfer]);
-// // console.log(transfer);
-
-//     useEffect(() => {
-//         fetch("https://knot-business-solution-server.herokuapp.com/performance")
-//             .then((res) => res.json())
-//             .then((data) => setPromo(data));
-//     }, [promo]);
-//     // console.log(promo);
+    //     useEffect(() => {
+    //         fetch("https://knot-business-solution-server.herokuapp.com/performance")
+    //             .then((res) => res.json())
+    //             .then((data) => setPromo(data));
+    //     }, [promo]);
+    //     // console.log(promo);
 
     const onSubmit = (data) => {
         fetch(
@@ -49,9 +48,8 @@ const HrPerformance = () => {
             });
     };
 
-
     const onSubmitTransfer = (data) => {
-        fetch("http://localhost:5000/transfer", {
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -90,8 +88,6 @@ const HrPerformance = () => {
                 </div>
             </div>
             {show ? (
-
-
                 <div className="mt-6">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <section className="md:w-3/6 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
@@ -103,7 +99,6 @@ const HrPerformance = () => {
                             </label>{" "}
                             <br />
                             <br />
-
                             <div className="md:flex items-center">
                                 <label
                                     className="font-bold w-40"
@@ -232,11 +227,10 @@ const HrPerformance = () => {
                                 className="font-bold text-purple-800"
                                 htmlFor="name"
                             >
-                                 Transfer Info
+                                Transfer Info
                             </label>{" "}
                             <br />
                             <br />
-
                             <div className="md:flex items-center">
                                 <label
                                     className="font-bold w-40"
@@ -338,7 +332,7 @@ const HrPerformance = () => {
             ) : (
                 ""
             )}
-                <HRPerformanceData/>
+            <HRPerformanceData />
         </div>
     );
 };

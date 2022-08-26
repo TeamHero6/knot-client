@@ -11,13 +11,16 @@ const UserLogin = () => {
 
     const liveAuth = () => {
         const info = { secretCode, email };
-        fetch("http://localhost:5000/checkEmployee", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(info),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/checkEmployee",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 const { role, message, loggerInfo } = data;

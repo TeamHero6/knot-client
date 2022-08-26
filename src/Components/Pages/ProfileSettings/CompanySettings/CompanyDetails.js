@@ -15,9 +15,9 @@ const CompanyDetails = () => {
         isLoading,
         refetch,
     } = useQuery(["allEmployess", "employees"], () =>
-        fetch(`http://localhost:5000/getAllEmployees/${companyName}`).then(
-            (res) => res.json()
-        )
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/getAllEmployees/${companyName}`
+        ).then((res) => res.json())
     );
 
     if (isLoading) {
@@ -37,13 +37,16 @@ const CompanyDetails = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/removeEmployee/${id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify({ companyName }),
-                })
+                fetch(
+                    `https://knot-business-solution-server.herokuapp.com/removeEmployee/${id}`,
+                    {
+                        method: "DELETE",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify({ companyName }),
+                    }
+                )
                     .then((res) => res.json())
                     .then((data) => {
                         if (data?.acknowledged) {

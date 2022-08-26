@@ -14,7 +14,7 @@ const LiveChat = () => {
 
         // console.log(chatUser);
 
-        fetch("http://localhost:5000/chatuser", {
+        fetch("https://knot-business-solution-server.herokuapp.com/chatuser", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

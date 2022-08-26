@@ -5,7 +5,6 @@ import { TbSend } from "react-icons/tb";
 import SentEmailList from "./SentEmailList";
 
 const EmailMarketing = () => {
-
     const handleEmailForm = (e) => {
         e.preventDefault();
         const emailTo = e.target.emailTo.value;
@@ -14,7 +13,7 @@ const EmailMarketing = () => {
         const emailToSend = { emailTo, emailSubject, emailDescription };
         console.log(emailToSend);
 
-        fetch("http://localhost:5000/sentEmail", {
+        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -52,7 +51,7 @@ const EmailMarketing = () => {
                     <div>
                         <label
                             for="composeEmail"
-                            className='btn modal-button flex items-center gap-2 bg-green-400	 py-2 px-6 text-white font-semibold rounded border border-white hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'
+                            className="btn modal-button flex items-center gap-2 bg-green-400	 py-2 px-6 text-white font-semibold rounded border border-white hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm"
                         >
                             <FaRegEdit />
                             <p className="text-xl">Compose</p>
@@ -64,7 +63,12 @@ const EmailMarketing = () => {
                 <input type="checkbox" id="composeEmail" class="modal-toggle" />
                 <div class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box min-w-min">
-                        <label for="composeEmail" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <label
+                            for="composeEmail"
+                            class="btn btn-sm btn-circle absolute right-2 top-2"
+                        >
+                            ✕
+                        </label>
                         <div className="bg-white mt-8 w-[776px]">
                             <div className="z-50 border rounded">
                                 <form onSubmit={handleEmailForm}>
@@ -113,7 +117,6 @@ const EmailMarketing = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
             <SentEmailList></SentEmailList>
         </div>

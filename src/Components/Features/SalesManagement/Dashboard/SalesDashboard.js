@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ItemDetailsModal from "../Items/ItemDetailsModal";
 import {
     Bar,
     BarChart,
@@ -10,6 +9,7 @@ import {
     YAxis,
 } from "recharts";
 import { useSelector } from "react-redux";
+import ItemDetailsModal from "../Items/ItemDetailsModal";
 
 const SalesDashboard = () => {
     const [vendorList, setVendorList] = useState([]);
@@ -49,9 +49,7 @@ const SalesDashboard = () => {
             <section className="flex justify-center	gap-5">
                 <div className="card w-72 bg-base-100 shadow-xl">
                     <div className="card-body text-center">
-                        <h2 className="font-bold text-lg">
-                            25
-                        </h2>
+                        <h2 className="font-bold text-lg">25</h2>
                         <p>Total Order</p>
                     </div>
                 </div>
@@ -76,7 +74,9 @@ const SalesDashboard = () => {
                 <div className="overflow-auto bg-white mt-8 px-5">
                     <table className="shadow-lg border-2 border-cyan-300 w-full mx-auto mb-5 mt-3 text-base overflow-hidden">
                         <caption>
-                            <h2 className="text-center text-2xl font-semibold mb-2">All Product Details</h2>
+                            <h2 className="text-center text-2xl font-semibold mb-2">
+                                All Product Details
+                            </h2>
                         </caption>
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
@@ -98,7 +98,7 @@ const SalesDashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {itemList.slice(0, 5).map((item) => (
+                            {itemList?.slice(0, 5).map((item) => (
                                 <tr
                                     key={item._id}
                                     className="hover:shadow-md hover:bg-cyan-100 duration-300 cursor-pointer border-b border-cyan-100"

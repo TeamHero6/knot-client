@@ -1,7 +1,5 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 
 const Return = () => {
     const [cancelledOrder, setCancelledOrder] = useState([]);
@@ -18,7 +16,9 @@ const Return = () => {
     return (
         <div>
             <div className="overflow-auto rounded-none bg-white p-6">
-                <h1 className="text-center text-2xl font-semibold mb-4">Returned Order</h1>
+                <h1 className="text-center text-2xl font-semibold mb-4">
+                    Returned Order
+                </h1>
                 <table className="shadow-sm w-full border-2 border-cyan-300 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>

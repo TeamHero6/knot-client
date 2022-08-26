@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [leave, setLeave] = useState({});
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("https://knot-business-solution-server.herokuapp.com/users")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
         const updata = { aprovel };
 
-        const url = `http://localhost:5000/users/${id}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/users/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
