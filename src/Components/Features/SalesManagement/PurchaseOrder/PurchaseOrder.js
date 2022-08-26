@@ -3,6 +3,7 @@ import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import PurchaseOrderList from "./PurchaseOrderList";
 import PurchaseOrderModal from "./PurchaseOrderModal";
+import { useSelector } from "react-redux";
 
 const PurchaseOrder = () => {
     const [addNewPurchaseOrder, setAddNewPurchaseOrder] = useState(false);
@@ -12,21 +13,21 @@ const PurchaseOrder = () => {
     const [orderQuantity, setOrderQuantity] = useState(1);
     const [vat, setVat] = useState();
     const [totalAmount, setTotalAmount] = useState(0);
-    const [singlePurchaseOrderDetail, setSinglePurchaseOrderDetail] = useState(
-        {}
-    );
+    const [singlePurchaseOrderDetail, setSinglePurchaseOrderDetail] = useState({});
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewVendor")
+        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
-    }, [vendorList]);
+    }, [vendorList, companyName]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addProduct")
+        fetch(`http://localhost:5000/addProduct/${companyName}`)
             .then((res) => res.json())
             .then((data) => setProductList(data.reverse()));
-    }, [productList]);
+    }, [productList, companyName]);
 
     const handleUnitPrice = (e) => {
         setUnitPrice(e.target.value);
@@ -62,6 +63,7 @@ const PurchaseOrder = () => {
             unitPrice,
             vat,
             totalAmount,
+            companyName
         };
         // console.log(newOrder);
         fetch("http://localhost:5000/addNewPurchaseOrder", {
@@ -201,9 +203,9 @@ const PurchaseOrder = () => {
                                         {vendorList.map((vendor) => (
                                             <option
                                                 key={vendor._id}
-                                                value={vendor.companyName}
+                                                value={vendor.company}
                                             >
-                                                {vendor.companyName}
+                                                {vendor.company}
                                             </option>
                                         ))}
                                     </select>

@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
+import { useSelector } from "react-redux";
 
 const Inventory = () => {
     const [productList, setProductList] = useState([]);
     const [quantitySum, setQuantitySum] = useState(0);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(
-            "http://localhost:5000/addNewPurchaseOrder"
-        )
+        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
             .then((res) => res.json())
             .then((data) => {
                 const { result, quantitySum } = data;
                 setProductList(result);
                 setQuantitySum(quantitySum);
             });
-    }, [productList]);
+    }, [productList, companyName]);
 
     return (
         <div>

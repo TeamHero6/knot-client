@@ -10,17 +10,20 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
+import { useSelector } from "react-redux";
 
 const Bill = () => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
     const [paidAmount, setPaidAmount] = useState("");
     const [dueAmount, setDueAmount] = useState("");
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewPurchaseOrder")
+        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
-    }, [purchaseOrderList]);
+    }, [purchaseOrderList, companyName]);
 
     const handlePaidAmount = (event) => {
         const paid = event.target.value;

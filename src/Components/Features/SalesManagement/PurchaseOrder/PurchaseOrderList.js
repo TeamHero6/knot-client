@@ -8,15 +8,18 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
+import { useSelector } from "react-redux";
 
 const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewPurchaseOrder")
+        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
-    }, [purchaseOrderList]);
+    }, [purchaseOrderList, companyName]);
 
     return (
         <div>

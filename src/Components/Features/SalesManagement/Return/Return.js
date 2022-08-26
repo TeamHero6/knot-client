@@ -1,14 +1,20 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 
 const Return = () => {
     const [cancelledOrder, setCancelledOrder] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
+
     useEffect(() => {
-        fetch("http://localhost:5000/cancelledSalesOrder")
+        const url = `http://localhost:5000/cancelledSalesOrder/${companyName}`;
+        fetch(url)
             .then(res => res.json())
             .then(data => setCancelledOrder(data))
-    }, [])
+    }, [companyName]);
+
     return (
         <div>
             <div className="overflow-auto rounded-none bg-white p-6">

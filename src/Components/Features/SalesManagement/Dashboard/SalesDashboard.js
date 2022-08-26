@@ -9,6 +9,7 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
+import { useSelector } from "react-redux";
 
 const SalesDashboard = () => {
     const [vendorList, setVendorList] = useState([]);
@@ -16,32 +17,32 @@ const SalesDashboard = () => {
     const [itemList, setItemList] = useState([]);
     const [singleItemDetail, setSingleItemDetail] = useState({});
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/addProduct")
+        fetch(`http://localhost:5000/addProduct/${companyName}`)
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
-    }, [itemList]);
+    }, [itemList, companyName]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewVendor")
+        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
-    }, [vendorList]);
+    }, [vendorList, companyName]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addCustomer")
+        fetch(`http://localhost:5000/addCustomer/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
-    }, [customerList]);
+    }, [companyName]);
 
     useEffect(() => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
-        )
+        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
-    }, [purchaseOrderList]);
+    }, [purchaseOrderList, companyName]);
 
     return (
         <div>
@@ -143,7 +144,7 @@ const SalesDashboard = () => {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="dueAmount" name="Paid Amount" fill={"#CC3333"}></Bar>
+                        <Bar dataKey="dueAmount" name="Due Amount" fill={"#CC3333"}></Bar>
                     </BarChart>
                 </div>
             </section>
