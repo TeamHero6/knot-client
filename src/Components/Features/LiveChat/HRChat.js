@@ -7,6 +7,11 @@ const HRChat = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { Department } = loggerInfo;
 
+    const allEmployees = useSelector((state) => state.auth.allEmployees);
+    if (allEmployees) {
+        console.log(allEmployees);
+    }
+
     useEffect(() => {
         fetch(`http://localhost:5000/conversations/${Department}`)
             .then((res) => res.json())

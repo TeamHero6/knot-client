@@ -64,7 +64,8 @@ import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
 import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
-import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+// import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+import UserAttendance from "./Components/Pages/UserDashboard/UserAttendance";
 import UserDashboardK from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
 import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
@@ -109,9 +110,9 @@ function App() {
                         <Route path="joining" element={<Joining />}></Route>
                     </Route>
                     <Route path="/hrManagement" element={<HRManagement />}>
-                        <Route index element={<HRDashboard />}></Route>
+                        {/* <Route index element={<HRDashboard />}></Route> */}
                         <Route
-                            path="hrLeaveRequest"
+                            index
                             element={<HrLeaveRequest />}
                         ></Route>
                         <Route
@@ -146,10 +147,10 @@ function App() {
                         element={<UserDashboardK></UserDashboardK>}
                     >
                         <Route index element={<LeaveRequest />} />
-                        <Route
+                        {/* <Route
                             path="attendance"
                             element={<UserAttaindance />}
-                        />
+                        /> */}
                         <Route path="performance" element={<UserPromotion />} />
                         <Route path="Payrolls" element={<UserPayrolls />} />
                         <Route
@@ -261,17 +262,16 @@ function App() {
                     </Route>
 
                     <Route path="/financeTS" element={<FinanceManagement />}>
-                        <Route
-                            index
-                            element={<FinanceDashboard></FinanceDashboard>}
-                        ></Route>
+                        <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
+                        <Route path="attendance" element={<UserAttendance/>}></Route>
                         <Route
                             path="directExpense"
                             element={<DirectExpense />}
                         ></Route>
                     </Route>
+                    
                     <Route path="load" element={<Loader />} />
                 </Routes>
             </Suspense>

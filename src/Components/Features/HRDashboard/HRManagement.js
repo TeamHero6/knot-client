@@ -31,14 +31,14 @@ const HRManagement = () => {
             ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div className='md:mx-2 lg:mx-4'>
-                        <Link
+                        {/* <Link
                             to=""
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             Dashboard
-                        </Link>
+                        </Link> */}
                         <Link
-                            to="hrLeaveRequest"
+                            to=""
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Leave Request
