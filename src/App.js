@@ -61,10 +61,11 @@ import Recruitment from "./Components/Pages/Hrdashboard/Recruitment/Recruitment"
 import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDetails";
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
+import UserManagement from "./Components/Pages/Leave/UserManagement";
 import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
-// import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
+import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserAttendance from "./Components/Pages/UserDashboard/UserAttendance";
 import UserDashboardK from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
@@ -147,16 +148,13 @@ function App() {
                         element={<UserDashboardK></UserDashboardK>}
                     >
                         <Route index element={<LeaveRequest />} />
-                        {/* <Route
-                            path="attendance"
-                            element={<UserAttaindance />}
-                        /> */}
+                        <Route
+                            path="userManagement"
+                            element={<UserManagement></UserManagement>}
+                        />
+                        <Route path="attendance" element={<UserAttendance/>}></Route>
                         <Route path="performance" element={<UserPromotion />} />
                         <Route path="Payrolls" element={<UserPayrolls />} />
-                        <Route
-                            path="Calender"
-                            element={<Calender></Calender>}
-                        />
                     </Route>
 
                     <Route

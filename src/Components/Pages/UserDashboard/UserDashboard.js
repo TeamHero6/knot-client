@@ -38,7 +38,7 @@ const UserDashboard = () => {
                             <p>Leave Request</p>
                         </Link>
                         <Link
-                            to="/userManagement"
+                            to="userManagement"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             <p>User Management</p>
@@ -60,12 +60,6 @@ const UserDashboard = () => {
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Payrolls
-                        </Link>
-                        <Link
-                            to="Calender"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Corporate Calender
                         </Link>
 
                     </div>

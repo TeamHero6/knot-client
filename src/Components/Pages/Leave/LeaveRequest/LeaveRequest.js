@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import Award from "../Award";
-import Meeting from "../Meeting";
-import Warming from "../Warming";
 import { BiPlus } from 'react-icons/bi';
 import { AiFillSave } from "react-icons/ai";
 
@@ -17,7 +14,7 @@ const LeaveRequest = () => {
         fetch("https://sheltered-cliffs-60290.herokuapp.com/leaveData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
-    }, []);
+    }, [leave]);
 
     const { register, handleSubmit, reset } = useForm();
 
@@ -42,9 +39,9 @@ const LeaveRequest = () => {
                 }
             });
     };
-    // console.log(userinfo)
+
     return (
-        <div>
+        <div className="w-full">
             <section>
                 <label for="my-drawer" >
                     <button onClick={() => setShow(!show)} className='flex border-transparent ml-5 items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm'><BiPlus></BiPlus> New</button>
@@ -106,22 +103,7 @@ const LeaveRequest = () => {
 
 
                                             </div>
-                                            <div className='flex items-center'>
-                                                <label className="label w-48">
-                                                    <span className="label-text text-xl">Reason For Leave:</span>
-                                                </label>
-                                                <textarea required
-                                                    type="text" placeholder="Reason For Leave"
-                                                    className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
-                                                    {...register("leave")}
-                                                />
-
-
-                                            </div>
-
-
                                         </div>
-
                                         {/* ff */}
                                         <div>
                                             <div className='flex items-center'>
@@ -180,32 +162,33 @@ const LeaveRequest = () => {
                             </div>
                         </div> : ' '
                 }
-                <div className='px-5'>
+                <div className='px-5 mt-5'>
+                <h1 className='text-2xl font-bold'>Request Status</h1>
                     <div class="overflow-x-auto">
-                        <h1 className='text-2xl text-center font-bold'>Request Status</h1>
-                        <div className="h-80 w-full mb-5 flex justify-between rounded py-6 px-6 mt-5">
-                            <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">
+                        <div className="h-80 w-full mb-5 flex justify-between rounded py-6 mt-5">
+                            <table class="shadow-sm border-2 border-cyan-300 w-full text-base overflow-hidden">
                                 <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                                     <tr>
-                                        <th className="py-3 text-left px-6 whitespace-nowrap">Date</th>
-                                        <th className="py-3 text-left px-6 whitespace-nowrap">Name</th>
-                                        <th className="py-3 text-left px-6 whitespace-nowrap">View Details</th>
-                                        <th className="py-3 text-left px-6 whitespace-nowrap">Approval Status <br />
-                                            (HR) </th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Employee ID</th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Employee Name</th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Department</th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Approval Status</th>
+                                        <th className="py-3 text-left px-6 whitespace-nowrap">Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
                                         leave.map(le =>
                                             <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
-                                                <td className="py-3 px-6 whitespace-nowrap">{le.Date}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{le.id}</td>
                                                 <td className="py-3 px-6 whitespace-nowrap">{le.Name}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{le.dep}</td>
+                                                <td className="py-3 px-6 whitespace-nowrap">{le.aprovel}</td>
                                                 <td className="py-3 px-6 whitespace-nowrap">
                                                     <div>
                                                         <label for={le._id} onClick={() => setLeaveModal(le)} class=" modal-button"><span className='underline hover:text-blue-500 hover:font-medium'>Details</span></label>
                                                     </div>
                                                 </td>
-                                                <td className="py-3 px-6 whitespace-nowrap">{le.leave_type}</td>
                                             </tr>
                                         )
                                     }
@@ -225,7 +208,6 @@ const LeaveRequest = () => {
                                 <p>Name : {leaveModal.Name}</p>
                                 <p>Employee ID : {leaveModal.id}</p>
                                 <p>Designation : {leaveModal.Designation}</p>
-                                <p>Reason For Leave : {leaveModal.leave}</p>
                                 <p>Department : {leaveModal.dep}</p>
                                 <p>Start Date : {leaveModal.s_date}</p>
                                 <p>End Date : {leaveModal.e_date}</p>
@@ -237,10 +219,7 @@ const LeaveRequest = () => {
                         </div>
                     </div>
                 </div>
-                <Meeting />
             </section>
-            <Warming />
-            <Award />
         </div>
     );
 };

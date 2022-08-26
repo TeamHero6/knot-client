@@ -1,11 +1,16 @@
-import React from "react";
+import React from 'react';
+import { useSelector } from "react-redux";
 
 const UserAttendanceCard = (props) => {
-    const { startDate, startTime, UpdateDateTime } = props.attend;
+    const { _id, startDate, startTime, UpdateDateTime } = props.attend
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    if (loggerInfo) {
+        console.log(loggerInfo);
+    }
     return (
-        <div className="gap-5 w-4/12 bg-white shadow-gray-300 border shadow-sm px-5 py-2">
-            <div className="flex justify-end">
-                <p>User</p>
+        <div className='bg-white w-60 mx-auto shadow-gray-300 px-5 py-5 rounded-md shadow-sm'>
+            <div className='flex justify-end'>
+                <p>{loggerInfo?.name}</p>
             </div>
             <p>
                 Join Time:{" "}

@@ -41,7 +41,7 @@ const UserAttendance = () => {
     };
 
     return (
-        <div>
+        <div className='w-full'>
             <div className='lg:w-6/12 mx-20 mb-5 bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto'>
                 <div className='w-full'>
                     <h1 className='text-xl text-center font-semibold'>Time Tracking</h1>
@@ -83,13 +83,15 @@ const UserAttendance = () => {
                 </div>
             </div>
 
-            <div className='lg:w-full flex gap-5 bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto'>
+            <div className='lg:w-full flex gap-5 py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto'>
 
-                {
-                    attendance.slice(0, 20).map(attend => <UserAttendanceCard
-                        attend={attend}
-                    ></UserAttendanceCard>)
-                }
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
+                    {
+                        attendance.slice(0, 20).map(attend => <UserAttendanceCard
+                            attend={attend}
+                        ></UserAttendanceCard>)
+                    }
+                </div>
 
             </div>
 
