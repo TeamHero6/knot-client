@@ -33,7 +33,7 @@ const TeamOrganize = () => {
             `https://knot-business-solution-server.herokuapp.com/meetings/${companyName}`
         ).then((res) => res.json())
     );
-    console.log(meetingData);
+
     //Fetch Warning Data
     const {
         isLoading: warningLoading,
@@ -44,9 +44,7 @@ const TeamOrganize = () => {
             "https://knot-business-solution-server.herokuapp.com/warnings"
         ).then((res) => res.json())
     );
-    if (warningData) {
-        console.log(warningData);
-    }
+
     const {
         isLoading: awardLoading,
         data: awardData,
