@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
 const MeetingModalDaisyUI = ({ setMeetingModal, meetingRefetch }) => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
     const handleCreateMeeting = (e) => {
         e.preventDefault();
         const date = e.target.date.value;
@@ -15,6 +18,7 @@ const MeetingModalDaisyUI = ({ setMeetingModal, meetingRefetch }) => {
             meetingHost,
             meetingWith,
             meetingLink,
+            companyName,
         };
         console.log(newMeeting);
         fetch(

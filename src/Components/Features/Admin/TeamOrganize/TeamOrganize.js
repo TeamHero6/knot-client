@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Loader from "../../../Shared/Loader/Loader";
 import MeetingCard from "./AllTables/MeetingTable/MeetingCards/MeetingCard";
 import AwardCard from "./AwardModal/AwardCard";
@@ -10,11 +11,14 @@ import WarningCard from "./WarningModal/WarningCard";
 import WarningModalDaisyUI from "./WarningModal/WarningModalDaisyUI";
 
 const TeamOrganize = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const [searchTerm, setSearchTerm] = useState("");
     const [meetingModal, setMeetingModal] = useState(false);
     const [warningModal, setWarningModal] = useState(false);
     const [awardModal, setAwardModal] = useState(false);
     const [dropDownFilter, setDropDownFilter] = useState("allMettings");
+
+    const { companyName } = loggerInfo;
 
     // handler for drop down filter
     const handleDropDownFilter = (e) => {
@@ -25,10 +29,11 @@ const TeamOrganize = () => {
         data: meetingData,
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/meetings"
-        ).then((res) => res.json())
+        fetch(`http://localhost:5000/meetings/${companyName}`).then((res) =>
+            res.json()
+        )
     );
+    console.log(meetingData);
     //Fetch Warning Data
     const {
         isLoading: warningLoading,

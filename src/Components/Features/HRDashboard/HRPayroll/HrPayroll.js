@@ -2,27 +2,32 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const HrPayroll = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { register, handleSubmit, reset } = useForm();
     const [payrolls, setPayrolls] = useState([]);
-
     const [show, setShow] = useState(false);
+
+    const { companyName } = loggerInfo;
+
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
+        fetch(`http://localhost:5000/payrolls/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, [payrolls]);
-    console.log(payrolls);
 
     const onSubmit = (data) => {
+        const newData = { ...data, companyName };
+
         fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(newData),
         })
             .then((res) => res.json())
             .then((inserted) => {
