@@ -41,6 +41,7 @@ import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
+import AllKnotApp from "./Components/Pages/Home/AllKnotApp/AllKnotApp";
 import Home from "./Components/Pages/Home/Home";
 import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
@@ -97,7 +98,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/calender" element={<Calender />} />
-
+                <Route path="/learnMore" element={<AllKnotApp />} />
                 <Route
                     path="/userdashboard"
                     element={<UserDashboardK></UserDashboardK>}

@@ -11,7 +11,7 @@ const Client = () => {
     return (
         <div className='bg-slate-100 py-24'>
             <div className='text-center'>
-                <h1 className='text-6xl font-medium'>Our Valuable Client</h1>
+                <h1 className='text-5xl font-medium'>Our Valuable Client</h1>
                 <p className='text-xl mt-4'>Rated by thousands of Clients all over the world</p>
             </div>
             <div className='flex gap-12 justify-center flex-wrap mt-12'>
