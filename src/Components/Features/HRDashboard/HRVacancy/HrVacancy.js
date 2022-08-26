@@ -1,17 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
+import Loader from "../../../Shared/Loader/Loader";
 import HRCircularCard from "./HRCircularCard";
 
 const HrVacancy = () => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, reset } = useForm();
-    const [carcular, setCarcular] = useState([]);
+    // const [carcular, setCarcular] = useState([]);
     const [short, setShort] = useState([]);
-
-
 
     useEffect(() => {
         fetch("https://knot-business-solution-server.herokuapp.com/applicant")
@@ -19,14 +20,17 @@ const HrVacancy = () => {
             .then((data) => setShort(data));
     }, [short]);
 
-    useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy")
-            .then((res) => res.json())
-            .then((data) => setCarcular(data));
-    }, [carcular]);
+    const { data: carcular, isLoading } = useQuery(["circuler"], () =>
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/vacancy"
+        ).then((res) => res.json())
+    );
 
-
-   
+    // useEffect(() => {
+    //     fetch()
+    //         .then((res) => res.json())
+    //         .then((data) => setCarcular(data));
+    // }, [carcular]);
 
     const onSubmit = (data) => {
         fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
@@ -44,6 +48,10 @@ const HrVacancy = () => {
                 }
             });
     };
+
+    if (isLoading) {
+        return <Loader />;
+    }
     return (
         <div className="ml-5">
             <div>
@@ -55,7 +63,12 @@ const HrVacancy = () => {
                     Add Vacancy
                 </button>{" "}
                 {show ? (
-                    <div className="">
+                    <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ opacity: 0 }}
+                        className=""
+                    >
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <section className="lg:w-7/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto">
                                 <div className="md:flex items-center">
@@ -144,7 +157,6 @@ const HrVacancy = () => {
                                     />
                                 </div>
 
-
                                 <div className="flex justify-center mt-2">
                                     <button
                                         type="submit"
@@ -157,7 +169,7 @@ const HrVacancy = () => {
                                 </div>
                             </section>
                         </form>
-                    </div>
+                    </motion.div>
                 ) : (
                     ""
                 )}
@@ -165,13 +177,10 @@ const HrVacancy = () => {
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Circular</h3>
 
-
-                <div className='flex justify-between gap-5'>
-                    {
-                        carcular.slice(0, 20).map(circular => <HRCircularCard
-                            circular={circular}
-                        ></HRCircularCard>)
-                    }
+                <div className="flex justify-between gap-5">
+                    {carcular.slice(0, 20).map((circular) => (
+                        <HRCircularCard circular={circular}></HRCircularCard>
+                    ))}
                 </div>
             </div>
         </div>

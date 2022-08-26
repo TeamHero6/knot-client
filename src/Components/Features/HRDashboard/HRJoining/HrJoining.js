@@ -1,32 +1,34 @@
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
+import Loader from "../../../Shared/Loader/Loader";
 import HRTrainingCard from "./HRTrainingCard";
 
 const HrJoining = () => {
     const { register, handleSubmit, reset } = useForm();
     const [showTraining, setShowTraining] = useState(false);
-    const [Trainnig, setTrainnig] = useState([]);
-    const [details, setDetails] = useState([]);
+    // const [Trainnig, setTrainnig] = useState([]);
+    // const [details, setDetails] = useState([]);
 
-    useEffect(() => {
+    const { data: details, isLoading } = useQuery(["details"], () =>
         fetch(
             "https://knot-business-solution-server.herokuapp.com/employeedetails"
-        )
-            .then((res) => res.json())
-            .then((data) => setDetails(data));
-    }, [details]);
-    console.log(details);
+        ).then((res) => res.json())
+    );
 
-    useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
-            .then((res) => res.json())
-            .then((data) => setTrainnig(data));
-    }, [Trainnig]);
-    // console.log(Trainnig);
+    const {
+        data: Trainnig,
+        isLoading: trainingLoading,
+        refetch,
+    } = useQuery(["training"], () =>
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/Trainnig"
+        ).then((res) => res.json())
+    );
 
     const onSubmitTraining = (data) => {
         fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
@@ -40,10 +42,15 @@ const HrJoining = () => {
             .then((inserted) => {
                 if (inserted.insertedId) {
                     reset();
+                    refetch();
                     toast.success("Training Assign");
                 }
             });
     };
+
+    if (isLoading || trainingLoading) {
+        return <Loader />;
+    }
     return (
         <div>
             <div className="ml-5">
@@ -58,13 +65,9 @@ const HrJoining = () => {
                 </div>
                 {showTraining ? (
                     <motion.div
-                        initial={{ height: 0, y: -50 }}
-                        animate={{
-                            height: "auto",
-                            y: 1,
-                            animationDuration: 0.5,
-                        }}
-                        exit={{ height: 0, y: -50 }}
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0, opacity: 0 }}
                         className=""
                     >
                         <form onSubmit={handleSubmit(onSubmitTraining)}>
