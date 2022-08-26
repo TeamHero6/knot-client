@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { IoIosAddCircleOutline } from 'react-icons/io';
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { AiFillSave } from 'react-icons/ai';
+import { AiFillSave } from "react-icons/ai";
+import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
-import HRTrainingCard from './HRTrainingCard';
+import HRTrainingCard from "./HRTrainingCard";
 
 const HrJoining = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -26,7 +27,6 @@ const HrJoining = () => {
             .then((data) => setTrainnig(data));
     }, [Trainnig]);
     // console.log(Trainnig);
-
 
     const onSubmitTraining = (data) => {
         fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
@@ -57,7 +57,16 @@ const HrJoining = () => {
                     </button>{" "}
                 </div>
                 {showTraining ? (
-                    <div className="">
+                    <motion.div
+                        initial={{ height: 0, y: -50 }}
+                        animate={{
+                            height: "auto",
+                            y: 1,
+                            animationDuration: 0.5,
+                        }}
+                        exit={{ height: 0, y: -50 }}
+                        className=""
+                    >
                         <form onSubmit={handleSubmit(onSubmitTraining)}>
                             <section className="lg:w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto">
                                 <div className="flex flex-row gap-5">
@@ -74,9 +83,7 @@ const HrJoining = () => {
                                         {details.map((d) => (
                                             <option
                                                 key={d._id}
-                                                value={
-                                                    d.Employee_Name
-                                                }
+                                                value={d.Employee_Name}
                                             >
                                                 {d.Employee_Name}
                                             </option>
@@ -96,15 +103,11 @@ const HrJoining = () => {
                                         <option value="Human Resources">
                                             Human Resources
                                         </option>
-                                        <option value="Sales">
-                                            Sales
-                                        </option>
+                                        <option value="Sales">Sales</option>
                                         <option value="Marketing">
                                             Marketing
                                         </option>
-                                        <option value="Finance">
-                                            Finance
-                                        </option>
+                                        <option value="Finance">Finance</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-row gap-5">
@@ -152,7 +155,6 @@ const HrJoining = () => {
                                     Trainer Details
                                 </h2>
                                 <div className="flex flex-row gap-5">
-
                                     <input
                                         className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="text"
@@ -191,20 +193,20 @@ const HrJoining = () => {
                                 </div>
                             </section>
                         </form>
-                    </div>
+                    </motion.div>
                 ) : (
                     ""
                 )}
             </div>
-            <div className=' px-3 py-3'>
-                <h1 className='font-semibold text-blue-500 text-xl mb-4 ml-5'>New Employee Training Database</h1>
+            <div className=" px-3 py-3">
+                <h1 className="font-semibold text-blue-500 text-xl mb-4 ml-5">
+                    New Employee Training Database
+                </h1>
 
-                <div className='grid grid-rows-2 grid-flow-col gap-5'>
-                    {
-                        Trainnig.slice(0, 20).map(training => <HRTrainingCard
-                            training={training}
-                        ></HRTrainingCard>)
-                    }
+                <div className="grid grid-rows-2 grid-flow-col gap-5">
+                    {Trainnig.slice(0, 20).map((training) => (
+                        <HRTrainingCard training={training}></HRTrainingCard>
+                    ))}
                 </div>
             </div>
         </div>
