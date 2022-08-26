@@ -54,99 +54,99 @@ const Bill = () => {
                     }
                 });
         } else {
-            toast("Excuse me what are you doing");
+            toast.error("Please Input Paid amount and Due amount.");
         }
     };
 
     return (
         <div>
-            <h1 className="text-center text-2xl font-semibold mt-2">
-                Orders Bill
-            </h1>
-            <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
-                <thead className="text-white bg-cyan-500 border-b border-cyan-100">
-                    <tr>
-                        <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">
-                            Date
-                        </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Order No.
-                        </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Vendor Name
-                        </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Total Amount($)
-                        </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Paid Amount($)
-                        </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
-                            Due Amount($)
-                        </th>
-                        <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
-                            Save Bill
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {purchaseOrderList.map((purchaseOrder) => (
-                        <tr
-                            key={purchaseOrder._id}
-                            className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
-                        >
-                            <td className="py-3 px-6 pl-10 whitespace-nowrap">
-                                {purchaseOrder.orderDate}
-                            </td>
-                            <td className="py-3 px-6 whitespace-nowrap">
-                                {purchaseOrder.orderNo}
-                            </td>
-                            <td className="py-3 px-6 whitespace-nowrap">
-                                {purchaseOrder.vendorName}
-                            </td>
-                            <td className="py-3 px-6 whitespace-nowrap">
-                                {purchaseOrder.totalAmount}
-                            </td>
-                            <td className="py-3 px-6 whitespace-nowrap">
-                                <input
-                                    defaultValue={purchaseOrder?.paidAmount}
-                                    onChange={handlePaidAmount}
-                                    className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
-                                    type="number"
-                                    name="paidAmount"
-                                    id=""
-                                    required
-                                />
-                            </td>
-                            <td className="py-3 px-6 whitespace-nowrap">
-                                <input
-                                    defaultValue={purchaseOrder?.dueAmount}
-                                    onChange={handleDueAmount}
-                                    className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
-                                    type="number"
-                                    name="dueAmount"
-                                    id=""
-                                    required
-                                />
-                            </td>
-                            <td className="py-3 px-6 pr-10 whitespace-nowrap">
-                                <button
-                                    onClick={() =>
-                                        handleSaveBill(purchaseOrder._id)
-                                    }
-                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
-                                >
-                                    <AiFillSave />
-                                    Save Bill
-                                </button>
-                            </td>
+            <div className="bg-white px-2 py-2">
+                <h1 className="text-center text-2xl font-semibold mt-2">
+                    Orders Bill
+                </h1>
+                <table className="shadow-lg border-2 border-cyan-300 min-w-1/2 mx-auto my-4 text-base overflow-hidden">
+                    <thead className="text-white bg-cyan-500 border-b border-cyan-100">
+                        <tr>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Date
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Order No.
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Vendor Name
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Total Amount($)
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Paid Amount($)
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Due Amount($)
+                            </th>
+                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                                Save Bill
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            <div className="w-1/2 mb-4 mx-auto bg-white px-6 py-4">
+                    </thead>
+                    <tbody>
+                        {purchaseOrderList.map((purchaseOrder) => (
+                            <tr
+                                key={purchaseOrder._id}
+                                className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
+                            >
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {purchaseOrder.orderDate}
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {purchaseOrder.orderNo}
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {purchaseOrder.vendorName}
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    {purchaseOrder.totalAmount}
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    <input
+                                        defaultValue={purchaseOrder?.paidAmount}
+                                        onChange={handlePaidAmount}
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                        type="number"
+                                        name="paidAmount"
+                                        id=""
+                                        required
+                                    />
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    <input
+                                        defaultValue={purchaseOrder?.dueAmount}
+                                        onChange={handleDueAmount}
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                        type="number"
+                                        name="dueAmount"
+                                        id=""
+                                        required
+                                    />
+                                </td>
+                                <td className="py-3 px-6 whitespace-nowrap">
+                                    <button
+                                        onClick={() => handleSaveBill(purchaseOrder._id)}
+                                        className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                    >
+                                        <AiFillSave />
+                                        Save Bill
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <div className="w-1/2 my-6 mx-auto bg-white px-6 py-4">
                 <h1 className="text-xl text-center my-2 font-medium">
-                    Vendor Vs Due Amount
+                    Vendor Vs Total Amount
                 </h1>
                 <BarChart width={500} height={250} data={purchaseOrderList}>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -154,7 +154,7 @@ const Bill = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="dueAmount" fill={"#CC3333"}></Bar>
+                    <Bar dataKey="totalAmount" name="Total Amount" fill={"#48bb78"}></Bar>
                 </BarChart>
             </div>
             <ToastContainer />

@@ -8,14 +8,16 @@ import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManag
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
+import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
+import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
 import TeamOrganize from "./Components/Features/Admin/TeamOrganize/TeamOrganize";
 import DirectExpense from "./Components/Features/Finance/AllExpense/DirectExpense";
 import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
 import FinanceDashboard from "./Components/Features/Finance/FinanceDashboard/FinanceDashboard";
 import FinanceManagement from "./Components/Features/Finance/FinanceManagement";
 import Partners from "./Components/Features/Finance/Partners/Partners";
-import HRDashboard from "./Components/Features/HRDashboard/Dashboard/HRDashboard";
+// import HRDashboard from "./Components/Features/HRDashboard/Dashboard/HRDashboard";
 import EmployeeManagement from "./Components/Features/HRDashboard/EmployeeManagement/EmployeeManagement";
 import HRWarning from "./Components/Features/HRDashboard/EmployeeManagement/HRWarning";
 import HrEmployeeDetails from "./Components/Features/HRDashboard/HREmployeeDetails/HrEmployeeDetails";
@@ -35,8 +37,8 @@ import MarketingAutomation from "./Components/Features/MarketingAutomation/Marke
 import Bill from "./Components/Features/SalesManagement/Bill/Bill";
 import Customer from "./Components/Features/SalesManagement/Customer/Customer";
 import SalesDashboard from "./Components/Features/SalesManagement/Dashboard/SalesDashboard";
+import Inventory from "./Components/Features/SalesManagement/Inventory/Inventory";
 import Items from "./Components/Features/SalesManagement/Items/Items";
-import PaymentReceive from "./Components/Features/SalesManagement/PaymentReceive/PaymentReceive";
 import PurchaseOrder from "./Components/Features/SalesManagement/PurchaseOrder/PurchaseOrder";
 import Return from "./Components/Features/SalesManagement/Return/Return";
 import SalesManagement from "./Components/Features/SalesManagement/SalesManagement";
@@ -49,6 +51,7 @@ import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
+import AllKnotApp from "./Components/Pages/Home/AllKnotApp/AllKnotApp";
 import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
@@ -65,7 +68,6 @@ import UserManagement from "./Components/Pages/Leave/UserManagement";
 import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
-import UserAttaindance from "./Components/Pages/UserDashboard/UserAttaindance";
 import UserAttendance from "./Components/Pages/UserDashboard/UserAttendance";
 import UserDashboardK from "./Components/Pages/UserDashboard/UserDashboard";
 import UserPayrolls from "./Components/Pages/UserDashboard/UserPayrolls";
@@ -152,7 +154,7 @@ function App() {
                             path="userManagement"
                             element={<UserManagement></UserManagement>}
                         />
-                        <Route path="attendance" element={<UserAttendance/>}></Route>
+                        <Route path="attendance" element={<UserAttendance />}></Route>
                         <Route path="performance" element={<UserPromotion />} />
                         <Route path="Payrolls" element={<UserPayrolls />} />
                     </Route>
@@ -194,10 +196,6 @@ function App() {
                         <Route
                             path="salesOrder"
                             element={<SalesOrder />}
-                        ></Route>
-                        <Route
-                            path="paymentReceive"
-                            element={<PaymentReceive />}
                         ></Route>
                         <Route path="return" element={<Return />}></Route>
                         <Route path="vendor" element={<Vendor />}></Route>
@@ -263,13 +261,20 @@ function App() {
                         <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
-                        <Route path="attendance" element={<UserAttendance/>}></Route>
+                        <Route path="attendance" element={<UserAttendance />}></Route>
                         <Route
                             path="directExpense"
                             element={<DirectExpense />}
                         ></Route>
                     </Route>
-                    
+                    <Route path="/BusinessSignUp" element={<BusinessSignup />} />
+                    <Route path="/learnMore" element={<AllKnotApp />} />
+                    <Route path="Calender" element={<Calender></Calender>} />
+                    <Route path="inventory" element={<Inventory />}></Route>
+                    <Route path="addTask" element={<AddTask />}></Route>
+                    <Route path="teamManagement" element={<TeamManagement />}
+                    ></Route>
+
                     <Route path="load" element={<Loader />} />
                 </Routes>
             </Suspense>

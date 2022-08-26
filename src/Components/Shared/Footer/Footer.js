@@ -6,34 +6,15 @@ import {
     AiFillYoutube,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
 import Logo from "../../../Image/Logo/KnotLogo.png";
 import "../../Pages/Style/Style.css";
 
 const Footer = () => {
-    const emailSend = (event) => {
-        event.preventDefault();
-        const email = event.target.email.value;
 
-        const newsletter = { email };
-
-        fetch("http://localhost:5000/newsletter", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(newsletter),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                toast("Thanks for being with us");
-                event.target.reset();
-            });
-    };
     return (
         <div className="footer-container">
-            <div className="footer-section-top">
-                <section className="logo-area">
+            <div className="footer-section-top ">
+                <section className="logo-area mx-auto">
                     <div className="icon">
                         <a href="https://www.facebook.com/">
                             <AiFillFacebook />
@@ -55,7 +36,7 @@ const Footer = () => {
                         </h3>
                     </div>
                 </section>
-                <section className="additional-link-area">
+                <section className="additional-link-area mx-auto">
                     <h2>Additional Link</h2>
                     <div className="link">
                         <ul>
@@ -74,7 +55,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </section>
-                <section className="contact-area">
+                <section className="contact-area mx-auto">
                     <h2>Contact Us</h2>
                     <p>
                         Address: Mirpur - 1207, Dhaka <br />
@@ -82,25 +63,6 @@ const Footer = () => {
                     </p>
                     <p>Phone: 0123456789</p>
                     <p>Email: info@knot.com</p>
-                </section>
-                <section className="newsletter-area">
-                    <h2>Newsletter</h2>
-                    <form onSubmit={emailSend}>
-                        <label htmlFor="email">Email</label> <br />
-                        <input
-                            className="newsletter-input"
-                            type="email"
-                            name="email"
-                            id=""
-                            placeholder="Your Email"
-                        />{" "}
-                        <br />
-                        <input
-                            className="newsletter-send-btn"
-                            type="submit"
-                            value="Send"
-                        />
-                    </form>
                 </section>
             </div>
             <div className="footer-section-top-sm-md">
@@ -169,7 +131,6 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-            <ToastContainer />
         </div>
     );
 };

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import adminLogo from "../../../Assets/icons/Admin/adminLogo.png";
-import dashboard from "../../../Assets/icons/Admin/dashboard.png";
-import hr from "../../../Assets/icons/Admin/hr.png";
-import finance from "../../../Assets/icons/financereport.png";
-import chat from "../../../Assets/icons/Live-chat-icon/chat.png";
-import marketing from "../../../Assets/icons/marketing-automation.png";
-import sales from "../../../Assets/icons/sales2.png";
+import adminLogo from "../../../Assets/homepageFeaturedAppIcon/team.png";
+import dashboard from "../../../Assets/homepageFeaturedAppIcon/dashboards.png";
+import hr from "../../../Assets/homepageFeaturedAppIcon/hr.png";
+import finance from "../../../Assets/homepageFeaturedAppIcon/financeManagement.svg";
+import chat from "../../../Assets/homepageFeaturedAppIcon/chat.png";
+import marketing from "../../../Assets/homepageFeaturedAppIcon/digital-marketing.png";
+import sales from "../../../Assets/homepageFeaturedAppIcon/sales.png";
 import logo from "../../../Assets/logo/KnotLogo.png";
 import AccessAppsCard from "./AccessAppsCard/AccessAppsCard";
 
@@ -23,7 +23,7 @@ const AccessYourApps = () => {
         },
         {
             id: 2,
-            name: "Hr",
+            name: "Human Resource",
             link: "/hrManagement",
             icon: hr,
         },
@@ -99,11 +99,11 @@ const AccessYourApps = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:w-2/3 mx-auto mt-4">
                 {filterResult
                     ? filterResult?.map((product) => (
-                          <AccessAppsCard {...{ product }} />
-                      ))
+                        <AccessAppsCard {...{ product }} />
+                    ))
                     : products?.map((product) => (
-                          <AccessAppsCard {...{ product }} />
-                      ))}
+                        <AccessAppsCard {...{ product }} />
+                    ))}
             </div>
         </div>
     );

@@ -1,63 +1,86 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import crm from "../../../../Assets/icons/Featued icon/crm.png";
-import finance from "../../../../Assets/icons/financereport.png";
-import liveChat from "../../../../Assets/icons/livechat.png";
-import marketing from "../../../../Assets/icons/marketing-automation.png";
-import sales2 from "../../../../Assets/icons/sales2.png";
+import crm from "../../../../Assets/icons/Featured-icon/crm.png";
+import teamManagement from "../../../../Assets/homepageFeaturedAppIcon/team.png";
+import hr from "../../../../Assets/homepageFeaturedAppIcon/hr.png";
+import finance from "../../../../Assets/homepageFeaturedAppIcon/financeManagement.svg";
+import sales from "../../../../Assets/homepageFeaturedAppIcon/sales.png";
+import marketing from "../../../../Assets/homepageFeaturedAppIcon/digital-marketing.png";
+import userDashboard from "../../../../Assets/homepageFeaturedAppIcon/dashboards.png";
+import groupChat from "../../../../Assets/homepageFeaturedAppIcon/chat.png";
+import adminManagement from "../../../../Assets/homepageFeaturedAppIcon/admin.png";
 
 const FeaturedApp = () => {
     return (
-        <div className="lg:px-12">
-            <p className="my-3 tracking-widest text-gray-400 text-sm text-center">
-                Magnificent Features
-            </p>
-            <section className="grid w-[100%] mx-auto mb-20 md:mb-36 md:w-[90%] grid-cols-1 md:grid-cols-2 items-center bg-cyan-100 md:bg-gradient-to-r from-cyan-200 via-white to-white rounded-md">
-                <section className="md:flex md:items-center">
-                    <div className="hidden md:block">
-                        <img
-                            src={crm}
-                            className="w-20 md:ml-20 flex justify-center"
-                            alt=""
-                        />
-                    </div>
-                    <div className="text-center md:text-left w-[100%] md:w-[60%] px-0 lg:px-4 mx-auto my-10 md:my-0">
-                        <h3 className="font-semibold text-xl my-2">
-                            Complete CRM Platform
-                        </h3>
-                        <p className="my-4 mb-8">
-                            End-to-end, fully customizable CRM solution for
-                            growing business and enterprises
-                        </p>
-                        <Link
-                            to="/learnMore"
-                            className="bg-red-500 text-white font-semibold px-2 py-1 lg:px-4 lg:py-2 hover:bg-red-400"
-                        >
-                            LEARN MORE
-                        </Link>
+        <div className="md:mx-12 lg:mx-20 bg-cyan-100 md:bg-gradient-to-r from-cyan-100 via-white to-cyan-100">
+            <section className="mx-auto py-4 rounded-md">
+                <section className="w-full">
+                    <div className="w-1/3 mx-auto">
+                        <div className="md:flex justify-center hidden ">
+                            <img
+                                src={crm}
+                                className="w-1/5"
+                                alt=""
+                            />
+                        </div>
+                        <div className="text-center">
+                            <h3 className="font-semibold text-xl">
+                                Complete CRM Platform
+                            </h3>
+                            <p className="mb-3">
+                                End-to-end, fully customizable CRM solution for
+                                growing business and enterprises
+                            </p>
+                            <div className="mb-2">
+                                <Link
+                                    to="/learnMore"
+                                    className="bg-red-500 text-white font-semibold pb-8 px-2 py-1 lg:px-4 lg:py-2 hover:bg-red-400"
+                                >
+                                    LEARN MORE
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </section>
-                <div className="text-start">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                        <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-6 lg:py-14 border-gray-200 w-[100%] mx-auto flex justify-center items-center">
+                <div className="text-start mt-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+                        <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-4  border-gray-200 w-[100%] mx-auto flex justify-center items-center">
                             <div className="flex items-center">
                                 <section>
                                     <img
-                                        src={sales2}
+                                        src={teamManagement}
                                         className="w-14 mr-2"
                                         alt=""
                                     />
                                 </section>
                                 <section className="text-left mt-3 ml-1">
-                                    <h3>Sales</h3>
-                                    <p className="mb-4">Tracking Tool</p>
+                                    <h3>Team</h3>
+                                    <p className="mb-4">Management</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </section>
                             </div>
                         </div>
-                        <div className="text-center  md:border-b-[1px] py-6 lg:py-14 border-gray-200 flex justify-center items-center">
+                        <div className="text-center  md:border-b-[1px] md:border-r-[1px] py-4  border-gray-200 flex justify-center items-center">
+                            <section className="flex items-center justify-evenly">
+                                <div>
+                                    <img
+                                        src={hr}
+                                        className="w-14 mr-2"
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="text-left mt-3 ml-1">
+                                    <h3>Human</h3>
+                                    <p className="mb-4">Resource</p>
+                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                        LEARN MORE
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                        <div className="text-center border-r-[1px] md:border-b-[1px] py-4  border-gray-200 flex justify-center items-center">
                             <section className="flex items-center justify-evenly">
                                 <div>
                                     <img
@@ -68,43 +91,97 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Finance</h3>
-                                    <p className="mb-4">Tracking Tool</p>
+                                    <p className="mb-4">Management</p>
+                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2 transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                        LEARN MORE
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                        <div className="text-center py-4  md:border-b-[1px] border-gray-200 flex items-start justify-center">
+                            <section className="flex items-center">
+                                <div>
+                                    <img
+                                        src={sales}
+                                        className="w-14 mr-2"
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="text-left mt-3 ml-1">
+                                    <h3>Sales</h3>
+                                    <p className="mb-4">Management</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </div>
                             </section>
                         </div>
-                        <div className="text-center border-r-[1px] py-6 lg:py-14 border-gray-200 flex justify-center items-center">
-                            <section className="flex items-center justify-evenly">
-                                <div>
+                        <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-4  border-gray-200 w-[100%] mx-auto flex justify-center items-center">
+                            <div className="flex items-center">
+                                <section>
                                     <img
                                         src={marketing}
                                         className="w-14 mr-2"
                                         alt=""
                                     />
+                                </section>
+                                <section className="text-left mt-3 ml-1">
+                                    <h3>Marketing</h3>
+                                    <p className="mb-4">Automation</p>
+                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                        LEARN MORE
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                        <div className="text-center md:border-r-[1px] py-4  border-gray-200 flex justify-center items-center">
+                            <section className="flex items-center justify-evenly">
+                                <div>
+                                    <img
+                                        src={userDashboard}
+                                        className="w-14 mr-2"
+                                        alt=""
+                                    />
                                 </div>
                                 <div className="text-left mt-3 ml-1">
-                                    <h3>Marketing</h3>
-                                    <p className="mb-4">Automation Tool</p>
+                                    <h3>User</h3>
+                                    <p className="mb-4">Dashboard</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </div>
                             </section>
                         </div>
-                        <div className="text-center py-6 lg:py-14 border-gray-200 flex items-start justify-center">
-                            <section className="flex items-center">
+                        <div className="text-center border-r-[1px] py-4  border-gray-200 flex justify-center items-center">
+                            <section className="flex items-center justify-evenly">
                                 <div>
                                     <img
-                                        src={liveChat}
+                                        src={groupChat}
                                         className="w-14 mr-2"
                                         alt=""
                                     />
                                 </div>
                                 <div className="text-left mt-3 ml-1">
-                                    <p className="mb-4">Live Chatting</p>
-
+                                    <h3>Group</h3>
+                                    <p className="mb-4">Chat</p>
+                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                        LEARN MORE
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                        <div className="text-center py-4  border-gray-200 flex items-start justify-center">
+                            <section className="flex items-center">
+                                <div>
+                                    <img
+                                        src={adminManagement}
+                                        className="w-14 mr-2"
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="text-left mt-3 ml-1">
+                                    <h3>Admin</h3>
+                                    <p className="mb-4">Management</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>

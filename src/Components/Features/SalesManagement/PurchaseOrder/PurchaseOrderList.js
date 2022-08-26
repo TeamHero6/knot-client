@@ -15,14 +15,14 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
     useEffect(() => {
         fetch("http://localhost:5000/addNewPurchaseOrder")
             .then((res) => res.json())
-            .then((data) => setPurchaseOrderList(data.reverse()));
+            .then((data) => setPurchaseOrderList(data));
     }, [purchaseOrderList]);
 
     return (
         <div>
             <div className="grid grid-cols-6 bg-white">
                 <div className="col-span-4 overflow-auto rounded-none">
-                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <table className="shadow-lg border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <caption>
                             <h1 className="text-center text-2xl font-bold mb-2">
                                 Purchase Order List
@@ -30,7 +30,7 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                         </caption>
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Date
                                 </th>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -42,18 +42,18 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Vendor
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Details
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            {purchaseOrderList.map((purchaseOrder) => (
+                            {purchaseOrderList?.map((purchaseOrder) => (
                                 <tr
                                     key={purchaseOrder._id}
-                                    className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                    className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
                                 >
-                                    <td className="py-3 px-6 pl-10 whitespace-nowrap">
+                                    <td className="py-3 px-6 whitespace-nowrap">
                                         {purchaseOrder.orderDate}
                                     </td>
                                     <td className="py-3 px-6 whitespace-nowrap">
@@ -65,7 +65,7 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {purchaseOrder.vendorName}
                                     </td>
-                                    <td className="py-3 px-6 pr-10 whitespace-nowrap">
+                                    <td className="py-3 px-6 whitespace-nowrap">
                                         <label
                                             for="purchase-order-details-modal"
                                             onClick={() =>

@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
 import ItemDetailsModal from "../Items/ItemDetailsModal";
+import {
+    Bar,
+    BarChart,
+    CartesianGrid,
+    Legend,
+    Tooltip,
+    XAxis,
+    YAxis,
+} from "recharts";
 
 const SalesDashboard = () => {
     const [vendorList, setVendorList] = useState([]);
     const [customerList, setCustomerList] = useState([]);
     const [itemList, setItemList] = useState([]);
     const [singleItemDetail, setSingleItemDetail] = useState({});
+    const [purchaseOrderList, setPurchaseOrderList] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:5000/addProduct")
@@ -25,12 +35,22 @@ const SalesDashboard = () => {
             .then((data) => setCustomerList(data.reverse()));
     }, [customerList]);
 
+    useEffect(() => {
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
+        )
+            .then((res) => res.json())
+            .then((data) => setPurchaseOrderList(data.reverse()));
+    }, [purchaseOrderList]);
+
     return (
         <div>
             <section className="flex justify-center	gap-5">
                 <div className="card w-72 bg-base-100 shadow-xl">
-                    <div className="card-body">
-                        <h2 className="card-title "></h2>
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-lg">
+                            25
+                        </h2>
                         <p>Total Order</p>
                     </div>
                 </div>
@@ -52,12 +72,14 @@ const SalesDashboard = () => {
                 </div>
             </section>
             <section>
-                <div className="overflow-auto rounded-none mx-auto">
-                    <table className="shadow-2xl border-2 border-cyan-300 mx-auto my-12 text-base overflow-hidden">
+                <div className="overflow-auto bg-white mt-8 px-5">
+                    <table className="shadow-lg border-2 border-cyan-300 w-full mx-auto mb-5 mt-3 text-base overflow-hidden">
+                        <caption>
+                            <h2 className="text-center text-2xl font-semibold mb-2">All Product Details</h2>
+                        </caption>
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
-                            {/* <thead className=' border-b border-cyan-100'> */}
                             <tr>
-                                <th className="py-3 text-left px-3 pl-10 whitespace-nowrap">
+                                <th className="py-3 text-left pr-3 pl-6 whitespace-nowrap">
                                     Product
                                 </th>
                                 <th className="py-3 text-left px-3 whitespace-nowrap">
@@ -69,7 +91,7 @@ const SalesDashboard = () => {
                                 <th className="py-3 text-left px-3 whitespace-nowrap">
                                     Vendor
                                 </th>
-                                <th className="py-3 text-left px-3 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left pl-3 pr-6 whitespace-nowrap">
                                     Details
                                 </th>
                             </tr>
@@ -78,21 +100,21 @@ const SalesDashboard = () => {
                             {itemList.slice(0, 5).map((item) => (
                                 <tr
                                     key={item._id}
-                                    className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                    className="hover:shadow-md hover:bg-cyan-100 duration-300 cursor-pointer border-b border-cyan-100"
                                 >
-                                    <td className="py-3 px-1 pl-10 whitespace-nowrap">
+                                    <td className="py-3 pr-3 pl-6 whitespace-nowrap">
                                         {item.productName}
                                     </td>
-                                    <td className="py-3 px-3 whitespace-nowrap text-center">
+                                    <td className="py-3 px-3 whitespace-nowrap">
                                         {item.purchaseAmount} $
                                     </td>
-                                    <td className="py-3 px-3 whitespace-nowrap text-center">
+                                    <td className="py-3 px-3 whitespace-nowrap">
                                         {item.salesAmountValue} $
                                     </td>
                                     <td className="py-3 px-3 whitespace-nowrap">
                                         {item.vendorName}
                                     </td>
-                                    <td className="py-3 px-3 pr-1 whitespace-nowrap">
+                                    <td className="py-3 pl-3 pr-6 whitespace-nowrap">
                                         <label
                                             for="item-details-modal"
                                             onClick={() =>
@@ -108,6 +130,21 @@ const SalesDashboard = () => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+            </section>
+            <section>
+                <div className="w-1/2 my-6 mx-auto bg-white px-6 py-4">
+                    <h1 className="text-xl text-center my-2 font-medium">
+                        Vendor Vs Due Amount
+                    </h1>
+                    <BarChart width={500} height={250} data={purchaseOrderList}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="vendorName" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="dueAmount" name="Paid Amount" fill={"#CC3333"}></Bar>
+                    </BarChart>
                 </div>
             </section>
             <ItemDetailsModal
