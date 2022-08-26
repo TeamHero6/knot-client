@@ -69,7 +69,7 @@ const Inventory = () => {
                             </tr>
                         ))}
                     </tbody>
-                    <h1>{quantitySum}</h1>
+                    <h1 className='hidden'>{quantitySum}</h1>
                 </table>
             </div>
             <div className="bg-white w-2/3 mx-auto px-2 py-6 my-6">

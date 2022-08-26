@@ -3,14 +3,17 @@ import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import VendorDetailsModal from "./VendorDetailsModal";
 import VendorList from "./VendorList";
+import { useSelector } from "react-redux";
 
 const Vendor = () => {
     const [addNewVendor, setNewVendor] = useState(false);
     const [singleVendorDetail, setSingleVendorDetail] = useState({});
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     const handleAddVendor = (e) => {
         e.preventDefault();
-        const companyName = e.target.companyName.value;
+        const company = e.target.company.value;
         const address = e.target.address.value;
         const contactPerson = e.target.contactPerson.value;
         const mobile = e.target.mobile.value;
@@ -21,7 +24,7 @@ const Vendor = () => {
         const branchName = e.target.branchName.value;
 
         const vendor = {
-            companyName,
+            company,
             address,
             contactPerson,
             mobile,
@@ -30,6 +33,7 @@ const Vendor = () => {
             accountHolder,
             accountNo,
             branchName,
+            companyName
         };
 
         console.log(vendor);
@@ -81,7 +85,7 @@ const Vendor = () => {
                                     <input
                                         className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                                         type="text"
-                                        name="companyName"
+                                        name="company"
                                         id=""
                                         placeholder=""
                                         required

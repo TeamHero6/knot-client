@@ -19,7 +19,7 @@ const Bill = () => {
     useEffect(() => {
         fetch("http://localhost:5000/addNewPurchaseOrder")
             .then((res) => res.json())
-            .then((data) => setPurchaseOrderList(data.reverse()));
+            .then((data) => setPurchaseOrderList(data.result.reverse()));
     }, [purchaseOrderList]);
 
     const handlePaidAmount = (event) => {

@@ -21,7 +21,7 @@ const FinanceNavbar = () => {
 
             <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
                 <Link to="/accessApps">
-                    {/* <img src={access} className={`w-6`} alt="icon" /> */}
+                    <img src={access} className={`w-6`} alt="icon" />
                 </Link>
             </div>
 

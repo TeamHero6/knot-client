@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import ItemDetailsModal from "./ItemDetailsModal";
 import ItemsList from "./ItemsList";
 
 const Items = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const [addNewItem, setAddNewItem] = useState(false);
     const [salesAmountValue, setSalesAmountValue] = useState(0);
     const [purchaseAmount, setPurchaseAmount] = useState();
     const [revenue, setRevenue] = useState(0);
     const [tax, setTax] = useState(0);
     const [singleItemDetail, setSingleItemDetail] = useState({});
+
+    const { companyName } = loggerInfo;
 
     const handlePurchaseAmount = (event) => {
         setPurchaseAmount(event.target.value);
@@ -47,6 +51,7 @@ const Items = () => {
             tax,
             salesAmountValue,
             vendorName,
+            companyName
         };
 
         fetch("http://localhost:5000/addNewProduct", {

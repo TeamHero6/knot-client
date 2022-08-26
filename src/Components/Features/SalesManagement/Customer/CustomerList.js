@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const CustomerList = () => {
     const [customerList, setCustomerList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/addCustomer")
+        fetch(`http://localhost:5000/addCustomer/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
-    }, [customerList]);
+    }, [customerList, companyName]);
 
     return (
         <div className="mb-8">

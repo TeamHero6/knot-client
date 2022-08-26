@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const ItemsList = ({ setSingleItemDetail }) => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const [itemList, setItemList] = useState([]);
 
+    const { companyName } = loggerInfo;
+
     useEffect(() => {
-        fetch("http://localhost:5000/addProduct")
+        fetch(`http://localhost:5000/addProduct/${companyName}`)
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
-    }, [itemList]);
+    }, [itemList, companyName]);
 
     return (
         <div className="mb-8">
