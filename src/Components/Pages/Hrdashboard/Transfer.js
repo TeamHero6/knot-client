@@ -13,12 +13,12 @@ const Transfer = () => {
     const [modal, setmodal] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
+        fetch("http://localhost:5000/transfer")
             .then((res) => res.json())
             .then((data) => setTransfer(data));
     }, [transfer]);
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/transfer", {
+        fetch("http://localhost:5000/transfer", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -246,7 +246,10 @@ const Transfer = () => {
                                 </div>
                             </div>
                             <div className="modal-action">
-                                <label for={modal._id} className="btn btn-warning">
+                                <label
+                                    for={modal._id}
+                                    className="btn btn-warning"
+                                >
                                     Cancel
                                 </label>
                             </div>

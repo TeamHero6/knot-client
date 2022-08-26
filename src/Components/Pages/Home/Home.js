@@ -1,11 +1,11 @@
-import React from "react";
-import Footer from "../../Shared/Footer/Footer";
-import Navbar from "../../Shared/Navbar/Navbar";
+import React, { lazy } from "react";
 import AccessibleAnywhere from "./AccessibleAnywhere/AccessibleAnywhere";
 import Client from "./Client/Client";
-import Header from "./Header.js/Header";
 import Newsletter from "./Newsletter/Newsletter";
-import Promotion from "./Promotion/Promotion";
+const Navbar = lazy(() => import("../../Shared/Navbar/Navbar"));
+const Header = lazy(() => import("./Header.js/Header"));
+const Promotion = lazy(() => import("./Promotion/Promotion"));
+const Footer = lazy(() => import("../../Shared/Footer/Footer"));
 
 const Home = () => {
     return (

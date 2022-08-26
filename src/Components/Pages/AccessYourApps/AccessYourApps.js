@@ -24,7 +24,7 @@ const AccessYourApps = () => {
         {
             id: 2,
             name: "Human Resource",
-            link: "/hrdashboard",
+            link: "/hrManagement",
             icon: hr,
         },
         {

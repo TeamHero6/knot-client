@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 import { v4 } from "uuid";
 import logo from "../../../../Assets/logo/KnotLogo.png";
 import auth, { storage } from "../../../../firebase.init";
-import { loginAction } from "../../../../Redux/Authentication/authAction";
+import { authAction } from "../../../../Redux/Auth/authAction";
 import Navbar from "../../../Shared/Navbar/Navbar";
 
 const BusinessSignup = () => {
@@ -69,16 +69,13 @@ const BusinessSignup = () => {
                         };
 
                         // Send Data to Server
-                        fetch(
-                            "https://knot-business-solution-server.herokuapp.com/createdUser",
-                            {
-                                method: "PUT",
-                                headers: {
-                                    "content-type": "application/json",
-                                },
-                                body: JSON.stringify(userInfo),
-                            }
-                        )
+                        fetch("http://localhost:5000/createdUser", {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(userInfo),
+                        })
                             .then((res) => res.json())
                             .then((data) => {
                                 const token = data?.token;
@@ -90,7 +87,7 @@ const BusinessSignup = () => {
                                 }
                                 if (token) {
                                     localStorage.setItem("accessToken", token);
-                                    dispatch(loginAction(loggerInfo));
+                                    dispatch(authAction(loggerInfo));
                                     createUserWithEmailAndPassword(
                                         email,
                                         password
@@ -125,25 +122,22 @@ const BusinessSignup = () => {
 
         //Sign up for Employee
         if (role === "Employee") {
-            const info = { email, secretCode };
+            const info = { email, secretCode, name };
 
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(info),
-                }
-            )
+            fetch("http://localhost:5000/checkEmployee", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
-                    const role = data?.role;
-                    const message = data?.message;
+                    const { role, message, loggerInfo } = data;
                     if (role) {
                         setLoadingMessage("");
                         await createUserWithEmailAndPassword(email, password);
+                        dispatch(authAction(loggerInfo));
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
@@ -162,25 +156,6 @@ const BusinessSignup = () => {
                         });
                     }
                 });
-            // fetch(`https://knot-business-solution-server.herokuapp.com/employeeRole/${email}`)
-            //     .then((res) => res.json())
-            //     .then(async (data) => {
-            //         const { role, message, message2 } = data;
-            //         if (role !== "") {
-            //             setLoadingMessage("");
-            //             await createUserWithEmailAndPassword(email, password);
-            //             navigate("/");
-            //         }
-            //         if (role === "") {
-            //             setLoadingMessage("");
-            // Swal.fire({
-            //     icon: "error",
-            //     title: "Oops...",
-            //     text: `${message}`,
-            //     footer: `${message2}`,
-            // });
-            //         }
-            //     });
         }
     };
 
@@ -193,9 +168,9 @@ const BusinessSignup = () => {
         }
     };
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen relative">
             <Navbar />
-            <section className="flex justify-center items-center w-full flex-1 text-center px-3 md:px-20 bg-gray-100 min-h-screen">
+            <section className="flex justify-center items-center w-full flex-1 text-center px-3 md:px-20 my-8 bg-gray-100 min-h-screen">
                 <div className="bg-white rounded-2xl shadow-2xl md:flex w-[100%] md:w-3/4 lg:w-2/3 max-w-4xl mt-8 mb-8">
                     <div className="w-full lg:w-3/5 p-5 my-auto">
                         <div className="text-left font-bold">

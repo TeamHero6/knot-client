@@ -2,10 +2,10 @@ import React from "react";
 
 const AwardCard = ({ award }) => {
     return (
-        <div className="bg-transparent border-l-4 border-orange-500 px-4 py-2 rounded-md shadow-xl">
+        <div className="bg-transparent border-l-4 h-[180px] border-orange-500 px-4 mx-auto py-2 rounded-md shadow-xl relative">
             <div class="flex justify-between text-green-400">
                 <div className="flex items-center">
-                    <p className="text-gray-600 mr-2">Monir Hossain</p>
+                    <p className="text-gray-600 mr-2">{award.name}</p>
                     <span>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -27,15 +27,15 @@ const AwardCard = ({ award }) => {
                 />
             </div>
             <div className="mt-3">
-                <p className="my-1 text-gray-500 font-semibold">
+                <p className="my-1 text-sm text-gray-500 font-semibold">
                     Congratulation! You are {award.awardTitle}
                 </p>
-                <p className="h-24 text-gray-400 overflow-auto">
+                <p className="h-20 text-xs text-gray-400 overflow-auto">
                     {award.successMessage}
                 </p>
             </div>
             <div>
-                <p className="text-right text-xs text-gray-400">
+                <p className="text-right text-xs text-gray-400 absolute bottom-2 right-4">
                     {award.AwardDate}
                 </p>
             </div>

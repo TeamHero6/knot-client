@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
@@ -10,13 +11,13 @@ const Payrolls = () => {
 
     const [show, setShow] = useState(false);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
+        fetch("http://localhost:5000/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, [payrolls]);
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
+        fetch("http://localhost:5000/payrolls", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -32,7 +33,11 @@ const Payrolls = () => {
             });
     };
     return (
-        <div>
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+        >
             <label
                 onClick={() => setShow(!show)}
                 for="my-drawer"
@@ -229,7 +234,7 @@ const Payrolls = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

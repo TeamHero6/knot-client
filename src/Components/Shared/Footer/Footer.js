@@ -10,6 +10,7 @@ import Logo from "../../../Image/Logo/KnotLogo.png";
 import "../../Pages/Style/Style.css";
 
 const Footer = () => {
+
     return (
         <div className="footer-container">
             <div className="footer-section-top ">

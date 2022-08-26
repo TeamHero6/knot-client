@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
@@ -9,13 +10,13 @@ const Joining = () => {
     const [joining, setJoining] = useState([]);
     // const [employinfo, setEmployinfo] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/joining")
+        fetch("http://localhost:5000/joining")
             .then((res) => res.json())
             .then((data) => setJoining(data));
     }, [joining]);
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/joining", {
+        fetch("http://localhost:5000/joining", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -31,7 +32,7 @@ const Joining = () => {
             });
     };
     return (
-        <div>
+        <motion.div className="ml-5">
             <div className="">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <section className="lg:w-11/12 lg:mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto">
@@ -52,6 +53,65 @@ const Joining = () => {
                                 placeholder="Depertment"
                             />
                         </div>
+                        <div className="flex flex-row gap-5">
+                            <input
+                                className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                type="email"
+                                {...register("Email")}
+                                id=""
+                                placeholder="Email"
+                            />
+                            <input
+                                className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                type="text"
+                                {...register("Designation")}
+                                id=""
+                                placeholder="Designation"
+                            />
+                        </div>
+
+                        <div className="flex flex-row gap-5">
+                            <input
+                                className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                type="number"
+                                {...register("number")}
+                                id=""
+                                placeholder="Number"
+                            />
+                            <input
+                                className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                type="datetime-local"
+                                {...register("joinig_date")}
+                                id=""
+                                placeholder="joinig_date"
+                            />
+                        </div>
+
+                        <div className="flex flex-row gap-5">
+                            <input
+                                className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                type="text"
+                                {...register("address")}
+                                id=""
+                                placeholder="Address"
+                            />
+                            <input
+                                className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                type="text"
+                                {...register("salary")}
+                                id=""
+                                placeholder="Salary"
+                            />
+                        </div>
+                        <div className="flex flex-row gap-5">
+                            <input
+                                className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                type="text"
+                                {...register("salary_grade")}
+                                id=""
+                                placeholder="Salary Grade"
+                            />
+                        </div>
 
                         <div className="lg:flex justify-between md:flex pt-2">
                             <button
@@ -68,8 +128,8 @@ const Joining = () => {
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Joining Information</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div className="rounded-none">
-                        <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <div class="rounded-none">
+                        <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -109,7 +169,7 @@ const Joining = () => {
                 </div>
             </div>
             <Assigntranning></Assigntranning>
-        </div>
+        </motion.div>
     );
 };
 

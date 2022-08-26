@@ -1,5 +1,6 @@
 import React from 'react';
 import './AllKnotApp.css';
+import Navbar from "../../../Shared/Navbar/Navbar";
 import financeIcon from '../../../../Assets/icons/finance.png';
 import salesManagementIcon from '../../../../Assets/icons/sales.png';
 import marketingAutomationIcon from '../../../../Assets/icons/marketing.png';
@@ -47,8 +48,6 @@ import recruitment from '../../../../Assets/icons/Task-management-icon/recruitme
 import performance from '../../../../Assets/icons/Task-management-icon/Performance.png';
 import operation from '../../../../Assets/icons/Task-management-icon/Operation.png';
 import payrolls from '../../../../Assets/icons/Task-management-icon/Payrolls.png';
-
-import Navbar from "../../../Shared/Navbar/Navbar";
 
 const AllKnotApp = () => {
     return (

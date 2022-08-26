@@ -26,7 +26,7 @@ const LiveChatDashboard = () => {
             </span>
             <LiveChatNavbar></LiveChatNavbar>
             <section className="flex w-full">
-                <div
+                {/* <div
                     className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md justify-center 
             ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
@@ -39,7 +39,7 @@ const LiveChatDashboard = () => {
                         </Link>
 
                     </div>
-                </div>
+                </div> */}
                 <div className="px-3 overflow-auto w-full">
                     <Outlet />
                 </div>

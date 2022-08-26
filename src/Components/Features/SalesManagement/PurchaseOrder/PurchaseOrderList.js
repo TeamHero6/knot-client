@@ -13,11 +13,9 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
 
     useEffect(() => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
-        )
+        fetch("http://localhost:5000/addNewPurchaseOrder")
             .then((res) => res.json())
-            .then((data) => setPurchaseOrderList(data.reverse()));
+            .then((data) => setPurchaseOrderList(data));
     }, [purchaseOrderList]);
 
     return (
@@ -50,7 +48,7 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {purchaseOrderList.map((purchaseOrder) => (
+                            {purchaseOrderList?.map((purchaseOrder) => (
                                 <tr
                                     key={purchaseOrder._id}
                                     className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
