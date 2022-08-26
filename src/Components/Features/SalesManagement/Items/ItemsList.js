@@ -8,7 +8,9 @@ const ItemsList = ({ setSingleItemDetail }) => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addProduct/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
     }, [itemList, companyName]);

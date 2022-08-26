@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import {
     Bar,
@@ -10,17 +11,18 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
-import { useSelector } from "react-redux";
 
 const Bill = () => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
     const [paidAmount, setPaidAmount] = useState("");
     const [dueAmount, setDueAmount] = useState("");
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
     }, [purchaseOrderList, companyName]);

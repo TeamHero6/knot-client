@@ -12,23 +12,29 @@ const SalesOrder = () => {
     const [unitPrice, setUnitPrice] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [totalAmount, setTotalAmount] = useState(0);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
     }, [vendorList, companyName]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addCustomer/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addCustomer/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
     }, [customerList, companyName]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addProduct/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setProductList(data.reverse()));
     }, [productList, companyName]);
@@ -69,7 +75,7 @@ const SalesOrder = () => {
             quantity,
             totalAmount,
             vendorName,
-            companyName
+            companyName,
         };
         console.log(newOrder);
         fetch(

@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 
 const CustomerList = () => {
     const [customerList, setCustomerList] = useState([]);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addCustomer/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addCustomer/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
     }, [customerList, companyName]);

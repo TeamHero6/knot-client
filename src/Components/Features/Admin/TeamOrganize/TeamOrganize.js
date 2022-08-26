@@ -29,9 +29,9 @@ const TeamOrganize = () => {
         data: meetingData,
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
-        fetch(`http://localhost:5000/meetings/${companyName}`).then((res) =>
-            res.json()
-        )
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/meetings/${companyName}`
+        ).then((res) => res.json())
     );
     console.log(meetingData);
     //Fetch Warning Data
