@@ -111,9 +111,9 @@ function App() {
                         <Route path="joining" element={<Joining />}></Route>
                     </Route>
                     <Route path="/hrManagement" element={<HRManagement />}>
-                        <Route index element={<HRDashboard />}></Route>
+                        {/* <Route index element={<HRDashboard />}></Route> */}
                         <Route
-                            path="hrLeaveRequest"
+                            index
                             element={<HrLeaveRequest />}
                         ></Route>
                         <Route
@@ -260,17 +260,16 @@ function App() {
                     </Route>
 
                     <Route path="/financeTS" element={<FinanceManagement />}>
-                        <Route
-                            index
-                            element={<FinanceDashboard></FinanceDashboard>}
-                        ></Route>
+                        <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
+                        <Route path="attendance" element={<UserAttendance/>}></Route>
                         <Route
                             path="directExpense"
                             element={<DirectExpense />}
                         ></Route>
                     </Route>
+                    
                     <Route path="load" element={<Loader />} />
                 </Routes>
             </Suspense>

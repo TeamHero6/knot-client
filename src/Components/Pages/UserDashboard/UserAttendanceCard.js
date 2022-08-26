@@ -12,10 +12,22 @@ const UserAttendanceCard = (props) => {
             <div className='flex justify-end'>
                 <p>{loggerInfo?.name}</p>
             </div>
-            <p>Join Time: <span className='font-semibold text-green-500'>{startTime}</span></p>
-            <p>Leave Time: <span className='font-semibold text-red-500'>{UpdateDateTime?.endTime}</span></p>
-            <p className='text-xs'>Report: {UpdateDateTime?.taskReport}</p>
-                <p className='text-right'><small className='italic text-gray-500'>{startDate}</small></p>
+            <p>
+                Join Time:{" "}
+                <span className="font-semibold text-green-500">
+                    {startTime}
+                </span>
+            </p>
+            <p>
+                Leave Time:{" "}
+                <span className="font-semibold text-red-500">
+                    {UpdateDateTime?.endTime}
+                </span>
+            </p>
+            <p className="text-xs">Report: {UpdateDateTime?.taskReport}</p>
+            <p className="text-right">
+                <small className="italic text-gray-500">{startDate}</small>
+            </p>
         </div>
     );
 };

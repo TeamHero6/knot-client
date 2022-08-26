@@ -4,12 +4,15 @@ import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
 import HrEmployeeData from "./HrEmployeeData";
+import { useSelector } from "react-redux";
 
 const HrEmployeeDetails = () => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, reset } = useForm();
+    
 
     const onSubmit = (data) => {
+        console.log(data);
         fetch("http://localhost:5000/employeedetails", {
             method: "POST",
             headers: {
@@ -47,70 +50,78 @@ const HrEmployeeDetails = () => {
                                 <h2 className="text-blue-900 my-3 text-xl font-medium">
                                     Employee Details
                                 </h2>
-                                <div className="flex flex-row gap-5">
+                                <div className="md:flex items-center">
+                                    <label
+                                        className="font-bold w-32"
+                                        htmlFor="name"
+                                    >
+                                        Joining Date :{" "}
+                                    </label>{" "}
+                                    <br />
                                     <input
-                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        className="py-2 pl-3 w-2/6 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        type="date"
+                                        {...register("Joining_Date")}
+                                        id=""
+                                        placeholder="Joining Date"
+                                    />
+                                    <br />
+                                    <input
+                                        className="py-2 pl-3 ml-9 w-3/6 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="text"
                                         {...register("Employee_Name")}
                                         id=""
                                         placeholder="Employee Name"
                                     />
-                                    <input
-                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                        type="text"
-                                        {...register("Report_Person")}
-                                        id=""
-                                        placeholder="Report Person"
-                                    />
                                 </div>
+
+
                                 <div className="flex flex-row gap-5">
                                     <input
                                         className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="number"
                                         {...register("Employee_id")}
                                         id=""
-                                        placeholder="Employee Id"
+                                        placeholder="Employee ID"
                                     />
-                                    <input
-                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                        type="text"
+                                    <select
+                                        required
+                                        name="customerName"
                                         {...register("Department")}
                                         id=""
-                                        placeholder="Department"
-                                    />
+                                        className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                    >
+                                        <option value="" selected disabled>
+                                            Select Department
+                                        </option>
+                                        <option value="Human Resources">
+                                            Human Resources
+                                        </option>
+                                        <option value="Sales">
+                                            Sales
+                                        </option>
+                                        <option value="Marketing">
+                                            Marketing
+                                        </option>
+                                        <option value="Finance">
+                                            Finance
+                                        </option>
+                                    </select>
                                 </div>
                                 <div className="flex flex-row gap-5">
                                     <input
-                                        className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        className="py-2 pl-3 w-full  my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="text"
-                                        {...register("Blood_Group")}
+                                        {...register("Designation")}
                                         id=""
-                                        placeholder="Blood Group"
+                                        placeholder="Designation"
                                     />
-
                                     <input
-                                        className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="email"
                                         {...register("Company_Email")}
                                         id=""
                                         placeholder="Company Email"
-                                    />
-                                </div>
-
-                                <div className="flex flex-row gap-5">
-                                    <input
-                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                        type="date"
-                                        {...register("Joining_Date")}
-                                        id=""
-                                        placeholder="Joining Date"
-                                    />
-                                    <input
-                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                        type="number"
-                                        {...register("Salary")}
-                                        id=""
-                                        placeholder="Salary"
                                     />
                                 </div>
                                 <div className="flex flex-row gap-5">
@@ -126,23 +137,50 @@ const HrEmployeeDetails = () => {
                                         type="email"
                                         {...register("Email")}
                                         id=""
-                                        placeholder="Email"
+                                        placeholder="Personal Email"
                                     />
                                 </div>
+                                <div className="flex flex-row gap-5">
+                                    <input
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        type="text"
+                                        {...register("Report_Person")}
+                                        id=""
+                                        placeholder="Report Person"
+                                    />
+                                    <input
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        type="text"
+                                        {...register("Blood_Group")}
+                                        id=""
+                                        placeholder="Blood Group"
+                                    />
+                                </div>
+
+                                <div className="flex flex-row gap-5">
+                                    <input
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        type="text"
+                                        {...register("Salary_Grad")}
+                                        id=""
+                                        placeholder="Salary Grad"
+                                    />
+                                    <input
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        type="number"
+                                        {...register("Salary")}
+                                        id=""
+                                        placeholder="Salary"
+                                    />
+                                </div>
+
                                 <div className="flex flex-row gap-5">
                                     <textarea
                                         className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="text"
                                         {...register("Address")}
                                         id=""
-                                        placeholder="Address"
-                                    />
-                                    <input
-                                        className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                        type="text"
-                                        {...register("Designation")}
-                                        id=""
-                                        placeholder="Designation"
+                                        placeholder="Full Address"
                                     />
                                 </div>
                                 <h2 className="text-blue-900 my-3 text-xl font-medium">
@@ -152,16 +190,23 @@ const HrEmployeeDetails = () => {
                                     <input
                                         className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="text"
-                                        {...register("contuct_Name")}
+                                        {...register("contact_Name")}
                                         id=""
                                         placeholder="Name"
                                     />
                                     <input
                                         className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
                                         type="text"
-                                        {...register("c_phone")}
+                                        {...register("Emergency_contact")}
                                         id=""
-                                        placeholder="Phone"
+                                        placeholder="Phone Number"
+                                    />
+                                    <input
+                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
+                                        type="text"
+                                        {...register("Relation")}
+                                        id=""
+                                        placeholder="Relation"
                                     />
                                 </div>
                                 <div className="flex flex-row gap-5">
@@ -172,13 +217,7 @@ const HrEmployeeDetails = () => {
                                         id=""
                                         placeholder="Address"
                                     />
-                                    <input
-                                        className="py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                        type="text"
-                                        {...register("Relation")}
-                                        id=""
-                                        placeholder="Relation"
-                                    />
+
                                 </div>
 
                                 <div className="lg:flex justify-between md:flex pt-2 w-28 mx-auto">
