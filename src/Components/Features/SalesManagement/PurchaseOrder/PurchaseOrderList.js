@@ -15,7 +15,7 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
     useEffect(() => {
         fetch("http://localhost:5000/addNewPurchaseOrder")
             .then((res) => res.json())
-            .then((data) => setPurchaseOrderList(data));
+            .then((data) => setPurchaseOrderList(data.result));
     }, [purchaseOrderList]);
 
     return (
