@@ -114,10 +114,7 @@ function App() {
                     </Route>
                     <Route path="/hrManagement" element={<HRManagement />}>
                         {/* <Route index element={<HRDashboard />}></Route> */}
-                        <Route
-                            index
-                            element={<HrLeaveRequest />}
-                        ></Route>
+                        <Route index element={<HrLeaveRequest />}></Route>
                         <Route
                             path="employeeManagement"
                             element={<EmployeeManagement />}
@@ -154,7 +151,10 @@ function App() {
                             path="userManagement"
                             element={<UserManagement></UserManagement>}
                         />
-                        <Route path="attendance" element={<UserAttendance />}></Route>
+                        <Route
+                            path="attendance"
+                            element={<UserAttendance />}
+                        ></Route>
                         <Route path="performance" element={<UserPromotion />} />
                         <Route path="Payrolls" element={<UserPayrolls />} />
                     </Route>
@@ -188,6 +188,7 @@ function App() {
                     <Route path="/salesTS" element={<SalesManagement />}>
                         <Route index element={<SalesDashboard />}></Route>
                         <Route path="items" element={<Items />}></Route>
+                        <Route path="inventory" element={<Inventory />} />
                         <Route
                             path="salesTeamMembers"
                             element={<SalesTeamMembers />}
@@ -258,21 +259,32 @@ function App() {
                     </Route>
 
                     <Route path="/financeTS" element={<FinanceManagement />}>
-                        <Route index element={<FinanceDashboard></FinanceDashboard>}></Route>
+                        <Route
+                            index
+                            element={<FinanceDashboard></FinanceDashboard>}
+                        ></Route>
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
-                        <Route path="attendance" element={<UserAttendance />}></Route>
+                        <Route
+                            path="attendance"
+                            element={<UserAttendance />}
+                        ></Route>
                         <Route
                             path="directExpense"
                             element={<DirectExpense />}
                         ></Route>
                     </Route>
-                    <Route path="/BusinessSignUp" element={<BusinessSignup />} />
+                    <Route
+                        path="/BusinessSignUp"
+                        element={<BusinessSignup />}
+                    />
                     <Route path="/learnMore" element={<AllKnotApp />} />
                     <Route path="Calender" element={<Calender></Calender>} />
                     <Route path="inventory" element={<Inventory />}></Route>
                     <Route path="addTask" element={<AddTask />}></Route>
-                    <Route path="teamManagement" element={<TeamManagement />}
+                    <Route
+                        path="teamManagement"
+                        element={<TeamManagement />}
                     ></Route>
 
                     <Route path="load" element={<Loader />} />

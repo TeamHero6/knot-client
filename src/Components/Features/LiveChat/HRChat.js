@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
@@ -24,14 +25,17 @@ const HRChat = () => {
                 <table className="shadow-sm w-full mx-auto mt-12 mb-1 text-base overflow-hidden">
                     <tbody>
                         {chatList.map((chatList) => (
-                            <tr
+                            <motion.tr
+                                initial={{ height: 0, y: 150, scale: 0.8 }}
+                                animate={{ height: "auto", y: 1, scale: 1 }}
+                                exit={{ height: 0, opacity: 0, scale: 0.8 }}
                                 key={chatList._id}
                                 className="hover:shadow-md hover:bg-custom-gray  duration-500 cursor-pointer border-b border-cyan-100"
                             >
                                 <td className="px-5 py-2 text-black whitespace-normal">
-                                    <div className="flex gap-6">
+                                    <div className="flex gap-x-6">
                                         <div class="avatar placeholder py-1 items-center">
-                                            <div class="bg-neutral-focus text-neutral-content rounded-full w-10">
+                                            <div class="bg-neutral-focus text-neutral-content rounded-full w-8">
                                                 <img
                                                     src={chatList?.userPhoto}
                                                     alt=""
@@ -41,17 +45,17 @@ const HRChat = () => {
                                         <div>
                                             <div className="flex justify-between ">
                                                 <p>
-                                                    <span className="text-blue-600 font-semibold">
+                                                    <span className="text-blue-600 text-sm font-semibold">
                                                         {chatList.userName}
                                                     </span>
                                                 </p>
                                             </div>
-                                            <div>
-                                                <p>
-                                                    <small className="text-gray-400 italic">
+                                            <div className="">
+                                                <span>
+                                                    <small className="text-gray-400 text-xs italic">
                                                         {chatList.time}
                                                     </small>
-                                                </p>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +65,7 @@ const HRChat = () => {
                                         </p>
                                     </div>
                                 </td>
-                            </tr>
+                            </motion.tr>
                         ))}
                     </tbody>
                 </table>
