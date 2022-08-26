@@ -19,19 +19,21 @@ const SalesDashboard = () => {
     // const [purchaseOrderList, setPurchaseOrderList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addProduct")
+        fetch("https://knot-business-solution-server.herokuapp.com/addProduct")
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
     }, [itemList]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewVendor")
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewVendor"
+        )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
     }, [vendorList]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addCustomer")
+        fetch("https://knot-business-solution-server.herokuapp.com/addCustomer")
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
     }, [customerList]);

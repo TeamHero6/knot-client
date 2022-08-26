@@ -35,13 +35,16 @@ const ProfileSettings = () => {
                 if (url) {
                     // update photo in DB
                     const photoInfo = { email: updatedEmail, photoUrl: url };
-                    fetch("http://localhost:5000/updateProfilePhoto", {
-                        method: "PUT",
-                        headers: {
-                            "content-type": "application/json",
-                        },
-                        body: JSON.stringify(photoInfo),
-                    })
+                    fetch(
+                        "https://knot-business-solution-server.herokuapp.com/updateProfilePhoto",
+                        {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(photoInfo),
+                        }
+                    )
                         .then((res) => res.json())
                         .then((data) => {
                             if (data.acknowledged) {
@@ -60,13 +63,16 @@ const ProfileSettings = () => {
     const updateNameHandler = () => {
         const info = { email: updatedEmail, name: updatenamein };
         console.log(info);
-        fetch("http://localhost:5000/updateName", {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(info),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/updateName",
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data) {

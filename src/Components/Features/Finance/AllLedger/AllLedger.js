@@ -25,7 +25,7 @@ const AllLedger = () => {
         };
 
         console.log(CashBook);
-        fetch("http://localhost:5000/cashBook", {
+        fetch("https://knot-business-solution-server.herokuapp.com/cashBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -57,7 +57,7 @@ const AllLedger = () => {
             expenseType,
         };
         // console.log(BankBook);
-        fetch("http://localhost:5000/bankBook", {
+        fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

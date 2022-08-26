@@ -13,7 +13,7 @@ const Partners = () => {
     const [partnerList, setPartnerList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/partner")
+        fetch("https://knot-business-solution-server.herokuapp.com/partner")
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList]);
@@ -32,13 +32,16 @@ const Partners = () => {
             email,
         };
 
-        fetch("http://localhost:5000/addPartner", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(Partner),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addPartner",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(Partner),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

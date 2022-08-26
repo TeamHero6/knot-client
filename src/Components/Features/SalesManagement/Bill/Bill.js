@@ -17,7 +17,9 @@ const Bill = () => {
     const [dueAmount, setDueAmount] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewPurchaseOrder")
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
+        )
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
     }, [purchaseOrderList]);
@@ -38,7 +40,7 @@ const Bill = () => {
         };
 
         if (paidAmount && dueAmount) {
-            const url = `http://localhost:5000/addNewPurchaseOrder/${id}`;
+            const url = `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${id}`;
             fetch(url, {
                 method: "PUT",
                 headers: {

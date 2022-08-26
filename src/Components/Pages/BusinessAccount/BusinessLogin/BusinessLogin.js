@@ -44,13 +44,16 @@ const BusinessLogin = () => {
             setCustomError("");
             const secretCode = data?.secretCode;
             const info = { email, secretCode };
-            fetch("http://localhost:5000/checkEmployee", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(info),
-            })
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(info),
+                }
+            )
                 .then((res) => res.json())
                 .then(async (data) => {
                     const { role, message, loggerInfo } = data;
@@ -76,13 +79,16 @@ const BusinessLogin = () => {
         if ((role === "Manager") | (role === "CEO")) {
             setCustomError("");
             //check isRole
-            fetch("http://localhost:5000/isRole", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(signInDetails),
-            })
+            fetch(
+                "https://knot-business-solution-server.herokuapp.com/isRole",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(signInDetails),
+                }
+            )
                 .then((res) => res.json())
                 .then(async (data) => {
                     const { role, loggerInfo, token, allEmployees } = data;

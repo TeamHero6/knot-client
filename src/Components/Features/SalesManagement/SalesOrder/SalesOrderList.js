@@ -7,7 +7,7 @@ const SalesOrderList = () => {
     // const [isOrderCancel, setIsOrderCancel] = useState({});
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewOrder")
+        fetch("https://knot-business-solution-server.herokuapp.com/addNewOrder")
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
     }, [orderList]);
@@ -21,7 +21,7 @@ const SalesOrderList = () => {
     // }, []);
 
     const handleOrderCancel = (id) => {
-        const url = `http://localhost:5000/addNewOrder/${id}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/addNewOrder/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -39,12 +39,16 @@ const SalesOrderList = () => {
             });
     };
 
-    const latestOrderList = orderList.filter(order => order.isCancel !== 'cancelled');
+    const latestOrderList = orderList.filter(
+        (order) => order.isCancel !== "cancelled"
+    );
 
     return (
         <div>
             <div className="overflow-auto rounded-none bg-white p-6">
-                <h1 className="text-center text-2xl font-bold mb-4">All Order List</h1>
+                <h1 className="text-center text-2xl font-bold mb-4">
+                    All Order List
+                </h1>
                 <table className="shadow-sm w-full border-2 border-cyan-300 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
@@ -91,8 +95,11 @@ const SalesOrderList = () => {
                                 </td>
                                 <td className="py-3 px-6">
                                     <button
-                                        onClick={() => handleOrderCancel(order._id)}
-                                        className='flex items-center gap-2 bg-red-600 py-2 px-6 text-white font-bold rounded border border-white hover:bg-white hover:text-red-600 hover:outline-1 hover:border hover:border-red-600 hover: shadow-red-400 hover: shadow-sm'>
+                                        onClick={() =>
+                                            handleOrderCancel(order._id)
+                                        }
+                                        className="flex items-center gap-2 bg-red-600 py-2 px-6 text-white font-bold rounded border border-white hover:bg-white hover:text-red-600 hover:outline-1 hover:border hover:border-red-600 hover: shadow-red-400 hover: shadow-sm"
+                                    >
                                         Cancel
                                     </button>
                                 </td>

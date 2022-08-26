@@ -1,13 +1,11 @@
-import React from 'react';
-import { AiFillSave } from 'react-icons/ai';
-import moment from 'moment';
-
+import moment from "moment";
+import React from "react";
+import { AiFillSave } from "react-icons/ai";
 
 const UserReportModal = ({ singleAttendance }) => {
-    const { _id } = singleAttendance
+    const { _id } = singleAttendance;
 
     const handleAddInvest = (e) => {
-
         e.preventDefault();
         const endTime = e.target.endTime.value;
         const endDate = e.target.endDate.value;
@@ -19,37 +17,46 @@ const UserReportModal = ({ singleAttendance }) => {
             taskReport,
         };
         console.log(UpdateDateTime);
-        const url = `http://localhost:5000/attendance/${_id}`
+        const url = `https://knot-business-solution-server.herokuapp.com/attendance/${_id}`;
         fetch(url, {
-            method: 'PUT',
+            method: "PUT",
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
-            body: JSON.stringify(UpdateDateTime)
+            body: JSON.stringify(UpdateDateTime),
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log('success', data);
-                e.target.reset()
-            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("success", data);
+                e.target.reset();
+            });
     };
     return (
         <div>
-            <input type="checkbox" id="attend-details-modal" class="modal-toggle" />
+            <input
+                type="checkbox"
+                id="attend-details-modal"
+                class="modal-toggle"
+            />
             <div class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
-                    <label for="attend-details-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label
+                        for="attend-details-modal"
+                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                    >
+                        ✕
+                    </label>
                     <div>
                         <div>
                             <form onSubmit={handleAddInvest}>
-                                <div className='flex gap-3'>
+                                <div className="flex gap-3">
                                     <div className="md:flex items-center">
                                         <br />
                                         <input
                                             type="hidden"
                                             name="endTime"
                                             id=""
-                                            value={moment().format('LT')}
+                                            value={moment().format("LT")}
                                         />{" "}
                                     </div>
                                     <div className="md:flex items-center">
@@ -57,7 +64,7 @@ const UserReportModal = ({ singleAttendance }) => {
                                             type="hidden"
                                             name="endDate"
                                             id=""
-                                            value={moment().format('ll')}
+                                            value={moment().format("ll")}
                                         />{" "}
                                     </div>
                                     <div className="md:flex items-center">
@@ -86,7 +93,6 @@ const UserReportModal = ({ singleAttendance }) => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

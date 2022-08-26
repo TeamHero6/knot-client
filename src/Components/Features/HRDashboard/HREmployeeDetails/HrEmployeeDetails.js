@@ -4,22 +4,23 @@ import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { toast } from "react-toastify";
 import HrEmployeeData from "./HrEmployeeData";
-import { useSelector } from "react-redux";
 
 const HrEmployeeDetails = () => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, reset } = useForm();
-    
 
     const onSubmit = (data) => {
         console.log(data);
-        fetch("http://localhost:5000/employeedetails", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/employeedetails",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {
@@ -75,7 +76,6 @@ const HrEmployeeDetails = () => {
                                     />
                                 </div>
 
-
                                 <div className="flex flex-row gap-5">
                                     <input
                                         className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
@@ -97,15 +97,11 @@ const HrEmployeeDetails = () => {
                                         <option value="Human Resources">
                                             Human Resources
                                         </option>
-                                        <option value="Sales">
-                                            Sales
-                                        </option>
+                                        <option value="Sales">Sales</option>
                                         <option value="Marketing">
                                             Marketing
                                         </option>
-                                        <option value="Finance">
-                                            Finance
-                                        </option>
+                                        <option value="Finance">Finance</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-row gap-5">
@@ -217,7 +213,6 @@ const HrEmployeeDetails = () => {
                                         id=""
                                         placeholder="Address"
                                     />
-
                                 </div>
 
                                 <div className="lg:flex justify-between md:flex pt-2 w-28 mx-auto">

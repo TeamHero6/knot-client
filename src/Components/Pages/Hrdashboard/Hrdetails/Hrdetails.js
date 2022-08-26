@@ -10,13 +10,16 @@ const Hrdetails = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = (data) => {
-        fetch("http://localhost:5000/employeedetails", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/employeedetails",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {

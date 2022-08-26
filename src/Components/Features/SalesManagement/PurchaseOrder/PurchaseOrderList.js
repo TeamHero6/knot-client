@@ -13,7 +13,9 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewPurchaseOrder")
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
+        )
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result));
     }, [purchaseOrderList]);

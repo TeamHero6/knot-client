@@ -15,7 +15,9 @@ const Hrtable = () => {
 
     const [employinfo, setEmployinfo] = useState({});
     useEffect(() => {
-        fetch("http://localhost:5000/employeedetails")
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/employeedetails"
+        )
             .then((res) => res.json())
             .then((data) => setDetails(data));
     }, [details]);

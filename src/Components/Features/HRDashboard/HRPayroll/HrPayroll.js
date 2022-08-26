@@ -10,14 +10,14 @@ const HrPayroll = () => {
 
     const [show, setShow] = useState(false);
     useEffect(() => {
-        fetch("http://localhost:5000/payrolls")
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, [payrolls]);
     console.log(payrolls);
 
     const onSubmit = (data) => {
-        fetch("http://localhost:5000/payrolls", {
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -44,7 +44,6 @@ const HrPayroll = () => {
                 </button>{" "}
             </div>
 
-
             {show ? (
                 <div className="mt-6">
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -57,7 +56,6 @@ const HrPayroll = () => {
                             </label>{" "}
                             <br />
                             <br />
-
                             <div className="md:flex items-center">
                                 <label
                                     className="font-bold w-40"
@@ -176,7 +174,7 @@ const HrPayroll = () => {
             ) : (
                 ""
             )}
-            
+
             <div>
                 <div className="w-full h-80 mt-5 mb-5">
                     <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">

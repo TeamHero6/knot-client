@@ -13,19 +13,21 @@ const SalesOrder = () => {
     const [totalAmount, setTotalAmount] = useState(0);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addNewVendor")
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewVendor"
+        )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
     }, [vendorList]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addCustomer")
+        fetch("https://knot-business-solution-server.herokuapp.com/addCustomer")
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
     }, [customerList]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addProduct")
+        fetch("https://knot-business-solution-server.herokuapp.com/addProduct")
             .then((res) => res.json())
             .then((data) => setProductList(data.reverse()));
     }, [productList]);
@@ -68,13 +70,16 @@ const SalesOrder = () => {
             vendorName,
         };
         console.log(newOrder);
-        fetch("http://localhost:5000/addNewOrder", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(newOrder),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/addNewOrder",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(newOrder),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

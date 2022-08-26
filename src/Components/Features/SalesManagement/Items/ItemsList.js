@@ -4,7 +4,7 @@ const ItemsList = ({ setSingleItemDetail }) => {
     const [itemList, setItemList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/addProduct")
+        fetch("https://knot-business-solution-server.herokuapp.com/addProduct")
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
     }, [itemList]);
@@ -12,7 +12,9 @@ const ItemsList = ({ setSingleItemDetail }) => {
     return (
         <div className="mb-8">
             <div className="bg-white px-6 pt-4">
-                <h1 className="text-center text-2xl font-bold">All Items List</h1>
+                <h1 className="text-center text-2xl font-bold">
+                    All Items List
+                </h1>
                 <div className="overflow-auto rounded-none">
                     <table className="shadow-lg border-2 border-cyan-300 w-full mx-auto mt-2 mb-6 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">

@@ -1,5 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
+import React, { useEffect, useState } from "react";
+import {
+    Area,
+    AreaChart,
+    CartesianGrid,
+    Tooltip,
+    XAxis,
+    YAxis,
+} from "recharts";
 
 const Inventory = () => {
     const [productList, setProductList] = useState([]);
@@ -7,7 +14,7 @@ const Inventory = () => {
 
     useEffect(() => {
         fetch(
-            "http://localhost:5000/addNewPurchaseOrder"
+            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder"
         )
             .then((res) => res.json())
             .then((data) => {
@@ -73,24 +80,65 @@ const Inventory = () => {
                 </table>
             </div>
             <div className="bg-white w-2/3 mx-auto px-2 py-6 my-6">
-                <h1 className="text-center text-2xl font-semibold mb-4">Product Quantity</h1>
-                <AreaChart width={730} height={250} data={productList}
-                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <h1 className="text-center text-2xl font-semibold mb-4">
+                    Product Quantity
+                </h1>
+                <AreaChart
+                    width={730}
+                    height={250}
+                    data={productList}
+                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                >
                     <defs>
-                        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#06B6D4" stopOpacity={0.8} />
-                            <stop offset="95%" stopColor="#06B6D4" stopOpacity={0} />
+                        <linearGradient
+                            id="colorUv"
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                        >
+                            <stop
+                                offset="5%"
+                                stopColor="#06B6D4"
+                                stopOpacity={0.8}
+                            />
+                            <stop
+                                offset="95%"
+                                stopColor="#06B6D4"
+                                stopOpacity={0}
+                            />
                         </linearGradient>
-                        <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                        <linearGradient
+                            id="colorPv"
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                        >
+                            <stop
+                                offset="5%"
+                                stopColor="#82ca9d"
+                                stopOpacity={0.8}
+                            />
+                            <stop
+                                offset="95%"
+                                stopColor="#82ca9d"
+                                stopOpacity={0}
+                            />
                         </linearGradient>
                     </defs>
                     <XAxis dataKey="productName" />
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
-                    <Area type="monotone" dataKey="orderQuantity" name='Quantity' stroke="#06B6D4" fillOpacity={1} fill="url(#colorUv)" />
+                    <Area
+                        type="monotone"
+                        dataKey="orderQuantity"
+                        name="Quantity"
+                        stroke="#06B6D4"
+                        fillOpacity={1}
+                        fill="url(#colorUv)"
+                    />
                 </AreaChart>
             </div>
         </div>
