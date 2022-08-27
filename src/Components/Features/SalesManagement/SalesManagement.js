@@ -38,7 +38,7 @@ const SalesManagement = () => {
                         >
                             <p>Dashboard</p>
                         </Link> */}
-                        <NavLink to="dashboard">
+                        <NavLink to="salesDashboard">
                             {({ isActive }) => (
                                 <span
                                     className={

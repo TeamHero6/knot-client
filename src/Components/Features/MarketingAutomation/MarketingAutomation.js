@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import MarketingNavbar from './MarketingNavbar';
 
 const MarketingAutomation = () => {

@@ -213,7 +213,7 @@ const Navbar = () => {
                                         </li>
                                         <li>
                                             <Link to="/settings/profile">
-                                                Setting
+                                                Settings
                                             </Link>
                                         </li>
                                         <li>
