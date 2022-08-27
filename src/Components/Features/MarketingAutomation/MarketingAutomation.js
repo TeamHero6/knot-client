@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import MarketingNavbar from './MarketingNavbar';
 
 const MarketingAutomation = () => {
@@ -31,18 +31,38 @@ const MarketingAutomation = () => {
                 ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div>
-                        <Link
+                        {/* <Link
                             to=""
                             className="flex my-4 mx-2 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             <p>Email-Marketing</p>
-                        </Link>
-                        <Link
-                            to='customerListing'
-                            className="flex bg-custom-gray my-4 mx-2 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                        >
-                            Customer-Listing
-                        </Link>
+                        </Link> */}
+                        <NavLink to="emailMarketing">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Email Marketing</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="customerListing">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 pl-6 pr-5 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Customer Listing</span>
+                                </span>
+                            )}
+                        </NavLink>
                     </div>
                 </div>
                 <div className="overflow-auto w-full px-3">

@@ -185,8 +185,10 @@ function App() {
                             </RequireAuth>
                         }
                     />
+                    {/* ---------- Sales Management ---------- */}
                     <Route path="/salesTS" element={<SalesManagement />}>
                         <Route index element={<SalesDashboard />}></Route>
+                        <Route path="dashboard" element={<SalesDashboard />}></Route>
                         <Route path="items" element={<Items />}></Route>
                         <Route path="inventory" element={<Inventory />} />
                         <Route
@@ -207,16 +209,13 @@ function App() {
                         <Route path="bill" element={<Bill />}></Route>
                         <Route path="inventory" element={<Inventory />}></Route>
                     </Route>
-                    <Route
-                        path="/marketingTS"
-                        element={<MarketingAutomation />}
-                    >
-                        <Route index element={<EmailMarketing />}></Route>
-                        <Route
-                            path="customerListing"
-                            element={<CustomerListing />}
-                        ></Route>
+                    {/* ---------- Marketing Automation ---------- */}
+                    <Route path="/marketingTS" element={<MarketingAutomation />}>
+                        <Route index element={<EmailMarketing />} />
+                        <Route path="emailMarketing" element={<EmailMarketing />} />
+                        <Route path="customerListing" element={<CustomerListing />} />
                     </Route>
+                    {/* ---------- Team Management ---------- */}
                     <Route path="/teamManagement" element={<AdminDashboardF />}>
                         <Route index element={<DailyTask />}></Route>
                         <Route path="dailyTask" element={<DailyTask />} />
@@ -260,7 +259,7 @@ function App() {
                             element={<CompanySettings />}
                         />
                     </Route>
-
+                    {/* ---------- Finance Management ---------- */}
                     <Route path="/financeTS" element={<FinanceManagement />}>
                         <Route
                             index

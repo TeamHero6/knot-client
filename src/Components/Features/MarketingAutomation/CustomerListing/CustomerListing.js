@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Loader from "../../../Shared/Loader/Loader";
+import { useSelector } from "react-redux";
 
 const CustomerListing = () => {
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
+
     const { data: newsletterMail, isLoading } = useQuery({
         queryKey: "newsletterMail",
         queryFn: () =>
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/newsletterMail"
-            ).then((res) => res.json()),
+            fetch(`http://localhost:5000/newsletterMail/${companyName}`).then((res) => res.json()),
     });
 
     if (isLoading) {
@@ -34,7 +36,7 @@ const CustomerListing = () => {
                             {newsletterMail?.map((mail, index) => (
                                 <tr
                                     key={mail._id}
-                                    className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                    className="hover:shadow-md hover:bg-cyan-100 duration-300 cursor-pointer border-b border-cyan-100"
                                 >
                                     <th className="py-3 px-6 whitespace-nowrap">
                                         {index + 1}
