@@ -29,22 +29,32 @@ const ExNavbar = () => {
 
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
-            <div className="flex items-center w-64 justify-center cursor-pointer">
-                <span>
-                    <img src={companyLogo} className="w-10 h-8 mr-2" alt="" />
-                </span>
-                <span>Dashboard</span>
+            <div className="flex items-center w-auto px-3 md:w-64 justify-center cursor-pointer">
+                <div className="flex justify-center items-center">
+                    <span>
+                        <img
+                            src={companyLogo}
+                            className="w-10 h-8 mr-2"
+                            alt=""
+                        />
+                    </span>
+                    <span>Dashboard</span>
+                </div>
             </div>
 
-            <div className=" hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
-                <Link to="/accessApps">
-                    <img src={access} className={`w-6`} alt="icon" />
-                </Link>
-            </div>
             {/*Profile DropDown*/}
             <div className="">
                 {user ? (
-                    <div className="px-6 flex items-center gap-4">
+                    <div className="px-3 flex items-center gap-4">
+                        <div className="hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
+                            <Link to="/accessApps">
+                                <img
+                                    src={access}
+                                    className={`w-6`}
+                                    alt="icon"
+                                />
+                            </Link>
+                        </div>
                         <div className="hidden lg:block">
                             <p className="text-xl font-medium">
                                 <DigitalClock></DigitalClock>
