@@ -69,11 +69,11 @@ const TeamOrganize = () => {
             exit={{ opacity: 0, scaleY: 0 }}
             className="bg-white"
         >
-            <section className="w-full py-4 px-2  md:flex md:justify-between md:items-center">
+            <section className="w-full py-4 px-2  md:flex lg:justify-between md:items-center">
                 <section className="flex flex-col md:flex-row">
                     <label
                         for="my-modal-4"
-                        class="btn modal-button flex items-center gap-2 bg-white text-green-400 border-green-400 font-bold rounded  hover:bg-green-400 hover:text-white hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm my-2 mx-2 md:my-0"
+                        class="px-3 py-1 border border-green-400 flex items-center gap-2 bg-white text-green-400 font-semibold rounded  hover:bg-green-400 hover:text-white hover:outline-1 hover:border hover:border-green-400 shadow-green-200 hover: shadow-sm my-2 mx-2 md:my-0 text-sm"
                         onClick={() => setMeetingModal(true)}
                     >
                         <span>
@@ -124,12 +124,12 @@ const TeamOrganize = () => {
                                 ></path>
                             </svg>
                         </span>
-                        Creating Meeting
+                        Create
                     </label>
-                    {/*Award button*/}
+                    {/*Warn button*/}
                     <label
                         for="warning"
-                        class="btn modal-button flex items-center gap-2 bg-white text-red-400 border-red-400 font-bold rounded  hover:bg-red-400 hover:text-white hover:border-red-400  hover:shadow-red-200 hover:shadow-sm my-2 mx-2 md:my-0"
+                        class="flex items-center gap-2 px-3 py-1 text-sm bg-white text-red-400 font-semibold rounded  hover:bg-red-400 hover:text-white hover:border-red-400 border border-red-200 shadow-red-200 hover:shadow-sm my-2 mx-2 md:my-0"
                         onClick={() => setWarningModal(true)}
                     >
                         <span>
@@ -145,11 +145,12 @@ const TeamOrganize = () => {
                                 <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
                             </svg>
                         </span>
-                        Add a Warning
+                        Add Warning
                     </label>
+                    {/*Award button*/}
                     <label
                         for="award"
-                        class="btn modal-button flex items-center gap-2 bg-white text-amber-400 border-amber-400 font-bold rounded  hover:bg-amber-400 hover:text-white hover:border-amber-400  hover:shadow-amber-200 hover:shadow-sm my-2 mx-2 md:my-0"
+                        class="border px-3 py-1 text-sm flex items-center gap-2 bg-white text-amber-400 border-amber-400 font-semibold rounded  hover:bg-amber-400 hover:text-white hover:border-amber-400  shadow-amber-200 hover:shadow-sm my-2 mx-2 md:my-0"
                         onClick={() => setAwardModal(true)}
                     >
                         <span>
@@ -165,32 +166,14 @@ const TeamOrganize = () => {
                                 <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
                             </svg>
                         </span>
-                        Add a Award
+                        Add Award
                     </label>
-                </section>
-                {/*modal*/}
-                <section className="">
-                    {meetingModal && (
-                        <MeetingModalDaisyUI
-                            {...{ setMeetingModal, meetingRefetch }}
-                        />
-                    )}
-                    {warningModal && (
-                        <WarningModalDaisyUI
-                            {...{ setWarningModal, warningRefetch }}
-                        />
-                    )}
-                    {awardModal && (
-                        <AwardModalDaisyUI
-                            {...{ setAwardModal, awardRefetch }}
-                        />
-                    )}
                 </section>
                 {/*Filtering UI*/}
                 <div className="mx-2">
                     <input
                         type="text"
-                        className="border-[1px] rounded-md w-64 px-2 py-1 md:mx-2 outline-none"
+                        className="border-[1px] rounded-md sm:max-w-sm md:w-64 px-2 py-1 md:mx-2 outline-none"
                         placeholder="Filter by name"
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -205,6 +188,23 @@ const TeamOrganize = () => {
                         <option value="allAward">All Award</option>
                     </select>
                 </div>
+            </section>
+
+            {/*modal*/}
+            <section className="">
+                {meetingModal && (
+                    <MeetingModalDaisyUI
+                        {...{ setMeetingModal, meetingRefetch }}
+                    />
+                )}
+                {warningModal && (
+                    <WarningModalDaisyUI
+                        {...{ setWarningModal, warningRefetch }}
+                    />
+                )}
+                {awardModal && (
+                    <AwardModalDaisyUI {...{ setAwardModal, awardRefetch }} />
+                )}
             </section>
             {/*All meetings*/}
             <hr />
