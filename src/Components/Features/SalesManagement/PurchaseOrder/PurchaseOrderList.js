@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
     Bar,
     BarChart,
@@ -8,15 +9,16 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
-import { useSelector } from "react-redux";
 
 const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
     }, [purchaseOrderList, companyName]);

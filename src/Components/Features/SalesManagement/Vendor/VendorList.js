@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 
 const VendorList = ({ setSingleVendorDetail }) => {
     const [vendorList, setVendorList] = useState([]);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
     }, [vendorList, companyName]);

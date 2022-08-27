@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import PurchaseOrderList from "./PurchaseOrderList";
 import PurchaseOrderModal from "./PurchaseOrderModal";
-import { useSelector } from "react-redux";
 
 const PurchaseOrder = () => {
     const [addNewPurchaseOrder, setAddNewPurchaseOrder] = useState(false);
@@ -13,18 +13,24 @@ const PurchaseOrder = () => {
     const [orderQuantity, setOrderQuantity] = useState(1);
     const [vat, setVat] = useState();
     const [totalAmount, setTotalAmount] = useState(0);
-    const [singlePurchaseOrderDetail, setSinglePurchaseOrderDetail] = useState({});
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const [singlePurchaseOrderDetail, setSinglePurchaseOrderDetail] = useState(
+        {}
+    );
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
     }, [vendorList, companyName]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addProduct/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setProductList(data.reverse()));
     }, [productList, companyName]);
@@ -63,7 +69,7 @@ const PurchaseOrder = () => {
             unitPrice,
             vat,
             totalAmount,
-            companyName
+            companyName,
         };
         // console.log(newOrder);
         fetch(

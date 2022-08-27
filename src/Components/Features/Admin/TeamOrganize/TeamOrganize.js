@@ -29,11 +29,11 @@ const TeamOrganize = () => {
         data: meetingData,
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
-        fetch(`http://localhost:5000/meetings/${companyName}`).then((res) =>
-            res.json()
-        )
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/meetings/${companyName}`
+        ).then((res) => res.json())
     );
-    console.log(meetingData);
+
     //Fetch Warning Data
     const {
         isLoading: warningLoading,
@@ -44,9 +44,7 @@ const TeamOrganize = () => {
             "https://knot-business-solution-server.herokuapp.com/warnings"
         ).then((res) => res.json())
     );
-    if (warningData) {
-        console.log(warningData);
-    }
+
     const {
         isLoading: awardLoading,
         data: awardData,
@@ -71,11 +69,11 @@ const TeamOrganize = () => {
             exit={{ opacity: 0, scaleY: 0 }}
             className="bg-white"
         >
-            <section className="w-full py-4 px-2  md:flex md:justify-between md:items-center">
+            <section className="w-full py-4 px-2  md:flex lg:justify-between md:items-center">
                 <section className="flex flex-col md:flex-row">
                     <label
                         for="my-modal-4"
-                        class="btn modal-button flex items-center gap-2 bg-white text-green-400 border-green-400 font-bold rounded  hover:bg-green-400 hover:text-white hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm my-2 mx-2 md:my-0"
+                        class="px-3 py-1 border border-green-400 flex items-center gap-2 bg-white text-green-400 font-semibold rounded  hover:bg-green-400 hover:text-white hover:outline-1 hover:border hover:border-green-400 shadow-green-200 hover: shadow-sm my-2 mx-2 md:my-0 text-sm"
                         onClick={() => setMeetingModal(true)}
                     >
                         <span>
@@ -126,12 +124,12 @@ const TeamOrganize = () => {
                                 ></path>
                             </svg>
                         </span>
-                        Creating Meeting
+                        Create
                     </label>
-                    {/*Award button*/}
+                    {/*Warn button*/}
                     <label
                         for="warning"
-                        class="btn modal-button flex items-center gap-2 bg-white text-red-400 border-red-400 font-bold rounded  hover:bg-red-400 hover:text-white hover:border-red-400  hover:shadow-red-200 hover:shadow-sm my-2 mx-2 md:my-0"
+                        class="flex items-center gap-2 px-3 py-1 text-sm bg-white text-red-400 font-semibold rounded  hover:bg-red-400 hover:text-white hover:border-red-400 border border-red-200 shadow-red-200 hover:shadow-sm my-2 mx-2 md:my-0"
                         onClick={() => setWarningModal(true)}
                     >
                         <span>
@@ -147,11 +145,12 @@ const TeamOrganize = () => {
                                 <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
                             </svg>
                         </span>
-                        Add a Warning
+                        Add Warning
                     </label>
+                    {/*Award button*/}
                     <label
                         for="award"
-                        class="btn modal-button flex items-center gap-2 bg-white text-amber-400 border-amber-400 font-bold rounded  hover:bg-amber-400 hover:text-white hover:border-amber-400  hover:shadow-amber-200 hover:shadow-sm my-2 mx-2 md:my-0"
+                        class="border px-3 py-1 text-sm flex items-center gap-2 bg-white text-amber-400 border-amber-400 font-semibold rounded  hover:bg-amber-400 hover:text-white hover:border-amber-400  shadow-amber-200 hover:shadow-sm my-2 mx-2 md:my-0"
                         onClick={() => setAwardModal(true)}
                     >
                         <span>
@@ -167,39 +166,21 @@ const TeamOrganize = () => {
                                 <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
                             </svg>
                         </span>
-                        Add a Award
+                        Add Award
                     </label>
-                </section>
-                {/*modal*/}
-                <section className="">
-                    {meetingModal && (
-                        <MeetingModalDaisyUI
-                            {...{ setMeetingModal, meetingRefetch }}
-                        />
-                    )}
-                    {warningModal && (
-                        <WarningModalDaisyUI
-                            {...{ setWarningModal, warningRefetch }}
-                        />
-                    )}
-                    {awardModal && (
-                        <AwardModalDaisyUI
-                            {...{ setAwardModal, awardRefetch }}
-                        />
-                    )}
                 </section>
                 {/*Filtering UI*/}
                 <div className="mx-2">
                     <input
                         type="text"
-                        className="border-[1px] rounded-md w-64 px-2 py-1 md:mx-2 outline-none"
+                        className="border-[1px] rounded-md sm:max-w-sm md:w-64 px-2 py-1 md:mx-2 outline-none"
                         placeholder="Filter by name"
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <select
                         name="meet-warn-award-filter"
                         id=""
-                        className="mt-2"
+                        className="border-[1px] rounded-md sm:max-w-sm md:w-auto px-2 py-1 md:mx-2 outline-none"
                         onChange={handleDropDownFilter}
                     >
                         <option value="allMettings">All Meetings</option>
@@ -208,101 +189,120 @@ const TeamOrganize = () => {
                     </select>
                 </div>
             </section>
+
+            {/*modal*/}
+            <section className="">
+                {meetingModal && (
+                    <MeetingModalDaisyUI
+                        {...{ setMeetingModal, meetingRefetch }}
+                    />
+                )}
+                {warningModal && (
+                    <WarningModalDaisyUI
+                        {...{ setWarningModal, warningRefetch }}
+                    />
+                )}
+                {awardModal && (
+                    <AwardModalDaisyUI {...{ setAwardModal, awardRefetch }} />
+                )}
+            </section>
             {/*All meetings*/}
             <hr />
-            {dropDownFilter === "allMettings" && (
-                <AnimatePresence>
-                    <motion.section
-                        initial={{ opacity: 0, height: 0, y: -50 }}
-                        animate={{
-                            opacity: 1,
-                            height: "auto",
-                            transition: 0.5,
-                            y: 1,
-                        }}
-                        exit={{ opacity: 0, height: 0, y: -50 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-6 mt-8"
-                    >
-                        {meetingData
-                            .filter((meeting) => {
-                                if (searchTerm === "") {
-                                    return meeting;
-                                } else if (
-                                    meeting.meetingWith
-                                        .toLowerCase()
-                                        .includes(searchTerm.toLowerCase())
-                                ) {
-                                    return meeting;
-                                }
-                            })
-                            .map((meeting) => (
-                                <MeetingCard {...{ meeting }} />
-                            ))}
-                    </motion.section>
-                </AnimatePresence>
-            )}
-            {dropDownFilter === "allWarning" && (
-                <AnimatePresence>
-                    <motion.section
-                        initial={{ opacity: 0, height: 0, y: -50 }}
-                        animate={{
-                            opacity: 1,
-                            height: "auto",
-                            transition: 0.5,
-                            y: 1,
-                        }}
-                        exit={{ opacity: 0, height: 0, y: -50 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
-                    >
-                        {warningData
-                            .filter((warning) => {
-                                if (searchTerm === "") {
-                                    return warning;
-                                } else if (
-                                    warning?.name
-                                        ?.toLowerCase()
-                                        .includes(searchTerm.toLowerCase())
-                                ) {
-                                    return warning;
-                                }
-                            })
-                            .map((warning) => (
-                                <WarningCard {...{ warning }} />
-                            ))}
-                    </motion.section>
-                </AnimatePresence>
-            )}
-            {dropDownFilter === "allAward" && (
-                <AnimatePresence>
-                    <motion.section
-                        initial={{ opacity: 0, height: 0, y: -50 }}
-                        animate={{
-                            opacity: 1,
-                            height: "auto",
-                            transition: 0.5,
-                            y: 1,
-                        }}
-                        exit={{ opacity: 0, height: 0, y: -50 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 py-6 mt-8"
-                    >
-                        {awardData
-                            .filter((award) => {
-                                if (searchTerm === "") {
-                                    return award;
-                                } else if (
-                                    award?.name
-                                        ?.toLowerCase()
-                                        .includes(searchTerm.toLowerCase())
-                                ) {
-                                    return award;
-                                }
-                            })
-                            .map((award) => (
-                                <AwardCard {...{ award }} />
-                            ))}
-                    </motion.section>
-                </AnimatePresence>
-            )}
+            <section className="z-10">
+                {dropDownFilter === "allMettings" && (
+                    <AnimatePresence>
+                        <motion.section
+                            initial={{ opacity: 0, height: 0, y: -50 }}
+                            animate={{
+                                opacity: 1,
+                                height: "auto",
+                                transition: 0.5,
+                                y: 1,
+                            }}
+                            exit={{ opacity: 0, height: 0, y: -50 }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-6 mt-8"
+                        >
+                            {meetingData
+                                .filter((meeting) => {
+                                    if (searchTerm === "") {
+                                        return meeting;
+                                    } else if (
+                                        meeting.meetingWith
+                                            .toLowerCase()
+                                            .includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return meeting;
+                                    }
+                                })
+                                .map((meeting) => (
+                                    <MeetingCard {...{ meeting }} />
+                                ))}
+                        </motion.section>
+                    </AnimatePresence>
+                )}
+                {dropDownFilter === "allWarning" && (
+                    <AnimatePresence>
+                        <motion.section
+                            initial={{ opacity: 0, height: 0, y: -50 }}
+                            animate={{
+                                opacity: 1,
+                                height: "auto",
+                                transition: 0.5,
+                                y: 1,
+                            }}
+                            exit={{ opacity: 0, height: 0, y: -50 }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
+                        >
+                            {warningData
+                                .filter((warning) => {
+                                    if (searchTerm === "") {
+                                        return warning;
+                                    } else if (
+                                        warning?.name
+                                            ?.toLowerCase()
+                                            .includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return warning;
+                                    }
+                                })
+                                .map((warning) => (
+                                    <WarningCard {...{ warning }} />
+                                ))}
+                        </motion.section>
+                    </AnimatePresence>
+                )}
+                {dropDownFilter === "allAward" && (
+                    <AnimatePresence>
+                        <motion.section
+                            initial={{ opacity: 0, height: 0, y: -50 }}
+                            animate={{
+                                opacity: 1,
+                                height: "auto",
+                                transition: 0.5,
+                                y: 1,
+                            }}
+                            exit={{ opacity: 0, height: 0, y: -50 }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 py-6 mt-8"
+                        >
+                            {awardData
+                                .filter((award) => {
+                                    if (searchTerm === "") {
+                                        return award;
+                                    } else if (
+                                        award?.name
+                                            ?.toLowerCase()
+                                            .includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return award;
+                                    }
+                                })
+                                .map((award) => (
+                                    <AwardCard {...{ award }} />
+                                ))}
+                        </motion.section>
+                    </AnimatePresence>
+                )}
+            </section>
         </motion.div>
     );
 };

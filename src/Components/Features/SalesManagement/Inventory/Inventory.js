@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import {
+    Area,
+    AreaChart,
+    CartesianGrid,
+    Tooltip,
+    XAxis,
+    YAxis,
+} from "recharts";
 
 const Inventory = () => {
     const [productList, setProductList] = useState([]);
     const [quantitySum, setQuantitySum] = useState(0);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => {
                 const { result, quantitySum } = data;
@@ -70,7 +79,7 @@ const Inventory = () => {
                             </tr>
                         ))}
                     </tbody>
-                    <h1 className='hidden'>{quantitySum}</h1>
+                    <h1 className="hidden">{quantitySum}</h1>
                 </table>
             </div>
             <div className="bg-white w-2/3 mx-auto px-2 py-6 my-6">

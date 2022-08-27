@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
     Bar,
     BarChart,
@@ -8,7 +9,6 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
-import { useSelector } from "react-redux";
 import ItemDetailsModal from "../Items/ItemDetailsModal";
 
 const SalesDashboard = () => {
@@ -17,29 +17,37 @@ const SalesDashboard = () => {
     const [itemList, setItemList] = useState([]);
     const [singleItemDetail, setSingleItemDetail] = useState({});
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addProduct/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
     }, [itemList, companyName]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewVendor/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
     }, [vendorList, companyName]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addCustomer/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addCustomer/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
     }, [companyName]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewPurchaseOrder/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
     }, [purchaseOrderList, companyName]);
@@ -144,7 +152,11 @@ const SalesDashboard = () => {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="dueAmount" name="Due Amount" fill={"#CC3333"}></Bar>
+                        <Bar
+                            dataKey="dueAmount"
+                            name="Due Amount"
+                            fill={"#CC3333"}
+                        ></Bar>
                     </BarChart>
                 </div>
             </section>

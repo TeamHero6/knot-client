@@ -1,16 +1,16 @@
-import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Return = () => {
     const [cancelledOrder, setCancelledOrder] = useState([]);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        const url = `http://localhost:5000/cancelledSalesOrder/${companyName}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/cancelledSalesOrder/${companyName}`;
         fetch(url)
-            .then(res => res.json())
-            .then(data => setCancelledOrder(data))
+            .then((res) => res.json())
+            .then((data) => setCancelledOrder(data));
     }, [companyName]);
 
     return (
