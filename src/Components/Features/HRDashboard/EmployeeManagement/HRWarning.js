@@ -20,7 +20,7 @@ const HRWarning = () => {
     return (
         <div>
             <div>
-                <h1 className="font-semibold text-red-500 text-xl ml-5">
+                <h1 className="font-semibold text-cyan-500 text-xl ml-5">
                     Warning Database
                 </h1>
                 <div class="rounded-none overflow-auto h-80 w-full ">
@@ -71,7 +71,7 @@ const HRWarning = () => {
                 <h1 className="font-semibold text-xl text-orange-500 mb-4 ml-5">
                     Award Database
                 </h1>
-                <div className="grid grid-rows-2 mb-10 grid-flow-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 mb-10">
                     {award.slice(0, 20).map((award) => (
                         <HRAwardCard award={award}></HRAwardCard>
                     ))}

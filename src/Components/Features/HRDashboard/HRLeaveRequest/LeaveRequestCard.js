@@ -33,49 +33,6 @@ const LeaveRequestCard = (props) => {
             });
     };
     return (
-        // <div className='bg-white shadow-gray-300 px-5 py-5 rounded-md shadow-sm'>
-        //         <p>Department: <span className='text-blue-600 font-semibold'>{dep}</span></p>
-        //     <div className='flex justify-between items-center'>
-        //         <div>
-        //             <p><span className='font-semibold'>Request Date:</span> <small className='italic text-gray-400'>{Date}</small></p>
-
-        //         </div>
-        //         <div className='flex items-center gap-2'>
-        //             <div>
-        //                 <select
-        //                     className=" bg-transparent"
-        //                     onChange={approv}
-        //                 >
-        //                     <option value="approval_statas">
-        //                         {aprovel ? aprovel : 'Approve Statas'}
-        //                     </option>
-        //                     <option value="Approve">
-        //                         Approve
-        //                     </option>
-        //                     <option value="Reject">
-        //                         Reject
-        //                     </option>
-        //                 </select>
-        //             </div>
-
-        //             <div>
-        //                 <button
-        //                     onClick={() => save(_id)}
-        //                     className="flex items-center text-blue-500"
-        //                     type="subimt"
-        //                 >
-        //                     <AiFillSave />
-        //                 </button>
-        //             </div>
-        //         </div>
-        //     </div>
-
-        //     <p><span className='font-semibold'>Employee ID:</span> {id}</p>
-        //     <p>Name: {Name}</p>
-        //     <p><span className='font-semibold'>Leave Type: </span>{leave_type}
-        //         <small className='font-semibold ml-5'>Date: {e_date}</small>
-        //     </p>
-        // </div>
         <div class="card w-80 bg-base-100 shadow-xl">
             <div class="card-body">
                 <h2 class="card-title capitalize mb-5">
