@@ -6,10 +6,13 @@ import { MdOutlineAddTask } from "react-icons/md";
 import { useSelector } from "react-redux";
 import Loader from "../../../Shared/Loader/Loader";
 import AllTasks from "../AllTasks/AllTasks";
+import TaskDetailsModalUI from "../AllTasks/TaskDetailsModalUI";
 import AddTaskModal from "./AddTaskModal/AddTaskModal";
 
 const DailyTask = () => {
     const [isOpen, setOpen] = useState(false);
+    const [view, setView] = useState(false);
+    const [singleTask, setSingleTask] = useState();
     const [searchTerm, setSearchTerm] = useState("");
 
     // Getting redux state
@@ -62,9 +65,13 @@ const DailyTask = () => {
             {/*All tasks Data in AllTask component*/}
             <section className="bg-white rounded drop-shadow-md w-full h-auto p-4 my-4">
                 <div className="overflow-x-auto">
-                    <AllTasks {...{ data, searchTerm }} />
+                    <AllTasks
+                        {...{ data, searchTerm, setView, view, setSingleTask }}
+                    />
                 </div>
             </section>
+            {/*Task Details Modal*/}
+            {view && <TaskDetailsModalUI {...{ singleTask, setSingleTask }} />}
         </>
     );
 };

@@ -1,29 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import moment from "moment";
-import React, { useState } from "react";
+import React from "react";
 
-const AllTasks = ({ data, searchTerm }) => {
-    const [edit, setEdit] = useState(false);
-    const [dynamicColor, setDynamicColor] = useState("");
-
-    // update task status
-    const updateStatus = (status, id) => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/updateStatus",
-            {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify({ status, id }),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
+    // Sending clicked task to parent componets name DailyTask.js
+    const taskDetailsHandler = (task) => {
+        setView(!view);
+        setSingleTask(task);
     };
 
     return (
-        <div>
+        <div className="">
             <table className="min-w-full mx-auto text-base overflow-hidden ">
                 <thead className="text-white bg-cyan-400 border-b border-cyan-300">
                     <tr className="">
@@ -122,14 +109,16 @@ const AllTasks = ({ data, searchTerm }) => {
                                                     {task.status}
                                                 </p>
                                             </td>
-                                            <td className="py-3 px-6 whitespace-nowrap hover:underline hover:text-blue-500">
-                                                <button
+                                            <td className="py-3 px-6 whitespace-nowrap">
+                                                <label
+                                                    for="taskDetails"
+                                                    class="hover:underline hover:text-blue-500"
                                                     onClick={() =>
-                                                        setEdit(!edit)
+                                                        taskDetailsHandler(task)
                                                     }
                                                 >
-                                                    Edit
-                                                </button>
+                                                    View
+                                                </label>
                                             </td>
                                         </motion.tr>
                                     </>
