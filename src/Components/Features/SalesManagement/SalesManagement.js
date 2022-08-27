@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import SalesNavbar from './SalesNavbar';
 import { ToastContainer } from 'react-toastify';
 
@@ -32,66 +32,129 @@ const SalesManagement = () => {
                 ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div className='md:mx-2 lg:mx-4'>
-                        <Link
+                        {/* <Link
                             to=""
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             <p>Dashboard</p>
-                        </Link>
-                        <Link
-                            to="items"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Items
-                        </Link>
-                        {/* <Link
-                            to="salesTeamMembers"
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                        >
-                            Sales Team members
                         </Link> */}
-                        <Link
-                            to="customer"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Customer
-                        </Link>
-                        <Link
-                            to="salesOrder"
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                        >
-                            Sales Order
-                        </Link>
-                        <Link
-                            to="return"
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
-                        >
-                            Return
-                        </Link>
-                        <Link
-                            to="vendor"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Vendor
-                        </Link>
-                        <Link
-                            to="purchaseOrder"
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                        >
-                            Purchase order
-                        </Link>
-                        <Link
-                            to="bill"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Bill
-                        </Link>
-                        <Link
-                            to="inventory"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                        >
-                            Inventory
-                        </Link>
+                        <NavLink to="salesDashboard">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Dashboard</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="items">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Items</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="customer">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Customer</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="salesOrder">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Sales Order</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="return">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Return</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="vendor">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Vendor</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="purchaseOrder">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 pl-6 pr-5 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Purchase Order</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="bill">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Bill</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="inventory">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Inventory</span>
+                                </span>
+                            )}
+                        </NavLink>
                     </div>
                 </div>
                 <div className="px-3 overflow-auto w-full">

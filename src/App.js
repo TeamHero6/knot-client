@@ -141,12 +141,13 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/calender" element={<Calender />} />
-
+                    {/* ---------- User Dashboard ---------- */}
                     <Route
-                        path="/userdashboard"
+                        path="/userDashboard"
                         element={<UserDashboardK></UserDashboardK>}
                     >
                         <Route index element={<LeaveRequest />} />
+                        <Route path="leaveRequest" element={<LeaveRequest />} />
                         <Route
                             path="userManagement"
                             element={<UserManagement></UserManagement>}
@@ -156,7 +157,7 @@ function App() {
                             element={<UserAttendance />}
                         ></Route>
                         <Route path="performance" element={<UserPromotion />} />
-                        <Route path="Payrolls" element={<UserPayrolls />} />
+                        <Route path="payrolls" element={<UserPayrolls />} />
                     </Route>
 
                     <Route
@@ -185,8 +186,10 @@ function App() {
                             </RequireAuth>
                         }
                     />
+                    {/* ---------- Sales Management ---------- */}
                     <Route path="/salesTS" element={<SalesManagement />}>
                         <Route index element={<SalesDashboard />}></Route>
+                        <Route path="salesDashboard" element={<SalesDashboard />}></Route>
                         <Route path="items" element={<Items />}></Route>
                         <Route path="inventory" element={<Inventory />} />
                         <Route
@@ -207,16 +210,13 @@ function App() {
                         <Route path="bill" element={<Bill />}></Route>
                         <Route path="inventory" element={<Inventory />}></Route>
                     </Route>
-                    <Route
-                        path="/marketingTS"
-                        element={<MarketingAutomation />}
-                    >
-                        <Route index element={<EmailMarketing />}></Route>
-                        <Route
-                            path="customerListing"
-                            element={<CustomerListing />}
-                        ></Route>
+                    {/* ---------- Marketing Automation ---------- */}
+                    <Route path="/marketingTS" element={<MarketingAutomation />}>
+                        <Route index element={<EmailMarketing />} />
+                        <Route path="emailMarketing" element={<EmailMarketing />} />
+                        <Route path="customerListing" element={<CustomerListing />} />
                     </Route>
+                    {/* ---------- Team Management ---------- */}
                     <Route path="/teamManagement" element={<AdminDashboardF />}>
                         <Route index element={<DailyTask />}></Route>
                         <Route path="dailyTask" element={<DailyTask />} />
@@ -260,12 +260,10 @@ function App() {
                             element={<CompanySettings />}
                         />
                     </Route>
-
+                    {/* ---------- Finance Management ---------- */}
                     <Route path="/financeTS" element={<FinanceManagement />}>
-                        <Route
-                            index
-                            element={<FinanceDashboard></FinanceDashboard>}
-                        ></Route>
+                        <Route index element={<FinanceDashboard></FinanceDashboard>} />
+                        <Route path="financeDashboard" element={<FinanceDashboard></FinanceDashboard>} />
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
                         <Route

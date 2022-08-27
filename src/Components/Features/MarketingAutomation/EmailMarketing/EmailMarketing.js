@@ -2,15 +2,19 @@ import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { FaRegEdit } from "react-icons/fa";
 import { TbSend } from "react-icons/tb";
+import { useSelector } from "react-redux";
 import SentEmailList from "./SentEmailList";
 
 const EmailMarketing = () => {
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
+
     const handleEmailForm = (e) => {
         e.preventDefault();
         const emailTo = e.target.emailTo.value;
         const emailSubject = e.target.emailSubject.value;
         const emailDescription = e.target.emailDescription.value;
-        const emailToSend = { emailTo, emailSubject, emailDescription };
+        const emailToSend = { emailTo, emailSubject, emailDescription, companyName };
         console.log(emailToSend);
 
         fetch("https://knot-business-solution-server.herokuapp.com/sentEmail", {

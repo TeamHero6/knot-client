@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import UserNavbar from '../../Shared/UserNavbar/UserNavbar';
 
 const UserDashboard = () => {
@@ -31,37 +31,77 @@ const UserDashboard = () => {
                 ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div>
-                        <Link
-                            to="/userdashboard"
+                        {/* <Link
+                            to="/userDashboard"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             <p>Leave Request</p>
-                        </Link>
-                        <Link
-                            to="userManagement"
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
-                        >
-                            <p>User Management</p>
-                        </Link>
-                        <Link
-                            to="attendance"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Attendance
-                        </Link>
-                        <Link
-                            to="performance"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Performance
-                        </Link>
-                        <Link
-                            to="Payrolls"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            Payrolls
-                        </Link>
-
+                        </Link> */}
+                        <NavLink to="leaveRequest">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Leave Request</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="userManagement">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>User Management</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="attendance">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Attendance</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="performance">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Performance</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="payrolls">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Payrolls</span>
+                                </span>
+                            )}
+                        </NavLink>
                     </div>
                 </div>
                 <Outlet />

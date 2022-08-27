@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { FaRegStar } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const SentEmailList = () => {
     const [emailList, setEmailList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail")
+        fetch(`http://localhost:5000/sentEmail/${companyName}`)
             .then((res) => res.json())
             .then((data) => setEmailList(data.reverse()));
-    }, [emailList]);
+    }, [emailList, companyName]);
 
     const deleteEmail = (id) => {
         const proceed = window.confirm("Do you want to delete this task?");

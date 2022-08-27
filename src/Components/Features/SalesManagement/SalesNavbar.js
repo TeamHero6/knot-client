@@ -61,7 +61,9 @@ const SalesNavbar = () => {
                             </p>
                         </li>
                         <li>
-                            <p>Settings</p>
+                            <Link to="/settings/profile">
+                                Settings
+                            </Link>
                         </li>
                         <li>
                             <p onClick={handleSignOut}>Logout</p>

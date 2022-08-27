@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import FinanceNavbar from './FinanceNavbar';
 
 const FinanceManagement = () => {
@@ -32,30 +32,64 @@ const FinanceManagement = () => {
             ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div className='md:mx-2 lg:mx-4'>
-                        <Link
+                        {/* <Link
                             to=""
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             Dashboard
-                        </Link>
-                        <Link
-                            to="allLedger"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            All Ledger
-                        </Link>
-                        <Link
-                            to="directExpense"
-                            className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
-                        >
-                            All Expense
-                        </Link>
-                        <Link
-                            to="partners"
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
-                        >
-                            Partners
-                        </Link>
+                        </Link> */}
+                        <NavLink to="financeDashboard">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Dashboard</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="allLedger">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>All Ledger</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="directExpense">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>All Expense</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="partners">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Partners</span>
+                                </span>
+                            )}
+                        </NavLink>
                         {/* <Link
                             to="attendance"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"

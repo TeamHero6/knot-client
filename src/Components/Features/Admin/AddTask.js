@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ImCross } from "react-icons/im";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import FilterCard from "./FilterCard";
 
 const AddTask = ({ refetch }) => {
@@ -8,7 +9,10 @@ const AddTask = ({ refetch }) => {
     const [employeeName, setEmployeeName] = useState("");
     const [search, setSearch] = useState("");
     const authInfo = useSelector((state) => state.auth);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
     console.log(authInfo);
+
     const users = [
         {
             id: 1,
@@ -40,7 +44,7 @@ const AddTask = ({ refetch }) => {
         const taskTitle = e.target.taskTitle.value;
         const taskDescription = e.target.taskDescription.value;
         const deadline = e.target.deadline.value;
-        const companyName = "";
+        // const companyName = "";
         const result = {
             name,
             employeeEmail,
@@ -48,37 +52,36 @@ const AddTask = ({ refetch }) => {
             taskTitle,
             taskDescription,
             deadline,
-            companyName,
+            companyName
         };
-        console.log(result);
 
-        //Post data to server
-        // fetch(
-        //     "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
-        //     {
-        //         method: "POST",
-        //         headers: {
-        //             "content-type": "application/json",
-        //         },
-        //         body: JSON.stringify(result),
-        //     }
-        // )
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         if (data.acknowledged) {
-        //             e.target.reset();
-        //             refetch();
-        //             setEmployeeEmail("");
-        //             setEmployeeName("");
-        //             Swal.fire({
-        //                 position: "top-end",
-        //                 icon: "success",
-        //                 title: `Task is assigned to ${employeeName}`,
-        //                 showConfirmButton: false,
-        //                 timer: 1500,
-        //             });
-        //         }
-        //     });
+        // Post data to server
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(result),
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.acknowledged) {
+                    e.target.reset();
+                    refetch();
+                    setEmployeeEmail("");
+                    setEmployeeName("");
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `Task is assigned to ${employeeName}`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
     };
     return (
         <div>
@@ -106,11 +109,9 @@ const AddTask = ({ refetch }) => {
                         />
                     </div>
                     <div
-                        className={`${
-                            employeeName ? "hidden" : "absolute"
-                        } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${
-                            !search ? "p-0" : "py-2 pl-3"
-                        }`}
+                        className={`${employeeName ? "hidden" : "absolute"
+                            } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${!search ? "p-0" : "py-2 pl-3"
+                            }`}
                     >
                         {users
                             .filter((val) => {

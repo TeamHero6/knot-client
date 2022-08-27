@@ -57,6 +57,7 @@ const Navbar = () => {
             setUserEmail(email);
         }
     }, [authInfo]);
+    console.log(authInfo);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -78,7 +79,7 @@ const Navbar = () => {
         return <Loader />;
     }
     return (
-        <div className="relative ">
+        <div className="relative">
             <div className="navbar md:px-8 lg:px-12 bg-white h-[80px]">
                 <div className="navbar-start">
                     <div className="dropdown relative">
@@ -177,137 +178,149 @@ const Navbar = () => {
                             )}
                         </ul>
                     </div>
-                    <a href="/">
-                        <img
-                            src={logo}
-                            className="w-20 p-1 md:w-36 md:p-2"
-                            alt="logo"
-                        />
-                    </a>
+                    <div className="ml-auto md:ml-0 hidden md:block">
+                        <a href="/">
+                            <img
+                                src={logo}
+                                className="w-20 p-1 md:w-36 md:p-2"
+                                alt="logo"
+                            />
+                        </a>
+                    </div>
                 </div>
                 <div className="navbar-end">
-                    <div className="hidden md:flex items-center">
-                        <NavLink
-                            to="/about"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
-                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
-                            }
-                        >
-                            Pricing
-                        </NavLink>
-                        <NavLink
-                            to="/about"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
-                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
-                            }
-                        >
-                            About
-                        </NavLink>
-                        <NavLink
-                            to="/FAQ"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
-                                    : "text-green-400  px-2 py-2 rounded-md mx-1"
-                            }
-                        >
-                            Support
-                        </NavLink>
-                        <NavLink
-                            to="/accessApps"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "bg-green-400 text-white px-2 py-2 rounded-md mx-1"
-                                    : "text-green-400  rounded-md px-2 py-2 mx-1"
-                            }
-                        >
-                            Access your apps
-                        </NavLink>
-                        {user && (
+                    <div className="ml-auto md:hidden">
+                        <a href="/">
+                            <img
+                                src={logo}
+                                className="w-20 p-1 md:w-36 md:p-2"
+                                alt="logo"
+                            />
+                        </a>
+                    </div>
+                    <div className="hidden lg:flex items-center">
+                        <div className="hidden md:flex items-center">
                             <NavLink
-                                to=""
-                                onClick={handleNotificationHandler}
+                                to="/about"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? " px-2 py-2 rounded-md mx-1"
-                                        : " rounded-full px-2 py-2 mx-1"
+                                        ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                        : "text-green-400  px-2 py-2 rounded-md mx-1"
                                 }
                             >
-                                <span className="relative">
-                                    <sup className="absolute right-0">
-                                        {unseenNotify ? unseenNotify : 0}
-                                    </sup>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class=""
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                                    </svg>
-                                </span>
+                                Pricing
                             </NavLink>
-                        )}
-                        <div>
-                            {user ? (
-                                <div className="dropdown dropdown-end">
-                                    <label
-                                        tabindex="0"
-                                        className="btn btn-ghost btn-circle avatar"
-                                    >
-                                        <div className="w-10 rounded-full">
-                                            <img
-                                                src={`${
-                                                    userProfile
-                                                        ? userProfile
-                                                        : "https://placeimg.com/80/80/people"
-                                                }`}
-                                                alt=""
-                                            />
-                                        </div>
-                                    </label>
-                                    <ul
-                                        tabindex="0"
-                                        className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                                    >
-                                        <li>
-                                            <a className="justify-between">
-                                                Profile
-                                                <span className="badge">
-                                                    New
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <Link to="/settings/profile">
-                                                Setting
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <button onClick={handleLogout}>
-                                                Logout
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            ) : (
+                            <NavLink
+                                to="/about"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                        : "text-green-400  px-2 py-2 rounded-md mx-1"
+                                }
+                            >
+                                About
+                            </NavLink>
+                            <NavLink
+                                to="/FAQ"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
+                                        : "text-green-400  px-2 py-2 rounded-md mx-1"
+                                }
+                            >
+                                Support
+                            </NavLink>
+                            <NavLink
+                                to="/accessApps"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "bg-green-400 text-white px-2 py-2 rounded-md mx-1"
+                                        : "text-green-400  rounded-md px-2 py-2 mx-1"
+                                }
+                            >
+                                Access your apps
+                            </NavLink>
+                            {user && (
                                 <NavLink
-                                    to="/BusinessLogin"
+                                    to=""
+                                    onClick={handleNotificationHandler}
                                     className={({ isActive }) =>
                                         isActive
-                                            ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
-                                            : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                            ? " px-2 py-2 rounded-md mx-1"
+                                            : " rounded-full px-2 py-2 mx-1"
                                     }
                                 >
-                                    Login
+                                    <span className="relative">
+                                        <sup className="absolute right-0">
+                                            {unseenNotify ? unseenNotify : 0}
+                                        </sup>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            class=""
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                                        </svg>
+                                    </span>
                                 </NavLink>
                             )}
+                            <div>
+                                {user ? (
+                                    <div className="dropdown dropdown-end">
+                                        <label
+                                            tabindex="0"
+                                            className="btn btn-ghost btn-circle avatar"
+                                        >
+                                            <div className="w-10 rounded-full">
+                                                <img
+                                                    src={`${userProfile
+                                                        ? userProfile
+                                                        : "https://placeimg.com/80/80/people"
+                                                        }`}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </label>
+                                        <ul
+                                            tabindex="0"
+                                            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                        >
+                                            <li>
+                                                <a className="justify-between">
+                                                    Profile
+                                                    <span className="badge">
+                                                        New
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <Link to="/settings/profile">
+                                                    Settings
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <button onClick={handleLogout}>
+                                                    Logout
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                ) : (
+                                    <NavLink
+                                        to="/BusinessLogin"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                                : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                        }
+                                    >
+                                        Login
+                                    </NavLink>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
