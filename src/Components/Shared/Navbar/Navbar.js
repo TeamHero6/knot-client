@@ -20,6 +20,7 @@ const Navbar = () => {
             setuserprofile(userPhoto);
         }
     }, [authInfo]);
+    console.log(authInfo);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -190,11 +191,10 @@ const Navbar = () => {
                                     >
                                         <div className="w-10 rounded-full">
                                             <img
-                                                src={`${
-                                                    userProfile
-                                                        ? userProfile
-                                                        : "https://placeimg.com/80/80/people"
-                                                }`}
+                                                src={`${userProfile
+                                                    ? userProfile
+                                                    : "https://placeimg.com/80/80/people"
+                                                    }`}
                                                 alt=""
                                             />
                                         </div>
@@ -213,7 +213,7 @@ const Navbar = () => {
                                         </li>
                                         <li>
                                             <Link to="/settings/profile">
-                                                Setting
+                                                Settings
                                             </Link>
                                         </li>
                                         <li>
