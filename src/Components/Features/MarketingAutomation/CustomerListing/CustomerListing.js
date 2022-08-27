@@ -1,16 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import Loader from "../../../Shared/Loader/Loader";
 import { useSelector } from "react-redux";
+import Loader from "../../../Shared/Loader/Loader";
 
 const CustomerListing = () => {
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     const { data: newsletterMail, isLoading } = useQuery({
         queryKey: "newsletterMail",
         queryFn: () =>
-            fetch(`http://localhost:5000/newsletterMail/${companyName}`).then((res) => res.json()),
+            fetch(
+                `https://knot-business-solution-server.herokuapp.com/newsletterMail/${companyName}`
+            ).then((res) => res.json()),
     });
 
     if (isLoading) {

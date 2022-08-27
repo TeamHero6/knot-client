@@ -9,13 +9,16 @@ const WarningModalDaisyUI = ({ setWarningModal, warningRefetch }) => {
         const type = e.target.type.value;
         const warningFor = e.target.email.value;
         const warningDetails = { warningDate, warningReason, type, warningFor };
-        fetch("http://localhost:5000/createWarning", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(warningDetails),
-        })
+        fetch(
+            "https://knot-business-solution-server.herokuapp.com/createWarning",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(warningDetails),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
