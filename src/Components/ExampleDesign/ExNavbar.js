@@ -30,7 +30,10 @@ const ExNavbar = () => {
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-auto px-3 md:w-64 justify-center cursor-pointer">
-                <div className="flex justify-center items-center">
+                <div
+                    className="flex justify-center items-center"
+                    onClick={() => navigate("/")}
+                >
                     <span>
                         <img
                             src={companyLogo}

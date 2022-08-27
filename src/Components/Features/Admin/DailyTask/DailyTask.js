@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdOutlineAddTask } from "react-icons/md";
 import { useSelector } from "react-redux";
+import Loader from "../../../Shared/Loader/Loader";
 import AllTasks from "../AllTasks/AllTasks";
 import AddTaskModal from "./AddTaskModal/AddTaskModal";
 
@@ -22,7 +23,7 @@ const DailyTask = () => {
     );
 
     if (isLoading) {
-        return;
+        return <Loader />;
     }
 
     return (
