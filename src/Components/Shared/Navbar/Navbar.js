@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -13,18 +14,47 @@ import Notification from "../Notification/Notification";
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
     const [userProfile, setuserprofile] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+    // const [notification, setNotification] = useState([]);
+    const [unseenNotify, setUnseenNotify] = useState();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // get all notification
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/getNotification/${userEmail}`)
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             setNotification(data);
+    //             const unseen = data.filter((n) => !n.seen);
+    //             setUnseenNotify(unseen.length);
+    //         });
+    // }, [userEmail]);
+
+    const {
+        data: notification,
+        isLoading,
+        refetch,
+    } = useQuery(["notification", userEmail], () =>
+        fetch(`http://localhost:5000/getNotification/${userEmail}`).then(
+            (res) => res.json()
+        )
+    );
+
+    useEffect(() => {
+        const unseen = notification?.filter((n) => !n.seen);
+        setUnseenNotify(unseen?.length);
+    }, [notification]);
+
     // get redux state
     const isOpen = useSelector((state) => state.notification.isOpen);
-    console.log("notification status is ", isOpen);
     //use Info from Redux
     const authInfo = useSelector((state) => state.auth);
     useEffect(() => {
         if (authInfo.loggerInfo !== null) {
-            const { userPhoto } = authInfo?.loggerInfo;
+            const { userPhoto, email } = authInfo?.loggerInfo;
             setuserprofile(userPhoto);
+            setUserEmail(email);
         }
     }, [authInfo]);
 
@@ -38,6 +68,10 @@ const Navbar = () => {
     const handleNotificationHandler = () => {
         dispatch(NotifiyStatusUpdate(!isOpen));
     };
+
+    if (isLoading) {
+        return;
+    }
 
     //Sign out user
     if (loading) {
@@ -204,7 +238,9 @@ const Navbar = () => {
                                 }
                             >
                                 <span className="relative">
-                                    <sup className="absolute right-0">2</sup>
+                                    <sup className="absolute right-0">
+                                        {unseenNotify ? unseenNotify : 0}
+                                    </sup>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="16"
@@ -276,7 +312,9 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            {isOpen && <Notification />}
+            {isOpen && (
+                <Notification {...{ notification, refetch, userEmail }} />
+            )}
         </div>
     );
 };
