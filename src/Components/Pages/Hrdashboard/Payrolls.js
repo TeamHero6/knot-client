@@ -3,13 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { BiPlus } from "react-icons/bi";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Payrolls = () => {
     const { register, handleSubmit, reset } = useForm();
     const [payrolls, setPayrolls] = useState([]);
-
     const [show, setShow] = useState(false);
+
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
     useEffect(() => {
         fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
             .then((res) => res.json())
@@ -17,12 +20,13 @@ const Payrolls = () => {
     }, [payrolls]);
 
     const onSubmit = (data) => {
+        const newData = { ...data, companyName };
         fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(newData),
         })
             .then((res) => res.json())
             .then((inserted) => {

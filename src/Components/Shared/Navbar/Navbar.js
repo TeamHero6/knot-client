@@ -8,7 +8,6 @@ import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 import { logout } from "../../../Redux/Auth/authAction";
 import { NotifiyStatusUpdate } from "../../../Redux/notification/NotificationAction";
-import Loader from "../Loader/Loader";
 import Notification from "../Notification/Notification";
 
 const Navbar = () => {
@@ -70,14 +69,10 @@ const Navbar = () => {
         dispatch(NotifiyStatusUpdate(!isOpen));
     };
 
-    if (isLoading) {
+    if (isLoading || loading) {
         return;
     }
 
-    //Sign out user
-    if (loading) {
-        return <Loader />;
-    }
     return (
         <div className="relative">
             <div className="navbar md:px-8 lg:px-12 bg-white h-[80px]">
