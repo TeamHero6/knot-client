@@ -40,8 +40,8 @@ const DailyTask = () => {
                             className="flex items-center basis-1/6 mr-2 bg-green-400 py-1 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 transition duration-300 hover:shadow-green-200 hover: shadow-sm"
                             onClick={() => setOpen(!isOpen)}
                         >
-                            <MdOutlineAddTask />
-                            Add Task
+                            <MdOutlineAddTask className="mr-2 hidden md:block" />
+                            <span>Add Task</span>
                         </label>
                         <div className="basis-5/6 flex items-center border border-gray-400 rounded px-2">
                             <BsSearch className="text-gray-400" />

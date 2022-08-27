@@ -180,7 +180,7 @@ const TeamOrganize = () => {
                     <select
                         name="meet-warn-award-filter"
                         id=""
-                        className="mt-2"
+                        className="border-[1px] rounded-md sm:max-w-sm md:w-auto px-2 py-1 md:mx-2 outline-none"
                         onChange={handleDropDownFilter}
                     >
                         <option value="allMettings">All Meetings</option>
@@ -208,99 +208,101 @@ const TeamOrganize = () => {
             </section>
             {/*All meetings*/}
             <hr />
-            {dropDownFilter === "allMettings" && (
-                <AnimatePresence>
-                    <motion.section
-                        initial={{ opacity: 0, height: 0, y: -50 }}
-                        animate={{
-                            opacity: 1,
-                            height: "auto",
-                            transition: 0.5,
-                            y: 1,
-                        }}
-                        exit={{ opacity: 0, height: 0, y: -50 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-6 mt-8"
-                    >
-                        {meetingData
-                            .filter((meeting) => {
-                                if (searchTerm === "") {
-                                    return meeting;
-                                } else if (
-                                    meeting.meetingWith
-                                        .toLowerCase()
-                                        .includes(searchTerm.toLowerCase())
-                                ) {
-                                    return meeting;
-                                }
-                            })
-                            .map((meeting) => (
-                                <MeetingCard {...{ meeting }} />
-                            ))}
-                    </motion.section>
-                </AnimatePresence>
-            )}
-            {dropDownFilter === "allWarning" && (
-                <AnimatePresence>
-                    <motion.section
-                        initial={{ opacity: 0, height: 0, y: -50 }}
-                        animate={{
-                            opacity: 1,
-                            height: "auto",
-                            transition: 0.5,
-                            y: 1,
-                        }}
-                        exit={{ opacity: 0, height: 0, y: -50 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
-                    >
-                        {warningData
-                            .filter((warning) => {
-                                if (searchTerm === "") {
-                                    return warning;
-                                } else if (
-                                    warning?.name
-                                        ?.toLowerCase()
-                                        .includes(searchTerm.toLowerCase())
-                                ) {
-                                    return warning;
-                                }
-                            })
-                            .map((warning) => (
-                                <WarningCard {...{ warning }} />
-                            ))}
-                    </motion.section>
-                </AnimatePresence>
-            )}
-            {dropDownFilter === "allAward" && (
-                <AnimatePresence>
-                    <motion.section
-                        initial={{ opacity: 0, height: 0, y: -50 }}
-                        animate={{
-                            opacity: 1,
-                            height: "auto",
-                            transition: 0.5,
-                            y: 1,
-                        }}
-                        exit={{ opacity: 0, height: 0, y: -50 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 py-6 mt-8"
-                    >
-                        {awardData
-                            .filter((award) => {
-                                if (searchTerm === "") {
-                                    return award;
-                                } else if (
-                                    award?.name
-                                        ?.toLowerCase()
-                                        .includes(searchTerm.toLowerCase())
-                                ) {
-                                    return award;
-                                }
-                            })
-                            .map((award) => (
-                                <AwardCard {...{ award }} />
-                            ))}
-                    </motion.section>
-                </AnimatePresence>
-            )}
+            <section className="z-10">
+                {dropDownFilter === "allMettings" && (
+                    <AnimatePresence>
+                        <motion.section
+                            initial={{ opacity: 0, height: 0, y: -50 }}
+                            animate={{
+                                opacity: 1,
+                                height: "auto",
+                                transition: 0.5,
+                                y: 1,
+                            }}
+                            exit={{ opacity: 0, height: 0, y: -50 }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-6 mt-8"
+                        >
+                            {meetingData
+                                .filter((meeting) => {
+                                    if (searchTerm === "") {
+                                        return meeting;
+                                    } else if (
+                                        meeting.meetingWith
+                                            .toLowerCase()
+                                            .includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return meeting;
+                                    }
+                                })
+                                .map((meeting) => (
+                                    <MeetingCard {...{ meeting }} />
+                                ))}
+                        </motion.section>
+                    </AnimatePresence>
+                )}
+                {dropDownFilter === "allWarning" && (
+                    <AnimatePresence>
+                        <motion.section
+                            initial={{ opacity: 0, height: 0, y: -50 }}
+                            animate={{
+                                opacity: 1,
+                                height: "auto",
+                                transition: 0.5,
+                                y: 1,
+                            }}
+                            exit={{ opacity: 0, height: 0, y: -50 }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
+                        >
+                            {warningData
+                                .filter((warning) => {
+                                    if (searchTerm === "") {
+                                        return warning;
+                                    } else if (
+                                        warning?.name
+                                            ?.toLowerCase()
+                                            .includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return warning;
+                                    }
+                                })
+                                .map((warning) => (
+                                    <WarningCard {...{ warning }} />
+                                ))}
+                        </motion.section>
+                    </AnimatePresence>
+                )}
+                {dropDownFilter === "allAward" && (
+                    <AnimatePresence>
+                        <motion.section
+                            initial={{ opacity: 0, height: 0, y: -50 }}
+                            animate={{
+                                opacity: 1,
+                                height: "auto",
+                                transition: 0.5,
+                                y: 1,
+                            }}
+                            exit={{ opacity: 0, height: 0, y: -50 }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 py-6 mt-8"
+                        >
+                            {awardData
+                                .filter((award) => {
+                                    if (searchTerm === "") {
+                                        return award;
+                                    } else if (
+                                        award?.name
+                                            ?.toLowerCase()
+                                            .includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return award;
+                                    }
+                                })
+                                .map((award) => (
+                                    <AwardCard {...{ award }} />
+                                ))}
+                        </motion.section>
+                    </AnimatePresence>
+                )}
+            </section>
         </motion.div>
     );
 };

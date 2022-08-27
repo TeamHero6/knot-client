@@ -9,7 +9,7 @@ const AdminDashboardF = () => {
     return (
         <div className="min-h-screen bg-custom-gray">
             <span
-                className="fixed block md:hidden bottom-6 bg-custom-light-gray p-3 hover:bg-custom-green hover:text-custom-light-gray duration-300 shadow-sm rounded-full right-6 border-2 border-green-400 hover:shadow-lg"
+                className="fixed block md:hidden bottom-6 bg-custom-light-gray p-3 hover:bg-custom-green hover:text-custom-light-gray duration-300 shadow-sm rounded-full right-6 border-2 border-green-400 hover:shadow-lg z-50"
                 onClick={() => setOpen(!open)}
             >
                 <svg
