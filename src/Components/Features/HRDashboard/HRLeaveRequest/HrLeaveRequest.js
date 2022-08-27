@@ -16,7 +16,7 @@ const HrLeaveRequest = () => {
                     Approval Leave Request
                 </h1>
 
-                <div className="grid grid-rows-2 grid-flow-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {requests.slice(0, 20).map((leave) => (
                         <LeaveRequestCard leave={leave}></LeaveRequestCard>
                     ))}
