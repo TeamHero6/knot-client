@@ -33,7 +33,7 @@ const Navbar = () => {
         return;
     }
     return (
-        <div className="relative ">
+        <div className="relative">
             <div className="navbar md:px-8 lg:px-12 bg-white h-[80px]">
                 <div className="navbar-start">
                     <div className="dropdown relative">
@@ -132,15 +132,26 @@ const Navbar = () => {
                             )}
                         </ul>
                     </div>
-                    <a href="/">
-                        <img
-                            src={logo}
-                            className="w-20 p-1 md:w-36 md:p-2"
-                            alt="logo"
-                        />
-                    </a>
+                    <div className="ml-auto md:ml-0 hidden md:block">
+                        <a href="/">
+                            <img
+                                src={logo}
+                                className="w-20 p-1 md:w-36 md:p-2"
+                                alt="logo"
+                            />
+                        </a>
+                    </div>
                 </div>
                 <div className="navbar-end">
+                    <div className="ml-auto md:hidden">
+                        <a href="/">
+                            <img
+                                src={logo}
+                                className="w-20 p-1 md:w-36 md:p-2"
+                                alt="logo"
+                            />
+                        </a>
+                    </div>
                     <div className="hidden lg:flex items-center">
                         <NavLink
                             to="/about"

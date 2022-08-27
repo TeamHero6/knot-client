@@ -96,7 +96,7 @@ const AccessYourApps = () => {
                     onChange={handleFilter}
                 />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:w-2/3 mx-auto mt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:w-2/3 mx-auto mt-4">
                 {filterResult
                     ? filterResult?.map((product) => (
                         <AccessAppsCard {...{ product }} />

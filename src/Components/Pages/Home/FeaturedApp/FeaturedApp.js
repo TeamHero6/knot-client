@@ -13,9 +13,9 @@ import adminManagement from "../../../../Assets/homepageFeaturedAppIcon/admin.pn
 const FeaturedApp = () => {
     return (
         <div className="md:mx-12 lg:mx-20 bg-cyan-100 md:bg-gradient-to-r from-cyan-100 via-white to-cyan-100">
-            <section className="mx-auto py-4 rounded-md">
+            <section className="w-full mx-auto py-4 rounded-md">
                 <section className="w-full">
-                    <div className="w-1/3 mx-auto">
+                    <div className="md:w-1/3 mx-auto">
                         <div className="md:flex justify-center hidden ">
                             <img
                                 src={crm}
@@ -27,14 +27,14 @@ const FeaturedApp = () => {
                             <h3 className="font-semibold text-xl">
                                 Complete CRM Platform
                             </h3>
-                            <p className="mb-3">
+                            <p className="mb-3 mx-2">
                                 End-to-end, fully customizable CRM solution for
                                 growing business and enterprises
                             </p>
                             <div className="mb-2">
                                 <Link
                                     to="/learnMore"
-                                    className="bg-red-500 text-white font-semibold pb-8 px-2 py-1 lg:px-4 lg:py-2 hover:bg-red-400"
+                                    className="bg-red-500 text-white font-semibold px-2 py-1 lg:px-4 lg:py-2 hover:bg-red-400"
                                 >
                                     LEARN MORE
                                 </Link>
@@ -42,9 +42,9 @@ const FeaturedApp = () => {
                         </div>
                     </div>
                 </section>
-                <div className="text-start mt-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
-                        <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-4  border-gray-200 w-[100%] mx-auto flex justify-center items-center">
+                <div className="w-full text-start mt-4">
+                    <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+                        <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-2 md:py-4  border-gray-200 w-[100%] mx-auto flex justify-center items-center">
                             <div className="flex items-center">
                                 <section>
                                     <img
@@ -55,14 +55,14 @@ const FeaturedApp = () => {
                                 </section>
                                 <section className="text-left mt-3 ml-1">
                                     <h3>Team</h3>
-                                    <p className="mb-4">Management</p>
+                                    <p className="mb-1 md:mb-4">Management</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </section>
                             </div>
                         </div>
-                        <div className="text-center  md:border-b-[1px] md:border-r-[1px] py-4  border-gray-200 flex justify-center items-center">
+                        <div className="text-center md:border-b-[1px] md:border-r-[1px] py-2 md:py-4 border-gray-200 flex justify-center items-center">
                             <section className="flex items-center justify-evenly">
                                 <div>
                                     <img
@@ -73,14 +73,14 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Human</h3>
-                                    <p className="mb-4">Resource</p>
+                                    <p className="mb-1 md:mb-4">Resource</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </div>
                             </section>
                         </div>
-                        <div className="text-center border-r-[1px] md:border-b-[1px] py-4  border-gray-200 flex justify-center items-center">
+                        <div className="text-center border-r-[1px] md:border-b-[1px] py-2 md:py-4  border-gray-200 flex justify-center items-center">
                             <section className="flex items-center justify-evenly">
                                 <div>
                                     <img
@@ -91,14 +91,14 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Finance</h3>
-                                    <p className="mb-4">Management</p>
+                                    <p className="mb-1 md:mb-4">Management</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2 transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </div>
                             </section>
                         </div>
-                        <div className="text-center py-4  md:border-b-[1px] border-gray-200 flex items-start justify-center">
+                        <div className="text-center py-2 md:py-4  md:border-b-[1px] border-gray-200 flex items-start justify-center">
                             <section className="flex items-center">
                                 <div>
                                     <img
@@ -109,14 +109,14 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Sales</h3>
-                                    <p className="mb-4">Management</p>
+                                    <p className="mb-1 md:mb-4">Management</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </div>
                             </section>
                         </div>
-                        <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-4  border-gray-200 w-[100%] mx-auto flex justify-center items-center">
+                        <div className="text-center sm:border-t-[1px] md:border-t-[0px] md:border-r-[1px] md:border-b-[1px] py-2 md:py-4  border-gray-200 w-[100%] mx-auto flex justify-center items-center">
                             <div className="flex items-center">
                                 <section>
                                     <img
@@ -127,14 +127,14 @@ const FeaturedApp = () => {
                                 </section>
                                 <section className="text-left mt-3 ml-1">
                                     <h3>Marketing</h3>
-                                    <p className="mb-4">Automation</p>
+                                    <p className="mb-1 md:mb-4">Automation</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </section>
                             </div>
                         </div>
-                        <div className="text-center md:border-r-[1px] py-4  border-gray-200 flex justify-center items-center">
+                        <div className="text-center md:border-r-[1px] py-2 md:py-4  border-gray-200 flex justify-center items-center">
                             <section className="flex items-center justify-evenly">
                                 <div>
                                     <img
@@ -145,14 +145,14 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>User</h3>
-                                    <p className="mb-4">Dashboard</p>
+                                    <p className="mb-1 md:mb-4">Dashboard</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </div>
                             </section>
                         </div>
-                        <div className="text-center border-r-[1px] py-4  border-gray-200 flex justify-center items-center">
+                        <div className="text-center md:border-r-[1px] py-2 md:py-4  border-gray-200 flex justify-center items-center">
                             <section className="flex items-center justify-evenly">
                                 <div>
                                     <img
@@ -163,14 +163,14 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Group</h3>
-                                    <p className="mb-4">Chat</p>
+                                    <p className="mb-1 md:mb-4">Chat</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>
                                 </div>
                             </section>
                         </div>
-                        <div className="text-center py-4  border-gray-200 flex items-start justify-center">
+                        <div className="text-center py-2 md:py-4  border-gray-200 flex items-start justify-center">
                             <section className="flex items-center">
                                 <div>
                                     <img
@@ -181,7 +181,7 @@ const FeaturedApp = () => {
                                 </div>
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Admin</h3>
-                                    <p className="mb-4">Management</p>
+                                    <p className="mb-1 md:mb-4">Management</p>
                                     <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
                                     </p>

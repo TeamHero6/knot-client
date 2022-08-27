@@ -145,7 +145,7 @@
     }
 }
 
-/* 640px to Max- 768px Tavlet View */
+/* 640px to Max- 768px Tablet View */
 @media only screen and (min-width: 640px) and (max-width: 768px) {
     .intro-video-text {
         display: flex;

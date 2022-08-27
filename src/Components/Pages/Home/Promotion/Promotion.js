@@ -1,22 +1,21 @@
 import React from "react";
 import homePageCircleIcon from "../../../../Assets/images/homePageCircleIcon.svg";
-// import howToWork from "../../../../Assets/images/how-to-work.png";
 import knotIntroThumbnail from "../../../../Assets/images/introVideoThumb.png";
 
 const Promotion = () => {
     return (
-        <div className="my-24 mb-40">
-            <div className="flex flex-wrap md:flex-nowrap justify-center gap-4 mx-32">
-                <div className="w-1/2 p-8">
+        <div className="my-12 md:my-20">
+            <div className="md:flex justify-center md:gap-4 md:mx-20 lg:mx-32">
+                <div className="md:w-1/2 p-8">
                     <img
                         className="w-full"
                         src={homePageCircleIcon}
                         alt=""
                     />
                 </div>
-                <div className="ml-4 sm:ml-0 w-1/2 p-8 my-auto text-center">
+                <div className="md:ml-4 md:w-1/2 p-8 md:my-auto text-center">
                     <div>
-                        <h3 className="text-4xl">
+                        <h3 className="text-4xl font-medium">
                             One Stop Business Solution
                         </h3>
                         <p className="text-lg mt-2 text-gray-400">
