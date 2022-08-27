@@ -38,8 +38,8 @@ const AdminDashboardF = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex justify-evenly items-center my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
-                                            : "flex justify-center  items-center hover:bg-custom-cyan-100 bg-custom-gray my-4 px-6 p-2"
+                                            ? "flex items-center sm:text-sm my-4 px-auto p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
+                                            : "flex sm:text-sm items-center hover:bg-custom-cyan-100 bg-custom-gray my-4 px-auto p-2"
                                     }
                                 >
                                     <img src={taskIc} className="w-7" alt="" />
@@ -52,8 +52,8 @@ const AdminDashboardF = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex justify-evenly items-center my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
-                                            : "flex justify-evenly items-center my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray"
+                                            ? "flex items-center sm:text-sm my-4 px-auto p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
+                                            : "flex sm:text-sm items-center hover:bg-custom-cyan-100 bg-custom-gray my-4 px-auto p-2"
                                     }
                                 >
                                     <span>
