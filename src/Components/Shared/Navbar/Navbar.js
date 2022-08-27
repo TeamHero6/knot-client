@@ -8,6 +8,7 @@ import auth from "../../../firebase.init";
 import { logout } from "../../../Redux/Auth/authAction";
 import { NotifiyStatusUpdate } from "../../../Redux/notification/NotificationAction";
 import Loader from "../Loader/Loader";
+import Notification from "../Notification/Notification";
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
@@ -151,7 +152,7 @@ const Navbar = () => {
                     </a>
                 </div>
                 <div className="navbar-end">
-                    <div className="hidden lg:flex items-center">
+                    <div className="hidden md:flex items-center">
                         <NavLink
                             to="/about"
                             className={({ isActive }) =>
@@ -194,11 +195,11 @@ const Navbar = () => {
                         </NavLink>
                         {user && (
                             <NavLink
-                                to="/notification"
+                                to=""
                                 onClick={handleNotificationHandler}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? " text-white px-2 py-2 rounded-md mx-1"
+                                        ? " px-2 py-2 rounded-md mx-1"
                                         : " rounded-full px-2 py-2 mx-1"
                                 }
                             >
@@ -275,6 +276,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            {isOpen && <Notification />}
         </div>
     );
 };
