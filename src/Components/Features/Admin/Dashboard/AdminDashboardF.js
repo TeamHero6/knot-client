@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import taskIc from "../../../../Assets/task1.png";
+import organizeIc from "../../../../Assets/teamOrganize.png";
 import ExNavbar from "../../../ExampleDesign/ExNavbar";
 
 const AdminDashboardF = () => {
@@ -36,10 +38,11 @@ const AdminDashboardF = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                            ? "flex justify-evenly items-center my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
+                                            : "flex justify-center  items-center hover:bg-custom-cyan-100 bg-custom-gray my-4 px-6 p-2"
                                     }
                                 >
+                                    <img src={taskIc} className="w-7" alt="" />
                                     <span>Daily Task</span>
                                 </span>
                             )}
@@ -49,11 +52,18 @@ const AdminDashboardF = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "flex my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray"
+                                            ? "flex justify-evenly items-center my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
+                                            : "flex justify-evenly items-center my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray"
                                     }
                                 >
-                                    Team Organize
+                                    <span>
+                                        <img
+                                            src={organizeIc}
+                                            className="w-7"
+                                            alt=""
+                                        />
+                                    </span>
+                                    <span>Team Organize</span>
                                 </span>
                             )}
                         </NavLink>
