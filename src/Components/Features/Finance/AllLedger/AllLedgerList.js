@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const AllLedgerList = () => {
     const [cashBookList, setCashBookList] = useState([]);
     const [bankBookList, setBankBookList] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/cashBook")
+        fetch(`http://localhost:5000/cashBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCashBookList(data.reverse()));
-    }, [cashBookList]);
+    }, [cashBookList, companyName]);
 
-    // console.log(cashBookList);
+    // console.log(cashBookList, companyName);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/bankBook")
+        fetch(`http://localhost:5000/bankBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setBankBookList(data.reverse()));
-    }, [bankBookList]);
+    }, [bankBookList, companyName]);
 
-    console.log(bankBookList);
+    // console.log(bankBookList, companyName);
 
     return (
         <div>

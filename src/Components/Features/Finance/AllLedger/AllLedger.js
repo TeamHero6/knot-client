@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import AllLedgerList from "./AllLedgerList";
+import { useSelector } from "react-redux";
 
 const AllLedger = () => {
     const [cashBook, setCashBook] = useState(false);
     const [bankBook, setBankBook] = useState(false);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     const handleAddCashBook = (e) => {
         e.preventDefault();
@@ -22,6 +25,7 @@ const AllLedger = () => {
             expenseHead,
             amount,
             expenseType,
+            companyName,
         };
 
         console.log(CashBook);
@@ -55,6 +59,7 @@ const AllLedger = () => {
             expenseHead,
             amount,
             expenseType,
+            companyName,
         };
         // console.log(BankBook);
         fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
