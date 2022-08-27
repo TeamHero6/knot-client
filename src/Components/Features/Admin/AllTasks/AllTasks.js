@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 const AllTasks = ({ data, searchTerm }) => {
     const [edit, setEdit] = useState(false);
+    const [dynamicColor, setDynamicColor] = useState("");
 
     // update task status
     const updateStatus = (status, id) => {
@@ -38,7 +39,7 @@ const AllTasks = ({ data, searchTerm }) => {
                         <th className="py-3 text-left px-6 whitespace-nowrap">
                             Deadline
                         </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
+                        <th className="py-3 text-center px-6 whitespace-nowrap">
                             Status
                         </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -107,27 +108,19 @@ const AllTasks = ({ data, searchTerm }) => {
                                                 )}
                                             </td>
                                             <td className="py-3 px-6 whitespace-nowrap">
-                                                <select
-                                                    name=""
-                                                    id=""
-                                                    className="px-2 py-1 bg-green-500 text-white"
-                                                    onChange={(e) =>
-                                                        updateStatus(
-                                                            e.target.value,
-                                                            task?._id
-                                                        )
-                                                    }
+                                                <p
+                                                    className={`px-2 ${
+                                                        task.status ===
+                                                            "Assigned" &&
+                                                        "bg-red-400"
+                                                    } ${
+                                                        task.status ===
+                                                            "Running" &&
+                                                        "bg-green-400"
+                                                    } py-1 text-white text-center rounded-sm`}
                                                 >
-                                                    <option value="running">
-                                                        Running
-                                                    </option>
-                                                    <option value="done">
-                                                        Done
-                                                    </option>
-                                                    <option value="missed">
-                                                        Missed
-                                                    </option>
-                                                </select>
+                                                    {task.status}
+                                                </p>
                                             </td>
                                             <td className="py-3 px-6 whitespace-nowrap hover:underline hover:text-blue-500">
                                                 <button
