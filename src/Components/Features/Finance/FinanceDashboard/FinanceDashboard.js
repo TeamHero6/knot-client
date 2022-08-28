@@ -2,16 +2,12 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
-    Legend,
     AreaChart,
-    ComposedChart,
     XAxis,
     YAxis,
     Tooltip,
     CartesianGrid,
     Area,
-    Bar,
-    Line,
 } from "recharts";
 import IncomeExpenseOverview from "./IncomeExpenseOverview";
 import PartnerDetails from "./PartnerDetails";
@@ -35,7 +31,7 @@ const FinanceDashboard = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <section className="lg:w-full flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto">
+            <section className="lg:w-full flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-full md:flex md:flex-col sm:w-11/12 sm:mx-auto">
                 <div className="w-4/12">
                     <IncomeExpenseOverview />
                 </div>
@@ -51,15 +47,6 @@ const FinanceDashboard = () => {
                 <div>
                     <h2 className="text-base font-semibold mb-8">Company Share</h2>
                     <div>
-                        {/* <ComposedChart width={500} height={250} data={partnerList}>
-                            <XAxis dataKey="partnerName" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <CartesianGrid stroke="#f5f5f5" />
-                            <Bar dataKey="share" barSize={20} fill="#413ea0" />
-                            <Line type="monotone" dataKey="share" stroke="#ff7300" />
-                        </ComposedChart> */}
                         <AreaChart width={500} height={250} data={partnerList}
                             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                             <defs>
