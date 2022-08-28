@@ -10,16 +10,15 @@ const HrPayroll = () => {
     const { register, handleSubmit, reset } = useForm();
     const [payrolls, setPayrolls] = useState([]);
     const [show, setShow] = useState(false);
-
     const { companyName } = loggerInfo;
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/payrolls/${companyName}`
+            `http://localhost:5000/payrolls/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
-    }, [payrolls]);
+    }, [payrolls, companyName]);
 
     const onSubmit = (data) => {
         const newData = { ...data, companyName };

@@ -8,7 +8,6 @@ const HRAwardCard = (props) => {
             <p className='font-semibold font-xl'>{awardTitle}</p>
             <p><span className='font-semibold'>Appreciate:</span> <small className='italic'>{successMessage}</small></p>
             <p className='text-right italic '><span>Date:</span> <small className='text-gray-400'>{AwardDate}</small></p>
-
         </div>
     );
 };

@@ -2,33 +2,20 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import HRPerformanceData from "./HRPerformanceData";
 // import profile from "../../../Assets/icons/Live-chat-icon/profile_user.png";
 
 const HrPerformance = () => {
     const { register, handleSubmit, reset } = useForm();
-    const [promo, setPromo] = useState([]);
     const [show, setShow] = useState(false);
     const [showTransfer, setShowTransfer] = useState(false);
-    const [modal, setmodal] = useState({});
-    const [transfer, setTransfer] = useState([]);
-
-    //     useEffect(() => {
-    //         fetch("https://knot-business-solution-server.herokuapp.com/transfer")
-    //             .then((res) => res.json())
-    //             .then((data) => setTransfer(data));
-    //     }, [transfer]);
-    // // console.log(transfer);
-
-    //     useEffect(() => {
-    //         fetch("https://knot-business-solution-server.herokuapp.com/performance")
-    //             .then((res) => res.json())
-    //             .then((data) => setPromo(data));
-    //     }, [promo]);
-    //     // console.log(promo);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     const onSubmit = (data) => {
+        const newData = { ...data, companyName };
         fetch(
             "https://knot-business-solution-server.herokuapp.com/performance",
             {
@@ -36,7 +23,7 @@ const HrPerformance = () => {
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(newData),
             }
         )
             .then((res) => res.json())
@@ -49,12 +36,13 @@ const HrPerformance = () => {
     };
 
     const onSubmitTransfer = (data) => {
+        const newData = { ...data, companyName };
         fetch("https://knot-business-solution-server.herokuapp.com/transfer", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(newData),
         })
             .then((res) => res.json())
             .then((inserted) => {

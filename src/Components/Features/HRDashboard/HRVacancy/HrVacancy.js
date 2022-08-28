@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../../../Shared/Loader/Loader";
 import HRCircularCard from "./HRCircularCard";
@@ -11,34 +12,30 @@ import HRCircularCard from "./HRCircularCard";
 const HrVacancy = () => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, reset } = useForm();
-    // const [carcular, setCarcular] = useState([]);
     const [short, setShort] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
+        fetch(`http://localhost:5000/applicant/${companyName}`)
             .then((res) => res.json())
             .then((data) => setShort(data));
-    }, [short]);
+    }, [short, companyName]);
 
     const { data: carcular, isLoading } = useQuery(["circuler"], () =>
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/vacancy"
+            `http://localhost:5000/vacancy/${companyName}`
         ).then((res) => res.json())
     );
 
-    // useEffect(() => {
-    //     fetch()
-    //         .then((res) => res.json())
-    //         .then((data) => setCarcular(data));
-    // }, [carcular]);
-
     const onSubmit = (data) => {
+        const newData = { ...data, companyName };
         fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(newData),
         })
             .then((res) => res.json())
             .then((inserted) => {
