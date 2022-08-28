@@ -1,24 +1,31 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
 const WarningModalDaisyUI = ({ setWarningModal, warningRefetch }) => {
+    const companyName = useSelector(
+        (state) => state?.auth?.loggerInfo?.companyName
+    );
     const handleWarning = (e) => {
         e.preventDefault();
         const warningDate = e.target.date.value;
         const warningReason = e.target.reason.value;
         const type = e.target.type.value;
         const warningFor = e.target.email.value;
-        const warningDetails = { warningDate, warningReason, type, warningFor };
-        fetch(
-            "http://localhost:5000/createWarning",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(warningDetails),
-            }
-        )
+        const warningDetails = {
+            warningDate,
+            warningReason,
+            type,
+            warningFor,
+            companyName,
+        };
+        fetch("http://localhost:5000/createWarning", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(warningDetails),
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {

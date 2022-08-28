@@ -69,16 +69,13 @@ const BusinessSignup = () => {
                         };
 
                         // Send Data to Server
-                        fetch(
-                            "http://localhost:5000/createdUser",
-                            {
-                                method: "PUT",
-                                headers: {
-                                    "content-type": "application/json",
-                                },
-                                body: JSON.stringify(userInfo),
-                            }
-                        )
+                        fetch("http://localhost:5000/createdUser", {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(userInfo),
+                        })
                             .then((res) => res.json())
                             .then((data) => {
                                 const token = data?.token;
@@ -127,16 +124,13 @@ const BusinessSignup = () => {
         if (role === "Employee") {
             const info = { email, secretCode, name };
 
-            fetch(
-                "http://localhost:5000/checkEmployee",
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(info),
-                }
-            )
+            fetch("http://localhost:5000/checkEmployee", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
                     const { role, message, loggerInfo } = data;

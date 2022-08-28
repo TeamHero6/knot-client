@@ -29,9 +29,9 @@ const TeamOrganize = () => {
         data: meetingData,
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
-        fetch(
-            `http://localhost:5000/meetings/${companyName}`
-        ).then((res) => res.json())
+        fetch(`http://localhost:5000/meetings/${companyName}`).then((res) =>
+            res.json()
+        )
     );
 
     //Fetch Warning Data
@@ -40,9 +40,9 @@ const TeamOrganize = () => {
         data: warningData,
         refetch: warningRefetch,
     } = useQuery(["warnings"], () =>
-        fetch(
-            "http://localhost:5000/warnings"
-        ).then((res) => res.json())
+        fetch(`http://localhost:5000/warnings/${companyName}`).then((res) =>
+            res.json()
+        )
     );
 
     const {
@@ -50,8 +50,8 @@ const TeamOrganize = () => {
         data: awardData,
         refetch: awardRefetch,
     } = useQuery(["award"], () =>
-        fetch("http://localhost:5000/award").then(
-            (res) => res.json()
+        fetch(`http://localhost:5000/award/${companyName}`).then((res) =>
+            res.json()
         )
     );
 

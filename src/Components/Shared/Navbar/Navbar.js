@@ -12,6 +12,7 @@ import Notification from "../Notification/Notification";
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
+    // const [refetch, setRefetch] = useState(false);
     const [userProfile, setuserprofile] = useState("");
     const [userEmail, setUserEmail] = useState("");
     // const [notification, setNotification] = useState([]);
@@ -25,25 +26,28 @@ const Navbar = () => {
     //         .then((res) => res.json())
     //         .then((data) => {
     //             setNotification(data);
-    //             const unseen = data.filter((n) => !n.seen);
+    //             const unseen = data?.filter((n) => !n.seen);
     //             setUnseenNotify(unseen.length);
     //         });
-    // }, [userEmail]);
+    // }, [userEmail, refetch]);
 
     const {
         data: notification,
         isLoading,
         refetch,
     } = useQuery(["notification", userEmail], () =>
-        fetch(
-            `http://localhost:5000/getNotification/${userEmail}`
-        ).then((res) => res.json())
+        fetch(`http://localhost:5000/getNotification/${userEmail}`).then(
+            (res) => res.json()
+        )
     );
+    if (notification) {
+        console.log(notification);
+    }
 
     useEffect(() => {
         const unseen = notification?.filter((n) => !n.seen);
         setUnseenNotify(unseen?.length);
-    }, [notification]);
+    }, [notification, refetch]);
 
     // get redux state
     const isOpen = useSelector((state) => state.notification.isOpen);
@@ -56,7 +60,6 @@ const Navbar = () => {
             setUserEmail(email);
         }
     }, [authInfo]);
-    console.log(authInfo);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -69,7 +72,7 @@ const Navbar = () => {
         dispatch(NotifiyStatusUpdate(!isOpen));
     };
 
-    if (isLoading || loading) {
+    if (loading) {
         return;
     }
 
@@ -322,7 +325,9 @@ const Navbar = () => {
                 </div>
             </div>
             {isOpen && (
-                <Notification {...{ notification, refetch, userEmail }} />
+                <Notification
+                    {...{ notification, userEmail, isLoading, refetch }}
+                />
             )}
         </div>
     );
