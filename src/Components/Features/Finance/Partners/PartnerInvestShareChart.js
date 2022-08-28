@@ -7,8 +7,6 @@ import {
     PolarRadiusAxis,
     Radar,
     RadarChart,
-    PieChart,
-    Pie,
 } from "recharts";
 const PartnerInvestShareChart = () => {
     const [partnerList, setPartnerList] = useState([]);
@@ -21,9 +19,9 @@ const PartnerInvestShareChart = () => {
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList, companyName]);
 
-    console.log(partnerList, companyName);
+    // console.log(partnerList, companyName);
     return (
-        <div className="flex justify-evenly gap-10 mx-auto">
+        <div className="bg-white my-4 py-5 px-5 lg:flex lg:justify-between">
             <div>
                 <RadarChart outerRadius={90} width={350} height={250} data={partnerList}>
                     <PolarGrid />
