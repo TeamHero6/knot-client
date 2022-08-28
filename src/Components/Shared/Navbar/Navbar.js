@@ -8,7 +8,6 @@ import logo from "../../../Assets/logo/KnotLogo.png";
 import auth from "../../../firebase.init";
 import { logout } from "../../../Redux/Auth/authAction";
 import { NotifiyStatusUpdate } from "../../../Redux/notification/NotificationAction";
-import Loader from "../Loader/Loader";
 import Notification from "../Notification/Notification";
 
 const Navbar = () => {
@@ -22,7 +21,7 @@ const Navbar = () => {
 
     // get all notification
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/getNotification/${userEmail}`)
+    //     fetch(`https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`)
     //         .then((res) => res.json())
     //         .then((data) => {
     //             setNotification(data);
@@ -36,9 +35,9 @@ const Navbar = () => {
         isLoading,
         refetch,
     } = useQuery(["notification", userEmail], () =>
-        fetch(`http://localhost:5000/getNotification/${userEmail}`).then(
-            (res) => res.json()
-        )
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`
+        ).then((res) => res.json())
     );
 
     useEffect(() => {
@@ -70,14 +69,10 @@ const Navbar = () => {
         dispatch(NotifiyStatusUpdate(!isOpen));
     };
 
-    if (isLoading) {
+    if (isLoading || loading) {
         return;
     }
 
-    //Sign out user
-    if (loading) {
-        return <Loader />;
-    }
     return (
         <div className="relative">
             <div className="navbar md:px-8 lg:px-12 bg-white h-[80px]">
@@ -276,10 +271,11 @@ const Navbar = () => {
                                         >
                                             <div className="w-10 rounded-full">
                                                 <img
-                                                    src={`${userProfile
-                                                        ? userProfile
-                                                        : "https://placeimg.com/80/80/people"
-                                                        }`}
+                                                    src={`${
+                                                        userProfile
+                                                            ? userProfile
+                                                            : "https://placeimg.com/80/80/people"
+                                                    }`}
                                                     alt=""
                                                 />
                                             </div>

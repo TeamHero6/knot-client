@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const PartnerDetails = () => {
     const [partnerList, setPartnerList] = useState([]);
 
     const { partnerName, contactNumber, address, email, UpdateInvest, _id } =
         partnerList;
-
-    useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/partner")
-            .then((res) => res.json())
-            .then((data) => setPartnerList(data.reverse()));
-    }, [partnerList]);
+        const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+        const { companyName } = loggerInfo;
+    
+        useEffect(() => {
+            fetch(`http://localhost:5000/partner/${companyName}`)
+                .then((res) => res.json())
+                .then((data) => setPartnerList(data.reverse()));
+        }, [partnerList, companyName]);
+    
+        // console.log(partnerList, companyName);
 
     return (
         <div>
             <div>
                 <h2 className="text-base font-semibold">Partner List</h2>
-                <table class="shadow-2xl h-80 border-2 border-cyan-300 min-w-1/2 mx-auto my-8 text-base overflow-hidden">
+                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-8 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
-                        {/* <thead className=' border-b border-cyan-100'> */}
                         <tr>
                             <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">
                                 Name

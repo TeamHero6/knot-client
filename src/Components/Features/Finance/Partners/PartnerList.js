@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const PartnerList = ({ setSinglePartnerDetail }) => {
     const [partnerList, setPartnerList] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/partner")
+        fetch(`http://localhost:5000/partner/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
-    }, [partnerList]);
+    }, [partnerList, companyName]);
+
+    // console.log(partnerList, companyName);
 
     return (
         <div>

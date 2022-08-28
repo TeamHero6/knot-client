@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import PartnerDetailsModal from "./PartnerDetailsModal";
 import PartnerInvestChart from "./PartnerInvestChart";
 import PartnerInvestShareChart from "./PartnerInvestShareChart";
@@ -11,12 +12,14 @@ const Partners = () => {
     const [addNewPartners, setAddNewPartners] = useState(false);
     const [singlePartnerDetail, setSinglePartnerDetail] = useState({});
     const [partnerList, setPartnerList] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/partner")
+        fetch(`http://localhost:5000/partner/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
-    }, [partnerList]);
+    }, [partnerList, companyName]);
 
     const handleAddPartners = (e) => {
         e.preventDefault();
@@ -30,6 +33,7 @@ const Partners = () => {
             contactNumber,
             address,
             email,
+            companyName,
         };
 
         fetch(

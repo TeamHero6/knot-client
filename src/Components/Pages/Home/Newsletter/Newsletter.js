@@ -1,17 +1,15 @@
 import React from 'react';
 import { toast, ToastContainer } from "react-toastify";
 import newsletter from "../../../../Assets/images/newsletter.png";
-import { useSelector } from "react-redux";
 
 const Newsletter = () => {
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
-    const { companyName: company } = loggerInfo;
+   
 
     const emailSend = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
-        const companyName = company ? company : 'KNOT';
-        const newsletter = { email, companyName };
+        const newsletter = { email };
+
         fetch(
             "https://knot-business-solution-server.herokuapp.com/newsletter",
             {

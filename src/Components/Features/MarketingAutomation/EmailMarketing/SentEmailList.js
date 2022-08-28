@@ -5,11 +5,13 @@ import { useSelector } from "react-redux";
 
 const SentEmailList = () => {
     const [emailList, setEmailList] = useState([]);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/sentEmail/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/sentEmail/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setEmailList(data.reverse()));
     }, [emailList, companyName]);

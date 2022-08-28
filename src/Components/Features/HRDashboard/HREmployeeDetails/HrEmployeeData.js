@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const HrEmployeeData = () => {
     const [details, setDetails] = useState([]);
-
     const [employinfo, setEmployinfo] = useState({});
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
+
     useEffect(() => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/employeedetails"
-        )
+        fetch(`http://localhost:5000/employeedetails/${companyName}`)
             .then((res) => res.json())
-            .then((data) => setDetails(data));
-    }, [details]);
-    console.log(details);
+            .then((data) => setDetails(data.reverse()));
+    }, [details, companyName]);
+    // console.log(details, companyName);
 
     return (
         <div className="mx-auto w-full rounded-lg my-5 ">
