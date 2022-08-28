@@ -12,6 +12,8 @@ const PartnerList = ({ setSinglePartnerDetail }) => {
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList, companyName]);
 
+    // console.log(partnerList, companyName);
+
     return (
         <div>
             <div>
