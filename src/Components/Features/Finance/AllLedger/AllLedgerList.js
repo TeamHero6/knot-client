@@ -28,9 +28,9 @@ const AllLedgerList = () => {
             <div className="w-full">
                 <div className="flex gap-5"></div>
                 <h1 className="font-semibold text-xl ml-5">Cash Book</h1>
-                <div className="w-full mt-5 mb-5 overflow-y-auto h-80">
+                <div className="w-full mt-5 mb-5 h-80 overflow-auto">
                     <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden ">
-                        <thead className="text-white bg-cyan-500 border-b border-cyan-100 sticky ">
+                        <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">
                                     Data
@@ -79,7 +79,7 @@ const AllLedgerList = () => {
 
             <div>
                 <h1 className="font-semibold text-xl ml-5">Bank Book</h1>
-                <div className="w-full h-80 mt-5 mb-5 overflow-y-auto ">
+                <div className="w-full h-80 mt-5 mb-5 overflow-y-auto">
                     <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>

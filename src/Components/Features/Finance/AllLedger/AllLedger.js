@@ -29,7 +29,7 @@ const AllLedger = () => {
         };
 
         console.log(CashBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/cashBook", {
+        fetch("http://localhost:5000/cashBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -62,7 +62,7 @@ const AllLedger = () => {
             companyName,
         };
         // console.log(BankBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
+        fetch("http://localhost:5000/bankBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -109,7 +109,7 @@ const AllLedger = () => {
                 </div>
                 {cashBook ? (
                     <div>
-                        <div className="md:w-3/6 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8 ">
+                        <div className="md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8 ">
                             <form onSubmit={handleAddCashBook}>
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
@@ -226,7 +226,7 @@ const AllLedger = () => {
                 <div className="flex gap-5"></div>
                 {bankBook ? (
                     <div>
-                        <div className="md:w-3/6 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                        <div className="md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                             <form onSubmit={handleAddBankBook}>
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">

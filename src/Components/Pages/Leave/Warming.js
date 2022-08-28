@@ -11,7 +11,7 @@ const Warming = () => {
     }, []);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
+        fetch("http://localhost:5000/Trainnig")
             .then((res) => res.json())
             .then((data) => setTrainings(data.reverse()));
     }, []);

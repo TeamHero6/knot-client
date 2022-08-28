@@ -30,7 +30,7 @@ const HrVacancy = () => {
 
     const onSubmit = (data) => {
         const newData = { ...data, companyName };
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
+        fetch("http://localhost:5000/vacancy", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

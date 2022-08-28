@@ -33,7 +33,7 @@ const HrJoining = () => {
 
     const onSubmitTraining = (data) => {
         const newData = { ...data, companyName };
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
+        fetch("http://localhost:5000/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -15,7 +15,7 @@ const HRChat = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/conversations/${Department}`
+            `http://localhost:5000/conversations/${Department}`
         )
             .then((res) => res.json())
             .then((data) => setChatList(data));

@@ -21,7 +21,7 @@ const Navbar = () => {
 
     // get all notification
     // useEffect(() => {
-    //     fetch(`https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`)
+    //     fetch(`http://localhost:5000/getNotification/${userEmail}`)
     //         .then((res) => res.json())
     //         .then((data) => {
     //             setNotification(data);
@@ -36,7 +36,7 @@ const Navbar = () => {
         refetch,
     } = useQuery(["notification", userEmail], () =>
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`
+            `http://localhost:5000/getNotification/${userEmail}`
         ).then((res) => res.json())
     );
 

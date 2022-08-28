@@ -31,22 +31,22 @@ const FinanceDashboard = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <section className="lg:w-full flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-full md:flex md:flex-col sm:w-11/12 sm:mx-auto">
-                <div className="w-4/12">
+            <section className=" bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 lg:flex lg:flex-row">
+                <div className="lg:w-5/12 w-full lg:ml-12 lg:gap-5">
                     <IncomeExpenseOverview />
                 </div>
-                <div className="w-7/12">
+                <div className="lg:w-7/12 w-full">
                     <SalesReport />
                 </div>
             </section>
 
-            <section className="lg:w-full flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto">
+            <section className="bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 lg:flex lg:flex-row">
                 <div>
                     <PartnerDetails />
                 </div>
-                <div>
+                <div className="">
                     <h2 className="text-base font-semibold mb-8">Company Share</h2>
-                    <div>
+                    <div className="overflow-auto">
                         <AreaChart width={500} height={250} data={partnerList}
                             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                             <defs>

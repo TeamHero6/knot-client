@@ -4,7 +4,7 @@ import React from "react";
 const Notification = ({ notification, refetch, userEmail }) => {
     const readAllHandler = () => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/readAll/${userEmail}`,
+            `http://localhost:5000/readAll/${userEmail}`,
             {
                 method: "PUT",
             }
@@ -19,7 +19,7 @@ const Notification = ({ notification, refetch, userEmail }) => {
     // update seen handler
     const updateSeen = (id) => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/updateNotify/${id}`,
+            `http://localhost:5000/updateNotify/${id}`,
             {
                 method: "PUT",
             }

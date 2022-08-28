@@ -12,7 +12,7 @@ const UserLogin = () => {
     const liveAuth = () => {
         const info = { secretCode, email };
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/checkEmployee",
+            "http://localhost:5000/checkEmployee",
             {
                 method: "POST",
                 headers: {
