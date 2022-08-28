@@ -12,10 +12,10 @@ import "../../Pages/Style/Style.css";
 const Footer = () => {
 
     return (
-        <div className="footer-container">
-            <div className="footer-section-top ">
-                <section className="logo-area mx-auto">
-                    <div className="icon">
+        <div className="bg-[#333333] pt-8">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                <section className="text-white hidden md:flex mx-auto">
+                    <div className="text-3xl mr-2">
                         <a href="https://www.facebook.com/">
                             <AiFillFacebook />
                         </a>
@@ -30,14 +30,12 @@ const Footer = () => {
                         </a>
                     </div>
                     <div>
-                        <img src={Logo} alt="" />
-                        <h3>
-                            Build and sell extensions for <br /> Knot products.
-                        </h3>
+                        <img className="w-1/2" src={Logo} alt="" />
+                        <p>Build and sell extensions for <br /> Knot products.</p>
                     </div>
                 </section>
-                <section className="additional-link-area mx-auto">
-                    <h2>Additional Link</h2>
+                <section className="text-white mx-auto sm:mx-0">
+                    <h2 className="mb-2">Additional Link</h2>
                     <div className="link">
                         <ul>
                             <li>
@@ -55,8 +53,8 @@ const Footer = () => {
                         </ul>
                     </div>
                 </section>
-                <section className="contact-area mx-auto">
-                    <h2>Contact Us</h2>
+                <section className="text-white">
+                    <h2 className="mb-2">Contact Us</h2>
                     <p>
                         Address: Mirpur - 1207, Dhaka <br />
                         Division, Bangladesh
@@ -65,53 +63,7 @@ const Footer = () => {
                     <p>Email: info@knot.com</p>
                 </section>
             </div>
-            <div className="footer-section-top-sm-md">
-                <div className="Easy-to-use">
-                    <div className="collapse">
-                        <input type="checkbox" />
-                        <div className="collapse-title text-xl font-medium">
-                            <h2>Additional Link</h2>
-                        </div>
-                        <div className="collapse-content">
-                            <div className="link">
-                                <ul>
-                                    <li>
-                                        <Link to="/about">About us</Link> <br />
-                                    </li>
-                                    <li>
-                                        <Link to="/blog">Blog</Link> <br />
-                                    </li>
-                                    <li>
-                                        <Link to="/FAQ">FAQ</Link> <br />
-                                    </li>
-                                    <li>
-                                        <Link to="/">Payment Method</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="Secure-Database">
-                    <div className="collapse">
-                        <input type="checkbox" />
-                        <div className="collapse-title text-xl font-medium">
-                            <h2>Contact Us</h2>
-                        </div>
-                        <div className="collapse-content">
-                            <section className="contact-area">
-                                <h4>
-                                    Address: Mirpur - 1207, Dhaka <br />
-                                    Division, Bangladesh
-                                </h4>
-                                <h4>Phone: 0123456789</h4>
-                                <h4>Email: info@knot.com</h4>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="footer-section-bottom text-center">
+            <div className="footer-section-bottom text-center mt-4">
                 <p>
                     Copyright © {new Date().getFullYear()} Knot Corporation Pvt.
                     Ltd. All Rights Reserved.

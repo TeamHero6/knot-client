@@ -28,20 +28,20 @@ const Newsletter = () => {
     };
 
     return (
-        <div className='flex items-center mt-12 mx-20'>
-            <section className='w-1/2'>
-                <img className='mx-auto w-2/3' src={newsletter} alt="" />
+        <div className='md:flex items-center my-12 md:my-20 md:mx-12 lg:mx-20'>
+            <section className='md:w-1/2'>
+                <img className='mx-auto md:w-2/3' src={newsletter} alt="" />
             </section>
-            <section className='w-1/2'>
-                <div className='w-2/3 mx-auto'>
-                    <h2 className='text-3xl font-bold'>Subscribe To</h2>
-                    <h2 className='text-5xl font-bold'>Our Newsletter!</h2>
+            <section className='md:w-1/2'>
+                <div className='w-5/6 md:w-2/3 mx-auto'>
+                    <h2 className='text-2xl md:text-3xl font-semibold md:font-bold'>Subscribe To</h2>
+                    <h2 className='text-4xl md:text-5xl font-semibold md:font-bold'>Our Newsletter!</h2>
                     <p className='text-lg font-medium my-4'>
                         Subscribe to our newsletter and stay updated
                     </p>
                     <form onSubmit={emailSend}>
                         <input
-                            className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                            className="py-2 pl-3 w-5/6 md:w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                             type="email"
                             name="email"
                             id=""
