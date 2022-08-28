@@ -48,20 +48,18 @@ const AddTaskModal = ({ refetch, setOpen }) => {
             taskDescription,
             deadline,
             companyName,
+            status: "Assigned",
         };
         console.log(result);
 
         //Post data to server
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(result),
-            }
-        )
+        fetch("http://localhost:5000/v1/addNewTask", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(result),
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {

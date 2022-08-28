@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import taskIc from "../../../../Assets/task1.png";
+import organizeIc from "../../../../Assets/teamOrganize.png";
 import ExNavbar from "../../../ExampleDesign/ExNavbar";
 
 const AdminDashboardF = () => {
@@ -7,7 +9,7 @@ const AdminDashboardF = () => {
     return (
         <div className="min-h-screen bg-custom-gray">
             <span
-                className="fixed block lg:hidden bottom-6 bg-custom-light-gray p-3 hover:bg-custom-green hover:text-custom-light-gray duration-300 shadow-sm rounded-full right-3 hover:shadow-lg"
+                className="fixed block md:hidden bottom-6 bg-custom-light-gray p-3 hover:bg-custom-green hover:text-custom-light-gray duration-300 shadow-sm rounded-full right-6 border-2 border-green-400 hover:shadow-lg z-50"
                 onClick={() => setOpen(!open)}
             >
                 <svg
@@ -36,10 +38,11 @@ const AdminDashboardF = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                            ? "flex items-center sm:text-sm my-4 px-auto p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
+                                            : "flex sm:text-sm items-center hover:bg-custom-cyan-100 bg-custom-gray my-4 px-auto p-2"
                                     }
                                 >
+                                    <img src={taskIc} className="w-7" alt="" />
                                     <span>Daily Task</span>
                                 </span>
                             )}
@@ -49,11 +52,18 @@ const AdminDashboardF = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex my-4  py-2 px-6 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "flex my-4 py-2 px-6 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 bg-custom-gray"
+                                            ? "flex items-center sm:text-sm my-4 px-auto p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400 sm:max-w-sm"
+                                            : "flex sm:text-sm items-center hover:bg-custom-cyan-100 bg-custom-gray my-4 px-auto p-2"
                                     }
                                 >
-                                    Team Organize
+                                    <span>
+                                        <img
+                                            src={organizeIc}
+                                            className="w-7"
+                                            alt=""
+                                        />
+                                    </span>
+                                    <span>Team Organize</span>
                                 </span>
                             )}
                         </NavLink>

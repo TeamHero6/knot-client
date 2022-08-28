@@ -1,28 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import moment from "moment";
-import React, { useState } from "react";
+import React from "react";
 
-const AllTasks = ({ data, searchTerm }) => {
-    const [edit, setEdit] = useState(false);
-
-    // update task status
-    const updateStatus = (status, id) => {
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/updateStatus",
-            {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify({ status, id }),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
+    // Sending clicked task to parent componets name DailyTask.js
+    const taskDetailsHandler = (task) => {
+        setView(!view);
+        setSingleTask(task);
     };
 
     return (
-        <div>
+        <div className="">
             <table className="min-w-full mx-auto text-base overflow-hidden ">
                 <thead className="text-white bg-cyan-400 border-b border-cyan-300">
                     <tr className="">
@@ -38,7 +26,7 @@ const AllTasks = ({ data, searchTerm }) => {
                         <th className="py-3 text-left px-6 whitespace-nowrap">
                             Deadline
                         </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
+                        <th className="py-3 text-center px-6 whitespace-nowrap">
                             Status
                         </th>
                         <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -107,36 +95,30 @@ const AllTasks = ({ data, searchTerm }) => {
                                                 )}
                                             </td>
                                             <td className="py-3 px-6 whitespace-nowrap">
-                                                <select
-                                                    name=""
-                                                    id=""
-                                                    className="px-2 py-1 bg-green-500 text-white"
-                                                    onChange={(e) =>
-                                                        updateStatus(
-                                                            e.target.value,
-                                                            task?._id
-                                                        )
-                                                    }
+                                                <p
+                                                    className={`px-2 ${
+                                                        task.status ===
+                                                            "Assigned" &&
+                                                        "bg-red-400"
+                                                    } ${
+                                                        task.status ===
+                                                            "Running" &&
+                                                        "bg-green-400"
+                                                    } py-1 text-white text-center rounded-sm`}
                                                 >
-                                                    <option value="running">
-                                                        Running
-                                                    </option>
-                                                    <option value="done">
-                                                        Done
-                                                    </option>
-                                                    <option value="missed">
-                                                        Missed
-                                                    </option>
-                                                </select>
+                                                    {task.status}
+                                                </p>
                                             </td>
-                                            <td className="py-3 px-6 whitespace-nowrap hover:underline hover:text-blue-500">
-                                                <button
+                                            <td className="py-3 px-6 whitespace-nowrap">
+                                                <label
+                                                    for="taskDetails"
+                                                    class="hover:underline hover:text-blue-500"
                                                     onClick={() =>
-                                                        setEdit(!edit)
+                                                        taskDetailsHandler(task)
                                                     }
                                                 >
-                                                    Edit
-                                                </button>
+                                                    View
+                                                </label>
                                             </td>
                                         </motion.tr>
                                     </>
