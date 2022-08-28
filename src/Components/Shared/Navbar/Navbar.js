@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -11,34 +12,37 @@ import Notification from "../Notification/Notification";
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
-    const [refetch, setRefetch] = useState(false);
+    // const [refetch, setRefetch] = useState(false);
     const [userProfile, setuserprofile] = useState("");
     const [userEmail, setUserEmail] = useState("");
-    const [notification, setNotification] = useState([]);
+    // const [notification, setNotification] = useState([]);
     const [unseenNotify, setUnseenNotify] = useState();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     // get all notification
-    useEffect(() => {
-        fetch(`http://localhost:5000/getNotification/${userEmail}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setNotification(data);
-                const unseen = data?.filter((n) => !n.seen);
-                setUnseenNotify(unseen.length);
-            });
-    }, [userEmail, refetch]);
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/getNotification/${userEmail}`)
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             setNotification(data);
+    //             const unseen = data?.filter((n) => !n.seen);
+    //             setUnseenNotify(unseen.length);
+    //         });
+    // }, [userEmail, refetch]);
 
-    // const {
-    //     data: notification,
-    //     isLoading,
-    //     refetch,
-    // } = useQuery(["notification", userEmail], () =>
-    //     fetch(
-    //         `https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`
-    //     ).then((res) => res.json())
-    // );
+    const {
+        data: notification,
+        isLoading,
+        refetch,
+    } = useQuery(["notification", userEmail], () =>
+        fetch(`http://localhost:5000/getNotification/${userEmail}`).then(
+            (res) => res.json()
+        )
+    );
+    if (notification) {
+        console.log(notification);
+    }
 
     useEffect(() => {
         const unseen = notification?.filter((n) => !n.seen);
@@ -322,7 +326,7 @@ const Navbar = () => {
             </div>
             {isOpen && (
                 <Notification
-                    {...{ notification, userEmail, setRefetch, refetch }}
+                    {...{ notification, userEmail, isLoading, refetch }}
                 />
             )}
         </div>
