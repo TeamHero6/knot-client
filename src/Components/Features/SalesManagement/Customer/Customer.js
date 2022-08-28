@@ -57,7 +57,7 @@ const Customer = () => {
             </div>
             {addNewItem ? (
                 <div>
-                    <div className="md:w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                    <div className="w-4/5 sm:w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                         <form onSubmit={handleAddCustomer}>
                             {/* ----- Customer Details */}
                             <div>

@@ -76,7 +76,7 @@ const Items = () => {
     };
 
     return (
-        <div>
+        <div className="overflow-auto">
             <div>
                 <button
                     onClick={() => setAddNewItem(!addNewItem)}
@@ -89,7 +89,7 @@ const Items = () => {
             </div>
             {addNewItem ? (
                 <div>
-                    <div className="md:w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                    <div className="w-full sm:w-4/5 lg:w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                         <form onSubmit={handleAddProduct}>
                             {/* ----- Product Details */}
                             <div>
@@ -190,7 +190,7 @@ const Items = () => {
                                 <h1 className="font-bold text-center text-purple-800 mb-2 text-lg mt-4">
                                     Sales Info
                                 </h1>
-                                <div className="flex items-center gap-4 text-center">
+                                <div className="grid grid-cols-2 md:flex items-center gap-4 text-center">
                                     <div className="">
                                         <input
                                             onChange={handlePurchaseAmount}
@@ -260,7 +260,7 @@ const Items = () => {
                                         />{" "}
                                         <br />
                                         <label
-                                            className="font-bold w-40"
+                                            className="font-bold w-40 whitespace-nowrap"
                                             htmlFor="name"
                                         >
                                             Sales amount

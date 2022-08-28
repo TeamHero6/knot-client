@@ -55,22 +55,22 @@ const SalesDashboard = () => {
     return (
         <div>
             <section className="flex justify-center	gap-5">
-                <div className="card w-72 bg-base-100 shadow-xl">
-                    <div className="card-body text-center">
+                <div className="card w-40 md:w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center px-0 sm:px-8">
                         <h2 className="font-bold text-lg">25</h2>
                         <p>Total Order</p>
                     </div>
                 </div>
-                <div className="card w-72 bg-base-100 shadow-xl">
-                    <div className="card-body text-center">
+                <div className="card w-40 md:w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center px-0 sm:px-8">
                         <h2 className="font-bold text-lg">
                             {customerList?.length}
                         </h2>
                         <p>Happy Customer</p>
                     </div>
                 </div>
-                <div className="card w-72 bg-base-100 shadow-xl">
-                    <div className="card-body text-center">
+                <div className="card w-40 md:w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center px-0 sm:px-8">
                         <h2 className="font-bold text-lg">
                             {vendorList?.length}
                         </h2>
@@ -142,7 +142,7 @@ const SalesDashboard = () => {
                 </div>
             </section>
             <section>
-                <div className="w-1/2 my-6 mx-auto bg-white px-6 py-4">
+                <div className="w-full md:w-1/2 my-6 overflow-auto md:mx-auto bg-white px-6 py-4">
                     <h1 className="text-xl text-center my-2 font-medium">
                         Vendor Vs Due Amount
                     </h1>

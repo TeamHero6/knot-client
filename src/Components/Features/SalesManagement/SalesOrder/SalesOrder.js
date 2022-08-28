@@ -112,11 +112,11 @@ const SalesOrder = () => {
             </div>
             {addNewOrder ? (
                 <div>
-                    <div className="w-10/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                    <div className="w-full lg:w-10/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                         <form onSubmit={handleSetOrder}>
                             <div className="grid grid-cols-4">
                                 {/* ----- Customer Info */}
-                                <div className="col-span-3">
+                                <div className="col-span-4 md:col-span-3">
                                     <h1 className="font-bold text-center text-purple-800 mb-2 text-lg">
                                         Customer Details
                                     </h1>
@@ -245,7 +245,7 @@ const SalesOrder = () => {
                                         </select>
                                     </div>
                                     <div>
-                                        <div className="flex items-center gap-4 text-center">
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:flex items-center gap-4 text-center">
                                             <div className="">
                                                 <label
                                                     className="font-bold w-40 whitespace-nowrap"
@@ -258,7 +258,7 @@ const SalesOrder = () => {
                                                     required
                                                     name="productName"
                                                     id=""
-                                                    className="py-1 pl-3 w-32 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                                    className="py-1 pl-3 w-full md:w-32 my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                                                 >
                                                     <option
                                                         value=""
@@ -305,7 +305,7 @@ const SalesOrder = () => {
                                             </div>
                                             <div className="">
                                                 <label
-                                                    className="font-bold w-40"
+                                                    className="font-bold w-40 whitespace-nowrap"
                                                     htmlFor="name"
                                                 >
                                                     Unit Price
@@ -364,7 +364,7 @@ const SalesOrder = () => {
                                     </div>
                                 </div>
                                 {/* ----- Vendor Info */}
-                                <div className="col-span-1 mx-4">
+                                <div className="col-span-4 w-3/4 sm:w-1/2 md:w-full md:col-span-1 mx-auto md:mx-4">
                                     <h1 className="font-bold text-center text-purple-800 mb-2 text-lg">
                                         Enlisted Vendor
                                     </h1>
