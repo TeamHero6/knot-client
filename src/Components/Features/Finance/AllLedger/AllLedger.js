@@ -108,8 +108,8 @@ const AllLedger = () => {
                     </div>
                 </div>
                 {cashBook ? (
-                    <div>
-                        <div className="md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8 ">
+                    <div className="">
+                        <div className="md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded">
                             <form onSubmit={handleAddCashBook}>
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
@@ -223,13 +223,13 @@ const AllLedger = () => {
                     ""
                 )}
 
-                <div className="flex gap-5"></div>
+
                 {bankBook ? (
                     <div>
-                        <div className="md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                        <div className="md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded">
                             <form onSubmit={handleAddBankBook}>
                                 <div>
-                                    <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
+                                    <h1 className="font-bold text-center text-blue-500 text-lg">
                                         Bank Book
                                     </h1>
                                     <div className="md:flex items-center">
