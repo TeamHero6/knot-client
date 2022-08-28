@@ -44,16 +44,13 @@ const BusinessLogin = () => {
             setCustomError("");
             const secretCode = data?.secretCode;
             const info = { email, secretCode };
-            fetch(
-                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(info),
-                }
-            )
+            fetch("http://localhost:5000/checkEmployee", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(info),
+            })
                 .then((res) => res.json())
                 .then(async (data) => {
                     const { role, message, loggerInfo } = data;

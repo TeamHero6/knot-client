@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
 const AwardModalDaisyUI = ({ setAwardModal, awardRefetch }) => {
-    const [name, setName] = useState("");
+    const companyName = useSelector(
+        (state) => state?.auth?.loggerInfo?.companyName
+    );
     const allEmployees = useSelector((state) => state.auth.allEmployees);
     if (allEmployees) {
         console.log(allEmployees);
@@ -20,19 +22,16 @@ const AwardModalDaisyUI = ({ setAwardModal, awardRefetch }) => {
             employeeEmail,
             awardTitle,
             successMessage,
+            companyName,
         };
 
-        console.log(awardDetails);
-        fetch(
-            "https://knot-business-solution-server.herokuapp.com/createAward",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(awardDetails),
-            }
-        )
+        fetch("http://localhost:5000/createAward", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(awardDetails),
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
