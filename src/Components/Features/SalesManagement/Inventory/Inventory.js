@@ -29,7 +29,7 @@ const Inventory = () => {
 
     return (
         <div>
-            <div className="bg-white px-8 pb-6 pt-4 my-6">
+            <div className="bg-white px-8 pb-6 pt-4 my-6 overflow-auto">
                 <table className="shadow-lg border-2 border-cyan-300 w-full mx-auto text-base overflow-hidden">
                     <caption>
                         <h1 className="text-center text-2xl font-semibold mb-3">
@@ -38,19 +38,19 @@ const Inventory = () => {
                     </caption>
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Product
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Product Code
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Quantity
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Unit Price($)
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Vendor
                             </th>
                         </tr>
@@ -61,19 +61,19 @@ const Inventory = () => {
                                 key={product._id}
                                 className="hover:shadow-md hover:bg-cyan-100 duration-300 cursor-pointer border-b border-cyan-100"
                             >
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {product.productName}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {product.productCode}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {product.orderQuantity}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {product.unitPrice}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {product.vendorName}
                                 </td>
                             </tr>
@@ -82,7 +82,7 @@ const Inventory = () => {
                     <h1 className="hidden">{quantitySum}</h1>
                 </table>
             </div>
-            <div className="bg-white w-2/3 mx-auto px-2 py-6 my-6">
+            <div className="bg-white md:w-2/3 mx-auto px-2 py-6 my-6 overflow-auto">
                 <h1 className="text-center text-2xl font-semibold mb-4">
                     Product Quantity
                 </h1>

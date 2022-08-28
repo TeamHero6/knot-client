@@ -55,7 +55,7 @@ const EmailMarketing = () => {
                     <div>
                         <label
                             for="composeEmail"
-                            className="btn modal-button flex items-center gap-2 bg-green-400	 py-2 px-6 text-white font-semibold rounded border border-white hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm"
+                            className="btn modal-button flex items-center gap-2 bg-green-400 md:py-2 md:px-6 text-white font-semibold rounded border border-white hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm"
                         >
                             <FaRegEdit />
                             <p className="text-xl">Compose</p>

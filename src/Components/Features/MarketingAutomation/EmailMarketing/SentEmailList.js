@@ -27,7 +27,7 @@ const SentEmailList = () => {
     };
 
     return (
-        <div className="bg-white my-16 px-6 py-7">
+        <div className="bg-white overflow-auto my-16 px-6 py-7">
             <div className=" ">
                 <table className="shadow-lg border-[1px] border-cyan-300 w-full mx-auto text-base overflow-hidden">
                     {/* <!-- head --> */}

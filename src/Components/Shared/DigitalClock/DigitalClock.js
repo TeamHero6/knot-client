@@ -11,7 +11,7 @@ const DigitalClock = () => {
     setInterval(latestTime, 1000);
     return (
         <div>
-            <p>{updatedTime}</p>
+            <p className='whitespace-nowrap'>{updatedTime}</p>
         </div>
     );
 };

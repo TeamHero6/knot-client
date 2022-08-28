@@ -22,19 +22,19 @@ const Return = () => {
                 <table className="shadow-sm w-full border-2 border-cyan-300 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Customer Name
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Product Name
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Unit Price
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Quantity
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Total Amount
                             </th>
                         </tr>
@@ -45,19 +45,19 @@ const Return = () => {
                                 key={order._id}
                                 className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
                             >
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {order.customerName}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {order.productName}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {order.unitPrice}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {order.quantity}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {order.totalAmount}
                                 </td>
                             </tr>
