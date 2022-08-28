@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -12,38 +11,39 @@ import Notification from "../Notification/Notification";
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
+    const [refetch, setRefetch] = useState(false);
     const [userProfile, setuserprofile] = useState("");
     const [userEmail, setUserEmail] = useState("");
-    // const [notification, setNotification] = useState([]);
+    const [notification, setNotification] = useState([]);
     const [unseenNotify, setUnseenNotify] = useState();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     // get all notification
-    // useEffect(() => {
-    //     fetch(`https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`)
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             setNotification(data);
-    //             const unseen = data.filter((n) => !n.seen);
-    //             setUnseenNotify(unseen.length);
-    //         });
-    // }, [userEmail]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/getNotification/${userEmail}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setNotification(data);
+                const unseen = data?.filter((n) => !n.seen);
+                setUnseenNotify(unseen.length);
+            });
+    }, [userEmail, refetch]);
 
-    const {
-        data: notification,
-        isLoading,
-        refetch,
-    } = useQuery(["notification", userEmail], () =>
-        fetch(
-            `https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`
-        ).then((res) => res.json())
-    );
+    // const {
+    //     data: notification,
+    //     isLoading,
+    //     refetch,
+    // } = useQuery(["notification", userEmail], () =>
+    //     fetch(
+    //         `https://knot-business-solution-server.herokuapp.com/getNotification/${userEmail}`
+    //     ).then((res) => res.json())
+    // );
 
     useEffect(() => {
         const unseen = notification?.filter((n) => !n.seen);
         setUnseenNotify(unseen?.length);
-    }, [notification]);
+    }, [notification, refetch]);
 
     // get redux state
     const isOpen = useSelector((state) => state.notification.isOpen);
@@ -56,7 +56,6 @@ const Navbar = () => {
             setUserEmail(email);
         }
     }, [authInfo]);
-    console.log(authInfo);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -69,7 +68,7 @@ const Navbar = () => {
         dispatch(NotifiyStatusUpdate(!isOpen));
     };
 
-    if (isLoading || loading) {
+    if (loading) {
         return;
     }
 
@@ -322,7 +321,9 @@ const Navbar = () => {
                 </div>
             </div>
             {isOpen && (
-                <Notification {...{ notification, refetch, userEmail }} />
+                <Notification
+                    {...{ notification, userEmail, setRefetch, refetch }}
+                />
             )}
         </div>
     );

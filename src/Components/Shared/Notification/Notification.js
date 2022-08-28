@@ -1,33 +1,26 @@
 import moment from "moment";
 import React from "react";
 
-const Notification = ({ notification, refetch, userEmail }) => {
+const Notification = ({ notification, setRefetch, refetch, userEmail }) => {
     const readAllHandler = () => {
-        fetch(
-            `https://knot-business-solution-server.herokuapp.com/readAll/${userEmail}`,
-            {
-                method: "PUT",
-            }
-        )
+        fetch(`http://localhost:5000/readAll/${userEmail}`, {
+            method: "PUT",
+        })
             .then((res) => res.json())
             .then((data) => {
-                if (data) {
-                    refetch();
-                }
+                setRefetch(!refetch);
             });
     };
     // update seen handler
     const updateSeen = (id) => {
-        fetch(
-            `https://knot-business-solution-server.herokuapp.com/updateNotify/${id}`,
-            {
-                method: "PUT",
-            }
-        )
+        console.log(id);
+        fetch(`http://localhost:5000/updateNotify/${id}`, {
+            method: "PUT",
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
-                    refetch();
+                    setRefetch(!refetch);
                 }
             });
     };
@@ -41,7 +34,7 @@ const Notification = ({ notification, refetch, userEmail }) => {
             </span>
             <hr />
             <ul className="max-h-[250px] scroll-smooth overflow-y-scroll">
-                {notification.map((notify) => {
+                {notification?.map((notify) => {
                     if (notify.type === "meeting") {
                         return (
                             <>
