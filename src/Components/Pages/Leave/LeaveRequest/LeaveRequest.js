@@ -3,39 +3,37 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { BiPlus } from 'react-icons/bi';
 import { AiFillSave } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const LeaveRequest = () => {
-    const [userinfo, setUserinfo] = useState([]);
     const [leave, setleave] = useState([]);
     const [show, setShow] = useState(false);
     const [leaveModal, setLeaveModal] = useState({});
-
-    useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/leaveData")
-            .then((res) => res.json())
-            .then((data) => setUserinfo(data));
-    }, [leave]);
-
     const { register, handleSubmit, reset } = useForm();
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/user")
+        fetch(`http://localhost:5000/users/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setleave(data));
-    }, []);
+    }, [leave, loggerInfo]);
+    console.log(leave);
+
     const onSubmit = (data) => {
+        const newData = { ...data, companyName };
         fetch("https://sheltered-cliffs-60290.herokuapp.com/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(newData),
         })
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {
                     reset();
-                    toast.success("Add succesfully");
+                    toast.success("Add successfully");
                 }
             });
     };
@@ -52,32 +50,28 @@ const LeaveRequest = () => {
                             <h1 className='text-2xl text-center font-semibold mt-5 text-[#0182BE]'>Leave Request  </h1>
                             <div className='ml-3 '>
                                 <form className='lg:w-10/12 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-12 px-5 mt-10 md:w-9/12 sm:w-11/12 sm:mx-auto' onSubmit={handleSubmit(onSubmit)}>
-                                    <div className='grid lg:grid-cols-2'>
-                                        {/* ff */}
+                                    <div>
                                         <div>
                                             <div className='flex items-center'>
                                                 <label className="label w-48">
-                                                    <span className="label-text text-xl">Date :</span>
+                                                    <span className="label-text text-xl">Email :</span>
                                                 </label>
                                                 <input required
-                                                    type="date" placeholder="Enter Date"
+                                                    type="email" placeholder="Your Email"
                                                     className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
-                                                    {...register("Date")}
+                                                    {...register("email")}
                                                 />
-
 
                                             </div>
                                             <div className='flex items-center'>
                                                 <label className="label w-48">
-                                                    <span className="label-text text-xl">Employee Name :</span>
+                                                    <span className="label-text text-xl">Name :</span>
                                                 </label>
                                                 <input required
-                                                    type="text" placeholder="Employee Name"
+                                                    type="text" placeholder="Your Name"
                                                     className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
                                                     {...register("Name")}
                                                 />
-
-
                                             </div>
                                             <div className='flex items-center'>
                                                 <label className="label w-48">
@@ -88,8 +82,6 @@ const LeaveRequest = () => {
                                                     className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
                                                     {...register("id")}
                                                 />
-
-
                                             </div>
                                             <div className='flex items-center'>
                                                 <label className="label w-48">
@@ -100,11 +92,8 @@ const LeaveRequest = () => {
                                                     className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
                                                     {...register("Designation")}
                                                 />
-
-
                                             </div>
                                         </div>
-                                        {/* ff */}
                                         <div>
                                             <div className='flex items-center'>
                                                 <label className="label w-48">
@@ -115,8 +104,6 @@ const LeaveRequest = () => {
                                                     className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
                                                     {...register("dep")}
                                                 />
-
-
                                             </div>
                                             <div className='flex items-center'>
                                                 <label className="label w-48">
@@ -127,8 +114,6 @@ const LeaveRequest = () => {
                                                     className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
                                                     {...register("s_date")}
                                                 />
-
-
                                             </div>
                                             <div className='flex items-center'>
                                                 <label className="label w-48">
@@ -139,8 +124,6 @@ const LeaveRequest = () => {
                                                     className='py-2 pl-3 w-6/12 my-1 border border-gray-300 bg-slate-50 rounded outline-none '
                                                     {...register("e_date")}
                                                 />
-
-
                                             </div>
                                             <div className='lg:flex items-center'>
                                                 <label className="label w-48">
@@ -165,7 +148,7 @@ const LeaveRequest = () => {
                 <div className='px-5 mt-5'>
                 <h1 className='text-2xl font-bold'>Request Status</h1>
                     <div class="overflow-x-auto">
-                        <div className="h-80 w-full mb-5 flex justify-between rounded py-6 mt-5">
+                        <div className="w-full mb-5 flex justify-between rounded py-6 mt-5">
                             <table class="shadow-sm border-2 border-cyan-300 w-full text-base overflow-hidden">
                                 <thead className='text-white bg-cyan-500 border-b border-cyan-100'>
                                     <tr>
@@ -192,10 +175,7 @@ const LeaveRequest = () => {
                                             </tr>
                                         )
                                     }
-
-
                                 </tbody>
-
                             </table>
                         </div>
                         {/* <RequestStatus></RequestStatus> */}
@@ -204,7 +184,7 @@ const LeaveRequest = () => {
                         <div className="modal modal-bottom sm:modal-middle">
                             <div className="modal-box">
                                 <h3 className="font-bold text-lg">Leave Request Information!</h3>
-                                <p>Date : {leaveModal.Date}</p>
+                                <p>Date : {leaveModal.email}</p>
                                 <p>Name : {leaveModal.Name}</p>
                                 <p>Employee ID : {leaveModal.id}</p>
                                 <p>Designation : {leaveModal.Designation}</p>
