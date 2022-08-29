@@ -1,6 +1,7 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { RotatingSquare } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import access from "../../Assets/icons/Dashboard/access.svg";
@@ -13,7 +14,7 @@ const ExNavbar = () => {
 
     // Getting all neccasary user information from redux store
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    const { companyLogo } = loggerInfo;
+    const { companyLogo, userPhoto } = loggerInfo;
 
     // sign out handler
     const handleSignOut = () => {
@@ -68,25 +69,38 @@ const ExNavbar = () => {
                                 tabIndex="0"
                                 className="btn btn-ghost btn-circle avatar"
                             >
-                                <div className="w-10 rounded-full">
-                                    <img
-                                        src="https://placeimg.com/80/80/people"
-                                        alt=""
-                                    />
-                                </div>
+                                {loading ? (
+                                    <>
+                                        <RotatingSquare
+                                            height="50"
+                                            width="50"
+                                            color="#67E8F9"
+                                            ariaLabel="rotating-square-loading"
+                                            strokeWidth="4"
+                                            wrapperStyle={{}}
+                                            wrapperclassName=""
+                                            visible={true}
+                                        />
+                                    </>
+                                ) : (
+                                    <div className="w-10 rounded-full">
+                                        <img
+                                            src={
+                                                userPhoto
+                                                    ? userPhoto
+                                                    : "https://placeimg.com/80/80/people"
+                                            }
+                                            alt=""
+                                        />
+                                    </div>
+                                )}
                             </label>
                             <ul
                                 tabIndex="0"
                                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                             >
                                 <li>
-                                    <p className="justify-between">
-                                        Profile
-                                        <span className="badge">New</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <Link to="/settings/profile">Settings</Link>
+                                    <Link to="/settings/profile">Profile</Link>
                                 </li>
                                 <li>
                                     <p onClick={handleSignOut}>Logout</p>
