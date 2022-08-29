@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 const AllLedgerList = () => {
     const [cashBookList, setCashBookList] = useState([]);
     const [bankBookList, setBankBookList] = useState([]);
-    const [bankBookAmount, setBankBookAmount] = useState([])
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
     
