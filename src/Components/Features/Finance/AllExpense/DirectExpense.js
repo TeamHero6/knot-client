@@ -63,27 +63,21 @@ const DirectExpense = () => {
             exit={{ opacity: 0 }}
         >
             <div className="grid grid-cols-3 gap-4">
-                <div class="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
-                    <div class="card-body text-center">
-                        <h2 className="font-bold text-2xl ">
-                            $500
-                        </h2>
+                <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-2xl ">$500</h2>
                         <p className="text-lg">Direct Expense</p>
                     </div>
                 </div>
-                <div class="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
-                    <div class="card-body text-center">
-                        <h2 className="font-bold text-2xl ">
-                            $500
-                        </h2>
+                <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-2xl ">$500</h2>
                         <p className="text-lg">General & Admin Expense</p>
                     </div>
                 </div>
-                <div class="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
-                    <div class="card-body text-center">
-                        <h2 className="font-bold text-2xl ">
-                            $500
-                        </h2>
+                <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-2xl ">$500</h2>
                         <p className="text-lg">Salary Expense</p>
                     </div>
                 </div>

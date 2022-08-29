@@ -1,14 +1,15 @@
+import { motion } from "framer-motion";
 import moment from "moment";
 import React from "react";
 
-const Notification = ({ notification, setRefetch, refetch, userEmail }) => {
+const Notification = ({ notification, isLoading, refetch, userEmail }) => {
     const readAllHandler = () => {
         fetch(`http://localhost:5000/readAll/${userEmail}`, {
             method: "PUT",
         })
             .then((res) => res.json())
             .then((data) => {
-                setRefetch(!refetch);
+                refetch();
             });
     };
     // update seen handler
@@ -20,12 +21,17 @@ const Notification = ({ notification, setRefetch, refetch, userEmail }) => {
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
-                    setRefetch(!refetch);
+                    refetch();
                 }
             });
     };
     return (
-        <div className="hidden md:block fixed top-[70px] right-28 ring-1 ring-gray-900/5 bg-white shadow-xl sm:max-w-sm md:max-w-[500px] py-4 px-4 rounded-md overflow-hidden">
+        <motion.div
+            initial={{ opacity: 0, x: 150 }}
+            animate={{ opacity: 1, x: 1 }}
+            exit={{ opacity: 0, x: 150 }}
+            className="hidden md:block fixed top-[70px] right-28 ring-1 ring-gray-900/5 bg-white shadow-xl sm:max-w-sm md:max-w-[500px] py-4 px-4 rounded-md overflow-hidden"
+        >
             <span
                 className="text-xs mr-2 mb-1 text-gray-400 hover:text-black duration-300 cursor-pointer flex justify-end"
                 onClick={readAllHandler}
@@ -34,20 +40,21 @@ const Notification = ({ notification, setRefetch, refetch, userEmail }) => {
             </span>
             <hr />
             <ul className="max-h-[250px] scroll-smooth overflow-y-scroll">
+                {isLoading && <p>Loading...</p>}
                 {notification?.map((notify) => {
                     if (notify.type === "meeting") {
                         return (
                             <>
                                 <li className="flex items-center py-2">
                                     <svg
-                                        class={`h-6 w-6 flex-none ${
+                                        className={`h-6 w-6 flex-none ${
                                             notify.seen
                                                 ? "fill-green-400 stroke-white"
                                                 : " fill-gray-400 stroke-white"
                                         } stroke-2 hover:fill-green-400 hover:stroke-white `}
                                         onClick={() => updateSeen(notify._id)}
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     >
                                         <circle cx="12" cy="12" r="11" />
                                         <path
@@ -86,14 +93,14 @@ const Notification = ({ notification, setRefetch, refetch, userEmail }) => {
                             <>
                                 <li className="flex items-center py-2">
                                     <svg
-                                        class={`h-6 w-6 flex-none ${
+                                        className={`h-6 w-6 flex-none ${
                                             notify.seen
                                                 ? "fill-green-400 stroke-white"
                                                 : " fill-gray-400 stroke-white"
                                         } stroke-2 hover:fill-green-400 hover:stroke-white `}
                                         onClick={() => updateSeen(notify._id)}
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     >
                                         <circle cx="12" cy="12" r="11" />
                                         <path
@@ -125,7 +132,7 @@ const Notification = ({ notification, setRefetch, refetch, userEmail }) => {
                     }
                 })}
             </ul>
-        </div>
+        </motion.div>
     );
 };
 

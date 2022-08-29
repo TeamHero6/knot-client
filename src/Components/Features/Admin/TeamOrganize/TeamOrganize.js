@@ -73,7 +73,7 @@ const TeamOrganize = () => {
                 <section className="flex flex-col md:flex-row">
                     <label
                         for="my-modal-4"
-                        class="px-3 py-1 border border-green-400 flex items-center gap-2 bg-white text-green-400 font-semibold rounded  hover:bg-green-400 hover:text-white hover:outline-1 hover:border hover:border-green-400 shadow-green-200 hover: shadow-sm my-2 mx-2 md:my-0 text-sm"
+                        className="px-3 py-1 border border-green-400 flex items-center gap-2 bg-white text-green-400 font-semibold rounded  hover:bg-green-400 hover:text-white hover:outline-1 hover:border hover:border-green-400 shadow-green-200 hover: shadow-sm my-2 mx-2 md:my-0 text-sm"
                         onClick={() => setMeetingModal(true)}
                     >
                         <span>
@@ -129,7 +129,7 @@ const TeamOrganize = () => {
                     {/*Warn button*/}
                     <label
                         for="warning"
-                        class="flex items-center gap-2 px-3 py-1 text-sm bg-white text-red-400 font-semibold rounded  hover:bg-red-400 hover:text-white hover:border-red-400 border border-red-200 shadow-red-200 hover:shadow-sm my-2 mx-2 md:my-0"
+                        className="flex items-center gap-2 px-3 py-1 text-sm bg-white text-red-400 font-semibold rounded  hover:bg-red-400 hover:text-white hover:border-red-400 border border-red-200 shadow-red-200 hover:shadow-sm my-2 mx-2 md:my-0"
                         onClick={() => setWarningModal(true)}
                     >
                         <span>
@@ -138,7 +138,7 @@ const TeamOrganize = () => {
                                 width="16"
                                 height="16"
                                 fill="currentColor"
-                                class="bi bi-exclamation-triangle"
+                                className="bi bi-exclamation-triangle"
                                 viewBox="0 0 16 16"
                             >
                                 <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
@@ -150,7 +150,7 @@ const TeamOrganize = () => {
                     {/*Award button*/}
                     <label
                         for="award"
-                        class="border px-3 py-1 text-sm flex items-center gap-2 bg-white text-amber-400 border-amber-400 font-semibold rounded  hover:bg-amber-400 hover:text-white hover:border-amber-400  shadow-amber-200 hover:shadow-sm my-2 mx-2 md:my-0"
+                        className="border px-3 py-1 text-sm flex items-center gap-2 bg-white text-amber-400 border-amber-400 font-semibold rounded  hover:bg-amber-400 hover:text-white hover:border-amber-400  shadow-amber-200 hover:shadow-sm my-2 mx-2 md:my-0"
                         onClick={() => setAwardModal(true)}
                     >
                         <span>
@@ -159,7 +159,7 @@ const TeamOrganize = () => {
                                 width="16"
                                 height="16"
                                 fill="currentColor"
-                                class="bi bi-award"
+                                className="bi bi-award"
                                 viewBox="0 0 16 16"
                             >
                                 <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />

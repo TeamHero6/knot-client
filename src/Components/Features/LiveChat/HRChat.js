@@ -36,8 +36,8 @@ const HRChat = () => {
                             >
                                 <td className="px-5 py-2 text-black whitespace-normal">
                                     <div className="flex gap-x-6">
-                                        <div class="avatar placeholder py-1 items-center">
-                                            <div class="bg-neutral-focus text-neutral-content rounded-full w-8">
+                                        <div className="avatar placeholder py-1 items-center">
+                                            <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
                                                 <img
                                                     src={chatList?.userPhoto}
                                                     alt=""
