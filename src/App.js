@@ -76,6 +76,7 @@ import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import Loader from "./Components/Shared/Loader/Loader";
 import FormSample from "./FromSample/FormSample";
+import PricingCard from "./FromSample/PricingCard";
 const AdminDashboardF = lazy(() =>
     import("./Components/Features/Admin/Dashboard/AdminDashboardF")
 );
@@ -92,6 +93,7 @@ function App() {
                         path="/form"
                         element={<FormSample></FormSample>}
                     ></Route>
+                    <Route path="pricePlan" element={<PricingCard/>}></Route>
                     <Route
                         path="/employeedetails"
                         element={<EmployeeDetails></EmployeeDetails>}
