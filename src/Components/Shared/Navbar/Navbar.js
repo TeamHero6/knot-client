@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { RotatingSquare } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
@@ -40,9 +41,6 @@ const Navbar = () => {
             (res) => res.json()
         )
     );
-    if (notification) {
-        console.log(notification);
-    }
 
     useEffect(() => {
         const unseen = notification?.filter((n) => !n.seen);
@@ -71,10 +69,6 @@ const Navbar = () => {
     const handleNotificationHandler = () => {
         dispatch(NotifiyStatusUpdate(!isOpen));
     };
-
-    if (loading) {
-        return;
-    }
 
     return (
         <div className="relative">
@@ -265,61 +259,78 @@ const Navbar = () => {
                                     </span>
                                 </NavLink>
                             )}
-                            <div>
-                                {user ? (
-                                    <div className="dropdown dropdown-end">
-                                        <label
-                                            tabindex="0"
-                                            className="btn btn-ghost btn-circle avatar"
+                            {loading ? (
+                                <>
+                                    <RotatingSquare
+                                        height="50"
+                                        width="50"
+                                        color="#67E8F9"
+                                        ariaLabel="rotating-square-loading"
+                                        strokeWidth="4"
+                                        wrapperStyle={{}}
+                                        wrapperClass=""
+                                        visible={true}
+                                    />
+                                </>
+                            ) : (
+                                <div>
+                                    {user ? (
+                                        <div className="dropdown dropdown-end">
+                                            <label
+                                                tabindex="0"
+                                                className="btn btn-ghost btn-circle avatar"
+                                            >
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        src={`${
+                                                            userProfile
+                                                                ? userProfile
+                                                                : "https://placeimg.com/80/80/people"
+                                                        }`}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </label>
+                                            <ul
+                                                tabindex="0"
+                                                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                            >
+                                                <li>
+                                                    <a className="justify-between">
+                                                        Profile
+                                                        <span className="badge">
+                                                            New
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <Link to="/settings/profile">
+                                                        Settings
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        onClick={handleLogout}
+                                                    >
+                                                        Logout
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    ) : (
+                                        <NavLink
+                                            to="/BusinessLogin"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                                    : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                            }
                                         >
-                                            <div className="w-10 rounded-full">
-                                                <img
-                                                    src={`${
-                                                        userProfile
-                                                            ? userProfile
-                                                            : "https://placeimg.com/80/80/people"
-                                                    }`}
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </label>
-                                        <ul
-                                            tabindex="0"
-                                            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                                        >
-                                            <li>
-                                                <a className="justify-between">
-                                                    Profile
-                                                    <span className="badge">
-                                                        New
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <Link to="/settings/profile">
-                                                    Settings
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <button onClick={handleLogout}>
-                                                    Logout
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                ) : (
-                                    <NavLink
-                                        to="/BusinessLogin"
-                                        className={({ isActive }) =>
-                                            isActive
-                                                ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
-                                                : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
-                                        }
-                                    >
-                                        Login
-                                    </NavLink>
-                                )}
-                            </div>
+                                            Login
+                                        </NavLink>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
