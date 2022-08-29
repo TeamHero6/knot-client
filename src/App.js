@@ -67,6 +67,7 @@ import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDet
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
 import UserManagement from "./Components/Pages/Leave/UserManagement";
+import PricingCard from "./Components/Pages/Pricing/PricingCard";
 import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
@@ -78,7 +79,6 @@ import Calender from "./Components/Shared/Calender/Calender";
 import Loader from "./Components/Shared/Loader/Loader";
 import FormSample from "./FromSample/FormSample";
 import NotFoundPage from "./FromSample/NotFoundPage";
-import PricingCard from "./FromSample/PricingCard";
 const AdminDashboardF = lazy(() =>
     import("./Components/Features/Admin/Dashboard/AdminDashboardF")
 );
@@ -95,7 +95,7 @@ function App() {
                         path="/form"
                         element={<FormSample></FormSample>}
                     ></Route>
-                    <Route path="pricePlan" element={<PricingCard/>}></Route>
+                    <Route path="pricePlan" element={<PricingCard />}></Route>
                     <Route
                         path="/employeedetails"
                         element={<EmployeeDetails></EmployeeDetails>}
@@ -194,7 +194,10 @@ function App() {
                     {/* ---------- Sales Management ---------- */}
                     <Route path="/salesTS" element={<SalesManagement />}>
                         <Route index element={<SalesDashboard />}></Route>
-                        <Route path="salesDashboard" element={<SalesDashboard />}></Route>
+                        <Route
+                            path="salesDashboard"
+                            element={<SalesDashboard />}
+                        ></Route>
                         <Route path="items" element={<Items />}></Route>
                         <Route path="inventory" element={<Inventory />} />
                         <Route
@@ -216,10 +219,19 @@ function App() {
                         <Route path="inventory" element={<Inventory />}></Route>
                     </Route>
                     {/* ---------- Marketing Automation ---------- */}
-                    <Route path="/marketingTS" element={<MarketingAutomation />}>
+                    <Route
+                        path="/marketingTS"
+                        element={<MarketingAutomation />}
+                    >
                         <Route index element={<EmailMarketing />} />
-                        <Route path="emailMarketing" element={<EmailMarketing />} />
-                        <Route path="customerListing" element={<CustomerListing />} />
+                        <Route
+                            path="emailMarketing"
+                            element={<EmailMarketing />}
+                        />
+                        <Route
+                            path="customerListing"
+                            element={<CustomerListing />}
+                        />
                     </Route>
                     {/* ---------- Team Management ---------- */}
                     <Route path="/teamManagement" element={<AdminDashboardF />}>
@@ -230,7 +242,10 @@ function App() {
                             element={<TeamOrganize />}
                         ></Route>
                         <Route path="addTask" element={<AddTask />}></Route>
-                        <Route path="teamManagement" element={<TeamManagement />}></Route>
+                        <Route
+                            path="teamManagement"
+                            element={<TeamManagement />}
+                        ></Route>
                     </Route>
                     <Route
                         path="/FAQ"
@@ -267,8 +282,14 @@ function App() {
                     </Route>
                     {/* ---------- Finance Management ---------- */}
                     <Route path="/financeTS" element={<FinanceManagement />}>
-                        <Route index element={<FinanceDashboard></FinanceDashboard>} />
-                        <Route path="financeDashboard" element={<FinanceDashboard></FinanceDashboard>} />
+                        <Route
+                            index
+                            element={<FinanceDashboard></FinanceDashboard>}
+                        />
+                        <Route
+                            path="financeDashboard"
+                            element={<FinanceDashboard></FinanceDashboard>}
+                        />
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
                         <Route
@@ -293,6 +314,7 @@ function App() {
                     <Route path="load" element={<Loader />} />
                     <Route path="*" element={<NotFoundPage/>}></Route>
                     <Route path="/TermsAndConditions" element={<TermsAndConditions/>}></Route>
+                    <Route path="*" element={<NotFoundPage />}></Route>
                 </Routes>
             </Suspense>
             <ToastContainer></ToastContainer>

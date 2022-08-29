@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import HRNavbar from '../../Shared/HRNavbar/HRNavbar';
+import HRNavbar from "../../Shared/HRNavbar/HRNavbar";
 
 const HRManagement = () => {
     const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ const HRManagement = () => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-chevron-expand"
+                    className="bi bi-chevron-expand"
                     viewBox="0 0 16 16"
                 >
                     <path
@@ -30,7 +30,7 @@ const HRManagement = () => {
                     className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md justify-center 
             ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
-                    <div className='md:mx-2 lg:mx-4'>
+                    <div className="md:mx-2 lg:mx-4">
                         {/* <Link
                             to=""
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
@@ -74,11 +74,11 @@ const HRManagement = () => {
                             Vacancy
                         </Link>
                         <Link
-                        to="hrJoining"
-                        className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
-                    >
-                        Joining
-                    </Link>
+                            to="hrJoining"
+                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
+                        >
+                            Joining
+                        </Link>
                         {/* <Link
                         to="vendor"
                         className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"

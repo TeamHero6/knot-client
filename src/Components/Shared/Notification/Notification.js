@@ -4,9 +4,12 @@ import React from "react";
 
 const Notification = ({ notification, isLoading, refetch, userEmail }) => {
     const readAllHandler = () => {
-        fetch(`http://localhost:5000/readAll/${userEmail}`, {
-            method: "PUT",
-        })
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/readAll/${userEmail}`,
+            {
+                method: "PUT",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 refetch();
@@ -15,9 +18,12 @@ const Notification = ({ notification, isLoading, refetch, userEmail }) => {
     // update seen handler
     const updateSeen = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/updateNotify/${id}`, {
-            method: "PUT",
-        })
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/updateNotify/${id}`,
+            {
+                method: "PUT",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
@@ -47,14 +53,14 @@ const Notification = ({ notification, isLoading, refetch, userEmail }) => {
                             <>
                                 <li className="flex items-center py-2">
                                     <svg
-                                        class={`h-6 w-6 flex-none ${
+                                        className={`h-6 w-6 flex-none ${
                                             notify.seen
                                                 ? "fill-green-400 stroke-white"
                                                 : " fill-gray-400 stroke-white"
                                         } stroke-2 hover:fill-green-400 hover:stroke-white `}
                                         onClick={() => updateSeen(notify._id)}
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     >
                                         <circle cx="12" cy="12" r="11" />
                                         <path
@@ -93,14 +99,14 @@ const Notification = ({ notification, isLoading, refetch, userEmail }) => {
                             <>
                                 <li className="flex items-center py-2">
                                     <svg
-                                        class={`h-6 w-6 flex-none ${
+                                        className={`h-6 w-6 flex-none ${
                                             notify.seen
                                                 ? "fill-green-400 stroke-white"
                                                 : " fill-gray-400 stroke-white"
                                         } stroke-2 hover:fill-green-400 hover:stroke-white `}
                                         onClick={() => updateSeen(notify._id)}
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     >
                                         <circle cx="12" cy="12" r="11" />
                                         <path

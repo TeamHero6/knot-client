@@ -47,8 +47,8 @@ const HR = () => {
                 <div className="chat flex justify-between  ">
                     <div className="profile lg:w-3/12 lg:h-[74vh]">
                         <div className="flex items-center gap-2 rounded bg-custom-light-gray shadow-sm py-1 my-2 mx-6 justify-center">
-                            <div class="avatar placeholder">
-                                <div class="bg-neutral-focus text-neutral-content rounded-full w-10">
+                            <div className="avatar placeholder">
+                                <div className="bg-neutral-focus text-neutral-content rounded-full w-10">
                                     <img src={loggerInfo?.userPhoto} alt="" />
                                 </div>
                             </div>
@@ -115,8 +115,8 @@ const HR = () => {
                                     </div>
                                     <div className="ml-10">
                                         <button className="text-2xl">
-                                            <div class="avatar placeholder ">
-                                                <div class=" bg-blue-500 text-neutral-content rounded-full w-12">
+                                            <div className="avatar placeholder ">
+                                                <div className=" bg-blue-500 text-neutral-content rounded-full w-12">
                                                     <span>
                                                         <FiSend />
                                                     </span>

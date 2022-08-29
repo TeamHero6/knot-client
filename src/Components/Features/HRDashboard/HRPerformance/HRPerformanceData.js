@@ -30,7 +30,7 @@ const HRPerformanceData = () => {
                         Employee Promotion Database
                     </h1>
                     <div className="w-full h-80 mb-5">
-                        <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto mt-4 text-base overflow-hidden">
+                        <table className="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto mt-4 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
                                     <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">

@@ -68,8 +68,8 @@ const EmployeesOrganize = () => {
         <div>
             <div className="px-5">
                 <h1 className="text-xl my-5">Team Members Warning Database</h1>
-                <div class="rounded-none overflow-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                <div className="rounded-none overflow-auto">
+                    <table className="shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -112,10 +112,11 @@ const EmployeesOrganize = () => {
                                             rows=""
                                             cols=""
                                             placeholder={w.infeed}
-                                        >{w.infeed}</textarea>
+                                        >
+                                            {w.infeed}
+                                        </textarea>
                                     </td>
                                     <td className="py-3  whitespace-nowrap">
-
                                         <button
                                             onClick={() => teamfeed(w._id)}
                                             className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
@@ -124,8 +125,6 @@ const EmployeesOrganize = () => {
                                             <AiFillSave />
                                             Save
                                         </button>
-
-
                                     </td>
                                 </tr>
                             ))}
@@ -135,8 +134,8 @@ const EmployeesOrganize = () => {
             </div>
             <div className="px-5">
                 <h1 className="text-xl  my-5 ">Team Member Award Database</h1>
-                <div class="rounded-none overflow-auto">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className="rounded-none overflow-auto">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -178,11 +177,12 @@ const EmployeesOrganize = () => {
                                             placeholder={a.ledarfeed}
                                             rows=""
                                             cols=""
-                                        >{a.ledarfeed}</textarea>
+                                        >
+                                            {a.ledarfeed}
+                                        </textarea>
                                     </td>
 
                                     <td className="py-3 px-6 whitespace-nowrap">
-
                                         <button
                                             onClick={() => handelleader(a._id)}
                                             className="flex items-center gap-2 bg-blue-600 ml-3 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
