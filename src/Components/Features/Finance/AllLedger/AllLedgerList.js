@@ -38,13 +38,13 @@ const AllLedgerList = () => {
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Voucher No
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Expense Head
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 pl-20 whitespace-nowrap">
                                     Expense Type
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Amount
                                 </th>
                             </tr>
@@ -89,13 +89,13 @@ const AllLedgerList = () => {
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Voucher No
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 pl-20 whitespace-nowrap">
                                     Expense Head
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 pl-20 whitespace-nowrap">
                                     Expense Type
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Amount
                                 </th>
                             </tr>

@@ -17,6 +17,7 @@ import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
 import FinanceDashboard from "./Components/Features/Finance/FinanceDashboard/FinanceDashboard";
 import FinanceManagement from "./Components/Features/Finance/FinanceManagement";
 import Partners from "./Components/Features/Finance/Partners/Partners";
+import FinancePayroll from "./Components/Features/Finance/Payroll/FinancePayroll";
 // import HRDashboard from "./Components/Features/HRDashboard/Dashboard/HRDashboard";
 import EmployeeManagement from "./Components/Features/HRDashboard/EmployeeManagement/EmployeeManagement";
 import HRWarning from "./Components/Features/HRDashboard/EmployeeManagement/HRWarning";
@@ -271,7 +272,11 @@ function App() {
                             element={<UserAttendance />}
                         ></Route>
                         <Route
-                            path="directExpense"
+                            path="salary"
+                            element={<FinancePayroll />}
+                        ></Route>
+                        <Route
+                            path="allExpense"
                             element={<DirectExpense />}
                         ></Route>
                     </Route>
