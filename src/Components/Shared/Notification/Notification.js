@@ -47,14 +47,14 @@ const Notification = ({ notification, isLoading, refetch, userEmail }) => {
                             <>
                                 <li className="flex items-center py-2">
                                     <svg
-                                        class={`h-6 w-6 flex-none ${
+                                        className={`h-6 w-6 flex-none ${
                                             notify.seen
                                                 ? "fill-green-400 stroke-white"
                                                 : " fill-gray-400 stroke-white"
                                         } stroke-2 hover:fill-green-400 hover:stroke-white `}
                                         onClick={() => updateSeen(notify._id)}
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     >
                                         <circle cx="12" cy="12" r="11" />
                                         <path
@@ -93,14 +93,14 @@ const Notification = ({ notification, isLoading, refetch, userEmail }) => {
                             <>
                                 <li className="flex items-center py-2">
                                     <svg
-                                        class={`h-6 w-6 flex-none ${
+                                        className={`h-6 w-6 flex-none ${
                                             notify.seen
                                                 ? "fill-green-400 stroke-white"
                                                 : " fill-gray-400 stroke-white"
                                         } stroke-2 hover:fill-green-400 hover:stroke-white `}
                                         onClick={() => updateSeen(notify._id)}
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     >
                                         <circle cx="12" cy="12" r="11" />
                                         <path

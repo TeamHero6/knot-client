@@ -16,7 +16,7 @@ const PartnerDetails = () => {
         <div>
             <div>
                 <h2 className="text-base font-semibold">Partner List</h2>
-                <table class="shadow-2xl h-80 border-2 border-cyan-300 min-w-1/2 mx-auto my-8 text-base overflow-hidden">
+                <table className="shadow-2xl h-80 border-2 border-cyan-300 min-w-1/2 mx-auto my-8 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         {/* <thead className=' border-b border-cyan-100'> */}
                         <tr>

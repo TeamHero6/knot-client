@@ -15,7 +15,6 @@ const HRLeaveRequest = () => {
             .then((data) => setRequest(data));
     }, []);
 
-
     const approv = (event) => {
         setUpstatus(event.target.value);
     };
@@ -38,7 +37,6 @@ const HRLeaveRequest = () => {
             });
     };
 
-
     return (
         <div>
             <div className="px-5">
@@ -46,7 +44,7 @@ const HRLeaveRequest = () => {
                     Leave Request
                 </h1>
                 <div className="bg-white w-full py-5">
-                    <table class="w-11/12  shadow-sm border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                    <table className="w-11/12  shadow-sm border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -88,7 +86,6 @@ const HRLeaveRequest = () => {
                                         {request.dep}
                                     </td>
 
-
                                     <td>
                                         <div>
                                             <label
@@ -96,7 +93,7 @@ const HRLeaveRequest = () => {
                                                 onClick={() =>
                                                     setLeave(request)
                                                 }
-                                                class="modal-button"
+                                                className="modal-button"
                                             >
                                                 Details
                                             </label>
@@ -109,7 +106,9 @@ const HRLeaveRequest = () => {
                                             onChange={approv}
                                         >
                                             <option value="approval_statas">
-                                                {request.aprovel ? request.aprovel : 'Approve Statas'}
+                                                {request.aprovel
+                                                    ? request.aprovel
+                                                    : "Approve Statas"}
                                             </option>
                                             <option value="Approve">
                                                 Approve
@@ -135,15 +134,14 @@ const HRLeaveRequest = () => {
                         </tbody>
                     </table>
                 </div>
-                <div >
-
+                <div>
                     <input
                         type="checkbox"
                         id={leave._id}
-                        class="modal-toggle"
+                        className="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -192,8 +190,11 @@ const HRLeaveRequest = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={leave._id} class="btn btn-warning">
+                            <div className="modal-action">
+                                <label
+                                    for={leave._id}
+                                    className="btn btn-warning"
+                                >
                                     Cancel
                                 </label>
                             </div>

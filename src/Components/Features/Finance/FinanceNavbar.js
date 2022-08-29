@@ -1,7 +1,7 @@
-import React from "react";
-import access from "../../../Assets/icons/Dashboard/access.svg";
-import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import access from "../../../Assets/icons/Dashboard/access.svg";
 import auth from "../../../firebase.init";
 import DigitalClock from "../../Shared/DigitalClock/DigitalClock";
 
@@ -41,15 +41,18 @@ const FinanceNavbar = () => {
                 </div>
                 <div className="dropdown dropdown-end">
                     <label
-                        tabindex="0"
+                        tabIndex="0"
                         className="btn btn-ghost btn-circle avatar"
                     >
                         <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" alt="" />
+                            <img
+                                src="https://placeimg.com/80/80/people"
+                                alt=""
+                            />
                         </div>
                     </label>
                     <ul
-                        tabindex="0"
+                        tabIndex="0"
                         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                     >
                         <li>
@@ -59,9 +62,7 @@ const FinanceNavbar = () => {
                             </p>
                         </li>
                         <li>
-                            <Link to="/settings/profile">
-                                Settings
-                            </Link>
+                            <Link to="/settings/profile">Settings</Link>
                         </li>
                         <li>
                             <p onClick={handleSignOut}>Logout</p>

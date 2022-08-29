@@ -65,7 +65,7 @@ const ExNavbar = () => {
                         </div>
                         <div className="dropdown dropdown-end">
                             <label
-                                tabindex="0"
+                                tabIndex="0"
                                 className="btn btn-ghost btn-circle avatar"
                             >
                                 <div className="w-10 rounded-full">
@@ -76,7 +76,7 @@ const ExNavbar = () => {
                                 </div>
                             </label>
                             <ul
-                                tabindex="0"
+                                tabIndex="0"
                                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                             >
                                 <li>
@@ -86,9 +86,7 @@ const ExNavbar = () => {
                                     </p>
                                 </li>
                                 <li>
-                                    <Link to="/settings/profile">
-                                        Settings
-                                    </Link>
+                                    <Link to="/settings/profile">Settings</Link>
                                 </li>
                                 <li>
                                     <p onClick={handleSignOut}>Logout</p>

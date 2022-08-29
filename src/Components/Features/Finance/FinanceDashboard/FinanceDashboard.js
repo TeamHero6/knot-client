@@ -27,28 +27,28 @@ const FinanceDashboard = () => {
             exit={{ opacity: 0 }}
         >
             {/* <section className="flex gap-5">
-                <div class="card w-72 bg-base-100 shadow-xl">
-                    <div class="card-body">
+                <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card-body">
                         <p>Cash On Hand</p>
-                        <h2 class="card-title "></h2>
+                        <h2 className="card-title "></h2>
                     </div>
                 </div>
-                <div class="card w-72 bg-base-100 shadow-xl">
-                    <div class="card-body">
+                <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card-body">
                         <p>Total Sales</p>
-                        <h2 class="card-title "></h2>
+                        <h2 className="card-title "></h2>
                     </div>
                 </div>
-                <div class="card w-72 bg-base-100 shadow-xl">
-                    <div class="card-body">
+                <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card-body">
                         <p>Total Cost</p>
-                        <h2 class="card-title "></h2>
+                        <h2 className="card-title "></h2>
                     </div>
                 </div>
-                <div class="card w-72 bg-base-100 shadow-xl">
-                    <div class="card-body">
+                <div className="card w-72 bg-base-100 shadow-xl">
+                    <div className="card-body">
                         <p>Net Profit</p>
-                        <h2 class="card-title "></h2>
+                        <h2 className="card-title "></h2>
                     </div>
                 </div>
             </section> */}
