@@ -1,7 +1,7 @@
 import React from "react";
 
 const FilterCard = ({ user, setEmployeeEmail, setEmployeeName }) => {
-    const { img, email, name } = user;
+    const { email, name, userPhoto } = user;
     const handleSelectUser = () => {
         setEmployeeEmail(email);
         setEmployeeName(name);
@@ -14,8 +14,8 @@ const FilterCard = ({ user, setEmployeeEmail, setEmployeeName }) => {
             <div className="mx-2">
                 <img
                     src={
-                        img
-                            ? img
+                        userPhoto
+                            ? userPhoto
                             : "https://pipilikasoft.com/wp-content/uploads/2018/08/demo.jpg"
                     }
                     alt=""
@@ -23,7 +23,7 @@ const FilterCard = ({ user, setEmployeeEmail, setEmployeeName }) => {
                 />
             </div>
             <div className="flex flex-col cursor-pointer">
-                <span>{name}</span>
+                <span>{name ? name : "UnNamed Person"}</span>
                 <small className="text-xs">{email}</small>
             </div>
         </div>

@@ -53,12 +53,19 @@ const BusinessLogin = () => {
             })
                 .then((res) => res.json())
                 .then(async (data) => {
-                    const { role, message, loggerInfo } = data;
+                    const {
+                        role,
+                        message,
+                        loggerInfo,
+                        notification,
+                        allEmployees,
+                    } = data;
                     if (role) {
                         setCustomError("");
                         await signInWithEmailAndPassword(email, password);
                         setLoadingMessage("");
                         dispatch(authAction(loggerInfo));
+                        dispatch(getAllEmployees(allEmployees));
                         navigate(from, { replace: true });
                     } else {
                         setCustomError("");
