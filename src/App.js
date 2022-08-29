@@ -76,6 +76,7 @@ import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import Loader from "./Components/Shared/Loader/Loader";
 import FormSample from "./FromSample/FormSample";
+import NotFoundPage from "./FromSample/NotFoundPage";
 import PricingCard from "./FromSample/PricingCard";
 const AdminDashboardF = lazy(() =>
     import("./Components/Features/Admin/Dashboard/AdminDashboardF")
@@ -289,6 +290,7 @@ function App() {
                     <Route path="/learnMore" element={<AllKnotApp />} />
                     <Route path="Calender" element={<Calender></Calender>} />
                     <Route path="load" element={<Loader />} />
+                    <Route path="*" element={<NotFoundPage/>}></Route>
                 </Routes>
             </Suspense>
             <ToastContainer></ToastContainer>
