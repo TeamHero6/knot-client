@@ -112,7 +112,7 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 <label
                                                     for="taskDetails"
-                                                    class="hover:underline hover:text-blue-500"
+                                                    className="hover:underline hover:text-blue-500"
                                                     onClick={() =>
                                                         taskDetailsHandler(task)
                                                     }

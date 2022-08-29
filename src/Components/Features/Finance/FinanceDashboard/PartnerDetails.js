@@ -16,7 +16,7 @@ const PartnerDetails = () => {
 
     return (
         <div className="">
-            <div >
+            <div>
                 <h2 className="text-base font-semibold">Partner List</h2>
                 <div className="overflow-auto">
                     <table class="shadow-2xl border-2 border-cyan-300  mx-auto my-8 text-base w-1/2 overflow-hidden  lg:w-full">

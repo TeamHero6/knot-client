@@ -1,10 +1,10 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import access from "../../../Assets/icons/Dashboard/access.svg";
-import DigitalClock from "../../Shared/DigitalClock/DigitalClock";
 import { Link, useNavigate } from "react-router-dom";
-import { signOut } from "firebase/auth";
+import access from "../../../Assets/icons/Dashboard/access.svg";
 import auth from "../../../firebase.init";
+import DigitalClock from "../../Shared/DigitalClock/DigitalClock";
 
 const LiveChatNavbar = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
@@ -13,7 +13,7 @@ const LiveChatNavbar = () => {
     const [userProfile, setuserprofile] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const authInfo = useSelector((state) => state.auth);
-    
+
     useEffect(() => {
         if (authInfo.loggerInfo !== null) {
             const { userPhoto, email } = authInfo?.loggerInfo;
@@ -48,22 +48,28 @@ const LiveChatNavbar = () => {
             {/*Profile DropDown*/}
             <div className="px-6 flex items-center gap-4">
                 <div>
-                    <p className='text-xl font-medium'><DigitalClock></DigitalClock></p>
+                    <p className="text-xl font-medium">
+                        <DigitalClock></DigitalClock>
+                    </p>
                 </div>
                 <div className="dropdown dropdown-end">
                     <label
-                        tabindex="0"
+                        tabIndex="0"
                         className="btn btn-ghost btn-circle avatar"
                     >
                         <div className="w-10 rounded-full">
-                            <img src={`${userProfile
-                                ? userProfile
-                                : "https://placeimg.com/80/80/people"
-                                }`} alt="" />
+                            <img
+                                src={`${
+                                    userProfile
+                                        ? userProfile
+                                        : "https://placeimg.com/80/80/people"
+                                }`}
+                                alt=""
+                            />
                         </div>
                     </label>
                     <ul
-                        tabindex="0"
+                        tabIndex="0"
                         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                     >
                         <li>
@@ -73,9 +79,7 @@ const LiveChatNavbar = () => {
                             </p>
                         </li>
                         <li>
-                            <Link to="/settings/profile">
-                                Settings
-                            </Link>
+                            <Link to="/settings/profile">Settings</Link>
                         </li>
                         <li>
                             <p onClick={handleSignOut}>Logout</p>

@@ -32,21 +32,21 @@ const UserLogin = () => {
     };
 
     return (
-        <div class="flex h-[90vh] w-full items-center justify-center">
-            <div class="rounded-md bg-cyan-400 px-4 py-5 sm:max-w-sm md:max-w-md lg:max-w-lg">
-                <div class="flex flex-col">
-                    <label for="secret" class="text-gray-200">
+        <div className="flex h-[90vh] w-full items-center justify-center">
+            <div className="rounded-md bg-cyan-400 px-4 py-5 sm:max-w-sm md:max-w-md lg:max-w-lg">
+                <div className="flex flex-col">
+                    <label for="secret" className="text-gray-200">
                         Type your Secret Code
                     </label>
                     <input
                         id="secret"
                         type="text"
-                        class="rounded-sm border-b-2 border-white bg-transparent px-2 text-white outline-none"
+                        className="rounded-sm border-b-2 border-white bg-transparent px-2 text-white outline-none"
                         onChange={(e) => setSecretCode(e.target.value)}
                     />
                 </div>
                 <button
-                    class="w-full border-2 border-white mt-2 py-1 rounded-xl text-white"
+                    className="w-full border-2 border-white mt-2 py-1 rounded-xl text-white"
                     onClick={liveAuth}
                 >
                     Login

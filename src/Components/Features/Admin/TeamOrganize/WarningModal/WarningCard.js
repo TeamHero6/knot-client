@@ -5,7 +5,7 @@ const WarningCard = ({ warning }) => {
     console.log(warning);
     return (
         <div className="bg-red-100 border-l-4 border-red-500 py-2 px-4 m-auto rounded-md w-[256px] h-[180px]">
-            <div class="flex justify-between text-green-400">
+            <div className="flex justify-between text-green-400">
                 <div className="flex items-center">
                     <p className="text-gray-600">{name}</p>
                     <button className="bg-red-500 text-white text-[10px] py-1 px-2 rounded-xl ml-2">
@@ -13,7 +13,7 @@ const WarningCard = ({ warning }) => {
                     </button>
                 </div>
                 <img
-                    class="w-7 rounded-full"
+                    className="w-7 rounded-full"
                     src={`${
                         photo
                             ? photo

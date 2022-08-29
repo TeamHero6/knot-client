@@ -45,8 +45,8 @@ const Dashboard = () => {
                 <h1 className="text-2xl text-left lg:text-center font-bold my-5">
                     Leave Request
                 </h1>
-                <div class="overflow-auto rounded-none w-96 lg:w-full">
-                    <table class="w-11/12  shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
+                <div className="overflow-auto rounded-none w-96 lg:w-full">
+                    <table className="w-11/12  shadow-2xl border-2 border-cyan-300  mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -95,7 +95,7 @@ const Dashboard = () => {
                                                 onClick={() =>
                                                     setLeave(request)
                                                 }
-                                                class="modal-button"
+                                                className="modal-button"
                                             >
                                                 Details
                                             </label>
@@ -138,10 +138,10 @@ const Dashboard = () => {
                     <input
                         type="checkbox"
                         id={leave._id}
-                        class="modal-toggle"
+                        className="modal-toggle"
                     />
-                    <div class="modal">
-                        <div class="modal-box">
+                    <div className="modal">
+                        <div className="modal-box">
                             <div>
                                 <div className="flex items-center mb-5">
                                     <img
@@ -190,8 +190,11 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-action">
-                                <label for={leave._id} class="btn btn-warning">
+                            <div className="modal-action">
+                                <label
+                                    for={leave._id}
+                                    className="btn btn-warning"
+                                >
                                     Cancel
                                 </label>
                             </div>

@@ -56,12 +56,12 @@ const EmployeeAccessModal = ({ setOpen, refetch }) => {
     };
     return (
         <div>
-            <input type="checkbox" id="addEmployee" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box relative">
+            <input type="checkbox" id="addEmployee" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative">
                     <label
                         for="addEmployee"
-                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                        className="btn btn-sm btn-circle absolute right-2 top-2"
                     >
                         ✕
                     </label>

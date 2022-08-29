@@ -12,7 +12,7 @@ const HRChat = () => {
 
     const allEmployees = useSelector((state) => state.auth.allEmployees);
     if (allEmployees) {
-        console.log(allEmployees); 
+        console.log(allEmployees);
     }
     useEffect(() => {
         fetch(`http://localhost:5000/employeedetails/${companyName}`)
@@ -20,12 +20,9 @@ const HRChat = () => {
             .then((data) => setDetails(data.reverse()));
     }, [details, companyName]);
     // console.log(details, companyName);
-    
 
     useEffect(() => {
-        fetch(
-            `http://localhost:5000/conversations/${Department}`
-        )
+        fetch(`http://localhost:5000/conversations/${Department}`)
             .then((res) => res.json())
             .then((data) => setChatList(data));
     }, [chatList, Department]);
@@ -68,7 +65,7 @@ const HRChat = () => {
                                                         {chatList.time}
                                                     </small>
                                                 </span>
-                                            </div>  
+                                            </div>
                                         </div>
                                     </div>
                                     <div>

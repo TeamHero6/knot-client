@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import access from "../../../Assets/icons/Dashboard/access.svg";
 import auth from "../../../firebase.init";
-import DigitalClock from '../../Shared/DigitalClock/DigitalClock';
-import access from '../../../Assets/icons/Dashboard/access.svg';
+import DigitalClock from "../../Shared/DigitalClock/DigitalClock";
 
 const MarketingNavbar = () => {
     const navigate = useNavigate();
@@ -32,25 +32,32 @@ const MarketingNavbar = () => {
             </div>
 
             <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
-                <Link to='/accessApps'><img src={access} className={`w-6`} alt="icon" /></Link>
+                <Link to="/accessApps">
+                    <img src={access} className={`w-6`} alt="icon" />
+                </Link>
             </div>
 
             {/*Profile DropDown*/}
             <div className="px-6 flex items-center gap-4">
                 <div>
-                    <p className='text-xl font-medium'><DigitalClock></DigitalClock></p>
+                    <p className="text-xl font-medium">
+                        <DigitalClock></DigitalClock>
+                    </p>
                 </div>
                 <div className="dropdown dropdown-end">
                     <label
-                        tabindex="0"
+                        tabIndex="0"
                         className="btn btn-ghost btn-circle avatar"
                     >
                         <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" alt="" />
+                            <img
+                                src="https://placeimg.com/80/80/people"
+                                alt=""
+                            />
                         </div>
                     </label>
                     <ul
-                        tabindex="0"
+                        tabIndex="0"
                         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                     >
                         <li>
@@ -60,9 +67,7 @@ const MarketingNavbar = () => {
                             </p>
                         </li>
                         <li>
-                            <Link to="/settings/profile">
-                                Settings
-                            </Link>
+                            <Link to="/settings/profile">Settings</Link>
                         </li>
                         <li>
                             <p onClick={handleSignOut}>Logout</p>

@@ -50,7 +50,9 @@ const PartnerList = ({ setSinglePartnerDetail }) => {
                                             <label
                                                 for="item-details-modal"
                                                 onClick={() =>
-                                                    setSinglePartnerDetail(partners)
+                                                    setSinglePartnerDetail(
+                                                        partners
+                                                    )
                                                 }
                                             >
                                                 <span className="underline hover:text-blue-500 hover:font-medium">
