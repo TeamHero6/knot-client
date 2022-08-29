@@ -2,6 +2,15 @@ import React from "react";
 import Navbar from "../../Shared/Navbar/Navbar";
 
 const PricingCard = () => {
+    // SSL Commerze Payment Intregation
+    const PaymentHandler = () => {
+        fetch("http://localhost:5000/init")
+            .then((res) => res.json())
+            .then((data) => {
+                const { GatewayPageURL } = data;
+                window.open(GatewayPageURL, "_blank");
+            });
+    };
     return (
         <div className="h-screen">
             <Navbar />
@@ -189,6 +198,7 @@ const PricingCard = () => {
                                 <button
                                     type="button"
                                     class="w-full px-3 py-3 text-sm shadow rounded-lg text-indigo-500 hover:text-gray-800 bg-white hover:bg-gray-100 "
+                                    onClick={PaymentHandler}
                                 >
                                     Choose plan
                                 </button>
