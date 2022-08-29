@@ -4,9 +4,12 @@ import React from "react";
 
 const Notification = ({ notification, isLoading, refetch, userEmail }) => {
     const readAllHandler = () => {
-        fetch(`http://localhost:5000/readAll/${userEmail}`, {
-            method: "PUT",
-        })
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/readAll/${userEmail}`,
+            {
+                method: "PUT",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 refetch();
@@ -15,9 +18,12 @@ const Notification = ({ notification, isLoading, refetch, userEmail }) => {
     // update seen handler
     const updateSeen = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/updateNotify/${id}`, {
-            method: "PUT",
-        })
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/updateNotify/${id}`,
+            {
+                method: "PUT",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
