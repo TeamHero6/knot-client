@@ -65,32 +65,32 @@ const Bill = () => {
 
     return (
         <div>
-            <div className="bg-white px-2 py-2">
+            <div className="bg-white px-2 py-2 overflow-auto">
                 <h1 className="text-center text-2xl font-semibold mt-2">
                     Orders Bill
                 </h1>
                 <table className="shadow-lg border-2 border-cyan-300 min-w-1/2 mx-auto my-4 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Date
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Order No.
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Vendor Name
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Total Amount($)
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Paid Amount($)
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Due Amount($)
                             </th>
-                            <th className="py-3 text-left px-6 whitespace-nowrap">
+                            <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                 Save Bill
                             </th>
                         </tr>
@@ -101,19 +101,19 @@ const Bill = () => {
                                 key={purchaseOrder._id}
                                 className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
                             >
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {purchaseOrder.orderDate}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {purchaseOrder.orderNo}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {purchaseOrder.vendorName}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     {purchaseOrder.totalAmount}
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     <input
                                         defaultValue={purchaseOrder?.paidAmount}
                                         onChange={handlePaidAmount}
@@ -124,7 +124,7 @@ const Bill = () => {
                                         required
                                     />
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     <input
                                         defaultValue={purchaseOrder?.dueAmount}
                                         onChange={handleDueAmount}
@@ -135,7 +135,7 @@ const Bill = () => {
                                         required
                                     />
                                 </td>
-                                <td className="py-3 px-6 whitespace-nowrap">
+                                <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     <button
                                         onClick={() =>
                                             handleSaveBill(purchaseOrder._id)
@@ -151,7 +151,7 @@ const Bill = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="w-1/2 my-6 mx-auto bg-white px-6 py-4">
+            <div className="w-full md:w-1/2 my-6 mx-auto bg-white px-6 py-4 overflow-auto">
                 <h1 className="text-xl text-center my-2 font-medium">
                     Vendor Vs Total Amount
                 </h1>

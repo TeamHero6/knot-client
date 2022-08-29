@@ -24,16 +24,16 @@ const VendorList = ({ setSingleVendorDetail }) => {
                     <table className="shadow-lg border-2 border-cyan-300 w-full mx-auto text-base overflow-hidden mb-8">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Company Name
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Contact Person
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Phone Number
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Details
                                 </th>
                             </tr>
@@ -44,16 +44,16 @@ const VendorList = ({ setSingleVendorDetail }) => {
                                     key={vendor._id}
                                     className="hover:shadow-md hover:bg-cyan-100 duration-300 cursor-pointer border-b border-cyan-100"
                                 >
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {vendor.company}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {vendor.contactPerson}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {vendor.mobile}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         <label
                                             for="item-details-modal"
                                             onClick={() =>

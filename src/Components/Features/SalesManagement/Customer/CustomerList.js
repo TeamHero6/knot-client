@@ -24,16 +24,16 @@ const CustomerList = () => {
                     <table className="shadow-lg border-2 border-cyan-300 mx-auto text-base overflow-hidden mb-6 w-full">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Customer Name
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Customer Email
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Mobile No.
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Address
                                 </th>
                             </tr>
@@ -44,16 +44,16 @@ const CustomerList = () => {
                                     key={customer._id}
                                     className="hover:shadow-md hover:bg-cyan-100 duration-300 cursor-pointer border-b border-cyan-100"
                                 >
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {customer.customerName}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {customer.customerEmail}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {customer.mobileNo}
                                     </td>
-                                    <td className="py-3 px-6">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6">
                                         {customer.customerAddress}
                                     </td>
                                 </tr>

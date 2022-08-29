@@ -26,8 +26,8 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
     return (
         <div>
             <div className="grid grid-cols-6 bg-white">
-                <div className="col-span-4 overflow-auto rounded-none">
-                    <table className="shadow-lg border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className="col-span-6 lg:col-span-4 overflow-auto rounded-none">
+                    <table className="shadow-lg border-2 border-cyan-300 w-full mx-4 md:my-6 lg:my-12 text-base overflow-hidden">
                         <caption>
                             <h1 className="text-center text-2xl font-bold mb-2">
                                 Purchase Order List
@@ -35,19 +35,19 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                         </caption>
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Date
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Order No.
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Product
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Vendor
                                 </th>
-                                <th className="py-3 text-left px-6 whitespace-nowrap">
+                                <th className="py-1 sm:py-2 md:py-3 text-left px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                     Details
                                 </th>
                             </tr>
@@ -58,19 +58,19 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                                     key={purchaseOrder._id}
                                     className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
                                 >
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {purchaseOrder.orderDate}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {purchaseOrder.orderNo}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {purchaseOrder.productName}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         {purchaseOrder.vendorName}
                                     </td>
-                                    <td className="py-3 px-6 whitespace-nowrap">
+                                    <td className="py-1 sm:py-2 md:py-3 px-2 sm:px-3 md:px-4 lg:px-6 whitespace-nowrap">
                                         <label
                                             for="purchase-order-details-modal"
                                             onClick={() =>
@@ -89,7 +89,7 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-span-2 mx-6 my-auto">
+                <div className="col-span-6 sm:col-span-4 lg:col-span-2 mx-4 my-4 lg:my-auto">
                     <div className="mx-auto my-auto shadow-2xl px-6 py-4 rounded-3xl">
                         <p className="font-semibold text-lg my-2">
                             Total Vendor: 25
@@ -106,8 +106,8 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-2">
-                <div className="bg-white px-6 py-4">
+            <div className="lg:grid lg:grid-cols-2">
+                <div className="bg-white px-6 py-4 overflow-auto">
                     <h1 className="text-xl text-center my-2 font-medium">
                         Vendor Vs Total Price
                     </h1>
@@ -120,7 +120,7 @@ const PurchaseOrderList = ({ setSinglePurchaseOrderDetail }) => {
                         <Bar dataKey="totalAmount" fill="#8884d8" />
                     </BarChart>
                 </div>
-                <div className="bg-white px-6 py-4">
+                <div className="bg-white px-6 py-4 overflow-auto">
                     <h1 className="text-xl text-center my-2 font-medium">
                         Product Vs Unit Price
                     </h1>

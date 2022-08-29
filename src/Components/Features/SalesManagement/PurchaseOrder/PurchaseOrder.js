@@ -98,7 +98,7 @@ const PurchaseOrder = () => {
             <div>
                 <button
                     onClick={() => setAddNewPurchaseOrder(!addNewPurchaseOrder)}
-                    className="flex items-center gap-2 bg-green-400 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm"
+                    className="flex items-center gap-2 bg-green-400 py-2 px-2 md:px-4 text-white font-bold rounded  hover:bg-white hover:text-green-400 hover:outline-1 hover:border hover:border-green-400 hover: shadow-green-200 hover: shadow-sm"
                 >
                     <IoIosAddCircleOutline className="text-2xl" />
                     New Purchase Order
@@ -107,7 +107,7 @@ const PurchaseOrder = () => {
             </div>
             {addNewPurchaseOrder ? (
                 <div>
-                    <div className="w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                    <div className="w-10/12 sm:w-4/5 md:w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                         <form onSubmit={handleSetPurchaseOrder}>
                             <div>
                                 <h1 className="font-bold text-center text-purple-800 mb-2 text-lg">

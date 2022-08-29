@@ -42,8 +42,8 @@ const MarketingAutomation = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                            ? "flex whitespace-nowrap my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 whitespace-nowrap bg-custom-gray flex  my-4 px-6 p-2"
                                     }
                                 >
                                     <span>Email Marketing</span>
@@ -55,8 +55,8 @@ const MarketingAutomation = () => {
                                 <span
                                     className={
                                         isActive
-                                            ? "flex  my-4 pl-6 pr-5 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                            ? "flex whitespace-nowrap my-4 md:pl-6 md:pr-5 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 whitespace-nowrap bg-custom-gray flex md:pl-6 md:pr-5 my-4 px-6 p-2"
                                     }
                                 >
                                     <span>Customer Listing</span>
