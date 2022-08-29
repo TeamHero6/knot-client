@@ -8,6 +8,7 @@ import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManag
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
+import TermsAndConditions from "./Components/AdditionalLinkPages/TermsAndConditions/TermsAndConditions";
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
@@ -291,6 +292,7 @@ function App() {
                     <Route path="Calender" element={<Calender></Calender>} />
                     <Route path="load" element={<Loader />} />
                     <Route path="*" element={<NotFoundPage/>}></Route>
+                    <Route path="/TermsAndConditions" element={<TermsAndConditions/>}></Route>
                 </Routes>
             </Suspense>
             <ToastContainer></ToastContainer>
