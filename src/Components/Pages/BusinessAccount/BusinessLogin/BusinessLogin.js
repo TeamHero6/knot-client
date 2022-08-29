@@ -87,7 +87,7 @@ const BusinessLogin = () => {
             setCustomError("");
             //check isRole
             fetch(
-                "https://knot-business-solution-server.herokuapp.com/isRole",
+                "http://localhost:5000/isRole",
                 {
                     method: "POST",
                     headers: {

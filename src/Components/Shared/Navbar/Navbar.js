@@ -97,7 +97,7 @@ const Navbar = () => {
                         >
                             <li>
                                 <NavLink
-                                    to="/about"
+                                    to="/pricePlan"
                                     className={({ isActive }) =>
                                         isActive
                                             ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
@@ -193,7 +193,7 @@ const Navbar = () => {
                     <div className="hidden lg:flex items-center">
                         <div className="hidden md:flex items-center">
                             <NavLink
-                                to="/about"
+                                to="/pricePlan"
                                 className={({ isActive }) =>
                                     isActive
                                         ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"

@@ -55,7 +55,7 @@ const Items = () => {
         };
 
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewProduct",
+            "http://localhost:5000/addNewProduct",
             {
                 method: "POST",
                 headers: {

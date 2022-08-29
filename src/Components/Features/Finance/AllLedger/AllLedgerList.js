@@ -1,32 +1,35 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const AllLedgerList = () => {
     const [cashBookList, setCashBookList] = useState([]);
     const [bankBookList, setBankBookList] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/cashBook")
+        fetch(`http://localhost:5000/cashBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCashBookList(data.reverse()));
-    }, [cashBookList]);
+    }, [cashBookList, companyName]);
 
-    // console.log(cashBookList);
+    // console.log(cashBookList, companyName);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/bankBook")
+        fetch(`http://localhost:5000/bankBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setBankBookList(data.reverse()));
-    }, [bankBookList]);
+    }, [bankBookList, companyName]);
 
-    console.log(bankBookList);
+    // console.log(bankBookList, companyName);
 
     return (
         <div>
-            <div className="w-full">
+            <div className="w-full bg-white px-5 py-5 rounded">
                 <div className="flex gap-5"></div>
                 <h1 className="font-semibold text-xl ml-5">Cash Book</h1>
-                <div className="w-full h-80 mt-5 mb-5">
-                    <table className="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">
+                <div className="w-full mt-5 mb-5 h-80 overflow-auto">
+                    <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden ">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">
@@ -35,18 +38,18 @@ const AllLedgerList = () => {
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Voucher No
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Expense Head
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 pl-20 whitespace-nowrap">
                                     Expense Type
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Amount
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="">
                             {cashBookList.map((cashBook) => (
                                 <tr
                                     key={cashBook._id}
@@ -74,10 +77,10 @@ const AllLedgerList = () => {
                 </div>
             </div>
 
-            <div>
-                <h1 className="font-semibold text-xl ml-5">Bank Book</h1>
-                <div className="w-full h-80 mt-5 mb-5">
-                    <table className="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">
+            <div className="w-full bg-white px-5 py-5 mt-6 rounded">
+                <h1 className="font-semibold text-xl mt-8">Bank Book</h1>
+                <div className="w-full h-80 mt-5 overflow-y-auto">
+                    <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto  text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 pl-10 whitespace-nowrap">
@@ -86,13 +89,13 @@ const AllLedgerList = () => {
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Voucher No
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 pl-20 whitespace-nowrap">
                                     Expense Head
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 pl-20 whitespace-nowrap">
                                     Expense Type
                                 </th>
-                                <th className="py-3 text-left px-6 pr-10 whitespace-nowrap">
+                                <th className="py-3 text-left px-6 whitespace-nowrap">
                                     Amount
                                 </th>
                             </tr>

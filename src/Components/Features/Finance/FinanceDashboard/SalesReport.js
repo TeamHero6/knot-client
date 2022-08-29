@@ -16,18 +16,18 @@ const SalesReport = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addNewOrder/${companyName}`
+            `http://localhost:5000/addNewOrder/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
     }, [orderList, companyName]);
     // console.log(orderList);
     return (
-        <div>
+        <div className="w-full  ">
             <h2 className="text-base font-semibold pb-4">Sales Report</h2>
-            <div className="grid grid-cols-2 gap-5">
+            <div className="overflow-auto">
                 <AreaChart
-                    width={600}
+                    width={500}
                     height={250}
                     data={orderList}
                     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}

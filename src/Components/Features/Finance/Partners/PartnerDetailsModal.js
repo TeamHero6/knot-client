@@ -2,7 +2,7 @@ import React from "react";
 import { AiFillSave } from "react-icons/ai";
 
 const PartnerDetailsModal = ({ singlePartnerDetail }) => {
-    const { partnerName, contactNumber, address, email, UpdateInvest, _id } =
+    const { partnerName, contactNumber, address, email, date, Amount, share, _id } =
         singlePartnerDetail;
 
     const handleAddInvest = (e) => {
@@ -10,6 +10,8 @@ const PartnerDetailsModal = ({ singlePartnerDetail }) => {
         const date = e.target.date.value;
         const Amount = e.target.Amount.value;
         const share = e.target.share.value;
+        
+
 
         const UpdateInvest = {
             date,
@@ -17,7 +19,7 @@ const PartnerDetailsModal = ({ singlePartnerDetail }) => {
             share,
         };
         console.log(UpdateInvest);
-        const url = `https://knot-business-solution-server.herokuapp.com/partner/${_id}`;
+        const url = `http://localhost:5000/partner/${_id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -55,7 +57,7 @@ const PartnerDetailsModal = ({ singlePartnerDetail }) => {
                                             {partnerName}{" "}
                                         </h3>
                                         <span className="text-gray-400">
-                                            Invest Date: {UpdateInvest?.date}
+                                            Invest Date: {date}
                                         </span>
                                     </div>
                                 </div>
@@ -63,9 +65,9 @@ const PartnerDetailsModal = ({ singlePartnerDetail }) => {
                                 <h3>Contact Number: {contactNumber}</h3>
                                 <h3>Address: {address}</h3>
                                 <p>Email: {email}$</p>
-                                <p>Invest Amount: {UpdateInvest?.Amount}</p>
+                                <p>Invest Amount: {Amount}</p>
                                 <p>
-                                    Share: {UpdateInvest?.share}
+                                    Share: {share}
                                     <small>(%)</small>
                                 </p>
                                 <h2 className="font-medium text-blue-500">

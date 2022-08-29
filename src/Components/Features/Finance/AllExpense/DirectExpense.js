@@ -82,8 +82,8 @@ const DirectExpense = () => {
                     </div>
                 </div>
             </div>
-            <div className="lg:w-full mx-20 flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto">
-                <div>
+            <div className="bg-white my-4 py-5 px-5 lg:flex lg:justify-around ">
+                <div className="lg:w-4/12 md:mx-auto">
                     <h2 className="font-bold mb-3 text-red-500">All Expense</h2>
                     <p>Direct Expense: $500</p>
                     <p>General & Admin Expense: $500</p>
@@ -95,7 +95,7 @@ const DirectExpense = () => {
                         <span className="font-sans text-red-500">$500</span>{" "}
                     </p>
                 </div>
-                <div>
+                <div className="md:mt-4 overflow-auto">
                     <ComposedChart width={450} height={250} data={data}>
                         <XAxis dataKey="name" />
                         <YAxis />
@@ -106,7 +106,7 @@ const DirectExpense = () => {
                     </ComposedChart>
                 </div>
             </div>
-            <div className="lg:w-full mx-20 mb-5 flex justify-around bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 md:gap-2 gap-4 bg-white">
                 <div>
                     <PieChart width={350} height={250}>
                         <Pie

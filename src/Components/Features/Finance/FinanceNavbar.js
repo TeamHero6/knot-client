@@ -1,5 +1,6 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import access from "../../../Assets/icons/Dashboard/access.svg";
 import auth from "../../../firebase.init";
@@ -7,7 +8,18 @@ import DigitalClock from "../../Shared/DigitalClock/DigitalClock";
 
 const FinanceNavbar = () => {
     const navigate = useNavigate();
-
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const authInfo = useSelector((state) => state.auth);
+    const [userProfile, setuserprofile] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+    // const { companyLogo } = loggerInfo;
+    useEffect(() => {
+        if (authInfo.loggerInfo !== null) {
+            const { userPhoto, email } = authInfo?.loggerInfo;
+            setuserprofile(userPhoto);
+            setUserEmail(email);
+        }
+    }, [authInfo]);
     // sign out handler
     const handleSignOut = () => {
         signOut(auth);
@@ -18,11 +30,11 @@ const FinanceNavbar = () => {
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
-                {/* <img
+                <img
                     src={loggerInfo.companyLogo}
                     className="w-6 h-6 mr-2"
                     alt=""
-                /> */}
+                />
                 <span>Finance</span>
             </div>
 
@@ -46,7 +58,11 @@ const FinanceNavbar = () => {
                     >
                         <div className="w-10 rounded-full">
                             <img
-                                src="https://placeimg.com/80/80/people"
+                                src={`${
+                                    userProfile
+                                        ? userProfile
+                                        : "https://placeimg.com/80/80/people"
+                                }`}
                                 alt=""
                             />
                         </div>

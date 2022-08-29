@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import HRTransferCard from "./HRTransferCard";
 
 const HRPerformanceData = () => {
     const [promo, setPromo] = useState([]);
     const [transfer, setTransfer] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
+        fetch(`http://localhost:5000/transfer/${companyName}`)
             .then((res) => res.json())
             .then((data) => setTransfer(data));
-    }, [transfer]);
-    console.log(transfer);
+    }, [transfer, companyName]);
+    // console.log(transfer, companyName);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/performance")
+        fetch(`http://localhost:5000/performance/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPromo(data));
-    }, [promo]);
-    // console.log(promo);
+    }, [promo, companyName]);
+    // console.log(promo, companyName);
 
     return (
         <div>
