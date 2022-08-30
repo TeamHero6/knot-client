@@ -54,6 +54,7 @@ import SalesTeamMembers from "./Components/Features/SalesManagement/SalesTeamMem
 import Vendor from "./Components/Features/SalesManagement/Vendor/Vendor";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
+import ContactPage from "./Components/Pages/About/ContactPage";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
@@ -337,6 +338,7 @@ function App() {
                     <Route path="/userDashboardMore" element={<UserDashboardMore />} />
                     <Route path="/groupChatMore" element={<GroupChatMore />} />
                     <Route path="/adminManagementMore" element={<AdminManagementMore />} />
+                    <Route path="/contactus" element={<ContactPage />} />
                     <Route path="*" element={<NotFoundPage />}></Route>
                     <Route path="/TermsAndConditions" element={<TermsAndConditions />}></Route>
                     <Route path="*" element={<NotFoundPage />}></Route>
