@@ -6,7 +6,6 @@ const AccountManagement = () => {
     const [search, searchTerm] = useState("");
     const faq = useSelector((state) => state.faq);
     const { account } = faq;
-    console.log(faq);
     return (
         <motion.section
             initial={{ opacity: 0 }}
@@ -29,6 +28,7 @@ const AccountManagement = () => {
                         } else if (f.Ques.includes(search)) {
                             return f;
                         }
+                        return false;
                     })
                     .map((f) => {
                         return (

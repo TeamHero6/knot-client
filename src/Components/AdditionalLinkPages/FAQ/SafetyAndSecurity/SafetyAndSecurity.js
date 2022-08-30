@@ -67,6 +67,7 @@ const SafetyAndSecurity = () => {
                     } else if (f.Ques.includes(search)) {
                         return f;
                     }
+                    return false;
                 })
                 .map((f) => {
                     return (
