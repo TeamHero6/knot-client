@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 const RulesAndPolitics = () => {
@@ -64,13 +65,16 @@ const RulesAndPolitics = () => {
                 })
                 .map((f) => {
                     return (
-                        <div
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
                             key={f.id}
                             className="mb-4 text-sm border-b-[0.5px] pb-4 border-gray-400"
                         >
                             <p className="font-semibold py-1">Q: {f.Ques}</p>
                             <p>{f.Ans}</p>
-                        </div>
+                        </motion.div>
                     );
                 })}
         </div>
