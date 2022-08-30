@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import FinanceNavbar from "./FinanceNavbar";
+import AdminNavbar from './AdminNavbar';
 
-const FinanceManagement = () => {
+const AdminDashboard = () => {
     const [open, setOpen] = useState(false);
-
     return (
-        <div className="min-h-screen bg-custom-gray">
+        <div>
+            <div className="min-h-screen bg-custom-gray">
             <span
                 className="fixed block lg:hidden bottom-6 bg-custom-light-gray p-3 hover:bg-custom-green hover:text-custom-light-gray duration-300 shadow-sm rounded-full right-3 hover:shadow-lg"
                 onClick={() => setOpen(!open)}
@@ -25,14 +25,14 @@ const FinanceManagement = () => {
                     />
                 </svg>
             </span>
-            <FinanceNavbar />
+            <AdminNavbar/>
             <section className="flex w-full">
                 <div
                     className={`bg-[#FFFFFF] md:w-2/12 duration-300 min-h-screen shadow-md justify-center 
             ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div className="md:mx-2 lg:mx-4">
-                        <NavLink to="financeDashboard">
+                        <NavLink to="adminPanelDashboard">
                             {({ isActive }) => (
                                 <span
                                     className={
@@ -45,7 +45,7 @@ const FinanceManagement = () => {
                                 </span>
                             )}
                         </NavLink>
-                        <NavLink to="allLedger">
+                        <NavLink to="adminBlog">
                             {({ isActive }) => (
                                 <span
                                     className={
@@ -54,11 +54,11 @@ const FinanceManagement = () => {
                                             : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
                                     }
                                 >
-                                    <span>Add Expense</span>
+                                    <span>Blog</span>
                                 </span>
                             )}
                         </NavLink>
-                        <NavLink to="salary">
+                        <NavLink to="adminNewsletter">
                             {({ isActive }) => (
                                 <span
                                     className={
@@ -67,33 +67,7 @@ const FinanceManagement = () => {
                                             : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
                                     }
                                 >
-                                    <span>Payrolls</span>
-                                </span>
-                            )}
-                        </NavLink>
-                        {/* <NavLink to="allExpense">
-                            {({ isActive }) => (
-                                <span
-                                    className={
-                                        isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
-                                    }
-                                >
-                                    <span>Expense</span>
-                                </span>
-                            )}
-                        </NavLink> */}
-                        <NavLink to="partners">
-                            {({ isActive }) => (
-                                <span
-                                    className={
-                                        isActive
-                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
-                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
-                                    }
-                                >
-                                    <span>Partners</span>
+                                    <span>Newsletter</span>
                                 </span>
                             )}
                         </NavLink>
@@ -104,7 +78,8 @@ const FinanceManagement = () => {
                 </div>
             </section>
         </div>
+        </div>
     );
 };
 
-export default FinanceManagement;
+export default AdminDashboard;
