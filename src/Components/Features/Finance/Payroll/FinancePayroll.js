@@ -132,16 +132,6 @@ const FinancePayroll = () => {
                                     </select>
                                     <br />
                                 </div>
-
-
-
-
-
-
-
-
-
-
                                 <div className="md:flex items-center">
                                     <label
                                         className="font-bold w-40"
