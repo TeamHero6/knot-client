@@ -10,13 +10,13 @@ const Assigntranning = () => {
     const [Trainnig, setTrainnig] = useState([]);
     // const [employinfo, setEmployinfo] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
+        fetch("http://localhost:5000/Trainnig")
             .then((res) => res.json())
             .then((data) => setTrainnig(data));
     }, [Trainnig]);
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
+        fetch("http://localhost:5000/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

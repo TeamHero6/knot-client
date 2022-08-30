@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import AllLedgerList from "./AllLedgerList";
+import { useSelector } from "react-redux";
 
 const AllLedger = () => {
     const [cashBook, setCashBook] = useState(false);
     const [bankBook, setBankBook] = useState(false);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     const handleAddCashBook = (e) => {
         e.preventDefault();
@@ -22,10 +25,11 @@ const AllLedger = () => {
             expenseHead,
             amount,
             expenseType,
+            companyName,
         };
 
         console.log(CashBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/cashBook", {
+        fetch("http://localhost:5000/cashBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -55,9 +59,10 @@ const AllLedger = () => {
             expenseHead,
             amount,
             expenseType,
+            companyName,
         };
         // console.log(BankBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
+        fetch("http://localhost:5000/bankBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -103,8 +108,8 @@ const AllLedger = () => {
                     </div>
                 </div>
                 {cashBook ? (
-                    <div>
-                        <div className="md:w-3/6 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8 ">
+                    <div className="">
+                        <div className="lg:w-3/6 md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded px-5 py-5 my-5">
                             <form onSubmit={handleAddCashBook}>
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
@@ -147,7 +152,31 @@ const AllLedger = () => {
                                         />{" "}
                                         <br />
                                     </div>
-
+                                    <div className="md:flex items-center">
+                                        <label
+                                            className="font-bold w-40"
+                                            htmlFor="name"
+                                        >
+                                            Expense Type :{" "}
+                                        </label>{" "}
+                                        <br />
+                                        <select
+                                            name="expenseType"
+                                            id=""
+                                            className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                        >
+                                            <option value="" selected disabled>
+                                                Select type
+                                            </option>
+                                            <option value="Direct Expense">
+                                                Direct Expense
+                                            </option>
+                                            <option value="General Expense">
+                                                General Expense
+                                            </option>
+                                        </select>
+                                        <br />
+                                    </div>
                                     <div className="md:flex items-center">
                                         <label
                                             className="font-bold w-40"
@@ -160,23 +189,6 @@ const AllLedger = () => {
                                             className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                                             type="text"
                                             name="expenseHead"
-                                            id=""
-                                            placeholder="Expense Head"
-                                        />{" "}
-                                        <br />
-                                    </div>
-                                    <div className="md:flex items-center">
-                                        <label
-                                            className="font-bold w-40"
-                                            htmlFor="name"
-                                        >
-                                            Expense Type :{" "}
-                                        </label>{" "}
-                                        <br />
-                                        <input
-                                            className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
-                                            type="text"
-                                            name="expenseType"
                                             id=""
                                             placeholder="Expense Head"
                                         />{" "}
@@ -218,13 +230,13 @@ const AllLedger = () => {
                     ""
                 )}
 
-                <div className="flex gap-5"></div>
+
                 {bankBook ? (
                     <div>
-                        <div className="md:w-3/6 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                        <div className="lg:w-3/6 md:w-3/4 mx-auto bg-white shadow-gray-300 border shadow-md rounded px-5 py-5 my-5">
                             <form onSubmit={handleAddBankBook}>
                                 <div>
-                                    <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
+                                    <h1 className="font-bold text-center text-blue-500 text-lg">
                                         Bank Book
                                     </h1>
                                     <div className="md:flex items-center">
@@ -270,16 +282,24 @@ const AllLedger = () => {
                                             className="font-bold w-40"
                                             htmlFor="name"
                                         >
-                                            Expense Head :{" "}
+                                            Expense Type :{" "}
                                         </label>{" "}
                                         <br />
-                                        <input
-                                            className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
-                                            type="text"
-                                            name="expenseHead"
+                                        <select
+                                            name="expenseType"
                                             id=""
-                                            placeholder="Expense Head"
-                                        />{" "}
+                                            className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                        >
+                                            <option value="" selected disabled>
+                                                Select type
+                                            </option>
+                                            <option value="Direct Expense">
+                                                Direct Expense
+                                            </option>
+                                            <option value="General Expense">
+                                                General Expense
+                                            </option>
+                                        </select>
                                         <br />
                                     </div>
                                     <div className="md:flex items-center">
@@ -287,13 +307,13 @@ const AllLedger = () => {
                                             className="font-bold w-40"
                                             htmlFor="name"
                                         >
-                                            Expense Type :{" "}
+                                            Expense Head :{" "}
                                         </label>{" "}
                                         <br />
                                         <input
                                             className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
                                             type="text"
-                                            name="expenseType"
+                                            name="expenseHead"
                                             id=""
                                             placeholder="Expense Head"
                                         />{" "}

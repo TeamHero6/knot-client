@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../../../Shared/Loader/Loader";
 import HRTrainingCard from "./HRTrainingCard";
@@ -11,12 +12,12 @@ import HRTrainingCard from "./HRTrainingCard";
 const HrJoining = () => {
     const { register, handleSubmit, reset } = useForm();
     const [showTraining, setShowTraining] = useState(false);
-    // const [Trainnig, setTrainnig] = useState([]);
-    // const [details, setDetails] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     const { data: details, isLoading } = useQuery(["details"], () =>
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/employeedetails"
+            `http://localhost:5000/employeedetails/${companyName}`
         ).then((res) => res.json())
     );
 
@@ -26,17 +27,18 @@ const HrJoining = () => {
         refetch,
     } = useQuery(["training"], () =>
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/Trainnig"
+            `http://localhost:5000/Trainnig/${companyName}`
         ).then((res) => res.json())
     );
 
     const onSubmitTraining = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
+        const newData = { ...data, companyName };
+        fetch("http://localhost:5000/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(newData),
         })
             .then((res) => res.json())
             .then((inserted) => {

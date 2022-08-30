@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import PartnerDetailsModal from "./PartnerDetailsModal";
 import PartnerInvestChart from "./PartnerInvestChart";
 import PartnerInvestShareChart from "./PartnerInvestShareChart";
@@ -11,12 +12,14 @@ const Partners = () => {
     const [addNewPartners, setAddNewPartners] = useState(false);
     const [singlePartnerDetail, setSinglePartnerDetail] = useState({});
     const [partnerList, setPartnerList] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/partner")
+        fetch(`http://localhost:5000/partner/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
-    }, [partnerList]);
+    }, [partnerList, companyName]);
 
     const handleAddPartners = (e) => {
         e.preventDefault();
@@ -30,10 +33,11 @@ const Partners = () => {
             contactNumber,
             address,
             email,
+            companyName,
         };
 
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/addPartner",
+            "http://localhost:5000/addPartner",
             {
                 method: "POST",
                 headers: {
@@ -71,7 +75,7 @@ const Partners = () => {
             </div>
             {addNewPartners ? (
                 <div>
-                    <div className="md:w-3/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
+                    <div className="md:w-4/5 mx-auto bg-white shadow-gray-300 border shadow-md rounded py-4 px-6 mb-8">
                         <form onSubmit={handleAddPartners}>
                             {/* ----- Partner Details */}
                             <div>
@@ -167,13 +171,13 @@ const Partners = () => {
             ) : (
                 ""
             )}
-            <div className="flex justify-between lg:w-full bg-white shadow-gray-300 border shadow-sm rounded py-6 px-6 mt-5 sm:w-9/12 sm:w-11/12 sm:mx-auto">
+            <div className="bg-white my-4 py-5 px-5 lg:flex lg:justify-between">
                 <PartnerList
                     setSinglePartnerDetail={setSinglePartnerDetail}
                 ></PartnerList>
                 <PartnerInvestChart />
             </div>
-            <div className="flex justify-between lg:w-full bg-white shadow-gray-300 border shadow-sm rounded py-6 px-6 mt-5 md:w-9/12 sm:w-11/12 sm:mx-auto mb-10">
+            <div className="bg-white my-4 py-5 px-5 lg:flex lg:justify-between">
                 <PartnerInvestShareChart />
             </div>
             <PartnerDetailsModal

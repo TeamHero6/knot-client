@@ -10,7 +10,7 @@ const HRLeaveRequest = () => {
     const [leave, setLeave] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/users")
+        fetch("http://localhost:5000/users")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
@@ -23,7 +23,7 @@ const HRLeaveRequest = () => {
 
         const updata = { aprovel };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/users/${id}`;
+        const url = `http://localhost:5000/users/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {

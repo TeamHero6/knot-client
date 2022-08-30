@@ -2,30 +2,34 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import HrEmployeeData from "./HrEmployeeData";
 
 const HrEmployeeDetails = () => {
     const [show, setShow] = useState(false);
     const { register, handleSubmit, reset } = useForm();
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     const onSubmit = (data) => {
-        console.log(data);
+        const newData = { ...data, companyName };
+        // console.log(newData);
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/employeedetails",
+            "http://localhost:5000/employeedetails",
             {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(newData),
             }
         )
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {
                     reset();
-                    toast.success("add Employee Details");
+                    toast.success("Add Employee Details");
                 }
             });
     };
