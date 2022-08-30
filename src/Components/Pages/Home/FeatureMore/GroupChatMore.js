@@ -1,9 +1,12 @@
 import React from 'react';
+import MorePagesNavBar from '../../../Shared/MorePagesNavBar/MorePagesNavBar';
+import Promotion from '../Promotion/Promotion';
 
 const GroupChatMore = () => {
     return (
         <div>
-            <h1>This is GC more</h1>
+            <MorePagesNavBar></MorePagesNavBar>
+            <Promotion></Promotion>
         </div>
     );
 };
