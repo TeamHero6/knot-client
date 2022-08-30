@@ -10,7 +10,7 @@ const Leave = () => {
     const [userinfo, setUserinfo] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/leaveData")
+        fetch("http://localhost:5000/leaveData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);
@@ -26,7 +26,7 @@ const Leave = () => {
                     />
                     <div className="drawer-content">
                         <div className="dropdown">
-                            <label tabindex="0">
+                            <label tabIndex="0">
                                 <div className="w-10">
                                     <label
                                         for="my-drawer"
@@ -37,7 +37,7 @@ const Leave = () => {
                                 </div>
                             </label>
                             <ul
-                                tabindex="0"
+                                tabIndex="0"
                                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ml-16"
                             >
                                 {userinfo?.map((user) => (

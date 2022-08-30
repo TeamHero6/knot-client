@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import SentEmailList from "./SentEmailList";
 
 const EmailMarketing = () => {
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     const handleEmailForm = (e) => {
@@ -14,10 +14,15 @@ const EmailMarketing = () => {
         const emailTo = e.target.emailTo.value;
         const emailSubject = e.target.emailSubject.value;
         const emailDescription = e.target.emailDescription.value;
-        const emailToSend = { emailTo, emailSubject, emailDescription, companyName };
+        const emailToSend = {
+            emailTo,
+            emailSubject,
+            emailDescription,
+            companyName,
+        };
         console.log(emailToSend);
 
-        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail", {
+        fetch("http://localhost:5000/sentEmail", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -64,12 +69,16 @@ const EmailMarketing = () => {
                 </div>
             </div>
             <div>
-                <input type="checkbox" id="composeEmail" class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box min-w-min">
+                <input
+                    type="checkbox"
+                    id="composeEmail"
+                    className="modal-toggle"
+                />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box min-w-min">
                         <label
                             for="composeEmail"
-                            class="btn btn-sm btn-circle absolute right-2 top-2"
+                            className="btn btn-sm btn-circle absolute right-2 top-2"
                         >
                             ✕
                         </label>

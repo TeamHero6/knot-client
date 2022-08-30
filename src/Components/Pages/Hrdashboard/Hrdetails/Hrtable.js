@@ -16,7 +16,7 @@ const Hrtable = () => {
     const [employinfo, setEmployinfo] = useState({});
     useEffect(() => {
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/employeedetails"
+            "http://localhost:5000/employeedetails"
         )
             .then((res) => res.json())
             .then((data) => setDetails(data));
@@ -45,8 +45,8 @@ const Hrtable = () => {
                     <Line type="monotone" dataKey="Salary" stroke="#ff7300" />
                 </ComposedChart>
             </div>
-            <div class="rounded-none">
-                <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+            <div className="rounded-none">
+                <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -91,7 +91,7 @@ const Hrtable = () => {
                                     <label
                                         for={d._id}
                                         onClick={() => setEmployinfo(d)}
-                                        class="modal-button"
+                                        className="modal-button"
                                     >
                                         Details
                                     </label>
@@ -103,10 +103,10 @@ const Hrtable = () => {
                 <input
                     type="checkbox"
                     id={employinfo._id}
-                    class="modal-toggle"
+                    className="modal-toggle"
                 />
-                <div class="modal">
-                    <div class="modal-box">
+                <div className="modal">
+                    <div className="modal-box">
                         <div>
                             <div>
                                 <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
@@ -140,8 +140,11 @@ const Hrtable = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-action">
-                            <label for={employinfo._id} class="btn btn-warning">
+                        <div className="modal-action">
+                            <label
+                                for={employinfo._id}
+                                className="btn btn-warning"
+                            >
                                 Cancel
                             </label>
                         </div>

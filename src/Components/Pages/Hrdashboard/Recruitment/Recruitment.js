@@ -13,19 +13,19 @@ const Recruitment = () => {
     const [modal, setmodal] = useState({});
     const [applican, setapplican] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
+        fetch("http://localhost:5000/applicant")
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy")
+        fetch("http://localhost:5000/vacancy")
             .then((res) => res.json())
             .then((data) => setCarcular(data));
     }, [carcular]);
 
     const handaldelete = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/vacancy/${id}`;
+        const url = `http://localhost:5000/vacancy/${id}`;
         fetch(url, { method: "DELETE" })
             .then((res) => res.json())
             .then((data) => {
@@ -33,7 +33,7 @@ const Recruitment = () => {
             });
     };
     const deleteap = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/applicant/${id}`;
+        const url = `http://localhost:5000/applicant/${id}`;
         fetch(url, { method: "DELETE" })
             .then((res) => res.json())
             .then((data) => {
@@ -42,7 +42,7 @@ const Recruitment = () => {
     };
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
+        fetch("http://localhost:5000/vacancy", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -64,7 +64,7 @@ const Recruitment = () => {
                     <button
                         onClick={() => setShow(!show)}
                         for="my-drawer"
-                        class="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                        className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
                     >
                         <span>
                             <BiPlus></BiPlus>
@@ -180,8 +180,8 @@ const Recruitment = () => {
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Circular</h3>
                 <div className="mx-auto w-full rounded-lg my-3 ">
-                    <div class="rounded-none w-96  lg:w-1/2">
-                        <table class="shadow-2xl border-2 border-cyan-300 w-96 lg:w-1/2 mx-auto my-12 text-base overflow-hidden">
+                    <div className="rounded-none w-96  lg:w-1/2">
+                        <table className="shadow-2xl border-2 border-cyan-300 w-96 lg:w-1/2 mx-auto my-12 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
                                     <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -218,7 +218,7 @@ const Recruitment = () => {
                                             <label
                                                 for={c._id}
                                                 onClick={() => setmodal(c)}
-                                                class="modal-button text-center"
+                                                className="modal-button text-center"
                                             >
                                                 <AiOutlineEye className="text-2xl "></AiOutlineEye>
                                             </label>
@@ -241,10 +241,10 @@ const Recruitment = () => {
                             required
                             type="checkbox"
                             id={modal._id}
-                            class="modal-toggle"
+                            className="modal-toggle"
                         />
-                        <div class="modal">
-                            <div class="modal-box">
+                        <div className="modal">
+                            <div className="modal-box">
                                 <div>
                                     <div>
                                         <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
@@ -279,10 +279,10 @@ const Recruitment = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-action">
+                                <div className="modal-action">
                                     <label
                                         for={modal._id}
-                                        class="btn btn-warning"
+                                        className="btn btn-warning"
                                     >
                                         Cancel
                                     </label>
@@ -297,34 +297,34 @@ const Recruitment = () => {
             <div className="my-3   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {short.map((ap) => (
                     <div className="">
-                        <div class="card w-96 lg:w-80 bg-base-100 shadow-xl">
+                        <div className="card w-96 lg:w-80 bg-base-100 shadow-xl">
                             <label
                                 onClick={() => deleteap(ap._id)}
-                                class="btn btn-sm btn-circle absolute right-2 top-2 border-none bg-[#F000B8] hover:bg-[#c30196]"
+                                className="btn btn-sm btn-circle absolute right-2 top-2 border-none bg-[#F000B8] hover:bg-[#c30196]"
                             >
                                 ✕
                             </label>
-                            <div class="card-body">
-                                <h2 class="card-title">
+                            <div className="card-body">
+                                <h2 className="card-title">
                                     {ap.Applicant_Name}
-                                    <div class="badge badge-secondary">
+                                    <div className="badge badge-secondary">
                                         {ap.Position}
                                     </div>
                                 </h2>
                                 <p>Job Title: {ap.Job_Title}</p>
                                 <p>Apply Date: {ap.Employee_Applyed_Date}</p>
                                 <p>Interview Date: {ap.Interview_Date}</p>
-                                <div class="card-actions justify-end">
+                                <div className="card-actions justify-end">
                                     <label
                                         for={ap._id}
                                         onClick={() => setapplican(ap)}
-                                        class="modal-button text-center btn btn-sm border-none bg-orange-400 hover:bg-orange-600"
+                                        className="modal-button text-center btn btn-sm border-none bg-orange-400 hover:bg-orange-600"
                                     >
                                         Details
                                     </label>
                                     <a
                                         href={ap.Meeting_Link}
-                                        class="btn btn-sm border-none bg-green-400 hover:bg-green-600"
+                                        className="btn btn-sm border-none bg-green-400 hover:bg-green-600"
                                     >
                                         Join
                                     </a>
@@ -337,10 +337,10 @@ const Recruitment = () => {
                     required
                     type="checkbox"
                     id={applican._id}
-                    class="modal-toggle"
+                    className="modal-toggle"
                 />
-                <div class="modal">
-                    <div class="modal-box">
+                <div className="modal">
+                    <div className="modal-box">
                         <div>
                             <div>
                                 <h1 className="text-xl border-b-2 border-yellow-500 capitalize mb-3">
@@ -375,8 +375,11 @@ const Recruitment = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-action">
-                            <label for={applican._id} class="btn btn-warning">
+                        <div className="modal-action">
+                            <label
+                                for={applican._id}
+                                className="btn btn-warning"
+                            >
                                 Cancel
                             </label>
                         </div>

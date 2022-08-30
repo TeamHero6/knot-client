@@ -9,7 +9,7 @@ const Applicant = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant", {
+        fetch("http://localhost:5000/applicant", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -29,7 +29,7 @@ const Applicant = () => {
         <div>
             <button
                 onClick={() => setShows(!shows)}
-                class="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
             >
                 <span>
                     <BiPlus></BiPlus>

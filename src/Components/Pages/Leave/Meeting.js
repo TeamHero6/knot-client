@@ -10,7 +10,7 @@ const Meeting = () => {
             .then((res) => res.json())
             .then((data) => setMeetings(data.reverse()));
     }, [meetings, loggerInfo]);
-    console.log(meetings, loggerInfo);
+    // console.log(meetings, loggerInfo);
 
     return (
         <div className="mx-10">
@@ -20,7 +20,7 @@ const Meeting = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {meetings?.slice(0, 20).map((meeting) => (
-                    <div class="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <div className="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <div className="flex justify-between items-center">
                             <p className="text-xl my-2 font-semibold">
                                 {meeting.meetingHost}

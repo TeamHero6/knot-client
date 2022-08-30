@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillSave } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -8,16 +8,24 @@ import HRPerformanceData from "./HRPerformanceData";
 // import profile from "../../../Assets/icons/Live-chat-icon/profile_user.png";
 
 const HrPerformance = () => {
+    const [details, setDetails] = useState([]);
     const { register, handleSubmit, reset } = useForm();
     const [show, setShow] = useState(false);
     const [showTransfer, setShowTransfer] = useState(false);
     const loggerInfo = useSelector(state => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/employeedetails/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setDetails(data.reverse()));
+    }, [details, companyName]);
+    // console.log(details, companyName);
+
     const onSubmit = (data) => {
         const newData = { ...data, companyName };
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/performance",
+            "http://localhost:5000/performance",
             {
                 method: "POST",
                 headers: {
@@ -37,7 +45,7 @@ const HrPerformance = () => {
 
     const onSubmitTransfer = (data) => {
         const newData = { ...data, companyName };
-        fetch("https://knot-business-solution-server.herokuapp.com/transfer", {
+        fetch("http://localhost:5000/transfer", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -83,7 +91,7 @@ const HrPerformance = () => {
                                 className="font-bold text-purple-800"
                                 htmlFor="name"
                             >
-                                Employee Info
+                                Promotion Info
                             </label>{" "}
                             <br />
                             <br />
@@ -112,13 +120,62 @@ const HrPerformance = () => {
                                     Name :{" "}
                                 </label>{" "}
                                 <br />
-                                <input
-                                    className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
+                                <select
+                                    required
                                     {...register("Name")}
+                                    name="Name"
                                     id=""
-                                    placeholder="Employee Name"
-                                />
+                                    className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                >
+                                    <option value="" selected disabled>
+                                        Select Employee
+                                    </option>
+                                    {details.map((d) => (
+                                        <option
+                                            key={d._id}
+                                            value={d.Employee_Name}
+                                        >
+                                            {d.Employee_Name}
+                                        </option>
+
+                                    ))}
+                                </select>
+                                <br />
+
+
+                                <br />
+                            </div>
+                            <div className="md:flex items-center">
+                                <label
+                                    className="font-bold w-40"
+                                    htmlFor="name"
+                                >
+                                    Email :{" "}
+                                </label>{" "}
+                                <br />
+                                <select
+                                    required
+                                    {...register("Email")}
+                                    name="Email"
+                                    id=""
+                                    className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                >
+                                    <option value="" selected disabled>
+                                        Select Employee
+                                    </option>
+                                    {details.map((d) => (
+                                        <option
+                                            key={d._id}
+                                            value={d.Email}
+                                        >
+                                            {d.Email}
+                                        </option>
+
+                                    ))}
+                                </select>
+                                <br />
+
+
                                 <br />
                             </div>
                             <div className="md:flex items-center">
@@ -129,13 +186,25 @@ const HrPerformance = () => {
                                     Department :{" "}
                                 </label>{" "}
                                 <br />
-                                <input
-                                    className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
-                                    {...register("Department")}
-                                    id=""
-                                    placeholder="Department"
-                                />
+                                <select
+                                        required
+                                        name="customerName"
+                                        {...register("Department")}
+                                        id=""
+                                        className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                    >
+                                        <option value="" selected disabled>
+                                            Select Department
+                                        </option>
+                                        <option value="Human Resources">
+                                            Human Resources
+                                        </option>
+                                        <option value="Sales">Sales</option>
+                                        <option value="Marketing">
+                                            Marketing
+                                        </option>
+                                        <option value="Finance">Finance</option>
+                                    </select>
                                 <br />
                             </div>
                             <div className="md:flex items-center">
@@ -227,13 +296,60 @@ const HrPerformance = () => {
                                     Name :{" "}
                                 </label>{" "}
                                 <br />
-                                <input
-                                    className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
+                                <select
+                                    required
                                     {...register("Name")}
+                                    name="Name"
                                     id=""
-                                    placeholder="Employee Name"
-                                />
+                                    className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                >
+                                    <option value="" selected disabled>
+                                        Select Employee
+                                    </option>
+                                    {details.map((d) => (
+                                        <option
+                                            key={d._id}
+                                            value={d.Employee_Name}
+                                        >
+                                            {d.Employee_Name}
+                                        </option>
+
+                                    ))}
+                                </select>
+                                <br />
+                                <br />
+                            </div>
+                            <div className="md:flex items-center">
+                                <label
+                                    className="font-bold w-40"
+                                    htmlFor="name"
+                                >
+                                    Email :{" "}
+                                </label>{" "}
+                                <br />
+                                <select
+                                    required
+                                    {...register("Email")}
+                                    name="Email"
+                                    id=""
+                                    className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                >
+                                    <option value="" selected disabled>
+                                        Select Employee
+                                    </option>
+                                    {details.map((d) => (
+                                        <option
+                                            key={d._id}
+                                            value={d.Email}
+                                        >
+                                            {d.Email}
+                                        </option>
+
+                                    ))}
+                                </select>
+                                <br />
+
+
                                 <br />
                             </div>
                             <div className="md:flex items-center">
@@ -261,13 +377,25 @@ const HrPerformance = () => {
                                     Department :{" "}
                                 </label>{" "}
                                 <br />
-                                <input
-                                    className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                    type="text"
-                                    {...register("Department")}
-                                    id=""
-                                    placeholder="Department"
-                                />
+                                <select
+                                        required
+                                        name="customerName"
+                                        {...register("Department")}
+                                        id=""
+                                        className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                    >
+                                        <option value="" selected disabled>
+                                            Select Department
+                                        </option>
+                                        <option value="Human Resources">
+                                            Human Resources
+                                        </option>
+                                        <option value="Sales">Sales</option>
+                                        <option value="Marketing">
+                                            Marketing
+                                        </option>
+                                        <option value="Finance">Finance</option>
+                                    </select>
                                 <br />
                             </div>
                             <div className="md:flex items-center">

@@ -1,31 +1,34 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import UserAttendanceCard from "./UserAttendanceCard";
 import UserReportModal from "./UserReportModal";
-import { useSelector } from "react-redux";
 
 const UserAttendance = () => {
     const [attendance, setAttendance] = useState([]);
     const [singleAttendance, setSingleAttendance] = useState({});
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    const userEmail = loggerInfo.email;
+    const { companyName } = loggerInfo;
+
     useEffect(() => {
-        fetch(`http://localhost:5000/attendance/${userEmail}`)
+        fetch(`http://localhost:5000/attendance/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setAttendance(data.reverse()));
-    }, [attendance, userEmail]);
+    }, [attendance, loggerInfo]);
 
     // console.log(attendance);
     const handleJoinOffice = (e) => {
         e.preventDefault();
         const startTime = e.target.startTime.value;
         const startDate = e.target.startDate.value;
+        const userEmail = e.target.userEmail.value;
 
-        const Attendance = { startDate, startTime, userEmail };
-        // console.log(Attendance);
+
+        const Attendance = { startDate, startTime, userEmail, companyName };
+        console.log(Attendance);
 
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/attendance",
+            "http://localhost:5000/attendance",
             {
                 method: "POST",
                 headers: {
@@ -64,6 +67,7 @@ const UserAttendance = () => {
                                 id=""
                                 value={moment().format("ll")}
                             />
+                            <input type="hidden" name="userEmail" id="" value={loggerInfo?.email} />
                             <button className="bg-green-500 text-white px-8 py-2 mr-2">
                                 Start
                             </button>

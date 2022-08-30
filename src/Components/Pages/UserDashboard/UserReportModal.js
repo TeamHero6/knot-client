@@ -17,7 +17,7 @@ const UserReportModal = ({ singleAttendance }) => {
             taskReport,
         };
         console.log(UpdateDateTime);
-        const url = `https://knot-business-solution-server.herokuapp.com/attendance/${_id}`;
+        const url = `http://localhost:5000/attendance/${_id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -36,13 +36,13 @@ const UserReportModal = ({ singleAttendance }) => {
             <input
                 type="checkbox"
                 id="attend-details-modal"
-                class="modal-toggle"
+                className="modal-toggle"
             />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
                     <label
                         for="attend-details-modal"
-                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                        className="btn btn-sm btn-circle absolute right-2 top-2"
                     >
                         ✕
                     </label>

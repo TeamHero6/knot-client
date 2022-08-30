@@ -24,19 +24,21 @@ const PartnerInvestChart = () => {
     // console.log(partnerList, companyName);
 
     return (
-        <div className="w-2/4">
-            <h2 className="text-base font-semibold text-green-500 mb-5">
+        <div className="">
+            <h2 className="text-base font-semibold text-green-500 mb-10">
                 Invest Chart
             </h2>
-            <BarChart width={500} height={250} data={partnerList}>
-                <CartesianGrid strokeDasharray="1 1" />
-                <XAxis dataKey="partnerName" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="share" fill="#ff7300" />
-                <Bar dataKey="Amount" fill="#06B6D4" />
-            </BarChart>
+            <div className="overflow-auto">
+                <BarChart width={500} height={250} data={partnerList}>
+                    <CartesianGrid strokeDasharray="1 1" />
+                    <XAxis dataKey="partnerName" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="share" fill="#ff7300" />
+                    <Bar dataKey="Amount" fill="#06B6D4" />
+                </BarChart>
+            </div>
         </div>
     );
 };

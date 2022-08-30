@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { RotatingSquare } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/logo/KnotLogo.png";
@@ -12,6 +13,7 @@ import Notification from "../Notification/Notification";
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
+    // const [refetch, setRefetch] = useState(false);
     const [userProfile, setuserprofile] = useState("");
     const [userEmail, setUserEmail] = useState("");
     // const [notification, setNotification] = useState([]);
@@ -25,10 +27,10 @@ const Navbar = () => {
     //         .then((res) => res.json())
     //         .then((data) => {
     //             setNotification(data);
-    //             const unseen = data.filter((n) => !n.seen);
+    //             const unseen = data?.filter((n) => !n.seen);
     //             setUnseenNotify(unseen.length);
     //         });
-    // }, [userEmail]);
+    // }, [userEmail, refetch]);
 
     const {
         data: notification,
@@ -43,7 +45,7 @@ const Navbar = () => {
     useEffect(() => {
         const unseen = notification?.filter((n) => !n.seen);
         setUnseenNotify(unseen?.length);
-    }, [notification]);
+    }, [notification, refetch]);
 
     // get redux state
     const isOpen = useSelector((state) => state.notification.isOpen);
@@ -56,7 +58,6 @@ const Navbar = () => {
             setUserEmail(email);
         }
     }, [authInfo]);
-    console.log(authInfo);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -69,16 +70,12 @@ const Navbar = () => {
         dispatch(NotifiyStatusUpdate(!isOpen));
     };
 
-    if (isLoading || loading) {
-        return;
-    }
-
     return (
         <div className="relative">
             <div className="navbar md:px-8 lg:px-12 bg-white h-[80px]">
                 <div className="navbar-start">
                     <div className="dropdown relative">
-                        <label tabindex="0" className="btn btn-ghost lg:hidden">
+                        <label tabIndex="0" className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -87,20 +84,20 @@ const Navbar = () => {
                                 stroke="currentColor"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="M4 6h16M4 12h8m-8 6h16"
                                 />
                             </svg>
                         </label>
                         <ul
-                            tabindex="0"
+                            tabIndex="0"
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
                                 <NavLink
-                                    to="/about"
+                                    to="/pricePlan"
                                     className={({ isActive }) =>
                                         isActive
                                             ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
@@ -196,7 +193,7 @@ const Navbar = () => {
                     <div className="hidden lg:flex items-center">
                         <div className="hidden md:flex items-center">
                             <NavLink
-                                to="/about"
+                                to="/pricePlan"
                                 className={({ isActive }) =>
                                     isActive
                                         ? "bg-green-400 text-white py-2 px-2 rounded-md mx-1"
@@ -254,7 +251,7 @@ const Navbar = () => {
                                             width="16"
                                             height="16"
                                             fill="currentColor"
-                                            class=""
+                                            className=""
                                             viewBox="0 0 16 16"
                                         >
                                             <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
@@ -262,67 +259,86 @@ const Navbar = () => {
                                     </span>
                                 </NavLink>
                             )}
-                            <div>
-                                {user ? (
-                                    <div className="dropdown dropdown-end">
-                                        <label
-                                            tabindex="0"
-                                            className="btn btn-ghost btn-circle avatar"
+                            {loading ? (
+                                <>
+                                    <RotatingSquare
+                                        height="50"
+                                        width="50"
+                                        color="#67E8F9"
+                                        ariaLabel="rotating-square-loading"
+                                        strokeWidth="4"
+                                        wrapperStyle={{}}
+                                        wrapperclassName=""
+                                        visible={true}
+                                    />
+                                </>
+                            ) : (
+                                <div>
+                                    {user ? (
+                                        <div className="dropdown dropdown-end">
+                                            <label
+                                                tabIndex="0"
+                                                className="btn btn-ghost btn-circle avatar"
+                                            >
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        src={`${
+                                                            userProfile
+                                                                ? userProfile
+                                                                : "https://placeimg.com/80/80/people"
+                                                        }`}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </label>
+                                            <ul
+                                                tabIndex="0"
+                                                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                                            >
+                                                <li>
+                                                    <a className="justify-between">
+                                                        Profile
+                                                        <span className="badge">
+                                                            New
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <Link to="/settings/profile">
+                                                        Settings
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        onClick={handleLogout}
+                                                    >
+                                                        Logout
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    ) : (
+                                        <NavLink
+                                            to="/BusinessLogin"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                                    : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
+                                            }
                                         >
-                                            <div className="w-10 rounded-full">
-                                                <img
-                                                    src={`${
-                                                        userProfile
-                                                            ? userProfile
-                                                            : "https://placeimg.com/80/80/people"
-                                                    }`}
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </label>
-                                        <ul
-                                            tabindex="0"
-                                            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                                        >
-                                            <li>
-                                                <a className="justify-between">
-                                                    Profile
-                                                    <span className="badge">
-                                                        New
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <Link to="/settings/profile">
-                                                    Settings
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <button onClick={handleLogout}>
-                                                    Logout
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                ) : (
-                                    <NavLink
-                                        to="/BusinessLogin"
-                                        className={({ isActive }) =>
-                                            isActive
-                                                ? "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
-                                                : "bg-green-400 text-white px-2 mx-1 py-2 rounded-md"
-                                        }
-                                    >
-                                        Login
-                                    </NavLink>
-                                )}
-                            </div>
+                                            Login
+                                        </NavLink>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
             {isOpen && (
-                <Notification {...{ notification, refetch, userEmail }} />
+                <Notification
+                    {...{ notification, userEmail, isLoading, refetch }}
+                />
             )}
         </div>
     );

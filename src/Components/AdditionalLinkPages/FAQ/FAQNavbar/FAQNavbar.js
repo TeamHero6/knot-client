@@ -1,18 +1,21 @@
 import { signOut } from "firebase/auth";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../../Assets/logo/KnotLogo.png";
 import auth from "../../../../firebase.init";
 
 const FAQNavbar = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const loggerInfo = useSelector((state) => state.auth?.loggerInfo);
+
+    const navigate = useNavigate();
+
     return (
         <div className=" md:px-8 lg:px-12 bg-cyan-400">
             <div className="navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <label tabindex="0" className="btn btn-ghost lg:hidden">
+                        <label tabIndex="0" className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -21,25 +24,17 @@ const FAQNavbar = () => {
                                 stroke="currentColor"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="M4 6h16M4 12h8m-8 6h16"
                                 />
                             </svg>
                         </label>
                         <ul
-                            tabindex="0"
+                            tabIndex="0"
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-100 rounded-box w-52"
                         >
-                            <li>
-                                <Link
-                                    to="/FAQ"
-                                    className="text-cyan-400 font-bold mx-2"
-                                >
-                                    Help Center
-                                </Link>
-                            </li>
                             <li>
                                 <Link
                                     to="/FAQ/Guides"
@@ -49,12 +44,12 @@ const FAQNavbar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link
-                                    to="/contactus"
-                                    className="text-cyan-400 border-2 border-cyan-400 px-3 py-1 rounded-full mx-2 hover:bg-cyan-400 duration-300 hover:border-cyan-400 outline-none hover:text-white"
+                                <a
+                                    href="mailto:support.knot@mail.com"
+                                    className="text-gray-200 border-2 border-gray-200 px-3 py-1 rounded-full mx-2 hover:bg-white duration-300 hover:border-white outline-none hover:text-cyan-400"
                                 >
-                                    Contact us
-                                </Link>
+                                    Contact Us
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -64,28 +59,26 @@ const FAQNavbar = () => {
                             src={logo}
                             className="w-20 p-1 md:w-20 md:p-2"
                             alt="logo"
+                            onClick={() => navigate("/")}
                         />
                     </div>
                     {/*Nav Link*/}
                     <div className="hidden lg:block">
-                        <Link to="/FAQ" className="text-white font-bold mx-2">
-                            Help Center
-                        </Link>
                         <Link to="/FAQ/Guides" className="text-gray-200 mx-2">
                             Guides
                         </Link>
-                        <Link
-                            to="/contactus"
+                        <a
+                            href="mailto:support.knot@mail.com"
                             className="text-gray-200 border-2 border-gray-200 px-3 py-1 rounded-full mx-2 hover:bg-white duration-300 hover:border-white outline-none hover:text-cyan-400"
                         >
-                            Contact us
-                        </Link>
+                            Contact Us
+                        </a>
                     </div>
                 </div>
                 <div className="navbar-end">
                     <div className="dropdown dropdown-end">
                         <label
-                            tabindex="0"
+                            tabIndex="0"
                             className="btn btn-ghost btn-circle avatar"
                         >
                             <div className="w-10 rounded-full">
@@ -93,17 +86,18 @@ const FAQNavbar = () => {
                             </div>
                         </label>
                         <ul
-                            tabindex="0"
+                            tabIndex="0"
                             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                         >
                             <li>
-                                <a className="justify-between">
+                                <button
+                                    className="justify-between"
+                                    onClick={() =>
+                                        navigate("/settings/profile")
+                                    }
+                                >
                                     Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>Settings</a>
+                                </button>
                             </li>
                             <li>
                                 <p onClick={() => signOut(auth)}>Logout</p>

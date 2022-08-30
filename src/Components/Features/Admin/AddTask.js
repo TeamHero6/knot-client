@@ -8,33 +8,33 @@ const AddTask = ({ refetch }) => {
     const [employeeEmail, setEmployeeEmail] = useState();
     const [employeeName, setEmployeeName] = useState("");
     const [search, setSearch] = useState("");
-    const authInfo = useSelector((state) => state.auth);
-    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
-    console.log(authInfo);
 
-    const users = [
-        {
-            id: 1,
-            name: "Monir Hossain Rabby",
-            email: "raj021159@gmail.com",
-            img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/298535184_3335161630078341_50621954687104169_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHbrNDCT5hJroVFCIuhc19Q_FvO6cAZXwn8W87pwBlfCd8T1GY39ygZgFI8DIrW2DZQMxx0uQWGtPyf8En960VD&_nc_ohc=iymhZlRqO-cAX_kEC6m&_nc_oc=AQkZTzpdjQaN1joVzUv3o3dpOepgrYAOQaUc9t86940bgZcUfuglLRdr-yVLMqqCxg4&_nc_ht=scontent.fdac27-1.fna&oh=00_AT_j1C49jJ9lAZAt643KZNot14djn-xzKhQiTU6AWfH1HA&oe=6304EF7E",
-        },
-        {
-            id: 2,
-            name: "Abdullah al habib",
-            email: "abdullahalhabib@gmail.com",
-            img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/273613283_2263347400470766_7396777399028024787_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG_LXrxmuVq2ZdQ39VW-rOGs5KO5Pd_rE2zko7k93-sTZGuWhGh3fAyOJrCe9soIRn4OeCUSWTMeGhi1xxJrzPj&_nc_ohc=W3iCnGIypuAAX8mFQXN&_nc_ht=scontent.fdac27-1.fna&oh=00_AT_fWBXWcVMfnSoRDj-3ybOYnv1wY8R35HPKBSkvctpjzw&oe=62FA48FA",
-        },
-        { id: 3, name: "Mobashirul islam seam", email: "seam@gmail.com" },
-        {
-            is: 4,
-            name: "Rahad Islam",
-            email: "rahadislam@gmail.com",
-            img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/293726723_1101309637483830_4648931062459785870_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFlEWuXtWQoqrrwDJZgeU3scMEbPIChgHBwwRs8gKGAcIhBc3isZVL1YExnuFXsudck0wKfKwBtvA_9N8-i7_YF&_nc_ohc=bLuGRnd8GUUAX9rsAT-&_nc_oc=AQl2vEzRq-zqbbh_-kVqZuiFckG24DJx1zphSFt46GaixUndf5hrOPZ93XoFdWw7jv4&_nc_ht=scontent.fdac27-1.fna&oh=00_AT-u0FV60eJ9IcP68AU1V8UF67ZhYwxDs-UTcepV_5WWyg&oe=62FA5F4B",
-        },
-        { id: 5, name: "Kabbo islam", email: "KabboISlam@gmail.com" },
-    ];
+    // const users = [
+    //     {
+    //         id: 1,
+    //         name: "Monir Hossain Rabby",
+    //         email: "raj021159@gmail.com",
+    //         img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/298535184_3335161630078341_50621954687104169_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHbrNDCT5hJroVFCIuhc19Q_FvO6cAZXwn8W87pwBlfCd8T1GY39ygZgFI8DIrW2DZQMxx0uQWGtPyf8En960VD&_nc_ohc=iymhZlRqO-cAX_kEC6m&_nc_oc=AQkZTzpdjQaN1joVzUv3o3dpOepgrYAOQaUc9t86940bgZcUfuglLRdr-yVLMqqCxg4&_nc_ht=scontent.fdac27-1.fna&oh=00_AT_j1C49jJ9lAZAt643KZNot14djn-xzKhQiTU6AWfH1HA&oe=6304EF7E",
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Abdullah al habib",
+    //         email: "abdullahalhabib@gmail.com",
+    //         img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/273613283_2263347400470766_7396777399028024787_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG_LXrxmuVq2ZdQ39VW-rOGs5KO5Pd_rE2zko7k93-sTZGuWhGh3fAyOJrCe9soIRn4OeCUSWTMeGhi1xxJrzPj&_nc_ohc=W3iCnGIypuAAX8mFQXN&_nc_ht=scontent.fdac27-1.fna&oh=00_AT_fWBXWcVMfnSoRDj-3ybOYnv1wY8R35HPKBSkvctpjzw&oe=62FA48FA",
+    //     },
+    //     { id: 3, name: "Mobashirul islam seam", email: "seam@gmail.com" },
+    //     {
+    //         is: 4,
+    //         name: "Rahad Islam",
+    //         email: "rahadislam@gmail.com",
+    //         img: "https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/293726723_1101309637483830_4648931062459785870_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFlEWuXtWQoqrrwDJZgeU3scMEbPIChgHBwwRs8gKGAcIhBc3isZVL1YExnuFXsudck0wKfKwBtvA_9N8-i7_YF&_nc_ohc=bLuGRnd8GUUAX9rsAT-&_nc_oc=AQl2vEzRq-zqbbh_-kVqZuiFckG24DJx1zphSFt46GaixUndf5hrOPZ93XoFdWw7jv4&_nc_ht=scontent.fdac27-1.fna&oh=00_AT-u0FV60eJ9IcP68AU1V8UF67ZhYwxDs-UTcepV_5WWyg&oe=62FA5F4B",
+    //     },
+    //     { id: 5, name: "Kabbo islam", email: "KabboISlam@gmail.com" },
+    // ];
+
+    const users = useSelector((state) => state.auth.allEmployees);
 
     const handleTask = (e) => {
         e.preventDefault();
@@ -52,12 +52,12 @@ const AddTask = ({ refetch }) => {
             taskTitle,
             taskDescription,
             deadline,
-            companyName
+            companyName,
         };
 
         // Post data to server
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
+            "http://localhost:5000/v1/addNewTask",
             {
                 method: "POST",
                 headers: {
@@ -109,9 +109,11 @@ const AddTask = ({ refetch }) => {
                         />
                     </div>
                     <div
-                        className={`${employeeName ? "hidden" : "absolute"
-                            } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${!search ? "p-0" : "py-2 pl-3"
-                            }`}
+                        className={`${
+                            employeeName ? "hidden" : "absolute"
+                        } w-full lg:w-6/12 drop-shadow-xl rounded-md bg-white top-12 ${
+                            !search ? "p-0" : "py-2 pl-3"
+                        }`}
                     >
                         {users
                             .filter((val) => {
@@ -131,6 +133,7 @@ const AddTask = ({ refetch }) => {
                                         user={user}
                                         setEmployeeEmail={setEmployeeEmail}
                                         setEmployeeName={setEmployeeName}
+                                        key={user?._id}
                                     />
                                 );
                             })}

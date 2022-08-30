@@ -10,13 +10,13 @@ const Assigntranning = () => {
     const [Trainnig, setTrainnig] = useState([]);
     // const [employinfo, setEmployinfo] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
+        fetch("http://localhost:5000/Trainnig")
             .then((res) => res.json())
             .then((data) => setTrainnig(data));
     }, [Trainnig]);
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
+        fetch("http://localhost:5000/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -36,7 +36,7 @@ const Assigntranning = () => {
             <button
                 onClick={() => setShow(!show)}
                 for="my-drawer"
-                class="flex  border-transparent items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                className="flex  border-transparent items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover: shadow-blue-300 hover: shadow-sm"
             >
                 <span>
                     <BiPlus></BiPlus>
@@ -162,8 +162,8 @@ const Assigntranning = () => {
             )}
 
             <div className="mx-auto w-full rounded-lg my-5 ">
-                <div class="overflow-auto  rounded-none">
-                    <table class="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+                <div className="overflow-auto  rounded-none">
+                    <table className="shadow-2xl border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">

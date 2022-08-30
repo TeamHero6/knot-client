@@ -38,13 +38,13 @@ const PartnerDetailsModal = ({ singlePartnerDetail }) => {
             <input
                 type="checkbox"
                 id="item-details-modal"
-                class="modal-toggle"
+                className="modal-toggle"
             />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
                     <label
                         for="item-details-modal"
-                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                        className="btn btn-sm btn-circle absolute right-2 top-2"
                     >
                         ✕
                     </label>

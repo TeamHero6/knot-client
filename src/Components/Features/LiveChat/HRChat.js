@@ -5,21 +5,28 @@ import { ToastContainer } from "react-toastify";
 
 const HRChat = () => {
     const [chatList, setChatList] = useState([]);
+    const [details, setDetails] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { Department } = loggerInfo;
+    const { companyName } = loggerInfo;
 
     const allEmployees = useSelector((state) => state.auth.allEmployees);
     if (allEmployees) {
         console.log(allEmployees);
     }
+    useEffect(() => {
+        fetch(`http://localhost:5000/employeedetails/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setDetails(data.reverse()));
+    }, [details, companyName]);
+    // console.log(details, companyName);
 
     useEffect(() => {
-        fetch(
-            `https://knot-business-solution-server.herokuapp.com/conversations/${Department}`
-        )
+        fetch(`http://localhost:5000/conversations/${Department}`)
             .then((res) => res.json())
             .then((data) => setChatList(data));
-    }, [chatList]);
+    }, [chatList, Department]);
+    // console.log(chatList, Department);
 
     return (
         <div className="chatCard ">
@@ -34,9 +41,9 @@ const HRChat = () => {
                                 key={chatList._id}
                                 className="hover:shadow-md hover:bg-custom-gray  duration-500 cursor-pointer border-b border-cyan-100"
                             >
-                                <td className="px-5 py-2 text-black whitespace-normal">
+                                <td className="px-5 text-black whitespace-normal">
                                     <div className="flex gap-x-6">
-                                        <div class="avatar placeholder py-1 items-center">
+                                        <div class="avatar placeholder items-center">
                                             <div class="bg-neutral-focus text-neutral-content rounded-full w-8">
                                                 <img
                                                     src={chatList?.userPhoto}

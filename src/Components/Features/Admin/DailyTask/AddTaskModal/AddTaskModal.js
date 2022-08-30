@@ -54,7 +54,7 @@ const AddTaskModal = ({ refetch, setOpen }) => {
 
         //Post data to server
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
+            "http://localhost:5000/v1/addNewTask",
             {
                 method: "POST",
                 headers: {
@@ -83,9 +83,9 @@ const AddTaskModal = ({ refetch, setOpen }) => {
     };
     return (
         <div>
-            <input type="checkbox" id="addTask" class="modal-toggle" />
-            <label for="addTask" class="modal">
-                <label class="modal-box relative" for="">
+            <input type="checkbox" id="addTask" className="modal-toggle" />
+            <label for="addTask" className="modal">
+                <label className="modal-box relative" for="">
                     <form
                         className="w-full bg-white rounded py-10"
                         onSubmit={handleTask}

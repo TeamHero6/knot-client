@@ -17,12 +17,13 @@ const SalesDashboard = () => {
     const [itemList, setItemList] = useState([]);
     const [singleItemDetail, setSingleItemDetail] = useState({});
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
+    const [orderList, setOrderList] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
+            `http://localhost:5000/addProduct/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
@@ -30,7 +31,7 @@ const SalesDashboard = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
+            `http://localhost:5000/addNewVendor/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
@@ -38,7 +39,7 @@ const SalesDashboard = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addCustomer/${companyName}`
+            `http://localhost:5000/addCustomer/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
@@ -46,18 +47,24 @@ const SalesDashboard = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${companyName}`
+            `http://localhost:5000/addNewPurchaseOrder/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));
     }, [purchaseOrderList, companyName]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/addNewOrder/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setOrderList(data.reverse()));
+    }, [orderList, companyName]);
 
     return (
         <div>
             <section className="flex justify-center	gap-5">
                 <div className="card w-40 md:w-72 bg-base-100 shadow-xl">
                     <div className="card-body text-center px-0 sm:px-8">
-                        <h2 className="font-bold text-lg">25</h2>
+                        <h2 className="font-bold text-lg">{orderList.length}</h2>
                         <p>Total Order</p>
                     </div>
                 </div>

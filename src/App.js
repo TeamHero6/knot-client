@@ -8,6 +8,7 @@ import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManag
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
+import TermsAndConditions from "./Components/AdditionalLinkPages/TermsAndConditions/TermsAndConditions";
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
@@ -17,6 +18,7 @@ import AllLedger from "./Components/Features/Finance/AllLedger/AllLedger";
 import FinanceDashboard from "./Components/Features/Finance/FinanceDashboard/FinanceDashboard";
 import FinanceManagement from "./Components/Features/Finance/FinanceManagement";
 import Partners from "./Components/Features/Finance/Partners/Partners";
+import FinancePayroll from "./Components/Features/Finance/Payroll/FinancePayroll";
 // import HRDashboard from "./Components/Features/HRDashboard/Dashboard/HRDashboard";
 import EmployeeManagement from "./Components/Features/HRDashboard/EmployeeManagement/EmployeeManagement";
 import HRWarning from "./Components/Features/HRDashboard/EmployeeManagement/HRWarning";
@@ -65,6 +67,7 @@ import EmployeeDetails from "./Components/Pages/Leave/EmployeeDtails/EmployeeDet
 import Leave from "./Components/Pages/Leave/Leave";
 import LeaveRequest from "./Components/Pages/Leave/LeaveRequest/LeaveRequest";
 import UserManagement from "./Components/Pages/Leave/UserManagement";
+import PricingCard from "./Components/Pages/Pricing/PricingCard";
 import CompanySettings from "./Components/Pages/ProfileSettings/CompanySettings/CompanySettings";
 import ProfileDashboard from "./Components/Pages/ProfileSettings/ProfileDashboard";
 import ProfileSettings from "./Components/Pages/ProfileSettings/ProfileSettings/ProfileSettings";
@@ -75,6 +78,7 @@ import UserPromotion from "./Components/Pages/UserDashboard/UserPromotion";
 import Calender from "./Components/Shared/Calender/Calender";
 import Loader from "./Components/Shared/Loader/Loader";
 import FormSample from "./FromSample/FormSample";
+import NotFoundPage from "./FromSample/NotFoundPage";
 const AdminDashboardF = lazy(() =>
     import("./Components/Features/Admin/Dashboard/AdminDashboardF")
 );
@@ -91,6 +95,7 @@ function App() {
                         path="/form"
                         element={<FormSample></FormSample>}
                     ></Route>
+                    <Route path="pricePlan" element={<PricingCard />}></Route>
                     <Route
                         path="/employeedetails"
                         element={<EmployeeDetails></EmployeeDetails>}
@@ -189,7 +194,10 @@ function App() {
                     {/* ---------- Sales Management ---------- */}
                     <Route path="/salesTS" element={<SalesManagement />}>
                         <Route index element={<SalesDashboard />}></Route>
-                        <Route path="salesDashboard" element={<SalesDashboard />}></Route>
+                        <Route
+                            path="salesDashboard"
+                            element={<SalesDashboard />}
+                        ></Route>
                         <Route path="items" element={<Items />}></Route>
                         <Route path="inventory" element={<Inventory />} />
                         <Route
@@ -211,10 +219,19 @@ function App() {
                         <Route path="inventory" element={<Inventory />}></Route>
                     </Route>
                     {/* ---------- Marketing Automation ---------- */}
-                    <Route path="/marketingTS" element={<MarketingAutomation />}>
+                    <Route
+                        path="/marketingTS"
+                        element={<MarketingAutomation />}
+                    >
                         <Route index element={<EmailMarketing />} />
-                        <Route path="emailMarketing" element={<EmailMarketing />} />
-                        <Route path="customerListing" element={<CustomerListing />} />
+                        <Route
+                            path="emailMarketing"
+                            element={<EmailMarketing />}
+                        />
+                        <Route
+                            path="customerListing"
+                            element={<CustomerListing />}
+                        />
                     </Route>
                     {/* ---------- Team Management ---------- */}
                     <Route path="/teamManagement" element={<AdminDashboardF />}>
@@ -225,7 +242,10 @@ function App() {
                             element={<TeamOrganize />}
                         ></Route>
                         <Route path="addTask" element={<AddTask />}></Route>
-                        <Route path="teamManagement" element={<TeamManagement />}></Route>
+                        <Route
+                            path="teamManagement"
+                            element={<TeamManagement />}
+                        ></Route>
                     </Route>
                     <Route
                         path="/FAQ"
@@ -262,8 +282,14 @@ function App() {
                     </Route>
                     {/* ---------- Finance Management ---------- */}
                     <Route path="/financeTS" element={<FinanceManagement />}>
-                        <Route index element={<FinanceDashboard></FinanceDashboard>} />
-                        <Route path="financeDashboard" element={<FinanceDashboard></FinanceDashboard>} />
+                        <Route
+                            index
+                            element={<FinanceDashboard></FinanceDashboard>}
+                        />
+                        <Route
+                            path="financeDashboard"
+                            element={<FinanceDashboard></FinanceDashboard>}
+                        />
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
                         <Route
@@ -271,7 +297,11 @@ function App() {
                             element={<UserAttendance />}
                         ></Route>
                         <Route
-                            path="directExpense"
+                            path="salary"
+                            element={<FinancePayroll />}
+                        ></Route>
+                        <Route
+                            path="allExpense"
                             element={<DirectExpense />}
                         ></Route>
                     </Route>
@@ -282,6 +312,9 @@ function App() {
                     <Route path="/learnMore" element={<AllKnotApp />} />
                     <Route path="Calender" element={<Calender></Calender>} />
                     <Route path="load" element={<Loader />} />
+                    <Route path="*" element={<NotFoundPage/>}></Route>
+                    <Route path="/TermsAndConditions" element={<TermsAndConditions/>}></Route>
+                    <Route path="*" element={<NotFoundPage />}></Route>
                 </Routes>
             </Suspense>
             <ToastContainer></ToastContainer>
