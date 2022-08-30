@@ -44,7 +44,7 @@ const Faq = () => {
                         <p>Rules and politics</p>
                     </Link>
                 </div>
-                <div className="w-full overflow-hidden hover:overflow-x-auto">
+                <div className="w-full">
                     <Outlet />
                 </div>
             </section>

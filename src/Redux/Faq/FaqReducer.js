@@ -1,5 +1,4 @@
 const initialStata = {
-    search: null,
     account: [
         {
             id: 1,
