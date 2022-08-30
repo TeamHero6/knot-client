@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
@@ -33,7 +34,12 @@ const Faq = () => {
             </div>{" "}
             {/*FAQ Header*/}
             {/* //Dashboard */}
-            <section className="w-full flex my-12">
+            <motion.section
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="w-full flex my-12"
+            >
                 <div className="text-gray-500 w-1/3 flex justify-center">
                     <div className="text-left">
                         <Link to="/FAQ">
@@ -71,7 +77,7 @@ const Faq = () => {
                 <div className="w-full">
                     <Outlet />
                 </div>
-            </section>
+            </motion.section>
         </div>
     );
 };
