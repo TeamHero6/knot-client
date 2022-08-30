@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -7,7 +8,11 @@ const AccountManagement = () => {
     const { account } = faq;
     console.log(faq);
     return (
-        <section>
+        <motion.section
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="w-full px-6">
                 <div className="flex justify-end">
                     <input
@@ -39,7 +44,7 @@ const AccountManagement = () => {
                         );
                     })}
             </div>
-        </section>
+        </motion.section>
     );
 };
 

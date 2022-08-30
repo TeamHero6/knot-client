@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 const SafetyAndSecurity = () => {
@@ -45,7 +46,12 @@ const SafetyAndSecurity = () => {
         },
     ];
     return (
-        <div className="w-full px-6">
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="w-full px-6"
+        >
             <div className="flex justify-end">
                 <input
                     type="text"
@@ -73,7 +79,7 @@ const SafetyAndSecurity = () => {
                         </div>
                     );
                 })}
-        </div>
+        </motion.div>
     );
 };
 
