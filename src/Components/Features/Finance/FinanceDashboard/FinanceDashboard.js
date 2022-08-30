@@ -24,13 +24,37 @@ const FinanceDashboard = () => {
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList, companyName]);
 
-    // console.log(partnerList, companyName);
+    console.log(partnerList, companyName);
+
+const shareAmount = partnerList.reduce((prev, current) => {
+        return prev + parseInt(current.Amount)
+    }, 0)
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-2xl ">${shareAmount}</h2>
+                        <p className="text-lg">Share Amount</p>
+                    </div>
+                </div>
+                <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-2xl ">$500</h2>
+                        <p className="text-lg">General & Admin Expense</p>
+                    </div>
+                </div>
+                <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
+                    <div className="card-body text-center">
+                        <h2 className="font-bold text-2xl ">$500</h2>
+                        <p className="text-lg">Salary Expense</p>
+                    </div>
+                </div>
+            </section>
             <section className=" bg-white shadow-gray-300 border shadow-md rounded py-6 px-6 mt-5 lg:flex lg:flex-row">
                 <div className="lg:w-5/12 w-full lg:ml-12 lg:gap-5">
                     <IncomeExpenseOverview />
