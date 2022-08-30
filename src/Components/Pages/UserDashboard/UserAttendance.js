@@ -2,16 +2,18 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import UserAttendanceCard from "./UserAttendanceCard";
 import UserReportModal from "./UserReportModal";
+import { useSelector } from "react-redux";
 
 const UserAttendance = () => {
     const [attendance, setAttendance] = useState([]);
     const [singleAttendance, setSingleAttendance] = useState({});
-
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const userEmail = loggerInfo.email;
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/attendance")
+        fetch(`http://localhost:5000/attendance/${userEmail}`)
             .then((res) => res.json())
             .then((data) => setAttendance(data.reverse()));
-    }, [attendance]);
+    }, [attendance, userEmail]);
 
     // console.log(attendance);
     const handleJoinOffice = (e) => {
@@ -19,7 +21,7 @@ const UserAttendance = () => {
         const startTime = e.target.startTime.value;
         const startDate = e.target.startDate.value;
 
-        const Attendance = { startDate, startTime };
+        const Attendance = { startDate, startTime, userEmail };
         // console.log(Attendance);
 
         fetch(

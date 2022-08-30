@@ -14,7 +14,7 @@ const LeaveRequest = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${loggerInfo.email}`)
+        fetch(`http://localhost:5000/leaveUsers/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setleave(data));
     }, [leave, loggerInfo]);
@@ -146,7 +146,7 @@ const LeaveRequest = () => {
                         </div> : ' '
                 }
                 <div className='px-5 mt-5'>
-                <h1 className='text-2xl font-bold'>Request Status</h1>
+                    <h1 className='text-2xl font-bold'>Request Status</h1>
                     <div class="overflow-x-auto">
                         <div className="w-full mb-5 flex justify-between rounded py-6 mt-5">
                             <table class="shadow-sm border-2 border-cyan-300 w-full text-base overflow-hidden">
@@ -162,7 +162,7 @@ const LeaveRequest = () => {
                                 <tbody>
                                     {
                                         leave.map(le =>
-                                            <tr className='hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+                                            <tr className='hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100'>
                                                 <td className="py-3 px-6 whitespace-nowrap">{le.id}</td>
                                                 <td className="py-3 px-6 whitespace-nowrap">{le.Name}</td>
                                                 <td className="py-3 px-6 whitespace-nowrap">{le.dep}</td>
