@@ -13,7 +13,7 @@ const HRPerformanceData = () => {
             .then((res) => res.json())
             .then((data) => setTransfer(data));
     }, [transfer, companyName]);
-    // console.log(transfer, companyName);
+    console.log(transfer, companyName);
 
     useEffect(() => {
         fetch(`http://localhost:5000/performance/${companyName}`)

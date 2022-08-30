@@ -96,7 +96,7 @@ const FinancePayroll = () => {
                                         className="font-bold w-40"
                                         htmlFor="name"
                                     >
-                                        Name :{" "}
+                                        Email :{" "}
                                     </label>{" "}
                                     <br />
                                     <select
