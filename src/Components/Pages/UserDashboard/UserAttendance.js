@@ -11,10 +11,10 @@ const UserAttendance = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch("http://localhost:5000/attendance")
+        fetch(`http://localhost:5000/attendance/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setAttendance(data.reverse()));
-    }, [attendance]);
+    }, [attendance, loggerInfo]);
 
     // console.log(attendance);
     const handleJoinOffice = (e) => {
@@ -24,7 +24,7 @@ const UserAttendance = () => {
         const userEmail = e.target.userEmail.value;
 
 
-        const Attendance = { startDate, startTime, userEmail, companyName};
+        const Attendance = { startDate, startTime, userEmail, companyName };
         console.log(Attendance);
 
         fetch(

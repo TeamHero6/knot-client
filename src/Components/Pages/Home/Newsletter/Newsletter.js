@@ -3,7 +3,6 @@ import { toast, ToastContainer } from "react-toastify";
 import newsletter from "../../../../Assets/images/newsletter.png";
 
 const Newsletter = () => {
-   
 
     const emailSend = (event) => {
         event.preventDefault();

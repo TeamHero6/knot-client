@@ -37,6 +37,10 @@ const Blog = () => {
                         blog={blog}
                     ></AdminBlogCard>)
                 }
+
+
+
+                
             </div>
         </div>
     );

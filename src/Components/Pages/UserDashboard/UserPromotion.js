@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const UserPromotion = () => {
     const [promotions, setPromotions] = useState([]);
     const [transfers, setTransfers] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/performance")
+        fetch(`http://localhost:5000/userPerformance/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setPromotions(data));
-    }, []);
+    }, [loggerInfo]);
 
     useEffect(() => {
         fetch("https://sheltered-cliffs-60290.herokuapp.com/transfer")

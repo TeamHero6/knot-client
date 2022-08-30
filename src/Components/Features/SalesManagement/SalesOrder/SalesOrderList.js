@@ -8,9 +8,7 @@ const SalesOrderList = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(
-            `http://localhost:5000/addNewOrder/${companyName}`
-        )
+        fetch(`http://localhost:5000/addNewOrder/${companyName}`)
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
     }, [orderList, companyName]);

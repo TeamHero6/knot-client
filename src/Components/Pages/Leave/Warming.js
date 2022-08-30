@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Warming = () => {
     const [warnings, setWarnings] = useState([]);
     const [trainings, setTrainings] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/warnings")
+        fetch(`http://localhost:5000/userWarnings/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setWarnings(data.reverse()));
-    }, []);
+    }, [warnings, loggerInfo]);
 
     useEffect(() => {
         fetch("http://localhost:5000/Trainnig")
