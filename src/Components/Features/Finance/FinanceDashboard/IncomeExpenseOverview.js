@@ -85,7 +85,7 @@ const IncomeExpenseOverview = () => {
                         </div>
                         <div>
                             <p>Total Expense</p>
-                            <p className='text-green-500'>{directExpense+adminExpense+payrollAmount}<small></small></p>
+                            <p className='text-red-500 font-bold'>${directExpense+adminExpense+payrollAmount}<small></small></p>
                         </div>
                     </div>
                 </div>

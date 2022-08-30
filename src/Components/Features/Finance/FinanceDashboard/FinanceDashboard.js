@@ -14,9 +14,25 @@ import PartnerDetails from "./PartnerDetails";
 import SalesReport from "./SalesReport";
 
 const FinanceDashboard = () => {
+    const [cashBookList, setCashBookList] = useState([]);
+    const [bankBookList, setBankBookList] = useState([]);
+    const [payrolls, setPayrolls] = useState([]);
+    const [orderList, setOrderList] = useState([]);
     const [partnerList, setPartnerList] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
+    
+    useEffect(() => {
+        fetch(
+            `http://localhost:5000/addNewOrder/${companyName}`
+        )
+            .then((res) => res.json())
+            .then((data) => setOrderList(data.reverse()));
+    }, [orderList, companyName]);
+    
+    const orderAmount = orderList.reduce((prev, current) => {
+        return prev + parseInt(current.totalAmount)
+    }, 0)
 
     useEffect(() => {
         fetch(`http://localhost:5000/partner/${companyName}`)
@@ -24,10 +40,38 @@ const FinanceDashboard = () => {
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList, companyName]);
 
-    console.log(partnerList, companyName);
+    // console.log(partnerList, companyName);
 
 const shareAmount = partnerList.reduce((prev, current) => {
         return prev + parseInt(current.Amount)
+    }, 0)
+    useEffect(() => {
+        fetch(`http://localhost:5000/cashBook/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setCashBookList(data.reverse()));
+    }, [cashBookList, companyName]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/bankBook/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setBankBookList(data.reverse()));
+    }, [bankBookList, companyName]);
+
+    useEffect(() => {
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/payrolls/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setPayrolls(data));
+    }, [payrolls, companyName]);
+
+    const directExpense = cashBookList.reduce((prev, current) => {
+        return prev + parseInt(current.amount)
+    }, 0)
+    const adminExpense = bankBookList.reduce((prev, current) => {
+        return prev + parseInt(current.amount)
+    }, 0)
+    const payrollAmount = payrolls.reduce((prev, current) => {
+        return prev + parseInt(current.Payroll)
     }, 0)
     return (
         <motion.div
@@ -38,19 +82,19 @@ const shareAmount = partnerList.reduce((prev, current) => {
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
                     <div className="card-body text-center">
-                        <h2 className="font-bold text-2xl ">${shareAmount}</h2>
+                        <h2 className="font-bold text-2xl text-orange-500">${shareAmount}</h2>
                         <p className="text-lg">Share Amount</p>
                     </div>
                 </div>
                 <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
                     <div className="card-body text-center">
-                        <h2 className="font-bold text-2xl ">$500</h2>
-                        <p className="text-lg">General & Admin Expense</p>
+                        <h2 className="font-bold text-2xl text-green-500">${orderAmount}</h2>
+                        <p className="text-lg">Total Sales</p>
                     </div>
                 </div>
                 <div className="card col-span-1 mx-auto card-compact w-72 bg-base-100 shadow-xl">
                     <div className="card-body text-center">
-                        <h2 className="font-bold text-2xl ">$500</h2>
+                        <h2 className="font-bold text-2xl text-green-800">${orderAmount - directExpense - adminExpense - payrollAmount}</h2>
                         <p className="text-lg">Salary Expense</p>
                     </div>
                 </div>
