@@ -44,7 +44,7 @@ const HrPayroll = () => {
             <div>
                 <button
                     onClick={() => setShow(!show)}
-                    className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover:outline-1 hover:border hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
+                    className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover: shadow-green-200 hover: shadow-sm"
                 >
                     <IoIosAddCircleOutline className="text-2xl" />
                     Add Payroll
@@ -168,7 +168,7 @@ const HrPayroll = () => {
                             <div className="flex justify-center mt-2">
                                 <button
                                     type="submit"
-                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover: shadow-blue-300 hover: shadow-sm"
                                 >
                                     <AiFillSave />
                                     Save
@@ -183,7 +183,7 @@ const HrPayroll = () => {
             )}
 
             <div>
-                <div className="w-full h-80 mt-5 mb-5">
+                <div className="rounded-none overflow-auto h-80 w-full">
                     <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>

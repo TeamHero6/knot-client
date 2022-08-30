@@ -6,8 +6,8 @@ import profile from '../../../../Assets/icons/Live-chat-icon/profile_user.png';
 
 
 const LeaveRequestCard = (props) => {
-    const { _id, Date, id, Name, dep, leave_type, e_date, aprovel } = props.leave
-    // const [requests, setRequest] = useState([]);
+    const { _id, Date, id, Name, dep, leave_type, e_date, aprovel } = props.leave;
+    console.log(Date);
     const [upstatus, setUpstatus] = useState("");
 
     const approv = (event) => {
@@ -33,7 +33,7 @@ const LeaveRequestCard = (props) => {
             });
     };
     return (
-        <div class="card w-80 bg-base-100 shadow-xl">
+        <div class="card w-full bg-base-100 shadow-xl hover:shadow-md hover:bg-white hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
             <div class="card-body">
                 <h2 class="card-title capitalize mb-5">
                     {Name}

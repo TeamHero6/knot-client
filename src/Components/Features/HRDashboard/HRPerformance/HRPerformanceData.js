@@ -10,23 +10,21 @@ const HRPerformanceData = () => {
             .then((res) => res.json())
             .then((data) => setTransfer(data));
     }, [transfer]);
-    console.log(transfer);
 
     useEffect(() => {
         fetch("https://knot-business-solution-server.herokuapp.com/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, [promo]);
-    // console.log(promo);
 
     return (
         <div>
             <div>
                 <div>
-                    <h1 className="font-semibold text-green-500 text-xl  mt-5 ml-5">
+                    <h1 className="font-semibold text-xl  mt-5 ml-5">
                         Employee Promotion Database
                     </h1>
-                    <div className="w-full h-80 mb-5">
+                    <div className="rounded-none overflow-auto h-80 w-full">
                         <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto mt-4 text-base overflow-hidden">
                             <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                 <tr>
@@ -85,7 +83,7 @@ const HRPerformanceData = () => {
                 <h1 className="font-semibold text-xl my-5 ml-5">
                     Employee Transfer Database
                 </h1>
-                <div className="grid grid-rows-2 mb-10 grid-flow-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {transfer.slice(0, 20).map((transfer) => (
                         <HRTransferCard transfer={transfer}></HRTransferCard>
                     ))}
