@@ -56,9 +56,11 @@ const FeaturedApp = () => {
                                 <section className="text-left mt-3 ml-1">
                                     <h3>Team</h3>
                                     <p className="mb-1 md:mb-4">Management</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="/teamManagementMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </section>
                             </div>
                         </div>
@@ -74,9 +76,11 @@ const FeaturedApp = () => {
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Human</h3>
                                     <p className="mb-1 md:mb-4">Resource</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="/humanResourceMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </div>
                             </section>
                         </div>
@@ -92,9 +96,11 @@ const FeaturedApp = () => {
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Finance</h3>
                                     <p className="mb-1 md:mb-4">Management</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2 transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="/financeManagementMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2 transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </div>
                             </section>
                         </div>
@@ -110,9 +116,11 @@ const FeaturedApp = () => {
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Sales</h3>
                                     <p className="mb-1 md:mb-4">Management</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="salesManagementMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </div>
                             </section>
                         </div>
@@ -128,9 +136,11 @@ const FeaturedApp = () => {
                                 <section className="text-left mt-3 ml-1">
                                     <h3>Marketing</h3>
                                     <p className="mb-1 md:mb-4">Automation</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="/marketingAutomationMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </section>
                             </div>
                         </div>
@@ -146,9 +156,11 @@ const FeaturedApp = () => {
                                 <div className="text-left mt-3 ml-1">
                                     <h3>User</h3>
                                     <p className="mb-1 md:mb-4">Dashboard</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="/userDashboardMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </div>
                             </section>
                         </div>
@@ -164,9 +176,11 @@ const FeaturedApp = () => {
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Group</h3>
                                     <p className="mb-1 md:mb-4">Chat</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="/groupChatMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </div>
                             </section>
                         </div>
@@ -182,9 +196,11 @@ const FeaturedApp = () => {
                                 <div className="text-left mt-3 ml-1">
                                     <h3>Admin</h3>
                                     <p className="mb-1 md:mb-4">Management</p>
-                                    <p className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
+                                    <Link
+                                        to="/adminManagementMore"
+                                        className="bg-transparent border-[1px] border-sky-400 text-sky-400 font-medium px-1 lg:px-4 py-2   transform  duration-[.7s] transition-all text-sm lg:text-md">
                                         LEARN MORE
-                                    </p>
+                                    </Link>
                                 </div>
                             </section>
                         </div>
