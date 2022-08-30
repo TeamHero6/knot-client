@@ -10,7 +10,7 @@ const Meeting = () => {
             .then((res) => res.json())
             .then((data) => setMeetings(data.reverse()));
     }, [meetings, loggerInfo]);
-    console.log(meetings, loggerInfo);
+    // console.log(meetings, loggerInfo);
 
     return (
         <div className="mx-10">

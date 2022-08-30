@@ -5,7 +5,7 @@ const UserAttendanceCard = (props) => {
     const { _id, startDate, startTime, UpdateDateTime } = props.attend
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     if (loggerInfo) {
-        console.log(loggerInfo);
+        // console.log(loggerInfo);
     }
     return (
         <div className='bg-white w-60 mx-auto shadow-gray-300 px-5 py-5 rounded-md shadow-sm'>
