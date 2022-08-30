@@ -189,7 +189,10 @@ function App() {
                     {/* ---------- Sales Management ---------- */}
                     <Route path="/salesTS" element={<SalesManagement />}>
                         <Route index element={<SalesDashboard />}></Route>
-                        <Route path="salesDashboard" element={<SalesDashboard />}></Route>
+                        <Route
+                            path="salesDashboard"
+                            element={<SalesDashboard />}
+                        ></Route>
                         <Route path="items" element={<Items />}></Route>
                         <Route path="inventory" element={<Inventory />} />
                         <Route
@@ -211,10 +214,19 @@ function App() {
                         <Route path="inventory" element={<Inventory />}></Route>
                     </Route>
                     {/* ---------- Marketing Automation ---------- */}
-                    <Route path="/marketingTS" element={<MarketingAutomation />}>
+                    <Route
+                        path="/marketingTS"
+                        element={<MarketingAutomation />}
+                    >
                         <Route index element={<EmailMarketing />} />
-                        <Route path="emailMarketing" element={<EmailMarketing />} />
-                        <Route path="customerListing" element={<CustomerListing />} />
+                        <Route
+                            path="emailMarketing"
+                            element={<EmailMarketing />}
+                        />
+                        <Route
+                            path="customerListing"
+                            element={<CustomerListing />}
+                        />
                     </Route>
                     {/* ---------- Team Management ---------- */}
                     <Route path="/teamManagement" element={<AdminDashboardF />}>
@@ -225,16 +237,12 @@ function App() {
                             element={<TeamOrganize />}
                         ></Route>
                         <Route path="addTask" element={<AddTask />}></Route>
-                        <Route path="teamManagement" element={<TeamManagement />}></Route>
+                        <Route
+                            path="teamManagement"
+                            element={<TeamManagement />}
+                        ></Route>
                     </Route>
-                    <Route
-                        path="/FAQ"
-                        element={
-                            <RequireAuth>
-                                <Faq />
-                            </RequireAuth>
-                        }
-                    >
+                    <Route path="/FAQ" element={<Faq />}>
                         <Route index element={<AccountManagement />} />
                         <Route
                             path="safetyandsecuirity"
@@ -262,8 +270,14 @@ function App() {
                     </Route>
                     {/* ---------- Finance Management ---------- */}
                     <Route path="/financeTS" element={<FinanceManagement />}>
-                        <Route index element={<FinanceDashboard></FinanceDashboard>} />
-                        <Route path="financeDashboard" element={<FinanceDashboard></FinanceDashboard>} />
+                        <Route
+                            index
+                            element={<FinanceDashboard></FinanceDashboard>}
+                        />
+                        <Route
+                            path="financeDashboard"
+                            element={<FinanceDashboard></FinanceDashboard>}
+                        />
                         <Route path="partners" element={<Partners />}></Route>
                         <Route path="allLedger" element={<AllLedger />}></Route>
                         <Route
