@@ -48,7 +48,7 @@ const UserAttendance = () => {
                     <h1 className="text-xl text-center font-semibold">
                         Time Tracking
                     </h1>
-                    <div className="mt-5 flex justify-center">
+                    <div className="mt-5 block lg:flex justify-center">
                         <form onSubmit={handleJoinOffice}>
                             <input
                                 type="hidden"
@@ -62,7 +62,7 @@ const UserAttendance = () => {
                                 id=""
                                 value={moment().format("ll")}
                             />
-                            <button className="bg-green-500 text-white px-8 py-2 mr-2">
+                            <button className="bg-green-500 text-white px-8 py-2 ml-7 mr-2">
                                 Start
                             </button>
                         </form>

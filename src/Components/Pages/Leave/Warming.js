@@ -24,7 +24,7 @@ const Warming = () => {
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {warnings?.slice(0, 20).map((warning) => (
-                        <div className="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div className="px-4 py-2 w-60 lg:w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                             <div className="flex items-center justify-between">
                                 <p className="my-2 font-semibold">
                                     {warning.name}
@@ -74,7 +74,7 @@ const Warming = () => {
                 <h1 className="text-2xl font-bold my-6">Training Details</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {trainings?.slice(0, 20).map((training) => (
-                        <div className="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div className="px-4 py-2 w-60 lg:w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                             <div className="flex items-center justify-between">
                                 <p className="my-2 font-semibold">
                                     {training.Applicant_Name}

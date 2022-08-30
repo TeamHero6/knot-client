@@ -201,8 +201,8 @@ const LeaveRequest = () => {
                 )}
                 <div className="px-5 mt-5">
                     <h1 className="text-2xl font-bold">Request Status</h1>
-                    <div class="overflow-x-auto">
-                        <div className="w-full mb-5 flex justify-between rounded py-6 mt-5">
+                    <div class="overflow-x-auto px-5 mt-3 bg-white rounded drop-shadow-md">
+                        <div className="w-full  mt-5 mb-5 h-80 overflow-auto">
                             <table class="shadow-sm border-2 border-cyan-300 w-full text-base overflow-hidden">
                                 <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                                     <tr>
