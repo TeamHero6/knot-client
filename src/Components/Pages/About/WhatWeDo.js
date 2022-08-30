@@ -10,21 +10,11 @@ const WhatWeDo = () => {
                 animate={{ opacity: 1, x: 1 }}
                 className="text-left w-[100%] flex flex-col justify-center  md:w-1/2 px-4"
             >
-                <h2 className="text-4xl font-bold tracking-wide mb-4">
-                    We Handle All Your Problem Business
+                <h2 className="text-4xl font-bold tracking-wide mb-4 text-blue-500">
+                    Our Goal
                 </h2>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias alias odio, molestiae, cum dolore consequatur
-                    nihil natus itaque suscipit id excepturi in accusamus veniam
-                    quam magnam. Officiis perspiciatis velit provident, a
-                    laborum autem ab iste possimus sapiente cumque perferendis
-                    ex quidem quam tenetur pariatur, rem sint vitae. Sed
-                    distinctio nihil voluptatem perspiciatis ipsum et error unde
-                    maxime architecto, minus eius aut, sint accusantium veniam
-                    ipsa. Autem impedit ab cupiditate quidem quae quia veniam
-                    similique quam molestiae quos, harum dolores a assumenda aut
-                    expedita, iste iusto voluptas reprehenderit inventore
+                We build to make your business Secure, Straightforward, and Simple. KNOT is a powerful user-friendly software to run your entire business. KNOT will help to get the best out of your customer-facing teams with Marketing Automation, Finance Tracking Tool, Task Management, and more. It will work as your Virtual Business Manager. Customers can interact with your team through the Live Chatting service. Our job is to help you to grow your dream business with acceleration.
                 </p>
             </motion.div>
             <motion.div

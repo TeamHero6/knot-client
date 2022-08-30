@@ -17,6 +17,7 @@ const SalesDashboard = () => {
     const [itemList, setItemList] = useState([]);
     const [singleItemDetail, setSingleItemDetail] = useState({});
     const [purchaseOrderList, setPurchaseOrderList] = useState([]);
+    const [orderList, setOrderList] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
 
@@ -52,12 +53,18 @@ const SalesDashboard = () => {
             .then((data) => setPurchaseOrderList(data.result.reverse()));
     }, [purchaseOrderList, companyName]);
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/addNewOrder/${companyName}`)
+            .then((res) => res.json())
+            .then((data) => setOrderList(data.reverse()));
+    }, [orderList, companyName]);
+
     return (
         <div>
             <section className="flex justify-center	gap-5">
                 <div className="card w-40 md:w-72 bg-base-100 shadow-xl">
                     <div className="card-body text-center px-0 sm:px-8">
-                        <h2 className="font-bold text-lg">25</h2>
+                        <h2 className="font-bold text-lg">{orderList.length}</h2>
                         <p>Total Order</p>
                     </div>
                 </div>

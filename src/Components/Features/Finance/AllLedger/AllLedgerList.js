@@ -6,6 +6,11 @@ const AllLedgerList = () => {
     const [bankBookList, setBankBookList] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
+    
+    const BankBookAmount = bankBookList.reduce((prev, current) => {
+        return prev + parseInt(current.amount)
+    }, 0) 
+    // console.log(BankBookAmount)
 
     useEffect(() => {
         fetch(`http://localhost:5000/cashBook/${companyName}`)
@@ -14,6 +19,7 @@ const AllLedgerList = () => {
     }, [cashBookList, companyName]);
 
     // console.log(cashBookList, companyName);
+    
 
     useEffect(() => {
         fetch(`http://localhost:5000/bankBook/${companyName}`)
@@ -123,7 +129,15 @@ const AllLedgerList = () => {
                                     </td>
                                 </tr>
                             ))}
+                        <tr>
+                            <td className="py-3 px-6 pl-10 whitespace-nowrap">date</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">voucherNo</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">expenseHead</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">expenseType</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">{BankBookAmount}</td>
+                        </tr>
                         </tbody>
+
                     </table>
                 </div>
             </div>

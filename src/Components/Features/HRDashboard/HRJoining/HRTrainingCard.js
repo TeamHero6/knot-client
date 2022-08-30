@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HRTrainingCard = (props) => {
-    const { Department, Employee_Name, Employee_id, Designation, Start_Time, End_Time, name, Contact_Number, Training_Location } = props.training
+    const { Department, Employee_Name, Employee_id, Email, Start_Time, End_Time, name, Contact_Number, Training_Location } = props.training
     return (
         <div className='bg-white w-full shadow-gray-300 px-5 py-5 rounded-md shadow-sm'>
 
@@ -10,7 +10,7 @@ const HRTrainingCard = (props) => {
                     <p>Department: {Department}</p>
                 </div>
                 <div className='w-1/2'>
-                    <p>Department: {Designation}</p>
+                    <p>Email: {Email}</p>
                 </div>
             </div>
             <div className='flex justify-center'>
