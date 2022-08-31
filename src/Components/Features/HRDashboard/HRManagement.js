@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import HRNavbar from "../../Shared/HRNavbar/HRNavbar";
+import HRNavbar from "./HRNavbar";
 
 const HRManagement = () => {
     const [open, setOpen] = useState(false);

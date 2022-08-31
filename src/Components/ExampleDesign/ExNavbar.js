@@ -38,11 +38,11 @@ const ExNavbar = () => {
                     <span>
                         <img
                             src={companyLogo}
-                            className="w-10 h-8 mr-2"
+                            className="w-6/12 ml-10 mr-2"
                             alt=""
                         />
                     </span>
-                    <span>Dashboard</span>
+                    <span className="whitespace-nowrap">Team Management</span>
                 </div>
             </div>
 
