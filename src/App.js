@@ -59,6 +59,14 @@ import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireA
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import AllKnotApp from "./Components/Pages/Home/AllKnotApp/AllKnotApp";
+import AdminManagementMore from "./Components/Pages/Home/FeatureMore/AdminManagementMore";
+import FinanceManagementMore from "./Components/Pages/Home/FeatureMore/FinanceManagementMore";
+import GroupChatMore from "./Components/Pages/Home/FeatureMore/GroupChatMore";
+import HumanResourceMore from "./Components/Pages/Home/FeatureMore/HumanResourceMore";
+import MarketingAutomationMore from "./Components/Pages/Home/FeatureMore/MarketingAutomationMore";
+import SalesManagementMore from "./Components/Pages/Home/FeatureMore/SalesManagementMore";
+import TeamManagementMore from "./Components/Pages/Home/FeatureMore/TeamManagementMore";
+import UserDashboardMore from "./Components/Pages/Home/FeatureMore/UserDashboardMore";
 import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
@@ -312,6 +320,15 @@ function App() {
                     <Route path="Calender" element={<Calender></Calender>} />
                     <Route path="load" element={<Loader />} />
                     <Route path="*" element={<NotFoundPage />}></Route>
+                    <Route path="/TermsAndConditions" element={<TermsAndConditions />}></Route>
+                    {/* ----- Home page all features learn more page ----- */}
+                    <Route path="/teamManagementMore" element={<TeamManagementMore />} />
+                    <Route path="/humanResourceMore" element={<HumanResourceMore />} />
+                    <Route path="/financeManagementMore" element={<FinanceManagementMore />} />
+                    <Route path="/salesManagementMore" element={<SalesManagementMore />} />
+                    <Route path="/marketingAutomationMore" element={<MarketingAutomationMore />} />
+                    <Route path="/userDashboardMore" element={<UserDashboardMore />} />
+                    <Route path="/groupChatMore" element={<GroupChatMore />} />
                     <Route path="/TermsAndConditions" element={<TermsAndConditions />}></Route>
                     <Route path="*" element={<NotFoundPage />}></Route>
 
