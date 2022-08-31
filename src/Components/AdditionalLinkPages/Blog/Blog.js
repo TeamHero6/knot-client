@@ -7,7 +7,7 @@ const Blog = () => {
     const [blog, setBlog] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/newBlog')
+        fetch('https://knot-business-solution-server.herokuapp.com/newBlog')
             .then((res) => res.json())
             .then((data) => setBlog(data.reverse()));
     }, [blog]);

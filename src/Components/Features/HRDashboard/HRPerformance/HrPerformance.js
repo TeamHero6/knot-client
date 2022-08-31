@@ -16,7 +16,7 @@ const HrPerformance = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/employeedetails/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`)
             .then((res) => res.json())
             .then((data) => setDetails(data.reverse()));
     }, [details, companyName]);
@@ -25,7 +25,7 @@ const HrPerformance = () => {
     const onSubmit = (data) => {
         const newData = { ...data, companyName };
         fetch(
-            "http://localhost:5000/performance",
+            "https://knot-business-solution-server.herokuapp.com/performance",
             {
                 method: "POST",
                 headers: {
@@ -45,7 +45,7 @@ const HrPerformance = () => {
 
     const onSubmitTransfer = (data) => {
         const newData = { ...data, companyName };
-        fetch("http://localhost:5000/transfer", {
+        fetch("https://knot-business-solution-server.herokuapp.com/transfer", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

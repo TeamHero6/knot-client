@@ -17,7 +17,7 @@ const LeaveRequestCard = (props) => {
 
         const updata = { aprovel };
 
-        const url = `http://localhost:5000/users/${id}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/users/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {

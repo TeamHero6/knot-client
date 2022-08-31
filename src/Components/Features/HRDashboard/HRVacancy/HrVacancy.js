@@ -17,20 +17,20 @@ const HrVacancy = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/applicant/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/applicant/${companyName}`)
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short, companyName]);
 
     const { data: carcular, isLoading } = useQuery(["circuler"], () =>
         fetch(
-            `http://localhost:5000/vacancy/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/vacancy/${companyName}`
         ).then((res) => res.json())
     );
 
     const onSubmit = (data) => {
         const newData = { ...data, companyName };
-        fetch("http://localhost:5000/vacancy", {
+        fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

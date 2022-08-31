@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Knot from '../../Assets/logo/KnotLogo.png'
+import logo from '../../Assets/logo/KnotLogo.png'
 import auth from "../../firebase.init";
 import DigitalClock from "../Shared/DigitalClock/DigitalClock";
 
@@ -29,65 +29,92 @@ const AdminNavbar = () => {
         navigate("/");
     };
     return (
-        <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
-            <div className="flex items-center w-64 justify-center cursor-pointer">
-
-            <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
-            
-                <img
-                    src={loggerInfo.companyLogo}
-                    className="w-6 h-6 mr-2"
-                    alt=""
-                />
-                <span>Finance</span>
-            </div>
-
-            <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
-                    {/* <Link to="/accessApps">
-                        <img src={access} className={`w-6`} alt="icon" />
-                    </Link> */}
-            </div>
-
-            {/*Profile DropDown*/}
-            <div className="px-6 flex items-center gap-4">
-                <div>
-                    <p className="text-xl font-medium">
-                        <DigitalClock></DigitalClock>
-                    </p>
+        <div className=" md:px-8 lg:px-12 bg-cyan-400">
+            <div className="navbar ">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex="0" className="btn btn-ghost lg:hidden">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h8m-8 6h16"
+                                />
+                            </svg>
+                        </label>
+                        <ul
+                            tabIndex="0"
+                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-100 rounded-box w-52"
+                        >
+                            <li>
+                                <Link
+                                    to="/FAQ/Guides"
+                                    className="text-cyan-400 mx-2"
+                                >
+                                    Guides
+                                </Link>
+                            </li>
+                            <li>
+                                <a
+                                    href="mailto:support.knot@mail.com"
+                                    className="text-gray-200 border-2 border-gray-200 px-3 py-1 rounded-full mx-2 hover:bg-white duration-300 hover:border-white outline-none hover:text-cyan-400"
+                                >
+                                    Contact Us
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    {/**/}
+                    <div>
+                        <img
+                            src={logo}
+                            className="w-20 p-1 md:w-20 md:p-2"
+                            alt="logo"
+                            onClick={() => navigate("/")}
+                        />
+                    </div>
+                    {/*Nav Link*/}
+                    <div className="hidden lg:block">
+                        <Link className="text-gray-200 border-2 border-gray-200 px-3 py-1 rounded-full mx-2 hover:bg-white duration-300 hover:border-white outline-none hover:text-cyan-400" to='/contactus'>Contact Us</Link>
+                        
+                    </div>
                 </div>
-                <div className="dropdown dropdown-end">
-                    <label
-                        tabIndex="0"
-                        className="btn btn-ghost btn-circle avatar"
-                    >
-                        <div className="w-10 rounded-full">
-                            <img
-                                src={`${
-                                    userProfile
-                                        ? userProfile
-                                        : "https://placeimg.com/80/80/people"
-                                }`}
-                                alt=""
-                            />
-                        </div>
-                    </label>
-                    <ul
-                        tabIndex="0"
-                        className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                    >
-                        {/* <li>
-                            <p className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </p>
-                        </li> */}
-                        <li>
-                            <Link to="/settings/profile">Settings</Link>
-                        </li>
-                        <li>
-                            <p onClick={handleSignOut}>Logout</p>
-                        </li>
-                    </ul>
+                <div className="navbar-end">
+                    <div className="dropdown dropdown-end">
+                        <label
+                            tabIndex="0"
+                            className="btn btn-ghost btn-circle avatar"
+                        >
+                            <div className="w-10 rounded-full">
+                                <img src="https://placeimg.com/80/80/people" />
+                            </div>
+                        </label>
+                        <ul
+                            tabIndex="0"
+                            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                        >
+                            <li>
+                                <button
+                                    className="justify-between"
+                                    onClick={() =>
+                                        navigate("/settings/profile")
+                                    }
+                                >
+                                    Profile
+                                </button>
+                            </li>
+                            <li>
+                                <p onClick={() => signOut(auth)}>Logout</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

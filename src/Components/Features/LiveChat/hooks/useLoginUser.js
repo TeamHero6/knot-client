@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useLoginUser = () => {
     const [loginUser, setLoginUser] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/loginuser")
+        fetch("https://knot-business-solution-server.herokuapp.com/loginuser")
             .then((res) => res.json())
             .then((data) => setLoginUser(data.reverse()));
     }, []);

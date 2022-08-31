@@ -6,7 +6,7 @@ const LeaveInfo = ({ user }) => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/leaveData/${_id}`
+            `https://knot-business-solution-server.herokuapp.com/leaveData/${_id}`
         )
             .then((res) => res.json())
             .then((data) => setSingleUser(data));

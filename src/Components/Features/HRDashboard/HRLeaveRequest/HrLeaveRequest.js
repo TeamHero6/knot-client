@@ -5,7 +5,7 @@ const HrLeaveRequest = () => {
     const [requests, setRequest] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("https://knot-business-solution-server.herokuapp.com/users")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, [requests]);

@@ -36,7 +36,7 @@ const ProfileSettings = () => {
                     // update photo in DB
                     const photoInfo = { email: updatedEmail, photoUrl: url };
                     fetch(
-                        "http://localhost:5000/updateProfilePhoto",
+                        "https://knot-business-solution-server.herokuapp.com/updateProfilePhoto",
                         {
                             method: "PUT",
                             headers: {
@@ -64,7 +64,7 @@ const ProfileSettings = () => {
         const info = { email: updatedEmail, name: updatenamein };
         console.log(info);
         fetch(
-            "http://localhost:5000/updateName",
+            "https://knot-business-solution-server.herokuapp.com/updateName",
             {
                 method: "PUT",
                 headers: {

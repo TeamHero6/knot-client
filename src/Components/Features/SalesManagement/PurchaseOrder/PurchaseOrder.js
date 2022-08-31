@@ -21,7 +21,7 @@ const PurchaseOrder = () => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/addNewVendor/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
@@ -29,7 +29,7 @@ const PurchaseOrder = () => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/addProduct/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setProductList(data.reverse()));
@@ -73,7 +73,7 @@ const PurchaseOrder = () => {
         };
         // console.log(newOrder);
         fetch(
-            "http://localhost:5000/addNewPurchaseOrder",
+            "https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder",
             {
                 method: "POST",
                 headers: {

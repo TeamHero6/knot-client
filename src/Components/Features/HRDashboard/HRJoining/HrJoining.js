@@ -17,7 +17,7 @@ const HrJoining = () => {
 
     const { data: details, isLoading } = useQuery(["details"], () =>
         fetch(
-            `http://localhost:5000/employeedetails/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`
         ).then((res) => res.json())
     );
     // console.log(details);
@@ -28,13 +28,13 @@ const HrJoining = () => {
         refetch,
     } = useQuery(["training"], () =>
         fetch(
-            `http://localhost:5000/Trainnig/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/Trainnig/${companyName}`
         ).then((res) => res.json())
     );
 
     const onSubmitTraining = (data) => {
         const newData = { ...data, companyName };
-        fetch("http://localhost:5000/Trainnig", {
+        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

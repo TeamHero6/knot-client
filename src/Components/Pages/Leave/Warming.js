@@ -7,13 +7,13 @@ const Warming = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userWarnings/${loggerInfo.email}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/userWarnings/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setWarnings(data.reverse()));
     }, [warnings, loggerInfo]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/Trainnig")
+        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
             .then((res) => res.json())
             .then((data) => setTrainings(data.reverse()));
     }, []);

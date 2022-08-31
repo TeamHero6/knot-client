@@ -28,7 +28,7 @@ const IncomeExpenseOverview = () => {
     }, 0)
     useEffect(() => {
         fetch(
-            `http://localhost:5000/addNewOrder/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/addNewOrder/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
@@ -36,14 +36,14 @@ const IncomeExpenseOverview = () => {
     // console.log(orderList);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cashBook/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/cashBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCashBookList(data.reverse()));
     }, [cashBookList, companyName]);
     // console.log(cashBookList, companyName);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bankBook/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/bankBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setBankBookList(data.reverse()));
     }, [bankBookList, companyName]);

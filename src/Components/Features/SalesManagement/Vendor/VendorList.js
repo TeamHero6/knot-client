@@ -8,7 +8,7 @@ const VendorList = ({ setSingleVendorDetail }) => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/addNewVendor/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
