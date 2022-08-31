@@ -3,8 +3,9 @@ import React from "react";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import topBG from "../../../Assets/images/wave.svg";
+import OurTeam from "../../../FromSample/OurTeam";
 import CompanyGoals from "./CompanyGoals";
-import OurTeam from "./OurTeam";
+// import OurTeam from "./OurTeam";
 import WhatWeDo from "./WhatWeDo";
 
 const About = () => {
@@ -32,7 +33,8 @@ const About = () => {
             </motion.header>
             <WhatWeDo />
             <CompanyGoals />
-            <OurTeam />
+            {/* <OurTeam /> */}
+            <OurTeam/>
             <div className="flex justify-center">
                 <Link to="/">
                     <FaHome className="text-6xl mt-12 hover:text-cyan-400 duration-500" />

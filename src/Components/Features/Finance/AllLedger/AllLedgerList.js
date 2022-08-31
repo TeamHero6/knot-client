@@ -6,17 +6,23 @@ const AllLedgerList = () => {
     const [bankBookList, setBankBookList] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
+    
+    const BankBookAmount = bankBookList.reduce((prev, current) => {
+        return prev + parseInt(current.amount)
+    }, 0) 
+    // console.log(BankBookAmount)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cashBook/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/cashBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCashBookList(data.reverse()));
     }, [cashBookList, companyName]);
 
     // console.log(cashBookList, companyName);
+    
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bankBook/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/bankBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setBankBookList(data.reverse()));
     }, [bankBookList, companyName]);
@@ -27,7 +33,7 @@ const AllLedgerList = () => {
         <div>
             <div className="w-full bg-white px-5 py-5 rounded">
                 <div className="flex gap-5"></div>
-                <h1 className="font-semibold text-xl ml-5">Cash Book</h1>
+                <h1 className="font-semibold text-xl ml-5">Direct Expense</h1>
                 <div className="w-full mt-5 mb-5 h-80 overflow-auto">
                     <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden ">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
@@ -78,7 +84,7 @@ const AllLedgerList = () => {
             </div>
 
             <div className="w-full bg-white px-5 py-5 mt-6 rounded">
-                <h1 className="font-semibold text-xl mt-8">Bank Book</h1>
+                <h1 className="font-semibold text-xl mt-8">Admin Expense</h1>
                 <div className="w-full h-80 mt-5 overflow-y-auto">
                     <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto  text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
@@ -123,7 +129,15 @@ const AllLedgerList = () => {
                                     </td>
                                 </tr>
                             ))}
+                        <tr>
+                            <td className="py-3 px-6 pl-10 whitespace-nowrap">date</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">voucherNo</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">expenseHead</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">expenseType</td>
+                            <td className="py-3 px-6 whitespace-nowrap text-center">{BankBookAmount}</td>
+                        </tr>
                         </tbody>
+
                     </table>
                 </div>
             </div>

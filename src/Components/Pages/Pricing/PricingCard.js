@@ -4,7 +4,7 @@ import Navbar from "../../Shared/Navbar/Navbar";
 const PricingCard = () => {
     // SSL Commerze Payment Intregation
     const PaymentHandler = () => {
-        fetch("http://localhost:5000/init")
+        fetch("https://knot-business-solution-server.herokuapp.com/init")
             .then((res) => res.json())
             .then((data) => {
                 const { GatewayPageURL } = data;

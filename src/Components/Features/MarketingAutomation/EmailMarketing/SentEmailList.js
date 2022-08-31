@@ -10,7 +10,7 @@ const SentEmailList = () => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/sentEmail/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/sentEmail/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setEmailList(data.reverse()));
@@ -19,7 +19,7 @@ const SentEmailList = () => {
     const deleteEmail = (id) => {
         const proceed = window.confirm("Do you want to delete this task?");
         if (proceed) {
-            const url = `http://localhost:5000/deleteEmail/${id}`;
+            const url = `https://knot-business-solution-server.herokuapp.com/deleteEmail/${id}`;
             fetch(url, {
                 method: "DELETE",
             })

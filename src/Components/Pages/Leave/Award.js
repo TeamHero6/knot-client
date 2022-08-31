@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Award = () => {
     const [awards, setAwards] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/award")
+        fetch(`https://knot-business-solution-server.herokuapp.com/userAwards/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setAwards(data.reverse()));
-    }, []);
+    }, [awards, loggerInfo]);
 
     return (
         <div className="m-10">

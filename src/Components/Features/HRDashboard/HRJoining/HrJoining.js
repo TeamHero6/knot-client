@@ -17,9 +17,10 @@ const HrJoining = () => {
 
     const { data: details, isLoading } = useQuery(["details"], () =>
         fetch(
-            `http://localhost:5000/employeedetails/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`
         ).then((res) => res.json())
     );
+    // console.log(details);
 
     const {
         data: Trainnig,
@@ -27,13 +28,13 @@ const HrJoining = () => {
         refetch,
     } = useQuery(["training"], () =>
         fetch(
-            `http://localhost:5000/Trainnig/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/Trainnig/${companyName}`
         ).then((res) => res.json())
     );
 
     const onSubmitTraining = (data) => {
         const newData = { ...data, companyName };
-        fetch("http://localhost:5000/Trainnig", {
+        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -123,13 +124,25 @@ const HrJoining = () => {
                                         id=""
                                         placeholder="Employee ID"
                                     />
-                                    <input
-                                        className="py-2 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none "
-                                        type="text"
-                                        {...register("Designation")}
+                                    <select
+                                        required
+                                        {...register("Email")}
+                                        name="Email"
                                         id=""
-                                        placeholder="Designation"
-                                    />
+                                        className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                    >
+                                        <option value="" selected disabled>
+                                            Select Email
+                                        </option>
+                                        {details.map((d) => (
+                                            <option
+                                                key={d._id}
+                                                value={d?.Email}
+                                            >
+                                                {d?.Email}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
 
                                 <div className="flex flex-row items-center gap-5">

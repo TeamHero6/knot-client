@@ -3,7 +3,6 @@ import { toast, ToastContainer } from "react-toastify";
 import newsletter from "../../../../Assets/images/newsletter.png";
 
 const Newsletter = () => {
-   
 
     const emailSend = (event) => {
         event.preventDefault();
@@ -11,7 +10,7 @@ const Newsletter = () => {
         const newsletter = { email };
 
         fetch(
-            "http://localhost:5000/newsletter",
+            "https://knot-business-solution-server.herokuapp.com/newsletter",
             {
                 method: "POST",
                 headers: {

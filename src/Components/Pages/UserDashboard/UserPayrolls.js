@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const UserPayrolls = () => {
     const [payrolls, setPayrolls] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch("https://sheltered-cliffs-60290.herokuapp.com/payrolls")
+        fetch(`https://knot-business-solution-server.herokuapp.com/userPayrolls/${loggerInfo.email}`)
             .then((res) => res.json())
-            .then((data) => setPayrolls(data));
-    }, []);
-    console.log(payrolls);
+            .then((data) => setPayrolls(data))
+    }, [loggerInfo]);
 
     return (
         <div className="mx-auto w-full">

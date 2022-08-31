@@ -16,7 +16,7 @@ const Partners = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/partner/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/partner/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPartnerList(data.reverse()));
     }, [partnerList, companyName]);
@@ -37,7 +37,7 @@ const Partners = () => {
         };
 
         fetch(
-            "http://localhost:5000/addPartner",
+            "https://knot-business-solution-server.herokuapp.com/addPartner",
             {
                 method: "POST",
                 headers: {

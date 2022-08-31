@@ -4,10 +4,16 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Blog from "./Components/AdditionalLinkPages/Blog/Blog";
+import BlogPage from "./Components/AdditionalLinkPages/Blog/BlogPage";
 import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManagement/AccountManagement";
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
+import TermsAndConditions from "./Components/AdditionalLinkPages/TermsAndConditions/TermsAndConditions";
+import AdminDashboard from "./Components/AdminPanel/AdminDashboard";
+import AdminPanelDashboard from "./Components/AdminPanel/AdminPanelDashboard/AdminPanelDashboard";
+import AdminBlog from "./Components/AdminPanel/Blog/AdminBlog";
+import Newsletter from "./Components/AdminPanel/Newsletter/Newsletter";
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
@@ -48,11 +54,20 @@ import SalesTeamMembers from "./Components/Features/SalesManagement/SalesTeamMem
 import Vendor from "./Components/Features/SalesManagement/Vendor/Vendor";
 import UserDashboard from "./Components/Features/UserDashboard/UserDashboard";
 import About from "./Components/Pages/About/About";
+import ContactPage from "./Components/Pages/About/ContactPage";
 import AccessYourApps from "./Components/Pages/AccessYourApps/AccessYourApps";
 import RequireAuth from "./Components/Pages/Authentications/RequireAuth/RequireAuth";
 import BusinessLogin from "./Components/Pages/BusinessAccount/BusinessLogin/BusinessLogin";
 import BusinessSignup from "./Components/Pages/BusinessAccount/BusinessSignup/BusinessSignup";
 import AllKnotApp from "./Components/Pages/Home/AllKnotApp/AllKnotApp";
+import AdminManagementMore from "./Components/Pages/Home/FeatureMore/AdminManagementMore";
+import FinanceManagementMore from "./Components/Pages/Home/FeatureMore/FinanceManagementMore";
+import GroupChatMore from "./Components/Pages/Home/FeatureMore/GroupChatMore";
+import HumanResourceMore from "./Components/Pages/Home/FeatureMore/HumanResourceMore";
+import MarketingAutomationMore from "./Components/Pages/Home/FeatureMore/MarketingAutomationMore";
+import SalesManagementMore from "./Components/Pages/Home/FeatureMore/SalesManagementMore";
+import TeamManagementMore from "./Components/Pages/Home/FeatureMore/TeamManagementMore";
+import UserDashboardMore from "./Components/Pages/Home/FeatureMore/UserDashboardMore";
 import Attendance from "./Components/Pages/Hrdashboard/Attendance";
 import Dashboard from "./Components/Pages/Hrdashboard/Dashboard";
 import Hrdashboard from "./Components/Pages/Hrdashboard/Hrdashboard";
@@ -143,7 +158,8 @@ function App() {
                     />
                     <Route path="/BusinessLogin" element={<BusinessLogin />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/blog" element={<Blog />} />
+                    {/* <Route path="/blog" element={<Blog />} /> */}
+                    <Route path="/blogs" element={<BlogPage/>}></Route>
                     <Route path="/calender" element={<Calender />} />
                     {/* ---------- User Dashboard ---------- */}
                     <Route
@@ -305,6 +321,30 @@ function App() {
                     <Route path="Calender" element={<Calender></Calender>} />
                     <Route path="load" element={<Loader />} />
                     <Route path="*" element={<NotFoundPage />}></Route>
+                    <Route path="/TermsAndConditions" element={<TermsAndConditions />}></Route>
+                    {/* ----- Home page all features learn more page ----- */}
+                    <Route path="/teamManagementMore" element={<TeamManagementMore />} />
+                    <Route path="/humanResourceMore" element={<HumanResourceMore />} />
+                    <Route path="/financeManagementMore" element={<FinanceManagementMore />} />
+                    <Route path="/salesManagementMore" element={<SalesManagementMore />} />
+                    <Route path="/marketingAutomationMore" element={<MarketingAutomationMore />} />
+                    <Route path="/userDashboardMore" element={<UserDashboardMore />} />
+                    <Route path="/groupChatMore" element={<GroupChatMore />} />
+                    <Route path="/adminManagementMore" element={<AdminManagementMore />} />
+                    <Route path="/contactus" element={<ContactPage />} />
+                    <Route path="*" element={<NotFoundPage />}></Route>
+                    <Route path="/TermsAndConditions" element={<TermsAndConditions />}></Route>
+                    <Route path="*" element={<NotFoundPage />}></Route>
+                    <Route path="/adminDashboard" element={
+                        <RequireAuth>
+                            <AdminDashboard />
+                        </RequireAuth>
+                    }>
+                        <Route index element={<AdminPanelDashboard />} />
+                        <Route path="adminPanelDashboard" element={<AdminPanelDashboard />} />
+                        <Route path="adminBlog" element={<AdminBlog />}></Route>
+                        <Route path="adminNewsletter" element={<Newsletter />}></Route>
+                    </Route>
                 </Routes>
             </Suspense>
             <ToastContainer></ToastContainer>

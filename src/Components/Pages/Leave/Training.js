@@ -13,7 +13,7 @@ import {
 const Training = () => {
     const [trainings, setTrainings] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/Trainnig")
+        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
             .then((res) => res.json())
             .then((data) => setTrainings(data.reverse()));
     }, []);

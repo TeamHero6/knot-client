@@ -6,11 +6,11 @@ const Meeting = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userMeetings/${loggerInfo.email}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/userMeetings/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setMeetings(data.reverse()));
     }, [meetings, loggerInfo]);
-    console.log(meetings, loggerInfo);
+    // console.log(meetings, loggerInfo);
 
     return (
         <div className="mx-10">

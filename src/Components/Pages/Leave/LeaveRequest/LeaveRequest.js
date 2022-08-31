@@ -14,7 +14,7 @@ const LeaveRequest = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${loggerInfo.email}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/leaveUsers/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setleave(data));
     }, [leave, loggerInfo]);

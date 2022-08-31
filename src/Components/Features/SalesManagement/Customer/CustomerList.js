@@ -8,7 +8,7 @@ const CustomerList = () => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/addCustomer/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/addCustomer/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));

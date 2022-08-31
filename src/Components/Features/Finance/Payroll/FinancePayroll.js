@@ -15,7 +15,7 @@ const FinancePayroll = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/employeedetails/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`)
             .then((res) => res.json())
             .then((data) => setDetails(data.reverse()));
     }, [details, companyName]);
@@ -24,6 +24,7 @@ const FinancePayroll = () => {
 
 
     const onSubmit = (data) => {
+        console.log(data);
         const newData = { ...data, companyName };
 
         fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
@@ -64,27 +65,7 @@ const FinancePayroll = () => {
                                 >
                                     Payrolls For
                                 </label>{" "}
-                                <select
-                                    required
-                                    {...register("Name")}
-                                    name="Name"
-                                    id=""
-                                    className="rounded outline-none appearance-none	text-green-600 text-center font-bold"
-                                >
-                                    <option value="" selected disabled>
-                                        Employees
-                                    </option>
-                                    {details.map((d) => (
-                                        <option
-                                            className='text-center'
-                                            key={d._id}
-                                            value={d.Employee_Name}
-                                        >
-                                            {d.Employee_Name}
-                                        </option>
 
-                                    ))}
-                                </select>
                                 <br />
                                 <br />
                                 <div className="md:flex items-center">
@@ -114,6 +95,36 @@ const FinancePayroll = () => {
                                                 key={d._id}
                                                 value={d.Employee_Name}
                                             >
+                                                {d.Employee_Name}
+                                            </option>
+
+                                        ))}
+                                    </select>
+                                    <br />
+                                </div>
+                                <div className="md:flex items-center">
+                                    <label
+                                        className="font-bold w-40"
+                                        htmlFor="name"
+                                    >
+                                        Email :{" "}
+                                    </label>{" "}
+                                    <br />
+                                    <select
+                                        required
+                                        {...register("Email")}
+                                        name="Email"
+                                        id=""
+                                        className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                    >
+                                        <option value="" selected disabled>
+                                            Select Employee
+                                        </option>
+                                        {details.map((d) => (
+                                            <option
+                                                key={d._id}
+                                                value={d.Email}
+                                            >
                                                 {d.Email}
                                             </option>
 
@@ -121,6 +132,16 @@ const FinancePayroll = () => {
                                     </select>
                                     <br />
                                 </div>
+
+
+
+
+
+
+
+
+
+
                                 <div className="md:flex items-center">
                                     <label
                                         className="font-bold w-40"
@@ -236,7 +257,7 @@ const FinancePayroll = () => {
                 )}
             </div>
             <div className='bg-white px-5 py-1 mt-5  '>
-                <HrPayroll/>
+                <HrPayroll />
             </div>
         </div>
     );

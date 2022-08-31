@@ -54,7 +54,7 @@ const FinanceManagement = () => {
                                             : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
                                     }
                                 >
-                                    <span>All Ledger</span>
+                                    <span>Add Expense</span>
                                 </span>
                             )}
                         </NavLink>
@@ -71,7 +71,7 @@ const FinanceManagement = () => {
                                 </span>
                             )}
                         </NavLink>
-                        <NavLink to="allExpense">
+                        {/* <NavLink to="allExpense">
                             {({ isActive }) => (
                                 <span
                                     className={
@@ -83,7 +83,7 @@ const FinanceManagement = () => {
                                     <span>Expense</span>
                                 </span>
                             )}
-                        </NavLink>
+                        </NavLink> */}
                         <NavLink to="partners">
                             {({ isActive }) => (
                                 <span

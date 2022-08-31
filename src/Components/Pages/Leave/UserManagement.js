@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Award from './Award';
 import Meeting from './Meeting';
 import Warming from './Warming';

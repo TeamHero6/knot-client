@@ -1,5 +1,5 @@
 import React from "react";
-import homePageCircleIcon from "../../../../Assets/images/homePageCircleIcon (1).png";
+import homePageCircleIcon from "../../../../Assets/images/homePageCircleIcon.png";
 import knotIntroThumbnail from "../../../../Assets/images/introVideoThumb.png";
 
 const Promotion = () => {

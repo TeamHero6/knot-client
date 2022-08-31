@@ -10,7 +10,7 @@ const Leave = () => {
     const [userinfo, setUserinfo] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/leaveData")
+        fetch("https://knot-business-solution-server.herokuapp.com/leaveData")
             .then((res) => res.json())
             .then((data) => setUserinfo(data));
     }, []);
