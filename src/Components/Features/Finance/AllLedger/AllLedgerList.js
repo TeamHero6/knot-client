@@ -13,7 +13,7 @@ const AllLedgerList = () => {
     // console.log(BankBookAmount)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cashBook/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/cashBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setCashBookList(data.reverse()));
     }, [cashBookList, companyName]);
@@ -22,7 +22,7 @@ const AllLedgerList = () => {
     
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bankBook/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/bankBook/${companyName}`)
             .then((res) => res.json())
             .then((data) => setBankBookList(data.reverse()));
     }, [bankBookList, companyName]);

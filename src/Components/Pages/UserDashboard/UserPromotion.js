@@ -7,7 +7,7 @@ const UserPromotion = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userPerformance/${loggerInfo.email}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/userPerformance/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setPromotions(data));
     }, [loggerInfo]);

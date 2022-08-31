@@ -7,7 +7,7 @@ const Return = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        const url = `http://localhost:5000/cancelledSalesOrder/${companyName}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/cancelledSalesOrder/${companyName}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setCancelledOrder(data));

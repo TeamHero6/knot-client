@@ -9,7 +9,7 @@ const WarningModal = ({ refetch }) => {
         const type = e.target.type.value;
         const warningDetails = { warningDate, warningReason, type };
         fetch(
-            "http://localhost:5000/createWarning",
+            "https://knot-business-solution-server.herokuapp.com/createWarning",
             {
                 method: "POST",
                 headers: {

@@ -9,14 +9,14 @@ const HRPerformanceData = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/transfer/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/transfer/${companyName}`)
             .then((res) => res.json())
             .then((data) => setTransfer(data));
     }, [transfer, companyName]);
     // console.log(transfer, companyName);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/performance/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/performance/${companyName}`)
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, [promo, companyName]);

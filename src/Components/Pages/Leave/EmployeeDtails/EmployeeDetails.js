@@ -72,7 +72,7 @@ const EmployeeDetails = () => {
         // console.log(inputData)
 
         const url =
-            "http://localhost:5000/inputData";
+            "https://knot-business-solution-server.herokuapp.com/inputData";
         fetch(url, {
             method: "POST",
             headers: {

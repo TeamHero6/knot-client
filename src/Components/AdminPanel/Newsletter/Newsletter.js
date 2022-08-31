@@ -4,7 +4,7 @@ const Newsletter = () => {
     const [newsletter, setNewsletter] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/newsletterMail')
+        fetch('https://knot-business-solution-server.herokuapp.com/newsletterMail')
             .then((res) => res.json())
             .then((data) => setNewsletter(data.reverse()));
     }, [newsletter]);

@@ -15,7 +15,7 @@ const FinancePayroll = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/employeedetails/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`)
             .then((res) => res.json())
             .then((data) => setDetails(data.reverse()));
     }, [details, companyName]);

@@ -17,7 +17,7 @@ const Inventory = () => {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5000/addNewPurchaseOrder/${companyName}`
+            `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => {
