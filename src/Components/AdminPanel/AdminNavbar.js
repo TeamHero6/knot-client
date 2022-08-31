@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
+import Knot from '../../Assets/logo/KnotLogo.png'
 import auth from "../../firebase.init";
 import DigitalClock from "../Shared/DigitalClock/DigitalClock";
 
@@ -31,6 +31,9 @@ const AdminNavbar = () => {
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
+
+            <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
+            
                 <img
                     src={loggerInfo.companyLogo}
                     className="w-6 h-6 mr-2"
@@ -72,12 +75,12 @@ const AdminNavbar = () => {
                         tabIndex="0"
                         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                     >
-                        <li>
+                        {/* <li>
                             <p className="justify-between">
                                 Profile
                                 <span className="badge">New</span>
                             </p>
-                        </li>
+                        </li> */}
                         <li>
                             <Link to="/settings/profile">Settings</Link>
                         </li>

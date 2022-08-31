@@ -24,7 +24,7 @@ const FinancePayroll = () => {
 
 
     const onSubmit = (data) => {
-        // console.log(data);
+        console.log(data);
         const newData = { ...data, companyName };
 
         fetch("https://knot-business-solution-server.herokuapp.com/payrolls", {
@@ -132,6 +132,16 @@ const FinancePayroll = () => {
                                     </select>
                                     <br />
                                 </div>
+
+
+
+
+
+
+
+
+
+
                                 <div className="md:flex items-center">
                                     <label
                                         className="font-bold w-40"
