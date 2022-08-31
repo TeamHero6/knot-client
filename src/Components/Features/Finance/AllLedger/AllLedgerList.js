@@ -33,7 +33,7 @@ const AllLedgerList = () => {
         <div>
             <div className="w-full bg-white px-5 py-5 rounded">
                 <div className="flex gap-5"></div>
-                <h1 className="font-semibold text-xl ml-5">Cash Book</h1>
+                <h1 className="font-semibold text-xl ml-5">Direct Expense</h1>
                 <div className="w-full mt-5 mb-5 h-80 overflow-auto">
                     <table class="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden ">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
@@ -84,7 +84,7 @@ const AllLedgerList = () => {
             </div>
 
             <div className="w-full bg-white px-5 py-5 mt-6 rounded">
-                <h1 className="font-semibold text-xl mt-8">Bank Book</h1>
+                <h1 className="font-semibold text-xl mt-8">Admin Expense</h1>
                 <div className="w-full h-80 mt-5 overflow-y-auto">
                     <table class="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto  text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">

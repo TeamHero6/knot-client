@@ -4,11 +4,16 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Blog from "./Components/AdditionalLinkPages/Blog/Blog";
+import BlogPage from "./Components/AdditionalLinkPages/Blog/BlogPage";
 import AccountManagement from "./Components/AdditionalLinkPages/FAQ/AccountManagement/AccountManagement";
 import Faq from "./Components/AdditionalLinkPages/FAQ/Faq";
 import RulesAndPolitics from "./Components/AdditionalLinkPages/FAQ/RulesAndPolitics/RulesAndPolitics";
 import SafetyAndSecurity from "./Components/AdditionalLinkPages/FAQ/SafetyAndSecurity/SafetyAndSecurity";
 import TermsAndConditions from "./Components/AdditionalLinkPages/TermsAndConditions/TermsAndConditions";
+import AdminDashboard from "./Components/AdminPanel/AdminDashboard";
+import AdminPanelDashboard from "./Components/AdminPanel/AdminPanelDashboard/AdminPanelDashboard";
+import AdminBlog from "./Components/AdminPanel/Blog/AdminBlog";
+import Newsletter from "./Components/AdminPanel/Newsletter/Newsletter";
 import AddTask from "./Components/Features/Admin/AddTask";
 import DailyTask from "./Components/Features/Admin/DailyTask/DailyTask";
 import TeamManagement from "./Components/Features/Admin/TeamManagement/TeamManagement";
@@ -152,7 +157,8 @@ function App() {
                     />
                     <Route path="/BusinessLogin" element={<BusinessLogin />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/blog" element={<Blog />} />
+                    {/* <Route path="/blog" element={<Blog />} /> */}
+                    <Route path="/blogs" element={<BlogPage/>}></Route>
                     <Route path="/calender" element={<Calender />} />
                     {/* ---------- User Dashboard ---------- */}
                     <Route
@@ -255,14 +261,7 @@ function App() {
                             element={<TeamManagement />}
                         ></Route>
                     </Route>
-                    <Route
-                        path="/FAQ"
-                        element={
-                            <RequireAuth>
-                                <Faq />
-                            </RequireAuth>
-                        }
-                    >
+                    <Route path="/FAQ" element={<Faq />}>
                         <Route index element={<AccountManagement />} />
                         <Route
                             path="safetyandsecuirity"
@@ -330,8 +329,19 @@ function App() {
                     <Route path="/marketingAutomationMore" element={<MarketingAutomationMore />} />
                     <Route path="/userDashboardMore" element={<UserDashboardMore />} />
                     <Route path="/groupChatMore" element={<GroupChatMore />} />
-                    <Route path="/adminManagementMore" element={<AdminManagementMore />} />
+                    <Route path="/TermsAndConditions" element={<TermsAndConditions />}></Route>
                     <Route path="*" element={<NotFoundPage />}></Route>
+
+                    <Route path="/adminDashboard" element={
+                        <RequireAuth>
+                            <AdminDashboard />
+                        </RequireAuth>
+                    }>
+                        <Route index element={<AdminPanelDashboard />} />
+                        <Route path="adminPanelDashboard" element={<AdminPanelDashboard />} />
+                        <Route path="adminBlog" element={<AdminBlog />}></Route>
+                        <Route path="adminNewsletter" element={<Newsletter />}></Route>
+                    </Route>
                 </Routes>
             </Suspense>
             <ToastContainer></ToastContainer>
