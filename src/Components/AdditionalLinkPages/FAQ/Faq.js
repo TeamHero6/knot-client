@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 import FAQNavbar from "./FAQNavbar/FAQNavbar";
@@ -13,6 +12,7 @@ const Faq = () => {
             setUsername(name);
         }
     }, [loggerInfo]);
+
     return (
         <div>
             <div>
@@ -27,18 +27,6 @@ const Faq = () => {
                             , <br />
                             How can we help?
                         </h1>
-                    </div>
-                    <div className="border-b-2 text-white border-white flex items-center rounded-full h-[50px] px-12 mt-32 md:mt-0">
-                        <input
-                            type="text"
-                            name="faq"
-                            id=""
-                            className="bg-transparent flex-1 w-full outline-none text-white"
-                            placeholder="Search"
-                        />{" "}
-                        <button>
-                            <FaSearch className="text-white" />
-                        </button>
                     </div>
                 </section>
             </div>{" "}
@@ -56,7 +44,7 @@ const Faq = () => {
                         <p>Rules and politics</p>
                     </Link>
                 </div>
-                <div>
+                <div className="w-full overflow-hidden hover:overflow-x-auto">
                     <Outlet />
                 </div>
             </section>

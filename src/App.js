@@ -262,14 +262,7 @@ function App() {
                             element={<TeamManagement />}
                         ></Route>
                     </Route>
-                    <Route
-                        path="/FAQ"
-                        element={
-                            <RequireAuth>
-                                <Faq />
-                            </RequireAuth>
-                        }
-                    >
+                    <Route path="/FAQ" element={<Faq />}>
                         <Route index element={<AccountManagement />} />
                         <Route
                             path="safetyandsecuirity"
@@ -342,7 +335,6 @@ function App() {
                     <Route path="*" element={<NotFoundPage />}></Route>
                     <Route path="/TermsAndConditions" element={<TermsAndConditions />}></Route>
                     <Route path="*" element={<NotFoundPage />}></Route>
-
                     <Route path="/adminDashboard" element={
                         <RequireAuth>
                             <AdminDashboard />

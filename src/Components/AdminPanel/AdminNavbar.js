@@ -31,15 +31,21 @@ const AdminNavbar = () => {
     return (
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-64 justify-center cursor-pointer">
-                <Link to='/'><img
-                    src={Knot}
-                    className=" h-6 mr-2"
+
+            <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
+            
+                <img
+                    src={loggerInfo.companyLogo}
+                    className="w-6 h-6 mr-2"
                     alt=""
-                /></Link>
+                />
+                <span>Finance</span>
             </div>
 
             <div className=" lg:absolute lg:left-64 hover:bg-custom-cyan-100 p-2 rounded-full duration-500">
-                   
+                    {/* <Link to="/accessApps">
+                        <img src={access} className={`w-6`} alt="icon" />
+                    </Link> */}
             </div>
 
             {/*Profile DropDown*/}
