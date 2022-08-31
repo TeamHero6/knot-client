@@ -20,19 +20,8 @@ const AdminPanelDashboard = () => {
                             <th scope="col" class="py-3 px-6">
                                 Company Logo
                             </th>
+                            <th>
                                 Product name
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Color
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Category
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Price
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Action
                             </th>
                         </tr>
                     </thead>
