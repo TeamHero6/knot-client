@@ -1,6 +1,8 @@
-import React from "react";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 const SafetyAndSecurity = () => {
+    const [search, searchTerm] = useState("");
     const safetyAndSecurity = [
         {
             id: 1,
@@ -44,19 +46,41 @@ const SafetyAndSecurity = () => {
         },
     ];
     return (
-        <div className="w-full px-6">
-            {safetyAndSecurity?.map((f) => {
-                return (
-                    <div
-                        key={f.id}
-                        className="mb-4 text-sm border-b-[0.5px] pb-4 border-gray-400"
-                    >
-                        <p className="font-semibold py-1">Q: {f.Ques}</p>
-                        <p>{f.Ans}</p>
-                    </div>
-                );
-            })}
-        </div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="w-full px-6"
+        >
+            <div className="flex justify-end">
+                <input
+                    type="text"
+                    className="w-64 py-1 px-3 outline-none border-[0.5px] rounded-md text-gray-400"
+                    placeholder="Search Your Question"
+                    onChange={(e) => searchTerm(e.target.value)}
+                />
+            </div>
+            {safetyAndSecurity
+                ?.filter((f) => {
+                    if (search === "") {
+                        return f;
+                    } else if (f.Ques.includes(search)) {
+                        return f;
+                    }
+                    return false;
+                })
+                .map((f) => {
+                    return (
+                        <div
+                            key={f.id}
+                            className="mb-4 text-sm border-b-[0.5px] pb-4 border-gray-400"
+                        >
+                            <p className="font-semibold py-1">Q: {f.Ques}</p>
+                            <p>{f.Ans}</p>
+                        </div>
+                    );
+                })}
+        </motion.div>
     );
 };
 
