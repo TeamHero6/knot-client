@@ -134,6 +134,7 @@ function App() {
                     <Route path="/hrManagement" element={<HRManagement />}>
                         {/* <Route index element={<HRDashboard />}></Route> */}
                         <Route index element={<HrLeaveRequest />}></Route>
+                        <Route path="hrLeaveRequest" element={<HrLeaveRequest />}></Route>
                         <Route
                             path="employeeManagement"
                             element={<EmployeeManagement />}

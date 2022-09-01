@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import LeaveRequestCard from "./LeaveRequestCard";
 
 const HrLeaveRequest = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
     const [requests, setRequest] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/users")
+        fetch(`https://knot-business-solution-server.herokuapp.com/users/${companyName}`)
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, [requests]);
+    console.log();
     return (
         <div>
             <div className=" px-3 py-3">
