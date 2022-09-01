@@ -29,9 +29,9 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                         <th className="py-3 text-center px-6 whitespace-nowrap">
                             Status
                         </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
+                        {/* <th className="py-3 text-left px-6 whitespace-nowrap">
                             option
-                        </th>
+                        </th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -109,7 +109,7 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                                                     {task.status}
                                                 </p>
                                             </td>
-                                            <td className="py-3 px-6 whitespace-nowrap">
+                                            {/* <td className="py-3 px-6 whitespace-nowrap">
                                                 <label
                                                     for="taskDetails"
                                                     className="hover:underline hover:text-blue-500"
@@ -119,7 +119,7 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                                                 >
                                                     View
                                                 </label>
-                                            </td>
+                                            </td> */}
                                         </motion.tr>
                                     </>
                                 );
