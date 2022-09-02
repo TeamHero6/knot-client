@@ -96,15 +96,13 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                                             </td>
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 <p
-                                                    className={`px-2 ${
-                                                        task.status ===
-                                                            "Assigned" &&
+                                                    className={`px-2 ${task.status ===
+                                                        "Assigned" &&
                                                         "bg-red-400"
-                                                    } ${
-                                                        task.status ===
-                                                            "Running" &&
+                                                        } ${task.status ===
+                                                        "Running" &&
                                                         "bg-green-400"
-                                                    } py-1 text-white text-center rounded-sm`}
+                                                        } py-1 text-white text-center rounded-sm`}
                                                 >
                                                     {task.status}
                                                 </p>

@@ -21,7 +21,7 @@ const FinanceDashboard = () => {
     const [partnerList, setPartnerList] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
-    
+
     useEffect(() => {
         fetch(
             `https://knot-business-solution-server.herokuapp.com/addNewOrder/${companyName}`
@@ -29,7 +29,7 @@ const FinanceDashboard = () => {
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
     }, [orderList, companyName]);
-    
+
     const orderAmount = orderList.reduce((prev, current) => {
         return prev + parseInt(current.totalAmount)
     }, 0)
@@ -42,7 +42,7 @@ const FinanceDashboard = () => {
 
     // console.log(partnerList, companyName);
 
-const shareAmount = partnerList.reduce((prev, current) => {
+    const shareAmount = partnerList.reduce((prev, current) => {
         return prev + parseInt(current.Amount)
     }, 0)
     useEffect(() => {

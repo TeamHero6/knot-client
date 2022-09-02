@@ -26,7 +26,7 @@ const AwardModalDaisyUI = ({ setAwardModal, awardRefetch }) => {
         };
 
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/createAward",
+            "http://localhost:5000/createAward",
             {
                 method: "POST",
                 headers: {

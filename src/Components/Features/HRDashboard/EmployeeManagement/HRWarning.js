@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from "react";
 import HRAwardCard from "./HRAwardCard";
+import { useSelector } from "react-redux";
 
 const HRWarning = () => {
     const [warning, setWarning] = useState([]);
     const [award, setAward] = useState([]);
+    const loggerInfo = useSelector(state => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
+
 
     useEffect(() => {
-        fetch("http://localhost:5000/warnings")
+        fetch(`https://knot-business-solution-server.herokuapp.com/warnings/${companyName}`)
             .then((res) => res.json())
             .then((data) => setWarning(data));
-    }, [warning]);
+    }, [warning, companyName]);
+
+    // console.log(warning, companyName);
 
     useEffect(() => {
-        fetch("http://localhost:5000/awards")
+        fetch(`https://knot-business-solution-server.herokuapp.com/award/${companyName}`)
             .then((res) => res.json())
             .then((data) => setAward(data));
-    }, [award]);
+    }, [award, companyName]);
+    console.log(award, companyName);
 
     return (
         <div>

@@ -16,7 +16,7 @@ const SalesReport = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addNewOrder/${companyName}`
+            `http://localhost:5000/addNewOrder/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
