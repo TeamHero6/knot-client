@@ -12,7 +12,7 @@ const HRChat = () => {
 
     const allEmployees = useSelector((state) => state.auth.allEmployees);
     if (allEmployees) {
-        console.log(allEmployees);
+        // console.log(allEmployees);
     }
     useEffect(() => {
         fetch(`http://localhost:5000/employeedetails/${companyName}`)
