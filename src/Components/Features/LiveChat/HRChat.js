@@ -7,26 +7,25 @@ const HRChat = () => {
     const [chatList, setChatList] = useState([]);
     const [details, setDetails] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    const { Department } = loggerInfo;
-    const { companyName } = loggerInfo;
+    const { Department, companyName } = loggerInfo;
+    
 
     const allEmployees = useSelector((state) => state.auth.allEmployees);
     if (allEmployees) {
-        console.log(allEmployees);
+        // console.log(allEmployees);
     }
     useEffect(() => {
         fetch(`https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`)
             .then((res) => res.json())
             .then((data) => setDetails(data.reverse()));
     }, [details, companyName]);
-    // console.log(details, companyName);
 
     useEffect(() => {
         fetch(`https://knot-business-solution-server.herokuapp.com/conversations/${Department}`)
             .then((res) => res.json())
             .then((data) => setChatList(data));
     }, [chatList, Department]);
-    // console.log(chatList, Department);
+    console.log(chatList, Department);
 
     return (
         <div className="chatCard ">
