@@ -8,13 +8,13 @@ const SalesOrderList = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addNewOrder/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/addNewOrder/${companyName}`)
             .then((res) => res.json())
             .then((data) => setOrderList(data.reverse()));
     }, [orderList, companyName]);
 
     const handleOrderCancel = (id) => {
-        const url = `http://localhost:5000/addNewOrder/${id}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/addNewOrder/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {

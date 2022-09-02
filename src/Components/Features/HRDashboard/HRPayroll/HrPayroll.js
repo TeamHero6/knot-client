@@ -6,10 +6,8 @@ import { toast } from "react-toastify";
 
 const HrPayroll = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    const [payrolls, setPayrolls] = useState([]);
-   
-
     const { companyName } = loggerInfo;
+    const [payrolls, setPayrolls] = useState([]);
 
     useEffect(() => {
         fetch(
@@ -17,7 +15,8 @@ const HrPayroll = () => {
         )
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
-    }, [payrolls]);
+    }, [payrolls, companyName]);
+    console.log(payrolls, companyName);
 
     
     return (

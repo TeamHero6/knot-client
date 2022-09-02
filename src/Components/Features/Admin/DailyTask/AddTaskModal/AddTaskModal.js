@@ -54,7 +54,7 @@ const AddTaskModal = ({ refetch, setOpen }) => {
 
         //Post data to server
         fetch(
-            "http://localhost:5000/v1/addNewTask",
+            "https://knot-business-solution-server.herokuapp.com/v1/addNewTask",
             {
                 method: "POST",
                 headers: {
@@ -119,7 +119,7 @@ const AddTaskModal = ({ refetch, setOpen }) => {
                                 {users
                                     .filter((val) => {
                                         if (search === "") {
-                                            return;
+                                            return false;
                                         } else if (
                                             val.name
                                                 .toLocaleLowerCase()
@@ -129,6 +129,7 @@ const AddTaskModal = ({ refetch, setOpen }) => {
                                         ) {
                                             return val;
                                         }
+                                        return false;
                                     })
                                     .map((user) => {
                                         return (

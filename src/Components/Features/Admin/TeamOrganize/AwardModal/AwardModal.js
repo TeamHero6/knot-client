@@ -21,7 +21,7 @@ const AwardModal = ({ refetch }) => {
         };
 
         fetch(
-            "http://localhost:5000/createAward",
+            "https://knot-business-solution-server.herokuapp.com/createAward",
             {
                 method: "POST",
                 headers: {

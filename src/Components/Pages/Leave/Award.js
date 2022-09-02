@@ -6,7 +6,7 @@ const Award = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userAwards/${loggerInfo.email}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/userAwards/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setAwards(data.reverse()));
     }, [awards, loggerInfo]);

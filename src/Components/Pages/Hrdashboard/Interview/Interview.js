@@ -8,7 +8,7 @@ const Interview = () => {
     const [short, setShort] = useState([]);
     const [modal, setmodal] = useState({});
     useEffect(() => {
-        fetch("http://localhost:5000/applicant")
+        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short]);
@@ -21,7 +21,7 @@ const Interview = () => {
 
         const updata = { aprovel };
 
-        const url = `http://localhost:5000/applicant/${id}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/applicant/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {

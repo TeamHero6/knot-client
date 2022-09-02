@@ -10,7 +10,7 @@ const HRWarning = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/warnings/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/warnings/${companyName}`)
             .then((res) => res.json())
             .then((data) => setWarning(data));
     }, [warning, companyName]);
@@ -18,7 +18,7 @@ const HRWarning = () => {
     // console.log(warning, companyName);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/award/${companyName}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/award/${companyName}`)
             .then((res) => res.json())
             .then((data) => setAward(data));
     }, [award, companyName]);

@@ -11,7 +11,7 @@ const UserAttendance = () => {
     const { companyName } = loggerInfo;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/attendance/${loggerInfo.email}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/attendance/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setAttendance(data.reverse()));
     }, [attendance, loggerInfo]);
@@ -28,7 +28,7 @@ const UserAttendance = () => {
         console.log(Attendance);
 
         fetch(
-            "http://localhost:5000/attendance",
+            "https://knot-business-solution-server.herokuapp.com/attendance",
             {
                 method: "POST",
                 headers: {

@@ -39,7 +39,7 @@ const Vendor = () => {
         console.log(vendor);
 
         fetch(
-            "http://localhost:5000/addNewVendor",
+            "https://knot-business-solution-server.herokuapp.com/addNewVendor",
             {
                 method: "POST",
                 headers: {

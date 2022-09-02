@@ -29,7 +29,7 @@ const AllLedger = () => {
         };
 
         console.log(CashBook);
-        fetch("http://localhost:5000/cashBook", {
+        fetch("https://knot-business-solution-server.herokuapp.com/cashBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -62,7 +62,7 @@ const AllLedger = () => {
             companyName,
         };
         // console.log(BankBook);
-        fetch("http://localhost:5000/bankBook", {
+        fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -91,7 +91,7 @@ const AllLedger = () => {
                             className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover:outline-1 hover:border hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
                         >
                             <IoIosAddCircleOutline className="text-2xl" />
-                            Cash Book
+                            Direct Expense
                         </button>{" "}
                         <br />
                     </div>
@@ -102,7 +102,7 @@ const AllLedger = () => {
                             className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover:outline-1 hover:border hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
                         >
                             <IoIosAddCircleOutline className="text-2xl" />
-                            Bank Book
+                            Admin Expense
                         </button>{" "}
                         <br />
                     </div>
@@ -113,7 +113,7 @@ const AllLedger = () => {
                             <form onSubmit={handleAddCashBook}>
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 mb-2 text-lg">
-                                        Cash Book
+                                        Direct Expense
                                     </h1>
                                     <div className="md:flex items-center">
                                         <label
@@ -157,7 +157,7 @@ const AllLedger = () => {
                                             className="font-bold w-40"
                                             htmlFor="name"
                                         >
-                                            Expense Type :{" "}
+                                            Ledger Type :{" "}
                                         </label>{" "}
                                         <br />
                                         <select
@@ -168,11 +168,11 @@ const AllLedger = () => {
                                             <option value="" selected disabled>
                                                 Select type
                                             </option>
-                                            <option value="Direct Expense">
-                                                Direct Expense
+                                            <option value="Cash Book">
+                                                Cash Book
                                             </option>
-                                            <option value="General Expense">
-                                                General Expense
+                                            <option value="Bank Book">
+                                                Bank Book
                                             </option>
                                         </select>
                                         <br />
@@ -237,7 +237,7 @@ const AllLedger = () => {
                             <form onSubmit={handleAddBankBook}>
                                 <div>
                                     <h1 className="font-bold text-center text-blue-500 text-lg">
-                                        Bank Book
+                                        Admin Expense
                                     </h1>
                                     <div className="md:flex items-center">
                                         <label
@@ -282,7 +282,7 @@ const AllLedger = () => {
                                             className="font-bold w-40"
                                             htmlFor="name"
                                         >
-                                            Expense Type :{" "}
+                                            Ledger Type :{" "}
                                         </label>{" "}
                                         <br />
                                         <select
@@ -293,11 +293,11 @@ const AllLedger = () => {
                                             <option value="" selected disabled>
                                                 Select type
                                             </option>
-                                            <option value="Direct Expense">
-                                                Direct Expense
+                                            <option value="Cash Book">
+                                                Cash Book
                                             </option>
-                                            <option value="General Expense">
-                                                General Expense
+                                            <option value="Bank Book">
+                                                Bank Book
                                             </option>
                                         </select>
                                         <br />

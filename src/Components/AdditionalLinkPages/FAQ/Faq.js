@@ -1,11 +1,12 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 import FAQNavbar from "./FAQNavbar/FAQNavbar";
 
 const Faq = () => {
     const [userName, setUsername] = useState("");
+    const [active, setActive] = useState("");
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     useEffect(() => {
         if (loggerInfo !== null) {
@@ -13,6 +14,7 @@ const Faq = () => {
             setUsername(name);
         }
     }, [loggerInfo]);
+
     return (
         <div>
             <div>
@@ -28,38 +30,54 @@ const Faq = () => {
                             How can we help?
                         </h1>
                     </div>
-                    <div className="border-b-2 text-white border-white flex items-center rounded-full h-[50px] px-12 mt-32 md:mt-0">
-                        <input
-                            type="text"
-                            name="faq"
-                            id=""
-                            className="bg-transparent flex-1 w-full outline-none text-white"
-                            placeholder="Search"
-                        />{" "}
-                        <button>
-                            <FaSearch className="text-white" />
-                        </button>
-                    </div>
                 </section>
             </div>{" "}
             {/*FAQ Header*/}
             {/* //Dashboard */}
-            <section className="w-full flex my-12">
-                <div className="text-gray-500 w-1/3 text-center">
-                    <Link to="/FAQ">
-                        <p>Account</p>
-                    </Link>
-                    <Link to="safetyandsecuirity">
-                        <p>Safety and security</p>
-                    </Link>
-                    <Link to="rules&politics">
-                        <p>Rules and politics</p>
-                    </Link>
+            <motion.section
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="w-full flex my-12"
+            >
+                <div className="text-gray-500 w-1/3 flex justify-center">
+                    <div className="text-left">
+                        <Link to="/FAQ">
+                            <p
+                                className={`${
+                                    active === "active" && "font-semibold"
+                                } py-1`}
+                                onClick={() => setActive("active")}
+                            >
+                                Account
+                            </p>
+                        </Link>
+                        <Link to="safetyandsecuirity">
+                            <p
+                                className={`${
+                                    active === "safety" && "font-semibold"
+                                } py-1`}
+                                onClick={() => setActive("safety")}
+                            >
+                                Safety and security
+                            </p>
+                        </Link>
+                        <Link to="rules&politics">
+                            <p
+                                className={`${
+                                    active === "rules" && "font-semibold"
+                                } py-1`}
+                                onClick={() => setActive("rules")}
+                            >
+                                Rules and politics
+                            </p>
+                        </Link>
+                    </div>
                 </div>
-                <div>
+                <div className="w-full">
                     <Outlet />
                 </div>
-            </section>
+            </motion.section>
         </div>
     );
 };
