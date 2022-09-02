@@ -15,12 +15,13 @@ const LiveChatNavbar = () => {
     const authInfo = useSelector((state) => state.auth);
 
     useEffect(() => {
+        console.log(loggerInfo);
         if (authInfo.loggerInfo !== null) {
             const { userPhoto, email } = authInfo?.loggerInfo;
             setuserprofile(userPhoto);
             setUserEmail(email);
         }
-    }, [authInfo]);
+    }, [authInfo, loggerInfo]);
     // sign out handler
     const handleSignOut = () => {
         signOut(auth);
