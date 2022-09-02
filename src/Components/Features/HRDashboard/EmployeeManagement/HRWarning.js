@@ -6,13 +6,13 @@ const HRWarning = () => {
     const [award, setAward] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/warnings")
+        fetch("http://localhost:5000/warnings")
             .then((res) => res.json())
             .then((data) => setWarning(data));
     }, [warning]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/award")
+        fetch("http://localhost:5000/awards")
             .then((res) => res.json())
             .then((data) => setAward(data));
     }, [award]);

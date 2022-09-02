@@ -14,7 +14,7 @@ import {
 const Attendance = () => {
     const [payrolls, setPayrolls] = useState([]);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
+        fetch("http://localhost:5000/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, []);

@@ -8,7 +8,7 @@ const AllTasks = ({ data, searchTerm }) => {
     // update task status
     const updateStatus = (status, id) => {
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/updateStatus",
+            "http://localhost:5000/updateStatus",
             {
                 method: "PUT",
                 headers: {

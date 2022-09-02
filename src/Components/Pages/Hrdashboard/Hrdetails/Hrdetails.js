@@ -11,7 +11,7 @@ const Hrdetails = () => {
 
     const onSubmit = (data) => {
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/employeedetails",
+            "http://localhost:5000/employeedetails",
             {
                 method: "POST",
                 headers: {

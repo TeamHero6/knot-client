@@ -6,13 +6,13 @@ const HRPerformanceData = () => {
     const [transfer, setTransfer] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/transfer")
+        fetch("http://localhost:5000/transfer")
             .then((res) => res.json())
             .then((data) => setTransfer(data));
     }, [transfer]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/performance")
+        fetch("http://localhost:5000/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, [promo]);

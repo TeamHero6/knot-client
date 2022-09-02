@@ -16,7 +16,7 @@ const CompanyDetails = () => {
         refetch,
     } = useQuery(["allEmployess", "employees"], () =>
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/getAllEmployees/${companyName}`
+            `http://localhost:5000/getAllEmployees/${companyName}`
         ).then((res) => res.json())
     );
 
@@ -38,7 +38,7 @@ const CompanyDetails = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(
-                    `https://knot-business-solution-server.herokuapp.com/removeEmployee/${id}`,
+                    `http://localhost:5000/removeEmployee/${id}`,
                     {
                         method: "DELETE",
                         headers: {

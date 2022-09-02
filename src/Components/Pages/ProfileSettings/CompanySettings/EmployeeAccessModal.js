@@ -29,7 +29,7 @@ const EmployeeAccessModal = ({ setOpen, refetch }) => {
                 companyName: companyName,
             };
             fetch(
-                "https://knot-business-solution-server.herokuapp.com/createNewEmployee",
+                "http://localhost:5000/createNewEmployee",
                 {
                     method: "PUT",
                     headers: {

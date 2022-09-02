@@ -25,7 +25,7 @@ const Customer = () => {
         };
         console.log(newCustomer);
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/addNewCustomer",
+            "http://localhost:5000/addNewCustomer",
             {
                 method: "POST",
                 headers: {

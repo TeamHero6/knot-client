@@ -16,7 +16,7 @@ const HrJoining = () => {
 
     const { data: details, isLoading } = useQuery(["details"], () =>
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/employeedetails"
+            "http://localhost:5000/employeedetails"
         ).then((res) => res.json())
     );
 
@@ -26,12 +26,12 @@ const HrJoining = () => {
         refetch,
     } = useQuery(["training"], () =>
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/Trainnig"
+            "http://localhost:5000/Trainnig"
         ).then((res) => res.json())
     );
 
     const onSubmitTraining = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
+        fetch("http://localhost:5000/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -206,7 +206,7 @@ const HrJoining = () => {
                     New Employee Training Database
                 </h1>
 
-                <div className="grid grid-rows-2 grid-flow-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {Trainnig.slice(0, 20).map((training) => (
                         <HRTrainingCard training={training}></HRTrainingCard>
                     ))}

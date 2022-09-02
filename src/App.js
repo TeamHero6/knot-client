@@ -180,9 +180,9 @@ function App() {
                     <Route
                         path="/accessApps"
                         element={
-                            <RequireAuth>
+                            
                                 <AccessYourApps />
-                            </RequireAuth>
+                            
                         }
                     />
                     <Route path="/salesTS" element={<SalesManagement />}>

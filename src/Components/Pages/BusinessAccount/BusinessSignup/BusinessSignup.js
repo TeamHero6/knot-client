@@ -70,7 +70,7 @@ const BusinessSignup = () => {
 
                         // Send Data to Server
                         fetch(
-                            "https://knot-business-solution-server.herokuapp.com/createdUser",
+                            "http://localhost:5000/createdUser",
                             {
                                 method: "PUT",
                                 headers: {
@@ -128,7 +128,7 @@ const BusinessSignup = () => {
             const info = { email, secretCode, name };
 
             fetch(
-                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
+                "http://localhost:5000/checkEmployee",
                 {
                     method: "POST",
                     headers: {

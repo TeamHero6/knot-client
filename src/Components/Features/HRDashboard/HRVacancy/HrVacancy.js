@@ -15,14 +15,14 @@ const HrVacancy = () => {
     const [short, setShort] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
+        fetch("http://localhost:5000/applicant")
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short]);
 
     const { data: carcular, isLoading } = useQuery(["circuler"], () =>
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/vacancy"
+            "http://localhost:5000/vacancy"
         ).then((res) => res.json())
     );
 
@@ -33,7 +33,7 @@ const HrVacancy = () => {
     // }, [carcular]);
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
+        fetch("http://localhost:5000/vacancy", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -176,13 +176,13 @@ const HrVacancy = () => {
             </div>
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Circular</h3>
-
-                <div className="flex justify-between gap-5">
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
                     {carcular.slice(0, 20).map((circular) => (
                         <HRCircularCard circular={circular}></HRCircularCard>
                     ))}
                 </div>
-            </div>
+            
         </div>
     );
 };

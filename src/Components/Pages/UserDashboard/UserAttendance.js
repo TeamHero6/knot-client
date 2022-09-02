@@ -8,7 +8,7 @@ const UserAttendance = () => {
     const [singleAttendance, setSingleAttendance] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/attendance")
+        fetch("http://localhost:5000/attendance")
             .then((res) => res.json())
             .then((data) => setAttendance(data.reverse()));
     }, [attendance]);
@@ -23,7 +23,7 @@ const UserAttendance = () => {
         // console.log(Attendance);
 
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/attendance",
+            "http://localhost:5000/attendance",
             {
                 method: "POST",
                 headers: {

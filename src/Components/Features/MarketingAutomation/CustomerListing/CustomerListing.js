@@ -7,7 +7,7 @@ const CustomerListing = () => {
         queryKey: "newsletterMail",
         queryFn: () =>
             fetch(
-                "https://knot-business-solution-server.herokuapp.com/newsletterMail"
+                "http://localhost:5000/newsletterMail"
             ).then((res) => res.json()),
     });
 
