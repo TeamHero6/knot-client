@@ -19,7 +19,7 @@ const Award = () => {
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {awards?.slice(0, 20).map((award) => (
-                        <div className="px-4 py-2 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div className="px-4 py-2 w-60 lg:w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                             <p className="my-2 font-semibold">{award.name}</p>
                             <p className="font-semibold">
                                 {award.employeeEmail}

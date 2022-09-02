@@ -21,11 +21,11 @@ const UserPromotion = () => {
     return (
         <div className="w-full">
             <div className="mx-3">
-                <h1 className="text-2xl text-green-500 font-bold mt-5 mx-6">
+                <h1 className="text-2xl text-green-500 font-bold mt-5">
                     Employee Promotion Database
                 </h1>
-                <div className="w-full mb-5 flex justify-between rounded py-6 px-6 mt-5">
-                    <table className="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">
+                <div className="w-full mt-5 mb-5 h-80 overflow-auto p-5 bg-white rounded drop-shadow-md">
+                    <table className="border-2 border-cyan-300 w-full text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -82,7 +82,7 @@ const UserPromotion = () => {
                 <div className="overflow-x-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {transfers?.slice(0, 8).map((transfer) => (
-                            <div className="p-4 w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                            <div className="p-4 w-60 lg:w-80 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                                 <p>
                                     <span className="font-semibold">
                                         Name :{" "}
