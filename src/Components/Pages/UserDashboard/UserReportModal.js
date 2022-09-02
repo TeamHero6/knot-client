@@ -17,7 +17,7 @@ const UserReportModal = ({ singleAttendance }) => {
             taskReport,
         };
         console.log(UpdateDateTime);
-        const url = `https://knot-business-solution-server.herokuapp.com/attendance/${_id}`;
+        const url = `http://localhost:5000/attendance/${_id}`;
         fetch(url, {
             method: "PUT",
             headers: {

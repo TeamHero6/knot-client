@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import LeaveRequestCard from "./LeaveRequestCard";
 
 const HrLeaveRequest = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
     const [requests, setRequest] = useState([]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/users")
+        fetch(`https://knot-business-solution-server.herokuapp.com/users/${companyName}`)
             .then((res) => res.json())
             .then((data) => setRequest(data));
-    }, [requests]);
+    }, [requests, companyName]);
+    console.log();
     return (
         <div>
             <div className=" px-3 py-3">
@@ -16,7 +20,7 @@ const HrLeaveRequest = () => {
                     Approval Leave Request
                 </h1>
 
-                <div className="grid grid-rows-2 grid-flow-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {requests.slice(0, 20).map((leave) => (
                         <LeaveRequestCard leave={leave}></LeaveRequestCard>
                     ))}

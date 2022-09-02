@@ -221,7 +221,7 @@ const HrJoining = () => {
                     New Employee Training Database
                 </h1>
 
-                <div className="grid grid-rows-2 grid-flow-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {Trainnig.slice(0, 20).map((training) => (
                         <HRTrainingCard training={training}></HRTrainingCard>
                     ))}

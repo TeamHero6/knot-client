@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiFillSave } from "react-icons/ai";
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
 
 const HrPayroll = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
@@ -18,13 +15,9 @@ const HrPayroll = () => {
     }, [payrolls, companyName]);
     console.log(payrolls, companyName);
 
-    
+
     return (
         <div className="ml-5">
-            
-
-            
-
             <div>
                 <div className="w-full h-80 mt-5 mb-5">
                     <table className="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">
@@ -54,7 +47,7 @@ const HrPayroll = () => {
                             {payrolls.map((payrolls) => (
                                 <tr
                                     key={payrolls._id}
-                                    className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                    className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"
                                 >
                                     <td className="py-3 px-6 pl-10 whitespace-nowrap">
                                         {payrolls.Date}

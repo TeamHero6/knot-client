@@ -29,7 +29,7 @@ const AllLedger = () => {
         };
 
         console.log(CashBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/cashBook", {
+        fetch("http://localhost:5000/cashBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -62,7 +62,7 @@ const AllLedger = () => {
             companyName,
         };
         // console.log(BankBook);
-        fetch("https://knot-business-solution-server.herokuapp.com/bankBook", {
+        fetch("http://localhost:5000/bankBook", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

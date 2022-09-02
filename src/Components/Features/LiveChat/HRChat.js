@@ -11,6 +11,9 @@ const HRChat = () => {
     const { companyName } = loggerInfo;
 
     const allEmployees = useSelector((state) => state.auth.allEmployees);
+    if (allEmployees) {
+        // console.log(allEmployees);
+    }
     useEffect(() => {
         fetch(
             `https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`

@@ -30,7 +30,7 @@ const TeamOrganize = () => {
         refetch: meetingRefetch,
     } = useQuery(["meetings"], () =>
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/meetings/${companyName}`
+            `http://localhost:5000/meetings/${companyName}`
         ).then((res) => res.json())
     );
 
