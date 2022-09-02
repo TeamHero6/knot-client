@@ -15,6 +15,7 @@ const LiveChatNavbar = () => {
     // Getting all neccasary user information from redux store
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyLogo, userPhoto } = loggerInfo;
+    const { Department } = loggerInfo;
 
     // sign out handler
     const handleSignOut = () => {
@@ -42,7 +43,7 @@ const LiveChatNavbar = () => {
                             alt=""
                         />
                     </span>
-                    <span className="whitespace-nowrap">Group Chat</span>
+                    <span className="whitespace-nowrap">{Department} Chat</span>
                 </div>
             </div>
 
