@@ -53,7 +53,7 @@ const AccessYourApps = () => {
         },
         {
             id: 7,
-            name: "Live Chat",
+            name: "Group Chat",
             link: "/chat",
             icon: chat,
         },

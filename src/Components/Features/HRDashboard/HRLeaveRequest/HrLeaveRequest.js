@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import LeaveRequestCard from "./LeaveRequestCard";
 import { useSelector } from "react-redux";
 
 const HrLeaveRequest = () => {
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
     const [requests, setRequest] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
@@ -12,6 +15,7 @@ const HrLeaveRequest = () => {
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, [requests]);
+    console.log();
     return (
         <div>
             <div className=" px-3 py-3">
