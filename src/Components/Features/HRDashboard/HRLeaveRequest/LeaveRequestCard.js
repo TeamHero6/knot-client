@@ -33,7 +33,7 @@ const LeaveRequestCard = (props) => {
             });
     };
     return (
-        <div class="card w-full bg-base-100 shadow-xl hover:shadow-md hover:bg-white hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+        <div class="card w-full bg-base-100 shadow-xl hover:shadow-md hover:bg-white  duration-500 cursor-pointer border-b border-cyan-100">
             <div class="card-body">
                 <h2 class="card-title capitalize mb-5">
                     {Name}

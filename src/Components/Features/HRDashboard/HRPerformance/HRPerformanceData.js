@@ -57,7 +57,7 @@ const HRPerformanceData = () => {
                                 {promo.map((promo) => (
                                     <tr
                                         key={promo._id}
-                                        className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                        className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100"
                                     >
                                         <td className="py-3 px-6 pl-10 whitespace-nowrap">
                                             {promo.Promotion_Date}

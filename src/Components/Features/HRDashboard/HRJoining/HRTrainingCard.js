@@ -9,7 +9,7 @@ import { RiTeamFill } from "react-icons/ri";
 const HRTrainingCard = (props) => {
     const { Department, Employee_Name, Employee_id, Designation, Start_Time, End_Time, name, Contact_Number, Training_Location } = props.training
     return (
-        <div className='bg-white  w-full shadow-gray-300 px-5 py-5 rounded-md shadow-sm bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100'>
+        <div className='bg-white  w-full shadow-gray-300 px-5 py-5 rounded-md shadow-sm bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100'>
             <BsFillLightningChargeFill className='text-white text-4xl'></BsFillLightningChargeFill>
             <div className='flex gap-5'>
                 <div className='text-white my-3'>
