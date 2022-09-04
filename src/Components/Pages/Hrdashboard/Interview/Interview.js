@@ -8,7 +8,7 @@ const Interview = () => {
     const [short, setShort] = useState([]);
     const [modal, setmodal] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
+        fetch("http://localhost:5000/applicant")
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short]);
@@ -21,7 +21,7 @@ const Interview = () => {
 
         const updata = { aprovel };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/applicant/${id}`;
+        const url = `http://localhost:5000/applicant/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -69,7 +69,7 @@ const Interview = () => {
                             </thead>
                             <tbody>
                                 {short.map((s) => (
-                                    <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                    <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                         <td className="py-3 px-6 whitespace-nowrap">
                                             {s.Applicant_Name}
                                         </td>

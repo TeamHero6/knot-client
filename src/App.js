@@ -132,8 +132,8 @@ function App() {
                         <Route path="joining" element={<Joining />}></Route>
                     </Route>
                     <Route path="/hrManagement" element={<HRManagement />}>
-                        {/* <Route index element={<HRDashboard />}></Route> */}
                         <Route index element={<HrLeaveRequest />}></Route>
+                        <Route path="hrLeaveRequest" element={<HrLeaveRequest />}></Route>
                         <Route
                             path="employeeManagement"
                             element={<EmployeeManagement />}
@@ -201,9 +201,9 @@ function App() {
                     <Route
                         path="/accessApps"
                         element={
-                            <RequireAuth>
+                            
                                 <AccessYourApps />
-                            </RequireAuth>
+                            
                         }
                     />
                     {/* ---------- Sales Management ---------- */}

@@ -10,13 +10,13 @@ const Assigntranning = () => {
     const [Trainnig, setTrainnig] = useState([]);
     // const [employinfo, setEmployinfo] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
+        fetch("http://localhost:5000/Trainnig")
             .then((res) => res.json())
             .then((data) => setTrainnig(data));
     }, [Trainnig]);
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig", {
+        fetch("http://localhost:5000/Trainnig", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -179,7 +179,7 @@ const Assigntranning = () => {
                         </thead>
                         <tbody>
                             {Trainnig.map((t) => (
-                                <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {t.Applicant_Name}
                                     </td>

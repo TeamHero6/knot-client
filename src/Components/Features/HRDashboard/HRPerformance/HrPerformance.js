@@ -5,7 +5,8 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import HRPerformanceData from "./HRPerformanceData";
-// import profile from "../../../Assets/icons/Live-chat-icon/profile_user.png";
+
+
 
 const HrPerformance = () => {
     const [details, setDetails] = useState([]);
@@ -25,7 +26,7 @@ const HrPerformance = () => {
     const onSubmit = (data) => {
         const newData = { ...data, companyName };
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/performance",
+            "http://localhost:5000/performance",
             {
                 method: "POST",
                 headers: {
@@ -66,7 +67,7 @@ const HrPerformance = () => {
                 <div>
                     <button
                         onClick={() => setShow(!show)}
-                        className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover:outline-1 hover:border hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
+                        className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500  hover: shadow-green-200 hover: shadow-sm"
                     >
                         <IoIosAddCircleOutline className="text-2xl" />
                         Promotion
@@ -76,7 +77,7 @@ const HrPerformance = () => {
                 <div>
                     <button
                         onClick={() => setShowTransfer(!showTransfer)}
-                        className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500 hover:outline-1 hover:border hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
+                        className="flex items-center gap-2 bg-blue-500 py-2 px-4 text-white font-bold rounded  hover:bg-white hover:text-blue-500  hover: shadow-green-200 hover: shadow-sm"
                     >
                         <IoIosAddCircleOutline className="text-2xl" />
                         Transfer
@@ -187,24 +188,24 @@ const HrPerformance = () => {
                                 </label>{" "}
                                 <br />
                                 <select
-                                        required
-                                        name="customerName"
-                                        {...register("Department")}
-                                        id=""
-                                        className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
-                                    >
-                                        <option value="" selected disabled>
-                                            Select Department
-                                        </option>
-                                        <option value="Human Resources">
-                                            Human Resources
-                                        </option>
-                                        <option value="Sales">Sales</option>
-                                        <option value="Marketing">
-                                            Marketing
-                                        </option>
-                                        <option value="Finance">Finance</option>
-                                    </select>
+                                    required
+                                    name="customerName"
+                                    {...register("Department")}
+                                    id=""
+                                    className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                >
+                                    <option value="" selected disabled>
+                                        Select Department
+                                    </option>
+                                    <option value="Human Resources">
+                                        Human Resources
+                                    </option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Marketing">
+                                        Marketing
+                                    </option>
+                                    <option value="Finance">Finance</option>
+                                </select>
                                 <br />
                             </div>
                             <div className="md:flex items-center">
@@ -261,7 +262,7 @@ const HrPerformance = () => {
                             <div className="flex justify-center mt-2">
                                 <button
                                     type="submit"
-                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover: shadow-blue-300 hover: shadow-sm"
                                 >
                                     <AiFillSave />
                                     Save
@@ -378,24 +379,24 @@ const HrPerformance = () => {
                                 </label>{" "}
                                 <br />
                                 <select
-                                        required
-                                        name="customerName"
-                                        {...register("Department")}
-                                        id=""
-                                        className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
-                                    >
-                                        <option value="" selected disabled>
-                                            Select Department
-                                        </option>
-                                        <option value="Human Resources">
-                                            Human Resources
-                                        </option>
-                                        <option value="Sales">Sales</option>
-                                        <option value="Marketing">
-                                            Marketing
-                                        </option>
-                                        <option value="Finance">Finance</option>
-                                    </select>
+                                    required
+                                    name="customerName"
+                                    {...register("Department")}
+                                    id=""
+                                    className="py-1 pl-3 w-full my-1 border border-gray-300 bg-slate-50 rounded outline-none"
+                                >
+                                    <option value="" selected disabled>
+                                        Select Department
+                                    </option>
+                                    <option value="Human Resources">
+                                        Human Resources
+                                    </option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Marketing">
+                                        Marketing
+                                    </option>
+                                    <option value="Finance">Finance</option>
+                                </select>
                                 <br />
                             </div>
                             <div className="md:flex items-center">
@@ -435,7 +436,7 @@ const HrPerformance = () => {
                             <div className="flex justify-center mt-2">
                                 <button
                                     type="submit"
-                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600 hover:outline-1 hover:border hover:border-blue-600 hover: shadow-blue-300 hover: shadow-sm"
+                                    className="flex items-center gap-2 bg-blue-600 py-2 px-6 text-white font-bold rounded  hover:bg-white hover:text-blue-600  hover: shadow-blue-300 hover: shadow-sm"
                                 >
                                     <AiFillSave />
                                     Save

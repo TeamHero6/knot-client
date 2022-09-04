@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import HRNavbar from "../../Shared/HRNavbar/HRNavbar";
+import { NavLink, Outlet } from "react-router-dom";
+import HRNavbar from "./HRNavbar";
 
 const HRManagement = () => {
     const [open, setOpen] = useState(false);
@@ -31,54 +31,141 @@ const HRManagement = () => {
             ease-in-out ${open ? "w-9/12" : "hidden md:flex"}`}
                 >
                     <div className="md:mx-2 lg:mx-4">
+                    
+                    <NavLink to="hrLeaveRequest">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Leave Request</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="employeeManagement">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Management</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="hrPerformance">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Performance</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="hrPayroll">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Payroll</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="hrEmployeeDetails">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span className="whitespace-nowrap">Employee Details</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="hrVacancy">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Vacancy</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="hrJoining">
+                            {({ isActive }) => (
+                                <span
+                                    className={
+                                        isActive
+                                            ? "flex  my-4 px-6 p-2 duration-300 transition cursor-pointer rounded bg-custom-cyan-100 border-l-4 border-blue-400"
+                                            : "hover:bg-custom-cyan-100 bg-custom-gray flex  my-4 px-6 p-2"
+                                    }
+                                >
+                                    <span>Joining</span>
+                                </span>
+                            )}
+                        </NavLink>
+                        
                         {/* <Link
-                            to=""
-                            className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
-                        >
-                            Dashboard
-                        </Link> */}
-                        <Link
                             to=""
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Leave Request
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="employeeManagement"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition  cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Management
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="hrPerformance"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Performance
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="hrPayroll"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"
                         >
                             Payroll
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="hrEmployeeDetails"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Employee Details
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="hrVacancy"
                             className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100 whitespace-nowrap"
                         >
                             Vacancy
-                        </Link>
-                        <Link
+                        </Link> */}
+                        {/* <Link
                             to="hrJoining"
                             className="flex my-4 bg-custom-gray duration-300 px-6 py-2 transition cursor-pointer rounded hover:bg-custom-cyan-100 "
                         >
                             Joining
-                        </Link>
+                        </Link> */}
                         {/* <Link
                         to="vendor"
                         className="flex bg-custom-gray my-4 px-6 py-2 duration-300 transition cursor-pointer rounded hover:bg-custom-cyan-100"

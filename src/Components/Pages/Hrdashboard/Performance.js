@@ -14,14 +14,14 @@ const Performance = () => {
     const [modal, setmodal] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/performance")
+        fetch("http://localhost:5000/performance")
             .then((res) => res.json())
             .then((data) => setPromo(data));
     }, [promo]);
 
     const onSubmit = (data) => {
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/performance",
+            "http://localhost:5000/performance",
             {
                 method: "POST",
                 headers: {
@@ -178,7 +178,7 @@ const Performance = () => {
                         </thead>
                         <tbody>
                             {promo.map((pr) => (
-                                <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {pr.Name}
                                     </td>

@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [leave, setLeave] = useState({});
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/users")
+        fetch("http://localhost:5000/users")
             .then((res) => res.json())
             .then((data) => setRequest(data));
     }, []);
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
         const updata = { aprovel };
 
-        const url = `https://knot-business-solution-server.herokuapp.com/users/${id}`;
+        const url = `http://localhost:5000/users/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -74,7 +74,7 @@ const Dashboard = () => {
                         </thead>
                         <tbody>
                             {requests.map((request) => (
-                                <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {request.Date}
                                     </td>
