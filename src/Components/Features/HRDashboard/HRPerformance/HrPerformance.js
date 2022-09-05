@@ -26,7 +26,7 @@ const HrPerformance = () => {
     const onSubmit = (data) => {
         const newData = { ...data, companyName };
         fetch(
-            "http://localhost:5000/performance",
+            "https://knot-business-solution-server.herokuapp.com/performance",
             {
                 method: "POST",
                 headers: {

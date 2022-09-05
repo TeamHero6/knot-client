@@ -15,7 +15,7 @@ const Training = () => {
     const [trainings, setTrainings] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     useEffect(() => {
-        fetch(`http://localhost:5000/Trainnig/${loggerInfo.email}`)
+        fetch(`https://knot-business-solution-server.herokuapp.com/Trainnig/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setTrainings(data.reverse()));
     }, []);

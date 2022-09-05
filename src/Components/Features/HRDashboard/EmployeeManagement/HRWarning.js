@@ -26,7 +26,7 @@ const HRWarning = () => {
 
     return (
         <div>
-            <div>
+            <div className="bg-white px-5 pt-5"> 
                 <h1 className="font-semibold text-cyan-500 text-xl ml-5">
                     Warning Database
                 </h1>
@@ -74,7 +74,7 @@ const HRWarning = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="mt-5">
                 <h1 className="font-semibold text-xl text-orange-500 mb-4 ml-5">
                     Award Database
                 </h1>

@@ -14,7 +14,7 @@ const SalesOrderList = () => {
     }, [orderList, companyName]);
 
     const handleOrderCancel = (id) => {
-        const url = `http://localhost:5000/addNewOrder/${id}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/addNewOrder/${id}`;
         fetch(url, {
             method: "PUT",
             headers: {

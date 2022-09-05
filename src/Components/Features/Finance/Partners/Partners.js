@@ -37,7 +37,7 @@ const Partners = () => {
         };
 
         fetch(
-            "http://localhost:5000/addPartner",
+            "https://knot-business-solution-server.herokuapp.com/addPartner",
             {
                 method: "POST",
                 headers: {

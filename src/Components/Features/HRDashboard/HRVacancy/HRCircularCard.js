@@ -7,7 +7,7 @@ const HRCircularCard = (props) => {
     const { Job_Publish_Date, Last_Date_Apply, Job_Title, Location, Position, Salary_Range, About_the_job, _id } = props.circular
 
     const handaldelete = (id) => {
-        const url = `http://localhost:5000/vacancy/${id}`;
+        const url = `https://knot-business-solution-server.herokuapp.com/vacancy/${id}`;
         fetch(url, { method: "DELETE" })
             .then((res) => res.json())
             .then((data) => {

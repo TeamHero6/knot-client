@@ -25,7 +25,7 @@ const HRPerformanceData = () => {
     return (
         <div>
             <div>
-                <div>
+                <div className="bg-white px-5 pt-5 mt-4">
                     <h1 className="font-semibold text-xl  mt-5 ml-5">
                         Employee Promotion Database
                     </h1>

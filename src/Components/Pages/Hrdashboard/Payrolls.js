@@ -14,7 +14,7 @@ const Payrolls = () => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
     useEffect(() => {
-        fetch("http://localhost:5000/payrolls")
+        fetch("https://knot-business-solution-server.herokuapp.com/payrolls")
             .then((res) => res.json())
             .then((data) => setPayrolls(data));
     }, [payrolls]);

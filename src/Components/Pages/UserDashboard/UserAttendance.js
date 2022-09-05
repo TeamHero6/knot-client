@@ -28,7 +28,7 @@ const UserAttendance = () => {
         console.log(Attendance);
 
         fetch(
-            "http://localhost:5000/attendance",
+            "https://knot-business-solution-server.herokuapp.com/attendance",
             {
                 method: "POST",
                 headers: {

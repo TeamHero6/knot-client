@@ -52,7 +52,7 @@ const AddTaskModal = ({ refetch, setOpen }) => {
         console.log(result);
 
         //Post data to server
-        fetch("http://localhost:5000/v1/addNewTask", {
+        fetch("https://knot-business-solution-server.herokuapp.com/v1/addNewTask", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

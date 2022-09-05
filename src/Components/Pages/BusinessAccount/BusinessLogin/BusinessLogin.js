@@ -45,7 +45,7 @@ const BusinessLogin = () => {
             const secretCode = data?.secretCode;
             const info = { email, secretCode };
             fetch(
-                "http://localhost:5000/checkEmployee",
+                "https://knot-business-solution-server.herokuapp.com/checkEmployee",
                 {
                     method: "POST",
                     headers: {
@@ -87,7 +87,7 @@ const BusinessLogin = () => {
             setCustomError("");
             //check isRole
             fetch(
-                "http://localhost:5000/isRole",
+                "https://knot-business-solution-server.herokuapp.com/isRole",
                 {
                     method: "POST",
                     headers: {

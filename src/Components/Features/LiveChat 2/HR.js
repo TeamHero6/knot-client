@@ -21,7 +21,7 @@ const HR = () => {
 
         const hrchat = { chat, userName, time, userPhoto, Department };
 
-        fetch("http://localhost:5000/chat", {
+        fetch("https://knot-business-solution-server.herokuapp.com/chat", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

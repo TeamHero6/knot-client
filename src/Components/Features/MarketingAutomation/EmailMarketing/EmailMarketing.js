@@ -22,7 +22,7 @@ const EmailMarketing = () => {
         };
         console.log(emailToSend);
 
-        fetch("http://localhost:5000/sentEmail", {
+        fetch("https://knot-business-solution-server.herokuapp.com/sentEmail", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

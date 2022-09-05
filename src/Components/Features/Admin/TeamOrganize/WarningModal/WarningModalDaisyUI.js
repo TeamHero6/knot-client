@@ -20,7 +20,7 @@ const WarningModalDaisyUI = ({ setWarningModal, warningRefetch }) => {
             companyName,
         };
         fetch(
-            "http://localhost:5000/createWarning",
+            "https://knot-business-solution-server.herokuapp.com/createWarning",
             {
                 method: "POST",
                 headers: {

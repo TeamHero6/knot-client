@@ -15,7 +15,7 @@ const HrEmployeeData = () => {
     // console.log(details, companyName);
 
     return (
-        <div className="mx-auto w-full rounded-lg my-5 ">
+        <div className="mx-auto w-full my-5 px-5 pb-5 bg-white">
             <div class="rounded-none overflow-auto w-full">
                 <table class="lg:w-full shadow-sm border-2 border-cyan-300 mt-5  mx-auto text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">

@@ -17,9 +17,9 @@ const HrPayroll = () => {
 
 
     return (
-        <div className="ml-5">
+        <div className="ml-5 bg-white">
             <div>
-                <div className="w-full h-80 mt-5 mb-5">
+                <div className="w-full mt-5 mb-5">
                     <table className="shadow-2xl border-2 border-cyan-300 min-w-full h-10 mx-auto my-12 text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
