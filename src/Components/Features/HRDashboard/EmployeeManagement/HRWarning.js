@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import HRAwardCard from "./HRAwardCard";
+import { useSelector } from "react-redux";
 
 const HRWarning = () => {
     const [warning, setWarning] = useState([]);
@@ -26,12 +26,12 @@ const HRWarning = () => {
 
     return (
         <div>
-            <div>
-                <h1 className="font-semibold text-red-500 text-xl ml-5">
+            <div className="bg-white px-5 pt-5"> 
+                <h1 className="font-semibold text-cyan-500 text-xl ml-5">
                     Warning Database
                 </h1>
-                <div className="rounded-none overflow-auto h-80 w-full ">
-                    <table className="lg:w-full shadow-sm border-2 border-cyan-300 mt-5  mx-auto text-base overflow-hidden">
+                <div class="rounded-none overflow-auto h-80 w-full ">
+                    <table class="lg:w-full shadow-sm border-2 border-cyan-300 mt-5  mx-auto text-base overflow-hidden">
                         <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                             <tr>
                                 <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -74,11 +74,11 @@ const HRWarning = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="mt-5">
                 <h1 className="font-semibold text-xl text-orange-500 mb-4 ml-5">
                     Award Database
                 </h1>
-                <div className="grid grid-rows-2 mb-10 grid-flow-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 mb-10">
                     {award.slice(0, 20).map((award) => (
                         <HRAwardCard award={award}></HRAwardCard>
                     ))}

@@ -158,7 +158,7 @@ const EmployeesOrganize = () => {
 
                         <tbody>
                             {award.map((a) => (
-                                <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                     <td className="py-3 px-6 whitespace-nowrap">
                                         {a.awardDate}
                                     </td>

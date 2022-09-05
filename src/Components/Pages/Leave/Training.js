@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import {
     Bar,
@@ -12,8 +13,9 @@ import {
 
 const Training = () => {
     const [trainings, setTrainings] = useState([]);
+    const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
+        fetch(`https://knot-business-solution-server.herokuapp.com/Trainnig/${loggerInfo.email}`)
             .then((res) => res.json())
             .then((data) => setTrainings(data.reverse()));
     }, []);

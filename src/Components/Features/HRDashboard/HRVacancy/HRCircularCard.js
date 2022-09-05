@@ -1,8 +1,10 @@
 import React from 'react';
 import { toast } from "react-toastify";
 
+import profile from '../../../../Assets/icons/higer.png';
+
 const HRCircularCard = (props) => {
-    const { Job_Publish_Date, Last_Date_Apply, Job_Title, Location, Position, Salary_Range, Number_openings, About_the_job, _id } = props.circular
+    const { Job_Publish_Date, Last_Date_Apply, Job_Title, Location, Position, Salary_Range, About_the_job, _id } = props.circular
 
     const handaldelete = (id) => {
         const url = `https://knot-business-solution-server.herokuapp.com/vacancy/${id}`;
@@ -13,27 +15,37 @@ const HRCircularCard = (props) => {
             });
     };
     return (
-        <div className='bg-white w-1/2 shadow-gray-300 px-5 py-5 rounded-md shadow-sm'>
-            <div className='flex justify-between'>
-                <div>Publish Date: <small>{Job_Publish_Date}</small></div>
+        <div className='bg-white  shadow-gray-300 px-5 py-5 rounded-md shadow-sm hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100'>
+
+            <div className='flex justify-between mb-5'>
+                <div>
+                    <span><small>{Job_Publish_Date}</small></span>
+                </div>
                 <button
-                className='text-red-600 font-bold'
+                    className='text-red-600 font-bold'
                     onClick={() =>
                         handaldelete(_id)
                     }
                 >
-                    {" "}
-                    Cancel{" "}
+                    ✕
                 </button>
             </div>
+            <div className='flex'>
+                <div className='w-80'>
+                    <h1 className='text-2xl font-bold text-blue-800'>{Job_Title}</h1>
+                    <p>{Position}</p>
+                    <div className='leading-6'>
+                        <p className="mt-8"><span className='font-medium'>Description:</span> {About_the_job}</p>
+                        <p><span className='font-medium'>Salary Range:</span> {Salary_Range} Tk</p>
+                        <p><span className='font-medium'>Location:</span> {Location}</p>
+                        <p><span className='font-medium'>Last Date Apply:</span> {Last_Date_Apply}</p>
 
-            <p className='text-lg font-bold'>Job Title: {Job_Title}</p>
-            <p>Location: {Location}</p>
-            <p>Designation: {Position}</p>
-            <p>Vacancy: {Number_openings}</p>
-            <p>Salary Range: {Salary_Range}</p>
-            <p><span className='font-semibold'>Job Description:</span> <small>{About_the_job}</small></p>
-            Last Date of Apply: <small className='italic text-gray-500 font-bold'>{Last_Date_Apply}</small>
+                    </div>
+                </div>
+                <div>
+                    <img className='w-64' src={profile} alt="" />
+                </div>
+            </div>
 
         </div>
     );

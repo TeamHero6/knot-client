@@ -15,13 +15,17 @@ const HRChat = () => {
         // console.log(allEmployees);
     }
     useEffect(() => {
-        fetch(`https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/employeedetails/${companyName}`
+        )
             .then((res) => res.json())
             .then((data) => setDetails(data.reverse()));
     }, [details, companyName]);
 
     useEffect(() => {
-        fetch(`https://knot-business-solution-server.herokuapp.com/conversations/${Department}`)
+        fetch(
+            `https://knot-business-solution-server.herokuapp.com/conversations/${Department}`
+        )
             .then((res) => res.json())
             .then((data) => setChatList(data));
     }, [chatList, Department]);

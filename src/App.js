@@ -201,9 +201,9 @@ function App() {
                     <Route
                         path="/accessApps"
                         element={
-                            <RequireAuth>
+                            
                                 <AccessYourApps />
-                            </RequireAuth>
+                            
                         }
                     />
                     {/* ---------- Sales Management ---------- */}

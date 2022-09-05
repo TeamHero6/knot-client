@@ -119,7 +119,7 @@ const AddTaskModal = ({ refetch, setOpen }) => {
                                 {users
                                     .filter((val) => {
                                         if (search === "") {
-                                            return;
+                                            return false;
                                         } else if (
                                             val.name
                                                 .toLocaleLowerCase()
@@ -129,6 +129,7 @@ const AddTaskModal = ({ refetch, setOpen }) => {
                                         ) {
                                             return val;
                                         }
+                                        return false;
                                     })
                                     .map((user) => {
                                         return (

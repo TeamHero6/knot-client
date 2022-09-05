@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { toast } from "react-toastify";
-import { AiFillSave } from 'react-icons/ai';
+import dates from '../../../../Assets/icons/schedule.png';
+import accept from '../../../../Assets/icons/task-management.png';
+import profile from '../../../../Assets/icons/Live-chat-icon/profile_user.png';
 
 
 const LeaveRequestCard = (props) => {
-    const { _id, Date, id, Name, dep, leave_type, e_date, aprovel } = props.leave
-    const [requests, setRequest] = useState([]);
+    const { _id, Date, id, Name, dep, leave_type, e_date, aprovel } = props.leave;
+    console.log(Date);
     const [upstatus, setUpstatus] = useState("");
 
     const approv = (event) => {
@@ -31,48 +33,40 @@ const LeaveRequestCard = (props) => {
             });
     };
     return (
-        <div className='bg-white shadow-gray-300 px-5 py-5 rounded-md shadow-sm'>
-                <p>Department: <span className='text-blue-600 font-semibold'>{dep}</span></p>
-            <div className='flex justify-between items-center'>
-                <div>
-                    <p><span className='font-semibold'>Request Date:</span> <small className='italic text-gray-400'>{Date}</small></p>
+        <div class="card w-full bg-base-100 shadow-xl hover:shadow-md hover:bg-white  duration-500 cursor-pointer border-b border-cyan-100">
+            <div class="card-body">
+                <h2 class="card-title capitalize mb-5">
+                    {Name}
+                    <div class="badge badge-info text-white uppercase">{dep}</div>
+                </h2>
+                <p className='flex items-center '> <img width={20} src={dates} className="mr-2" alt="" /> Date : {Date}</p>
+                <p className='flex items-center '> <img width={20} src={profile} className="mr-2" alt="" /> Employee Id : {id}</p>
+                <p className='flex items-center '> <img width={20} src={accept} className="mr-2" alt="" /> Aprovel: <select
+                    className=" bg-transparent"
+                    onChange={approv}
+                >
+                    <option value="approval_statas">
+                        {aprovel ? aprovel : 'Approve Statas'}
+                    </option>
+                    <option value="Approve">
+                        Approve
+                    </option>
+                    <option value="Reject">
+                        Reject
+                    </option>
+                </select>
+                </p>
+                <div class="card-actions justify-end">
+                    <button
+                        onClick={() => save(_id)}
+                        type="subimt"
+                        className="flex items-center gap-2 bg-white hover:text-white py-2 px-4 text-blue-500 font-bold rounded-full  hover:bg-blue-500  border border-blue-500   hover:border-blue-500 hover: shadow-green-200 hover: shadow-sm"
+                    >
+                        Save
+                    </button>
 
-                </div>
-                <div className='flex items-center gap-2'>
-                    <div>
-                        <select
-                            className=" bg-transparent"
-                            onChange={approv}
-                        >
-                            <option value="approval_statas">
-                                {aprovel ? aprovel : 'Approve Statas'}
-                            </option>
-                            <option value="Approve">
-                                Approve
-                            </option>
-                            <option value="Reject">
-                                Reject
-                            </option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <button
-                            onClick={() => save(_id)}
-                            className="flex items-center text-blue-500"
-                            type="subimt"
-                        >
-                            <AiFillSave />
-                        </button>
-                    </div>
                 </div>
             </div>
-
-            <p><span className='font-semibold'>Employee ID:</span> {id}</p>
-            <p>Name: {Name}</p>
-            <p><span className='font-semibold'>Leave Type: </span>{leave_type}
-                <small className='font-semibold ml-5'>Date: {e_date}</small>
-            </p>
         </div>
     );
 };

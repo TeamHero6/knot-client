@@ -15,9 +15,9 @@ const HrEmployeeData = () => {
     // console.log(details, companyName);
 
     return (
-        <div className="mx-auto w-full rounded-lg my-5 ">
-            <div className="rounded-none">
-                <table className="shadow-sm w-full border-2 border-cyan-300 min-w-1/2 mx-auto my-12 text-base overflow-hidden">
+        <div className="mx-auto w-full my-5 px-5 pb-5 bg-white">
+            <div class="rounded-none overflow-auto w-full">
+                <table class="lg:w-full shadow-sm border-2 border-cyan-300 mt-5  mx-auto text-base overflow-hidden">
                     <thead className="text-white bg-cyan-500 border-b border-cyan-100">
                         <tr>
                             <th className="py-3 text-left px-6 whitespace-nowrap">
@@ -45,7 +45,7 @@ const HrEmployeeData = () => {
                     </thead>
                     <tbody>
                         {details.map((d) => (
-                            <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                            <tr className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100">
                                 <td className="py-3 px-6 whitespace-nowrap">
                                     {d.Employee_Name}
                                 </td>
