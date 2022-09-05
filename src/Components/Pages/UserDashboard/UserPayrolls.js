@@ -12,7 +12,7 @@ const UserPayrolls = () => {
     }, [loggerInfo]);
 
     return (
-        <div className="mx-auto w-full">
+        <div className=" w-full bg-white mx-5">
             <h1 className="text-2xl font-bold mt-5 mx-6">Payrolls</h1>
             <div className="w-full mb-5 flex justify-between rounded py-6 px-6 mt-5">
                 <table className="shadow-2xl border-2 border-cyan-300 w-full text-base overflow-hidden">

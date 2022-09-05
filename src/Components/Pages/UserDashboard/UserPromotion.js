@@ -19,8 +19,8 @@ const UserPromotion = () => {
     }, []);
 
     return (
-        <div className="w-full">
-            <div className="mx-3">
+        <div className="w-full ">
+            <div className="mx-3 bg-white pt-4">
                 <h1 className="text-2xl text-green-500 font-bold mt-5 mx-6">
                     Employee Promotion Database
                 </h1>
