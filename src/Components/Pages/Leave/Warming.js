@@ -5,6 +5,7 @@ const Warming = () => {
     const [warnings, setWarnings] = useState([]);
     const [trainings, setTrainings] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
+    const { companyName } = loggerInfo;
 
     useEffect(() => {
         fetch(`https://knot-business-solution-server.herokuapp.com/userWarnings/${loggerInfo.email}`)
@@ -13,10 +14,12 @@ const Warming = () => {
     }, [warnings, loggerInfo]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/Trainnig")
+        fetch(`https://knot-business-solution-server.herokuapp.com/Trainnig/${companyName}`)
             .then((res) => res.json())
             .then((data) => setTrainings(data.reverse()));
-    }, []);
+    }, [trainings, companyName]);
+
+    console.log(trainings, companyName);
 
     return (
         <div className="m-10">
@@ -51,7 +54,6 @@ const Warming = () => {
                                         <p>Date : {warning.warningDate}</p>
                                         <p>Reason : {warning.warningReason}</p>
                                         <p>Warning Type : {warning.type}</p>
-                                        <p>Feedback : {warning.infeed}</p>
                                         <div className="modal-action">
                                             <label
                                                 for={warning._id}
@@ -96,26 +98,19 @@ const Warming = () => {
                                         <h3 className="font-bold text-lg">
                                             Award Information!
                                         </h3>
-                                        <p>Name : {training.Applicant_Name}</p>
+                                        <p>Name : {training.Employee_Name}</p>
                                         <p>
-                                            Depertment : {training.Depertment}
-                                        </p>
-                                        <p>
-                                            Duration :{" "}
-                                            {training.Tranning_Duration}
-                                        </p>
-                                        <p>
-                                            Designation : {training.Designation}
+                                            Depertment : {training.Department}
                                         </p>
                                         <p>
                                             Location :{" "}
-                                            {training.Taining_Location}
+                                            {training.Training_Location}
                                         </p>
                                         <p>
                                             Start Time : {training.Start_Time}
                                         </p>
                                         <p>End Time : {training.End_Time}</p>
-                                        <p>Topic : {training.name}</p>
+                                        <p>Trainer Name : {training.name}</p>
                                         <p>
                                             Contact Number :{" "}
                                             {training.Contact_Number}
@@ -131,8 +126,8 @@ const Warming = () => {
                                     </div>
                                 </div>
                             </div>
-                            <p>{training.Depertment} Dept.</p>
-                            <p>topic : {training.name}</p>
+                            <p>{training.Department} Dept.</p>
+                            <p>Employee Name : {training.name}</p>
                             <p className="card-actions justify-end text-gray-400">
                                 {training.Tranning_Duration}
                             </p>

@@ -215,9 +215,9 @@ const LeaveRequest = () => {
                                         <th className="py-3 text-left px-6 whitespace-nowrap">
                                             Department
                                         </th>
-                                        <th className="py-3 text-left px-6 whitespace-nowrap">
+                                        {/* <th className="py-3 text-left px-6 whitespace-nowrap">
                                             Approval Status
-                                        </th>
+                                        </th> */}
                                         <th className="py-3 text-left px-6 whitespace-nowrap">
                                             Details
                                         </th>
@@ -235,9 +235,9 @@ const LeaveRequest = () => {
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 {le.dep}
                                             </td>
-                                            <td className="py-3 px-6 whitespace-nowrap">
+                                            {/* <td className="py-3 px-6 whitespace-nowrap">
                                                 {le.aprovel}
-                                            </td>
+                                            </td> */}
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 <div>
                                                     <label
