@@ -19,7 +19,7 @@ const MeetingModal = ({ refetch }) => {
             meetingLink,
         };
         fetch(
-            "https://knot-business-solution-server.herokuapp.com/createNewMeeting",
+            "http://localhost:5000/createNewMeeting",
             {
                 method: "POST",
                 headers: {

@@ -223,7 +223,7 @@ const TeamOrganize = () => {
                             className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:grid-cols-4 py-6 mt-8"
                         >
                             {meetingData
-                                .filter((meeting) => {
+                                ?.filter((meeting) => {
                                     if (searchTerm === "") {
                                         return meeting;
                                     } else if (
@@ -234,7 +234,7 @@ const TeamOrganize = () => {
                                         return meeting;
                                     }
                                 })
-                                .map((meeting) => (
+                                ?.map((meeting) => (
                                     <MeetingCard {...{ meeting }} />
                                 ))}
                         </motion.section>
@@ -254,7 +254,7 @@ const TeamOrganize = () => {
                             className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 lg:grid-cols-4 py-6 mt-8"
                         >
                             {warningData
-                                .filter((warning) => {
+                                ?.filter((warning) => {
                                     if (searchTerm === "") {
                                         return warning;
                                     } else if (
@@ -265,7 +265,7 @@ const TeamOrganize = () => {
                                         return warning;
                                     }
                                 })
-                                .map((warning) => (
+                                ?.map((warning) => (
                                     <WarningCard {...{ warning }} />
                                 ))}
                         </motion.section>
@@ -285,7 +285,7 @@ const TeamOrganize = () => {
                             className="grid grid-cols-1 md:grid-cols-3 gap-y-5 gap-x-4 py-6 mt-8"
                         >
                             {awardData
-                                .filter((award) => {
+                                ?.filter((award) => {
                                     if (searchTerm === "") {
                                         return award;
                                     } else if (
@@ -296,7 +296,7 @@ const TeamOrganize = () => {
                                         return award;
                                     }
                                 })
-                                .map((award) => (
+                                ?.map((award) => (
                                     <AwardCard {...{ award }} />
                                 ))}
                         </motion.section>

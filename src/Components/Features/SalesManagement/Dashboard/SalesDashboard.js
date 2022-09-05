@@ -23,7 +23,7 @@ const SalesDashboard = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
+            `http://localhost:5000/addProduct/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setItemList(data.reverse()));
@@ -31,7 +31,7 @@ const SalesDashboard = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addNewVendor/${companyName}`
+            `http://localhost:5000/addNewVendor/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setVendorList(data.reverse()));
@@ -39,7 +39,7 @@ const SalesDashboard = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addCustomer/${companyName}`
+            `http://localhost:5000/addCustomer/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setCustomerList(data.reverse()));
@@ -47,7 +47,7 @@ const SalesDashboard = () => {
 
     useEffect(() => {
         fetch(
-            `https://knot-business-solution-server.herokuapp.com/addNewPurchaseOrder/${companyName}`
+            `http://localhost:5000/addNewPurchaseOrder/${companyName}`
         )
             .then((res) => res.json())
             .then((data) => setPurchaseOrderList(data.result.reverse()));

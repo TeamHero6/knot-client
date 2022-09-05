@@ -30,7 +30,7 @@ const Footer = () => {
                         </a>
                     </div>
                     <div>
-                        <img className="w-1/2" src={Logo} alt="" />
+                        <img className="w-2/5" src={Logo} alt="" />
                         <p>Build and sell extensions for <br /> Knot products.</p>
                     </div>
                 </section>

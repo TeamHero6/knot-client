@@ -1,20 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllItems } from "../../../../Redux/SalesManagement/SalesItems/ItemsAction";
+import Loader from "../../../Shared/Loader/Loader";
 
 const ItemsList = ({ setSingleItemDetail }) => {
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    const [itemList, setItemList] = useState([]);
-
-    const { companyName } = loggerInfo;
+    const { companyName: company } = loggerInfo;
+    const { isLoading, itemList, error } = useSelector((state) => state.items);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch(
-            `https://knot-business-solution-server.herokuapp.com/addProduct/${companyName}`
-        )
-            .then((res) => res.json())
-            .then((data) => setItemList(data.reverse()));
-    }, [itemList, companyName]);
+        dispatch(getAllItems())
+    }, []);
 
+    const companyWiseItem = itemList.filter(item => item.companyName === company);
+
+    if (isLoading) {
+        return <Loader />;
+    }
+    if (error) {
+        console.log(error);
+    }
     return (
         <div className="mb-8">
             <div className="bg-white px-6 pt-4">
@@ -43,7 +49,7 @@ const ItemsList = ({ setSingleItemDetail }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {itemList.map((item) => (
+                            {companyWiseItem.map((item) => (
                                 <tr
                                     key={item._id}
                                     className="hover:shadow-md hover:bg-cyan-100 duration-500 cursor-pointer border-b border-cyan-100"

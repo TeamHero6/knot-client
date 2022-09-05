@@ -13,19 +13,19 @@ const Recruitment = () => {
     const [modal, setmodal] = useState({});
     const [applican, setapplican] = useState({});
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/applicant")
+        fetch("http://localhost:5000/applicant")
             .then((res) => res.json())
             .then((data) => setShort(data));
     }, [short]);
 
     useEffect(() => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy")
+        fetch("http://localhost:5000/vacancy")
             .then((res) => res.json())
             .then((data) => setCarcular(data));
     }, [carcular]);
 
     const handaldelete = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/vacancy/${id}`;
+        const url = `http://localhost:5000/vacancy/${id}`;
         fetch(url, { method: "DELETE" })
             .then((res) => res.json())
             .then((data) => {
@@ -33,7 +33,7 @@ const Recruitment = () => {
             });
     };
     const deleteap = (id) => {
-        const url = `https://knot-business-solution-server.herokuapp.com/applicant/${id}`;
+        const url = `http://localhost:5000/applicant/${id}`;
         fetch(url, { method: "DELETE" })
             .then((res) => res.json())
             .then((data) => {
@@ -42,7 +42,7 @@ const Recruitment = () => {
     };
 
     const onSubmit = (data) => {
-        fetch("https://knot-business-solution-server.herokuapp.com/vacancy", {
+        fetch("http://localhost:5000/vacancy", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -203,7 +203,7 @@ const Recruitment = () => {
                             </thead>
                             <tbody>
                                 {carcular.map((c) => (
-                                    <tr className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100">
+                                    <tr className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100">
                                         <td className="py-3 px-6 whitespace-nowrap">
                                             {c.Position}
                                         </td>

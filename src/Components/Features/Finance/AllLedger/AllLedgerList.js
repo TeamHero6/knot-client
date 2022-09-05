@@ -6,10 +6,10 @@ const AllLedgerList = () => {
     const [bankBookList, setBankBookList] = useState([]);
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
     const { companyName } = loggerInfo;
-    
+
     const BankBookAmount = bankBookList.reduce((prev, current) => {
         return prev + parseInt(current.amount)
-    }, 0) 
+    }, 0)
     // console.log(BankBookAmount)
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const AllLedgerList = () => {
     }, [cashBookList, companyName]);
 
     // console.log(cashBookList, companyName);
-    
+
 
     useEffect(() => {
         fetch(`https://knot-business-solution-server.herokuapp.com/bankBook/${companyName}`)
@@ -59,7 +59,7 @@ const AllLedgerList = () => {
                             {cashBookList.map((cashBook) => (
                                 <tr
                                     key={cashBook._id}
-                                    className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                    className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100"
                                 >
                                     <td className="py-3 px-6 pl-10 whitespace-nowrap">
                                         {cashBook.date}
@@ -110,7 +110,7 @@ const AllLedgerList = () => {
                             {bankBookList.map((bankBook) => (
                                 <tr
                                     key={bankBook._id}
-                                    className="hover:shadow-md hover:bg-cyan-100 hover:scale-105 duration-500 cursor-pointer border-b border-cyan-100"
+                                    className="hover:shadow-md hover:bg-cyan-100  duration-500 cursor-pointer border-b border-cyan-100"
                                 >
                                     <td className="py-3 px-6 pl-10 whitespace-nowrap">
                                         {bankBook.date}
@@ -129,13 +129,13 @@ const AllLedgerList = () => {
                                     </td>
                                 </tr>
                             ))}
-                        <tr>
-                            <td className="py-3 px-6 pl-10 whitespace-nowrap">date</td>
-                            <td className="py-3 px-6 whitespace-nowrap text-center">voucherNo</td>
-                            <td className="py-3 px-6 whitespace-nowrap text-center">expenseHead</td>
-                            <td className="py-3 px-6 whitespace-nowrap text-center">expenseType</td>
-                            <td className="py-3 px-6 whitespace-nowrap text-center">{BankBookAmount}</td>
-                        </tr>
+                            <tr>
+                                <td className="py-3 px-6 pl-10 whitespace-nowrap">date</td>
+                                <td className="py-3 px-6 whitespace-nowrap text-center">voucherNo</td>
+                                <td className="py-3 px-6 whitespace-nowrap text-center">expenseHead</td>
+                                <td className="py-3 px-6 whitespace-nowrap text-center">expenseType</td>
+                                <td className="py-3 px-6 whitespace-nowrap text-center">{BankBookAmount}</td>
+                            </tr>
                         </tbody>
 
                     </table>

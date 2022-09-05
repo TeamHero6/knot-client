@@ -173,13 +173,13 @@ const HrVacancy = () => {
             </div>
             <div className="my-5">
                 <h3 className="text-[#0182be] text-2xl">Circular</h3>
-
-                <div className="flex justify-between gap-5">
-                    {carcular.slice(0, 20).map((circular) => (
-                        <HRCircularCard circular={circular}></HRCircularCard>
-                    ))}
-                </div>
             </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+                {carcular.slice(0, 20).map((circular) => (
+                    <HRCircularCard circular={circular}></HRCircularCard>
+                ))}
+            </div>
+
         </div>
     );
 };

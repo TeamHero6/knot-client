@@ -29,9 +29,9 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                         <th className="py-3 text-center px-6 whitespace-nowrap">
                             Status
                         </th>
-                        <th className="py-3 text-left px-6 whitespace-nowrap">
+                        {/* <th className="py-3 text-left px-6 whitespace-nowrap">
                             option
-                        </th>
+                        </th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -96,20 +96,18 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                                             </td>
                                             <td className="py-3 px-6 whitespace-nowrap">
                                                 <p
-                                                    className={`px-2 ${
-                                                        task.status ===
-                                                            "Assigned" &&
+                                                    className={`px-2 ${task.status ===
+                                                        "Assigned" &&
                                                         "bg-red-400"
-                                                    } ${
-                                                        task.status ===
-                                                            "Running" &&
+                                                        } ${task.status ===
+                                                        "Running" &&
                                                         "bg-green-400"
-                                                    } py-1 text-white text-center rounded-sm`}
+                                                        } py-1 text-white text-center rounded-sm`}
                                                 >
                                                     {task.status}
                                                 </p>
                                             </td>
-                                            <td className="py-3 px-6 whitespace-nowrap">
+                                            {/* <td className="py-3 px-6 whitespace-nowrap">
                                                 <label
                                                     for="taskDetails"
                                                     className="hover:underline hover:text-blue-500"
@@ -119,7 +117,7 @@ const AllTasks = ({ data, searchTerm, setView, view, setSingleTask }) => {
                                                 >
                                                     View
                                                 </label>
-                                            </td>
+                                            </td> */}
                                         </motion.tr>
                                     </>
                                 );

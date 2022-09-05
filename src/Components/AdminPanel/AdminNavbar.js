@@ -9,19 +9,10 @@ import DigitalClock from "../Shared/DigitalClock/DigitalClock";
 
 
 const AdminNavbar = () => {
-    const navigate = useNavigate();
     const loggerInfo = useSelector((state) => state.auth.loggerInfo);
-    const authInfo = useSelector((state) => state.auth);
-    const [userProfile, setuserprofile] = useState("");
-    const [userEmail, setUserEmail] = useState("");
-    // const { companyLogo } = loggerInfo;
-    useEffect(() => {
-        if (authInfo.loggerInfo !== null) {
-            const { userPhoto, email } = authInfo?.loggerInfo;
-            setuserprofile(userPhoto);
-            setUserEmail(email);
-        }
-    }, [authInfo]);
+    const { userPhoto } = loggerInfo;
+
+    const navigate = useNavigate();
     // sign out handler
     const handleSignOut = () => {
         signOut(auth);
@@ -54,20 +45,15 @@ const AdminNavbar = () => {
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-100 rounded-box w-52"
                         >
                             <li>
-                                <Link
+                                {/* <Link
                                     to="/FAQ/Guides"
                                     className="text-cyan-400 mx-2"
                                 >
                                     Guides
-                                </Link>
+                                </Link> */}
                             </li>
                             <li>
-                                <a
-                                    href="mailto:support.knot@mail.com"
-                                    className="text-gray-200 border-2 border-gray-200 px-3 py-1 rounded-full mx-2 hover:bg-white duration-300 hover:border-white outline-none hover:text-cyan-400"
-                                >
-                                    Contact Us
-                                </a>
+                                <Link className="text-gray-200 border-2 border-gray-200 px-3 py-1 rounded-full mx-2 hover:bg-white duration-300 hover:border-white outline-none hover:text-cyan-400" to='/contactus'>Contact Us</Link>
                             </li>
                         </ul>
                     </div>
@@ -75,15 +61,19 @@ const AdminNavbar = () => {
                     <div>
                         <img
                             src={logo}
-                            className="w-20 p-1 md:w-20 md:p-2"
+                            className="w-20 p-1 md:w-20 md:p-2 cursor-pointer"
                             alt="logo"
                             onClick={() => navigate("/")}
                         />
                     </div>
                     {/*Nav Link*/}
                     <div className="hidden lg:block">
+                        {/* <Link to="/FAQ/Guides" className="text-gray-200 mx-2">
+                            Guides
+                        </Link> */}
+
                         <Link className="text-gray-200 border-2 border-gray-200 px-3 py-1 rounded-full mx-2 hover:bg-white duration-300 hover:border-white outline-none hover:text-cyan-400" to='/contactus'>Contact Us</Link>
-                        
+
                     </div>
                 </div>
                 <div className="navbar-end">
@@ -93,7 +83,14 @@ const AdminNavbar = () => {
                             className="btn btn-ghost btn-circle avatar"
                         >
                             <div className="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" />
+                                <img
+                                    src={
+                                        userPhoto
+                                            ? userPhoto
+                                            : "https://placeimg.com/80/80/people"
+                                    }
+                                    alt=""
+                                />
                             </div>
                         </label>
                         <ul

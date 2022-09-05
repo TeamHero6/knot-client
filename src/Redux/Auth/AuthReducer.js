@@ -1,6 +1,7 @@
 const initialState = {
     loggerInfo: null,
     allEmployees: null,
+    notification: [],
 };
 
 const authReducer = (state = initialState, action) => {

@@ -32,17 +32,17 @@ const ExNavbar = () => {
         <div className="h-[60px] w-full flex items-center justify-between bg-[#FFFFFF] mb-3 shadow-md">
             <div className="flex items-center w-auto px-3 md:w-64 justify-center cursor-pointer">
                 <div
-                    className="flex justify-center items-center"
+                    className="flex justify-center items-center gap-5"
                     onClick={() => navigate("/")}
                 >
                     <span>
                         <img
                             src={companyLogo}
-                            className="w-10 h-8 mr-2"
+                            className="w-6/12 ml-10 mr-2"
                             alt=""
                         />
                     </span>
-                    <span>Dashboard</span>
+                    <span className="whitespace-nowrap">Team Management</span>
                 </div>
             </div>
 
